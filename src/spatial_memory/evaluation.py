@@ -30,7 +30,7 @@ def run_episode(scenario, config, method, seed):
     position = scenario.start
     initial = observe()
     agent = Baseline(initial.shape, initial, method, config['update_interval'])
-    observations, collisions, distance = 1, 0, 0
+    observations, blocked_attempts, dynamic_contacts, distance = 1, 0, 0, 0
     path_taken, frames = [position], []
     totals = dict.fromkeys(map_errors(agent.memory.grid, world.geometry(),
                            np.zeros(initial.shape, bool), np.zeros(initial.shape, bool)), 0)
@@ -65,6 +65,7 @@ def run_episode(scenario, config, method, seed):
     for _ in range(config['max_steps']):
         if position == scenario.goal:
             break
+        prior_people = world.people()
         before = world.geometry()
         world.advance()
         changed[:] |= before != world.geometry()
@@ -74,18 +75,23 @@ def run_episode(scenario, config, method, seed):
             attribute_observation(observation)
             observations += 1
         planned = plan(agent.memory.grid, position, scenario.goal, config['unknown'])
-        # Contacts from a human/object entering the stationary robot are counted once
-        # per step, and movement contacts separately. No privileged map correction.
-        collisions += int(world.occupancy()[position[1], position[0]])
+        # Count new entries, not continuing overlap; at most one dynamic contact per step.
+        # Blocked attempts are separate and never correct either map.
+        x, y = position
+        dynamic_contacts += int((world.geometry()[y, x] and not before[y, x])
+                                or (position in world.people() and position not in prior_people))
         if len(planned) > 1:
             nxt, contact = world.move(position, planned[1])
-            collisions += contact
+            blocked_attempts += contact
             distance += int(nxt != position)
             position = nxt
             path_taken.append(position)
         capture(planned)
     metrics = dict(scenario=scenario.name, split=scenario.split, seed=seed, method=method,
-        success=position == scenario.goal, collision_count=collisions, travel_distance=distance,
+        success=position == scenario.goal,
+        blocked_movement_attempts=blocked_attempts, dynamic_contacts=dynamic_contacts,
+        collision_count=blocked_attempts + dynamic_contacts, travel_distance=distance,
+        max_steps=config["max_steps"], final_position=position,
         elapsed_steps=world.step, observation_count=observations,
         observation_cost=observations*config['observation_cost'], **totals)
     metrics.update({'final_'+key: value for key, value in frames[-1]['errors'].items()})

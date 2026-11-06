@@ -34,7 +34,7 @@ Use the same planner, action constraints, observation model, initial states, and
 ## Metrics (final operational definitions to be frozen in code)
 
 - **Task success:** reached goal within allowed steps without exceeding safety constraints.
-- **Collision:** contact with an occupied ground-truth cell during attempted movement, counted separately from a near miss.
+- **Blocked attempt:** a requested move rejected by the occupancy checker. This is not a physical collision.
 - **Travel cost:** executed movement length and elapsed simulation steps (report separately).
 - **Observation cost:** number and/or explicit simulated cost of extra observation actions.
 - **False persistent occupancy:** temporary pedestrian-occupied cells incorrectly committed to persistent map after pedestrian departure.
@@ -115,12 +115,48 @@ cost more and episode length affects totals; they are not distinct-event counts.
   or the number of unrecognized change events.
 
 **Limits:** occupancy mapping cannot identify persistence. The static baseline
-may repeatedly collide or wait forever against its frozen initial map; this is
+may repeatedly attempt blocked moves or wait forever against its frozen initial map; this is
 intentional baseline behavior. Optimistic unknown traversal permits exploration
-but also collisions; conservative traversal can stall. Pedestrians follow fixed
+but also blocked attempts; conservative traversal can stall. Pedestrians follow fixed
 paths and do not react to the robot or enforce crowd avoidance. Persistent
 objects can overlap pedestrians or enter the robot cell. Geometry changes that
 occur after early goal completion are outside that episode's measured horizon.
 The small scenario set does not support statistical generalization, confidence
 intervals over layouts, novelty, or claims about locomotion. Reserve held-out
 execution until the research design is reviewed.
+
+
+## Phase 1.1 authoritative metric definitions
+
+These supersede the historical task-metric aggregate above. Baselines, shared
+A*, sensing, and update interval are unchanged.
+
+- `blocked_movement_attempts`: requested unit moves rejected by the checker;
+  the robot remains in place. These are not physical collisions.
+- `dynamic_contacts`: steps with a new entry into the pre-move robot cell by
+  persistent geometry (free-to-occupied) or pedestrian occupancy (previously
+  pedestrian-free). Continuing overlap is not counted again. Simultaneous
+  entries count once, even if the robot moves away during that step. Pedestrian
+  identities are not tracked: replacement without a free gap is not a new entry.
+- `travel_distance`: successful unit cardinal moves; excludes waits and attempts.
+- `collision_count`: deprecated compatibility sum of the two counters above;
+  never interpret as physical collisions. Historical files are unchanged and
+  used an overlap-sample counter rather than new-entry detection.
+- Success means reaching the goal by the deadline, irrespective of contact.
+  Elapsed steps include waits/blocked attempts. Observation count includes step 0;
+  cost is count times configured scalar, with no sensing latency.
+- The three unprefixed map errors remain cumulative cell-samples including step 0
+  and each post-action snapshot; `final_` versions count cells at termination.
+  Definitions of stale known-cell mismatch, pedestrian-write attribution and
+  ever-changed-cell mismatch remain as above. The historical name
+  `false_persistent_occupancy_updates` counts retained entries, not update events.
+  Metrics have unequal horizons when methods finish at different times.
+
+Development generation uses a separate seed namespace (1101), varying crossing
+x/direction, dwell duration, edge waiting, persistent addition location and time.
+Empty controls intentionally do not vary. Paths remain scripted cyclic cardinal
+motions. One realized scenario is shared by both methods; its hidden schedule,
+record and hash are saved for audit but never reach the agents. At equal times,
+underlying truth is identical even when methods take different routes. Sensor
+noise retains per-time streams. Runner execution of held-out configurations is
+blocked pending research review; the reserved config itself is untouched.
