@@ -53,3 +53,14 @@ Keep a bibliography with verified paper metadata, method assumptions, and reprod
 ## Intended portfolio outcome
 
 Reproducible code, clear research question, defensible baselines, ablations, repeated-seed results with uncertainty, failure analysis, and a candid simulation limitations section.
+
+## Phase 1 foundation implementation
+
+The repository now contains the partial-observation 2D testbed and the static
+and periodic sanity baselines only. Explicit JSON layouts separate development
+from reserved held-out seeds and layout. The initial comparison is a deterministic
+acceptance demonstration, not a test of H1/H2 and not evidence of superiority.
+Noise-free seeds repeat the same trajectory and are not independent evidence.
+Review `docs/experimental_protocol.md` and the validation record before expanding
+the scenario suite or implementing additional algorithms. The simulator uses a
+point robot and does not model bipedal traversability or physical walking.

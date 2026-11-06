@@ -1,0 +1,22 @@
+{
+  "split": "held_out",
+  "seeds": [101, 202, 303],
+  "max_steps": 30,
+  "update_interval": 3,
+  "observation_cost": 1.5,
+  "unknown": "optimistic",
+  "sensor": {"radius": 2, "occlusion": true, "noise": 0.05},
+  "scenarios": [{
+    "name": "offset_rooms",
+    "split": "held_out",
+    "width": 9,
+    "height": 8,
+    "start": [1,1],
+    "goal": [7,6],
+    "walls": [[4,0],[4,1],[4,2],[4,4],[4,5],[4,7]],
+    "obstacles": [[6,5]],
+    "pedestrians": [[[4,3],[5,3],[5,4],[5,3]]],
+    "changes": [{"step": 4, "action": "relocate", "cell": [6,5], "to": [6,6]},
+                {"step": 9, "action": "remove", "cell": [6,6]}]
+  }]
+}

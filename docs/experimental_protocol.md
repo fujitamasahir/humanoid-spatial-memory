@@ -61,3 +61,66 @@ A collision-free result may follow simply from the motion checker; explain wheth
 ## First acceptance test for Codex
 
 A small deterministic scenario with a pedestrian temporarily blocking a corridor and a persistent obstacle appearing elsewhere must show: (i) different hidden truth and observable map; (ii) a reproducible rollout; (iii) a simple saved visualization; (iv) output metrics and passing tests. No RL and no G1 integration at this step.
+
+## Implemented Phase 1 semantics
+
+These definitions apply to `phase1-v0.1`. Final research evaluation is still
+pending review; the held-out configuration has not been used for tuning.
+
+**Boundary:** only ternary occupancy arrays (`-1` unknown, `0` free, `1` occupied)
+reach baseline memory. The planner receives that map, pose, goal and the shared
+unknown-cell rule. Neither receives obstacle types, schedules, identities or
+ground-truth geometry. The experiment harness owns the simulator and evaluator.
+Grid dimensions, start and goal are public. Collision outcomes block movement
+but do not correct either baseline's map. Python isolation is architectural,
+not a security sandbox.
+
+**Time and sensing:** the initial observation is at step 0. Each subsequent step
+advances pedestrians/objects, optionally observes, replans, then attempts one
+cardinal move or waits. Periodic refresh happens at positive multiples of the
+interval. Sensing has no duration; its configurable cost is a separate resource.
+No continuous or free collision-triggered sensing occurs. Range is Euclidean;
+occlusion uses conservative supercover rays with the first occupied cell visible
+and cells behind it unknown. Noise independently flips visible binary occupancy
+after visibility is computed; unknown cells remain unknown. A seed/time-indexed
+RNG pairs noise across methods when their observations occur at the same time.
+
+**Task metrics:** success is reaching the goal within the step budget (no extra
+collision threshold). Success rate is the arithmetic mean of episode success.
+Travel distance counts successful unit moves. Elapsed steps counts advances,
+including waits and blocked attempts. Collision count sums blocked move attempts
+and one contact per step when dynamic occupancy enters the robot's current cell;
+both can happen in one step. There is no physical penetration during movement,
+injury model, or near-miss metric. Observation count includes the initial call;
+observation cost is count times the configured scalar cost.
+
+**Map metrics:** truth for map comparison is static walls plus current persistent
+objects, never pedestrians. Metrics are sampled at step 0 and after each action.
+Unprefixed error columns sum cell counts over these snapshots (cell-samples);
+`final_` columns give only final snapshot cell counts. Thus long-lived errors
+cost more and episode length affects totals; they are not distinct-event counts.
+
+- Stale-map errors: known map cells disagreeing with persistent truth; unknown
+  cells are excluded.
+- False persistent occupancy updates: currently remembered occupied cells whose
+  most recent write was an actual pedestrian-only occupied observation, after
+  the pedestrian departs and while persistent truth is free. Evaluator-only
+  attribution tracks writes and resets on every observed overwrite, so noise
+  false positives and unrelated formerly visited cells are excluded. These are
+  retained transient commitments, not semantic classification predictions.
+- Missed persistent changes: cells touched by a persistent occupancy change at
+  any elapsed step for which memory is unknown or disagrees with current truth.
+  Additions, removals and both ends of relocations count. A later reversion that
+  matches memory is no longer missed. This is a cell-state metric, not latency
+  or the number of unrecognized change events.
+
+**Limits:** occupancy mapping cannot identify persistence. The static baseline
+may repeatedly collide or wait forever against its frozen initial map; this is
+intentional baseline behavior. Optimistic unknown traversal permits exploration
+but also collisions; conservative traversal can stall. Pedestrians follow fixed
+paths and do not react to the robot or enforce crowd avoidance. Persistent
+objects can overlap pedestrians or enter the robot cell. Geometry changes that
+occur after early goal completion are outside that episode's measured horizon.
+The small scenario set does not support statistical generalization, confidence
+intervals over layouts, novelty, or claims about locomotion. Reserve held-out
+execution until the research design is reviewed.
