@@ -71,8 +71,25 @@ Git commands use the per-command option
 because the sandbox account differs from the repository owner. No global Git
 configuration or history rewrite is required. Review commands include
 `git status --short`, `git diff --check`, and `git diff --cached` with that option.
-The implementation is committed and pushed to the existing `main` branch as the
-final delivery step; the resulting SHA is reported in the delivery message.
+The implementation was committed locally as
+`fa12ea85d089308ddc1b09ac71552e6ff3f3161a` with message
+`Implement Phase 1 spatial memory simulation and baselines`. The working tree
+was clean after that commit. The requested `git push origin main` waited in Git
+Credential Manager without output and was interrupted. A noninteractive retry
+failed with `Cannot prompt because user interactivity has been disabled` and
+`could not read Username for 'https://github.com': terminal prompts disabled`.
+`gh auth status` also failed because GitHub CLI is not installed. No push is
+claimed. This delivery limitation is recorded in a subsequent documentation
+commit. Git history was not rewritten.
+
+The exact bounded retry was:
+
+```powershell
+$env:GIT_TERMINAL_PROMPT='0'; $env:GCM_INTERACTIVE='Never'; git -c safe.directory=C:/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory -c credential.interactive=never -c http.lowSpeedLimit=1 -c http.lowSpeedTime=30 push origin main
+```
+
+Authenticate GitHub through Git Credential Manager in the user's normal
+PowerShell session, then run `git push origin main` from the repository root.
 
 The artifact's `commit_sha` identifies HEAD at execution time; because these
 representative files were generated before the implementation commit,
