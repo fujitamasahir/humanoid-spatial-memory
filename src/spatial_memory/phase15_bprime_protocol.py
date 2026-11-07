@@ -9,6 +9,8 @@ from . import phase15_topology as top
 from .phase15_bprime import (VERSION, PARTITIONS, MECHANISMS, CANONICAL_NAMESPACE,
                             IntegrityError, development_partition, seed_for)
 
+_INVENTORY_TOKEN = object()
+
 CATEGORIES = ('original_history', 'admitted_development', 'rejected_valid')
 OUTCOMES = {'original_history': ('historical',),
             'admitted_development': ('independent','same_partition_related'),
@@ -26,18 +28,15 @@ def digest(value):
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
 
 
-def development_path(path, partition, root):
-    """Reject stage and escape paths before any file is opened."""
+def development_path(path, partition, binding):
+    """Only an independently approved root/manifest binding can grant access."""
+    from .phase15_bprime_access import StageBinding
     development_partition(partition)
-    root = Path(root).resolve()
-    path = Path(path).resolve()
-    if not path.is_relative_to(root):
-        raise IntegrityError('Path escapes development root')
-    relative = path.relative_to(root)
-    if any(any(word in p.lower() for word in ('assessment','held_out','held-out','heldout','final'))
-           for p in relative.parts):
-        raise IntegrityError('Reserved path denied before opening')
-    return path
+    if not isinstance(binding,StageBinding):
+        raise IntegrityError('Caller-controlled roots are not authority')
+    if json.loads(binding.manifest_bytes)['partition']!=partition:
+        raise IntegrityError('Unauthorized development stage')
+    return binding.authorize(path)
 
 
 @dataclass(frozen=True)
@@ -161,7 +160,14 @@ class AdmissionIndex:
             reason = 'same_partition_related' if found else 'independent'
         return reason,found
 
-    def admit(self, record, *, complete=False):
+    def admit(self, record, *, evidence=None, complete=None):
+        from .phase15_bprime_records import CandidateEvidence
+        if complete is not None or not isinstance(evidence,CandidateEvidence):
+            raise IntegrityError('Validated candidate evidence required, not a completeness Boolean')
+        evidence.check()
+        if evidence.record!=record or (not self.synthetic and evidence.payload.get('profile')!='production'):
+            raise IntegrityError('Credit evidence belongs to another record/profile')
+        complete=evidence.complete
         reason, found = self.classify(record)
         if reason=='cross_partition_or_historical':
             return dict(reason=reason, inserted=False, matches=found,
@@ -242,7 +248,7 @@ class DevelopmentOrder:
 
 
 def validate_inventory(payload, ledger, archive_root, *, expected_digest,
-                       expected_ledger_digest, backend, synthetic=False):
+                       expected_ledger_digest, backend, synthetic=False, binding=None):
     """Read/verify supplied saved geometry only; never regenerate old worlds.
 
     The caller must obtain both expected hashes from reviewed commitments, not
@@ -250,6 +256,13 @@ def validate_inventory(payload, ledger, archive_root, *, expected_digest,
     Synthetic inventories are explicit small fixtures and cannot load into a
     production index. Reference/nonreference ledgers remain separately returned.
     """
+    from .phase15_bprime_access import StageBinding
+    if not isinstance(binding,StageBinding) or binding.synthetic!=synthetic:
+        raise IntegrityError('Approved reference inventory binding required')
+    binding.authorize(archive_root)
+    binding.verify()
+    if json.loads(binding.manifest_bytes).get('reference_inventory_sha256')!=expected_digest:
+        raise IntegrityError('Inventory digest is not in approved manifest')
     if not synthetic:
         from .phase15_nauty import Backend
         if not isinstance(backend,Backend):
@@ -294,7 +307,7 @@ def validate_inventory(payload, ledger, archive_root, *, expected_digest,
         if any(any(w in p.lower() for w in ('assessment','heldout','held_out','held-out','final'))
                for p in (*path.parts,*resolved.relative_to(root).parts)):
             raise IntegrityError('Reserved archive path denied')
-        packed = resolved.read_bytes()
+        packed = binding.read(resolved)
         if len(packed)!=e['bytes'] or hashlib.sha256(packed).hexdigest()!=e['sha256']:
             raise IntegrityError('Missing/changed reference payload')
         body = json.loads(gzip.decompress(packed))
@@ -336,7 +349,8 @@ def validate_inventory(payload, ledger, archive_root, *, expected_digest,
         record = Record(e['identity'],'reference',e.get('mechanism','historical'),
                         exact,keys,top.raster_certificate(free,width,height),lineage,category)
         (excluded if category=='rejected_valid' else included).append(record)
-    return ValidatedInventory(tuple(included),tuple(excluded),expected_digest,synthetic)
+    return ValidatedInventory(tuple(included),tuple(excluded),expected_digest,synthetic,_INVENTORY_TOKEN,
+                              (tuple(included),tuple(excluded),expected_digest,synthetic))
 
 
 @dataclass(frozen=True)
@@ -345,8 +359,13 @@ class ValidatedInventory:
     rejected_ledger: tuple
     sha256: str
     synthetic: bool
+    _verified: object = None
+    _seal: tuple = ()
 
     def load(self, index):
+        if (self._verified is not _INVENTORY_TOKEN or
+            self._seal!=(self.included,self.rejected_ledger,self.sha256,self.synthetic)):
+            raise IntegrityError("Reference inventory has not passed independent validation")
         if index.synthetic!=self.synthetic or index.records:
             raise IntegrityError('Reference profile conflict or nonempty index')
         for record in self.included:

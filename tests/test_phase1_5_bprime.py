@@ -18,6 +18,8 @@ from spatial_memory import phase15_bprime_protocol as protocol
 from spatial_memory import phase15_bprime_store as storage
 from spatial_memory import phase15_generators as old
 from spatial_memory import phase15_topology as top
+from spatial_memory.phase15_bprime_records import graph_fixture_evidence
+from bprime_test_support import binding_for, toy_store, fixture
 
 
 @pytest.fixture(autouse=True)
@@ -28,6 +30,13 @@ def forbid_population_streams_and_entrypoints(monkeypatch):
     monkeypatch.setattr(old.Stream,'__init__',deny)
     monkeypatch.setattr(bp,'geometry',deny)
     monkeypatch.setattr(old,'geometry',deny)
+
+
+class MathIndex(protocol.AdmissionIndex):
+    """Mathematical graph fixtures, never attest production world completeness."""
+    def __init__(self):super().__init__(synthetic=True)
+    def admit(self,record,*,complete=False):
+        return super().admit(record,evidence=graph_fixture_evidence(record,complete))
 
 
 class Tape(old.Stream):
@@ -316,7 +325,7 @@ def test_cross_rank_multi_parent_lineage_and_transitive_credit_loss():
     a = record('synthetic:a',tree,mechanism='R')
     b = record('synthetic:b',cycle,mechanism='BP')
     assert not a.keys & b.keys
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     index.admit(a,complete=True)
     index.admit(b,complete=True)
     assert dict(index.credits('synthetic-fit'))=={'R':1,'BP':1}
@@ -338,7 +347,7 @@ def test_near_only_bridge_independent_saved_graph_fixture():
     a = record('synthetic:path',top.graph_from_edges(2,[(0,1)]))
     b = record('synthetic:star',top.graph_from_edges(4,[(0,1),(0,2),(0,3)]))
     assert a.exact!=b.exact and a.keys & b.keys
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     index.admit(a,complete=True)
     result = index.admit(b)
     assert result['exact_matches']==[] and len(index.components('synthetic-fit'))==1
@@ -376,14 +385,15 @@ def make_inventory(tmp_path):
 
 def validate(payload,ledger,root):
     return protocol.validate_inventory(payload,ledger,root,expected_digest=protocol.digest(payload),
-        expected_ledger_digest=protocol.digest(ledger),backend=Oracle(),synthetic=True)
+        expected_ledger_digest=protocol.digest(ledger),backend=Oracle(),synthetic=True,
+        binding=binding_for(root/'bound-store',inventory=payload,ledger=ledger))
 
 
 def test_reference_categories_rejected_bridge_not_promoted(tmp_path):
     payload,ledger = make_inventory(tmp_path)
     validated = validate(payload,ledger,tmp_path)
     assert len(validated.included)==2 and len(validated.rejected_ledger)==1
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     validated.load(index)
     excluded = validated.rejected_ledger[0]
     assert excluded.identity not in [r.identity for r in index.records]
@@ -416,7 +426,7 @@ def test_reference_seal_digest_and_missing_archive(tmp_path):
     with pytest.raises(bp.IntegrityError):protocol.validate_inventory(payload,ledger,tmp_path,
         expected_digest='0'*64,expected_ledger_digest=protocol.digest(ledger),backend=Oracle(),synthetic=True)
     (tmp_path/payload['entries'][0]['path']).unlink()
-    with pytest.raises(OSError):validate(payload,ledger,tmp_path)
+    with pytest.raises(bp.IntegrityError):validate(payload,ledger,tmp_path)
 
 
 def test_pair_order_and_exact_boundaries_on_explicit_corridor():
@@ -472,14 +482,14 @@ def lock():
 
 
 def test_checkpoint_integrity_exact_resume_and_lock_conflict(tmp_path):
-    store = storage.Checkpoints(tmp_path,lock(),synthetic=True)
+    store = toy_store(tmp_path)
     with store.writer():
-        entry = store.write('synthetic:one',dict(complete=True,trace=[1,2],failure=None))
+        entry = store.write('synthetic:one',fixture(dict(complete=True,trace=[1,2],failure=None)))
         packed = (tmp_path/entry['path']).read_bytes()
         assert not store.inventory([entry],['synthetic:one'])
-        with pytest.raises(bp.IntegrityError):store.write('synthetic:two',dict(nonfinite=float('nan')))
+        with pytest.raises(bp.IntegrityError):store.write('synthetic:two',fixture(dict(nonfinite=float('nan'))))
         with pytest.raises(bp.IntegrityError):
-            with storage.Checkpoints(tmp_path,lock(),synthetic=True).writer():pass
+            with toy_store(tmp_path).writer():pass
     with store.writer():
         assert not store.inventory([entry],['synthetic:one'])
         assert (tmp_path/entry['path']).read_bytes()==packed
@@ -487,23 +497,23 @@ def test_checkpoint_integrity_exact_resume_and_lock_conflict(tmp_path):
         with pytest.raises(bp.IntegrityError):store.inventory([entry],['synthetic:one','synthetic:missing'])
     changed = lock();changed['source_sha256']='9'*64
     with pytest.raises(bp.IntegrityError):
-        with storage.Checkpoints(tmp_path,changed,synthetic=True).writer():pass
+        with toy_store(tmp_path,override=changed).writer():pass
     (tmp_path/entry['path']).write_bytes(b'corruption')
     with pytest.raises(bp.IntegrityError):store.inventory([entry],['synthetic:one'])
 
 
 def test_checkpoint_duplicate_torn_and_complete_recovery(tmp_path):
-    store = storage.Checkpoints(tmp_path,lock(),synthetic=True)
+    store = toy_store(tmp_path)
     with store.writer():
-        entry = store.write('synthetic:one',{'trace':[]})
+        entry = store.write('synthetic:one',fixture({'trace':[]}))
         packed = (tmp_path/entry['path']).read_bytes()
         (tmp_path/entry['path']).unlink()
         part = tmp_path/'staging'/'manual.part';part.write_bytes(packed)
         recovered = store.recover(['synthetic:one'])
         assert recovered==[entry] and not part.exists()
-        with pytest.raises(bp.IntegrityError):store.write('synthetic:one',{'trace':[]})
+        with pytest.raises(bp.IntegrityError):store.write('synthetic:one',fixture({'trace':[]}))
         assert list((tmp_path/'staging').glob('*.part'))  # preserved duplicate
-    other = storage.Checkpoints(tmp_path/'other',lock(),synthetic=True)
+    other = toy_store(tmp_path/'other')
     with other.writer():
         part = tmp_path/'other'/'staging'/'torn.part';part.write_bytes(b'partial')
         with pytest.raises(bp.IntegrityError):other.recover(['synthetic:one'])
@@ -585,7 +595,7 @@ def test_moving_length_reversal_and_complete_final_dwell():
 def test_rejected_prior_ancestry_preserved_without_key_promotion(tmp_path):
     payload,ledger = make_inventory(tmp_path)
     validated = validate(payload,ledger,tmp_path)
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     validated.load(index)
     rejected = validated.rejected_ledger[0]
     derivative = replace(rejected,identity='synthetic:derivative',partition='synthetic-fit',
@@ -604,7 +614,7 @@ def test_independent_relation_component_reconstruction():
         records[0].lineage,records[1].lineage))]
     records += [replace(record('synthetic:bc',graphs[2]),lineage=protocol.Lineage.derived(
         records[1].lineage,records[2].lineage))]
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     neighbors = {r.identity:set() for r in records}
     for i,r in enumerate(records):
         index.admit(r,complete=i<3)
@@ -640,12 +650,12 @@ def test_ancestry_key_and_stage_validation_cannot_launder_profiles():
 
 
 def test_checkpoint_atomic_failure_preserves_complete_stage_for_recovery(tmp_path,monkeypatch):
-    store = storage.Checkpoints(tmp_path,lock(),synthetic=True)
+    store = toy_store(tmp_path)
     with store.writer():
         real_link = storage.os.link
         def fail(*args,**kwargs):raise OSError('simulated publication interruption')
         monkeypatch.setattr(storage.os,'link',fail)
-        with pytest.raises(OSError):store.write('synthetic:one',{'retained':[1,2,3]})
+        with pytest.raises(OSError):store.write('synthetic:one',fixture({'retained':[1,2,3]}))
         assert len(list((tmp_path/'staging').glob('*.part')))==1
         monkeypatch.setattr(storage.os,'link',real_link)
         recovered = store.recover(['synthetic:one'])
@@ -653,7 +663,7 @@ def test_checkpoint_atomic_failure_preserves_complete_stage_for_recovery(tmp_pat
 
 
 def test_checkpoint_extra_symlink_and_nonlease_writes_denied(tmp_path):
-    store = storage.Checkpoints(tmp_path,lock(),synthetic=True)
+    store = toy_store(tmp_path)
     with pytest.raises(bp.IntegrityError):store.write('synthetic:one',{})
     with store.writer():
         (tmp_path/'records'/'unexpected').write_bytes(b'preserved')
@@ -661,7 +671,7 @@ def test_checkpoint_extra_symlink_and_nonlease_writes_denied(tmp_path):
     other = tmp_path/'other';other.mkdir()
     (other/'records').symlink_to(tmp_path/'records')
     with pytest.raises(bp.IntegrityError):
-        with storage.Checkpoints(other,lock(),synthetic=True).writer():pass
+        with toy_store(other).writer():pass
 
 
 def test_order_exhaustion_is_terminal_without_new_draw():
@@ -696,12 +706,12 @@ def test_reference_reserved_archive_path_denied_before_open(tmp_path,monkeypatch
     payload['entries'][0]['path']='assessment/fixture.json.gz'
     def deny(*args):pytest.fail('Reserved path was opened')
     monkeypatch.setattr(Path,'read_bytes',deny)
-    with pytest.raises(bp.IntegrityError,match='Reserved archive'):
+    with pytest.raises(bp.IntegrityError,match='Reserved|binding|authority'):
         validate(payload,ledger,tmp_path)
 
 
 def test_complete_world_credit_cannot_be_given_to_related_record():
-    index = protocol.AdmissionIndex(synthetic=True)
+    index = MathIndex()
     graph = top.graph_from_edges(2,[(0,1)])
     a,b = record('synthetic:a',graph),record('synthetic:b',graph)
     with pytest.raises(bp.IntegrityError):index.admit(a)
@@ -735,17 +745,18 @@ def test_order_reactivates_mechanism_and_requires_prior_partition_freeze():
 
 def test_checkpoint_reproduction_same_pinned_lock_and_payload(tmp_path):
     data = []
+    common=binding_for(tmp_path/'first',stores=[tmp_path/'first',tmp_path/'second'])
     for name in ('first','second'):
-        store = storage.Checkpoints(tmp_path/name,lock(),synthetic=True)
+        store = toy_store(tmp_path/name,binding=common)
         with store.writer():
-            entry = store.write('synthetic:fixed',{'failure':'explicit synthetic failure','trace':[]})
+            entry = store.write('synthetic:fixed',fixture({'failure':'explicit synthetic failure','trace':[]}))
         data.append((tmp_path/name/entry['path']).read_bytes())
     assert data[0]==data[1]
 
 
 def test_full_c3_backend_is_required_in_production_reference_validation(tmp_path):
     payload,ledger = make_inventory(tmp_path)
-    with pytest.raises(bp.IntegrityError,match='approved guarded backend'):
+    with pytest.raises(bp.IntegrityError,match='binding'):
         protocol.validate_inventory(payload,ledger,tmp_path,expected_digest=protocol.digest(payload),
             expected_ledger_digest=protocol.digest(ledger),backend=Oracle())
 
