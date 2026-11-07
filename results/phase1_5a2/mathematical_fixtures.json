@@ -1,0 +1,163 @@
+{
+  "scope": "exact hand-built mathematical fixtures; zero generated layouts or episodes",
+  "corridor_open_half": {
+    "exact": "1/2048",
+    "decimal": 0.00048828125
+  },
+  "corridor_all64_miss": {
+    "exact": "81572153987103923835390548417188269936419197469302464419024158637365591627224861126040490809284806036336096283903811333678792108885610133283962109817091550254355567618599879494019434091716747322461432755836026881/84162174424773976115855838126082058648805436845170781751972494449099714468753293153818664580441415219631727501698851483408310916002940861810045036330430093599283578738055113571066620126149163476340692027772502016",
+    "decimal": 0.9692258374338335
+  },
+  "optimistic_corridor_open": {
+    "exact": "31381059609/100000000000",
+    "decimal": 0.31381059609
+  },
+  "original_wait": {
+    "exact": "201/200",
+    "decimal": 1.005
+  },
+  "original_uncertain_move": {
+    "exact": "211/200",
+    "decimal": 1.055
+  },
+  "safe_move": {
+    "exact": "-39/200",
+    "decimal": -0.195
+  },
+  "safe_wait": {
+    "exact": "1/200",
+    "decimal": 0.005
+  },
+  "uncertain_move": {
+    "exact": "-9/80",
+    "decimal": -0.1125
+  },
+  "high_blocked_move": {
+    "exact": "19/250",
+    "decimal": 0.076
+  },
+  "perfect_query": {
+    "risk": {
+      "exact": "-9/200",
+      "decimal": -0.045
+    },
+    "evsi": {
+      "exact": "3/20",
+      "decimal": 0.15
+    },
+    "posterior_advantage": {
+      "exact": "3/20",
+      "decimal": 0.15
+    },
+    "vpc": {
+      "exact": "3/20",
+      "decimal": 0.15
+    }
+  },
+  "noisy_query": {
+    "risk": {
+      "exact": "-9/200",
+      "decimal": -0.045
+    },
+    "evsi": {
+      "exact": "27/200",
+      "decimal": 0.135
+    },
+    "posterior_advantage": {
+      "exact": "27/200",
+      "decimal": 0.135
+    },
+    "vpc": {
+      "exact": "3/20",
+      "decimal": 0.15
+    }
+  },
+  "pattern_law": [
+    {
+      "exact": "13/32",
+      "decimal": 0.40625
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "1/32",
+      "decimal": 0.03125
+    },
+    {
+      "exact": "5/32",
+      "decimal": 0.15625
+    }
+  ],
+  "pattern_bit_occupancy": {
+    "exact": "3/8",
+    "decimal": 0.375
+  },
+  "independent_allfree_at_same_marginal": {
+    "exact": "625/4096",
+    "decimal": 0.152587890625
+  },
+  "hypothetical_policy_value_when_post_action_is_wrong": {
+    "exact": "-1/2",
+    "decimal": -0.5
+  },
+  "assessment_core": 3200,
+  "assessment_assay": 2880,
+  "assessment_ablations": 640,
+  "assessment_max": 6720,
+  "development_fit": 96,
+  "development_calibration": 1008,
+  "development_selection": 1008,
+  "development_max": 2112,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "script_sha256": "76ab486f090aef6bcdebdba8a0f9be865174642361dc8335ae5a0e04922432e6"
+}

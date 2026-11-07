@@ -1,0 +1,28 @@
+{
+    "phase":  "Phase 1.5A-2",
+    "date":  "2026-11-07",
+    "base_commit":  "6c1f649628b7c14aea59c33c9920da02afdcc3a0",
+    "branch":  "feature/phase1-4c-assessment",
+    "standalone_mathematical_tests_passed":  26,
+    "documentation_reports_checked":  5,
+    "local_links_checked":  23,
+    "assessment_maximum_checked":  6720,
+    "development_maximum_checked":  2112,
+    "original_tracked_files_unchanged":  true,
+    "frozen_sha256":  {
+                          "results/phase1_4b/parameter_lock.json":  "ecdd2f11e0c279bfa6c8557fcc646c4f714d2c7627deb731cbb366138a64d2f1",
+                          "results/phase1_4a/manifests/assessment.json":  "6335b77dd5838b2ea312d3293c939354e0b7f454eccbc679f0c59d4fe031c822"
+                      },
+    "fixture_source_hash_verified":  true,
+    "navigation_episodes_run":  0,
+    "layouts_generated":  0,
+    "full_algorithms_implemented":  false,
+    "assessment_or_held_out_accessed":  false,
+    "document_sha256":  {
+                            "docs/phase1_5a2_architecture_decision.md":  "d2d42d095e8456c6156ece969c023fc5a6a689a4c0fa68af65973ae1362497d6",
+                            "docs/phase1_5a2_controller_specification.md":  "9956b0d82ec854d6d1935edffa8d58bbadd0eb3227dc4f80153a42924edd8c82",
+                            "docs/phase1_5a2_generator_specification.md":  "c08e6b5b85fa4339dac574bdbc72864a948b8ebbf346d727fba5a6a5d46be8ce",
+                            "docs/phase1_5a2_protocol_amendment.md":  "a9070b4f975e692e4ac17b98ea6a7428d97d6a147d7a4f82ac9330e29517e5a3",
+                            "docs/phase1_5a2_spatial_prior_review.md":  "8da52f78a7f7edbc78648e3adef0bd630b79cb5da2a9e4a50cc54a1cfc5c264a"
+                        }
+}
