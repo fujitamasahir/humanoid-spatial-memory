@@ -1,0 +1,24 @@
+{
+    "phase":  "Phase 1.5A",
+    "date":  "2026-11-07",
+    "base_commit":  "9ba556158511a4808518c897878406f53f17b4c7",
+    "branch":  "feature/phase1-4c-assessment",
+    "isolated_audit_tests_passed":  18,
+    "random_finite_tables_checked":  200,
+    "reports_checked":  5,
+    "local_links_checked":  29,
+    "benchmark_script_hash_matches":  true,
+    "existing_tracked_files_unchanged":  true,
+    "frozen_hashes_match":  true,
+    "navigation_episodes_run":  0,
+    "topologies_generated":  0,
+    "assessment_accessed_for_selection":  false,
+    "held_out_worlds_accessed":  false,
+    "report_sha256":  {
+                          "docs/phase1_5a_design_audit.md":  "d711df873a6a137fa44b2ccf4e8da43af806cdb08e78a48ce85b1d33c5fb6ea2",
+                          "docs/phase1_5a_feasibility.md":  "6b56f5fdeb675e802be0f676e35915e95ec5181ffca69551ca32da9c34691211",
+                          "docs/phase1_5a_power_analysis.md":  "0fef975d3683388c936afa0a52ead7f93927c22ce363a90e3c17700e64f0ddfb",
+                          "docs/phase1_5a_protocol_recommendation.md":  "45ef99e97bf7ac45efcd10a2554879d0c8618293b6a5d9051574c9b35d3283ed",
+                          "docs/phase1_5a_topology_audit.md":  "8a77ac9f6ea5316d70b5f1080383c55473bc89792e55158ca1cbd9b3627097d8"
+                      }
+}
