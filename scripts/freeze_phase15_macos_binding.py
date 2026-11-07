@@ -26,6 +26,10 @@ def main():
  # are checked again when sealing and by the production inventory loader.
  verification=ROOT/'results/phase15_macos_development/reference_independent_verification.json'
  references[str(verification.relative_to(ROOT))]=sha(verification.read_bytes())
+ seal=ROOT/'results/phase15_macos_development/reference_seal.json'
+ if a.store is not None:
+  if not seal.exists():raise ValueError('Sealed reference inventory required before a population capability')
+  references[str(seal.relative_to(ROOT))]=sha(seal.read_bytes())
  previous={} if a.prior_seals is None else json.loads(a.prior_seals.read_bytes())
  value=dict(version='phase1.5-v0.4-BPRIME-1',profile='production',partition=a.partition,root=str(ROOT),
     files=dict(source=source,configuration=config,dependencies=dependencies,references=references),

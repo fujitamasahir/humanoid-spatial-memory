@@ -62,3 +62,27 @@ def test_v_rejection_witness_uses_failed_frame_without_replay(monkeypatch):
     with pytest.raises(old.Rejected,match='voronoi_seed_separation'):builder.geometry(job)
     assert len(builder.rejection_evidence()['seeds'])==12
     assert builder.stream_counters()['geometry']['bounds']==[3]+list(range(529,1,-1))
+
+
+def test_production_read_access_is_an_explicit_file_allowlist(tmp_path,monkeypatch):
+    import json
+    from spatial_memory import phase15_bprime_access as access
+    from bprime_test_support import binding_for
+    bound=binding_for(tmp_path/'authorized')
+    path=bound.manifest_path;value=json.loads(path.read_bytes());value['profile']='production'
+    raw=access.packed(value);path.write_bytes(raw);checksum=access.sha(raw)
+    monkeypatch.setattr(access,'production_manifests',lambda:{str(path):checksum})
+    approved=access.StageBinding.load(path)
+    alternate=approved.root/'unlisted-outcomes.json';alternate.write_text('{}')
+    with pytest.raises(bp.IntegrityError,match='explicit development'):
+        approved.read(alternate)
+
+
+@pytest.mark.parametrize('partition',['assessment','final-held-out','held_out'])
+def test_driver_denies_reserved_stage_before_loading_evidence(partition):
+    import os,subprocess,sys
+    from pathlib import Path
+    root=Path(__file__).resolve().parents[1]
+    environment=dict(os.environ,PYTHONPATH=str(root/'src'),PYTHONDONTWRITEBYTECODE='1')
+    result=subprocess.run([sys.executable,str(root/'scripts/run_phase15_macos_development.py'),'--partition',partition],capture_output=True,text=True,env=environment)
+    assert result.returncode==2 and 'invalid choice' in result.stderr
