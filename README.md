@@ -4,7 +4,7 @@
 
 Research project investigating how robots can distinguish **transient human-induced obstructions** from **persistent environmental changes**, and when they should re-observe an uncertain area before navigating.
 
-> **Status:** Phase 1.1 experimental validity improvements: reproducible 2D simulator and two sanity baselines. No novelty or improved-performance claim.
+> **Status:** Phase 1.2 observation-scheduling baselines: static, periodic, local cell-age, and history-adapted uncertainty. Development findings only; no novelty or statistical superiority claim.
 
 ## Research questions
 
@@ -81,17 +81,49 @@ See [Phase 1.1 validation](docs/phase1_1_validation.md) for actual findings,
 per-seed metrics and reproduction commands. Blocked attempts and dynamic contacts
 are separate; legacy `collision_count` is deprecated and is not physical collisions.
 
+## Phase 1.2 adaptive observation comparison
+
+Read the [baseline review and exact definitions](docs/phase1_2_baseline_review.md)
+and [validation report](docs/phase1_2_validation.md) before interpreting results.
+The new schedules use cell timestamps or history-adapted entropy in the current
+potential sensor footprint. They do not use planned routes or hidden obstacle
+labels. All methods share the original sensor, last-write map, A* and movement
+rules. Sensing costs resources but adds no simulation time.
+
+Windows PowerShell (Python 3.12):
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe scripts/run_adaptive_experiment.py --config configs/development_phase1_2.json --output results/phase1_2/development
+```
+
+For macOS use `.venv/bin/python` (not validated). The run evaluates six development
+families, three paired seeds, four methods, and unlimited/3/5/8 total observation
+caps, including the initial call. It saves per-episode CSV/JSON, aggregate and
+scenario summaries, observation decision traces, realized environments/provenance,
+24 final snapshots and a tradeoff chart. Earlier artifacts are protected by the
+new runner. Use another output directory to preserve a repeat run.
+
+Unconstrained results: Periodic 18/18 successes at 7.06 mean observations,
+Age 15/18 at 5.39, Uncertainty 18/18 at 2.78. Uncertainty also has more dynamic
+contacts than Periodic (4 versus 1 across 18 episodes); reaching the goal does not
+establish safer navigation. These are simplified conceptual controls, not faithful
+published-method reproductions. Small related layouts and favorable sensing phases
+prevent general claims. Task-aware verification, held-out evaluation, RL and
+humanoid integration remain deferred for research review.
+
 ## Implementation
 
 - `src/spatial_memory/simulation.py`: hidden geometry, pedestrian schedules, changes, movement blocking.
 - `observation.py`: range-limited occupancy sensing with optional occlusion/noise.
-- `memory.py`: ternary robot map and static/periodic observation schedules.
+- `memory.py`: unchanged ternary map and static/periodic baselines.
+- `scheduling.py`: local cell-age and history-adapted uncertainty schedules; shared observation cap.
 - `navigation.py`: shared cardinal A* using remembered occupancy only.
 - `evaluation.py`: episode harness and evaluator-only truth metrics.
 - `visualization.py`: hidden truth beside robot memory, with planned/executed paths.
 - `scripts/`, `configs/`, `tests/`, `results/`: runner, paired scenarios, checks, outputs.
 
-Sensing happens only at initialization and periodic refresh steps. One sensor
+The original baselines sense at initialization and periodic refresh steps. One sensor
 call costs one observation regardless of visible cells; sensing adds cost but
 no simulation time. Static memory receives exactly the same initial view and
 never updates, even after blocked attempts or dynamic contact. Both planners replan every step and use the

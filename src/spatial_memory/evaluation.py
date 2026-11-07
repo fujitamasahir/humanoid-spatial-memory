@@ -17,7 +17,7 @@ def map_errors(memory, geometry, changed, departed):
 def run_episode(scenario, config, method, seed):
     from .simulation import World
     from .observation import Sensor
-    from .memory import Baseline
+    from .scheduling import AdaptiveParameters, ObservationController
     from .navigation import plan
 
     world = World(scenario)
@@ -29,7 +29,10 @@ def run_episode(scenario, config, method, seed):
 
     position = scenario.start
     initial = observe()
-    agent = Baseline(initial.shape, initial, method, config['update_interval'])
+    # Allow-listed public model assumptions only, never scenario schedules/configs.
+    agent = ObservationController(initial, method, interval=config['update_interval'],
+        radius=config['sensor']['radius'], parameters=AdaptiveParameters(**config.get('adaptive', {})),
+        max_observations=config.get('max_observations'))
     observations, blocked_attempts, dynamic_contacts, distance = 1, 0, 0, 0
     path_taken, frames = [position], []
     totals = dict.fromkeys(map_errors(agent.memory.grid, world.geometry(),
@@ -49,7 +52,7 @@ def run_episode(scenario, config, method, seed):
 
     attribute_observation(initial)
 
-    def capture(planned):
+    def capture(planned, decision=None, blocked=False, moved=False):
         people = np.zeros(initial.shape, bool)
         for x, y in world.people():
             people[y, x] = True
@@ -59,7 +62,9 @@ def run_episode(scenario, config, method, seed):
             totals[key] += value
         frames.append(dict(step=world.step, position=position, geometry=world.geometry().copy(),
             people=people.copy(), memory=agent.memory.grid.copy(), planned=planned,
-            executed=list(path_taken), errors=errors))
+            executed=list(path_taken), errors=errors, blocked=bool(blocked), moved=bool(moved),
+            observation_count=observations, **(decision or dict(observation_requested=True,
+                observation_granted=True, observation_score=None, observation_position=position))))
 
     capture(plan(agent.memory.grid, position, scenario.goal, config['unknown']))
     for _ in range(config['max_steps']):
@@ -69,9 +74,10 @@ def run_episode(scenario, config, method, seed):
         before = world.geometry()
         world.advance()
         changed[:] |= before != world.geometry()
-        if agent.needs_observation(world.step):
+        decision = agent.decide(world.step, position)
+        if decision["observation_granted"]:
             observation = observe()
-            agent.refresh(observation)
+            agent.refresh(observation, world.step)
             attribute_observation(observation)
             observations += 1
         planned = plan(agent.memory.grid, position, scenario.goal, config['unknown'])
@@ -80,19 +86,31 @@ def run_episode(scenario, config, method, seed):
         x, y = position
         dynamic_contacts += int((world.geometry()[y, x] and not before[y, x])
                                 or (position in world.people() and position not in prior_people))
+        contact, moved = 0, False
         if len(planned) > 1:
             nxt, contact = world.move(position, planned[1])
             blocked_attempts += contact
-            distance += int(nxt != position)
+            moved = nxt != position
+            distance += int(moved)
             position = nxt
             path_taken.append(position)
-        capture(planned)
+        capture(planned, decision, contact, moved)
+    failure_reason = None
+    if position != scenario.goal:
+        if not frames[-1]['planned']:
+            failure_reason = 'deadline_no_remembered_route'
+        elif len(frames) >= 4 and all(f['blocked'] for f in frames[-3:]):
+            failure_reason = 'deadline_repeated_blocked_attempts'
+        else:
+            failure_reason = 'deadline_before_goal'
     metrics = dict(scenario=scenario.name, split=scenario.split, seed=seed, method=method,
         success=position == scenario.goal,
         blocked_movement_attempts=blocked_attempts, dynamic_contacts=dynamic_contacts,
         collision_count=blocked_attempts + dynamic_contacts, travel_distance=distance,
         max_steps=config["max_steps"], final_position=position,
         elapsed_steps=world.step, observation_count=observations,
-        observation_cost=observations*config['observation_cost'], **totals)
+        observation_cost=observations*config['observation_cost'],
+        max_observations=agent.cap, observation_requests=agent.requests,
+        observation_requests_denied=agent.denied, failure_reason=failure_reason, **totals)
     metrics.update({'final_'+key: value for key, value in frames[-1]['errors'].items()})
     return metrics, frames

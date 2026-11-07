@@ -41,3 +41,30 @@ def save_figure(scenario, frame, output):
     fig.suptitle(f'{scenario.name}, step {frame["step"]}')
     fig.savefig(output, dpi=120)
     plt.close(fig)
+
+
+def save_observation_tradeoff(summary, output):
+    """Development means; no significance or confidence interval implied."""
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4), constrained_layout=True)
+    for method in dict.fromkeys(r['method'] for r in summary):
+        rows = [r for r in summary if r['method'] == method]
+        axes[0].plot([r['observation_cost_mean'] for r in rows],
+                     [r['success_rate'] for r in rows], 'o', label=method)
+        axes[1].plot([r['observation_count_mean'] for r in rows],
+                     [r['successful_observation_count_mean'] for r in rows], 'o', label=method)
+        points = {}
+        for r in rows:
+            point = (r['observation_cost_mean'], r['success_rate'])
+            points.setdefault(point, []).append(r['setting'])
+        for point, settings in points.items():
+            label = 'all settings' if len(settings) == len(rows) else '/'.join(settings)
+            axes[0].annotate(label, point, fontsize=7, xytext=(3, 5),
+                             textcoords='offset points')
+    axes[0].set(xlabel='Mean sensing cost (all episodes)', ylabel='Success fraction', ylim=(-0.05,1.08), xlim=(1,12))
+    axes[1].set(xlabel='Mean observations (all episodes)', ylabel='Mean observations (successful only)')
+    for ax in axes:
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.2)
+    fig.suptitle('Development sensing tradeoffs: 18 episodes per method/setting')
+    fig.savefig(output, dpi=140)
+    plt.close(fig)

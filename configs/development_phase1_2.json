@@ -1,0 +1,456 @@
+{
+  "split": "development",
+  "seeds": [
+    7,
+    19,
+    31
+  ],
+  "max_steps": 40,
+  "update_interval": 2,
+  "observation_cost": 1.5,
+  "unknown": "optimistic",
+  "sensor": {
+    "radius": 3,
+    "occlusion": true,
+    "noise": 0.0
+  },
+  "scenarios": [
+    {
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "name": "empty",
+      "variation": {
+        "kind": "empty"
+      }
+    },
+    {
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "name": "temporary",
+      "variation": {
+        "kind": "temporary"
+      }
+    },
+    {
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "name": "persistent",
+      "variation": {
+        "kind": "persistent"
+      }
+    },
+    {
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "name": "mixed",
+      "variation": {
+        "kind": "mixed"
+      }
+    },
+    {
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "name": "alternative",
+      "variation": {
+        "kind": "alternative"
+      },
+      "walls": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ]
+      ]
+    },
+    {
+      "name": "corridor_change",
+      "split": "development",
+      "width": 11,
+      "height": 7,
+      "start": [
+        1,
+        3
+      ],
+      "goal": [
+        9,
+        3
+      ],
+      "walls": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ]
+      ],
+      "obstacles": [
+        [
+          7,
+          5
+        ]
+      ],
+      "pedestrians": [
+        [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "changes": [
+        {
+          "step": 3,
+          "action": "add",
+          "cell": [
+            6,
+            3
+          ]
+        },
+        {
+          "step": 6,
+          "action": "relocate",
+          "cell": [
+            7,
+            5
+          ],
+          "to": [
+            8,
+            5
+          ]
+        },
+        {
+          "step": 10,
+          "action": "remove",
+          "cell": [
+            6,
+            3
+          ]
+        }
+      ]
+    }
+  ],
+  "methods": [
+    "static",
+    "periodic",
+    "age",
+    "uncertainty"
+  ],
+  "settings": [
+    {
+      "name": "unlimited",
+      "max_observations": null
+    },
+    {
+      "name": "cap3",
+      "max_observations": 3
+    },
+    {
+      "name": "cap5",
+      "max_observations": 5
+    },
+    {
+      "name": "cap8",
+      "max_observations": 8
+    }
+  ],
+  "adaptive": {
+    "age_steps": 4,
+    "stale_fraction": 0.5,
+    "entropy_threshold": 0.75,
+    "confidence": 0.95,
+    "prior_flips": 0.3,
+    "prior_exposure": 6.0,
+    "min_rate": 0.01,
+    "max_rate": 0.35
+  }
+}
