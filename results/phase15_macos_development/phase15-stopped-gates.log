@@ -1,0 +1,51 @@
+F....................................................................... [ 43%]
+........................................................................ [ 86%]
+.......................                                                  [100%]
+=================================== FAILURES ===================================
+____ test_continue_after_complete_staged_record_recovery_without_resampling ____
+
+tmp_path = PosixPath('/private/var/folders/23/b1l1h4ys3vg511dy4x8bqqm00000jt/T/pytest-of-masahir0/pytest-46/test_continue_after_complete_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x105cf6f30>
+
+    def test_continue_after_complete_staged_record_recovery_without_resampling(tmp_path,monkeypatch):
+        def deny(*a,**k):pytest.fail('Registered execution prohibited')
+        monkeypatch.setattr(bp.Stream,'__init__',deny);monkeypatch.setattr(old.Stream,'__init__',deny)
+        monkeypatch.setattr(bp,'geometry',deny);monkeypatch.setattr(old,'geometry',deny)
+        fired=[]
+        def crash(point,path):
+            if path.name.endswith('.json.gz') and point=='after_stage_fsync' and not fired:
+                fired.append(point);raise OSError('explicit synthetic publication interruption')
+        store,refs,coordinator=setup_coordinator(tmp_path,fault=crash);first=Builder()
+        with pytest.raises(OSError):
+            with store.writer():coordinator.execute_one(first)
+        assert first.geometry_calls==1
+        restored=toy_store(store.root,binding=store.binding,backend=Oracle())
+        restarted=Coordinator(restored,refs,backend=Oracle(),synthetic=True);next_builder=Builder()
+        with restored.writer():
+            restarted.restore()
+            assert restarted.sequence==1
+            assert next_builder.geometry_calls==0
+>           restarted.execute_one(next_builder)
+
+tests/test_phase15_recovery_continuation.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <spatial_memory.phase15_bprime_coordinator.Coordinator object at 0x10612d430>
+builder = <test_phase1_5_bprime_hardening.Builder object at 0x106111d30>
+
+    def execute_one(self,builder):
+        """Run a supplied builder under the profile gate; production stays disabled."""
+        self.store._require_lease()
+        if not self._restored:self.restore()
+        # Recheck durable bytes without recanonicalizing every previous graph on
+        # every decision. A fresh process still reconstructs the complete index.
+        files=list((self.store.root/'records').iterdir())
+        if {str(p.relative_to(self.store.root)) for p in files}!=set(self._publications):
+>           raise bp.IntegrityError('Missing/conflicting completed publication; no retry')
+E           spatial_memory.phase15_bprime.IntegrityError: Missing/conflicting completed publication; no retry
+
+src/spatial_memory/phase15_bprime_coordinator.py:184: IntegrityError
+---------- generated xml file: /private/tmp/phase15-stopped-gates.xml ----------
+=========================== short test summary info ============================
+FAILED tests/test_phase15_recovery_continuation.py::test_continue_after_complete_staged_record_recovery_without_resampling
+1 failed, 166 passed in 23.53s

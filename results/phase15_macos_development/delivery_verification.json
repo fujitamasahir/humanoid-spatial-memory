@@ -1,0 +1,41 @@
+{
+  "status": "PASS_DELIVERY_BYTES_NOT_PRODUCTION_READINESS",
+  "checkpoint_package": {
+    "path": "results/phase15_macos_development/fit_checkpoints.tgz",
+    "files": 628,
+    "bytes": 720658,
+    "sha256": "1d79d3e815c391db18e36703098560de9a471b2d14a08a24fe0a2c9b49412acb"
+  },
+  "protected_sources": [
+    {
+      "path": "docs/phase1_5_bprime_generator_specification.md",
+      "sha256": "a9d5f531aa065eca9c6966ec49f2fa67f72e4ca2b0bef95295d746ad1d257132"
+    },
+    {
+      "path": "docs/phase1_5_bprime_protocol_amendment.md",
+      "sha256": "71d1679b61c5c2444607a2e58b0977c4ea818cae9e7a5809d01e2383f87617e3"
+    },
+    {
+      "path": "docs/phase1_5_bprime_validation_plan.md",
+      "sha256": "225a15741ad8e8083f3436e7d787a557a018dd7fa1c521542c03ed04dccfe527"
+    },
+    {
+      "path": "configs/phase15_nauty_backend.json",
+      "sha256": "c39844b1dbcbabfc8ffd5239a78e1a667084539d26b974df1e0c3d1448332145"
+    },
+    {
+      "path": "src/spatial_memory/phase15_generators.py",
+      "sha256": "bbe224bfb211a32689f4f5af4af4f3031ea24cf7de9732dea96ce8c33fc27398"
+    },
+    {
+      "path": "src/spatial_memory/phase15_topology.py",
+      "sha256": "1eaa0d5a673df7640485bdbc6a8729b5409c56901a4c6b4fd1a5943b6e89fcd5"
+    }
+  ],
+  "candidate_records": 313,
+  "pending": 0,
+  "staged": 0,
+  "scientific_status": "STOPPED_CRITICAL_RECOVERY_CONTINUATION_FAILURE",
+  "synthetic_passed": 166,
+  "synthetic_failed": 1
+}

@@ -1,0 +1,9 @@
+{
+  "reason": "Critical synthetic staged-recovery continuation gate failed",
+  "pid": 80680,
+  "pending_at_stop": false,
+  "published_at_stop": 313,
+  "signal": "SIGINT queued while paused, then SIGCONT",
+  "source_modified": false,
+  "attempt": 0
+}

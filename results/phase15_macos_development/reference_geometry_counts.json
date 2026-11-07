@@ -1,0 +1,7 @@
+{
+  "included_identities": 2368,
+  "unique_coordinate_base_rasters": 2368,
+  "unique_dihedral_base_raster_classes": 2337,
+  "unique_exact_c3_topology_classes": 95,
+  "clarification": "unique_included_geometries in earlier reports denotes dihedral-normalized raster classes"
+}
