@@ -36,6 +36,15 @@ def run_protocol_episode(scenario, config, method, seed, *, parameters=None,
         raise ValueError('Only smoke/synthetic validation authorized; no tuning, assessment or held-out execution')
     if 10000 <= seed < 30000:
         raise ValueError('Reserved tuning/assessment seed namespace')
+    return _run_instrumented_episode(scenario,config,method,seed,parameters=parameters,
+        ablation=ablation,replicate=replicate,purpose=purpose)
+
+
+def _run_instrumented_episode(scenario, config, method, seed, *, parameters=None,
+                              ablation=None, replicate=0, purpose='smoke'):
+    """Shared mechanics; authorized tuning adapter validates its pinned record first."""
+    if scenario.split != 'development' or purpose not in {'smoke','synthetic-regression','tuning'}:
+        raise ValueError('Assessment and held-out execution remain reserved')
     if config['unknown'] != 'optimistic':
         raise ValueError('Frozen Phase 1.4 uses optimistic unknown handling')
     if any(value != getattr(AdaptiveParameters(),key) for key,value in config.get('adaptive',{}).items()):

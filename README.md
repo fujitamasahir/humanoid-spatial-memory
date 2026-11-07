@@ -4,7 +4,7 @@
 
 Research project investigating how robots can distinguish **transient human-induced obstructions** from **persistent environmental changes**, and when they should re-observe an uncertain area before navigating.
 
-> **Status:** Phase 1.4A frozen observation policies implemented and validated with synthetic benchmarks and development smoke tests. Tuning and assessment await review; no novelty, physical safety or statistical superiority claim.
+> **Status:** Phase 1.4B development tuning complete: 3,780 frozen episodes and an independently verified parameter lock. Assessment and ablations await separate review; no generalization, novelty, statistical superiority or physical safety claim.
 
 ## Research questions
 
@@ -184,3 +184,22 @@ The 35 tuning/70 assessment manifests have no policy outcomes. All 175 tests pas
 including every stored historical episode metric. Synthetic runtime estimates
 exclude full-matrix storage/I/O; complete traces could require several GB.
 No tuning, assessment, held-out evaluation or MuJoCo integration was run.
+
+## Phase 1.4B frozen development tuning
+
+All 3,780 preregistered tuning episodes are complete. The
+[validation report](docs/phase1_4b_validation.md) includes every candidate table,
+runtime, storage and limitations. The
+[parameter lock](results/phase1_4b/parameter_lock.json) fixes one global configuration
+per method; an independent SQLite verifier recomputes all scores and winners.
+
+```bash
+.venv/bin/python scripts/run_frozen_tuning.py
+.venv/bin/python scripts/validate_frozen_tuning.py
+```
+
+The runner resumes completed checkpoints and accepts only the pinned tuning
+manifest. Full gzip traces remain locally in `results/raw/phase1_4b_tuning/`;
+Git contains every episode metric and a complete hash/path storage inventory.
+The new writer lease uses POSIX `fcntl` and is validated on macOS. All 183 tests
+pass. Stop for review before assessment or ablation experiments.
