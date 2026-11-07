@@ -1,0 +1,50 @@
+{
+  "total_graphs": 1215,
+  "simple_graphs": 1099,
+  "random_multigraphs": 90,
+  "distinct_reference_classes": 124,
+  "relation_bijection": true,
+  "byte_mismatches": 444,
+  "first_byte_mismatch": {
+    "matrix": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "lex_min": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "proposal": [
+      3,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "independent_oracle": true,
+  "reversed_relabel_checks": 1215,
+  "near_and_cross_partition_fixtures": true,
+  "historical_variant_comparisons": 709,
+  "historical_near_class_bijection": true
+}

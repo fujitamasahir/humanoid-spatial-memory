@@ -1,0 +1,140 @@
+{
+  "old_profile_statistics": {
+    "vertices": 75,
+    "nodes": 5168,
+    "seconds": 5.000439181999994,
+    "cache_hits": 255,
+    "cache_misses": 5168,
+    "cache_entries": 5128
+  },
+  "profile_functions": [
+    {
+      "function": "search",
+      "line": 12,
+      "calls": 5168,
+      "recursive_calls": 5167,
+      "total_seconds": 5.000309290000001,
+      "own_seconds": 1.5877423590000002
+    },
+    {
+      "function": "<genexpr>",
+      "line": 22,
+      "calls": 5544419,
+      "recursive_calls": 0,
+      "total_seconds": 0.856014892,
+      "own_seconds": 0.856014892
+    },
+    {
+      "function": "<genexpr>",
+      "line": 32,
+      "calls": 1925868,
+      "recursive_calls": 0,
+      "total_seconds": 0.350034485,
+      "own_seconds": 0.350034485
+    },
+    {
+      "function": "<genexpr>",
+      "line": 22,
+      "calls": 251158,
+      "recursive_calls": 0,
+      "total_seconds": 1.628648294,
+      "own_seconds": 0.20103514800000002
+    },
+    {
+      "function": "<genexpr>",
+      "line": 33,
+      "calls": 1386306,
+      "recursive_calls": 0,
+      "total_seconds": 0.165832115,
+      "own_seconds": 0.165832115
+    },
+    {
+      "function": "n",
+      "line": 28,
+      "calls": 218267,
+      "recursive_calls": 0,
+      "total_seconds": 0.074440802,
+      "own_seconds": 0.049270866
+    },
+    {
+      "function": "<genexpr>",
+      "line": 36,
+      "calls": 10549,
+      "recursive_calls": 10548,
+      "total_seconds": 4.978155147000001,
+      "own_seconds": 0.015447094000000001
+    },
+    {
+      "function": "exact_certificate",
+      "line": 1,
+      "calls": 1,
+      "recursive_calls": 0,
+      "total_seconds": 5.000474201,
+      "own_seconds": 6.579e-05
+    },
+    {
+      "function": "update_wrapper",
+      "line": 35,
+      "calls": 1,
+      "recursive_calls": 0,
+      "total_seconds": 3.614e-05,
+      "own_seconds": 2.9699e-05
+    },
+    {
+      "function": "<genexpr>",
+      "line": 10,
+      "calls": 2,
+      "recursive_calls": 0,
+      "total_seconds": 2.0697000000000002e-05,
+      "own_seconds": 1.202e-05
+    },
+    {
+      "function": "<lambda>",
+      "line": 1,
+      "calls": 3,
+      "recursive_calls": 0,
+      "total_seconds": 1.0959000000000001e-05,
+      "own_seconds": 9.698000000000001e-06
+    },
+    {
+      "function": "decorating_function",
+      "line": 518,
+      "calls": 1,
+      "recursive_calls": 0,
+      "total_seconds": 4.4667000000000004e-05,
+      "own_seconds": 8.527e-06
+    },
+    {
+      "function": "<genexpr>",
+      "line": 10,
+      "calls": 76,
+      "recursive_calls": 0,
+      "total_seconds": 7.870000000000001e-06,
+      "own_seconds": 7.870000000000001e-06
+    },
+    {
+      "function": "lru_cache",
+      "line": 479,
+      "calls": 1,
+      "recursive_calls": 0,
+      "total_seconds": 6.328e-06,
+      "own_seconds": 5.428e-06
+    }
+  ],
+  "M": {
+    "vertices": 75,
+    "nonloop_pairs": 89,
+    "leaves": 29,
+    "loops": 0,
+    "degree_counts": {
+      "1": 29,
+      "3": 35,
+      "4": 11
+    },
+    "automorphism_group_mantissa": 2.0,
+    "automorphism_group_exponent": 0,
+    "encoded_vertex_orbits": 162,
+    "original_vertex_orbits": 74,
+    "planned_near_calls": 119
+  }
+}

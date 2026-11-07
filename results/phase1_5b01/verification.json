@@ -1,0 +1,427 @@
+{
+  "all_checks_pass": true,
+  "checked_inventory_sizes": {
+    "source_sha256": 4,
+    "isolated_dependency_sha256": 8,
+    "immutable_files_sha256": 160,
+    "fixture_sha256": 13
+  },
+  "old_frozen_source_files_verified": 5,
+  "historical_result_files_verified_against_original_inventory": 148,
+  "original_tracked_files_unchanged": true,
+  "historical_regression_records": 2212,
+  "regression_counts": {
+    "results/phase1_1/development/results.json": 30,
+    "results/phase1_1/diagnostic/results.json": 24,
+    "results/phase1_2/development/results.json": 288,
+    "results/phase1_3/corridor_diagnostic/results.json": 72,
+    "results/phase1_3/development/results.json": 1792,
+    "results/representative/results.json": 6
+  },
+  "frozen_sha256": {
+    "results/phase1_4b/parameter_lock.json": "ecdd2f11e0c279bfa6c8557fcc646c4f714d2c7627deb731cbb366138a64d2f1",
+    "results/phase1_4a/manifests/assessment.json": "6335b77dd5838b2ea312d3293c939354e0b7f454eccbc679f0c59d4fe031c822"
+  },
+  "original_archive_checksums_verified": 2,
+  "full_suite": {
+    "tests": 236,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 36.735,
+    "xml_sha256": "3356156cdd6b8af8b3132f82961b91721675031b5a82f8cd98897b8e2a2e9ef9"
+  },
+  "correctness_graphs": 1215,
+  "historical_variant_comparisons": 709,
+  "benchmark_records": 48,
+  "local_document_links_checked": 14,
+  "document_sha256": {
+    "docs/phase1_5b01_canonicalization_review.md": "0fdc0e512d475063a51368ac7f44cf94be14f79ab1457615d7d0ca9af08a6869",
+    "docs/phase1_5b01_development_audit.md": "0354033894ff421104618bbb604c5e9c6de3f93e3b338515e2b535ffe7371959",
+    "docs/phase1_5b01_exact_backend_validation.md": "a372f8218c4b38dbfe28fa7acd11bfa087bc2c5ffff4a29add925736800a45cd"
+  },
+  "verifier_sha256": "7751b60d333ce9fa42ff5d356a03048f2a81553805439e4add629a64777e9cf4",
+  "compact_evidence_sha256": {
+    "results/phase1_5b01/benchmarks.json": "423d8e74e558def996431f93d15842285c4148ce6a085fd47199aee41745c646",
+    "results/phase1_5b01/correctness.json": "da6f8a5f298d38c004efe33038900f87c969a1e443c64ca57c1349fa9f8dff47",
+    "results/phase1_5b01/diagnostics.json": "4cc20201214ff1fc8818f38571e1d9a1af7288bea0ef3181ce76da1130e3ba93",
+    "results/phase1_5b01/provenance.json": "5d97f62d2757854ac86afa786b596608c88df20fa918ebc80c1800a81f6776fb"
+  },
+  "bulk_storage": [
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/clique_16.json",
+      "bytes": 800,
+      "sha256": "7cd9aab363ee8285351ad0524705c9b73222db530e187b96ce2468acf4b90776"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/cycle_16.json",
+      "bytes": 800,
+      "sha256": "ea519572bb4cf44a78f5798623483f757a71b23ebd719d7b3bdc649926453a01"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/cycle_32.json",
+      "bytes": 3136,
+      "sha256": "8340c9c016a92a1d56c2a1b2b8644c8471150bfa98b73fc0a84464c78ad1e79f"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/cycle_75.json",
+      "bytes": 17025,
+      "sha256": "469a2dca709720ca5389d4049674afe7f1d6ac867c194dcb74fdce24c8774694"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/cycle_8.json",
+      "bytes": 208,
+      "sha256": "040b7c20af96b7d9a2ba769bc4af897c39486905324a58568753833a59fb585e"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/full_suite.xml",
+      "bytes": 29143,
+      "sha256": "3356156cdd6b8af8b3132f82961b91721675031b5a82f8cd98897b8e2a2e9ef9"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/loops_parallel_6.json",
+      "bytes": 120,
+      "sha256": "e12127b62103157dee818b4bc47439a0f52650346605008a694c2e921a1d78b0"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/old_M_profile.pstats",
+      "bytes": 3541,
+      "sha256": "268f3633bcbce470018f03eb549e9e51bd5c6a32b36e05bed10af985c2fb5ddb"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/path_16.json",
+      "bytes": 800,
+      "sha256": "618a513cf5321c17571d1ad7e109f262a5b213d453f177cc3ebd054cb7077589"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/path_32.json",
+      "bytes": 3136,
+      "sha256": "0f15d6fc0e3db1f67b91ca505d9777b61e340152e55d5912c7593bf13fbe2da1"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/path_75.json",
+      "bytes": 17025,
+      "sha256": "35d720df12e90a415a62cda7daf4c82e12690500ed9361d6a19e927795ddf0fe"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/path_8.json",
+      "bytes": 208,
+      "sha256": "8c83cb834facbe3328e559e2a9acc09aed45933c55f43ad9f94124a204b88b77"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/preserved_M_75.json",
+      "bytes": 17025,
+      "sha256": "5476566e5e25f622278a6e2700de940728d3cd693f19cd1f26b650346879db78"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/preserved_R_11.json",
+      "bytes": 385,
+      "sha256": "dc293fad06cf40abc67df8d3f82c07026a8f7d1a6641a9f76dfd86f86f6c7052"
+    },
+    {
+      "path": "results/runs/phase1_5b01_benchmarks/star_32.json",
+      "bytes": 3136,
+      "sha256": "fa92eb91a576daaa1c4a06c8d49ee0be96df2c2404db80e5b94c90fd801bd37d"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/__init__.py",
+      "bytes": 1732,
+      "sha256": "08380aedc8c9047ecfba08d23c4e7d9cc3c290d719770bc0a9587c5e653529fd"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/__main__.py",
+      "bytes": 376,
+      "sha256": "a2d43e9ce4519e0d5a2a415aa5af3c758e3e0a3b5556d2e78d53a51b59a9ef6a"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/__pycache__/__init__.cpython-312.pyc",
+      "bytes": 1895,
+      "sha256": "3c22c0ad32922b154b5b28c2f6414e12e21cdb67bc3aca74020035559a62dcfb"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/__pycache__/__main__.cpython-312.pyc",
+      "bytes": 676,
+      "sha256": "6421c4d82fcb22bf70cb32fab4b898a6e11488ce587c13ca9623c5ed3ea35508"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/__pycache__/graph.cpython-312.pyc",
+      "bytes": 11643,
+      "sha256": "cd524a9c5bdd0a5d6bcce323cb5ce37b58386d66d3b62e357d5ed7b201af39b4"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/doctrees/environment.pickle",
+      "bytes": 109026,
+      "sha256": "dbe3314b0c00da1b8f51184554f0c291304118952c659c2fa512d677c45cf70b"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/doctrees/guide.doctree",
+      "bytes": 46686,
+      "sha256": "0d024c50ab8268186448db2f3b4dcf42792127584a8368d358f5662c89a3872c"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/doctrees/index.doctree",
+      "bytes": 5065,
+      "sha256": "e8995fa621c77aa78e56b5ac9fb02bfd244686168518c8b40c4735075f5631af"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/doctrees/install.doctree",
+      "bytes": 3900,
+      "sha256": "d825a0acdfdfe3dc073296c175c874576f09051bb914114d860a64676390220e"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/doctrees/intro.doctree",
+      "bytes": 7657,
+      "sha256": "0d0d7de59dcea93b4faa04071b1b499263ba64a68b104b02d21bdd18e8835543"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/.buildinfo",
+      "bytes": 230,
+      "sha256": "e412892a8470c7e01226f2d5f5980018d3c5d316e6b416713f36f53191e837a3"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_modules/index.html",
+      "bytes": 3236,
+      "sha256": "69f4bd034e4c70c414a472f4f2423d94b8762bda3d6f2d2e632faa16c2bf6d75"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_modules/pynauty/graph.html",
+      "bytes": 36455,
+      "sha256": "7879027f06ebbad5cffaa68c3cda59161331ba7e1b1c71a4d619039278d6bcd6"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_modules/pynauty.html",
+      "bytes": 7013,
+      "sha256": "f5cde9ca448ca44c71f5204c74f8accb3ba51dcf5dd38793e9fc479147d2f3b2"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_sources/guide.rst.txt",
+      "bytes": 5177,
+      "sha256": "c2eaa48fba103108cb2ae4b8162ef9525e52ab15daf5a8710b5d0938b52b7b06"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_sources/index.rst.txt",
+      "bytes": 466,
+      "sha256": "c0bc3ffa0046beb201fd13b6ce4db51a9db517d86b0f0e66cdcdfa271f7302f6"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_sources/install.rst.txt",
+      "bytes": 235,
+      "sha256": "3005a47d884122469f9d8966a80613c6703366fbdc761199914bd3f3c25a8bea"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_sources/intro.rst.txt",
+      "bytes": 1320,
+      "sha256": "56770a6915f1a16125a752d594ff8cf4da5f5f635f1e0ce8f68b109e62a2447b"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/basic.css",
+      "bytes": 15094,
+      "sha256": "80b2240539b36d344e7c9aa5090995a773ffae1dd90f21cc043e6057d9543c3d"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/classic.css",
+      "bytes": 4580,
+      "sha256": "c1461fe6c5a07f80a5fbd4553a333a10deba46fd60c28ae158a3ae6aafb47d42"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/doctools.js",
+      "bytes": 4472,
+      "sha256": "81cb2da3c284e429a1a63ab28a20b7e30bceb8eb1556a154c8cbac0b4ce7795b"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/documentation_options.js",
+      "bytes": 330,
+      "sha256": "42dafd1588fd0c2ddcb467abcd14fa578a97892f7adb2c4b055f2e6c3f64d617"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/file.png",
+      "bytes": 286,
+      "sha256": "5c4bc9a16aebf38c4b950f59b8e501ca36495328cb9eb622218bce9064a35e3e"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/language_data.js",
+      "bytes": 4758,
+      "sha256": "dba8b1d8dce11dadb39bd24d2babdb617a57f8f27e04c614269c937b785df00a"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/minus.png",
+      "bytes": 90,
+      "sha256": "47e7fc50db3699f1ca41ce9a2ffa202c00c5d1d5180c55f62ba859b1bd6cc008"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/plus.png",
+      "bytes": 90,
+      "sha256": "54115199b96a130cba02147c47c0deb43dcc9b9f08b5162bba8642b34980ac63"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/pygments.css",
+      "bytes": 4929,
+      "sha256": "1accd27ffdaa3456771214dbc2f4d841d9ebe9324da2b23ac0333d35756f25e5"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/searchtools.js",
+      "bytes": 20731,
+      "sha256": "cb2a2c36f3a5208bee2101db454f853a9c84b4ac31924193734f4e5172795291"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/sidebar.js",
+      "bytes": 2540,
+      "sha256": "500d8aab35fc2c64962c513aa3d305328635b5e28f59a9a704b86c4ed8778cec"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/_static/sphinx_highlight.js",
+      "bytes": 5123,
+      "sha256": "096231e9c87df80ec3273da9c5b71bc81503206726a07a4dd4de44c256ff859c"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/genindex.html",
+      "bytes": 6270,
+      "sha256": "50b108f9d20bddf1565ba447fa73d2bd0fc066188cc3fe02b27d4bd20c425c82"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/guide.html",
+      "bytes": 35676,
+      "sha256": "f85740e61fdae626a41c7dfa09fa55bc066beba63158d7cb1818e3f64857389a"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/index.html",
+      "bytes": 5734,
+      "sha256": "4767cf0685626cb3a0a7750ffba534c823e8add504272f220117494bc5dda715"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/install.html",
+      "bytes": 4479,
+      "sha256": "d23262b83121c44cb5059a82bef732313abe80b7e39d2191ad666c6ff05aec54"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/intro.html",
+      "bytes": 6364,
+      "sha256": "997d5ce79a1aa0624924207ecca37a73ea2bf0b77346c7963ffc743c28545480"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/objects.inv",
+      "bytes": 461,
+      "sha256": "99f45a2e76961f748cea03b97ee4732c0b078d4d15be9dd7b0ce6d103b82daf2"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/py-modindex.html",
+      "bytes": 3556,
+      "sha256": "2f9f173002e1f1cdb4f9ef6af08b081ca098c482463ed04fd571fd37fb596df4"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/search.html",
+      "bytes": 3353,
+      "sha256": "cd7d3f0932d410eb896096944360c9363da9cd97b3f697fc2dadda85957473bb"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/docs/html/searchindex.js",
+      "bytes": 6592,
+      "sha256": "4a73f9740cac6ea8a97230fde91bff15dfb0a3b57c109d7a06c217e63b679523"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/graph.py",
+      "bytes": 8517,
+      "sha256": "c3de5f96eec1cf01324ebeec087d259975d45e80a6e8b84d41d91cbecf6eb186"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.c",
+      "bytes": 17177,
+      "sha256": "c662021349a57226df7afe21f0a435f93494c96a43d8491907bac993f3dc03f5"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.cpython-312-x86_64-linux-gnu.so",
+      "bytes": 124824,
+      "sha256": "b26c699ef1bbc057b000146087aac977ac6da08a94aea8478ed624da8c758182"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.h",
+      "bytes": 1351,
+      "sha256": "9fe51f608a318d85c8a2969f3c126b31daadb4219197ead02b5a4f38cc4e9014"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/__pycache__/conftest.cpython-312.pyc",
+      "bytes": 123405,
+      "sha256": "353ab4a8e5dd8dffaef4eceebfc5a1df4f9e5fce58c924f82a51249e99dd161e"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/__pycache__/test_autgrp.cpython-312.pyc",
+      "bytes": 829,
+      "sha256": "9a61ef3b65b40233b9442d6f53cb28b2a8879fc8e09dbc32650cca0b25e835d2"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/__pycache__/test_isomorphic.cpython-312.pyc",
+      "bytes": 1358,
+      "sha256": "9c0cb57d0323250f98bf63320e24691a5d7faae2593e8703c9a44d0c02f90731"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/__pycache__/test_minimal.cpython-312.pyc",
+      "bytes": 3263,
+      "sha256": "225b8885410aae3bdac84dfc3fd4b8b6edcdeb621bccd5cf0fa6340dae5fad07"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/conftest.py",
+      "bytes": 118684,
+      "sha256": "66585d870997d60f8126e784d0db1531685ba8cdb7f1e97b84fd72edcc2e9a1f"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/test_autgrp.py",
+      "bytes": 530,
+      "sha256": "6df62672bb11ccfe22b137f97cc47bf813b9245d431246ff1e01e0ef1cb7b2bd"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/test_isomorphic.py",
+      "bytes": 644,
+      "sha256": "9cdfc536d067d2702007ec80cf8aad14a496e37a1d168ce0651b148407b69026"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty/tests/test_minimal.py",
+      "bytes": 1865,
+      "sha256": "3774f15bbbc497dc19eabced3beb49134132c753cd82a50f5585168b3c9b61a4"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/COPYING",
+      "bytes": 847,
+      "sha256": "0bee61276924b95d4e513746fc28a1f68f5fd02351504e8dc59576aec2916c0a"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/INSTALLER",
+      "bytes": 4,
+      "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/METADATA",
+      "bytes": 5700,
+      "sha256": "b8e8c06214a56035df42a14fe97b0041ae1799f5b8898ed27f710b464a05a7b1"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/RECORD",
+      "bytes": 5184,
+      "sha256": "38c0f35c0bcaab1534cf751eac1c7ced0d9d689512a3aee38682b2a19677c55f"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/REQUESTED",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/WHEEL",
+      "bytes": 105,
+      "sha256": "8b938bcff9d8e8b609761ba9e42351d238907a99bc8da3b6e2c35e1fac72d9cb"
+    },
+    {
+      "path": "results/runs/phase1_5b01_dependencies/pynauty-2.8.8.1.dist-info/top_level.txt",
+      "bytes": 8,
+      "sha256": "0e3ddd2f8b914e32321a26fca2c8e6ab5763862266dba34d3b11fe1004f0064c"
+    }
+  ],
+  "bulk_bytes": 889079,
+  "new_development_candidates": 0,
+  "new_research_navigation_episodes": 0,
+  "full_development_population_established": false,
+  "representation_amendment_adopted": false,
+  "limitations": [
+    "Native node statistics unavailable",
+    "Only reference-sized graphs exhaustively verified",
+    "No new development audit; carried forward fit1/calibration0/selection0"
+  ]
+}
