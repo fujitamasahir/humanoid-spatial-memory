@@ -1,0 +1,6 @@
+{
+  "all_payloads_parse": true,
+  "all_sha256_match": true,
+  "checked": 2,
+  "frozen_inventory_matches": true
+}

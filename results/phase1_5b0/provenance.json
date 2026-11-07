@@ -1,0 +1,21 @@
+{
+  "candidate_limit": 10000,
+  "canonical_node_limit": 100000,
+  "canonical_seconds_limit": 5,
+  "development_only": true,
+  "dynamic_proposal_limit": 128,
+  "event_retry_rule": "fixed",
+  "numpy": "2.2.6",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "resolution": "User clarification: lexicographic (y,x); onset/length drawn once",
+  "scan_order": "fit/calibration/selection; repeated R,B,V,M, one underquota candidate per round",
+  "source_sha256": {
+    "docs/phase1_5a2_generator_specification.md": "c08e6b5b85fa4339dac574bdbc72864a948b8ebbf346d727fba5a6a5d46be8ce",
+    "scripts/audit_phase1_5b0.py": "5f171007142f0ac6b4b7f3244c4beb0eb11397e076261d668f34a85477600978",
+    "src/spatial_memory/phase15_generators.py": "bbe224bfb211a32689f4f5af4af4f3031ea24cf7de9732dea96ce8c33fc27398",
+    "src/spatial_memory/phase15_topology.py": "1eaa0d5a673df7640485bdbc6a8729b5409c56901a4c6b4fd1a5943b6e89fcd5",
+    "tests/test_phase1_5b0.py": "4397c61fa3d938079a6af5eec7c3802da9ff5e1a0311ef3ea8cd71c5ac324938"
+  },
+  "v_tie_rule": "lex_yx"
+}

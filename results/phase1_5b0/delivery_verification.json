@@ -1,0 +1,29 @@
+{
+    "phase":  "Phase 1.5B-0",
+    "date":  "2026-11-07",
+    "branch":  "feature/phase1-4c-assessment",
+    "base_commit":  "8ba55a8abd8df663e1aeeb86cc6a1b4664161ec2",
+    "reports":  3,
+    "local_links_checked":  35,
+    "existing_tracked_files_unchanged":  true,
+    "audit_source_provenance_matches":  true,
+    "tests_passed":  231,
+    "new_artifact_tests":  27,
+    "historical_regression_records_preserved":  2212,
+    "exact_reference_graphs":  1099,
+    "fit_clusters":  1,
+    "calibration_clusters":  0,
+    "selection_clusters":  0,
+    "stop_reason":  "Exact canonicalization guard on 75-node M graph",
+    "ready_for_phase1_5c":  false,
+    "new_policy_experiments":  0,
+    "old_test_replays_explicitly_authorized":  true,
+    "assessment_and_final_generation":  false,
+    "old_held_out_opened":  false,
+    "report_sha256":  {
+                          "docs/phase1_5b0_development_manifest_review.md":  "f7361680a7ee36da7243ab48fa27150961e2294878d522c5bbee9107c55f60b8",
+                          "docs/phase1_5b0_generator_validation.md":  "f9ca0e9063b71b65971f42280b2201e9506b1cc4d4554a521b1672754ce9fbd5",
+                          "docs/phase1_5b0_topology_independence_audit.md":  "21c267d946198188c0e340b283345269deba8141f9f0b50b6d6bf6b849b5a306"
+                      },
+    "cpu":  "Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz"
+}

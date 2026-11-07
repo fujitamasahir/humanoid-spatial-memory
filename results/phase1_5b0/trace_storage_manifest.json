@@ -1,0 +1,18 @@
+{
+  "archive_root": "/mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/results/raw/phase1_5b0_development",
+  "artifact_only": true,
+  "records": [
+    {
+      "bytes": 1825,
+      "identity": "fit:R:50000000",
+      "path": "/mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/results/raw/phase1_5b0_development/fit_R_50000000.json.gz",
+      "sha256": "21beaf3cc9de39536850fc8b0c443b94ee4394c54a312cf3c193b6ca874f7e5b"
+    },
+    {
+      "bytes": 1805,
+      "identity": "fit:M:50030000",
+      "path": "/mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/results/raw/phase1_5b0_development/fit_M_50030000.json.gz",
+      "sha256": "bcdeadfea10524b102074605321bec30777adc1db2462c387b51d79ec028480d"
+    }
+  ]
+}

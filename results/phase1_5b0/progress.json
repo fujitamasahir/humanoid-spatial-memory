@@ -1,0 +1,14 @@
+{
+  "candidates": 4,
+  "credits": {
+    "R": 1
+  },
+  "partition": "fit",
+  "stop": {
+    "detail": "exact labeling exceeded nodes=17540, elapsed=5.000261",
+    "mechanism": "M",
+    "partition": "fit",
+    "reason": "CanonicalizationLimit",
+    "seed": 50030000
+  }
+}

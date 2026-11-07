@@ -1,0 +1,94 @@
+{
+  "scope": "artifact verification; existing regression test exception recorded",
+  "source_and_historical_hashes_match": true,
+  "historical_regression_records": 2212,
+  "archive_records": [
+    {
+      "identity": "fit:R:50000000",
+      "checksum": true,
+      "geometry_replay": true,
+      "complete_world": true
+    },
+    {
+      "identity": "fit:M:50030000",
+      "checksum": true,
+      "geometry_replay": true,
+      "complete_world": false
+    }
+  ],
+  "rejected_candidates_replayed": 2,
+  "accepted_dynamic_categories": {
+    "removal": 1,
+    "moving": 1
+  },
+  "unique_candidate_identities": 4,
+  "independent_small_graph_comparisons": 1099,
+  "scaling": [
+    {
+      "vertices": 1,
+      "graphs": 1,
+      "exact_seconds": 1.0765000000745317e-05,
+      "exhaustive_reference_seconds": 8.005999999838309e-06
+    },
+    {
+      "vertices": 2,
+      "graphs": 2,
+      "exact_seconds": 6.294199999956618e-05,
+      "exhaustive_reference_seconds": 1.2452000000884311e-05
+    },
+    {
+      "vertices": 3,
+      "graphs": 8,
+      "exact_seconds": 0.0004523969999992161,
+      "exhaustive_reference_seconds": 0.00011776500000060253
+    },
+    {
+      "vertices": 4,
+      "graphs": 64,
+      "exact_seconds": 0.0029574729999977123,
+      "exhaustive_reference_seconds": 0.003461466000000968
+    },
+    {
+      "vertices": 5,
+      "graphs": 1024,
+      "exact_seconds": 0.07321294699999026,
+      "exhaustive_reference_seconds": 0.2553583800000112
+    }
+  ],
+  "full_suite": {
+    "tests": 231,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 39.914,
+    "xml_sha256": "a49774defd436e10407db4f5c6bd2928d69ff31be5bc13604de59e1a29293ab3"
+  },
+  "historical_relation_summary": {
+    "raw_geometries": 110,
+    "exact_classes": 9,
+    "exact_collision_pairs": 959,
+    "transitive_near_lineage_components": 8,
+    "component_sizes": [
+      26,
+      25,
+      19,
+      18,
+      18,
+      2,
+      1,
+      1
+    ]
+  },
+  "historical_metadata_scope": {
+    "machine_flag": "benchmark/results.json contains no scenario arrays",
+    "source_review": "scripts/benchmark_phase1_4a.py defines public ternary memory workloads, not world scenarios",
+    "benchmark_source_sha256": "dbaf67e0f103f9b3ac18f7d901a9d21dbc1e1c6970ce655758a647df05ca1a03",
+    "no_true_benchmark_layout_inferred": true,
+    "stored_physical_scenario_geometries_audited": 110,
+    "reserved_historical_held_out_not_opened": true
+  },
+  "verifier_sha256": "6611af1cb2914d572879c5793f13b8630884767c5a7a37beb21bcce227cbe4d0",
+  "new_policy_experiment_episodes": 0,
+  "assessment_or_held_out_generated": false,
+  "failed_canonicalization_retried": false
+}

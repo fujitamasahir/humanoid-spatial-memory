@@ -1,0 +1,125 @@
+{
+  "assessment_or_final_generated": false,
+  "bulk_bytes": 3630,
+  "by_partition_mechanism": {
+    "calibration/B": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/M": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/R": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/V": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "fit/B": {
+      "attempts": 1,
+      "outcomes": {
+        "connectivity": 1
+      }
+    },
+    "fit/M": {
+      "attempts": 1,
+      "outcomes": {
+        "CanonicalizationLimit": 1
+      }
+    },
+    "fit/R": {
+      "attempts": 1,
+      "outcomes": {
+        "independent": 1
+      }
+    },
+    "fit/V": {
+      "attempts": 1,
+      "outcomes": {
+        "voronoi_seed_separation": 1
+      }
+    },
+    "selection/B": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/M": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/R": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/V": {
+      "attempts": 0,
+      "outcomes": {}
+    }
+  },
+  "candidates": 4,
+  "cross_mechanism_clusters": 0,
+  "historical_geometries_certified": 110,
+  "historical_geometries_total": 110,
+  "historical_metadata_missing": [
+    {
+      "path": "results/phase1_4a/benchmark/results.json",
+      "reason": "no stored scenario arrays"
+    }
+  ],
+  "historical_result_bytes_unchanged": true,
+  "independent_clusters": 1,
+  "navigation_episodes": 0,
+  "old_held_out_accessed": false,
+  "outcomes": {
+    "CanonicalizationLimit": 1,
+    "connectivity": 1,
+    "independent": 1,
+    "voronoi_seed_separation": 1
+  },
+  "partitions": {
+    "calibration": {
+      "counts": {
+        "B": 0,
+        "M": 0,
+        "R": 0,
+        "V": 0
+      },
+      "status": "not_started",
+      "target": 24
+    },
+    "fit": {
+      "counts": {
+        "B": 0,
+        "M": 0,
+        "R": 1,
+        "V": 0
+      },
+      "status": "stopped",
+      "target": 48
+    },
+    "selection": {
+      "counts": {
+        "B": 0,
+        "M": 0,
+        "R": 0,
+        "V": 0
+      },
+      "status": "not_started",
+      "target": 24
+    }
+  },
+  "peak_rss_KiB": 216664,
+  "ready_for_phase1_5c": false,
+  "regression_records": 2212,
+  "seconds": 8.691847420000002,
+  "stop": {
+    "detail": "exact labeling exceeded nodes=17540, elapsed=5.000261",
+    "mechanism": "M",
+    "partition": "fit",
+    "reason": "CanonicalizationLimit",
+    "seed": 50030000
+  }
+}
