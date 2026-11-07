@@ -1,0 +1,32 @@
+........................................................................ [ 35%]
+........................................................................ [ 70%]
+............................................................             [100%]
+=============================== warnings summary ===============================
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64
+  /mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+  /mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+  /mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/.venv-wsl/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+.venv-wsl/lib/python3.12/site-packages/matplotlib/_mathtext.py:45
+  /mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/.venv-wsl/lib/python3.12/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+204 passed, 14 warnings in 46.87s

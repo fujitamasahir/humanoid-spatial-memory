@@ -1,0 +1,1 @@
+{"accepted":10000,"attempts":10011,"clusters":37,"inferential_intervals":true,"per_family":{"budget":9,"critical":9,"detour":9,"irrelevant":6,"occluded":9,"outdated":9,"reopen":9},"rejected_missing_family":11,"requested_replicates":10000,"seed":1404001,"unit":"global layout hash; shared layouts across families resampled together"}
