@@ -1,0 +1,2 @@
+# Preserve the exact bytes frozen in v0.3-CANON-1 preflight provenance.
+phase15_nauty_backend.json -text

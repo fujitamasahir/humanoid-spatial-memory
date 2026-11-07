@@ -1,0 +1,564 @@
+{
+  "all_checks_pass": true,
+  "verifier_sha256": "c10cae20bee26e4cd6d3ab8a18473c96ff1248ebe9c20434b513f86d0446fc22",
+  "historical_regression_records": 2212,
+  "historical_regression_counts": {
+    "results/phase1_1/development/results.json": 30,
+    "results/phase1_1/diagnostic/results.json": 24,
+    "results/phase1_2/development/results.json": 288,
+    "results/phase1_3/corridor_diagnostic/results.json": 72,
+    "results/phase1_3/development/results.json": 1792,
+    "results/representative/results.json": 6
+  },
+  "old_evidence_unchanged": true,
+  "candidate_records": 19279,
+  "unique_identities": true,
+  "original_four_identities_preserved": true,
+  "original_B_V_rejections_preserved": true,
+  "original_two_geometry_archives_preserved": true,
+  "candidate_order_reconstructed": true,
+  "candidate_checkpoints_verified": 19279,
+  "geometry_rejections_replayed": {
+    "connectivity": 5204,
+    "voronoi_seed_separation": 9077,
+    "bsp_unsplittable": 304,
+    "voronoi_core": 129,
+    "voronoi_unintended_adjacency": 31
+  },
+  "archives_verified": 4534,
+  "archived_bytes": 7320747,
+  "candidate_variants_recomputed": 59199,
+  "independent_union_counts": {
+    "fit": {
+      "R": 12,
+      "B": 2,
+      "V": 12,
+      "M": 12
+    },
+    "calibration": {
+      "R": 0,
+      "B": 0,
+      "V": 0,
+      "M": 0
+    },
+    "selection": {
+      "R": 0,
+      "B": 0,
+      "V": 0,
+      "M": 0
+    }
+  },
+  "independent_clusters": 38,
+  "match_events": {
+    "cross_partition_or_historical": 2276,
+    "historical_exclusion_events": 2276,
+    "other_development_partition_events": 0,
+    "exact_match_events": 2330,
+    "near_only_match_events": 2160,
+    "same_partition_related": 2214
+  },
+  "historical_geometries": 110,
+  "cluster_credit_transitions": [
+    {
+      "identity": "fit:R:50000000",
+      "outcome": "independent",
+      "credits": {
+        "R": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030000",
+      "outcome": "independent",
+      "credits": {
+        "R": 1,
+        "M": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000001",
+      "outcome": "independent",
+      "credits": {
+        "R": 2,
+        "M": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030001",
+      "outcome": "independent",
+      "credits": {
+        "R": 2,
+        "M": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000002",
+      "outcome": "independent",
+      "credits": {
+        "R": 3,
+        "M": 2
+      }
+    },
+    {
+      "identity": "fit:M:50030002",
+      "outcome": "independent",
+      "credits": {
+        "R": 3,
+        "M": 3
+      }
+    },
+    {
+      "identity": "fit:R:50000003",
+      "outcome": "independent",
+      "credits": {
+        "R": 4,
+        "M": 3
+      }
+    },
+    {
+      "identity": "fit:B:50010003",
+      "outcome": "independent",
+      "credits": {
+        "R": 4,
+        "M": 3,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030003",
+      "outcome": "independent",
+      "credits": {
+        "R": 4,
+        "M": 4,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000004",
+      "outcome": "independent",
+      "credits": {
+        "R": 5,
+        "M": 4,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030004",
+      "outcome": "independent",
+      "credits": {
+        "R": 5,
+        "M": 5,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000005",
+      "outcome": "independent",
+      "credits": {
+        "R": 6,
+        "M": 5,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030005",
+      "outcome": "independent",
+      "credits": {
+        "R": 6,
+        "M": 6,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000006",
+      "outcome": "independent",
+      "credits": {
+        "R": 7,
+        "M": 6,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030006",
+      "outcome": "independent",
+      "credits": {
+        "R": 7,
+        "M": 7,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000007",
+      "outcome": "independent",
+      "credits": {
+        "R": 8,
+        "M": 7,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030007",
+      "outcome": "independent",
+      "credits": {
+        "R": 8,
+        "M": 8,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030008",
+      "outcome": "independent",
+      "credits": {
+        "R": 8,
+        "M": 9,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000009",
+      "outcome": "independent",
+      "credits": {
+        "R": 9,
+        "M": 9,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030009",
+      "outcome": "independent",
+      "credits": {
+        "R": 9,
+        "M": 10,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:R:50000010",
+      "outcome": "independent",
+      "credits": {
+        "R": 10,
+        "M": 10,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030010",
+      "outcome": "independent",
+      "credits": {
+        "R": 10,
+        "M": 11,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:M:50030011",
+      "outcome": "independent",
+      "credits": {
+        "R": 10,
+        "M": 12,
+        "B": 1
+      }
+    },
+    {
+      "identity": "fit:B:50010012",
+      "outcome": "independent",
+      "credits": {
+        "R": 10,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000013",
+      "outcome": "same_partition_related",
+      "credits": {
+        "R": 8,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000014",
+      "outcome": "independent",
+      "credits": {
+        "R": 9,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000015",
+      "outcome": "independent",
+      "credits": {
+        "R": 10,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000016",
+      "outcome": "independent",
+      "credits": {
+        "R": 11,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:R:50000017",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2
+      }
+    },
+    {
+      "identity": "fit:B:50010043",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3
+      }
+    },
+    {
+      "identity": "fit:B:50010101",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 4
+      }
+    },
+    {
+      "identity": "fit:B:50010180",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 5
+      }
+    },
+    {
+      "identity": "fit:B:50010261",
+      "outcome": "same_partition_related",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 4
+      }
+    },
+    {
+      "identity": "fit:V:50020450",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 4,
+        "V": 1
+      }
+    },
+    {
+      "identity": "fit:V:50020569",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 4,
+        "V": 2
+      }
+    },
+    {
+      "identity": "fit:B:50010830",
+      "outcome": "same_partition_related",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 2
+      }
+    },
+    {
+      "identity": "fit:B:50010910",
+      "outcome": "same_partition_related",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 2
+      }
+    },
+    {
+      "identity": "fit:V:50021959",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 3
+      }
+    },
+    {
+      "identity": "fit:V:50021978",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 4
+      }
+    },
+    {
+      "identity": "fit:B:50012567",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 4
+      }
+    },
+    {
+      "identity": "fit:V:50022636",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 5
+      }
+    },
+    {
+      "identity": "fit:V:50024394",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 6
+      }
+    },
+    {
+      "identity": "fit:V:50024874",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 7
+      }
+    },
+    {
+      "identity": "fit:V:50026645",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 8
+      }
+    },
+    {
+      "identity": "fit:V:50026831",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 9
+      }
+    },
+    {
+      "identity": "fit:V:50026856",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 3,
+        "V": 10
+      }
+    },
+    {
+      "identity": "fit:B:50016963",
+      "outcome": "same_partition_related",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 10
+      }
+    },
+    {
+      "identity": "fit:V:50029149",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 11
+      }
+    },
+    {
+      "identity": "fit:V:50029248",
+      "outcome": "independent",
+      "credits": {
+        "R": 12,
+        "M": 12,
+        "B": 2,
+        "V": 12
+      }
+    }
+  ],
+  "component_member_sizes": [
+    1687,
+    529,
+    4,
+    3,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "historical_exact_classes": 9,
+  "historical_near_components": 8,
+  "complete_worlds_verified": 44,
+  "measured_near_canonical_calls": 59908,
+  "additional_guarded_self_calls": 4644,
+  "maximum_measured_near_canonical_seconds": 0.1962236589999975,
+  "maximum_worker_peak_rss_kib": 117712,
+  "elapsed_seconds": 471.2998726820001,
+  "new_navigation_episodes": 0,
+  "namespace": "phase1.5-v0.3-CANON-1",
+  "source_freeze_unchanged": true,
+  "verification_memory_strategy": "Stream archive bodies; preliminary eager-load attempt failed worker resource-evidence check before candidate reconstruction; audit not rerun"
+}

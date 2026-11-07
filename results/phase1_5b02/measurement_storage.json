@@ -1,0 +1,10 @@
+{
+  "original_path": "/mnt/c/Users/81704/Desktop/fujita/31_humanoid-spatial-memory/humanoid-spatial-memory/results/raw/phase1_5b02_development/measurements/canonicalization_measurements.json",
+  "original_bytes": 19743850,
+  "original_sha256": "d76a869ca5cf76f26ec6058b5a8d9a33f660e4c6a29f0f1a38b00f55c8fc6176",
+  "compact_path": "results/phase1_5b02/canonicalization_measurements.json.gz",
+  "compact_bytes": 1952943,
+  "compact_sha256": "1a7d579f0a19009afa429e1e2bd89e6bf15fe407f98d1b9818cdfa3f59844524",
+  "lossless_roundtrip": true,
+  "packaging_source_sha256": "3043102ba68fcecb45e3beeb98841b10eb870abcc2192aed9a3f801c8b08d2b8"
+}

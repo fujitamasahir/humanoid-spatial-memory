@@ -1,0 +1,19 @@
+{
+    "namespace":  "phase1.5-v0.3-CANON-1",
+    "pynauty_version":  "2.8.8.1",
+    "nauty_version":  "2_8_8",
+    "options":  "pynauty canon_label defaults; undirected; explicit ordered coloring",
+    "serialization":  "UTF-8 compact JSON array [namespace,n,loops in canonical order,upper triangle row-major]; integers decimal",
+    "dependency_sha256":  {
+                              "results/runs/phase1_5b01_dependencies/pynauty/graph.py":  "c3de5f96eec1cf01324ebeec087d259975d45e80a6e8b84d41d91cbecf6eb186",
+                              "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.cpython-312-x86_64-linux-gnu.so":  "b26c699ef1bbc057b000146087aac977ac6da08a94aea8478ed624da8c758182",
+                              "results/runs/phase1_5b01_dependencies/pynauty/__init__.py":  "08380aedc8c9047ecfba08d23c4e7d9cc3c290d719770bc0a9587c5e653529fd",
+                              "results/runs/phase1_5b01_dependencies/pynauty/__main__.py":  "a2d43e9ce4519e0d5a2a415aa5af3c758e3e0a3b5556d2e78d53a51b59a9ef6a",
+                              "results/runs/phase1_5b01_dependencies/pynauty/tests/conftest.py":  "66585d870997d60f8126e784d0db1531685ba8cdb7f1e97b84fd72edcc2e9a1f",
+                              "results/runs/phase1_5b01_dependencies/pynauty/tests/test_autgrp.py":  "6df62672bb11ccfe22b137f97cc47bf813b9245d431246ff1e01e0ef1cb7b2bd",
+                              "results/runs/phase1_5b01_dependencies/pynauty/tests/test_isomorphic.py":  "9cdfc536d067d2702007ec80cf8aad14a496e37a1d168ce0651b148407b69026",
+                              "results/runs/phase1_5b01_dependencies/pynauty/tests/test_minimal.py":  "3774f15bbbc497dc19eabced3beb49134132c753cd82a50f5585168b3c9b61a4",
+                              "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.c":  "c662021349a57226df7afe21f0a435f93494c96a43d8491907bac993f3dc03f5",
+                              "results/runs/phase1_5b01_dependencies/pynauty/nautywrap.h":  "9fe51f608a318d85c8a2969f3c126b31daadb4219197ead02b5a4f38cc4e9014"
+                          }
+}

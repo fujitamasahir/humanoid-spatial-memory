@@ -1,0 +1,29 @@
+{
+  "backend_pin_sha256": "c39844b1dbcbabfc8ffd5239a78e1a667084539d26b974df1e0c3d1448332145",
+  "candidate_limit": 10000,
+  "canonical_node_limit": null,
+  "canonical_seconds_limit": 5,
+  "development_only": true,
+  "dynamic_proposal_limit": 128,
+  "event_retry_rule": "fixed",
+  "namespace": "phase1.5-v0.3-CANON-1",
+  "numpy": "2.2.6",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "resolution": "User clarification: lexicographic (y,x); onset/length drawn once",
+  "scan_order": "fit/calibration/selection; repeated R,B,V,M, one underquota candidate per round",
+  "source_sha256": {
+    "configs/phase15_nauty_backend.json": "c39844b1dbcbabfc8ffd5239a78e1a667084539d26b974df1e0c3d1448332145",
+    "docs/phase1_5a2_generator_specification.md": "c08e6b5b85fa4339dac574bdbc72864a948b8ebbf346d727fba5a6a5d46be8ce",
+    "docs/phase1_5b02_canonicalization_amendment.md": "4e110d336e18863d144f8f0a7eb99ced5bfef2aa8fcbbc11647dd80ad1739a96",
+    "scripts/audit_phase1_5b02.py": "87bcd2d81c3aca3cbe0b28df000d0ce470da24249a8d6e404d15822ec95494d8",
+    "src/spatial_memory/phase15_generators.py": "bbe224bfb211a32689f4f5af4af4f3031ea24cf7de9732dea96ce8c33fc27398",
+    "src/spatial_memory/phase15_nauty.py": "1bd22e08219bfd87ee66a6f4d325a150b48825e638c2e2b06f36c256800d9613",
+    "src/spatial_memory/phase15_nauty_worker.py": "1d696e282b601f41cf1742769ded64f31518abdc0d15ea2985600094a135584d",
+    "src/spatial_memory/phase15_topology.py": "1eaa0d5a673df7640485bdbc6a8729b5409c56901a4c6b4fd1a5943b6e89fcd5",
+    "tests/test_phase1_5b0.py": "4397c61fa3d938079a6af5eec7c3802da9ff5e1a0311ef3ea8cd71c5ac324938"
+  },
+  "v_tie_rule": "lex_yx",
+  "worker_hard_address_space_bytes": 536870912,
+  "worker_peak_rss_limit_bytes": 536870912
+}

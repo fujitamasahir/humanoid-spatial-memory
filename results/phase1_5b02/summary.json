@@ -1,0 +1,136 @@
+{
+  "assessment_or_final_generated": false,
+  "bulk_bytes": 7320747,
+  "by_partition_mechanism": {
+    "calibration/B": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/M": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/R": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "calibration/V": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "fit/B": {
+      "attempts": 10000,
+      "outcomes": {
+        "bsp_unsplittable": 304,
+        "connectivity": 5204,
+        "cross_partition_or_historical": 2276,
+        "independent": 6,
+        "same_partition_related": 2210
+      }
+    },
+    "fit/M": {
+      "attempts": 12,
+      "outcomes": {
+        "independent": 12
+      }
+    },
+    "fit/R": {
+      "attempts": 18,
+      "outcomes": {
+        "independent": 14,
+        "same_partition_related": 4
+      }
+    },
+    "fit/V": {
+      "attempts": 9249,
+      "outcomes": {
+        "independent": 12,
+        "voronoi_core": 129,
+        "voronoi_seed_separation": 9077,
+        "voronoi_unintended_adjacency": 31
+      }
+    },
+    "selection/B": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/M": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/R": {
+      "attempts": 0,
+      "outcomes": {}
+    },
+    "selection/V": {
+      "attempts": 0,
+      "outcomes": {}
+    }
+  },
+  "candidates": 19279,
+  "cross_mechanism_clusters": 0,
+  "historical_geometries_certified": 110,
+  "historical_geometries_total": 110,
+  "historical_metadata_missing": [
+    {
+      "path": "results/phase1_4a/benchmark/results.json",
+      "reason": "no stored scenario arrays"
+    }
+  ],
+  "historical_metadata_scope": "110 stored physical rasters; benchmark public-memory flag previously reviewed",
+  "historical_result_bytes_unchanged": true,
+  "independent_clusters": 38,
+  "navigation_episodes": 0,
+  "old_held_out_accessed": false,
+  "outcomes": {
+    "bsp_unsplittable": 304,
+    "connectivity": 5204,
+    "cross_partition_or_historical": 2276,
+    "independent": 44,
+    "same_partition_related": 2214,
+    "voronoi_core": 129,
+    "voronoi_seed_separation": 9077,
+    "voronoi_unintended_adjacency": 31
+  },
+  "partitions": {
+    "calibration": {
+      "counts": {
+        "B": 0,
+        "M": 0,
+        "R": 0,
+        "V": 0
+      },
+      "status": "not_started",
+      "target": 24
+    },
+    "fit": {
+      "counts": {
+        "B": 2,
+        "M": 12,
+        "R": 12,
+        "V": 12
+      },
+      "status": "stopped",
+      "target": 48
+    },
+    "selection": {
+      "counts": {
+        "B": 0,
+        "M": 0,
+        "R": 0,
+        "V": 0
+      },
+      "status": "not_started",
+      "target": 24
+    }
+  },
+  "peak_rss_KiB": 179720,
+  "ready_for_phase1_5b1": false,
+  "regression_records": 2212,
+  "seconds": 678.845003806,
+  "stop": {
+    "mechanism": "B",
+    "partition": "fit",
+    "reason": "candidate_limit"
+  }
+}
