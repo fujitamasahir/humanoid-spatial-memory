@@ -43,7 +43,7 @@ def run_protocol_episode(scenario, config, method, seed, *, parameters=None,
 def _run_instrumented_episode(scenario, config, method, seed, *, parameters=None,
                               ablation=None, replicate=0, purpose='smoke'):
     """Shared mechanics; authorized tuning adapter validates its pinned record first."""
-    if scenario.split != 'development' or purpose not in {'smoke','synthetic-regression','tuning'}:
+    if scenario.split != 'development' or purpose not in {'smoke','synthetic-regression','tuning','assessment'}:
         raise ValueError('Assessment and held-out execution remain reserved')
     if config['unknown'] != 'optimistic':
         raise ValueError('Frozen Phase 1.4 uses optimistic unknown handling')

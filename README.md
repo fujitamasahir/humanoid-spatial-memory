@@ -4,7 +4,7 @@
 
 Research project investigating how robots can distinguish **transient human-induced obstructions** from **persistent environmental changes**, and when they should re-observe an uncertain area before navigating.
 
-> **Status:** Phase 1.4B development tuning complete: 3,780 frozen episodes and an independently verified parameter lock. Assessment and ablations await separate review; no generalization, novelty, statistical superiority or physical safety claim.
+> **Status:** Phase 1.4C locked development assessment complete: 13,440 episodes independently verified. The proposed policy made no additional observations and matched Static in all 840 paired conditions; superiority was not established. Ablations await separate review; no generalization, novelty or physical safety claim.
 
 ## Research questions
 
@@ -203,3 +203,33 @@ manifest. Full gzip traces remain locally in `results/raw/phase1_4b_tuning/`;
 Git contains every episode metric and a complete hash/path storage inventory.
 The new writer lease uses POSIX `fcntl` and is validated on macOS. All 183 tests
 pass. Stop for review before assessment or ablation experiments.
+
+## Phase 1.4C locked development assessment
+
+The [assessment report](docs/phase1_4c_validation.md) documents the pinned
+70-environment, 13,440-execution matrix, checkpoint resume, independent trace
+verification and layout-cluster analysis. Parameters remain fixed by the
+Phase 1.4B lock; no assessment outcome is used for selection. The full suite now
+passes 192 tests on Ubuntu WSL2. Native Windows cannot run the POSIX storage
+layer; use WSL with a separate Linux Python environment:
+
+```bash
+python3 -m venv .venv-wsl
+.venv-wsl/bin/python -m pip install -r requirements.txt
+.venv-wsl/bin/python -m pytest -q -o cache_dir=/tmp/hsm-pytest-cache
+.venv-wsl/bin/python scripts/run_locked_assessment.py
+.venv-wsl/bin/python scripts/analyze_locked_assessment.py
+```
+
+Full gzip traces remain in `results/raw/phase1_4c_assessment/`; compact episode
+metrics and the complete hash inventory are under `results/phase1_4c/`.
+Preserve the raw directory and exact run environment for resume and independent
+verification. Ablations, reserved held-out evaluation and humanoid integration
+remain deferred for separate review.
+
+At cap 4 without sensor noise, the proposed policy's contact-free completion was
+41.43% versus route-weighted's 42.86%: a difference of -1.43 percentage points,
+with a layout-cluster 95% interval of [-10.05, 8.10]. The prespecified practical
+benefit is inconclusive. The locked policy requested no post-initial observations
+in any of its 840 episodes and reproduced Static's trajectories and scientific
+metrics throughout this matrix. See the report for all controls and limitations.

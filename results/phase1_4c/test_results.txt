@@ -1,0 +1,10 @@
+Validation performed on Ubuntu WSL2 with Python 3.12.3.
+Command: /tmp/hsm-phase14c-venv/bin/python -m pytest -q
+Result: 192 passed, 16 warnings in 54.20s; exit status 0.
+Warnings: 14 existing Matplotlib/pyparsing deprecations and 2 pytest cache
+permission warnings on the shared Windows filesystem. Test assertions passed.
+
+Initial Windows Python attempt could not collect the Phase 1.4B/C tests:
+ModuleNotFoundError: No module named 'fcntl'. The evaluation storage uses
+POSIX advisory locks and directory fsync; native Windows remains unsupported.
+No algorithms or frozen inputs were changed to bypass that requirement.

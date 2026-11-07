@@ -1,0 +1,11 @@
+{
+  "budget_checks": 13440,
+  "cap1_environment_sensor_groups": 140,
+  "cap1_episodes_checked": 2240,
+  "cap1_identical_trajectories_and_scientific_metrics": true,
+  "episodes": 13440,
+  "original_run_sources_unchanged": true,
+  "parameter_lock_sha256": "ecdd2f11e0c279bfa6c8557fcc646c4f714d2c7627deb731cbb366138a64d2f1",
+  "source_files_verified": 33,
+  "unique_episode_ids": 13440
+}
