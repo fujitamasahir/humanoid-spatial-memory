@@ -1,0 +1,148 @@
+{
+  "failure_probes": [
+    {
+      "code": "import ctypes;ctypes.CDLL(None).sleep(30)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 5.003733999998076,
+      "exitcode": -9,
+      "expected": "timeout",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "import os;os._exit(7)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.040522125011193566,
+      "exitcode": 7,
+      "expected": "worker_crash",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('bad json',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.03534479199151974,
+      "exitcode": -9,
+      "expected": "invalid_output",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "import sys,time;sys.stdout.write('{');sys.stdout.flush();time.sleep(30)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 5.00329187499301,
+      "exitcode": -9,
+      "expected": "timeout",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('{\"error\":\"memory_exhaustion\"}',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.048316000000340864,
+      "exitcode": -9,
+      "expected": "memory_exhaustion",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('{\"id\":1,\"order\":[0],\"namespace\":\"wrong\"}',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.05085241699998733,
+      "exitcode": -9,
+      "expected": "invalid_output",
+      "reaped": true,
+      "teardown_latency_separate": true
+    }
+  ],
+  "fresh_process": {
+    "checks": 3,
+    "measurements": [
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 4.900000000000043e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 17334272,
+        "seconds": 0.04402516699337866,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 5.137499829288572e-05
+      },
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 4.70000000000019e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 17416192,
+        "seconds": 0.04467220800870564,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 4.879100015386939e-05
+      },
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 4.49999999999999e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 17072128,
+        "seconds": 0.031962209002813324,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 4.7542009269818664e-05
+      }
+    ]
+  },
+  "synthetic_correctness": {
+    "byte_mismatches": 444,
+    "distinct_reference_classes": 124,
+    "first_byte_mismatch": {
+      "lex_min": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "proposal": [
+        3,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "fixture_source_sha256": "24bbf765bb952981ef0c5806bf96862a274ed669e6e9d777fbf9ffcdb0aaeb05",
+    "independent_oracle": true,
+    "near_and_cross_partition_fixtures": true,
+    "random_multigraphs": 90,
+    "relation_bijection": true,
+    "reversed_relabel_checks": 1215,
+    "simple_graphs": 1099,
+    "total_graphs": 1215
+  }
+}

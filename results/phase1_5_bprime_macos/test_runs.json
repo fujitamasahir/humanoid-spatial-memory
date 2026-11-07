@@ -1,0 +1,36 @@
+{
+  "final_attempt": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m pytest tests/test_phase15_macos_c3.py tests/test_phase1_5b01.py tests/test_phase1_5_bprime.py tests/test_phase1_5_bprime_hardening.py -q -p no:cacheprovider",
+    "evidence": "final_synthetic_verification.json",
+    "failed": 0,
+    "passed": 169,
+    "seconds": 22.48
+  },
+  "hard_memory_gate": "BLOCKED",
+  "initial_attempt": {
+    "evidence": "synthetic_verification.initial_harness_failure.json",
+    "failed": 3,
+    "passed": 164,
+    "reason": "ps RSS cross-check denied by sandbox; no production failure hidden"
+  },
+  "intermediate_attempt": {
+    "evidence": "synthetic_verification.json",
+    "failed": 0,
+    "passed": 167,
+    "seconds": 22.53
+  },
+  "no_inventory_sealing": true,
+  "no_navigation": true,
+  "no_registered_candidate_generation": true,
+  "test_source_sha256": {
+    "tests/test_phase15_macos_c3.py": "8c1c630e44667f5b47e663891b9160c433c516d2c77bfe612b279ab123eaa5a8",
+    "tests/test_phase1_5_bprime.py": "deec6325a9d9add0decd70e356d4208db73dfe682768c083bda196229ea84c05",
+    "tests/test_phase1_5_bprime_hardening.py": "5f3d954df4c893a3dfd4673752e4036e8c14b12f7aa34e74d0ad3fa250f44b67",
+    "tests/test_phase1_5b01.py": "06e875d46b257487efe2e582aa3d71c62f01a6b6eb17cfebf9c17282636a5b9f"
+  },
+  "upstream_native_graph_tests": {
+    "failed": 0,
+    "passed": 33,
+    "seconds": 9.48
+  }
+}

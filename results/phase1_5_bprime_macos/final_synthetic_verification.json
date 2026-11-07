@@ -1,0 +1,213 @@
+{
+  "failure_probes": [
+    {
+      "code": "import ctypes;ctypes.CDLL(None).sleep(30)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 5.003599749994464,
+      "exitcode": -9,
+      "expected": "timeout",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "import os;os._exit(7)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.049361041994416155,
+      "exitcode": 7,
+      "expected": "worker_crash",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('bad json',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.03250904100423213,
+      "exitcode": -9,
+      "expected": "invalid_output",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "import sys,time;sys.stdout.write('{');sys.stdout.flush();time.sleep(30)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 5.005112165992614,
+      "exitcode": -9,
+      "expected": "timeout",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('{\"error\":\"memory_exhaustion\"}',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.0548442910076119,
+      "exitcode": -9,
+      "expected": "memory_exhaustion",
+      "reaped": true,
+      "teardown_latency_separate": true
+    },
+    {
+      "code": "print('{\"id\":1,\"order\":[0],\"namespace\":\"wrong\"}',flush=True)",
+      "decision_deadline_seconds": 5,
+      "elapsed_seconds": 0.03734979200817179,
+      "exitcode": -9,
+      "expected": "invalid_output",
+      "reaped": true,
+      "teardown_latency_separate": true
+    }
+  ],
+  "fresh_process": {
+    "checks": 3,
+    "measurements": [
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 4.699999999999843e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 16744448,
+        "seconds": 0.03428308299044147,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 5.049999163020402e-05
+      },
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 4.29999999999979e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 17203200,
+        "seconds": 0.037645958000211976,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 4.4832995627075434e-05
+      },
+      {
+        "certification_scope": "mathematical compatibility only",
+        "cpu_seconds": 5.3999999999998494e-05,
+        "hard_memory_enforced": false,
+        "native_search_nodes": null,
+        "peak_rss_bytes": 17596416,
+        "seconds": 0.04477700000279583,
+        "status": "certified",
+        "validation_only": true,
+        "vertices": 5,
+        "worker_seconds": 5.575000250246376e-05
+      }
+    ]
+  },
+  "memory_probes": [
+    {
+      "allocated_touched_bytes": 67108864,
+      "enforcement_gate": "BLOCKED: unable to establish hard limit; controlled allocations are diagnostics only",
+      "error": "ValueError('current limit exceeds maximum limit')",
+      "hard_limit_set": false,
+      "initial_limits": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "limit_bytes": 536870912,
+      "limits_after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "mach_resident_bytes": 81543168,
+      "mach_resident_peak_bytes": 81543168,
+      "mode": "python-touched",
+      "rss_after": 81412096,
+      "rss_before": 14270464,
+      "rss_unit": "bytes"
+    },
+    {
+      "allocated_touched_bytes": 67108864,
+      "enforcement_gate": "BLOCKED: unable to establish hard limit; controlled allocations are diagnostics only",
+      "error": "ValueError('current limit exceeds maximum limit')",
+      "hard_limit_set": false,
+      "initial_limits": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "limit_bytes": 536870912,
+      "limits_after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "mach_resident_bytes": 81281024,
+      "mach_resident_peak_bytes": 81281024,
+      "mode": "native-touched",
+      "rss_after": 81264640,
+      "rss_before": 14041088,
+      "rss_unit": "bytes"
+    },
+    {
+      "allocated_touched_bytes": 67108864,
+      "enforcement_gate": "BLOCKED: unable to establish hard limit; controlled allocations are diagnostics only",
+      "error": "ValueError('current limit exceeds maximum limit')",
+      "hard_limit_set": false,
+      "initial_limits": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "limit_bytes": 536870912,
+      "limits_after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "mach_resident_bytes": 81510400,
+      "mach_resident_peak_bytes": 81510400,
+      "mode": "mmap-touched",
+      "rss_after": 81379328,
+      "rss_before": 14270464,
+      "rss_unit": "bytes"
+    }
+  ],
+  "synthetic_correctness": {
+    "byte_mismatches": 444,
+    "distinct_reference_classes": 124,
+    "first_byte_mismatch": {
+      "lex_min": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "proposal": [
+        3,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "fixture_source_sha256": "24bbf765bb952981ef0c5806bf96862a274ed669e6e9d777fbf9ffcdb0aaeb05",
+    "independent_oracle": true,
+    "near_and_cross_partition_fixtures": true,
+    "random_multigraphs": 90,
+    "relation_bijection": true,
+    "reversed_relabel_checks": 1215,
+    "simple_graphs": 1099,
+    "total_graphs": 1215
+  }
+}

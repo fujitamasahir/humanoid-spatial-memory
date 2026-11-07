@@ -1,0 +1,15 @@
+{
+  "durable_verification_path": "/Users/masahir0/ResearchEvidence/humanoid-spatial-memory/phase15-original-evidence-00451b85/durable-copy-verification.json",
+  "durable_verification_sha256": "e36510157b6a313810bfb372974d6e4dc8fdd8dde76d1d87d85b38b013024399",
+  "frozen_preregistration_unchanged": true,
+  "historical_files_changed": false,
+  "native_build_root": "/Users/masahir0/ResearchEvidence/humanoid-spatial-memory/phase15-macos-c3-build-a93063d4",
+  "native_copy_manifest_sha256": "923b71be210ee9f7f733d382c9b92eb56f41a8a57105e43e3e24dfe5e0b94d76",
+  "original_archive": "/Users/masahir0/Downloads/phase15-original-evidence.tgz",
+  "original_evidence_root": "/Users/masahir0/ResearchEvidence/humanoid-spatial-memory/phase15-original-evidence-00451b85",
+  "original_linux_config_sha256": "c39844b1dbcbabfc8ffd5239a78e1a667084539d26b974df1e0c3d1448332145",
+  "provisional_inventory_sealed": false,
+  "provisional_inventory_sha256": "08755f052164be1028f40aba6ed3d23812b156b05770e8f7c09c2a9b9cd1c0d1",
+  "transport_sha256": "00451b854aee9ee4fede4531d1a0896404aa6bcb762e581aead95b4909565c6f",
+  "verified_staging_files": 23988
+}

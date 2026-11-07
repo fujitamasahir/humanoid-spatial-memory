@@ -1,0 +1,30 @@
+{
+  "c3_payload_bytes_compatible": true,
+  "candidate_namespace": "phase1.5-macos-C3-COMPATIBILITY-CANDIDATE",
+  "canonical_calls": 64554,
+  "comparison_target_namespace": "phase1.5-v0.3-CANON-1",
+  "discrepancies": 0,
+  "elapsed_seconds": 10.282697208007448,
+  "hard_memory_enforcement": "BLOCKED",
+  "historical_65_records_updated": false,
+  "historical_class_bijection": true,
+  "historical_exact_certificates": 110,
+  "historical_literal_variant_checks": 709,
+  "max_recorded_wall_seconds": 0.033228332991711795,
+  "max_worker_rss_bytes": 19038208,
+  "production_generation_authorized": false,
+  "production_namespace_enabled": false,
+  "provisional_inventory_unchanged_sha256": "08755f052164be1028f40aba6ed3d23812b156b05770e8f7c09c2a9b9cd1c0d1",
+  "restored_evidence_root": "/Users/masahir0/ResearchEvidence/humanoid-spatial-memory/phase15-original-evidence-00451b85",
+  "saved_graphs": 4534,
+  "saved_near_values_compared": 16905,
+  "source_sha256": {
+    "scripts/verify_phase15_macos_c3.py": "1f48cd0fcfb5d8919ff40408e305ae2c7035bc7aa1f2cf5c395c680a1308eaa5",
+    "src/spatial_memory/phase15_nauty_macos.py": "c6cc88e056dda5d512ef9738fbffee174849ec2837b9f8593284f007a6a9b803",
+    "src/spatial_memory/phase15_nauty_macos_worker.py": "0875cce08259c534ed794aa2ba83760fbd6b57859f1e4760c960a9daeaea9b80"
+  },
+  "status": "PASS_BYTE_COMPATIBILITY_ONLY",
+  "summed_worker_cpu_seconds": 2.4470920000000613,
+  "transport_sha256": "00451b854aee9ee4fede4531d1a0896404aa6bcb762e581aead95b4909565c6f",
+  "validation_pin_sha256": "6e08034db0fe5a6093ecd2338b877f485149b5e2a4cc8895295a72b63df46276"
+}
