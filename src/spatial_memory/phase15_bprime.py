@@ -221,15 +221,15 @@ def construct_bp(streams):
                       **raster_detail)
 
 
-def geometry(identity):
+def geometry(identity, *, stream_factory=Stream):
     """One development geometry; no iteration, audit, pair or schedule execution."""
     if not isinstance(identity, Identity):
         raise IntegrityError('Validated identity required')
     if identity.mechanism == 'BP':
-        streams = {p:Stream(identity,p) for p in ('partition','tree','chords','doors')}
+        streams = {p:stream_factory(identity,p) for p in ('partition','tree','chords','doors')}
         free, detail = construct_bp(streams)
     else:
-        streams = {'geometry':Stream(identity,'geometry')}
+        streams = {'geometry':stream_factory(identity,'geometry')}
         if identity.mechanism == 'V':
             free,detail = legacy.generate_v(streams['geometry'],'lex_yx')
         else:

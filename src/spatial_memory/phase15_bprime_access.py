@@ -10,11 +10,39 @@ import os
 from pathlib import Path
 import stat
 from types import MappingProxyType
+import subprocess
 from .phase15_bprime import VERSION, IntegrityError, development_partition
 
 APPROVED_PRODUCTION_MANIFESTS = MappingProxyType({})
+_COMMITTED_REGISTRY = None
 _APPROVAL_TOKEN = object()
 GROUPS = ('source', 'configuration', 'dependencies', 'references')
+
+
+def production_manifests():
+    """Only committed, explicit Option B development bindings grant capability.
+
+    The reviewed Git blob supplies provenance; a caller-provided digest or an
+    uncommitted registry cannot enable execution. It is separate from run locks
+    to avoid circular source/manifest hashes.
+    """
+    global _COMMITTED_REGISTRY
+    root=Path(__file__).resolve().parents[2]
+    path=root/'configs/phase15_macos_development_registry.json'
+    if not path.exists():return APPROVED_PRODUCTION_MANIFESTS
+    raw=safe_read(path)
+    if _COMMITTED_REGISTRY is None:
+        result=subprocess.run(['git','show','HEAD:configs/phase15_macos_development_registry.json'],cwd=root,capture_output=True)
+        if result.returncode or raw!=result.stdout:raise IntegrityError('Production population generation disabled: uncommitted registry')
+        _COMMITTED_REGISTRY=raw
+    if raw!=_COMMITTED_REGISTRY:raise IntegrityError('Production registry changed during execution')
+    value=json.loads(raw)
+    if value.get('amendment')!='phase1.5-v0.4-MACOS-RSS-B1' or value.get('root')!=str(root):
+        raise IntegrityError('Unapproved production authorization profile/root')
+    for relative in value['manifests']:
+        if not relative.startswith('configs/phase15_macos_bindings/') or Path(relative).is_absolute() or '..' in Path(relative).parts:
+            raise IntegrityError('Unapproved production binding location')
+    return {str(root/p):h for p,h in value['manifests'].items()}
 
 
 def checked_path(path):
@@ -82,7 +110,7 @@ class StageBinding:
     def load(cls, manifest_path, *, approved_sha256=None, synthetic=False):
         path = checked_path(manifest_path)
         if not synthetic:
-            expected = APPROVED_PRODUCTION_MANIFESTS.get(str(path))
+            expected = production_manifests().get(str(path))
             if expected is None or approved_sha256 not in (None,expected):
                 raise IntegrityError('Production binding not approved; generation disabled')
         else:
@@ -121,7 +149,7 @@ class StageBinding:
         if (self._verified is not _APPROVAL_TOKEN or
             self._seal!=(self.root,self.manifest_path,self.approved_sha256,self.manifest_bytes,self.synthetic)):
             raise IntegrityError('Stage binding did not pass approval validation')
-        if not self.synthetic and APPROVED_PRODUCTION_MANIFESTS.get(str(self.manifest_path))!=self.approved_sha256:
+        if not self.synthetic and production_manifests().get(str(self.manifest_path))!=self.approved_sha256:
             raise IntegrityError('Production binding remains disabled')
         # Revalidate original approval as well as ancestry on every access.
         if safe_read(self.manifest_path)!=self.manifest_bytes or sha(self.manifest_bytes)!=self.approved_sha256:
@@ -129,6 +157,15 @@ class StageBinding:
         result = checked_path(path)
         if not result.is_relative_to(checked_path(self.root)):
             raise IntegrityError('Alternate root is not approved')
+        if not self.synthetic:
+            value=json.loads(self.manifest_bytes)
+            files={self._within(self.root,p) for group in GROUPS for p in value['files'][group]}
+            subtrees=[self._within(self.root,p) for p in value.get('stores',[])]
+            if value.get('reference_archive_root'):
+                subtrees.append(self._within(self.root,value['reference_archive_root']))
+            if (result not in {self.root,self.manifest_path,*files}
+                and not any(result.is_relative_to(p) for p in subtrees)):
+                raise IntegrityError('File is outside explicit development input/store bindings')
         return result
 
     def read(self,path):

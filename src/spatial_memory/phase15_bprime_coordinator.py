@@ -29,7 +29,12 @@ class Coordinator:
     def __init__(self,store,references,*,backend,synthetic=False,previous=()):
         # No environment variable, manifest flag or caller argument enables production.
         if not synthetic and not PRODUCTION_GENERATION_ENABLED:
-            raise bp.IntegrityError('Production population generation disabled pending separate approval')
+            from .phase15_bprime_access import production_manifests
+            if not production_manifests():
+                raise bp.IntegrityError('Production population generation disabled pending separate approval')
+            from .phase15_macos_monitored import MonitoredBackend
+            if not isinstance(backend,MonitoredBackend):
+                raise bp.IntegrityError('Production population generation disabled for unpinned backend; Option B backend required')
         if (not isinstance(store,Checkpoints) or store.synthetic!=synthetic
             or references.synthetic!=synthetic):
             raise bp.IntegrityError('Coordinator/store/reference profile conflict')
@@ -50,6 +55,8 @@ class Coordinator:
         if commitments!={p.stage:digest(p.completion()) for p in self.previous}:
             raise bp.IntegrityError('Prior partition seals are not independently approved')
         self._reset()
+        self._restored=False
+        self._publications={}
 
     def _reset(self):
         self.index=AdmissionIndex(synthetic=self.synthetic);self.references.load(self.index)
@@ -162,11 +169,22 @@ class Coordinator:
         if list((self.store.root/'staging').glob('*.part')):
             self.store.recover([e['identity'] for e,_ in self.store.scan()])
         self.store._check_lock()
+        self._publications={e['path']:e['sha256'] for e,_ in rows}
+        self._restored=True
         return rows
 
     def execute_one(self,builder):
         """Run a supplied builder under the profile gate; production stays disabled."""
-        self.store._require_lease();self.restore()
+        self.store._require_lease()
+        if not self._restored:self.restore()
+        # Recheck durable bytes without recanonicalizing every previous graph on
+        # every decision. A fresh process still reconstructs the complete index.
+        files=list((self.store.root/'records').iterdir())
+        if {str(p.relative_to(self.store.root)) for p in files}!=set(self._publications):
+            raise bp.IntegrityError('Missing/conflicting completed publication; no retry')
+        for relative,expected in self._publications.items():
+            if hashlib.sha256(self.store.binding.read(self.store.root/relative)).hexdigest()!=expected:
+                raise bp.IntegrityError('Completed publication changed; no retry')
         job=self._job()
         if job is None:return None
         pending=dict(run_id=self.store.run_id,job=job)
@@ -211,6 +229,7 @@ class Coordinator:
         # restore stops without calling the builder again.
         validate_candidate(payload,synthetic=self.synthetic,backend=self.backend)
         entry=self.store.write(job['identity'],payload)
+        self._publications[entry['path']]=entry['sha256']
         self._apply(payload,job);self._clear_pending()
         return entry
 

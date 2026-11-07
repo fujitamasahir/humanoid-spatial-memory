@@ -1,0 +1,25 @@
+{
+  "amendment_commit": "78598e5",
+  "artifact_sha256": {
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/__init__.py": "08380aedc8c9047ecfba08d23c4e7d9cc3c290d719770bc0a9587c5e653529fd",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/__main__.py": "a2d43e9ce4519e0d5a2a415aa5af3c758e3e0a3b5556d2e78d53a51b59a9ef6a",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/graph.py": "c3de5f96eec1cf01324ebeec087d259975d45e80a6e8b84d41d91cbecf6eb186",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/nautywrap.cpython-312-darwin.so": "a93063d44e265f92c324148153db5d82aba569a04b068bcd31f0b1d980bce3fd",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/tests/conftest.py": "66585d870997d60f8126e784d0db1531685ba8cdb7f1e97b84fd72edcc2e9a1f",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/tests/test_autgrp.py": "6df62672bb11ccfe22b137f97cc47bf813b9245d431246ff1e01e0ef1cb7b2bd",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/tests/test_isomorphic.py": "9cdfc536d067d2702007ec80cf8aad14a496e37a1d168ce0651b148407b69026",
+    "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/tests/test_minimal.py": "3774f15bbbc497dc19eabced3beb49134132c753cd82a50f5585168b3c9b61a4",
+    "src/spatial_memory/phase15_macos_monitored.py": "13c3b4f65d02ebc9170c2d3ac5bda7e03d0c5bea57579366c0e23f5bbe785e7a",
+    "src/spatial_memory/phase15_macos_monitored_worker.py": "2ee4a1bb4d78c97bae6b4c52f72bb4f7062cc99c3b8dd7d8fb01f79c8789ed96",
+    "src/spatial_memory/phase15_nauty.py": "1bd22e08219bfd87ee66a6f4d325a150b48825e638c2e2b06f36c256800d9613",
+    "src/spatial_memory/phase15_nauty_macos.py": "c6cc88e056dda5d512ef9738fbffee174849ec2837b9f8593284f007a6a9b803",
+    "src/spatial_memory/phase15_nauty_macos_worker.py": "0875cce08259c534ed794aa2ba83760fbd6b57859f1e4760c960a9daeaea9b80",
+    "src/spatial_memory/phase15_topology.py": "1eaa0d5a673df7640485bdbc6a8729b5409c56901a4c6b4fd1a5943b6e89fcd5"
+  },
+  "enforcement": "measured acceptance with watchdog; not preventive hard limit",
+  "monitoring_interval_seconds": 0.01,
+  "namespace": "phase1.5-v0.3-CANON-1",
+  "package_root": "results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312",
+  "profile": "phase1.5-v0.4-MACOS-RSS-B1",
+  "threshold_bytes": 536870912
+}
