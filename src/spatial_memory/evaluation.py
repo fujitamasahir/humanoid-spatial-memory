@@ -14,12 +14,15 @@ def map_errors(memory, geometry, changed, departed):
     }
 
 
-def run_episode(scenario, config, method, seed):
+def run_episode(scenario, config, method, seed, *, _controller_factory=None,
+                _planner=None, _observation_callback=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
     from .navigation import plan
 
+    plan = _planner or plan
+    controller = _controller_factory or ObservationController
     world = World(scenario)
     sensor = Sensor(**config['sensor'])
     # Per-time streams keep sensor noise paired regardless of observation schedules.
@@ -30,7 +33,7 @@ def run_episode(scenario, config, method, seed):
     position = scenario.start
     initial = observe()
     # Allow-listed public model assumptions only, never scenario schedules/configs.
-    agent = ObservationController(initial, method, interval=config['update_interval'],
+    agent = controller(initial, method, interval=config['update_interval'],
         radius=config['sensor']['radius'], parameters=AdaptiveParameters(**config.get('adaptive', {})),
         max_observations=config.get('max_observations'))
     observations, blocked_attempts, dynamic_contacts, distance = 1, 0, 0, 0
@@ -77,6 +80,8 @@ def run_episode(scenario, config, method, seed):
         decision = agent.decide(world.step, position)
         if decision["observation_granted"]:
             observation = observe()
+            if _observation_callback is not None:
+                _observation_callback(observation, world.step, position)
             agent.refresh(observation, world.step)
             attribute_observation(observation)
             observations += 1

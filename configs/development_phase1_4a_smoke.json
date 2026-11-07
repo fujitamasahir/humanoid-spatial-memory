@@ -1,0 +1,17 @@
+{
+  "purpose": "smoke",
+  "split": "development",
+  "max_steps": 40,
+  "update_interval": 2,
+  "observation_cost": 1.5,
+  "max_observations": 4,
+  "unknown": "optimistic",
+  "common_horizon_metrics": true,
+  "sensor": {"radius": 3, "occlusion": true, "noise": 0.05},
+  "realizations": [
+    {"family": "occluded", "seed": 6101},
+    {"family": "detour", "seed": 6102}
+  ],
+  "random_replicate": 0,
+  "parameters": "frozen defaults only; no selection"
+}

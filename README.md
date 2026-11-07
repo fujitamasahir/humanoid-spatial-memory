@@ -4,7 +4,7 @@
 
 Research project investigating how robots can distinguish **transient human-induced obstructions** from **persistent environmental changes**, and when they should re-observe an uncertain area before navigating.
 
-> **Status:** Phase 1.3 development robustness evaluation complete; task-aware observation is design only, awaiting research review. No novelty, physical safety or statistical superiority claim.
+> **Status:** Phase 1.4A frozen observation policies implemented and validated with synthetic benchmarks and development smoke tests. Tuning and assessment await review; no novelty, physical safety or statistical superiority claim.
 
 ## Research questions
 
@@ -165,3 +165,22 @@ Common-horizon memory errors freeze terminal memory explicitly; grid occupancy
 contacts are distinct from blocked attempts and physical collisions. All 98 tests
 pass, including historical regression checks. Stop for research review before
 implementing task-aware sensing, MuJoCo or humanoid locomotion.
+
+## Phase 1.4A implementation validation
+
+The [frozen protocol](docs/phase1_4_experimental_protocol.md) now has twelve core
+observation schedules and six specified ablations. Historical schedules remain
+unchanged. The query gate is a conceptual control, not an ALONE reproduction.
+See [validation and measured computational costs](docs/phase1_4a_validation.md).
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python scripts/run_phase1_4a_validation.py smoke --output results/runs/phase1_4a_smoke
+.venv/bin/python scripts/benchmark_phase1_4a.py --output results/runs/phase1_4a_benchmark --smoke results/runs/phase1_4a_smoke/results.json
+```
+
+Only bounded development smoke and policy-free manifest generation are exposed.
+The 35 tuning/70 assessment manifests have no policy outcomes. All 175 tests pass,
+including every stored historical episode metric. Synthetic runtime estimates
+exclude full-matrix storage/I/O; complete traces could require several GB.
+No tuning, assessment, held-out evaluation or MuJoCo integration was run.
