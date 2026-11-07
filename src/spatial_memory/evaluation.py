@@ -113,4 +113,27 @@ def run_episode(scenario, config, method, seed):
         max_observations=agent.cap, observation_requests=agent.requests,
         observation_requests_denied=agent.denied, failure_reason=failure_reason, **totals)
     metrics.update({'final_'+key: value for key, value in frames[-1]['errors'].items()})
+    # Additional evaluator-only metrics; historical counters and stopping stay intact.
+    metrics.update(contact_free_success=bool(metrics['success'] and dynamic_contacts == 0),
+        dynamic_contact_rate=dynamic_contacts / max(1, world.step),
+        budget_exhausted=bool(agent.cap is not None and observations >= agent.cap),
+        persistent_change_events_elapsed=sum(e['step'] <= world.step for e in scenario.changes))
+    if config.get('common_horizon_metrics', False):
+        # Freeze terminal memory after stopping. Advance truth only, never the agent.
+        horizon = config['max_steps']
+        common = dict(totals)
+        while world.step < horizon:
+            before = world.geometry()
+            world.advance()
+            changed[:] |= before != world.geometry()
+            people = np.zeros(initial.shape, bool)
+            for x, y in world.people():
+                people[y, x] = True
+            errors = map_errors(agent.memory.grid, world.geometry(), changed,
+                                pedestrian_source & ~people)
+            for key, value in errors.items():
+                common[key] += value
+        metrics.update({'common_horizon_'+key: value for key, value in common.items()})
+        metrics['common_horizon_steps'] = horizon
+        metrics['common_horizon_memory_frozen_after'] = metrics['elapsed_steps']
     return metrics, frames

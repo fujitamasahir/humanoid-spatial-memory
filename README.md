@@ -4,7 +4,7 @@
 
 Research project investigating how robots can distinguish **transient human-induced obstructions** from **persistent environmental changes**, and when they should re-observe an uncertain area before navigating.
 
-> **Status:** Phase 1.2 observation-scheduling baselines: static, periodic, local cell-age, and history-adapted uncertainty. Development findings only; no novelty or statistical superiority claim.
+> **Status:** Phase 1.3 development robustness evaluation complete; task-aware observation is design only, awaiting research review. No novelty, physical safety or statistical superiority claim.
 
 ## Research questions
 
@@ -138,3 +138,30 @@ See [metric definitions and limitations](docs/experimental_protocol.md#implement
 and [validation record](docs/phase1_validation.md). These are point-robot grid
 experiments, not bipedal locomotion. RL, MuJoCo, G1, persistence-aware mapping,
 and the proposed task-aware method are intentionally deferred for review.
+
+## Phase 1.3 robustness and task-aware research design
+
+Read the [diagnostic review](docs/phase1_3_diagnostic_review.md),
+[fixed matrix](docs/phase1_3_experiment_plan.md),
+[validation and reproduction report](docs/phase1_3_validation.md), and
+[design-only task-aware specification](docs/phase1_3_task_aware_design.md).
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python scripts/run_robustness_experiment.py
+.venv/bin/python scripts/run_corridor_diagnostic.py
+```
+
+On Windows substitute `.venv\Scripts\python.exe`. macOS / Apple Silicon is now
+validated with Python 3.12.16 and the pinned requirements. This adds seven seeded
+development families, 16 predefined one-factor robustness settings, 1,792 paired
+baseline episodes and 72 corridor diagnostic episodes. Existing configurations,
+results and baseline algorithms are preserved; no held-out evaluation was run.
+
+Reference completion: Periodic 28/28, Age 21/28, Uncertainty 19/28. Uncertainty
+uses 5.18 calls versus Periodic's 12, but has only 16/28 contact-free completions
+versus 26/28. The original corridor advantage depends on change timing and priors.
+Common-horizon memory errors freeze terminal memory explicitly; grid occupancy
+contacts are distinct from blocked attempts and physical collisions. All 98 tests
+pass, including historical regression checks. Stop for research review before
+implementing task-aware sensing, MuJoCo or humanoid locomotion.

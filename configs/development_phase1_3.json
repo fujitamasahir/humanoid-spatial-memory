@@ -1,0 +1,154 @@
+{
+  "split": "development",
+  "seeds": [
+    101,
+    211,
+    307,
+    419
+  ],
+  "max_steps": 40,
+  "update_interval": 2,
+  "observation_cost": 1.5,
+  "unknown": "optimistic",
+  "sensor": {
+    "radius": 3,
+    "occlusion": true,
+    "noise": 0.0
+  },
+  "methods": [
+    "static",
+    "periodic",
+    "age",
+    "uncertainty"
+  ],
+  "settings": [
+    {
+      "name": "reference",
+      "max_observations": null,
+      "purpose": "robustness"
+    },
+    {
+      "name": "cap1",
+      "max_observations": 1,
+      "purpose": "robustness"
+    },
+    {
+      "name": "cap2",
+      "max_observations": 2,
+      "purpose": "robustness"
+    },
+    {
+      "name": "cap4",
+      "max_observations": 4,
+      "purpose": "robustness"
+    },
+    {
+      "name": "radius2",
+      "max_observations": null,
+      "purpose": "robustness",
+      "sensor": {
+        "radius": 2
+      }
+    },
+    {
+      "name": "radius5",
+      "max_observations": null,
+      "purpose": "robustness",
+      "sensor": {
+        "radius": 5
+      }
+    },
+    {
+      "name": "noise05",
+      "max_observations": null,
+      "purpose": "robustness",
+      "sensor": {
+        "noise": 0.05
+      }
+    },
+    {
+      "name": "clearview",
+      "max_observations": null,
+      "purpose": "robustness",
+      "sensor": {
+        "occlusion": false
+      }
+    },
+    {
+      "name": "early",
+      "max_observations": null,
+      "purpose": "robustness",
+      "timing": -2
+    },
+    {
+      "name": "late",
+      "max_observations": null,
+      "purpose": "robustness",
+      "timing": 3
+    },
+    {
+      "name": "longdwell",
+      "max_observations": null,
+      "purpose": "robustness",
+      "dwell_shift": 4
+    },
+    {
+      "name": "entropy65",
+      "max_observations": null,
+      "purpose": "robustness",
+      "adaptive": {
+        "entropy_threshold": 0.65
+      }
+    },
+    {
+      "name": "entropy85",
+      "max_observations": null,
+      "purpose": "robustness",
+      "adaptive": {
+        "entropy_threshold": 0.85
+      }
+    },
+    {
+      "name": "period5",
+      "max_observations": null,
+      "purpose": "robustness",
+      "update_interval": 5
+    },
+    {
+      "name": "priorSlow",
+      "max_observations": null,
+      "purpose": "robustness",
+      "adaptive": {
+        "prior_flips": 0.06
+      }
+    },
+    {
+      "name": "priorFast",
+      "max_observations": null,
+      "purpose": "robustness",
+      "adaptive": {
+        "prior_flips": 0.9
+      }
+    }
+  ],
+  "adaptive": {
+    "age_steps": 4,
+    "stale_fraction": 0.5,
+    "entropy_threshold": 0.75,
+    "confidence": 0.95,
+    "prior_flips": 0.3,
+    "prior_exposure": 6.0,
+    "min_rate": 0.01,
+    "max_rate": 0.35
+  },
+  "families": [
+    "irrelevant",
+    "outdated",
+    "critical",
+    "detour",
+    "reopen",
+    "occluded",
+    "budget"
+  ],
+  "common_horizon_metrics": true
+}
