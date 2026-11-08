@@ -376,3 +376,105 @@ blocked-action suppression and local-evidence reconsideration, no-oracle
 action acceptance, viewer visibility, and matched-design/world-clustered
 analysis. The 288-episode comparison is pending the final clean-commit smoke
 and provenance gate.
+
+## Full G1 comparison (2026-11-08)
+
+The post-fix fixed-seed smoke passed on the original saved R fit world, so the
+288-episode matrix was run. It contains 36 admitted world identities (12 each
+R/BP/M) × 2 saved schedules × 4 methods, all with seed 42, 80 steps, and a
+20-observation cap including initialization. The experiment used source commit
+`9b469d7e29cb1302786244b29d3ce18acc6813a8`, finished its episode loop in
+106.95 seconds, and rehashed all 836 protected Phase 1.5 files before and after.
+No environments or Voronoi layouts were generated.
+
+Overall results (72 episodes per method):
+
+| Method | Goal | Contact-free goal | Mean observations | Mean distance (m) | Mean steps | Rejected actions | Stale map cell-steps | Missed-change cell-steps |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Static | 32/72 | 32/72 | 1.00 | 17.86 | 64.71 | 1,890 | 661 | 11,293 |
+| Periodic | 67/72 | 66/72 | 11.08 | 25.13 | 42.07 | 572 | 428 | 6,086 |
+| Age | 57/72 | 57/72 | 11.56 | 24.55 | 45.08 | 733 | 394 | 6,959 |
+| Uncertainty | 58/72 | 58/72 | 7.19 | 23.74 | 48.08 | 887 | 262 | 7,781 |
+
+Actual observation use varied under the common cap. Periodic had 78 unwanted
+pedestrian contact pairs across its runs; this left one of its 67 goal
+completions non-contact-free. The other three methods recorded zero unwanted
+pose-contact pairs. Periodic had four temporary no-route steps; the other
+methods had none. Failed episodes are retained and recorded as
+`deadline_before_goal`.
+False persistent occupancy cell-steps were Static 57, Periodic 29, Age 35 and
+Uncertainty 30. Missed-change counts remain substantial and are not interpreted
+as perfect mapping. Distances use the unchanged, uncalibrated 0.75 m/cell
+assumption. These are kinematic navigation results, not walking performance.
+
+Mechanism sensitivity (24 episodes per method/mechanism):
+
+| Mechanism | Method | Goal / contact-free goal | Mean observations | Mean distance (m) |
+|---|---|---:|---:|---:|
+| R | Static | 12/24 / 12/24 | 1.00 | 18.88 |
+| R | Periodic | 24/24 / 24/24 | 10.21 | 23.06 |
+| R | Age | 24/24 / 24/24 | 12.17 | 23.06 |
+| R | Uncertainty | 22/24 / 22/24 | 6.46 | 23.69 |
+| BP | Static | 14/24 / 14/24 | 1.00 | 16.81 |
+| BP | Periodic | 22/24 / 22/24 | 10.04 | 23.44 |
+| BP | Age | 20/24 / 20/24 | 10.00 | 21.72 |
+| BP | Uncertainty | 20/24 / 20/24 | 6.92 | 22.19 |
+| M | Static | 6/24 / 6/24 | 1.00 | 17.88 |
+| M | Periodic | 21/24 / 20/24 | 13.00 | 28.75 |
+| M | Age | 13/24 / 13/24 | 12.50 | 28.75 |
+| M | Uncertainty | 16/24 / 16/24 | 8.21 | 25.34 |
+
+Paired estimates average the two within-world schedule differences, then
+bootstrap the 36 saved world identities (10,000 replicates, 95% percentile
+interval). Positive observation differences mean the left method used more
+observations. This does not treat 288 episodes as independent:
+
+| Contrast (left − right) | Goal completion difference (95% CI) | Observation difference (95% CI) |
+|---|---:|---:|
+| Age − Uncertainty | −0.014 [−0.111, 0.083] | 4.361 [3.250, 5.500] |
+| Periodic − Age | 0.139 [0.028, 0.250] | −0.472 [−1.625, 0.819] |
+| Periodic − Uncertainty | 0.125 [0.028, 0.236] | 3.889 [2.778, 5.139] |
+| Static − Age | −0.347 [−0.500, −0.194] | −10.556 [−12.500, −8.500] |
+| Static − Periodic | −0.486 [−0.639, −0.319] | −10.083 [−11.750, −8.514] |
+| Static − Uncertainty | −0.361 [−0.514, −0.208] | −6.194 [−7.611, −4.861] |
+
+The full paired analysis also reports contact-free completion, distance, steps,
+blocked actions, heading changes, sensor visibility and map-error contrasts,
+both overall and separately by R/BP/M. Observation cost differs across methods;
+the common cap is not a claim of equal sensing cost. The results are not
+directly compared with earlier 2D or proxy runs.
+
+The outputs are under
+`results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288/`:
+
+- `episodes.csv`: original per-episode records, left byte-for-byte intact.
+- `summary.json`: original run summary, retained unchanged.
+- `paired_world_clustered_analysis.json`: overall and R/BP/M paired estimates.
+- `episodes_action_metrics_corrected.csv` and
+  `summary_action_metrics_corrected.json`: derived action-count correction.
+- `action_history_audit.json`: hashes, definitions and audit totals; the
+  original summary and artifact manifest are preserved alongside it.
+- `provenance.json`: experiment commit, seven source hashes, Python/MuJoCo
+  versions, robot asset hashes, environment identities, seed, policy and
+  configuration. The starting Git status notes the already-created smoke
+  result directory; the experiment source commit itself is pinned explicitly.
+
+The raw CSV's legacy field named `g1_distinct_rejected_actions` was actually a
+rejected-attempt count. The post-run audit leaves that raw CSV and the original
+summary untouched, adds a corrected derived CSV/summary, and counts 4,082
+attempts, 3,805 unique per-episode transitions and 277 retries across 85
+episodes. Retries occurred only after a relevant local observed-memory change;
+the audit retains this distinction. The original pre-audit artifact manifest
+is preserved and the current manifest hashes all raw and derived outputs.
+
+Final focused regression run: **65 passed**, with 14 upstream Matplotlib/
+pyparsing deprecation warnings. Headless playback verified the final successful
+smoke trajectory (69 frames) and both earlier failed smoke trajectories (81
+frames each), with zero unwanted-contact frames. On macOS, animated playback
+of the successful trajectory is:
+
+```bash
+.venv/bin/mjpython scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final \
+  --camera overview
+```

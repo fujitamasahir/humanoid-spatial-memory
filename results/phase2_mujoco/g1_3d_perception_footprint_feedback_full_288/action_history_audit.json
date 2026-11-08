@@ -1,0 +1,163 @@
+{
+  "corrected_csv": "episodes_action_metrics_corrected.csv",
+  "corrected_summary": "summary_action_metrics_corrected.json",
+  "definition": {
+    "attempt": "one action submitted to the MuJoCo safety shield and rejected",
+    "raw_episode_csv_modified": false,
+    "raw_summary_copied_unchanged": true,
+    "retry_condition": "local observed-memory signature changed before the transition could be reconsidered",
+    "unique_transition": "(position, cardinal heading, action kind, destination/turn target), counted within each episode"
+  },
+  "episodes": 288,
+  "episodes_csv_sha256": "252c280abc4d72792c1b1593b309632a94c0893f4263bffda20fd48f99640342",
+  "episodes_with_retried_transition": 85,
+  "experiment_git_commit": "9b469d7e29cb1302786244b29d3ce18acc6813a8",
+  "original_artifact_manifest_sha256": "b0c4def770762cbc6efea9a8a39e180c8749b968176b6c25685c75c412fc502d",
+  "original_manifest_copy": "artifact_manifest_pre_action_audit.json",
+  "original_summary_sha256": "97aec3dd2d9dc521b8c4e700612ffe09cd3a5ce4eba4735f11c0ba164f972ed7",
+  "postprocessing_git_commit": "316a83f77f5d7e34cfead506806d4605894e1bc5",
+  "postprocessing_git_status_at_start": "## phase2/mujoco-proxy-pilot...origin/phase2/mujoco-proxy-pilot\n?? results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288/\n?? results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final/",
+  "status": "PASS_ACTION_HISTORY_AUDIT",
+  "totals": {
+    "BP": {
+      "attempts": 1069,
+      "episodes": 96,
+      "episodes_with_retry": 22,
+      "retries": 30,
+      "unique_transitions": 1039
+    },
+    "BP:age": {
+      "attempts": 177,
+      "episodes": 24,
+      "episodes_with_retry": 6,
+      "retries": 6,
+      "unique_transitions": 171
+    },
+    "BP:periodic": {
+      "attempts": 153,
+      "episodes": 24,
+      "episodes_with_retry": 6,
+      "retries": 6,
+      "unique_transitions": 147
+    },
+    "BP:static": {
+      "attempts": 545,
+      "episodes": 24,
+      "episodes_with_retry": 0,
+      "retries": 0,
+      "unique_transitions": 545
+    },
+    "BP:uncertainty": {
+      "attempts": 194,
+      "episodes": 24,
+      "episodes_with_retry": 10,
+      "retries": 18,
+      "unique_transitions": 176
+    },
+    "M": {
+      "attempts": 1799,
+      "episodes": 96,
+      "episodes_with_retry": 37,
+      "retries": 197,
+      "unique_transitions": 1602
+    },
+    "M:age": {
+      "attempts": 411,
+      "episodes": 24,
+      "episodes_with_retry": 11,
+      "retries": 77,
+      "unique_transitions": 334
+    },
+    "M:periodic": {
+      "attempts": 267,
+      "episodes": 24,
+      "episodes_with_retry": 14,
+      "retries": 79,
+      "unique_transitions": 188
+    },
+    "M:static": {
+      "attempts": 713,
+      "episodes": 24,
+      "episodes_with_retry": 0,
+      "retries": 0,
+      "unique_transitions": 713
+    },
+    "M:uncertainty": {
+      "attempts": 408,
+      "episodes": 24,
+      "episodes_with_retry": 12,
+      "retries": 41,
+      "unique_transitions": 367
+    },
+    "R": {
+      "attempts": 1214,
+      "episodes": 96,
+      "episodes_with_retry": 26,
+      "retries": 50,
+      "unique_transitions": 1164
+    },
+    "R:age": {
+      "attempts": 145,
+      "episodes": 24,
+      "episodes_with_retry": 10,
+      "retries": 20,
+      "unique_transitions": 125
+    },
+    "R:periodic": {
+      "attempts": 152,
+      "episodes": 24,
+      "episodes_with_retry": 8,
+      "retries": 16,
+      "unique_transitions": 136
+    },
+    "R:static": {
+      "attempts": 632,
+      "episodes": 24,
+      "episodes_with_retry": 0,
+      "retries": 0,
+      "unique_transitions": 632
+    },
+    "R:uncertainty": {
+      "attempts": 285,
+      "episodes": 24,
+      "episodes_with_retry": 8,
+      "retries": 14,
+      "unique_transitions": 271
+    },
+    "age": {
+      "attempts": 733,
+      "episodes": 72,
+      "episodes_with_retry": 27,
+      "retries": 103,
+      "unique_transitions": 630
+    },
+    "overall": {
+      "attempts": 4082,
+      "episodes": 288,
+      "episodes_with_retry": 85,
+      "retries": 277,
+      "unique_transitions": 3805
+    },
+    "periodic": {
+      "attempts": 572,
+      "episodes": 72,
+      "episodes_with_retry": 28,
+      "retries": 101,
+      "unique_transitions": 471
+    },
+    "static": {
+      "attempts": 1890,
+      "episodes": 72,
+      "episodes_with_retry": 0,
+      "retries": 0,
+      "unique_transitions": 1890
+    },
+    "uncertainty": {
+      "attempts": 887,
+      "episodes": 72,
+      "episodes_with_retry": 30,
+      "retries": 73,
+      "unique_transitions": 814
+    }
+  }
+}
