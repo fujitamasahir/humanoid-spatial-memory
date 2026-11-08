@@ -3,13 +3,46 @@ import argparse
 import json
 from pathlib import Path
 import time
+import xml.etree.ElementTree as ET
 
 import mujoco
 import mujoco.viewer
 
 
+def display_scene_xml(result_dir: Path):
+    """Return a view-only scene with sane camera bounds (never edit evidence).
+
+    Inactive obstacle mocap bodies are parked at Z=-1000 in the saved MJCF.
+    Their *initial* positions inflate the model's inferred extent, resulting
+    in a far-away free camera and an enormous near clipping distance. Only
+    override the rendering statistic, not any geom/pose/physics parameters.
+    """
+    scene_path = result_dir / 'scene.xml'
+    root = ET.parse(scene_path).getroot()
+    settings = json.loads((result_dir / 'scenario.json').read_text(encoding='utf-8'))
+    extent = 1.5 * max(settings['width'], settings['height']) * settings['cell_size_m']
+    if extent <= 0:
+        raise ValueError('Invalid scenario dimensions or scale')
+    statistic = root.find('statistic')
+    if statistic is None:
+        statistic = ET.Element('statistic')
+        root.insert(0, statistic)
+    statistic.set('center', '0 0 1.25')
+    statistic.set('extent', f'{extent:.8g}')
+    # from_xml_string cannot infer the source file's relative mesh directory.
+    compiler = root.find('compiler')
+    if compiler is not None and compiler.get('meshdir'):
+        meshdir = Path(compiler.get('meshdir'))
+        if not meshdir.is_absolute():
+            compiler.set('meshdir', str((scene_path.parent / meshdir).resolve()))
+    return ET.tostring(root, encoding='unicode')
+
+
 def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop=True):
-    model = mujoco.MjModel.from_xml_path(str(result_dir/'scene.xml'))
+    model = mujoco.MjModel.from_xml_string(display_scene_xml(result_dir))
+    print(f'View-only model extent: {model.stat.extent:.2f} m, '
+          f'near clip: {model.vis.map.znear * model.stat.extent:.3f} m',
+          flush=True)
     data = mujoco.MjData(model)
     key = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_KEY, 'stand')
     joint = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, 'floating_base_joint')
@@ -135,9 +168,16 @@ def main():
                         help='Follow G1 or use the fixed whole-scene overview')
     parser.add_argument('--once', action='store_true',
                         help='Play only once; otherwise replay until the viewer is closed')
+    parser.add_argument('--export-view-scene', type=Path,
+                        help='Save a derived display-only MJCF for testing in the standard MuJoCo viewer')
     args = parser.parse_args()
     if args.speed <= 0:
         parser.error('--speed must be positive')
+    if args.export_view_scene is not None:
+        args.export_view_scene.parent.mkdir(parents=True, exist_ok=True)
+        args.export_view_scene.write_text(display_scene_xml(args.result_dir.resolve()),
+                                          encoding='utf-8')
+        print(f'Display-only scene: {args.export_view_scene}', flush=True)
     contacts = replay(args.result_dir.resolve(), args.speed,
                       viewer=not args.validate_only, camera=args.camera, loop=not args.once)
     if args.validate_only:
