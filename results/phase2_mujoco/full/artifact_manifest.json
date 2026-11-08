@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 72004,
+    "path": "episodes.csv",
+    "sha256": "d9038346d7133c7a13e2ebb3db3831d0d0219b6c8d66b8468605c91c0c0b896a"
+  },
+  {
+    "bytes": 4195,
+    "path": "provenance.json",
+    "sha256": "b31a5012a6b3d989ab9278f9710c17a25d30df270e0f5328aa243eec59288768"
+  },
+  {
+    "bytes": 84,
+    "path": "run.lock",
+    "sha256": "2860efda3fc032bb49a9e3b9932fa032fbd4b4e25d3939cb232b259b513f7456"
+  },
+  {
+    "bytes": 5511,
+    "path": "summary.json",
+    "sha256": "4a875c29b6923cad155f680ad312da080d984a71e14c04e9ac7def7bd80a37dd"
+  }
+]

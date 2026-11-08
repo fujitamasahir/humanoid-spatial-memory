@@ -6,6 +6,12 @@ Research project investigating how robots can distinguish **transient human-indu
 
 > **Status:** Phase 1.4C locked development assessment complete: 13,440 episodes independently verified. The proposed policy made no additional observations and matched Static in all 840 paired conditions; superiority was not established. Ablations await separate review; no generalization, novelty or physical safety claim.
 
+> **Phase 2 status:** A bounded MuJoCo kinematic-navigation pilot now replays the
+> saved 36 fit worlds with a clearly identified humanoid collision proxy. The
+> Unitree G1 asset could not be fetched in this environment, so G1 integration
+> and any G1-performance claim remain incomplete. See the
+> [Phase 2 validation report](docs/phase2_mujoco_validation.md).
+
 ## Research questions
 
 - **RQ1:** Under which conditions do temporary pedestrian obstructions cause stale or incorrect long-term spatial memories?
@@ -233,3 +239,37 @@ with a layout-cluster 95% interval of [-10.05, 8.10]. The prespecified practical
 benefit is inconclusive. The locked policy requested no post-initial observations
 in any of its 840 episodes and reproduced Static's trajectories and scientific
 metrics throughout this matrix. See the report for all controls and limitations.
+
+## Phase 2 MuJoCo kinematic proxy pilot
+
+MuJoCo 3.17.0 on Python 3.12 / Apple Silicon compiled the saved 2D fit worlds into
+3D floors, walls, persistent objects, pedestrian proxies and a capsule humanoid
+proxy. The existing memory policies and A* planner still operate on the 2D
+observation grid. The root is placed kinematically at grid waypoints; there is no
+gait, actuator control, balance or physical walking. This pilot is a 3D scene and
+contact-geometry replay, not evidence of 3D navigation performance or G1 behavior.
+
+The one-episode smoke reached its goal. The paired proxy replay completed 288
+episodes in 4.2 seconds using the same 36 saved worlds, two schedules, four
+methods, seed 42, 80-step horizon and shared 20-observation cap (including the
+initial observation). Its goal/observation metrics match the earlier 2D pilot
+because the policy and planner are unchanged. Every method had 0/72 completions
+without any proxy pose contact; this exposes a footprint mismatch between the
+point-grid planner and the deliberately simple proxy. No parameter selection or
+claim of method superiority follows from this run.
+
+```bash
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pytest tests/test_phase2_mujoco.py -q
+.venv/bin/python scripts/phase2_mujoco_navigation.py smoke
+.venv/bin/python scripts/phase2_mujoco_navigation.py full
+```
+
+The CSV/JSON results, 3D screenshot, source hashes and fixed run settings are in
+`results/phase2_mujoco/`. The MuJoCo OpenGL renderer was unavailable in the
+headless execution context; the saved screenshot is a Matplotlib 3D rendering of
+the same proxy scene. The official Menagerie G1 description is BSD-3-Clause, but
+network DNS prevented fetching its files here, so the model was not used. G1
+asset integration, sensor/observation updates inside MuJoCo, body-footprint-aware
+planning, and a viewer replay remain future work. All simplified motion remains
+kinematic and must not be described as walking.

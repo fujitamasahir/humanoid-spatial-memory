@@ -1,0 +1,95 @@
+{
+  "architecture": "arm64",
+  "episode_seed": 42,
+  "g1_model_reference_not_used": {
+    "model_license_as_stated_by_upstream": "BSD-3-Clause",
+    "reason_not_integrated": "GitHub DNS resolution failed in the execution environment; no G1 files were acquired.",
+    "repository": "https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1"
+  },
+  "git_commit": "12a22644613f5f438f8b1336d48941326c6bd242",
+  "git_status_at_start": "## migration/phase15-m3-second-continuation-prep...origin/migration/phase15-m3-second-continuation-prep\n M README.md\n M requirements.txt\n M src/spatial_memory/evaluation.py\n?? docs/phase2_mujoco_validation.md\n?? results/phase2_mujoco/\n?? scripts/phase2_mujoco_navigation.py\n?? src/spatial_memory/mujoco_navigation.py\n?? tests/test_phase2_mujoco.py",
+  "methods": [
+    "static",
+    "periodic",
+    "age",
+    "uncertainty"
+  ],
+  "mode": "full",
+  "motion_model": "kinematic waypoint placement with MuJoCo contact-geometry queries; not walking control",
+  "mujoco_version": "3.17.0",
+  "observation_budget_includes_initial_call": true,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "policy_config": {
+    "common_horizon_metrics": true,
+    "max_observations": 20,
+    "max_steps": 80,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "preservation_manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1",
+  "preserved_phase15_checkpoint_receipt_files_rehashed": 836,
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "robot_model": "humanoid collision proxy; NOT Unitree G1",
+  "schedule_indices": [
+    0,
+    1
+  ],
+  "source_hashes": {
+    "scripts/phase2_mujoco_navigation.py": "a11e5ec2b5c57ce4adee9d983aceac76f47d42cec3cff61660f3673e733f9204",
+    "src/spatial_memory/evaluation.py": "044350ed5fde16ba8763c4328726675ef09e164a22f695381cf2f39f33de3171",
+    "src/spatial_memory/mujoco_navigation.py": "74084aa6a3b78026cbd18e160a12cd79150a71d6a4a09fdfa5ec8ef5cf2d9d8a",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "source_store_roots": [
+    "results/raw/phase15_macos_development/fit",
+    "results/raw/phase15_bprime_fit_recovery_1/store",
+    "results/raw/phase15_bprime_fit_recovery_2/store"
+  ],
+  "world_count": 36,
+  "world_identities": [
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+  ]
+}

@@ -15,7 +15,7 @@ def map_errors(memory, geometry, changed, departed):
 
 
 def run_episode(scenario, config, method, seed, *, _controller_factory=None,
-                _planner=None, _observation_callback=None):
+                _planner=None, _observation_callback=None, _frame_callback=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
@@ -63,11 +63,20 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         errors = map_errors(agent.memory.grid, world.geometry(), changed, departed)
         for key, value in errors.items():
             totals[key] += value
-        frames.append(dict(step=world.step, position=position, geometry=world.geometry().copy(),
+        frame = dict(step=world.step, position=position, geometry=world.geometry().copy(),
             people=people.copy(), memory=agent.memory.grid.copy(), planned=planned,
             executed=list(path_taken), errors=errors, blocked=bool(blocked), moved=bool(moved),
             observation_count=observations, **(decision or dict(observation_requested=True,
-                observation_granted=True, observation_score=None, observation_position=position))))
+                observation_granted=True, observation_score=None, observation_position=position)))
+        # Evaluation-only adapters may observe simulator truth for rendering or
+        # contact accounting. Their data is never passed to the controller.
+        if _frame_callback is not None:
+            extra = _frame_callback(world, frame)
+            if extra is not None:
+                if not isinstance(extra, dict):
+                    raise TypeError('Frame callback must return a dict or None')
+                frame.update(extra)
+        frames.append(frame)
 
     capture(plan(agent.memory.grid, position, scenario.goal, config['unknown']))
     for _ in range(config['max_steps']):
@@ -123,6 +132,18 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         dynamic_contact_rate=dynamic_contacts / max(1, world.step),
         budget_exhausted=bool(agent.cap is not None and observations >= agent.cap),
         persistent_change_events_elapsed=sum(e['step'] <= world.step for e in scenario.changes))
+    for key in ('mujoco_pose_pedestrian_contact_pairs', 'mujoco_pose_wall_contact_pairs',
+                'mujoco_pose_persistent_obstacle_contact_pairs',
+                'mujoco_attempt_pedestrian_overlap_checks', 'mujoco_attempt_wall_overlap_checks',
+                'mujoco_attempt_persistent_obstacle_overlap_checks'):
+        if any(key in frame for frame in frames):
+            metrics[key] = sum(int(frame.get(key, 0)) for frame in frames)
+    if 'mujoco_pose_pedestrian_contact_pairs' in metrics:
+        metrics['mujoco_proxy_contact_free_success'] = bool(metrics['success'] and not any(
+            metrics.get(key, 0) for key in (
+                'mujoco_pose_pedestrian_contact_pairs',
+                'mujoco_pose_wall_contact_pairs',
+                'mujoco_pose_persistent_obstacle_contact_pairs')))
     if config.get('common_horizon_metrics', False):
         # Freeze terminal memory after stopping. Advance truth only, never the agent.
         horizon = config['max_steps']

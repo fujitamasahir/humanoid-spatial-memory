@@ -1,0 +1,4305 @@
+[
+  {
+    "step": 0,
+    "position": [
+      5,
+      15
+    ],
+    "planned": [
+      [
+        5,
+        15
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "observation_count": 1,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 1,
+    "position": [
+      5,
+      14
+    ],
+    "planned": [
+      [
+        5,
+        15
+      ],
+      [
+        5,
+        14
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 1,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 2,
+    "position": [
+      5,
+      13
+    ],
+    "planned": [
+      [
+        5,
+        14
+      ],
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 1,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 3,
+    "position": [
+      6,
+      13
+    ],
+    "planned": [
+      [
+        5,
+        13
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 1,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 4,
+    "position": [
+      7,
+      13
+    ],
+    "planned": [
+      [
+        6,
+        13
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 2,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 5,
+    "position": [
+      7,
+      13
+    ],
+    "planned": [
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 2,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 6,
+    "position": [
+      7,
+      13
+    ],
+    "planned": [
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 2,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 7,
+    "position": [
+      7,
+      13
+    ],
+    "planned": [
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 2,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 8,
+    "position": [
+      8,
+      13
+    ],
+    "planned": [
+      [
+        7,
+        13
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 3,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 9,
+    "position": [
+      8,
+      13
+    ],
+    "planned": [
+      [
+        8,
+        13
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 3,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 10,
+    "position": [
+      8,
+      13
+    ],
+    "planned": [
+      [
+        8,
+        13
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 3,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 11,
+    "position": [
+      8,
+      13
+    ],
+    "planned": [
+      [
+        8,
+        13
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 3,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 12,
+    "position": [
+      9,
+      13
+    ],
+    "planned": [
+      [
+        8,
+        13
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 4,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 13,
+    "position": [
+      9,
+      13
+    ],
+    "planned": [
+      [
+        9,
+        13
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 4,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 14,
+    "position": [
+      9,
+      13
+    ],
+    "planned": [
+      [
+        9,
+        13
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 4,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 15,
+    "position": [
+      9,
+      13
+    ],
+    "planned": [
+      [
+        9,
+        13
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        9
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 4,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 16,
+    "position": [
+      10,
+      13
+    ],
+    "planned": [
+      [
+        9,
+        13
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 5,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 17,
+    "position": [
+      10,
+      12
+    ],
+    "planned": [
+      [
+        10,
+        13
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 5,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 2,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 18,
+    "position": [
+      10,
+      11
+    ],
+    "planned": [
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 5,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 19,
+    "position": [
+      10,
+      10
+    ],
+    "planned": [
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 5,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 20,
+    "position": [
+      10,
+      9
+    ],
+    "planned": [
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 6,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 21,
+    "position": [
+      10,
+      8
+    ],
+    "planned": [
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 6,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 22,
+    "position": [
+      10,
+      7
+    ],
+    "planned": [
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 6,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 23,
+    "position": [
+      10,
+      7
+    ],
+    "planned": [
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 6,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 24,
+    "position": [
+      11,
+      7
+    ],
+    "planned": [
+      [
+        10,
+        7
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 7,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 25,
+    "position": [
+      11,
+      7
+    ],
+    "planned": [
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 7,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 26,
+    "position": [
+      11,
+      7
+    ],
+    "planned": [
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 7,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 27,
+    "position": [
+      11,
+      7
+    ],
+    "planned": [
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 7,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 28,
+    "position": [
+      10,
+      7
+    ],
+    "planned": [
+      [
+        11,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 8,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 29,
+    "position": [
+      9,
+      7
+    ],
+    "planned": [
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 8,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 30,
+    "position": [
+      9,
+      7
+    ],
+    "planned": [
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 8,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 31,
+    "position": [
+      9,
+      7
+    ],
+    "planned": [
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 8,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 32,
+    "position": [
+      8,
+      7
+    ],
+    "planned": [
+      [
+        9,
+        7
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 9,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 33,
+    "position": [
+      8,
+      6
+    ],
+    "planned": [
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 9,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 2,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 34,
+    "position": [
+      8,
+      5
+    ],
+    "planned": [
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 9,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 35,
+    "position": [
+      8,
+      4
+    ],
+    "planned": [
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 9,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 36,
+    "position": [
+      8,
+      3
+    ],
+    "planned": [
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 10,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 37,
+    "position": [
+      8,
+      2
+    ],
+    "planned": [
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 10,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 38,
+    "position": [
+      8,
+      1
+    ],
+    "planned": [
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 10,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 39,
+    "position": [
+      9,
+      1
+    ],
+    "planned": [
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 10,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 40,
+    "position": [
+      10,
+      1
+    ],
+    "planned": [
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        13,
+        0
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 11,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 41,
+    "position": [
+      11,
+      1
+    ],
+    "planned": [
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        13,
+        0
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 11,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 42,
+    "position": [
+      11,
+      1
+    ],
+    "planned": [
+      [
+        11,
+        1
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        13,
+        0
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 11,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 43,
+    "position": [
+      11,
+      1
+    ],
+    "planned": [
+      [
+        11,
+        1
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        13,
+        0
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 11,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 44,
+    "position": [
+      11,
+      2
+    ],
+    "planned": [
+      [
+        11,
+        1
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 12,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 45,
+    "position": [
+      11,
+      2
+    ],
+    "planned": [
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 12,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 46,
+    "position": [
+      11,
+      2
+    ],
+    "planned": [
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 12,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 47,
+    "position": [
+      11,
+      2
+    ],
+    "planned": [
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 12,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 48,
+    "position": [
+      11,
+      3
+    ],
+    "planned": [
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 13,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 49,
+    "position": [
+      11,
+      3
+    ],
+    "planned": [
+      [
+        11,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 13,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 50,
+    "position": [
+      11,
+      3
+    ],
+    "planned": [
+      [
+        11,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 13,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 51,
+    "position": [
+      11,
+      3
+    ],
+    "planned": [
+      [
+        11,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "observation_count": 13,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 52,
+    "position": [
+      11,
+      4
+    ],
+    "planned": [
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        13,
+        4
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 14,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 53,
+    "position": [
+      12,
+      4
+    ],
+    "planned": [
+      [
+        11,
+        4
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        13,
+        4
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 14,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 54,
+    "position": [
+      13,
+      4
+    ],
+    "planned": [
+      [
+        12,
+        4
+      ],
+      [
+        13,
+        4
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 14,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 55,
+    "position": [
+      13,
+      3
+    ],
+    "planned": [
+      [
+        13,
+        4
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 14,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 56,
+    "position": [
+      13,
+      2
+    ],
+    "planned": [
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 15,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 57,
+    "position": [
+      13,
+      1
+    ],
+    "planned": [
+      [
+        13,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 15,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 1,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 58,
+    "position": [
+      14,
+      1
+    ],
+    "planned": [
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 15,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 59,
+    "position": [
+      15,
+      1
+    ],
+    "planned": [
+      [
+        14,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 15,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 60,
+    "position": [
+      16,
+      1
+    ],
+    "planned": [
+      [
+        15,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "observation_count": 16,
+    "mujoco_pose_pedestrian_contact_pairs": 0,
+    "mujoco_pose_wall_contact_pairs": 0,
+    "mujoco_pose_persistent_obstacle_contact_pairs": 0
+  }
+]

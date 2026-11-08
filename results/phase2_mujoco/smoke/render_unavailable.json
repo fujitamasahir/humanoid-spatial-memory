@@ -1,0 +1,5 @@
+{
+  "mujoco_renderer_unavailable": "CGLError",
+  "message": "invalid CoreGraphics connection",
+  "fallback": "Matplotlib 3D rendering of saved MuJoCo proxy scene state"
+}
