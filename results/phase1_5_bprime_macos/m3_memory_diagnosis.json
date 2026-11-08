@@ -1,0 +1,329 @@
+{
+  "caveat": "The diagnostic does not itself authorize a new resource policy or native API entitlement",
+  "hard_512_mib_gate": "BLOCKED",
+  "interpretation": "Kernel EINVAL for a below-existing-VM RLIMIT_AS, not invalid soft/hard ordering. Larger limit succeeds; RSS and VM are distinct.",
+  "minimal_native_probes": [
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "before": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 22,
+      "extra_128_mib_mapping_succeeded": false,
+      "mapping_errno": 0,
+      "mode": "absolute",
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rss_bytes": 1310720,
+      "setrlimit_result": -1,
+      "virtual_bytes": 445746282496
+    },
+    {
+      "after": [
+        445813555200,
+        445813555200
+      ],
+      "before": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 0,
+      "extra_128_mib_mapping_succeeded": false,
+      "mapping_errno": 12,
+      "mode": "slack",
+      "requested": [
+        445813555200,
+        445813555200
+      ],
+      "rss_bytes": 1310720,
+      "setrlimit_result": 0,
+      "virtual_bytes": 445746446336
+    }
+  ],
+  "native_probe_sha256": "ebd1d9f24bf1051f3e53bdb9dd5fbaccb03fbbde13c305915c4f0531087e7af6",
+  "parent_limits_unchanged": true,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "probes": [
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15826944,
+      "mach_virtual_bytes": 420292345856,
+      "mode": "python",
+      "python_error": "ValueError('current limit exceeds maximum limit')",
+      "python_success": false,
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15745024,
+      "mach_virtual_bytes": 420292345856,
+      "mode": "libc",
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15597568,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "soft-only",
+      "requested": [
+        536870912,
+        9223372036854775807
+      ],
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        420215799808,
+        420215799808
+      ],
+      "errno": 0,
+      "errno_text": "Undefined error: 0",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": 0,
+      "mach_rss_bytes": 15613952,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "large-control",
+      "requested": [
+        420215799808,
+        420215799808
+      ],
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15613952,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "limited-c3",
+      "native_c3_executed": false,
+      "native_c3_under_512_mib": "BLOCKED",
+      "python_error": "ValueError('current limit exceeds maximum limit')",
+      "python_success": false,
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "allocated_touched_bytes": 67108864,
+      "allocation_has_enforced_512_mib_cap": false,
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15613952,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "python-touched",
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "rss_after_bytes": 82771968,
+      "rss_before_bytes": 15728640,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "allocated_touched_bytes": 67108864,
+      "allocation_has_enforced_512_mib_cap": false,
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15613952,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "native-touched",
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "rss_after_bytes": 82755584,
+      "rss_before_bytes": 15728640,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "after": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "allocated_touched_bytes": 67108864,
+      "allocation_has_enforced_512_mib_cap": false,
+      "errno": 22,
+      "errno_text": "Invalid argument",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "libc_return": -1,
+      "mach_rss_bytes": 15663104,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "mmap-touched",
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "rlimit_as_equals_rss": true,
+      "rss_after_bytes": 82788352,
+      "rss_before_bytes": 15777792,
+      "soft_le_hard": true,
+      "uid": 501
+    },
+    {
+      "api": "task_set_phys_footprint_limit",
+      "inherited_hard_allows_request": true,
+      "initial_libc": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "initial_python": [
+        9223372036854775807,
+        9223372036854775807
+      ],
+      "mach_message": "(os/kern) no access",
+      "mach_return": 8,
+      "mach_rss_bytes": 15581184,
+      "mach_virtual_bytes": 420148690944,
+      "mode": "footprint-api",
+      "old_limit": -999,
+      "requested": [
+        536870912,
+        536870912
+      ],
+      "requested_mib": 512,
+      "rlimit_as_equals_rss": true,
+      "soft_le_hard": true,
+      "uid": 501
+    }
+  ],
+  "production_enabled": false,
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "scope": "Same unprivileged sandbox only; no unsandboxed baseline, no elevated privilege, no host-wide limit changes",
+  "source_sha256": {
+    "scripts/diagnose_phase15_macos_memory.py": "b17e0b4cdbbaabbb16da3ee07274f7a8810a4f6b052f53efe1432e316f452afd",
+    "scripts/native/phase15_macos_vm_probe.c": "f1c5f5622f7abbf4e7144b45ef160ea291b1ea11788e266dc137aeff1bbaca4f"
+  }
+}

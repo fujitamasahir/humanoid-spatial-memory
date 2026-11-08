@@ -1,0 +1,130 @@
+{
+  "blockers_before_new_continuation_epoch": [
+    "The old absolute-root/runtime/source/native binding is not valid for this checkout; preserve it unchanged.",
+    "The separate rebuilt extension and custom compatibility/Option B pins are under ignored results/runs and must be preserved locally or copied to durable USB with hashes.",
+    "High-memory Option B excess probes did not fully validate this machine\u2019s over-threshold detection; production resource gate remains blocked.",
+    "Constructing a new continuation epoch requires a separately reviewed and committed binding/registry/report plus a runner able to resume from sequence 418; not done here."
+  ],
+  "branch": "migration/phase15-m3-python-c3-env",
+  "c3": {
+    "canonical_calls": 30751,
+    "exact_key_discrepancies": 0,
+    "included_saved_reference_records": 2368,
+    "linux_comparison_namespace": "phase1.5-v0.3-CANON-1",
+    "near_key_values": 8869,
+    "near_set_discrepancies": 0,
+    "production_generation_enabled": false,
+    "status": "PASS_BYTE_COMPATIBILITY_ONLY",
+    "synthetic_1215_fixture": "PASS; included in targeted tests"
+  },
+  "native": {
+    "artifact_architectures": "Non-fat file: /Users/masahiro/Desktop/^/31_humanoid/humanoid-spatial-memory/results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/nautywrap.cpython-312-darwin.so is architecture: arm64",
+    "artifact_files": {
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/__init__.py": "08380aedc8c9047ecfba08d23c4e7d9cc3c290d719770bc0a9587c5e653529fd",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/__main__.py": "a2d43e9ce4519e0d5a2a415aa5af3c758e3e0a3b5556d2e78d53a51b59a9ef6a",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/graph.py": "c3de5f96eec1cf01324ebeec087d259975d45e80a6e8b84d41d91cbecf6eb186",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/nautywrap.c": "c662021349a57226df7afe21f0a435f93494c96a43d8491907bac993f3dc03f5",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/nautywrap.cpython-312-darwin.so": "b6a11ebab2651ffedd790213cfc71913debc9c0cd430d25fda48d290d63568ed",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/nautywrap.h": "9fe51f608a318d85c8a2969f3c126b31daadb4219197ead02b5a4f38cc4e9014",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/tests/conftest.py": "66585d870997d60f8126e784d0db1531685ba8cdb7f1e97b84fd72edcc2e9a1f",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/tests/test_autgrp.py": "6df62672bb11ccfe22b137f97cc47bf813b9245d431246ff1e01e0ef1cb7b2bd",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/tests/test_isomorphic.py": "9cdfc536d067d2702007ec80cf8aad14a496e37a1d168ce0651b148407b69026",
+      "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/tests/test_minimal.py": "3774f15bbbc497dc19eabced3beb49134132c753cd82a50f5585168b3c9b61a4"
+    },
+    "artifact_path": "results/runs/phase15_m3_migration_c3/native-build/lib.macosx-10.13-universal2-cpython-312/pynauty/nautywrap.cpython-312-darwin.so",
+    "artifact_sha256": "b6a11ebab2651ffedd790213cfc71913debc9c0cd430d25fda48d290d63568ed",
+    "build_command": "CC=/usr/bin/clang ARCHFLAGS='-arch arm64' PYTHONDONTWRITEBYTECODE=1 python setup.py build --build-base ../../native-build",
+    "build_log_sha256": "5527f9e027dd8b0dda610a6403ea86309734aa5bf8e4aa87d416125d2b10b9d0",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "nauty_sdist_sha256": "159d2156810a6bb240410cd61eb641add85088d9f15c888cdaa37b8681f929ce",
+    "nauty_version": "nauty2_8_8",
+    "original_extension_available": false,
+    "original_extension_sha256_expected": "a93063d44e265f92c324148153db5d82aba569a04b068bcd31f0b1d980bce3fd",
+    "provenance": "REBUILT_SEPARATE_M3_ARTIFACT; original pinned extension absent",
+    "pynauty_sdist_sha256": "454d3b0e605d649d13478afb090daef4a152f15c4a337a391fe69fded7e683f2",
+    "pynauty_version": "2.8.8.1",
+    "sdk": "26.5",
+    "upstream_matching_source_files": 117,
+    "xcode": "Full Xcode unavailable; active developer directory is CommandLineTools"
+  },
+  "preservation": {
+    "checkpoint_receipt_manifest": "results/phase1_5_bprime_macos/m3_checkpoint_receipt_manifest.json.gz",
+    "continuation_receipts": 105,
+    "continuation_records": 105,
+    "last_sequence": 417,
+    "manifest_file_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1",
+    "manifest_sha256": "a0061bb89f035f64e226783e93b3c30bf3bc8315a2ce5671215cc09b8a24a558",
+    "next_index": 368,
+    "next_mechanism": "V",
+    "next_sequence": 418,
+    "original_receipts": 313,
+    "original_records": 313,
+    "raw_stores_modified_by_this_task": false,
+    "total_records": 418
+  },
+  "python": {
+    "architecture": "arm64",
+    "executable": "/Users/masahiro/Desktop/^/31_humanoid/humanoid-spatial-memory/.venv/bin/python",
+    "executable_sha256": "d4f152f2a753c94e0e7935c8ebbe6b2609979e1df7898422b577d0076383d08b",
+    "installed_packages": [
+      "contourpy==1.4.0",
+      "cycler==0.12.1",
+      "fonttools==4.68.0",
+      "iniconfig==2.3.1",
+      "kiwisolver==1.5.1",
+      "matplotlib==3.10.3",
+      "numpy==2.2.6",
+      "packaging==26.3",
+      "pillow==13.0.0",
+      "pip==25.0.1",
+      "pluggy==1.7.0",
+      "pynauty==2.8.8.1",
+      "pyparsing==3.3.3",
+      "pytest==8.3.5",
+      "python-dateutil==4.0.0",
+      "setuptools==75.8.0",
+      "tzdata==2026.6",
+      "wheel==0.45.1"
+    ],
+    "soabi": "cpython-312-darwin",
+    "venv": ".venv",
+    "version": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "requirements_change": "Added exact pynauty==2.8.8.1 to requirements.txt; existing NumPy, matplotlib, pytest pins retained.",
+  "resource_policy": {
+    "hard_memory_enforcement": "BLOCKED",
+    "machine_probe": "Kernel EINVAL for a below-existing-VM RLIMIT_AS, not invalid soft/hard ordering. Larger limit succeeds; RSS and VM are distinct.",
+    "parent_limits_unchanged": true,
+    "policy": "Option B unchanged: 536870912-byte threshold, 10ms nominal parent sampling, 5-second parent deadline, independent worker lifetime peak RSS",
+    "production_use": "NOT_AUTHORIZED",
+    "ram_8_gib_reported": "User-reported; direct sysctl query denied in this sandbox",
+    "validation_report": "results/phase1_5_bprime_macos/m3_memory_diagnosis.json"
+  },
+  "schema": 1,
+  "status": "VALIDATION_ONLY_ENVIRONMENT_PREPARED",
+  "tests": {
+    "broader_watchdog_probes": {
+      "details": [
+        "changed original pin test could not open absent original native artifact",
+        "sustained 560 MiB probe reached 5-second watchdog timeout before reporting resource_excess",
+        "transient 560 MiB peak probe did not report above-threshold lifetime RSS"
+      ],
+      "failed": 3,
+      "passed": 23
+    },
+    "memory_diagnosis": {
+      "failed": 1,
+      "failed_case": "test_production_gate_remains_closed_and_previous_certificate_pin_unchanged; original pinned artifacts absent",
+      "passed": 11
+    },
+    "pynauty_suite": {
+      "failed": 0,
+      "passed": 33
+    },
+    "targeted_repository_synthetic": {
+      "deselected": 9,
+      "failed": 0,
+      "passed": 17
+    }
+  }
+}
