@@ -8,7 +8,7 @@ import mujoco
 import mujoco.viewer
 
 
-def replay(result_dir: Path, speed: float, *, viewer=True):
+def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop=True):
     model = mujoco.MjModel.from_xml_path(str(result_dir/'scene.xml'))
     data = mujoco.MjData(model)
     key = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_KEY, 'stand')
@@ -20,6 +20,10 @@ def replay(result_dir: Path, speed: float, *, viewer=True):
     qroot = data.qpos[qadr:qadr+7].copy()
     with (result_dir/'trajectory.json').open(encoding='utf-8') as handle:
         trajectory = json.load(handle)
+    if not trajectory:
+        raise ValueError('Saved G1 trajectory is empty')
+    cells = json.loads((result_dir/'scenario.json').read_text(encoding='utf-8'))
+    spacing = cells['cell_size_m']
     object_ids = {}
     pedestrian_ids = {}
     for body in range(model.nbody):
@@ -48,8 +52,6 @@ def replay(result_dir: Path, speed: float, *, viewer=True):
     def show_frame(frame):
         x, y = frame['position']
         # Grid spacing and origin are encoded by the runner's documented 0.75 m convention.
-        cells = json.loads((result_dir/'scenario.json').read_text(encoding='utf-8'))
-        spacing = cells['cell_size_m']
         wx = (x-(cells['width']-1)/2)*spacing
         wy = (y-(cells['height']-1)/2)*spacing
         data.qpos[qadr:qadr+7] = qroot
@@ -84,11 +86,43 @@ def replay(result_dir: Path, speed: float, *, viewer=True):
 
     if not viewer:
         return [show_frame(frame) for frame in trajectory]
+
+    # Prime the state before creating the viewer; the default MuJoCo free camera
+    # may otherwise look away from the robot in a large (25 x 25) indoor scene.
+    show_frame(trajectory[0])
+    overview = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_CAMERA, 'overview')
+    if camera == 'overview' and overview < 0:
+        raise ValueError('The saved scene has no overview camera')
+    print(f'Opening G1 playback: {len(trajectory)} frames, camera={camera}. '
+          'Close the viewer window to stop.', flush=True)
     with mujoco.viewer.launch_passive(model, data) as handle:
-        for frame in trajectory:
-            show_frame(frame)
-            handle.sync()
-            time.sleep(speed)
+        with handle.lock():
+            if camera == 'overview':
+                handle.cam.type = mujoco.mjtCamera.mjCAMERA_FIXED
+                handle.cam.fixedcamid = int(overview)
+            else:
+                handle.cam.type = mujoco.mjtCamera.mjCAMERA_FREE
+                handle.cam.distance = 6.0
+                handle.cam.azimuth = 135.0
+                handle.cam.elevation = -55.0
+                handle.cam.lookat[:] = (
+                    float(data.qpos[qadr]), float(data.qpos[qadr+1]), 0.9)
+        handle.sync()
+        # Allow the native window to render the first frame before replay.
+        time.sleep(1.0)
+        while handle.is_running():
+            for frame in trajectory:
+                if not handle.is_running():
+                    break
+                show_frame(frame)
+                if camera == 'follow':
+                    with handle.lock():
+                        handle.cam.lookat[:] = (
+                            float(data.qpos[qadr]), float(data.qpos[qadr+1]), 0.9)
+                handle.sync()
+                time.sleep(speed)
+            if not loop:
+                break
     return []
 
 
@@ -97,10 +131,15 @@ def main():
     parser.add_argument('--result-dir', type=Path, required=True)
     parser.add_argument('--speed', type=float, default=0.25, help='Seconds per saved frame')
     parser.add_argument('--validate-only', action='store_true', help='Headless replay/contact consistency check')
+    parser.add_argument('--camera', choices=('follow', 'overview'), default='follow',
+                        help='Follow G1 or use the fixed whole-scene overview')
+    parser.add_argument('--once', action='store_true',
+                        help='Play only once; otherwise replay until the viewer is closed')
     args = parser.parse_args()
     if args.speed <= 0:
         parser.error('--speed must be positive')
-    contacts = replay(args.result_dir.resolve(), args.speed, viewer=not args.validate_only)
+    contacts = replay(args.result_dir.resolve(), args.speed,
+                      viewer=not args.validate_only, camera=args.camera, loop=not args.once)
     if args.validate_only:
         print(json.dumps({'frames': len(contacts), 'unwanted_contact_frames': sum(n > 0 for n in contacts)}))
 
