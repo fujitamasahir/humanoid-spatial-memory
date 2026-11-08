@@ -116,3 +116,22 @@ def test_kinematic_run_with_movement_gate_has_no_unwanted_contacts():
         'g1_pedestrian_contact_pairs', 'g1_wall_contact_pairs',
         'g1_persistent_obstacle_contact_pairs', 'g1_self_contact_pairs')) == 0
         for frame in frames)
+
+
+def test_saved_g1_scene_has_display_only_rendering_bounds_without_changing_evidence():
+    """Parked Z=-1000 obstacle bodies must not make the GUI near clip enormous."""
+    from pathlib import Path
+    import xml.etree.ElementTree as ET
+    import mujoco
+    from scripts.view_phase2_g1_navigation import display_scene_xml
+
+    result_dir = Path(__file__).resolve().parents[1] / 'results/phase2_mujoco/g1_smoke'
+    source = result_dir / 'scene.xml'
+    original = source.read_bytes()
+    xml = display_scene_xml(result_dir)
+    statistic = ET.fromstring(xml).find('statistic')
+    assert statistic is not None
+    model = mujoco.MjModel.from_xml_string(xml)
+    assert 1 < model.stat.extent < 100
+    assert model.stat.extent * model.vis.map.znear < 1
+    assert source.read_bytes() == original
