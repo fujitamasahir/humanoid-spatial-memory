@@ -605,3 +605,110 @@ def test_saved_g1_scene_has_display_only_rendering_bounds_without_changing_evide
     assert 1 < model.stat.extent < 100
     assert model.stat.extent * model.vis.map.znear < 1
     assert source.read_bytes() == original
+
+
+def _g1_viewer_module():
+    from importlib.util import module_from_spec, spec_from_file_location
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[1] / 'scripts/view_phase2_g1_navigation.py'
+    spec = spec_from_file_location('phase2_g1_visual_gait_test_module', path)
+    module = module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_visual_gait_joint_offsets_respect_actual_g1_ranges_and_are_deterministic():
+    from pathlib import Path
+    import mujoco
+
+    viewer = _g1_viewer_module()
+    result = Path(__file__).resolve().parents[1] / \
+        'results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final'
+    model = mujoco.MjModel.from_xml_string(viewer.display_scene_xml(result))
+    first = viewer.gait_joint_targets(model, 1.234, 0.8, -1)
+    second = viewer.gait_joint_targets(model, 1.234, 0.8, -1)
+    assert first == second
+    expected = {
+        'left_hip_pitch_joint', 'right_hip_pitch_joint',
+        'left_knee_joint', 'right_knee_joint',
+        'left_ankle_pitch_joint', 'right_ankle_pitch_joint',
+        'left_shoulder_pitch_joint', 'right_shoulder_pitch_joint',
+        'left_elbow_joint', 'right_elbow_joint',
+    }
+    assert set(first) == expected
+    for name, offset in first.items():
+        jid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, name)
+        low, high = model.jnt_range[jid]
+        assert low <= offset <= high
+
+
+def test_visual_gait_interpolates_heading_by_shortest_arc_and_root_continuously():
+    import math
+
+    viewer = _g1_viewer_module()
+    a, b = math.radians(170), math.radians(-170)
+    midpoint = viewer.interpolate_heading(a, b, 0.5)
+    assert abs(abs(midpoint)-math.pi) < 1e-9
+    frame = viewer.interpolate_frame(
+        {'position': (1, 2), 'heading_yaw': a},
+        {'position': (3, 6), 'heading_yaw': b}, 0.25)
+    assert frame['position'] == (1.5, 3.0)
+    assert abs(frame['heading_yaw']-math.radians(175)) < 1e-9
+
+
+def test_visual_gait_start_stop_transitions_are_smooth_and_return_to_stand():
+    viewer = _g1_viewer_module()
+    assert viewer.smooth_gait_envelope(0, True) == 0
+    assert 0 < viewer.smooth_gait_envelope(0.11, True) < 1
+    assert viewer.smooth_gait_envelope(viewer.GAIT_RAMP_SECONDS, True) == 1
+    assert viewer.smooth_gait_envelope(0, False) == 1
+    assert 0 < viewer.smooth_gait_envelope(0.11, False) < 1
+    assert viewer.smooth_gait_envelope(viewer.GAIT_RAMP_SECONDS, False) == 0
+
+
+def test_visual_gait_samples_are_deterministic_for_forward_lateral_backward_and_turns():
+    import math
+
+    viewer = _g1_viewer_module()
+    trajectory = [
+        {'position': (0, 0), 'heading_yaw': 0.0},
+        {'position': (1, 0), 'heading_yaw': 0.0},       # forward
+        {'position': (1, 1), 'heading_yaw': 0.0},       # lateral
+        {'position': (0, 1), 'heading_yaw': 0.0},       # backward
+        {'position': (0, 1), 'heading_yaw': math.pi/2}, # in-place turn
+        {'position': (0, 1), 'heading_yaw': math.pi/2}, # stop
+        {'position': (0, 2), 'heading_yaw': math.pi/2}, # resume laterally
+    ]
+    first = list(viewer.playback_samples(trajectory, 0.12, 0.75, fps=30))
+    second = list(viewer.playback_samples(trajectory, 0.12, 0.75, fps=30))
+    assert first == second
+    assert len(first) == 32  # six route segments plus a full stand-pose settle
+    assert first[0][2] == 0 and first[0][3] == 0
+    assert all(sample[1] in trajectory for sample in first)
+    assert min(sample[0]['position'][0] for sample in first) >= 0
+    assert max(sample[0]['position'][0] for sample in first) <= 1
+    assert any(sample[4] < 0 for sample in first)
+    final_pose = first[-1]
+    assert final_pose[3] == 0
+    # Stopping and restarting reverses the envelope without a pose discontinuity.
+    movement_stop_start = [sample[3] for sample in first]
+    assert all(0 <= value <= 1 for value in movement_stop_start)
+    assert max(abs(b-a) for a, b in zip(movement_stop_start, movement_stop_start[1:])) <= \
+        1/30/viewer.GAIT_RAMP_SECONDS + 1e-9
+
+
+def test_visual_gait_default_headless_replay_preserves_saved_results():
+    import hashlib
+    from pathlib import Path
+
+    viewer = _g1_viewer_module()
+    result = Path(__file__).resolve().parents[1] / \
+        'results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final'
+    trajectory = result / 'trajectory.json'
+    before = hashlib.sha256(trajectory.read_bytes()).hexdigest()
+    default = viewer.replay(result, 0.1, viewer=False)
+    explicit_default = viewer.replay(result, 0.1, viewer=False, visual_gait=False)
+    assert default == explicit_default
+    assert sum(count > 0 for count in default) == 0
+    assert hashlib.sha256(trajectory.read_bytes()).hexdigest() == before

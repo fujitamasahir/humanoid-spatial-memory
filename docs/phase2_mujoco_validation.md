@@ -478,3 +478,30 @@ of the successful trajectory is:
   --result-dir results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final \
   --camera overview
 ```
+
+### Optional portfolio gait overlay
+
+For a roughly 12-second, 30 FPS portfolio replay, add `--visual-gait --speed
+0.18 --once`. The flag interpolates the displayed root position and shortest-arc
+heading between the saved trajectory frames, then adds small alternating hip,
+knee, ankle, shoulder and elbow offsets around the exact `stand` keyframe. Joint
+names and hard ranges come from the loaded G1 MJCF. Forward/backward direction
+reverses gait phase; lateral translation uses a regular alternating cycle; an
+in-place turn fades the limbs toward stand while yaw interpolates. Animation
+phase advances by traveled distance, so playback speed controls its cadence.
+The default replay without the flag is unchanged.
+
+```bash
+.venv/bin/mjpython scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final \
+  --camera overview --visual-gait --speed 0.18 --once
+```
+
+This is a presentation-only procedural animation. It does not change saved
+positions, obstacle/pedestrian snapshots, route decisions or experiment
+metrics, and it does not solve foot placement or balance. The feet can visibly
+slide, lift through the floor, or intersect nearby geometry during the overlay;
+it is not physically valid walking. Geometry group 5 remains visible in the
+viewer. The gait regression tests cover actual MJCF joint limits, deterministic
+poses, continuous root/heading interpolation, backward movement, stop settling
+and default headless replay immutability.

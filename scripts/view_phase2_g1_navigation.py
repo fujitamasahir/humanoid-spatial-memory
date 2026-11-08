@@ -10,6 +10,107 @@ import mujoco
 import mujoco.viewer
 
 
+# Presentation-only gait amplitudes (radians). The route remains a saved,
+# kinematic trajectory; these values pose the rendered joints only.
+GAIT_STRIDE_M = 1.5
+GAIT_RAMP_SECONDS = 0.22
+GAIT_AMPLITUDES = {
+    'hip_pitch': 0.20, 'knee': 0.28, 'ankle_pitch': 0.12,
+    'shoulder_pitch': 0.12, 'elbow': 0.08,
+}
+
+
+def interpolate_heading(a, b, fraction):
+    """Interpolate yaw along the shortest arc, including wrap at +/- pi."""
+    delta = (float(b) - float(a) + math.pi) % (2 * math.pi) - math.pi
+    return float(a) + delta * min(1.0, max(0.0, float(fraction)))
+
+
+def interpolate_frame(first, second, fraction):
+    """Interpolate only rendered root pose; discrete world state stays saved."""
+    f = min(1.0, max(0.0, float(fraction)))
+    p0, p1 = first['position'], second['position']
+    return {
+        'position': (float(p0[0]) + (float(p1[0])-float(p0[0]))*f,
+                     float(p0[1]) + (float(p1[1])-float(p0[1]))*f),
+        'heading_yaw': interpolate_heading(first.get('heading_yaw', 0.0),
+                                            second.get('heading_yaw', 0.0), f),
+    }
+
+
+def gait_joint_targets(model, phase, amplitude, travel_sign=1.0):
+    """Return bounded display joint offsets for one deterministic gait pose."""
+    phase = float(phase) * (1.0 if travel_sign >= 0 else -1.0)
+    amplitude = min(1.0, max(0.0, float(amplitude)))
+    targets = {}
+    for side, offset in (('left', 0.0), ('right', math.pi)):
+        leg = phase + offset
+        swing = math.sin(leg)
+        knee = max(0.0, math.sin(leg + 0.25))
+        values = {
+            f'{side}_hip_pitch_joint': GAIT_AMPLITUDES['hip_pitch'] * swing * amplitude,
+            f'{side}_knee_joint': GAIT_AMPLITUDES['knee'] * knee * amplitude,
+            f'{side}_ankle_pitch_joint': -GAIT_AMPLITUDES['ankle_pitch'] *
+                (swing + 0.45 * knee) * amplitude,
+            f'{side}_shoulder_pitch_joint': -GAIT_AMPLITUDES['shoulder_pitch'] *
+                swing * amplitude,
+            f'{side}_elbow_joint': GAIT_AMPLITUDES['elbow'] *
+                max(0.0, swing) * amplitude,
+        }
+        for name, value in values.items():
+            joint = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, name)
+            if joint < 0:
+                continue
+            low, high = map(float, model.jnt_range[joint])
+            targets[name] = min(high, max(low, value))
+    return targets
+
+
+def smooth_gait_envelope(elapsed, moving, ramp=GAIT_RAMP_SECONDS):
+    """Simple display envelope with a smooth start and return to stand."""
+    if moving:
+        x = min(1.0, max(0.0, float(elapsed) / ramp))
+        return x*x*(3-2*x)
+    x = min(1.0, max(0.0, 1.0-float(elapsed)/ramp))
+    return x*x*(3-2*x)
+
+
+def playback_samples(trajectory, speed, spacing, fps=30):
+    """Yield display poses at fixed FPS while retaining saved scene states."""
+    phase = 0.0
+    if len(trajectory) == 1:
+        yield interpolate_frame(trajectory[0], trajectory[0], 0), trajectory[0], phase, 0.0, 1.0
+        return
+    gait_amplitude = 0.0
+    frame_dt = 1.0 / fps
+    for first, second in zip(trajectory, trajectory[1:]):
+        p0, p1 = first['position'], second['position']
+        dx, dy = float(p1[0])-float(p0[0]), float(p1[1])-float(p0[1])
+        distance = math.hypot(dx, dy) * spacing
+        moving = distance > 1e-9
+        heading = float(first.get('heading_yaw', 0.0))
+        forward = dx * math.cos(heading) + dy * math.sin(heading)
+        lateral = -dx * math.sin(heading) + dy * math.cos(heading)
+        travel_sign = -1.0 if abs(forward) > abs(lateral) and forward < 0 else 1.0
+        steps = max(1, int(math.ceil(speed * fps)))
+        for tick in range(steps):
+            t = min(1.0, tick / steps)
+            root = interpolate_frame(first, second, t)
+            env_frame = first if t < 1.0 else second
+            yield root, env_frame, phase + (distance / GAIT_STRIDE_M) * (2*math.pi) * t, gait_amplitude, travel_sign
+            target_amplitude = 1.0 if moving else 0.0
+            alpha = min(1.0, frame_dt / GAIT_RAMP_SECONDS)
+            difference = target_amplitude - gait_amplitude
+            gait_amplitude += min(alpha, difference) if difference > 0 else max(-alpha, difference)
+        phase += distance / GAIT_STRIDE_M * (2*math.pi)
+    last = trajectory[-1]
+    settle_steps = max(1, int(math.ceil(GAIT_RAMP_SECONDS * fps)))
+    for tick in range(settle_steps):
+        yield interpolate_frame(last, last, 0), last, phase, gait_amplitude, 1.0
+        gait_amplitude = max(0.0, gait_amplitude-frame_dt/GAIT_RAMP_SECONDS)
+    yield interpolate_frame(last, last, 0), last, phase, 0.0, 1.0
+
+
 def display_scene_xml(result_dir: Path):
     """Return a view-only scene with sane camera bounds (never edit evidence).
 
@@ -45,7 +146,8 @@ def display_scene_xml(result_dir: Path):
     return ET.tostring(root, encoding='unicode')
 
 
-def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop=True):
+def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop=True,
+           visual_gait=False):
     model = mujoco.MjModel.from_xml_string(display_scene_xml(result_dir))
     print(f'View-only model extent: {model.stat.extent:.2f} m, '
           f'near clip: {model.vis.map.znear * model.stat.extent:.3f} m',
@@ -58,6 +160,14 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
     mujoco.mj_resetDataKeyframe(model, data, key)
     qadr = int(model.jnt_qposadr[joint])
     qroot = data.qpos[qadr:qadr+7].copy()
+    stand_pose = {}
+    gait_addresses = {}
+    for name in gait_joint_targets(model, 0, 0):
+        jid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, name)
+        if jid >= 0 and int(model.jnt_type[jid]) == int(mujoco.mjtJoint.mjJNT_HINGE):
+            address = int(model.jnt_qposadr[jid])
+            stand_pose[name] = float(data.qpos[address])
+            gait_addresses[name] = (jid, address)
     with (result_dir/'trajectory.json').open(encoding='utf-8') as handle:
         trajectory = json.load(handle)
     if not trajectory:
@@ -89,7 +199,8 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
                 break
             body = int(model.body_parentid[body])
 
-    def show_frame(frame):
+    def show_frame(frame, scene_frame=None, gait=None):
+        scene_frame = frame if scene_frame is None else scene_frame
         x, y = frame['position']
         # Grid spacing and origin are encoded by the runner's documented 0.75 m convention.
         wx = (x-(cells['width']-1)/2)*spacing
@@ -98,22 +209,31 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
         data.qpos[qadr:qadr+2] = (wx, wy)
         yaw = float(frame.get('heading_yaw', 0.0))
         data.qpos[qadr+3:qadr+7] = (math.cos(yaw/2), 0.0, 0.0, math.sin(yaw/2))
+        for name, base in stand_pose.items():
+            _, address = gait_addresses[name]
+            data.qpos[address] = base
+        if gait is not None:
+            phase, amplitude, travel_sign = gait
+            for name, offset in gait_joint_targets(model, phase, amplitude, travel_sign).items():
+                jid, address = gait_addresses[name]
+                low, high = map(float, model.jnt_range[jid])
+                data.qpos[address] = min(high, max(low, stand_pose[name] + offset))
         data.qvel[:] = 0
         data.mocap_pos[:] = 0
         for cell, mocap in object_ids.items():
             cx, cy = cell
             data.mocap_pos[mocap] = ((cx-(cells['width']-1)/2)*spacing,
                                      (cy-(cells['height']-1)/2)*spacing,
-                                     0 if list(cell) in frame['active_objects'] else -1000)
+                                     0 if list(cell) in scene_frame['active_objects'] else -1000)
         for index, mocap in pedestrian_ids.items():
-            cell = frame['people'][index] if index < len(frame['people']) else None
+            cell = scene_frame['people'][index] if index < len(scene_frame['people']) else None
             if cell is not None:
                 cx, cy = cell
                 data.mocap_pos[mocap] = ((cx-(cells['width']-1)/2)*spacing,
                                          (cy-(cells['height']-1)/2)*spacing, 0)
             else:
                 data.mocap_pos[mocap] = (0, 0, -1000)
-        data.time = frame['step']*0.02
+        data.time = float(frame.get('step', 0))*0.02
         mujoco.mj_forward(model, data)
         bad = 0
         for i in range(data.ncon):
@@ -156,17 +276,22 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
         handle.sync()
         # Allow the native window to render the first frame before replay.
         time.sleep(1.0)
+        samples = (list(playback_samples(trajectory, speed, spacing, fps=30))
+                   if visual_gait else None)
         while handle.is_running():
-            for frame in trajectory:
+            poses = (samples if visual_gait else
+                     [(frame, frame, None, 0.0, 1.0) for frame in trajectory])
+            for frame, scene_frame, phase, amplitude, travel_sign in poses:
                 if not handle.is_running():
                     break
-                show_frame(frame)
+                gait = ((phase, amplitude, travel_sign) if visual_gait else None)
+                show_frame(frame, scene_frame, gait)
                 if camera == 'follow':
                     with handle.lock():
                         handle.cam.lookat[:] = (
                             float(data.qpos[qadr]), float(data.qpos[qadr+1]), 0.9)
                 handle.sync()
-                time.sleep(speed)
+                time.sleep(1.0/30.0 if visual_gait else speed)
             if not loop:
                 break
     return []
@@ -181,6 +306,8 @@ def main():
                         help='Follow G1 or use the fixed whole-scene overview')
     parser.add_argument('--once', action='store_true',
                         help='Play only once; otherwise replay until the viewer is closed')
+    parser.add_argument('--visual-gait', action='store_true',
+                        help='Add a presentation-only procedural gait; saved route and world are unchanged')
     parser.add_argument('--export-view-scene', type=Path,
                         help='Save a derived display-only MJCF for testing in the standard MuJoCo viewer')
     args = parser.parse_args()
@@ -192,7 +319,8 @@ def main():
                                           encoding='utf-8')
         print(f'Display-only scene: {args.export_view_scene}', flush=True)
     contacts = replay(args.result_dir.resolve(), args.speed,
-                      viewer=not args.validate_only, camera=args.camera, loop=not args.once)
+                      viewer=not args.validate_only, camera=args.camera, loop=not args.once,
+                      visual_gait=args.visual_gait)
     if args.validate_only:
         print(json.dumps({'frames': len(contacts), 'unwanted_contact_frames': sum(n > 0 for n in contacts)}))
 
