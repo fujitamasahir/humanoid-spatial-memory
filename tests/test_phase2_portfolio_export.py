@@ -10,13 +10,13 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/export_phase2_portfolio_demo.py"
-SOURCE = ROOT / "results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0"
+SOURCE = ROOT / "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke"
 SPEC = importlib.util.spec_from_file_location("phase2_portfolio_export", SCRIPT)
 exporter = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(exporter)
 
 
-def test_display_scene_has_translucent_walls_and_noncolliding_start_goal_pins():
+def test_display_scene_has_readable_translucent_walls_and_cyan_gold_halo_pins():
     import mujoco
 
     root = ET.fromstring(exporter.make_display_xml(SOURCE))
@@ -30,9 +30,23 @@ def test_display_scene_has_translucent_walls_and_noncolliding_start_goal_pins():
         assert tip.get("type") == "ellipsoid"
         assert stem.get("contype") == tip.get("contype") == "0"
         assert stem.get("conaffinity") == tip.get("conaffinity") == "0"
+        assert root.find(f".//geom[@name='portfolio_{key}_halo_outer']") is not None
+        assert root.find(f".//geom[@name='portfolio_{key}_glint']") is not None
     model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
     wall_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "wall_0_0")
-    assert model.geom_rgba[wall_id, 3] == pytest.approx(0.30)
+    assert 0.30 <= model.geom_rgba[wall_id, 3] <= 0.50
+    floor_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "floor")
+    floor_luma = float(np.dot(model.geom_rgba[floor_id, :3], (0.2126, 0.7152, 0.0722)))
+    wall_luma = float(np.dot(model.geom_rgba[wall_id, :3], (0.2126, 0.7152, 0.0722)))
+    assert floor_luma > wall_luma
+    black_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_MATERIAL, "black")
+    assert model.mat_rgba[black_id, 0] >= 0.4
+    for key, expected in (("start", (0.04, 0.73, 0.96)),
+                          ("goal", (1.0, 0.62, 0.10))):
+        geom_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM,
+                                    f"portfolio_{key}_tip")
+        rgba = model.mat_rgba[model.geom_matid[geom_id]]
+        assert tuple(rgba[:3]) == pytest.approx(expected)
     for key in ("start", "goal"):
         geom_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM,
                                     f"portfolio_{key}_stem")
@@ -55,19 +69,49 @@ def test_display_scene_allocates_requested_offscreen_framebuffer():
         exporter.make_display_xml(SOURCE, offwidth=0)
 
 
-def test_camera_modes_are_deterministic_and_keep_portfolio_route_framed():
+def test_heading_relative_follow_camera_trails_and_looks_ahead_smoothly():
     import mujoco
 
     trajectory = json.loads((SOURCE / "trajectory.json").read_text())
     scenario = json.loads((SOURCE / "scenario.json").read_text())
-    for mode in ("portfolio", "follow", "overview"):
+    for mode in ("follow", "overview"):
         first = exporter.camera_for(mode, trajectory, scenario, trajectory[0], .75)
         second = exporter.camera_for(mode, trajectory, scenario, trajectory[0], .75)
         assert np.array_equal(first.lookat, second.lookat)
         assert first.distance == second.distance
         assert first.type == mujoco.mjtCamera.mjCAMERA_FREE
-    portfolio = exporter.camera_for("portfolio", trajectory, scenario, trajectory[0], .75)
-    assert portfolio.distance >= 8.5
+    first = dict(trajectory[0], heading_yaw=0.0)
+    east = exporter.camera_for("follow", trajectory, scenario, first, .75)
+    assert east.azimuth == pytest.approx(180.0)
+    cell_x = (first["position"][0] - (scenario["width"] - 1) / 2) * .75
+    assert east.lookat[0] == pytest.approx(cell_x + exporter.FOLLOW_LOOKAHEAD_M)
+    north_frame = dict(first, heading_yaw=np.pi / 2)
+    north = exporter.camera_for("follow", trajectory, scenario, north_frame, .75)
+    assert north.azimuth == pytest.approx(270.0)
+    assert north.lookat[1] > east.lookat[1]
+    assert east.distance == pytest.approx(exporter.FOLLOW_DISTANCE_M)
+    assert east.elevation == pytest.approx(exporter.FOLLOW_ELEVATION_DEG)
+    tracker = exporter.FollowCamera(trajectory, scenario, .75, smoothing=.2)
+    tracker.update(first)
+    advanced = dict(first, position=[first["position"][0] + 2, first["position"][1]])
+    smoothed = tracker.update(advanced)
+    immediate = exporter.camera_for("follow", trajectory, scenario, advanced, .75)
+    assert smoothed.lookat[0] < immediate.lookat[0]
+
+
+def test_source_selection_uses_a_deterministic_score_and_prefers_complex_safe_route():
+    first_path, first = exporter.select_source_result()
+    second_path, second = exporter.select_source_result()
+    assert first_path == second_path
+    assert first == second
+    assert first_path.name == "g1_mujoco3d_heading_perception_smoke"
+    selected = first["selected"]
+    assert selected["eligible"] and selected["successful"] and selected["contact_free"]
+    assert selected["heading_changes"] == 23
+    assert selected["route_length_cells"] == pytest.approx(69)
+    assert selected["path_span_cells"] == {"x": 14, "y": 14}
+    assert selected["score"] == pytest.approx(327)
+    assert "10 * heading changes" in first["rule"]
 
 
 def test_offscreen_frame_export_is_deterministic_and_preserves_source(monkeypatch, tmp_path):
@@ -89,7 +133,7 @@ def test_offscreen_frame_export_is_deterministic_and_preserves_source(monkeypatc
     before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths}
     outputs = [tmp_path / "first", tmp_path / "second"]
     metadata = [exporter.render_frames(SOURCE, output, fps=1, width=320, height=180,
-                                      speed=.01) for output in outputs]
+                                      speed=.01, camera_mode="follow") for output in outputs]
     assert metadata[0] == metadata[1]
     assert metadata[0]["source_trajectory_or_metrics_modified"] is False
     for output in outputs:
@@ -97,6 +141,9 @@ def test_offscreen_frame_export_is_deterministic_and_preserves_source(monkeypatc
         assert len(frame_paths) == metadata[0]["output_frames"]
         assert (output / "representative.png").is_file()
         assert json.loads((output / "metadata.json").read_text()) == metadata[0]
+        audit = json.loads((output / "visual_only_contact_audit.json").read_text())
+        assert audit["rendered_poses"] == metadata[0]["output_frames"]
+        assert audit["status"] in {"PASS", "FAIL"}
         assert json.loads((output / "artifact_manifest.json").read_text())
         with pytest.raises(FileExistsError):
             exporter.render_frames(SOURCE, output, fps=1, width=320, height=180, speed=.01)

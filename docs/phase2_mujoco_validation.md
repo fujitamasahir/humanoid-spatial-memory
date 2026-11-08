@@ -619,35 +619,45 @@ overwritten.
 
 #### Direct portfolio video export
 
-`scripts/export_phase2_portfolio_demo.py` renders the successful saved
-portfolio trajectory directly with MuJoCo's offscreen renderer. Its default
-source is
-`results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0/`
-(14 saved poses, start `[13, 5]`, goal `[16, 14]`). The exporter reuses the
-viewer interpolation and display-only G1 gait, keeps the saved route and
-environment states, adds translucent walls and non-colliding blue START / orange
-GOAL pins, and writes PNG frames plus a representative still and deterministic
-metadata. Camera options are `portfolio` (default), `follow`, and `overview`.
-This remains a presentation replay, not physically actuated walking or a new
-experiment.
+`scripts/export_phase2_portfolio_demo.py` renders saved G1 trajectories directly
+with MuJoCo's offscreen renderer. It selects only successful, contact-free,
+actual-G1 results. The deterministic score is `10 * heading changes + route
+length in cells + x span + y span`; ties use the result-directory name. The
+highest score was
+`results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke/`: 23 heading
+changes, 69 cells of recorded movement, a 14-by-14-cell spatial span, successful
+goal completion, and zero unwanted contacts. The previous portfolio route had
+one heading change, 12 cells, and a 3-by-9-cell span. The selected trajectory is
+replayed as saved; it is not regenerated or modified.
+
+The default camera is now a smoothed heading-relative trailing follow view,
+slightly elevated and aimed ahead of G1. Walls use a brighter slate tint at
+0.38 opacity, the floor has a contrasting blue-gray tone, and G1's display-only
+materials receive a light lift for visibility. Cyan and gold markers have
+layered emissive halos. The pipeline reuses the viewer's interpolation and
+presentation-only gait and writes PNG frames, MP4, GIF, a representative still,
+metadata, candidate-selection rationale, and an artifact hash manifest. These
+are visual-only changes and do not affect collision or navigation metrics.
 
 On macOS, run from a logged-in Terminal session with MuJoCo's Cocoa helper. The
-following command exports frames, MP4, and GIF to the new default directory:
+following command exports frames, MP4, and GIF to a new directory:
 
 ```bash
 brew install ffmpeg  # only if ffmpeg is not already installed
 .venv/bin/mjpython scripts/export_phase2_portfolio_demo.py \
-  --result-dir results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0 \
-  --output-dir results/phase2_mujoco/portfolio_export_g1_bp_80010011 \
-  --camera portfolio --fps 24 --mp4 --gif
+  --output-dir results/phase2_mujoco/portfolio_export_g1_heading_follow_v4 \
+  --camera follow --fps 24 --speed 0.18 --mp4 --gif
 ```
 
-The Codex execution environment did not expose a usable macOS CoreGraphics
-connection (`invalid CoreGraphics connection`) and did not have ffmpeg, so it
-could not produce or visually inspect live MuJoCo pixels or an MP4 here. The
-exporter detects a missing ffmpeg before creating output and explains the
-install command; a headless renderer initialization failure likewise points
-to a logged-in macOS Terminal session. Its scene compilation, transparency,
-marker collision masks, camera determinism, frame/HUD path with a stub renderer,
-metadata repeatability, and source-file preservation are covered by focused
-tests.
+The polished output is in
+`results/phase2_mujoco/portfolio_export_g1_heading_follow_v4/`. It was rendered
+at 1280x720, 24 FPS, in 15.29 seconds (367 frames), with MP4, GIF, PNGs,
+metadata, candidate score report, visual contact audit, and an artifact manifest.
+The selected saved route's source trajectory and scene SHA-256 values match the
+export metadata. The rendered-pose audit passed with zero unwanted contacts
+(1,152 intended foot-floor contact pairs). The representative frame was
+visually reviewed.
+Focused tests cover follow-camera heading and smoothing, markers and colors,
+wall opacity, deterministic candidate scoring, source preservation, and
+render/export metadata. The robot uses kinematic root poses with a display-only
+joint gait; this is not physical walking control.

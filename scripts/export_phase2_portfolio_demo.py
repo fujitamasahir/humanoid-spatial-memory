@@ -17,10 +17,15 @@ import mujoco
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = ROOT / "results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0"
-DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_bp_80010011"
-WALL_RGBA = "0.23 0.25 0.29 0.30"
+DEFAULT_SOURCE = ROOT / "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke"
+DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_heading_follow_v4"
+WALL_RGBA = "0.40 0.48 0.56 0.38"
+FLOOR_RGBA = "0.57 0.65 0.68 1"
 FPS = 24
+SECONDS_PER_ACTION = 0.18
+FOLLOW_DISTANCE_M = 5.4
+FOLLOW_ELEVATION_DEG = -44.0
+FOLLOW_LOOKAHEAD_M = 0.65
 
 
 def sha256(raw: bytes) -> str:
@@ -46,6 +51,92 @@ def load_viewer_helpers():
     return module
 
 
+def candidate_metrics(result_dir: Path) -> dict:
+    """Score a saved actual-G1 successful, contact-free replay without rerunning it."""
+    summary_path, trajectory_path, scene_path = (result_dir / "summary.json",
+                                                  result_dir / "trajectory.json",
+                                                  result_dir / "scene.xml")
+    provenance_path = result_dir / "provenance.json"
+    required = (summary_path.is_file() and trajectory_path.is_file() and
+                scene_path.is_file() and provenance_path.is_file())
+    if not required:
+        return {"eligible": False, "reason": "missing saved provenance, scene, summary, or trajectory"}
+    summary = json.loads(summary_path.read_text())
+    provenance = json.loads(provenance_path.read_text())
+    trajectory = json.loads(trajectory_path.read_text())
+    robot_model = str(provenance.get("robot_model", ""))
+    model_files = {entry.get("path") for entry in provenance.get("robot_model_files", [])}
+    model_xml = scene_path.read_text(errors="ignore")
+    actual_g1 = (("Unitree G1" in robot_model and "actual Unitree G1" in robot_model) or
+                 ("third_party/unitree_g1/g1.xml" in model_files and
+                  "floating_base_joint" in model_xml))
+    if not actual_g1:
+        return {"eligible": False, "reason": "provenance does not identify the actual Unitree G1 model"}
+    if not trajectory:
+        return {"eligible": False, "reason": "saved trajectory is empty"}
+    if summary.get("success") is True:
+        success = True
+        safe = bool(summary.get("contact_free_success", summary.get("g1_contact_free_success", False)))
+        unwanted = int(summary.get("g1_unwanted_contact_pairs", summary.get("collision_count", 0)))
+    else:
+        periodic = summary.get("summary", {}).get("methods", {}).get("periodic", {})
+        success = int(periodic.get("goal_completions", 0)) > 0
+        safe = int(periodic.get("g1_contact_free_completions", 0)) > 0
+        unwanted = int(periodic.get("g1_unwanted_contact_pairs", 0))
+    if not success:
+        return {"eligible": False, "reason": "saved run did not complete its goal"}
+    if not safe or unwanted:
+        return {"eligible": False, "reason": "saved run is not contact-free"}
+    positions = [tuple(map(float, frame["position"])) for frame in trajectory]
+    route_length = sum(math.dist(a, b) for a, b in zip(positions, positions[1:]))
+    span_x = max(p[0] for p in positions) - min(p[0] for p in positions)
+    span_y = max(p[1] for p in positions) - min(p[1] for p in positions)
+    heading_changes = sum(bool(frame.get("heading_changed")) for frame in trajectory)
+    score = 10 * heading_changes + route_length + span_x + span_y
+    return {
+        "eligible": True,
+        "successful": True,
+        "contact_free": True,
+        "unwanted_contact_pairs": unwanted,
+        "heading_changes": heading_changes,
+        "route_length_cells": route_length,
+        "path_span_cells": {"x": span_x, "y": span_y},
+        "saved_poses": len(trajectory),
+        "score": score,
+        "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+    }
+
+
+def select_source_result(results_root: Path = ROOT / "results/phase2_mujoco") -> tuple[Path, dict]:
+    """Choose the most visually rich saved successful contact-free actual-G1 route."""
+    reports = []
+    for candidate in sorted((p for p in results_root.iterdir() if p.is_dir()), key=lambda p: p.name):
+        if not (candidate / "trajectory.json").exists():
+            continue
+        metrics = candidate_metrics(candidate)
+        try:
+            relative = candidate.resolve().relative_to(ROOT).as_posix()
+        except ValueError:
+            relative = candidate.name
+        reports.append({"_path": candidate.resolve(), "result_dir": relative, **metrics})
+    eligible = sorted((item for item in reports if item.get("eligible")),
+                      key=lambda item: (-item["score"], item["result_dir"]))
+    if not eligible:
+        raise ValueError("No saved successful, contact-free actual-G1 trajectory is eligible")
+    public_reports = [{key: value for key, value in item.items() if key != "_path"}
+                      for item in reports]
+    public_ranking = [{key: value for key, value in item.items() if key != "_path"}
+                      for item in eligible]
+    report = {
+        "rule": "Require a saved actual-Unitree-G1 successful goal completion, zero unwanted contacts, and a preserved trajectory. Rank eligible runs by 10 * heading changes + route length in cells + x span + y span; ties break by result directory name.",
+        "candidates": public_reports,
+        "eligible_ranking": public_ranking,
+        "selected": public_ranking[0],
+        "reason": ("Selected the highest-scoring eligible saved route. The rule rewards recorded turns, route length, and spatial coverage; it does not alter or regenerate the trajectory."),
+    }
+    return eligible[0]["_path"], report
+
+
 def make_display_xml(source: Path, *, offwidth: int = 1280,
                      offheight: int = 720) -> str:
     """Create a view-only MJCF with translucent walls and adequate offscreen buffers."""
@@ -68,32 +159,66 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
     global_settings.set("offwidth", str(offwidth))
     global_settings.set("offheight", str(offheight))
     scenario = json.loads((source / "scenario.json").read_text())
+    trajectory = json.loads((source / "trajectory.json").read_text())
+    scenario.setdefault("start", trajectory[0]["position"])
+    scenario.setdefault("goal", trajectory[-1]["position"])
     width, height, spacing = scenario["width"], scenario["height"], scenario["cell_size_m"]
+    asset = root.find("asset")
+    if asset is None:
+        asset = ET.SubElement(root, "asset")
+    materials = (
+        ("portfolio_start_pin", "0.04 0.73 0.96 1", "0.28"),
+        ("portfolio_start_halo", "0.04 0.73 0.96 0.24", "0.42"),
+        ("portfolio_goal_pin", "1 0.62 0.10 1", "0.30"),
+        ("portfolio_goal_halo", "1 0.62 0.10 0.25", "0.45"),
+        ("portfolio_marker_glint", "1 0.94 0.68 0.95", "0.18"),
+    )
+    for name, rgba, emission in materials:
+        ET.SubElement(asset, "material", {"name": name, "rgba": rgba,
+                                           "emission": emission, "specular": "0.45",
+                                           "shininess": "0.65"})
+    # A small presentation-only material lift makes the dark G1 meshes legible
+    # when translucent wall geometry overlaps the camera ray.
+    for material_name, rgba, emission in (("black", "0.58 0.65 0.70 1", "0.12"),
+                                          ("metal", "0.82 0.86 0.89 1", "0.05")):
+        material = asset.find(f"material[@name='{material_name}']")
+        if material is not None:
+            material.set("rgba", rgba)
+            material.set("emission", emission)
+            material.set("specular", "0.48")
+            material.set("shininess", "0.58")
     for geom in root.iter("geom"):
         name = geom.get("name", "")
         if name.startswith("wall_"):
             geom.set("rgba", WALL_RGBA)
+        elif name == "floor":
+            geom.set("rgba", FLOOR_RGBA)
     worldbody = root.find("worldbody")
     if worldbody is None:
         raise ValueError("Saved scene has no worldbody")
-    for key, label, rgba in (("start", "START", "0.12 0.72 0.96 1"),
-                             ("goal", "GOAL", "1 0.48 0.18 1")):
+    for key, label, material, halo in (("start", "START", "portfolio_start_pin", "portfolio_start_halo"),
+                                       ("goal", "GOAL", "portfolio_goal_pin", "portfolio_goal_halo")):
         cell = scenario[key]
         x = (float(cell[0]) - (width - 1) / 2) * spacing
         y = (float(cell[1]) - (height - 1) / 2) * spacing
         body = ET.SubElement(worldbody, "body", {
             "name": f"portfolio_{key}_marker", "pos": f"{x:.6f} {y:.6f} 0",
         })
-        ET.SubElement(body, "geom", {
-            "name": f"portfolio_{key}_stem", "type": "cylinder",
-            "pos": "0 0 1.58", "size": "0.055 0.20", "rgba": rgba,
-            "contype": "0", "conaffinity": "0", "group": "0",
-        })
-        ET.SubElement(body, "geom", {
-            "name": f"portfolio_{key}_tip", "type": "ellipsoid",
-            "pos": "0 0 1.82", "size": "0.14 0.14 0.16", "rgba": rgba,
-            "contype": "0", "conaffinity": "0", "group": "0",
-        })
+        # Layered flat ellipsoids make a restrained halo around a small pin.
+        for suffix, z, sizes, mat in (("halo_outer", 1.43, "0.25 0.25 0.022", halo),
+                                      ("halo_inner", 1.46, "0.16 0.16 0.026", halo)):
+            ET.SubElement(body, "geom", {"name": f"portfolio_{key}_{suffix}",
+                "type": "ellipsoid", "pos": f"0 0 {z}", "size": sizes,
+                "material": mat, "contype": "0", "conaffinity": "0", "group": "0"})
+        ET.SubElement(body, "geom", {"name": f"portfolio_{key}_stem", "type": "cylinder",
+            "pos": "0 0 1.75", "size": "0.032 0.25", "material": material,
+            "contype": "0", "conaffinity": "0", "group": "0"})
+        ET.SubElement(body, "geom", {"name": f"portfolio_{key}_tip", "type": "ellipsoid",
+            "pos": "0 0 2.02", "size": "0.105 0.105 0.12", "material": material,
+            "contype": "0", "conaffinity": "0", "group": "0"})
+        ET.SubElement(body, "geom", {"name": f"portfolio_{key}_glint", "type": "sphere",
+            "pos": "0.035 -0.032 2.06", "size": "0.028", "material": "portfolio_marker_glint",
+            "contype": "0", "conaffinity": "0", "group": "0"})
     return ET.tostring(root, encoding="unicode")
 
 
@@ -110,18 +235,44 @@ def camera_for(mode: str, trajectory: list[dict], scenario: dict, frame: dict,
     if mode == "overview":
         camera.lookat[:] = (0.0, 0.0, 0.85)
         camera.distance = max(scenario["width"], scenario["height"]) * spacing * 1.45
-    elif mode == "follow":
-        x, y = world(frame["position"])
-        camera.lookat[:] = (x, y, 0.95)
-        camera.distance = 5.8
     else:
-        positions = [world(item["position"]) for item in trajectory]
-        xs, ys = zip(*positions)
-        center_x, center_y = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
-        camera.lookat[:] = (center_x, center_y, 0.95)
-        route_span = max(max(xs) - min(xs), max(ys) - min(ys), 3.0)
-        camera.distance = max(8.5, route_span * 1.65)
+        yaw = float(frame.get("heading_yaw", 0.0))
+        x, y = world(frame["position"])
+        camera.lookat[:] = (x + FOLLOW_LOOKAHEAD_M * math.cos(yaw),
+                            y + FOLLOW_LOOKAHEAD_M * math.sin(yaw), 0.95)
+        camera.azimuth = (math.degrees(yaw) + 180.0) % 360.0
+        camera.elevation = FOLLOW_ELEVATION_DEG
+        camera.distance = FOLLOW_DISTANCE_M
     return camera
+
+
+class FollowCamera:
+    """Smoothed trailing camera that looks slightly ahead along recorded yaw."""
+    def __init__(self, trajectory: list[dict], scenario: dict, spacing: float,
+                 *, smoothing: float = 0.22):
+        self.trajectory = trajectory
+        self.scenario = scenario
+        self.spacing = spacing
+        self.smoothing = smoothing
+        self.camera = None
+
+    def update(self, frame: dict) -> mujoco.MjvCamera:
+        desired = camera_for("follow", self.trajectory, self.scenario, frame, self.spacing)
+        if self.camera is None:
+            self.camera = mujoco.MjvCamera()
+            mujoco.mjv_defaultCamera(self.camera)
+            self.camera.type = desired.type
+            self.camera.distance = desired.distance
+            self.camera.elevation = desired.elevation
+            self.camera.azimuth = desired.azimuth
+            self.camera.lookat[:] = desired.lookat
+            return self.camera
+        alpha = self.smoothing
+        self.camera.lookat[:] += alpha * (desired.lookat - self.camera.lookat)
+        delta = (desired.azimuth - self.camera.azimuth + 180.0) % 360.0 - 180.0
+        self.camera.azimuth = (self.camera.azimuth + alpha * delta) % 360.0
+        self.camera.elevation += alpha * (desired.elevation - self.camera.elevation)
+        return self.camera
 
 
 def apply_hud(frame: Image.Image, index: int, total: int, fps: int) -> Image.Image:
@@ -135,7 +286,7 @@ def apply_hud(frame: Image.Image, index: int, total: int, fps: int) -> Image.Ima
     draw.rounded_rectangle((28, 24, min(width - 28, 360), 96), radius=16,
                            fill=(10, 20, 30, 168), outline=(255, 255, 255, 52), width=1)
     draw.text((48, 37), "UNITREE G1  /  MAZE NAVIGATION", fill=(245, 249, 252, 255), font=font)
-    draw.text((48, 68), "PRESENTATION REPLAY  •  KINEMATIC ROOT MOTION",
+    draw.text((48, 68), "PRESENTATION REPLAY  |  KINEMATIC ROOT MOTION",
               fill=(171, 198, 214, 255), font=small)
     draw.rounded_rectangle((28, height - 46, width - 28, height - 28), radius=9,
                            fill=(9, 18, 27, 155))
@@ -148,7 +299,7 @@ def apply_hud(frame: Image.Image, index: int, total: int, fps: int) -> Image.Ima
                            fill=(10, 20, 30, 168), outline=(255, 255, 255, 52), width=1)
     draw.ellipse((width - 214, 43, width - 198, 59), fill=(31, 184, 239, 255))
     draw.text((width - 187, 41), "START", fill=(245, 249, 252, 255), font=small)
-    draw.ellipse((width - 214, 67, width - 198, 83), fill=(255, 122, 46, 255))
+    draw.ellipse((width - 214, 67, width - 198, 83), fill=(255, 166, 31, 255))
     draw.text((width - 187, 65), "GOAL", fill=(245, 249, 252, 255), font=small)
     return Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
 
@@ -157,8 +308,9 @@ def _set_group(options, group: int, enabled: bool) -> None:
     options.geomgroup[group] = int(enabled)
 
 
-def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FPS,
-                  width=1280, height=720, speed=0.8) -> dict:
+def render_frames(source: Path, output: Path, *, camera_mode="follow", fps=FPS,
+                  width=1280, height=720, speed=SECONDS_PER_ACTION,
+                  source_selection: dict | None = None) -> dict:
     viewer = load_viewer_helpers()
     scenario = json.loads((source / "scenario.json").read_text())
     trajectory_path = source / "trajectory.json"
@@ -166,6 +318,8 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
     trajectory = json.loads(trajectory_bytes)
     if len(trajectory) < 2:
         raise ValueError("Portfolio source trajectory must contain multiple saved poses")
+    scenario.setdefault("start", trajectory[0]["position"])
+    scenario.setdefault("goal", trajectory[-1]["position"])
     if trajectory[0]["position"] != scenario["start"] or trajectory[-1]["position"] != scenario["goal"]:
         raise ValueError("Source trajectory does not match its saved start and goal")
     if output.exists():
@@ -197,8 +351,28 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
         elif name.startswith("pedestrian_"):
             pedestrian_ids[int(name.removeprefix("pedestrian_"))] = int(model.body_mocapid[body])
 
+    floor_geom = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "floor")
+    g1_geoms, allowed_foot_geoms = set(), set()
+    for geom in range(model.ngeom):
+        body = int(model.geom_bodyid[geom])
+        while body > 0:
+            body_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, body) or ""
+            if body_name == "pelvis":
+                g1_geoms.add(geom)
+                geom_body_name = mujoco.mj_id2name(
+                    model, mujoco.mjtObj.mjOBJ_BODY, int(model.geom_bodyid[geom])) or ""
+                if ("ankle_roll_link" in geom_body_name and
+                    int(model.geom_type[geom]) == int(mujoco.mjtGeom.mjGEOM_SPHERE) and
+                    float(model.geom_size[geom, 0]) <= 0.0051):
+                    allowed_foot_geoms.add(geom)
+                break
+            body = int(model.body_parentid[body])
+    visual_audit = {"rendered_poses": 0, "foot_floor_contact_pairs": 0,
+                    "unwanted_contact_pairs": 0, "unwanted_contact_frames": 0,
+                    "contact_categories": {}}
+
     spacing = scenario["cell_size_m"]
-    samples = viewer.playback_samples(trajectory, speed, spacing, fps=fps)
+    samples = list(viewer.playback_samples(trajectory, speed, spacing, fps=fps))
     try:
         renderer = mujoco.Renderer(model, height=height, width=width)
     except Exception as error:
@@ -215,6 +389,7 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
     mujoco.mjv_defaultOption(option)
     _set_group(option, 5, True)
     option.flags[mujoco.mjtVisFlag.mjVIS_TRANSPARENT] = 1
+    follow_camera = FollowCamera(trajectory, scenario, spacing) if camera_mode == "follow" else None
     count = 0
     try:
         for count, (frame, env_frame, phase, amplitude, travel_sign) in enumerate(samples):
@@ -246,12 +421,33 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
                                              (cell[1] - (scenario["height"] - 1) / 2) * spacing, 0)
             data.time = count / fps
             mujoco.mj_forward(model, data)
-            camera = camera_for(camera_mode, trajectory, scenario, frame, spacing)
-            if camera_mode == "follow":
-                camera.lookat[:] = (world_x, world_y, 0.95)
+            bad_this_frame = 0
+            for contact_index in range(data.ncon):
+                contact = data.contact[contact_index]
+                geom_a, geom_b = int(contact.geom1), int(contact.geom2)
+                if ((geom_a in allowed_foot_geoms and geom_b == floor_geom) or
+                    (geom_b in allowed_foot_geoms and geom_a == floor_geom)):
+                    visual_audit["foot_floor_contact_pairs"] += 1
+                    continue
+                if geom_a in g1_geoms or geom_b in g1_geoms:
+                    bad_this_frame += 1
+                    visual_audit["unwanted_contact_pairs"] += 1
+                    other = geom_b if geom_a in g1_geoms else geom_a
+                    other_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_GEOM, other) or ""
+                    category = ("wall" if other_name.startswith("wall_") else
+                                "pedestrian" if other_name.startswith("pedestrian_geom_") else
+                                "persistent_obstacle" if other_name.startswith("object_geom_") else
+                                "floor" if other == floor_geom else "other")
+                    categories = visual_audit["contact_categories"]
+                    categories[category] = categories.get(category, 0) + 1
+            visual_audit["rendered_poses"] += 1
+            if bad_this_frame:
+                visual_audit["unwanted_contact_frames"] += 1
+            camera = (follow_camera.update(frame) if follow_camera is not None else
+                      camera_for(camera_mode, trajectory, scenario, frame, spacing))
             renderer.update_scene(data, camera=camera, scene_option=option)
             pixels = renderer.render()
-            image = apply_hud(Image.fromarray(pixels), count, 1, fps)
+            image = apply_hud(Image.fromarray(pixels), count, len(samples), fps)
             image.save(frames_dir / f"frame_{count:05d}.png", optimize=False)
     finally:
         renderer.close()
@@ -259,6 +455,12 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
     # Save a representative image outside the frame sequence for convenient previews.
     representative = frames_dir / f"frame_{max(0, total // 2):05d}.png"
     shutil.copyfile(representative, output / "representative.png")
+    visual_audit["status"] = ("PASS" if visual_audit["unwanted_contact_pairs"] == 0 else "FAIL")
+    visual_audit["interpretation"] = (
+        "Presentation-only MuJoCo pose contact audit; kinematic root poses and visual gait, "
+        "separate from navigation safety metrics.")
+    (output / "visual_only_contact_audit.json").write_text(
+        json.dumps(visual_audit, indent=2, sort_keys=True) + "\n")
     viewer_path = ROOT / "scripts/view_phase2_g1_navigation.py"
     source_scene = source / "scene.xml"
     settings = {
@@ -271,12 +473,19 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
         "duration_seconds": total / fps,
         "resolution": {"width": width, "height": height},
         "camera_mode": camera_mode,
-        "camera": {"azimuth_deg": 138.0, "elevation_deg": -48.0,
-                   "portfolio_distance_rule": "max(8.5 m, 1.65 x saved route span)"},
+        "camera": {"style": "smoothed heading-relative trailing/over-shoulder follow",
+                   "distance_m": FOLLOW_DISTANCE_M,
+                   "elevation_deg": FOLLOW_ELEVATION_DEG,
+                   "lookahead_m": FOLLOW_LOOKAHEAD_M,
+                   "target_smoothing_alpha": 0.22,
+                   "azimuth_rule": "recorded heading yaw + 180 degrees"},
         "seconds_per_saved_action": speed,
         "walls_rgba": WALL_RGBA,
-        "start_goal_markers": "non-colliding MuJoCo cylinder stem plus floating ellipsoid head; blue START, orange GOAL",
+        "floor_rgba": FLOOR_RGBA,
+        "g1_presentation_materials": "view-only brighter blue-slate black material and neutral silver metal material; source MJCF and collision geometry unchanged",
+        "start_goal_markers": "non-colliding cyan/gold emissive pin with layered translucent halo and specular highlight",
         "visual_gait": "reused deterministic viewer gait_joint_targets and playback_samples; display-only, not physical locomotion",
+        "visual_only_contact_audit_file": "visual_only_contact_audit.json",
         "source_trajectory_or_metrics_modified": False,
         "git_commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
                                      check=True, capture_output=True, text=True).stdout.strip(),
@@ -292,6 +501,10 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
             "viewer_helpers": sha256(viewer_path.read_bytes()),
         },
     }
+    if source_selection is not None:
+        settings["source_selection"] = source_selection["selected"]
+        (output / "source_selection.json").write_text(
+            json.dumps(source_selection, indent=2, sort_keys=True) + "\n")
     (output / "metadata.json").write_text(json.dumps(settings, indent=2, sort_keys=True) + "\n")
     write_artifact_manifest(output)
     return settings
@@ -301,7 +514,8 @@ def encode_mp4(output: Path, fps: int) -> None:
     ffmpeg = shutil.which("ffmpeg")
     if not ffmpeg:
         raise RuntimeError("MP4 export requires ffmpeg. Install it with `brew install ffmpeg`, then rerun the export command.")
-    subprocess.run([ffmpeg, "-y", "-framerate", str(fps), "-i",
+    subprocess.run([ffmpeg, "-hide_banner", "-loglevel", "error", "-y",
+                    "-framerate", str(fps), "-i",
                     str(output / "frames" / "frame_%05d.png"), "-c:v", "libx264",
                     "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
                     "-movflags", "+faststart", str(output / "portfolio_demo.mp4")], check=True)
@@ -338,18 +552,28 @@ def write_artifact_manifest(output: Path) -> None:
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--result-dir", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--result-dir", type=Path,
+                        help="Optional saved eligible source; default uses the deterministic best-route score")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--camera", choices=("portfolio", "follow", "overview"), default="portfolio")
+    parser.add_argument("--camera", choices=("follow", "overview"), default="follow")
     parser.add_argument("--fps", type=int, default=FPS)
     parser.add_argument("--width", type=int, default=1280)
     parser.add_argument("--height", type=int, default=720)
-    parser.add_argument("--speed", type=float, default=0.8,
-                        help="Seconds per saved action; default yields a 10-12 second highlight")
+    parser.add_argument("--speed", type=float, default=SECONDS_PER_ACTION,
+                        help="Seconds per saved action; default frames this route in about 15 seconds")
     parser.add_argument("--mp4", action="store_true")
     parser.add_argument("--gif", action="store_true")
     args = parser.parse_args(argv)
-    source = args.result_dir.resolve()
+    selected_source, selection_report = select_source_result()
+    source = args.result_dir.resolve() if args.result_dir else selected_source
+    source_metrics = candidate_metrics(source)
+    if not source_metrics.get("eligible"):
+        parser.error(f"Source is not a saved successful, contact-free actual-G1 route: {source_metrics.get('reason')}")
+    if args.result_dir:
+        selection_report = dict(selection_report)
+        selection_report["selected"] = {"result_dir": source.relative_to(ROOT).as_posix(),
+                                         **source_metrics}
+        selection_report["reason"] = "An explicit eligible saved source was requested; its score and all candidates remain recorded."
     output = args.output_dir.resolve()
     if not (source / "trajectory.json").is_file() or not (source / "scene.xml").is_file():
         parser.error(f"Source must contain saved trajectory.json and scene.xml: {source}")
@@ -363,7 +587,8 @@ def main(argv=None) -> int:
         parser.error(f"Refusing to overwrite existing output directory: {output}")
     try:
         metadata = render_frames(source, output, camera_mode=args.camera, fps=args.fps,
-                                 width=args.width, height=args.height, speed=args.speed)
+                                 width=args.width, height=args.height, speed=args.speed,
+                                 source_selection=selection_report)
         if args.mp4:
             encode_mp4(output, args.fps)
         if args.gif:
