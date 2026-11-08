@@ -22,7 +22,9 @@ from spatial_memory.simulation import scenario_from_bprime
 from spatial_memory.evaluation import run_episode
 from spatial_memory.mujoco_navigation import MujocoNavigationScene
 from spatial_memory.mujoco_perception import MujocoRayPerception
-from spatial_memory.navigation import HEADINGS, heading_index, plan_g1
+from spatial_memory.navigation import (HEADINGS, assess_observed_pedestrian_risk,
+    heading_index, plan_g1_default_policy)
+from spatial_memory.pedestrian_tracking import ObservedPedestrianTracker
 
 STORES = (
     'results/raw/phase15_macos_development/fit',
@@ -159,9 +161,29 @@ def summarize(rows):
             'g1_unwanted_contact_pairs': sum(row.get('g1_unwanted_contact_pairs', 0) for row in subset),
             'g1_footprint_blocked_attempts': sum(row.get('g1_footprint_blocked_attempts', 0) for row in subset),
             'g1_heading_changes': sum(row.get('g1_heading_changes', 0) for row in subset),
+            'g1_forward_actions': sum(row.get('g1_forward_actions', 0) for row in subset),
+            'g1_lateral_actions': sum(row.get('g1_lateral_actions', 0) for row in subset),
+            'g1_backward_actions': sum(row.get('g1_backward_actions', 0) for row in subset),
+            'g1_executed_forward_translations': sum(row.get('g1_executed_forward_translations', 0) for row in subset),
+            'g1_executed_lateral_steps': sum(row.get('g1_executed_lateral_steps', 0) for row in subset),
+            'g1_executed_backward_steps': sum(row.get('g1_executed_backward_steps', 0) for row in subset),
+            'g1_in_place_turns': sum(row.get('g1_in_place_turns', 0) for row in subset),
+            'g1_waits': sum(row.get('g1_waits', 0) for row in subset),
+            'g1_forward_action_percent': (100.0*sum(row.get('g1_forward_actions', 0)
+                for row in subset)/max(1, sum(row.get('g1_forward_actions', 0)
+                + row.get('g1_lateral_actions', 0)+row.get('g1_backward_actions', 0)
+                for row in subset))),
+            'g1_nonforward_action_reasons': {
+                reason: sum(row.get('g1_nonforward_action_reasons', {}).get(reason, 0)
+                            for row in subset)
+                for reason in sorted({reason for row in subset
+                    for reason in row.get('g1_nonforward_action_reasons', {})})},
             'g1_navigation_no_route_steps': sum(row.get('g1_navigation_no_route_steps', 0) for row in subset),
             'g1_rejected_action_attempts': sum(row.get('g1_rejected_action_attempts',
                 row.get('g1_footprint_blocked_attempts', 0)) for row in subset),
+            'g1_actual_collision_shield_queries': sum(row.get('g1_actual_collision_shield_queries', 0) for row in subset),
+            'g1_selected_actions_requiring_collision_check': sum(row.get('g1_selected_actions_requiring_collision_check', 0) for row in subset),
+            'g1_unattempted_collision_queries': sum(row.get('g1_unattempted_collision_queries', 0) for row in subset),
             'g1_distinct_rejected_actions': sum(row.get('g1_distinct_rejected_actions', 0) for row in subset),
             'g1_blocked_action_records': sum(row.get('g1_rejected_action_attempts',
                 row.get('g1_footprint_blocked_attempts', 0)) for row in subset),
@@ -223,9 +245,19 @@ PAIRED_METRICS = {
     'travel_distance_m': lambda row: float(row['travel_distance_m']),
     'elapsed_steps': lambda row: float(row['elapsed_steps']),
     'blocked_actions': lambda row: float(row['g1_footprint_blocked_attempts']),
+    'collision_shield_queries': lambda row: float(row.get('g1_actual_collision_shield_queries', 0)),
+    'unattempted_collision_queries': lambda row: float(row.get('g1_unattempted_collision_queries', 0)),
     'distinct_rejected_actions': lambda row: float(row.get('g1_distinct_rejected_actions', 0)),
     'no_route_steps': lambda row: float(row['g1_navigation_no_route_steps']),
     'heading_changes': lambda row: float(row['g1_heading_changes']),
+    'forward_actions': lambda row: float(row.get('g1_forward_actions', 0)),
+    'lateral_actions': lambda row: float(row.get('g1_lateral_actions', 0)),
+    'backward_actions': lambda row: float(row.get('g1_backward_actions', 0)),
+    'executed_forward_translations': lambda row: float(row.get('g1_executed_forward_translations', 0)),
+    'executed_lateral_steps': lambda row: float(row.get('g1_executed_lateral_steps', 0)),
+    'executed_backward_steps': lambda row: float(row.get('g1_executed_backward_steps', 0)),
+    'in_place_turns': lambda row: float(row.get('g1_in_place_turns', 0)),
+    'waits': lambda row: float(row.get('g1_waits', 0)),
     'sensor_rays': lambda row: float(row.get('mujoco_sensor_rays', 0)),
     'sensor_visible_cells': lambda row: float(row.get('mujoco_sensor_visible_cells', 0)),
     'stale_map_errors': lambda row: float(row['stale_map_errors']),
@@ -373,7 +405,12 @@ def provenance(worlds, config, mode, preserved, sensor_backend, *, git_commit, g
             for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()
         ],
         'g1_mjcf_sha256': sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
-        'motion_model': 'cardinal kinematic translation plus separately checked in-place G1 turns; not walking control',
+        'motion_model': 'forward-first cardinal kinematic translation plus separately checked turns; observed static obstacle sidesteps and observation-verified oncoming-pedestrian retreats only; not walking control',
+        'movement_policy_comparison': {
+            'previous_full_comparison': 'results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288',
+            'difference': 'The previous comparison allowed cardinal lateral/backward translations while preserving heading. This comparison uses forward-first turns with rule-gated static-object sidesteps and observed-threat retreats.',
+            'matched': 'Same 36 saved fit identities, two schedules, four observation methods, seed, 0.75 m/cell assumption and observation cap.',
+            'interpretation': 'Results compare navigation policies under a movement-policy change; they are not a locomotion-actuation comparison.'},
         'sensor_mapping_policy': 'ray-distance surface rasterization with directional 0.005-cell box-overlap correction; no geom-center use',
         'reproduction_command': ('.venv/bin/python scripts/phase2_mujoco_navigation.py '
             f'{mode} --output <new-empty-result-directory> --max-steps {config["max_steps"]} '
@@ -384,6 +421,7 @@ def provenance(worlds, config, mode, preserved, sensor_backend, *, git_commit, g
             'src/spatial_memory/mujoco_navigation.py': sha((ROOT/'src/spatial_memory/mujoco_navigation.py').read_bytes()),
             'src/spatial_memory/mujoco_perception.py': sha((ROOT/'src/spatial_memory/mujoco_perception.py').read_bytes()),
             'src/spatial_memory/navigation.py': sha((ROOT/'src/spatial_memory/navigation.py').read_bytes()),
+            'src/spatial_memory/pedestrian_tracking.py': sha((ROOT/'src/spatial_memory/pedestrian_tracking.py').read_bytes()),
             'src/spatial_memory/evaluation.py': sha((ROOT/'src/spatial_memory/evaluation.py').read_bytes()),
             'src/spatial_memory/simulation.py': sha((ROOT/'src/spatial_memory/simulation.py').read_bytes()),
         },
@@ -416,7 +454,11 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                                          ray_count=61, sample_spacing_m=0.075),
                   g1_navigation=dict(footprint_source='pinned G1 collision geometry',
                       local_half_extents_m=None, motion='cardinal kinematic translation with separate in-place turns',
-                      observed_occupancy_only=True, rejected_action_history=True),
+                      observed_occupancy_only=True, rejected_action_history=True,
+                      forward_translation_default=True,
+                      sidestep_eligibility='recent ray hit classified as a persistent obstacle in the forward cell; lateral sweep and next-forward cell observed free',
+                      retreat_eligibility='recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait',
+                      pedestrian_prediction='motion inferred only from observed first-hit cells; no simulator schedule or future positions'),
                   sensor_backend=sensor_backend)
     if mode == 'smoke':
         selected = worlds[0]
@@ -434,6 +476,7 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
         handle.flush()
         os.fsync(handle.fileno())
     rows = []
+    action_events = []
     first_scene = None
     started = time.monotonic()
     with Progress(len(episodes), heartbeat_seconds) as progress:
@@ -444,25 +487,86 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                 timestep=config['mujoco_timestep_seconds'])
             perception = (MujocoRayPerception(scene, **config['mujoco_ray_sensor'])
                           if sensor_backend == 'mujoco3d' else None)
+            pedestrian_tracker = ObservedPedestrianTracker(max_age_steps=8)
+            motion_state = {'static_obstacle_cells': set(), 'static_obstacle_step': -1,
+                            'planner_step': 0, 'action_shield_queries': 0,
+                            'last_reason': 'no_feasible_forward_route'}
             config['g1_navigation']['local_half_extents_m'] = list(scene.footprint_half_extents_local)
             def g1_plan(grid, position, goal, unknown, yaw, blocked):
-                return plan_g1(grid, position, goal, heading=heading_index(yaw),
+                motion_state['planner_step'] += 1
+                pedestrian_context = pedestrian_tracker.context()
+                recent_static = (motion_state['static_obstacle_cells']
+                    if 0 <= motion_state['planner_step']-motion_state['static_obstacle_step'] <= 8
+                    else set())
+                route = plan_g1_default_policy(grid, position, goal, heading=heading_index(yaw),
                     unknown=unknown, local_extents=scene.footprint_half_extents_local,
-                    cell_size=scene.cell_size, blocked_actions=blocked)
+                    cell_size=scene.cell_size, blocked_actions=blocked,
+                    static_obstacle_cells=recent_static,
+                    pedestrian_context=pedestrian_context,
+                    step=motion_state['planner_step'])
+                if route:
+                    kind, value = route[0]
+                    if kind == 'turn':
+                        motion_state['last_reason'] = 'route_direction_change'
+                    elif kind == 'sidestep':
+                        motion_state['last_reason'] = 'observed_static_obstacle_blocks_forward_path'
+                    elif kind == 'retreat':
+                        motion_state['last_reason'] = assess_observed_pedestrian_risk(
+                            position, heading_index(yaw), pedestrian_context,
+                            step=motion_state['planner_step']) or 'observed_oncoming_pedestrian_imminent'
+                    elif kind == 'wait':
+                        motion_state['last_reason'] = str(value)
+                    else:
+                        motion_state['last_reason'] = 'forward_route_segment'
+                else:
+                    motion_state['last_reason'] = 'no_feasible_forward_route'
+                return route
+            def record_observation(observation, step, position):
+                if perception is None:
+                    return
+                stats = perception.last_stats
+                pedestrian_tracker.observe(step, stats.get('visible_pedestrian_cells', ()))
+                motion_state['static_obstacle_cells'] = {
+                    tuple(cell) for cell in stats.get('visible_persistent_obstacle_cells', ())}
+                motion_state['static_obstacle_step'] = int(step)
+            def action_reason(action, position, yaw):
+                return motion_state['last_reason']
             def check_action(world, position, action, yaw):
+                motion_state['action_shield_queries'] += 1
                 kind, value = action
-                if kind == 'move':
+                if kind in {'move', 'sidestep', 'retreat'}:
                     return scene.check_move(world, position, tuple(value), yaw, target_yaw=yaw)
                 return scene.check_turn(world, position, yaw, HEADINGS[int(value)])
             metrics, frames = run_episode(scenario, config, method, seed=42,
                 _frame_callback=scene.update,
                 _observation_provider=perception.observe if perception is not None else None,
                 _g1_planner=g1_plan if sensor_backend == 'mujoco3d' else None,
-                _action_checker=check_action if sensor_backend == 'mujoco3d' else None)
+                _action_checker=check_action if sensor_backend == 'mujoco3d' else None,
+                _initial_observation_callback=record_observation if sensor_backend == 'mujoco3d' else None,
+                _observation_callback=record_observation if sensor_backend == 'mujoco3d' else None,
+                _g1_action_reason=action_reason if sensor_backend == 'mujoco3d' else None)
+            selected_checked_actions = sum(
+                frame.get('navigation_action') is not None
+                and frame['navigation_action'][0] != 'wait' for frame in frames)
+            metrics['g1_actual_collision_shield_queries'] = motion_state['action_shield_queries']
+            metrics['g1_selected_actions_requiring_collision_check'] = selected_checked_actions
+            metrics['g1_unattempted_collision_queries'] = 0
+            metrics['g1_shield_query_count_valid'] = (
+                motion_state['action_shield_queries'] == selected_checked_actions)
             metrics['travel_distance_m'] = metrics['travel_distance'] * scene.cell_size
             row = dict(mechanism=payload['mechanism'], world_identity=payload['identity'],
                        schedule=schedule, **metrics)
             rows.append(row)
+            for frame in frames:
+                action = frame.get('navigation_action')
+                if action is not None and action[0] != 'move':
+                    action_events.append(dict(
+                        world_identity=payload['identity'], schedule_index=schedule,
+                        method=method, step=frame['step'], position=list(frame['position']),
+                        heading_yaw=frame.get('heading_yaw'), action_kind=action[0],
+                        action_value=action[1], reason=frame.get('navigation_action_reason'),
+                        accepted=not frame.get('blocked', False),
+                        collision_checked=action[0] != 'wait'))
             if first_scene is None:
                 first_scene = (scene, scenario, frames, payload, schedule, method)
             progress.done()
@@ -472,6 +576,8 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
         paired_analysis = paired_world_clustered(rows)
         (output/'paired_world_clustered_analysis.json').write_text(
             json.dumps(paired_analysis, sort_keys=True, indent=2)+'\n', encoding='utf-8')
+    (output/'action_events.json').write_text(
+        json.dumps(action_events, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     if mode == 'smoke':
         scene, scenario, frames, payload, schedule, method = first_scene
         # Keep the replay MJCF portable relative to the repository checkout.
@@ -488,6 +594,7 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                            heading_changed=frame.get('heading_changed', False),
                            blocked_reason=frame.get('blocked_reason'),
                            navigation_action=frame.get('navigation_action'),
+                           navigation_action_reason=frame.get('navigation_action_reason'),
                            blocked_action_count=frame.get('blocked_action_count', 0),
                            memory_grid=frame['memory'].tolist(),
                            observation_stats=frame.get('observation_stats', {}),
@@ -515,12 +622,16 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
     smoke_passed = (mode == 'smoke' and bool(rows[0]['success'])
         and int(rows[0].get('g1_unwanted_contact_pairs', 0)) == 0
         and int(rows[0]['observation_count']) <= int(rows[0]['max_observations'])
+        and bool(rows[0].get('g1_shield_query_count_valid', True))
+        and int(rows[0].get('g1_unattempted_collision_queries', 0)) == 0
         and (sensor_backend != 'mujoco3d' or int(rows[0].get('mujoco_sensor_rays', 0)) > 0))
     result = {
         'status': ((('PASS_G1_MUJOCO_PERCEPTION_SMOKE' if sensor_backend == 'mujoco3d'
                      else 'PASS_G1_LEGACY_2D_SMOKE') if smoke_passed else 'FAIL_G1_SMOKE_GATE')
                    if mode == 'smoke' else 'COMPLETE_G1_PHASE2_PILOT'),
         'mode': mode,
+        'movement_policy': 'forward-first with explicit obstacle-only sidesteps, observed-imminent-pedestrian-only retreats, otherwise wait when dynamic safety is uncertain',
+        'comparison_to_previous_policy': 'Movement conditions changed from the prior full 288; same admitted worlds, schedules, methods, seed, sensor/observation policy and 0.75 m/cell assumption.',
         'episodes': len(rows),
         'elapsed_seconds': time.monotonic()-started,
         'summary': summarize(rows),
@@ -534,10 +645,12 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
             'G1 uses cardinal kinematic translation with explicit in-place turns; only the selected action is checked by MuJoCo.',
             'Navigation uses public G1 collision bounds and observed occupied cells; the shield is not queried for unattempted routes.',
             'Rejected actions remain separate from occupancy memory and are reconsidered only after relevant local observed memory changes.',
-            'The 3D sensor uses MuJoCo rays; the policy receives only ternary occupancy measurements, not geom identities or evaluator truth.',
+            'The 3D sensor uses a limited-FOV horizontal ray plane. Policy inputs are ternary occupancy plus current first-hit cells coarsely classified as persistent objects or pedestrians; no future pedestrian positions or hidden occupancy are passed.',
+            'Pedestrian motion is inferred only by associating ray-observed pedestrian cell clusters across two observations. Uncertain nearby motion waits; backward retreat additionally requires the full retreat sweep to be observed free.',
+            'Side-steps require a recent direct ray classification of a persistent object in the forward cell plus observed-free lateral and next-forward sweeps. Turns remain the ordinary way to change direction.',
             'All other G1 floor, wall, obstacle, pedestrian, and self contacts are unwanted; collisions block maneuvers with a recorded reason.',
             'Pedestrians are prescribed proxies and do not react to the robot.',
-            'MuJoCo ground truth is used only for ray geometry synchronization and evaluator-only metrics, never planner occupancy.',
+            'MuJoCo ground truth supplies ray geometry, selected-action collision checks and evaluator-only metrics; planner route enumeration receives no simulator occupancy or unattempted collision results.',
             'Ray-box face positions within the measured collision-box/raster-boundary overlap are assigned to the cell beyond the boundary in ray direction.',
         ],
     }
@@ -558,6 +671,10 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                 'g1_rejected_action_attempts', 'g1_distinct_rejected_actions',
                 'g1_blocked_feedback_resets_after_changed_observation',
                 'g1_blocked_movement_reasons', 'g1_unwanted_contact_pairs',
+                'g1_forward_actions', 'g1_lateral_actions', 'g1_backward_actions',
+                'g1_in_place_turns', 'g1_waits', 'g1_nonforward_action_reasons',
+                'g1_actual_collision_shield_queries', 'g1_selected_actions_requiring_collision_check',
+                'g1_unattempted_collision_queries', 'g1_shield_query_count_valid',
                 'g1_foot_floor_contact_pairs', 'mujoco_sensor_rays', 'mujoco_sensor_hits',
                 'mujoco_sensor_visible_cells', 'mujoco_sensor_free_cells',
                 'mujoco_sensor_occupied_cells', 'mujoco_sensor_hit_types',

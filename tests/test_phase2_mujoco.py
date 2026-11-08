@@ -322,10 +322,30 @@ def test_moving_pedestrian_is_measured_at_its_current_geometry_only():
     first = sensor.observe(world, scenario.start, 0.0)
     assert first[3, 3] == 1
     assert sensor.last_stats['hits_by_type']['pedestrians'] > 0
+    assert [3, 3] in sensor.last_stats['visible_pedestrian_cells']
     world.advance()
     second = sensor.observe(world, scenario.start, 0.0)
     assert second[2, 3] == 1
     assert second[3, 3] == 0
+
+
+def test_wait_action_records_why_and_does_not_query_collision_checker():
+    scenario = open_scenario()
+    config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0), update_interval=1,
+        unknown='optimistic', max_steps=2, observation_cost=1, max_observations=3)
+    def planner(grid, position, goal, unknown, yaw, blocked):
+        return [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
+    def forbidden_unattempted_check(*_args):
+        raise AssertionError('Waiting must not query a collision pose')
+    metrics, frames = run_episode(scenario, config, 'periodic', seed=42,
+        _observation_provider=lambda world, position, yaw: np.zeros((5, 5), np.int8),
+        _g1_planner=planner, _action_checker=forbidden_unattempted_check,
+        _g1_action_reason=lambda action, position, yaw: action[1])
+    assert metrics['g1_waits'] == 2
+    assert metrics['g1_forward_actions'] == 0
+    assert metrics['g1_nonforward_action_reasons'] == {
+        'dynamic_threat_uncertain_no_safe_retreat': 2}
+    assert all(frame['navigation_action'][0] == 'wait' for frame in frames[1:])
 
 
 def test_persistent_obstacle_geometry_appears_and_disappears_in_rays():
@@ -526,6 +546,27 @@ def test_actual_g1_turn_clearance_uses_only_attempted_mujoco_geometry():
     assert blocked[1].pedestrian > 0
 
 
+def test_actual_g1_side_step_and_retreat_sweeps_are_checked_by_collision_model():
+    side_scenario = ray_scenario(width=9, height=9, start=(3, 3), goal=(6, 3),
+                                 obstacles=((4, 3),))
+    side_world = World(side_scenario)
+    side_scene = MujocoNavigationScene(side_scenario)
+    sidestep = side_scene.check_move(side_world, (3, 3), (3, 4), 0, target_yaw=0)
+    assert not sidestep[0]
+    side_scene._set_pose((3, 4), 0)
+    resume_forward = side_scene.check_move(side_world, (3, 4), (4, 4), 0,
+                                           target_yaw=0)
+    assert not resume_forward[0]
+
+    pedestrian_scenario = ray_scenario(width=9, height=9, start=(3, 3), goal=(6, 3),
+                                       pedestrians=(((4, 3),),))
+    pedestrian_world = World(pedestrian_scenario)
+    retreat_scene = MujocoNavigationScene(pedestrian_scenario)
+    retreat = retreat_scene.check_move(pedestrian_world, (3, 3), (2, 3), 0,
+                                       target_yaw=0)
+    assert not retreat[0]
+
+
 def test_forward_facing_episode_uses_observations_and_only_checks_selected_actions(monkeypatch):
     from spatial_memory.navigation import plan_g1_forward_facing
 
@@ -553,10 +594,105 @@ def test_forward_facing_episode_uses_observations_and_only_checks_selected_actio
         _observation_provider=lambda world, position, yaw: np.zeros((7, 7), np.int8),
         _g1_planner=planner, _action_checker=checker)
     assert metrics['success']
+    assert metrics['g1_forward_actions'] == 2
+    assert metrics['g1_lateral_actions'] == metrics['g1_backward_actions'] == 0
+    assert metrics['g1_in_place_turns'] == 1
+    assert metrics['g1_executed_forward_translations'] == 2
     assert selected_checks and len(selected_checks) == sum(
         frame.get('navigation_action') is not None for frame in frames)
     assert selected_checks[0][0] == 'turn'
     assert all(kind in {'turn', 'move'} for kind, _ in selected_checks)
+
+
+def test_default_policy_turns_for_ordinary_routes_and_rejects_unnecessary_lateral_motion():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    ordinary = plan_g1_default_policy(grid, (3, 3), (3, 6), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75)
+    assert ordinary[0] == ('turn', 1)
+    assert all(kind not in {'sidestep', 'retreat'} for kind, _ in ordinary)
+
+    no_static_evidence = grid.copy()
+    no_static_evidence[3, 4] = 1
+    blocked_forward = plan_g1_default_policy(no_static_evidence, (3, 3), (6, 3),
+        heading=0, local_extents=(0.22, 0.328), cell_size=0.75,
+        static_obstacle_cells=())
+    assert not blocked_forward or blocked_forward[0][0] not in {'sidestep', 'retreat'}
+
+
+def test_default_policy_allows_one_clear_side_step_only_for_observed_static_object():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[3, 4] = 1
+    action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        static_obstacle_cells={(4, 3)})
+    assert action[0] == ('sidestep', (3, 4))
+    resumed = plan_g1_default_policy(grid, (3, 4), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        static_obstacle_cells={(4, 3)})
+    assert resumed[0] == ('move', (4, 4))
+
+    # A side cell that is unknown does not qualify as a safe maneuver.
+    uncertain = grid.copy()
+    uncertain[4, 3] = -1
+    uncertain[2, 3] = -1
+    no_step = plan_g1_default_policy(uncertain, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        static_obstacle_cells={(4, 3)})
+    assert not no_step or no_step[0][0] != 'sidestep'
+
+
+def test_default_policy_retreats_only_for_observed_imminent_pedestrian_and_clear_sweep():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[3, 4] = 1
+    approaching = {'visible_cells': ((4, 3),),
+        'history': ((0, 6.0, 3.0), (4, 4.0, 3.0)), 'reliable': True,
+        'last_step': 4, 'max_age_steps': 8}
+    action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=approaching, step=5)
+    assert action == [('retreat', (2, 3))]
+
+    # Unknown cells behind the robot make retreat unsafe, so the policy waits.
+    unknown_behind = np.full((9, 9), -1, dtype=np.int8)
+    unknown_behind[3, 3] = 0
+    unknown_behind[3, 4] = 1
+    action = plan_g1_default_policy(unknown_behind, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=approaching, step=5)
+    assert action == [('wait', 'imminent_dynamic_threat_retreat_not_observed_clear')]
+
+
+def test_unreliable_nearby_pedestrian_motion_causes_wait_not_blind_retreat():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[3, 4] = 1
+    uncertain = {'visible_cells': ((4, 3),), 'history': (), 'reliable': False,
+                 'last_step': 5, 'max_age_steps': 8}
+    action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
+        pedestrian_context=uncertain, step=5)
+    assert action == [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
+
+
+def test_observed_pedestrian_tracker_uses_only_measured_cells_and_needs_two_observations():
+    from spatial_memory.pedestrian_tracking import ObservedPedestrianTracker
+
+    tracker = ObservedPedestrianTracker(max_age_steps=8)
+    tracker.observe(0, [(6, 3), (6, 3)])
+    assert not tracker.context()['reliable']
+    tracker.observe(4, [(4, 3), (4, 3)])
+    context = tracker.context()
+    assert context['visible_cells'] == ((4.0, 3.0),)
+    assert context['history'] == [(0, 6.0, 3.0), (4, 4.0, 3.0)]
+    assert context['reliable']
+    tracker.observe(8, [])
+    assert not tracker.context()['reliable']
 
 
 def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_design():
@@ -725,7 +861,9 @@ def test_visual_gait_joint_offsets_respect_actual_g1_ranges_and_are_deterministi
     assert first == second
     expected = {
         'left_hip_pitch_joint', 'right_hip_pitch_joint',
+        'left_hip_roll_joint', 'right_hip_roll_joint',
         'left_knee_joint', 'right_knee_joint',
+        'left_ankle_roll_joint', 'right_ankle_roll_joint',
         'left_ankle_pitch_joint', 'right_ankle_pitch_joint',
         'left_shoulder_pitch_joint', 'right_shoulder_pitch_joint',
         'left_elbow_joint', 'right_elbow_joint',
@@ -735,6 +873,10 @@ def test_visual_gait_joint_offsets_respect_actual_g1_ranges_and_are_deterministi
         jid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, name)
         low, high = model.jnt_range[jid]
         assert low <= offset <= high
+    forward = viewer.gait_joint_targets(model, 1.0, 1.0, 1)
+    sidestep = viewer.gait_joint_targets(model, 1.0, 1.0, 2)
+    assert sidestep['left_hip_roll_joint'] != 0
+    assert abs(sidestep['left_hip_pitch_joint']) < abs(forward['left_hip_pitch_joint'])
 
 
 def test_visual_gait_interpolates_heading_by_shortest_arc_and_root_continuously():

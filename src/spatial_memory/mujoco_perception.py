@@ -69,6 +69,8 @@ class MujocoRayPerception:
         geom_id = np.full(1, -1, dtype=np.int32)
         cells_by_ray = []
         hit_count = 0
+        visible_pedestrian_cells = set()
+        visible_persistent_obstacle_cells = set()
 
         for offset in angles:
             direction = forward*math.cos(offset) + left*math.sin(offset)
@@ -107,8 +109,12 @@ class MujocoRayPerception:
                     hits_by_type['walls'] += 1
                 elif hit_geom in scene._object_geom_ids.values():
                     hits_by_type['persistent_obstacles'] += 1
+                    if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
+                        visible_persistent_obstacle_cells.add((x, y))
                 elif hit_geom in scene._ped_geom_ids:
                     hits_by_type['pedestrians'] += 1
+                    if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
+                        visible_pedestrian_cells.add((x, y))
             cells_by_ray.append(ray_cells)
 
         # A cell containing any measured first-hit surface is conservatively
@@ -127,7 +133,9 @@ class MujocoRayPerception:
             occupied_boundary_overlap_cells=BOX_BOUNDARY_OVERLAP_CELLS, range_m=self.range_m,
             horizontal_fov_deg=self.horizontal_fov_deg,
             sensor_origin_world=origin.tolist(), sensor_height_m=float(origin[2]),
-            visible_cells_by_ray=[len(cells) for cells in cells_by_ray])
+            visible_cells_by_ray=[len(cells) for cells in cells_by_ray],
+            visible_pedestrian_cells=sorted(map(list, visible_pedestrian_cells)),
+            visible_persistent_obstacle_cells=sorted(map(list, visible_persistent_obstacle_cells)))
         return observation
 
     def _surface_cell(self, point, direction):

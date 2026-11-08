@@ -552,3 +552,25 @@ Record the successful roughly 10.7-second overview replay on macOS with:
   --result-dir results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0 \
   --camera overview --portfolio-forward-demo --speed 0.8 --once
 ```
+
+### Forward-first default Phase 2 policy
+
+The ordinary MuJoCo Phase 2 runner now uses heading-aware forward-only A* as
+its default for all observation methods. It turns through separately selected
+and MuJoCo-checked actions before changing its forward travel direction.
+Static-object side-steps are eligible only for a recent 3D ray hit classified
+as a persistent object directly in front, with the complete lateral sweep and
+the next forward cell observed free. A retreat is eligible only when two
+observations provide a single consistent pedestrian track, its measured
+motion predicts an imminent approach, and every cell touched by the backward
+sweep is observed free. If the pedestrian motion or retreat clearance is
+uncertain, the policy waits. This tracker uses measured pedestrian surface
+cells only; the 61-ray horizontal sensor's limited FOV means it does not claim
+full pedestrian awareness or predict hidden trajectories.
+
+The controls remain kinematic root-pose actions with a separate actual-G1
+MuJoCo collision check on each selected turn or translation. The procedural
+viewer gait only changes displayed joints and is not physically actuated
+locomotion. Historical smoke/full result directories remain unchanged. The new
+forward-first smoke and 288-episode comparison are saved in separate result
+directories and explicitly identify the changed movement policy.

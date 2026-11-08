@@ -17,7 +17,8 @@ def map_errors(memory, geometry, changed, departed):
 def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                 _planner=None, _observation_callback=None, _frame_callback=None,
                 _movement_checker=None, _observation_provider=None,
-                _g1_planner=None, _action_checker=None):
+                _g1_planner=None, _action_checker=None,
+                _initial_observation_callback=None, _g1_action_reason=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
@@ -47,6 +48,8 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
 
     position = scenario.start
     initial = observe()
+    if _initial_observation_callback is not None:
+        _initial_observation_callback(initial, world.step, position)
     blocked_actions = set()
     blocked_action_evidence = {}
     rejected_action_records = []
@@ -125,13 +128,18 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
             observations += 1
         planned = plan(agent.memory.grid, position, scenario.goal, config['unknown'])
         selected_action = None
+        selected_action_reason = None
         if _g1_planner is not None:
             route = _g1_planner(agent.memory.grid, position, scenario.goal,
                 config['unknown'], heading_yaw, frozenset(blocked_actions))
             selected_action = route[0] if route else None
+            if _g1_action_reason is not None:
+                selected_action_reason = _g1_action_reason(
+                    selected_action, position, heading_yaw)
             route_positions = [position]
             for kind, value in route:
-                route_positions.append(tuple(value) if kind == 'move' else route_positions[-1])
+                route_positions.append(tuple(value)
+                    if kind in {'move', 'sidestep', 'retreat'} else route_positions[-1])
             planned = route_positions
             if not route:
                 no_route_steps += 1
@@ -146,30 +154,34 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                           if _g1_planner is not None and selected_action is None else None)
         attempt_counts = None
         if _g1_planner is not None and selected_action is not None:
-            was_blocked, attempt_counts, next_heading, blocked_reason = _action_checker(
-                world, position, selected_action, heading_yaw)
-            if was_blocked:
-                contact = 1
-                footprint_blocked = True
-                kind, value = selected_action
-                from .navigation import blocked_action_key, heading_index
-                key = blocked_action_key(position, heading_index(heading_yaw), selected_action)
-                blocked_actions.add(key)
-                from .navigation import blocked_action_evidence_signature
-                blocked_action_evidence[key] = blocked_action_evidence_signature(agent.memory.grid, key)
-                rejected_action_records.append(dict(step=world.step,
-                    position=list(position), heading_index=heading_index(heading_yaw),
-                    action_kind=kind, action=list(value) if kind == 'move' else int(value),
-                    reason=blocked_reason))
-            elif selected_action[0] == 'move':
-                nxt = tuple(selected_action[1])
-                moved = nxt != position
-                distance += int(moved)
-                position = nxt
-                path_taken.append(position)
-                heading_yaw = float(next_heading)
+            kind, value = selected_action
+            if kind == 'wait':
+                selected_action_reason = str(value)
             else:
-                heading_yaw = float(next_heading)
+                was_blocked, attempt_counts, next_heading, blocked_reason = _action_checker(
+                    world, position, selected_action, heading_yaw)
+                if was_blocked:
+                    contact = 1
+                    footprint_blocked = True
+                    from .navigation import blocked_action_key, heading_index
+                    key = blocked_action_key(position, heading_index(heading_yaw), selected_action)
+                    blocked_actions.add(key)
+                    from .navigation import blocked_action_evidence_signature
+                    blocked_action_evidence[key] = blocked_action_evidence_signature(agent.memory.grid, key)
+                    rejected_action_records.append(dict(step=world.step,
+                        position=list(position), heading_index=heading_index(heading_yaw),
+                        action_kind=kind,
+                        action=list(value) if kind in {'move', 'sidestep', 'retreat'} else int(value),
+                        reason=blocked_reason))
+                elif kind in {'move', 'sidestep', 'retreat'}:
+                    nxt = tuple(value)
+                    moved = nxt != position
+                    distance += int(moved)
+                    position = nxt
+                    path_taken.append(position)
+                    heading_yaw = float(next_heading)
+                else:
+                    heading_yaw = float(next_heading)
             # On a rejected action the route planner excludes this attempted
             # transition; it does not modify occupancy memory or observations.
         elif len(planned) > 1:
@@ -214,6 +226,7 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                 g1_attempt_wall_contact_pairs=attempt_counts.wall,
                 g1_attempt_persistent_obstacle_contact_pairs=attempt_counts.persistent_obstacle)
         frames[-1]['navigation_action'] = selected_action
+        frames[-1]['navigation_action_reason'] = selected_action_reason
         frames[-1]['blocked_action_count'] = len(blocked_actions)
         if footprint_blocked:
             frames[-1]['footprint_blocked'] = True
@@ -266,6 +279,39 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         metrics['g1_distinct_rejected_actions'] = len(rejected_keys)
         metrics['g1_blocked_feedback_resets_after_changed_observation'] = blocked_feedback_resets
         metrics['g1_remaining_blocked_actions'] = len(blocked_actions)
+        action_counts = dict(forward=0, sidestep=0, retreat=0, turn=0, wait=0)
+        action_reason_counts = {}
+        for frame in frames:
+            action = frame.get('navigation_action')
+            if action is None:
+                continue
+            kind = action[0]
+            if kind == 'move':
+                action_counts['forward'] += 1
+            elif kind in action_counts:
+                action_counts[kind] += 1
+            reason = frame.get('navigation_action_reason')
+            if kind != 'move' and reason:
+                action_reason_counts[reason] = action_reason_counts.get(reason, 0) + 1
+        translations = sum(action_counts[k] for k in ('forward', 'sidestep', 'retreat'))
+        metrics['g1_navigation_action_counts'] = action_counts
+        metrics['g1_forward_actions'] = action_counts['forward']
+        metrics['g1_lateral_actions'] = action_counts['sidestep']
+        metrics['g1_backward_actions'] = action_counts['retreat']
+        metrics['g1_executed_forward_translations'] = sum(
+            frame.get('navigation_action', (None,))[0] == 'move' and frame.get('moved', False)
+            for frame in frames if frame.get('navigation_action') is not None)
+        metrics['g1_executed_lateral_steps'] = sum(
+            frame.get('navigation_action', (None,))[0] == 'sidestep' and frame.get('moved', False)
+            for frame in frames if frame.get('navigation_action') is not None)
+        metrics['g1_executed_backward_steps'] = sum(
+            frame.get('navigation_action', (None,))[0] == 'retreat' and frame.get('moved', False)
+            for frame in frames if frame.get('navigation_action') is not None)
+        metrics['g1_in_place_turns'] = action_counts['turn']
+        metrics['g1_waits'] = action_counts['wait']
+        metrics['g1_forward_action_percent'] = (
+            100.0*action_counts['forward']/translations if translations else 0.0)
+        metrics['g1_nonforward_action_reasons'] = action_reason_counts
         metrics['g1_heading_changes'] = sum(bool(frame.get('heading_changed')) for frame in frames)
         metrics['g1_heading_change_records'] = [
             {'step': frame['step'], 'position': frame['position'],

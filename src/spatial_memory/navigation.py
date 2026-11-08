@@ -46,14 +46,14 @@ def blocked_action_key(position, heading, action):
     x, y = position
     kind, value = action
     return (int(x), int(y), int(heading), kind,
-            tuple(value) if kind == 'move' else int(value))
+            tuple(value) if kind in {'move', 'sidestep', 'retreat'} else int(value))
 
 
 def blocked_action_evidence_signature(grid, key, radius=2):
     """Local memory snapshot around an attempted transition for reconsideration gating."""
     x, y, _, kind, value = key
     points = [(x, y)]
-    if kind == 'move':
+    if kind in {'move', 'sidestep', 'retreat'}:
         points.append(tuple(value))
     height, width = grid.shape
     x0 = max(0, min(px for px, _ in points)-radius)
@@ -239,3 +239,119 @@ def plan_g1_forward_facing(grid, start, goal, *, heading=0, unknown='optimistic'
         actions.append(action)
         state = previous
     return list(reversed(actions))
+
+
+def _move_clear_observed_free(grid, start, target, heading, local_extents, cell_size):
+    """Require every cell touched by the public swept AABB to be observed free."""
+    x0, y0 = start
+    x1, y1 = target
+    distance = math.hypot(x1-x0, y1-y0)*cell_size
+    samples = max(1, math.ceil(distance/(cell_size/10)))
+    height, width = grid.shape
+    hx, hy = _rotated_extents(local_extents, HEADINGS[int(heading)%4])
+    rx, ry = (hx+0.505*cell_size)/cell_size, (hy+0.505*cell_size)/cell_size
+    for i in range(samples+1):
+        x, y = x0+(x1-x0)*i/samples, y0+(y1-y0)*i/samples
+        min_x, max_x = math.ceil(x-rx), math.floor(x+rx)
+        min_y, max_y = math.ceil(y-ry), math.floor(y+ry)
+        if min_x < 0 or min_y < 0 or max_x >= width or max_y >= height:
+            return False
+        if any(grid[cy, cx] != 0 for cy in range(min_y, max_y+1)
+               for cx in range(min_x, max_x+1)):
+            return False
+    return True
+
+
+def _eligible_obstacle_sidestep(grid, position, heading, static_obstacle_cells,
+                                local_extents, cell_size, blocked_actions):
+    """Offer one side-step only around an observed static object in the front cell."""
+    x, y = map(int, position)
+    face = int(heading) % 4
+    dx, dy = CARDINALS[face]
+    ahead = (x+dx, y+dy)
+    if (not (0 <= ahead[0] < grid.shape[1] and 0 <= ahead[1] < grid.shape[0])
+            or ahead not in static_obstacle_cells or grid[ahead[1], ahead[0]] != 1):
+        return None
+    for sign in (1, -1):
+        side = (-dy*sign, dx*sign)
+        target = (x+side[0], y+side[1])
+        beyond = (target[0]+dx, target[1]+dy)
+        if not (0 <= target[0] < grid.shape[1] and 0 <= target[1] < grid.shape[0]
+                and 0 <= beyond[0] < grid.shape[1] and 0 <= beyond[1] < grid.shape[0]):
+            continue
+        if grid[target[1], target[0]] != 0 or grid[beyond[1], beyond[0]] != 0:
+            continue
+        action = ('sidestep', target)
+        if blocked_action_key(position, face, action) in blocked_actions:
+            continue
+        if (_move_clear_observed_free(grid, position, target, face,
+                local_extents, cell_size)
+                and _move_clear_observed_free(grid, target, beyond, face,
+                    local_extents, cell_size)):
+            return action
+    return None
+
+
+def assess_observed_pedestrian_risk(position, heading, context, *, step,
+                                    horizon_steps=2.0, near_cells=1.75,
+                                    body_clearance_cells=0.75):
+    """Assess only recent observed pedestrian cells and measured motion history."""
+    cells = context.get('visible_cells', ())
+    if not cells:
+        return None
+    face = int(heading) % 4
+    fx, fy = CARDINALS[face]
+    close = []
+    for px, py in cells:
+        rx, ry = float(px)-position[0], float(py)-position[1]
+        along, lateral = rx*fx+ry*fy, -rx*fy+ry*fx
+        if 0 < along <= near_cells and abs(lateral) <= body_clearance_cells:
+            close.append((along, lateral))
+    if not close:
+        return None
+    history = context.get('history', ())
+    if (not context.get('reliable', False) or len(history) < 2
+            or step-context.get('last_step', step) > context.get('max_age_steps', 8)):
+        return 'dynamic_motion_uncertain'
+    (old_step, old_x, old_y), (new_step, new_x, new_y) = history[-2:]
+    elapsed = new_step-old_step
+    if elapsed <= 0:
+        return 'dynamic_motion_uncertain'
+    vx, vy = (new_x-old_x)/elapsed, (new_y-old_y)/elapsed
+    closing_speed = -(vx*fx+vy*fy)
+    if closing_speed <= 0.05:
+        return None
+    along, lateral = min(close, key=lambda value: value[0])
+    projected_along = along - closing_speed*horizon_steps
+    if projected_along <= body_clearance_cells and abs(lateral) <= body_clearance_cells:
+        return 'observed_oncoming_pedestrian_imminent'
+    return None
+
+
+def plan_g1_default_policy(grid, start, goal, *, heading=0, unknown='optimistic',
+                           local_extents=(0.22, 0.33), cell_size=0.75,
+                           blocked_actions=frozenset(), static_obstacle_cells=frozenset(),
+                           pedestrian_context=None, step=0):
+    """Forward-first plan with explicitly eligible side/back safety actions."""
+    face = int(heading) % 4
+    blocked_actions = set(blocked_actions)
+    risk = assess_observed_pedestrian_risk(start, face, pedestrian_context or {}, step=step)
+    if risk:
+        if risk == 'dynamic_motion_uncertain':
+            return [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
+        dx, dy = CARDINALS[face]
+        retreat_target = (start[0]-dx, start[1]-dy)
+        retreat = ('retreat', retreat_target)
+        retreat_key = blocked_action_key(start, face, retreat)
+        if (retreat_key not in blocked_actions
+                and _move_clear_observed_free(grid, start, retreat_target, face,
+                    local_extents, cell_size)):
+            return [retreat]
+        return [('wait', 'imminent_dynamic_threat_retreat_not_observed_clear')]
+    sidestep = _eligible_obstacle_sidestep(grid, start, face,
+        set(static_obstacle_cells), local_extents, cell_size, blocked_actions)
+    if sidestep is not None:
+        return [sidestep]
+    return plan_g1_forward_facing(grid, start, goal, heading=face,
+        unknown=unknown, local_extents=local_extents, cell_size=cell_size,
+        blocked_actions=blocked_actions)

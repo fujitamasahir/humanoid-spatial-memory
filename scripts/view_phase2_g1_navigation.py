@@ -40,22 +40,30 @@ def interpolate_frame(first, second, fraction):
 
 def gait_joint_targets(model, phase, amplitude, travel_sign=1.0):
     """Return bounded display joint offsets for one deterministic gait pose."""
-    phase = float(phase) * (1.0 if travel_sign >= 0 else -1.0)
+    motion_code = int(round(float(travel_sign)))
+    phase = float(phase) * (-1.0 if motion_code == -1 else 1.0)
     amplitude = min(1.0, max(0.0, float(amplitude)))
+    lateral = abs(motion_code) == 2
+    limb_scale = 0.32 if lateral else (0.68 if motion_code == -1 else 1.0)
+    lateral_sign = 1.0 if motion_code == 2 else -1.0
     targets = {}
     for side, offset in (('left', 0.0), ('right', math.pi)):
         leg = phase + offset
         swing = math.sin(leg)
         knee = max(0.0, math.sin(leg + 0.25))
         values = {
-            f'{side}_hip_pitch_joint': GAIT_AMPLITUDES['hip_pitch'] * swing * amplitude,
-            f'{side}_knee_joint': GAIT_AMPLITUDES['knee'] * knee * amplitude,
+            f'{side}_hip_pitch_joint': GAIT_AMPLITUDES['hip_pitch'] * swing * amplitude * limb_scale,
+            f'{side}_knee_joint': GAIT_AMPLITUDES['knee'] * knee * amplitude * limb_scale,
             f'{side}_ankle_pitch_joint': -GAIT_AMPLITUDES['ankle_pitch'] *
-                (swing + 0.45 * knee) * amplitude,
+                (swing + 0.45 * knee) * amplitude * limb_scale,
             f'{side}_shoulder_pitch_joint': -GAIT_AMPLITUDES['shoulder_pitch'] *
                 swing * amplitude,
             f'{side}_elbow_joint': GAIT_AMPLITUDES['elbow'] *
                 max(0.0, swing) * amplitude,
+            f'{side}_hip_roll_joint': (lateral_sign * (1 if side == 'left' else -1) *
+                0.10 * swing * amplitude if lateral else 0.0),
+            f'{side}_ankle_roll_joint': (-lateral_sign * (1 if side == 'left' else -1) *
+                0.045 * swing * amplitude if lateral else 0.0),
         }
         for name, value in values.items():
             joint = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, name)
@@ -91,13 +99,24 @@ def playback_samples(trajectory, speed, spacing, fps=30):
         heading = float(first.get('heading_yaw', 0.0))
         forward = dx * math.cos(heading) + dy * math.sin(heading)
         lateral = -dx * math.sin(heading) + dy * math.cos(heading)
-        travel_sign = -1.0 if abs(forward) > abs(lateral) and forward < 0 else 1.0
+        action = second.get('navigation_action')
+        action_kind = action[0] if isinstance(action, (tuple, list)) and action else None
+        if action_kind == 'sidestep':
+            motion_code = 2 if lateral >= 0 else -2
+        elif action_kind == 'retreat':
+            motion_code = -1
+        elif abs(forward) > abs(lateral):
+            motion_code = -1 if forward < 0 else 1
+        elif distance > 1e-9:
+            motion_code = 2 if lateral >= 0 else -2
+        else:
+            motion_code = 0
         steps = max(1, int(math.ceil(speed * fps)))
         for tick in range(steps):
             t = min(1.0, tick / steps)
             root = interpolate_frame(first, second, t)
             env_frame = first if t < 1.0 else second
-            yield root, env_frame, phase + (distance / GAIT_STRIDE_M) * (2*math.pi) * t, gait_amplitude, travel_sign
+            yield root, env_frame, phase + (distance / GAIT_STRIDE_M) * (2*math.pi) * t, gait_amplitude, motion_code
             target_amplitude = 1.0 if moving else 0.0
             alpha = min(1.0, frame_dt / GAIT_RAMP_SECONDS)
             difference = target_amplitude - gait_amplitude
@@ -106,9 +125,9 @@ def playback_samples(trajectory, speed, spacing, fps=30):
     last = trajectory[-1]
     settle_steps = max(1, int(math.ceil(GAIT_RAMP_SECONDS * fps)))
     for tick in range(settle_steps):
-        yield interpolate_frame(last, last, 0), last, phase, gait_amplitude, 1.0
+        yield interpolate_frame(last, last, 0), last, phase, gait_amplitude, 0.0
         gait_amplitude = max(0.0, gait_amplitude-frame_dt/GAIT_RAMP_SECONDS)
-    yield interpolate_frame(last, last, 0), last, phase, 0.0, 1.0
+    yield interpolate_frame(last, last, 0), last, phase, 0.0, 0.0
 
 
 def display_scene_xml(result_dir: Path):
