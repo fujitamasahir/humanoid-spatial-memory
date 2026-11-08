@@ -574,3 +574,45 @@ viewer gait only changes displayed joints and is not physically actuated
 locomotion. Historical smoke/full result directories remain unchanged. The new
 forward-first smoke and 288-episode comparison are saved in separate result
 directories and explicitly identify the changed movement policy.
+
+#### Forward-first default results (2026-11-08)
+
+The new single-episode `mujoco3d` smoke used the existing periodic-update,
+seed-42 Phase 1.5 fit world and did **not** reach its goal. It exhausted 80
+steps after 20 observations, with zero executed translations and zero unwanted
+contacts; its recorded failure was `deadline_no_footprint_aware_route`. This
+failure is preserved at
+`results/phase2_mujoco/g1_forward_first_default_smoke/` and was not used to
+change the route policy or the grid scale.
+
+A separate 288-episode comparison completed on the same 36 admitted worlds,
+two schedules, four observation methods, and seed 42, with the same 0.75 m per
+cell assumption and 80-step limit. These are changed-policy results, not a
+replacement for the historical 288-episode comparison:
+
+| Observation method | Goals | Completion | Forward translations executed | Checked turns | Unwanted contacts |
+|---|---:|---:|---:|---:|---:|
+| Static | 6/72 | 8.33% | 196 | 123 | 0 |
+| Periodic | 5/72 | 6.94% | 114 | 36 | 0 |
+| Age | 6/72 | 8.33% | 124 | 39 | 0 |
+| Uncertainty | 4/72 | 5.56% | 96 | 27 | 0 |
+| **Total** | **21/288** | **7.29%** | **530** | **225** | **0** |
+
+Every attempted translation action was forward (612 forward actions; no side
+steps, retreats, or waits were selected in this matrix). Turns were separate
+actions and were collision checked. The comparison had 74 rejected translation
+attempts, zero unattempted collision queries, and zero unwanted contact pairs.
+The 21 completed episodes were contact free. The low completion rate and
+5,098–5,388 no-route steps per method show that forward-first behavior is now
+the default, but routing success remains limited under the existing sensing,
+observation budgets, footprint, and grid scale. The separate portfolio route
+success is not evidence that the experimental policy completes this smoke or
+comparison.
+
+Machine-readable outputs are in
+`results/phase2_mujoco/g1_forward_first_default_full_288/`, including per
+episode action counts and `action_events.json` with a reason for each selected
+non-forward action. Both new output artifact manifests verified without hash
+mismatches. The Phase 1.5 preservation verifier also rehashed all 836 protected
+checkpoint/receipt files successfully; prior experiment directories were not
+overwritten.

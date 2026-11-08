@@ -1,0 +1,52 @@
+[
+  {
+    "bytes": 3,
+    "path": "action_events.json",
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  {
+    "bytes": 2476,
+    "path": "episodes.csv",
+    "sha256": "8635aae588ca5290e0a00da122ea1186aa88aec3f05ef80b31c7f9cddabe7921"
+  },
+  {
+    "bytes": 18358,
+    "path": "provenance.json",
+    "sha256": "6df0009b8af9e49c8d7c73a757ea037e6914b1c321ad8cc7a0457e2194470639"
+  },
+  {
+    "bytes": 357,
+    "path": "render_unavailable.json",
+    "sha256": "d75f86bc430e78435423c82c5c3208ea915a6ea5c105f0e70e14bb80bfeb570d"
+  },
+  {
+    "bytes": 175,
+    "path": "run.lock",
+    "sha256": "fe106993a324f0409c145cd41ddd95c5894f7cc00b54d24a97deb4c2583a4cda"
+  },
+  {
+    "bytes": 57,
+    "path": "scenario.json",
+    "sha256": "381fd3de4e04deb6b40fb65c43cdc38ddb61b35c1f929b75a4613fb2d24fc2c8"
+  },
+  {
+    "bytes": 49131,
+    "path": "scene.xml",
+    "sha256": "db75b85d61102f09bbc0b1014847c0e651a3a8e4591a01c0e9690090467e8e7a"
+  },
+  {
+    "bytes": 43955,
+    "path": "summary.json",
+    "sha256": "068632362b31dc83cccae6c857affb73466d8cdbe0a4f5766a676ae84aaad427"
+  },
+  {
+    "bytes": 822416,
+    "path": "trajectory.json",
+    "sha256": "d6024656584bfa8010e656c47d5e2a2e8ab89e925441e882db4393d4d048893b"
+  },
+  {
+    "bytes": 3005,
+    "path": "validation_report.json",
+    "sha256": "1374e67b2658b70479bcb53f0177d9abb8037c4b1fc596949b8f2969c203985e"
+  }
+]

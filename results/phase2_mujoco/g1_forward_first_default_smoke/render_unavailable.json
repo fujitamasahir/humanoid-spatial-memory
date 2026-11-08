@@ -1,0 +1,5 @@
+{
+  "mujoco_renderer_unavailable": "ValueError",
+  "message": "Image width 960 > framebuffer width 640. Either reduce the image\nwidth or specify a larger offscreen framebuffer in the model XML using the\nclause:\n<visual>\n  <global offwidth=\"my_width\"/>\n</visual>",
+  "fallback": "Use scripts/view_phase2_g1_navigation.py in a normal macOS Terminal"
+}
