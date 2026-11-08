@@ -127,6 +127,11 @@ def scenario_from_bprime(payload, schedule_index=0):
                         **({'to': tuple(e['to'])} if 'to' in e else {}))
                    for e in schedule['events'])
     positions = tuple(map(tuple, schedule['positions']))
+    # Saved trajectories are finite (81 steps), while Scenario validates cyclic
+    # pedestrian paths. Return along the same trace after its final sample so
+    # the eventual wrap is cardinal; the original 0..80 samples are unchanged.
+    if positions:
+        positions = positions + tuple(reversed(positions[1:-1]))
     data = dict(
         name=f"{payload['identity']}:schedule-{schedule_index}",
         split='development',
