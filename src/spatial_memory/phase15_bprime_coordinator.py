@@ -49,7 +49,8 @@ class Coordinator:
         declared_prefix=json.loads(store.binding.manifest_bytes).get('continuation_prefix')
         if prefix is not None:
             from .phase15_bprime_prefix import ReadOnlyPrefix
-            if (not isinstance(prefix,ReadOnlyPrefix) or prefix.synthetic!=synthetic
+            from .phase15_bprime_epochs import ReadOnlyEpochPrefix
+            if (not isinstance(prefix,(ReadOnlyPrefix,ReadOnlyEpochPrefix)) or prefix.synthetic!=synthetic
                 or prefix.partition!=store.partition or not declared_prefix
                 or declared_prefix['sha256']!=prefix.sha256 or prefix.binding!=store.binding):
                 raise bp.IntegrityError('Unverified or mismatched continuation prefix')

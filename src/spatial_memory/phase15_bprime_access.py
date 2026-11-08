@@ -37,7 +37,9 @@ def production_manifests():
         _COMMITTED_REGISTRY=raw
     if raw!=_COMMITTED_REGISTRY:raise IntegrityError('Production registry changed during execution')
     value=json.loads(raw)
-    if value.get('amendment')!='phase1.5-v0.4-MACOS-RSS-B1' or value.get('root')!=str(root):
+    approved_roots=value.get('roots',[value.get('root')])
+    if (value.get('amendment')!='phase1.5-v0.4-MACOS-RSS-B1'
+            or str(root) not in approved_roots):
         raise IntegrityError('Unapproved production authorization profile/root')
     for relative in value['manifests']:
         if not relative.startswith('configs/phase15_macos_bindings/') or Path(relative).is_absolute() or '..' in Path(relative).parts:
@@ -165,6 +167,7 @@ class StageBinding:
                 subtrees.append(self._within(self.root,value['reference_archive_root']))
             if value.get('readonly_prefix_root'):
                 subtrees.append(self._within(self.root,value['readonly_prefix_root']))
+            subtrees.extend(self._within(self.root,p) for p in value.get('readonly_prefix_roots',[]))
             if (result not in {self.root,self.manifest_path,*files}
                 and not any(result.is_relative_to(p) for p in subtrees)):
                 raise IntegrityError('File is outside explicit development input/store bindings')
