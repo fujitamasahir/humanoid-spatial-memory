@@ -1,0 +1,219 @@
+{
+  "candidates": [
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010010_schedule0"
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 1,
+      "path_span_cells": {
+        "x": 3.0,
+        "y": 9.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0",
+      "route_length_cells": 12.0,
+      "saved_poses": 14,
+      "score": 34.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_forward_facing_portfolio_fit_R_80000000_schedule0"
+    },
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_forward_first_default_smoke"
+    },
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke"
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 3,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final",
+      "route_length_cells": 55.0,
+      "saved_poses": 69,
+      "score": 110.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_v2"
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 3,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_v3",
+      "route_length_cells": 55.0,
+      "saved_poses": 69,
+      "score": 110.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "eligible": false,
+      "reason": "saved run did not complete its goal",
+      "result_dir": "results/phase2_mujoco/g1_integrity_mujoco3d_seed42_final_smoke"
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 23,
+      "path_span_cells": {
+        "x": 14.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+      "route_length_cells": 69.0,
+      "saved_poses": 73,
+      "score": 327.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 0,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_smoke",
+      "route_length_cells": 37.0,
+      "saved_poses": 61,
+      "score": 62.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "eligible": false,
+      "reason": "provenance does not identify the actual Unitree G1 model",
+      "result_dir": "results/phase2_mujoco/smoke"
+    }
+  ],
+  "eligible_ranking": [
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 23,
+      "path_span_cells": {
+        "x": 14.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+      "route_length_cells": 69.0,
+      "saved_poses": 73,
+      "score": 327.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 3,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final",
+      "route_length_cells": 55.0,
+      "saved_poses": 69,
+      "score": 110.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 3,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_v3",
+      "route_length_cells": 55.0,
+      "saved_poses": 69,
+      "score": 110.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 0,
+      "path_span_cells": {
+        "x": 11.0,
+        "y": 14.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_smoke",
+      "route_length_cells": 37.0,
+      "saved_poses": 61,
+      "score": 62.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    },
+    {
+      "contact_free": true,
+      "eligible": true,
+      "heading_changes": 1,
+      "path_span_cells": {
+        "x": 3.0,
+        "y": 9.0
+      },
+      "result_dir": "results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0",
+      "route_length_cells": 12.0,
+      "saved_poses": 14,
+      "score": 34.0,
+      "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+      "successful": true,
+      "unwanted_contact_pairs": 0
+    }
+  ],
+  "reason": "Selected the highest-scoring eligible saved route. The rule rewards recorded turns, route length, and spatial coverage; it does not alter or regenerate the trajectory.",
+  "rule": "Require a saved actual-Unitree-G1 successful goal completion, zero unwanted contacts, and a preserved trajectory. Rank eligible runs by 10 * heading changes + route length in cells + x span + y span; ties break by result directory name.",
+  "selected": {
+    "contact_free": true,
+    "eligible": true,
+    "heading_changes": 23,
+    "path_span_cells": {
+      "x": 14.0,
+      "y": 14.0
+    },
+    "result_dir": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+    "route_length_cells": 69.0,
+    "saved_poses": 73,
+    "score": 327.0,
+    "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+    "successful": true,
+    "unwanted_contact_pairs": 0
+  }
+}
