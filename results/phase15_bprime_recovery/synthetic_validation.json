@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "passed": 184,
+  "failed": 0,
+  "registered_candidates_generated": 0,
+  "coverage": "five publication boundaries, same-fit prefix reconstruction, chained crash/recovery continuation, prefix tampering and original-writer denial, existing mathematical/RNG/access/resource fixtures",
+  "original_evidence_files_verified_unchanged": 5331,
+  "original_records": 313,
+  "original_receipts": 313,
+  "original_run_id": "e6dc13518f0cb32516f9827a3a2536659c583a6ecacc165a0011a396dabb8690",
+  "production_generation_started": false
+}

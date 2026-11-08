@@ -26,7 +26,7 @@ def visual_selection(identities):
 
 
 class Coordinator:
-    def __init__(self,store,references,*,backend,synthetic=False,previous=()):
+    def __init__(self,store,references,*,backend,synthetic=False,previous=(),prefix=None):
         # No environment variable, manifest flag or caller argument enables production.
         if not synthetic and not PRODUCTION_GENERATION_ENABLED:
             from .phase15_bprime_access import production_manifests
@@ -45,6 +45,16 @@ class Coordinator:
             raise bp.IntegrityError('Reference inventory is not the independently committed inventory')
         store.binding.verify()
         self.store=store;self.references=references;self.backend=backend
+        self.prefix=prefix
+        declared_prefix=json.loads(store.binding.manifest_bytes).get('continuation_prefix')
+        if prefix is not None:
+            from .phase15_bprime_prefix import ReadOnlyPrefix
+            if (not isinstance(prefix,ReadOnlyPrefix) or prefix.synthetic!=synthetic
+                or prefix.partition!=store.partition or not declared_prefix
+                or declared_prefix['sha256']!=prefix.sha256 or prefix.binding!=store.binding):
+                raise bp.IntegrityError('Unverified or mismatched continuation prefix')
+        elif declared_prefix:
+            raise bp.IntegrityError('Declared continuation requires its verified original prefix')
         self.stage=store.partition;self.previous=tuple(previous)
         if any(not isinstance(p,Coordinator) or p.synthetic!=synthetic for p in self.previous):
             raise bp.IntegrityError('Prior seals require verified coordinator evidence')
@@ -63,7 +73,7 @@ class Coordinator:
         from dataclasses import replace
         for previous in self.previous:
             previous.completion()
-            for _,payload in previous.store.scan():
+            for _,payload in previous._scan():
                 evidence=validate_candidate(payload,synthetic=self.synthetic,backend=self.backend)
                 if evidence.record is not None:
                     self.index.prior_roots |= evidence.record.lineage.roots
@@ -112,6 +122,9 @@ class Coordinator:
 
     def _pending(self):return self.store.root/'pending.json'
 
+    def _scan(self):
+        return ([] if self.prefix is None else self.prefix.scan())+self.store.scan()
+
     def _clear_pending(self):
         path=self._pending()
         if path.exists():
@@ -123,14 +136,14 @@ class Coordinator:
     def restore(self):
         """Rebuild all state from validated records, never execute a saved job."""
         self.store._require_lease();self._reset()
-        rows=self.store.scan();rows.sort(key=lambda r:r[1]['sequence'])
+        rows=self._scan();rows.sort(key=lambda r:r[1]['sequence'])
         for _,payload in rows:
             expected=self._job()
             if expected is None:raise bp.IntegrityError('Extra record after completed quotas')
             self._apply(payload,expected)
         # Durable receipts survive deletion of a checkpoint: never silently
         # replay a previously completed attempt just because its file is missing.
-        by_identity={p['identity']:p for _,p in rows}
+        by_identity={p['identity']:p for e,p in rows if not e.get('prefix')}
         for receipt in (self.store.root/'recovered').glob('attempt-*.json'):
             value=json.loads(self.store.binding.read(receipt))
             if value.get('run_id')!=self.store.run_id or not isinstance(value.get('job'),dict):
@@ -149,7 +162,7 @@ class Coordinator:
                 or set(pending['job'])!={'identity','partition','mechanism','index','sequence'}):
                 raise bp.IntegrityError('Incomplete pending attempt preserved')
             if pending.get('run_id')!=self.store.run_id:raise bp.IntegrityError('Stale pending attempt')
-            committed=[payload for _,payload in rows if payload['identity']==pending['job']['identity']]
+            committed=[payload for e,payload in rows if not e.get('prefix') and payload['identity']==pending['job']['identity']]
             if committed:
                 if any(committed[0][k]!=v for k,v in pending['job'].items()):raise bp.IntegrityError('Attempt/checkpoint conflict')
                 self._clear_pending()
@@ -160,16 +173,20 @@ class Coordinator:
                 if pending['job']!=expected:raise bp.IntegrityError('Pending order conflict')
                 recovered=self.store.recover([expected['identity']])
                 if len(recovered)!=1:raise bp.IntegrityError('Uncheckpointed attempt preserved; review required')
-                payload=next(p for e,p in self.store.scan() if e['identity']==expected['identity'])
+                # Recovery can add a publication absent from the initial scan.
+                # Return and cache that verified post-recovery inventory without
+                # applying the recovered decision a second time.
+                rows=self._scan();rows.sort(key=lambda r:r[1]['sequence'])
+                payload=next(p for e,p in rows if e['identity']==expected['identity'])
                 self._apply(payload,expected);self._clear_pending()
         elif list((self.store.root/'staging').glob('*.part')):
             # A staged alias of already committed output can be verified without
             # another candidate invocation. An unknown staged identity stops.
-            self.store.recover([e['identity'] for e,_ in rows])
+            self.store.recover([e['identity'] for e,_ in rows if not e.get('prefix')])
         if list((self.store.root/'staging').glob('*.part')):
             self.store.recover([e['identity'] for e,_ in self.store.scan()])
         self.store._check_lock()
-        self._publications={e['path']:e['sha256'] for e,_ in rows}
+        self._publications={e['path']:e['sha256'] for e,_ in rows if not e.get('prefix')}
         self._restored=True
         return rows
 
@@ -177,6 +194,7 @@ class Coordinator:
         """Run a supplied builder under the profile gate; production stays disabled."""
         self.store._require_lease()
         if not self._restored:self.restore()
+        if self.prefix is not None:self.prefix.check_integrity()
         # Recheck durable bytes without recanonicalizing every previous graph on
         # every decision. A fresh process still reconstructs the complete index.
         files=list((self.store.root/'records').iterdir())
@@ -235,7 +253,7 @@ class Coordinator:
 
     def completion(self):
         self.store._check_lock()
-        rows=self.store.scan()
+        rows=self._scan()
         # Rebuild state to prevent caller mutation of in-memory credits.
         self._reset()
         for _,payload in sorted(rows,key=lambda r:r[1]['sequence']):

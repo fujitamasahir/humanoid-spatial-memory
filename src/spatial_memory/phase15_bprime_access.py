@@ -163,6 +163,8 @@ class StageBinding:
             subtrees=[self._within(self.root,p) for p in value.get('stores',[])]
             if value.get('reference_archive_root'):
                 subtrees.append(self._within(self.root,value['reference_archive_root']))
+            if value.get('readonly_prefix_root'):
+                subtrees.append(self._within(self.root,value['readonly_prefix_root']))
             if (result not in {self.root,self.manifest_path,*files}
                 and not any(result.is_relative_to(p) for p in subtrees)):
                 raise IntegrityError('File is outside explicit development input/store bindings')
