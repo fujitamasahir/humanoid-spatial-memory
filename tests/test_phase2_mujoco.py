@@ -302,8 +302,18 @@ def test_saved_g1_scene_has_display_only_rendering_bounds_without_changing_evide
     viewer_module = module_from_spec(spec)
     spec.loader.exec_module(viewer_module)
     xml = viewer_module.display_scene_xml(result_dir)
-    statistic = ET.fromstring(xml).find('statistic')
+    display_root = ET.fromstring(xml)
+    statistic = display_root.find('statistic')
     assert statistic is not None
+    # Saved sensing geometry remains group 5, but generated viewer XML
+    # exposes it to the stock viewer (default groups 0, 1 and 2).
+    saved_walls = [g for g in ET.parse(source).getroot().iter('geom')
+                   if g.get('name', '').startswith('wall_')]
+    visible_walls = [g for g in display_root.iter('geom')
+                     if g.get('name', '').startswith('wall_')]
+    assert saved_walls and len(saved_walls) == len(visible_walls)
+    assert all(g.get('group') == '5' for g in saved_walls)
+    assert all(g.get('group') == '0' for g in visible_walls)
     model = mujoco.MjModel.from_xml_string(xml)
     assert 1 < model.stat.extent < 100
     assert model.stat.extent * model.vis.map.znear < 1
