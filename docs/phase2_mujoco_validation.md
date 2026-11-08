@@ -616,3 +616,38 @@ non-forward action. Both new output artifact manifests verified without hash
 mismatches. The Phase 1.5 preservation verifier also rehashed all 836 protected
 checkpoint/receipt files successfully; prior experiment directories were not
 overwritten.
+
+#### Direct portfolio video export
+
+`scripts/export_phase2_portfolio_demo.py` renders the successful saved
+portfolio trajectory directly with MuJoCo's offscreen renderer. Its default
+source is
+`results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0/`
+(14 saved poses, start `[13, 5]`, goal `[16, 14]`). The exporter reuses the
+viewer interpolation and display-only G1 gait, keeps the saved route and
+environment states, adds translucent walls and non-colliding blue START / orange
+GOAL pins, and writes PNG frames plus a representative still and deterministic
+metadata. Camera options are `portfolio` (default), `follow`, and `overview`.
+This remains a presentation replay, not physically actuated walking or a new
+experiment.
+
+On macOS, run from a logged-in Terminal session with MuJoCo's Cocoa helper. The
+following command exports frames, MP4, and GIF to the new default directory:
+
+```bash
+brew install ffmpeg  # only if ffmpeg is not already installed
+.venv/bin/mjpython scripts/export_phase2_portfolio_demo.py \
+  --result-dir results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0 \
+  --output-dir results/phase2_mujoco/portfolio_export_g1_bp_80010011 \
+  --camera portfolio --fps 24 --mp4 --gif
+```
+
+The Codex execution environment did not expose a usable macOS CoreGraphics
+connection (`invalid CoreGraphics connection`) and did not have ffmpeg, so it
+could not produce or visually inspect live MuJoCo pixels or an MP4 here. The
+exporter detects a missing ffmpeg before creating output and explains the
+install command; a headless renderer initialization failure likewise points
+to a logged-in macOS Terminal session. Its scene compilation, transparency,
+marker collision masks, camera determinism, frame/HUD path with a stub renderer,
+metadata repeatability, and source-file preservation are covered by focused
+tests.
