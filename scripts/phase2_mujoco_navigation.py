@@ -1,8 +1,4 @@
-"""Run the read-only Phase 2 MuJoCo kinematic-navigation pilot.
-
-The built-in humanoid is an explicit capsule proxy; no G1 model is included.
-No Phase 1.5 generator is imported or invoked, and source checkpoints are read-only.
-"""
+"""Run a read-only Phase 2 G1 kinematic-navigation smoke or pilot."""
 import argparse
 import csv
 import gzip
@@ -159,17 +155,19 @@ def summarize(rows):
             'goal_completions': sum(bool(row['success']) for row in subset),
             'goal_completion_rate': sum(bool(row['success']) for row in subset) / n,
             'grid_dynamic_contact_free_completions': sum(bool(row['contact_free_success']) for row in subset),
-            'mujoco_proxy_contact_free_completions': sum(bool(row.get('mujoco_proxy_contact_free_success', False)) for row in subset),
+            'g1_contact_free_completions': sum(bool(row.get('g1_contact_free_success', False)) for row in subset),
+            'g1_unwanted_contact_pairs': sum(row.get('g1_unwanted_contact_pairs', 0) for row in subset),
+            'g1_footprint_blocked_attempts': sum(row.get('g1_footprint_blocked_attempts', 0) for row in subset),
             'mean_observations': sum(row['observation_count'] for row in subset) / n,
             'mean_observation_cost': sum(row['observation_cost'] for row in subset) / n,
             'blocked_movement_attempts': sum(row['blocked_movement_attempts'] for row in subset),
             'grid_dynamic_contacts': sum(row['dynamic_contacts'] for row in subset),
-            'mujoco_pose_pedestrian_contact_pairs': sum(row['mujoco_pose_pedestrian_contact_pairs'] for row in subset),
-            'mujoco_pose_wall_contact_pairs': sum(row['mujoco_pose_wall_contact_pairs'] for row in subset),
-            'mujoco_pose_persistent_obstacle_contact_pairs': sum(row['mujoco_pose_persistent_obstacle_contact_pairs'] for row in subset),
-            'mujoco_attempt_pedestrian_overlap_checks': sum(row['mujoco_attempt_pedestrian_overlap_checks'] for row in subset),
-            'mujoco_attempt_wall_overlap_checks': sum(row['mujoco_attempt_wall_overlap_checks'] for row in subset),
-            'mujoco_attempt_persistent_obstacle_overlap_checks': sum(row['mujoco_attempt_persistent_obstacle_overlap_checks'] for row in subset),
+            'g1_pose_pedestrian_contact_pairs': sum(row.get('g1_pedestrian_contact_pairs', 0) for row in subset),
+            'g1_pose_wall_contact_pairs': sum(row.get('g1_wall_contact_pairs', 0) for row in subset),
+            'g1_pose_persistent_obstacle_contact_pairs': sum(row.get('g1_persistent_obstacle_contact_pairs', 0) for row in subset),
+            'g1_attempt_pedestrian_contact_pairs': sum(row.get('g1_attempt_pedestrian_contact_pairs', 0) for row in subset),
+            'g1_attempt_wall_contact_pairs': sum(row.get('g1_attempt_wall_contact_pairs', 0) for row in subset),
+            'g1_attempt_persistent_obstacle_contact_pairs': sum(row.get('g1_attempt_persistent_obstacle_contact_pairs', 0) for row in subset),
             'mean_travel_distance': sum(row['travel_distance'] for row in subset) / n,
             'mean_travel_distance_m': sum(row['travel_distance_m'] for row in subset) / n,
             'mean_elapsed_steps': sum(row['elapsed_steps'] for row in subset) / n,
@@ -254,12 +252,14 @@ def provenance(worlds, config, mode, preserved):
         'platform': platform.platform(),
         'architecture': platform.machine(),
         'mujoco_version': __import__('mujoco').__version__,
-        'robot_model': 'humanoid collision proxy; NOT Unitree G1',
-        'g1_model_reference_not_used': {
-            'repository': 'https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1',
-            'model_license_as_stated_by_upstream': 'BSD-3-Clause',
-            'reason_not_integrated': 'GitHub DNS resolution failed in the execution environment; no G1 files were acquired.',
-        },
+        'robot_model': 'third_party/unitree_g1/g1.xml; actual Unitree G1 model',
+        'robot_model_upstream_commit': (ROOT/'third_party/unitree_g1.UPSTREAM_COMMIT').read_text().strip(),
+        'robot_model_files': [
+            {'path': str(path.relative_to(ROOT)), 'bytes': path.stat().st_size,
+             'sha256': sha(path.read_bytes())}
+            for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()
+        ],
+        'g1_mjcf_sha256': sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
         'motion_model': 'kinematic waypoint placement with MuJoCo contact-geometry queries; not walking control',
         'source_hashes': {
             'scripts/phase2_mujoco_navigation.py': sha(Path(__file__).read_bytes()),
@@ -314,7 +314,8 @@ def run(mode, output, max_steps, heartbeat_seconds):
                 cell_size=config['mujoco_cell_size_m'],
                 timestep=config['mujoco_timestep_seconds'])
             metrics, frames = run_episode(scenario, config, method, seed=42,
-                _frame_callback=scene.update)
+                _frame_callback=scene.update,
+                _movement_checker=lambda world, current, target: scene.check_move(world, current, target))
             metrics['travel_distance_m'] = metrics['travel_distance'] * scene.cell_size
             row = dict(mechanism=payload['mechanism'], world_identity=payload['identity'],
                        schedule=schedule, **metrics)
@@ -325,14 +326,25 @@ def run(mode, output, max_steps, heartbeat_seconds):
     if mode == 'smoke':
         scene, scenario, frames, payload, schedule, method = first_scene
         if frames[-1]['position'] == scenario.start:
-            raise RuntimeError('Smoke test did not move the humanoid proxy from its start cell')
-        (output/'scene.xml').write_text(scene.xml, encoding='utf-8')
+            raise RuntimeError('G1 smoke test did not move from its start cell')
+        # Keep the replay MJCF portable relative to the repository checkout.
+        portable_xml = scene.xml.replace(str((ROOT/'third_party/unitree_g1/assets').resolve()),
+                                         '../../../third_party/unitree_g1/assets')
+        (output/'scene.xml').write_text(portable_xml, encoding='utf-8')
+        (output/'scenario.json').write_text(json.dumps(
+            {'width': scenario.width, 'height': scenario.height, 'cell_size_m': scene.cell_size},
+            sort_keys=True, indent=2)+'\n', encoding='utf-8')
         trajectory = [dict(step=frame['step'], position=frame['position'],
                            planned=frame['planned'], moved=frame['moved'],
                            blocked=frame['blocked'], observation_count=frame['observation_count'],
-                           mujoco_pose_pedestrian_contact_pairs=frame.get('mujoco_pose_pedestrian_contact_pairs', 0),
-                           mujoco_pose_wall_contact_pairs=frame.get('mujoco_pose_wall_contact_pairs', 0),
-                           mujoco_pose_persistent_obstacle_contact_pairs=frame.get('mujoco_pose_persistent_obstacle_contact_pairs', 0))
+                           people=frame.get('g1_pedestrians', []),
+                           active_objects=frame.get('g1_active_objects', []),
+                           g1_foot_floor_contact_pairs=frame.get('g1_foot_floor_contact_pairs', 0),
+                           g1_unwanted_floor_contact_pairs=frame.get('g1_unwanted_floor_contact_pairs', 0),
+                           g1_pedestrian_contact_pairs=frame.get('g1_pedestrian_contact_pairs', 0),
+                           g1_wall_contact_pairs=frame.get('g1_wall_contact_pairs', 0),
+                           g1_persistent_obstacle_contact_pairs=frame.get('g1_persistent_obstacle_contact_pairs', 0),
+                           g1_self_contact_pairs=frame.get('g1_self_contact_pairs', 0))
                       for frame in frames]
         (output/'trajectory.json').write_text(json.dumps(trajectory, indent=2)+'\n', encoding='utf-8')
         try:
@@ -341,22 +353,23 @@ def run(mode, output, max_steps, heartbeat_seconds):
             image = scene.render()
             Image.fromarray(np.asarray(image)).save(output/'smoke_overview.png')
         except Exception as error:
-            render_proxy_snapshot(output/'smoke_overview.png', scene, scenario, frames, method)
+            # The active Viewer can load scene.xml and trajectory.json directly.
             (output/'render_unavailable.json').write_text(json.dumps(
                 {'mujoco_renderer_unavailable': type(error).__name__, 'message': str(error),
-                 'fallback': 'Matplotlib 3D rendering of saved MuJoCo proxy scene state'}, indent=2)+'\n')
+                 'fallback': 'Use scripts/view_phase2_g1_navigation.py in a normal macOS Terminal'}, indent=2)+'\n')
     persist_csv(output/'episodes.csv', rows)
     result = {
-        'status': 'PASS_PROXY_SMOKE' if mode == 'smoke' else 'COMPLETE_PROXY_PHASE2_PILOT',
+        'status': 'PASS_G1_SMOKE' if mode == 'smoke' else 'COMPLETE_G1_PHASE2_PILOT',
         'mode': mode,
         'episodes': len(rows),
         'elapsed_seconds': time.monotonic()-started,
         'summary': summarize(rows),
         'limits': [
-            'Humanoid is a geometric collision proxy, not a Unitree G1 model.',
+            'Robot is the pinned Unitree G1 model, initialized from its stand keyframe and translated kinematically.',
             'Root waypoint placement is kinematic; no gait, actuator control, balance, or walking is simulated.',
-            'MuJoCo contact counts are geometric proxy contacts; grid-blocked attempts remain a separate metric.',
-            'Proxy-contact-free completion requires goal success with zero MuJoCo contact pairs across recorded poses.',
+            'Grid scale is the documented assumption 0.75 m per cell; no scale fitting was performed.',
+            'Only eight small ankle-roll sphere contacts against the floor are treated as intended foot-floor contacts.',
+            'All other G1 floor, wall, obstacle, pedestrian, and self contacts are unwanted; proposed moves are gated by MuJoCo collision checks.',
             'Pedestrians are prescribed proxies and do not react to the robot.',
             'The existing 2D sensor and memory planner remain the agent model; MuJoCo truth is evaluator-only.',
         ],
@@ -386,7 +399,7 @@ def main():
     args = parser.parse_args()
     if args.max_steps < 1 or args.heartbeat_seconds < 1:
         parser.error('max-steps and heartbeat-seconds must be positive')
-    output = args.output or ROOT/'results'/'phase2_mujoco'/args.mode
+    output = args.output or ROOT/'results'/'phase2_mujoco'/'g1_'+args.mode
     run(args.mode, output.resolve(), args.max_steps, args.heartbeat_seconds)
 
 

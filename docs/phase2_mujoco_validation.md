@@ -126,3 +126,57 @@ preservation check:
 
 No Unitree G1, physical walking, locomotion policy, statistical superiority,
 real-world transfer, or human-safety claim is made.
+
+## Actual Unitree G1 kinematic smoke (2026-11-08)
+
+The historical proxy implementation and its result bundles above are preserved.
+This section records the subsequent integration of the user-provided, committed
+Unitree G1 model (`third_party/unitree_g1/`; upstream commit
+`98a70c569c4c1b6da467a20012f766ee1f8dc521`). The G1 MJCF meshes resolve from
+that directory. The runner pins every model file's size and SHA-256 in
+`results/phase2_mujoco/g1_smoke/provenance.json`, along with the MJCF hash,
+source hashes, Python and MuJoCo versions, and original fit-world identities.
+
+The scene initializes the G1 `stand` keyframe, then places its
+`floating_base_joint` at each existing grid waypoint without integrating robot
+dynamics. Every candidate move is swept in ten substeps per grid cell against
+the compiled G1 collision geometries before it can be accepted. The test fixture confirms that an
+obstacle-intersecting target yields real MuJoCo contact and is blocked. Of the
+model's collision geoms, only the eight 5 mm ankle-roll spheres are considered
+intended foot-floor contacts. Any other G1 floor contact, plus wall, persistent
+obstacle, pedestrian, or self contact, counts as unwanted.
+
+One existing fit world was used: mechanism R, stored fit index 0, schedule 0,
+seed 42, periodic observation controller, existing memory and A* planner, 80
+step cap, and 0.02 second MuJoCo timestep. The grid scale remains the previously
+documented, uncalibrated assumption of 0.75 m/cell. No Phase 1.5 or Voronoi
+environment was generated. The smoke reached its goal in 60 environment steps
+with 37 successful moves (27.75 m at the assumed scale), 16 observations
+including initialization, and 23 ordinary 2D blocked attempts. There were 488
+intended foot-floor pairs and zero unwanted contacts across 61 recorded poses.
+The G1 collision query detected wall intersections among grid-blocked targets;
+these targets remained blocked. This is a single kinematic waypoint smoke and
+must not be described as walking or general 3D navigation performance.
+
+The portable replay scene, trajectory, machine-readable validation report
+(`validation_report.json`), and per-file artifact inventory are saved beside the
+metrics. On a
+macOS GUI session, animated playback is available with:
+
+```bash
+.venv/bin/python scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_smoke --speed 0.25
+```
+
+A headless replay of all 61 frames had zero unwanted-contact frames. The current
+execution context could not initialize the offscreen renderer because it lacked
+a CoreGraphics connection; this does not prevent launching the viewer from a
+normal Terminal GUI session. The 288-episode G1 matrix has not been run.
+
+G1-specific regression tests: **9 passed**. The focused G1 and Phase 1.4C
+evaluation/regression set passed **41 tests**. The whole repository suite was also
+started but is blocked by pre-existing Phase 1.5 tests that require a native
+artifact absent from this checkout at
+`results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/__init__.py`.
+No Phase 1.5 data or native binding was changed. The failed test is unrelated to
+the G1 integration.

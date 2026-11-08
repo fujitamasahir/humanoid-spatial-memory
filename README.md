@@ -6,10 +6,10 @@ Research project investigating how robots can distinguish **transient human-indu
 
 > **Status:** Phase 1.4C locked development assessment complete: 13,440 episodes independently verified. The proposed policy made no additional observations and matched Static in all 840 paired conditions; superiority was not established. Ablations await separate review; no generalization, novelty or physical safety claim.
 
-> **Phase 2 status:** A bounded MuJoCo kinematic-navigation pilot now replays the
-> saved 36 fit worlds with a clearly identified humanoid collision proxy. The
-> Unitree G1 asset could not be fetched in this environment, so G1 integration
-> and any G1-performance claim remain incomplete. See the
+> **Phase 2 status:** The pinned Unitree G1 MJCF is integrated into a bounded,
+> kinematic MuJoCo navigation smoke on an existing Phase 1.5 fit world. The G1
+> reached the goal with zero unwanted pose contacts; this is one waypoint
+> experiment, not walking or general 3D navigation evidence. See the
 > [Phase 2 validation report](docs/phase2_mujoco_validation.md).
 
 ## Research questions
@@ -240,7 +240,7 @@ benefit is inconclusive. The locked policy requested no post-initial observation
 in any of its 840 episodes and reproduced Static's trajectories and scientific
 metrics throughout this matrix. See the report for all controls and limitations.
 
-## Phase 2 MuJoCo kinematic proxy pilot
+## Phase 2 MuJoCo pilot (historical proxy)
 
 MuJoCo 3.17.0 on Python 3.12 / Apple Silicon compiled the saved 2D fit worlds into
 3D floors, walls, persistent objects, pedestrian proxies and a capsule humanoid
@@ -268,8 +268,38 @@ claim of method superiority follows from this run.
 The CSV/JSON results, 3D screenshot, source hashes and fixed run settings are in
 `results/phase2_mujoco/`. The MuJoCo OpenGL renderer was unavailable in the
 headless execution context; the saved screenshot is a Matplotlib 3D rendering of
-the same proxy scene. The official Menagerie G1 description is BSD-3-Clause, but
-network DNS prevented fetching its files here, so the model was not used. G1
-asset integration, sensor/observation updates inside MuJoCo, body-footprint-aware
-planning, and a viewer replay remain future work. All simplified motion remains
-kinematic and must not be described as walking.
+the same proxy scene. That initial limitation and its outputs are retained as
+historical evidence. All simplified motion remains kinematic and must not be
+described as walking.
+
+## Actual Unitree G1 kinematic smoke
+
+The pinned G1 MJCF and meshes under `third_party/unitree_g1/` now load directly.
+The adapter initializes the `stand` keyframe and translates only
+`floating_base_joint` kinematically. MuJoCo checks the actual G1 collision
+geometry before each proposed move. Eight small ankle-roll spheres are
+classified as intended foot-floor contacts; other floor, wall, obstacle,
+pedestrian, and self contacts are unwanted. Existing fit-world walls,
+pedestrians, persistent obstacle changes, memory, and A* remain in use.
+
+The smoke used the first admitted saved fit record (`R`, fit index 0, schedule
+0), periodic observations, seed 42, the existing 2D model, an 80-step cap, and
+the documented 0.75 m/cell assumption with a 0.02 s MuJoCo timestep. G1 reached
+the goal in 60 environment steps with 37 successful grid moves (27.75 m at that
+assumed scale) and 16 observations including initialization. There were 23
+ordinary grid-blocked attempts. Across 61 checked poses, the model registered
+488 intended foot-floor pairs and zero unwanted pose contacts. Collision queries
+also identified wall intersections on blocked targets. This is one kinematic
+smoke only, not evidence of walking, balance, or general 3D navigation.
+
+The result, portable MJCF scene, trajectory and model/source hashes are in
+`results/phase2_mujoco/g1_smoke/`. Replay with the native MuJoCo Viewer on macOS:
+
+```bash
+.venv/bin/python scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_smoke --speed 0.25
+```
+
+The offscreen renderer could not establish a CoreGraphics connection in this
+headless process. The saved trajectory passed a headless replay check with zero
+unwanted-contact frames. The 288-episode matrix has not been run for G1.

@@ -15,7 +15,8 @@ def map_errors(memory, geometry, changed, departed):
 
 
 def run_episode(scenario, config, method, seed, *, _controller_factory=None,
-                _planner=None, _observation_callback=None, _frame_callback=None):
+                _planner=None, _observation_callback=None, _frame_callback=None,
+                _movement_checker=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
@@ -101,14 +102,27 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         dynamic_contacts += int((world.geometry()[y, x] and not before[y, x])
                                 or (position in world.people() and position not in prior_people))
         contact, moved = 0, False
+        footprint_blocked = False
         if len(planned) > 1:
-            nxt, contact = world.move(position, planned[1])
+            target = planned[1]
+            nxt, contact = world.move(position, target)
+            if (_movement_checker is not None and 0 <= target[0] < scenario.width
+                    and 0 <= target[1] < scenario.height):
+                footprint_blocked, _ = _movement_checker(world, position, target)
+                if footprint_blocked:
+                    nxt, contact = position, 1
+                    # A blocked physical move is an observation of occupied
+                    # space at the target cell; route subsequent A* calls around it.
+                    if not world.occupancy()[target[1], target[0]]:
+                        agent.memory.grid[target[1], target[0]] = 1
             blocked_attempts += contact
             moved = nxt != position
             distance += int(moved)
             position = nxt
             path_taken.append(position)
         capture(planned, decision, contact, moved)
+        if footprint_blocked:
+            frames[-1]['footprint_blocked'] = True
     failure_reason = None
     if position != scenario.goal:
         if not frames[-1]['planned']:
@@ -132,7 +146,14 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         dynamic_contact_rate=dynamic_contacts / max(1, world.step),
         budget_exhausted=bool(agent.cap is not None and observations >= agent.cap),
         persistent_change_events_elapsed=sum(e['step'] <= world.step for e in scenario.changes))
-    for key in ('mujoco_pose_pedestrian_contact_pairs', 'mujoco_pose_wall_contact_pairs',
+    if _movement_checker is not None:
+        metrics['g1_footprint_blocked_attempts'] = sum(bool(frame.get('footprint_blocked')) for frame in frames)
+    for key in ('g1_foot_floor_contact_pairs', 'g1_unwanted_floor_contact_pairs',
+                'g1_pedestrian_contact_pairs', 'g1_wall_contact_pairs',
+                'g1_persistent_obstacle_contact_pairs', 'g1_self_contact_pairs',
+                'g1_attempt_pedestrian_contact_pairs', 'g1_attempt_wall_contact_pairs',
+                'g1_attempt_persistent_obstacle_contact_pairs',
+                'mujoco_pose_pedestrian_contact_pairs', 'mujoco_pose_wall_contact_pairs',
                 'mujoco_pose_persistent_obstacle_contact_pairs',
                 'mujoco_attempt_pedestrian_overlap_checks', 'mujoco_attempt_wall_overlap_checks',
                 'mujoco_attempt_persistent_obstacle_overlap_checks'):
@@ -144,6 +165,12 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                 'mujoco_pose_pedestrian_contact_pairs',
                 'mujoco_pose_wall_contact_pairs',
                 'mujoco_pose_persistent_obstacle_contact_pairs')))
+    if 'g1_foot_floor_contact_pairs' in metrics:
+        bad = sum(metrics.get(key, 0) for key in ('g1_unwanted_floor_contact_pairs',
+            'g1_pedestrian_contact_pairs', 'g1_wall_contact_pairs',
+            'g1_persistent_obstacle_contact_pairs', 'g1_self_contact_pairs'))
+        metrics['g1_unwanted_contact_pairs'] = bad
+        metrics['g1_contact_free_success'] = bool(metrics['success'] and bad == 0)
     if config.get('common_horizon_metrics', False):
         # Freeze terminal memory after stopping. Advance truth only, never the agent.
         horizon = config['max_steps']
