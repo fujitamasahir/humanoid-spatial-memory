@@ -13,6 +13,8 @@ from .phase15_nauty import Backend, NAMESPACE as CANONICAL_NAMESPACE
 
 VERSION = 'phase1.5-v0.4-BPRIME-1'
 MECHANISMS = ('R', 'BP', 'V', 'M')
+# Stable seed blocks: never renumber previously generated M identities.
+MECHANISM_SEED_OFFSETS = {'R': 0, 'BP': 10_000, 'V': 20_000, 'M': 30_000}
 PARTITIONS = {'fit': (80_000_000, 12), 'calibration': (80_100_000, 6),
               'selection': (80_200_000, 6)}
 PURPOSES = ('partition', 'tree', 'chords', 'doors', 'geometry', 'start-goal',
@@ -33,7 +35,7 @@ def seed_for(partition, mechanism, index):
     development_partition(partition)
     if mechanism not in MECHANISMS or type(index) is not int or not 0 <= index < 10_000:
         raise IntegrityError('Invalid mechanism or exhausted 10000-candidate allowance')
-    return PARTITIONS[partition][0] + MECHANISMS.index(mechanism)*10_000 + index
+    return PARTITIONS[partition][0] + MECHANISM_SEED_OFFSETS[mechanism] + index
 
 
 @dataclass(frozen=True)
