@@ -100,3 +100,40 @@ class World:
         blocked = not (0 <= x < self.scenario.width and 0 <= y < self.scenario.height)
         blocked = blocked or bool(self.occupancy()[y, x])
         return (position if blocked else target), int(blocked)
+
+
+def scenario_from_bprime(payload, schedule_index=0):
+    """Adapt a saved, admitted R/BP/M world to the existing navigation simulator.
+
+    Caller must supply an independently validated candidate record. This adapter
+    never invokes geometry generation or changes the saved experiment evidence.
+    """
+    from .phase15_bprime import ACTIVE_MECHANISMS
+    if (not isinstance(payload, dict) or payload.get('mechanism') not in ACTIVE_MECHANISMS
+            or payload.get('outcome') != 'independent' or payload.get('partition') != 'fit'):
+        raise ValueError('An admitted R/BP/M fit world is required')
+    if type(schedule_index) is not int or schedule_index not in (0, 1):
+        raise ValueError('Schedule index must be 0 or 1')
+    geometry = payload['geometry']
+    world = payload['world']
+    width, height = geometry['width'], geometry['height']
+    free = {tuple(cell) for cell in geometry['free']}
+    if not free or any(not (0 <= x < width and 0 <= y < height) for x, y in free):
+        raise ValueError('Invalid saved free-space raster')
+    schedule = world['schedules'][schedule_index]
+    walls = tuple((x, y) for y in range(height) for x in range(width) if (x, y) not in free)
+    initial = tuple(map(tuple, schedule['initial']))
+    events = tuple(dict(step=e['step'], action=e['action'], cell=tuple(e['cell']),
+                        **({'to': tuple(e['to'])} if 'to' in e else {}))
+                   for e in schedule['events'])
+    positions = tuple(map(tuple, schedule['positions']))
+    data = dict(
+        name=f"{payload['identity']}:schedule-{schedule_index}",
+        split='development',
+        width=width, height=height,
+        start=world['start'], goal=world['goal'],
+        walls=walls, obstacles=initial,
+        pedestrians=(positions,) if positions else (),
+        changes=events,
+    )
+    return Scenario.from_dict(data)
