@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "root": "/Users/masahir0/Desktop/humanoid-spatial-memory/results/raw/phase15_bprime_fit_recovery_1",
+  "files": [
+    {
+      "path": "store/.writer.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "store/run.json",
+      "bytes": 492,
+      "sha256": "738cdc18739bafc2bb7daf1aab6924fed76b79d52bb36f030a9fe83696f8aba4"
+    },
+    {
+      "path": "verify-resources/00000000.json.gz",
+      "bytes": 5215034,
+      "sha256": "7b15114adfbb519b366b997252a4beda3b5e0caf80e8378244a599c9e7d18214"
+    },
+    {
+      "path": "verify-resources/00000001.json.gz",
+      "bytes": 216158,
+      "sha256": "d55a72bc6aa1e366f56c1f938c5f97e7cbb1594d3057c1791a866473f2333e51"
+    },
+    {
+      "path": "verify-resources/00000002.json.gz",
+      "bytes": 433870,
+      "sha256": "f6f623aae5a403b9be020cb30c2154b30abf67f4a018a220a8dfa9cb12fe49a1"
+    }
+  ],
+  "original_evidence_files_verified_unchanged": 5331,
+  "original_records": 313,
+  "original_receipts": 313,
+  "new_candidate_records": 0
+}
