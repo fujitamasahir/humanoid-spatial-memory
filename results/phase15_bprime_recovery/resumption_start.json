@@ -1,0 +1,16 @@
+{
+  "status": "RESUMED_SAME_FIT_WITH_VERIFIED_CONTINUATION",
+  "observed_at": "2026-11-07T18:33:17.547517-07:00",
+  "first_new_identity": "phase1.5-v0.4-BPRIME-1:fit:V:80020263",
+  "first_new_sequence": 313,
+  "new_records_observed": 22,
+  "total_records_observed": 335,
+  "original_evidence_files_verified_unchanged": 5331,
+  "original_records": 313,
+  "original_receipts": 313,
+  "original_run_id": "e6dc13518f0cb32516f9827a3a2536659c583a6ecacc165a0011a396dabb8690",
+  "continuation_run_id": "738cdc18739bafc2bb7daf1aab6924fed76b79d52bb36f030a9fe83696f8aba4",
+  "synthetic_tests_passed": 184,
+  "synthetic_tests_failed": 0,
+  "reserved_stages_executed": false
+}
