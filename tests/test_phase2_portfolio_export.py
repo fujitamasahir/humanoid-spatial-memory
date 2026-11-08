@@ -39,6 +39,22 @@ def test_display_scene_has_translucent_walls_and_noncolliding_start_goal_pins():
         assert model.geom_contype[geom_id] == model.geom_conaffinity[geom_id] == 0
 
 
+def test_display_scene_allocates_requested_offscreen_framebuffer():
+    import mujoco
+
+    root = ET.fromstring(exporter.make_display_xml(SOURCE, offwidth=1280, offheight=720))
+    global_settings = root.find("visual/global")
+    assert global_settings is not None
+    assert global_settings.attrib["offwidth"] == "1280"
+    assert global_settings.attrib["offheight"] == "720"
+    compiled = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
+    assert compiled.vis.global_.offwidth >= 1280
+    assert compiled.vis.global_.offheight >= 720
+
+    with pytest.raises(ValueError, match="must be positive"):
+        exporter.make_display_xml(SOURCE, offwidth=0)
+
+
 def test_camera_modes_are_deterministic_and_keep_portfolio_route_framed():
     import mujoco
 
