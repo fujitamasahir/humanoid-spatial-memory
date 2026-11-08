@@ -21,6 +21,7 @@ from spatial_memory.phase15_bprime_protocol import digest
 from spatial_memory.simulation import scenario_from_bprime
 from spatial_memory.evaluation import run_episode
 from spatial_memory.mujoco_navigation import MujocoNavigationScene
+from spatial_memory.mujoco_perception import MujocoRayPerception
 
 STORES = (
     'results/raw/phase15_macos_development/fit',
@@ -158,6 +159,17 @@ def summarize(rows):
             'g1_contact_free_completions': sum(bool(row.get('g1_contact_free_success', False)) for row in subset),
             'g1_unwanted_contact_pairs': sum(row.get('g1_unwanted_contact_pairs', 0) for row in subset),
             'g1_footprint_blocked_attempts': sum(row.get('g1_footprint_blocked_attempts', 0) for row in subset),
+            'g1_heading_changes': sum(row.get('g1_heading_changes', 0) for row in subset),
+            'g1_blocked_movement_reasons': {
+                reason: sum(row.get('g1_blocked_movement_reasons', {}).get(reason, 0) for row in subset)
+                for reason in ('rotation_collision', 'translation_collision', 'grid_occupancy')},
+            'mujoco_sensor_rays': sum(row.get('mujoco_sensor_rays', 0) for row in subset),
+            'mujoco_sensor_hits': sum(row.get('mujoco_sensor_hits', 0) for row in subset),
+            'mujoco_sensor_visible_cells': sum(row.get('mujoco_sensor_visible_cells', 0) for row in subset),
+            'mujoco_sensor_occupied_cells': sum(row.get('mujoco_sensor_occupied_cells', 0) for row in subset),
+            'mujoco_sensor_hit_types': {
+                kind: sum(row.get('mujoco_sensor_hit_types', {}).get(kind, 0) for row in subset)
+                for kind in ('walls', 'persistent_obstacles', 'pedestrians')},
             'mean_observations': sum(row['observation_count'] for row in subset) / n,
             'mean_observation_cost': sum(row['observation_cost'] for row in subset) / n,
             'blocked_movement_attempts': sum(row['blocked_movement_attempts'] for row in subset),
@@ -239,7 +251,7 @@ def render_proxy_snapshot(path, scene, scenario, frames, method):
     plt.close(figure)
 
 
-def provenance(worlds, config, mode, preserved):
+def provenance(worlds, config, mode, preserved, sensor_backend):
     rev = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT,
                          capture_output=True, text=True, check=True).stdout.strip()
     status = subprocess.run(['git', 'status', '--short', '--branch'], cwd=ROOT,
@@ -252,6 +264,8 @@ def provenance(worlds, config, mode, preserved):
         'platform': platform.platform(),
         'architecture': platform.machine(),
         'mujoco_version': __import__('mujoco').__version__,
+        'sensor_backend': sensor_backend,
+        'g1_forward_axis_local': [1.0, 0.0, 0.0],
         'robot_model': 'third_party/unitree_g1/g1.xml; actual Unitree G1 model',
         'robot_model_upstream_commit': (ROOT/'third_party/unitree_g1.UPSTREAM_COMMIT').read_text().strip(),
         'robot_model_files': [
@@ -260,10 +274,12 @@ def provenance(worlds, config, mode, preserved):
             for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()
         ],
         'g1_mjcf_sha256': sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
-        'motion_model': 'kinematic waypoint placement with MuJoCo contact-geometry queries; not walking control',
+        'motion_model': 'kinematic waypoint placement with G1 yaw alignment and collision sweeps; not walking control',
         'source_hashes': {
             'scripts/phase2_mujoco_navigation.py': sha(Path(__file__).read_bytes()),
+            'scripts/view_phase2_g1_navigation.py': sha((ROOT/'scripts/view_phase2_g1_navigation.py').read_bytes()),
             'src/spatial_memory/mujoco_navigation.py': sha((ROOT/'src/spatial_memory/mujoco_navigation.py').read_bytes()),
+            'src/spatial_memory/mujoco_perception.py': sha((ROOT/'src/spatial_memory/mujoco_perception.py').read_bytes()),
             'src/spatial_memory/evaluation.py': sha((ROOT/'src/spatial_memory/evaluation.py').read_bytes()),
             'src/spatial_memory/simulation.py': sha((ROOT/'src/spatial_memory/simulation.py').read_bytes()),
         },
@@ -280,14 +296,17 @@ def provenance(worlds, config, mode, preserved):
     }
 
 
-def run(mode, output, max_steps, heartbeat_seconds):
+def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
     worlds = admitted_worlds()
     preserved = verify_preserved_prefix()
     config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0),
                   update_interval=4, unknown='optimistic', max_steps=max_steps,
                   observation_cost=1, max_observations=20,
                   common_horizon_metrics=True,
-                  mujoco_cell_size_m=0.75, mujoco_timestep_seconds=0.02)
+                  mujoco_cell_size_m=0.75, mujoco_timestep_seconds=0.02,
+                  mujoco_ray_sensor=dict(range_m=6.0, horizontal_fov_deg=120.0,
+                                         ray_count=61, sample_spacing_m=0.075),
+                  sensor_backend=sensor_backend)
     if mode == 'smoke':
         selected = worlds[0]
         episodes = [(selected, 0, 'periodic')]
@@ -313,9 +332,12 @@ def run(mode, output, max_steps, heartbeat_seconds):
             scene = MujocoNavigationScene(scenario,
                 cell_size=config['mujoco_cell_size_m'],
                 timestep=config['mujoco_timestep_seconds'])
+            perception = (MujocoRayPerception(scene, **config['mujoco_ray_sensor'])
+                          if sensor_backend == 'mujoco3d' else None)
             metrics, frames = run_episode(scenario, config, method, seed=42,
                 _frame_callback=scene.update,
-                _movement_checker=lambda world, current, target: scene.check_move(world, current, target))
+                _movement_checker=lambda world, current, target, yaw: scene.check_move(world, current, target, yaw),
+                _observation_provider=perception.observe if perception is not None else None)
             metrics['travel_distance_m'] = metrics['travel_distance'] * scene.cell_size
             row = dict(mechanism=payload['mechanism'], world_identity=payload['identity'],
                        schedule=schedule, **metrics)
@@ -337,6 +359,11 @@ def run(mode, output, max_steps, heartbeat_seconds):
         trajectory = [dict(step=frame['step'], position=frame['position'],
                            planned=frame['planned'], moved=frame['moved'],
                            blocked=frame['blocked'], observation_count=frame['observation_count'],
+                           heading_yaw=frame.get('heading_yaw', 0.0),
+                           heading_changed=frame.get('heading_changed', False),
+                           blocked_reason=frame.get('blocked_reason'),
+                           memory_grid=frame['memory'].tolist(),
+                           observation_stats=frame.get('observation_stats', {}),
                            people=frame.get('g1_pedestrians', []),
                            active_objects=frame.get('g1_active_objects', []),
                            g1_foot_floor_contact_pairs=frame.get('g1_foot_floor_contact_pairs', 0),
@@ -358,8 +385,14 @@ def run(mode, output, max_steps, heartbeat_seconds):
                 {'mujoco_renderer_unavailable': type(error).__name__, 'message': str(error),
                  'fallback': 'Use scripts/view_phase2_g1_navigation.py in a normal macOS Terminal'}, indent=2)+'\n')
     persist_csv(output/'episodes.csv', rows)
+    smoke_passed = (mode == 'smoke' and bool(rows[0]['success'])
+        and int(rows[0].get('g1_unwanted_contact_pairs', 0)) == 0
+        and int(rows[0]['observation_count']) <= int(rows[0]['max_observations'])
+        and (sensor_backend != 'mujoco3d' or int(rows[0].get('mujoco_sensor_rays', 0)) > 0))
     result = {
-        'status': 'PASS_G1_SMOKE' if mode == 'smoke' else 'COMPLETE_G1_PHASE2_PILOT',
+        'status': ((('PASS_G1_MUJOCO_PERCEPTION_SMOKE' if sensor_backend == 'mujoco3d'
+                     else 'PASS_G1_LEGACY_2D_SMOKE') if smoke_passed else 'FAIL_G1_SMOKE_GATE')
+                   if mode == 'smoke' else 'COMPLETE_G1_PHASE2_PILOT'),
         'mode': mode,
         'episodes': len(rows),
         'elapsed_seconds': time.monotonic()-started,
@@ -369,14 +402,38 @@ def run(mode, output, max_steps, heartbeat_seconds):
             'Root waypoint placement is kinematic; no gait, actuator control, balance, or walking is simulated.',
             'Grid scale is the documented assumption 0.75 m per cell; no scale fitting was performed.',
             'Only eight small ankle-roll sphere contacts against the floor are treated as intended foot-floor contacts.',
-            'All other G1 floor, wall, obstacle, pedestrian, and self contacts are unwanted; proposed moves are gated by MuJoCo collision checks.',
+            'G1 yaw is aligned with travel; each move checks in-place rotation and translation sweeps against real collision geoms.',
+            'The 3D sensor uses MuJoCo rays; the policy receives only ternary occupancy measurements, not geom identities or evaluator truth.',
+            'All other G1 floor, wall, obstacle, pedestrian, and self contacts are unwanted; collisions block maneuvers with a recorded reason.',
             'Pedestrians are prescribed proxies and do not react to the robot.',
             'The existing 2D sensor and memory planner remain the agent model; MuJoCo truth is evaluator-only.',
         ],
     }
     (output/'summary.json').write_text(json.dumps(result, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     (output/'provenance.json').write_text(json.dumps(
-        provenance(worlds, config, mode, preserved), sort_keys=True, indent=2)+'\n', encoding='utf-8')
+        provenance(worlds, config, mode, preserved, sensor_backend), sort_keys=True, indent=2)+'\n', encoding='utf-8')
+    if mode == 'smoke':
+        row = rows[0]
+        validation = dict(status=result['status'], mode=mode, sensor_backend=sensor_backend,
+            world_identity=row['world_identity'], schedule_index=row['schedule'], method=row['method'],
+            measured_metrics={key: row.get(key) for key in (
+                'success', 'elapsed_steps', 'travel_distance', 'travel_distance_m',
+                'observation_count', 'observation_requests_denied', 'g1_heading_changes',
+                'g1_heading_change_records', 'g1_footprint_blocked_attempts',
+                'g1_blocked_movement_reasons', 'g1_unwanted_contact_pairs',
+                'g1_foot_floor_contact_pairs', 'mujoco_sensor_rays', 'mujoco_sensor_hits',
+                'mujoco_sensor_visible_cells', 'mujoco_sensor_free_cells',
+                'mujoco_sensor_occupied_cells', 'mujoco_sensor_hit_types',
+                'stale_map_errors', 'final_stale_map_errors', 'missed_persistent_changes',
+                'final_missed_persistent_changes')},
+            sensor_configuration=config['mujoco_ray_sensor'] if sensor_backend == 'mujoco3d' else None,
+            grid_scale_m_per_cell=config['mujoco_cell_size_m'],
+            grid_scale_calibrated=False, phase15_environments_generated=0,
+            preservation_files_rehashed=preserved['files_checked'],
+            model_sha256=sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
+            source_hashes=provenance(worlds, config, mode, preserved, sensor_backend)['source_hashes'])
+        (output/'validation_report.json').write_text(
+            json.dumps(validation, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     # Hash the just-written result set in an index after all evidence is durable.
     inventory = []
     for path in sorted(output.iterdir()):
@@ -396,11 +453,12 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--max-steps', type=int, default=80)
     parser.add_argument('--heartbeat-seconds', type=int, default=900)
+    parser.add_argument('--sensor-backend', choices=('mujoco3d', 'legacy2d'), default='mujoco3d')
     args = parser.parse_args()
     if args.max_steps < 1 or args.heartbeat_seconds < 1:
         parser.error('max-steps and heartbeat-seconds must be positive')
-    output = args.output or ROOT/'results'/'phase2_mujoco'/'g1_'+args.mode
-    run(args.mode, output.resolve(), args.max_steps, args.heartbeat_seconds)
+    output = args.output or ROOT/'results'/'phase2_mujoco'/f'g1_{args.sensor_backend}_{args.mode}'
+    run(args.mode, output.resolve(), args.max_steps, args.heartbeat_seconds, args.sensor_backend)
 
 
 if __name__ == '__main__':

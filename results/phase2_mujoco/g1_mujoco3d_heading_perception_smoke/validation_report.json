@@ -1,0 +1,244 @@
+{
+  "grid_scale_calibrated": false,
+  "grid_scale_m_per_cell": 0.75,
+  "measured_metrics": {
+    "elapsed_steps": 72,
+    "final_missed_persistent_changes": 5,
+    "final_stale_map_errors": 0,
+    "g1_blocked_movement_reasons": {
+      "grid_occupancy": 0,
+      "rotation_collision": 0,
+      "translation_collision": 3
+    },
+    "g1_foot_floor_contact_pairs": 584,
+    "g1_footprint_blocked_attempts": 3,
+    "g1_heading_change_records": [
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          5,
+          14
+        ],
+        "step": 1
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          6,
+          13
+        ],
+        "step": 4
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          10,
+          12
+        ],
+        "step": 11
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          11,
+          10
+        ],
+        "step": 14
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          13,
+          9
+        ],
+        "step": 17
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          14,
+          7
+        ],
+        "step": 20
+      },
+      {
+        "heading_yaw": 1.5707963267948966,
+        "position": [
+          15,
+          8
+        ],
+        "step": 22
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          16,
+          8
+        ],
+        "step": 23
+      },
+      {
+        "heading_yaw": 1.5707963267948966,
+        "position": [
+          16,
+          9
+        ],
+        "step": 24
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          17,
+          11
+        ],
+        "step": 27
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          19,
+          10
+        ],
+        "step": 30
+      },
+      {
+        "heading_yaw": 1.5707963267948966,
+        "position": [
+          19,
+          6
+        ],
+        "step": 36
+      },
+      {
+        "heading_yaw": 3.141592653589793,
+        "position": [
+          18,
+          11
+        ],
+        "step": 42
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          16,
+          10
+        ],
+        "step": 45
+      },
+      {
+        "heading_yaw": 3.141592653589793,
+        "position": [
+          15,
+          10
+        ],
+        "step": 46
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          11,
+          9
+        ],
+        "step": 51
+      },
+      {
+        "heading_yaw": 3.141592653589793,
+        "position": [
+          10,
+          7
+        ],
+        "step": 54
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          8,
+          6
+        ],
+        "step": 57
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          9,
+          3
+        ],
+        "step": 61
+      },
+      {
+        "heading_yaw": 1.5707963267948966,
+        "position": [
+          11,
+          4
+        ],
+        "step": 64
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          12,
+          4
+        ],
+        "step": 65
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          13,
+          3
+        ],
+        "step": 67
+      },
+      {
+        "heading_yaw": 0.0,
+        "position": [
+          14,
+          1
+        ],
+        "step": 70
+      }
+    ],
+    "g1_heading_changes": 23,
+    "g1_unwanted_contact_pairs": 0,
+    "missed_persistent_changes": 329,
+    "mujoco_sensor_free_cells": 291,
+    "mujoco_sensor_hit_types": {
+      "pedestrians": 0,
+      "persistent_obstacles": 82,
+      "walls": 1056
+    },
+    "mujoco_sensor_hits": 1138,
+    "mujoco_sensor_occupied_cells": 150,
+    "mujoco_sensor_rays": 1159,
+    "mujoco_sensor_visible_cells": 441,
+    "observation_count": 19,
+    "observation_requests_denied": 0,
+    "stale_map_errors": 0,
+    "success": true,
+    "travel_distance": 69,
+    "travel_distance_m": 51.75
+  },
+  "method": "periodic",
+  "mode": "smoke",
+  "model_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489",
+  "phase15_environments_generated": 0,
+  "preservation_files_rehashed": 836,
+  "schedule_index": 0,
+  "sensor_backend": "mujoco3d",
+  "sensor_configuration": {
+    "horizontal_fov_deg": 120.0,
+    "range_m": 6.0,
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "source_hashes": {
+    "scripts/phase2_mujoco_navigation.py": "74da6b0350299e409ba8a8dcc139f819f2d855845a232a930ea52e4cd990244c",
+    "scripts/view_phase2_g1_navigation.py": "54f66e8a6165df8de8ef440daca576502552039973475ff8e58e657412af96d7",
+    "src/spatial_memory/evaluation.py": "2bfceb7f1bf34592c6aca598d555bcffcb3e56a325f102a7b5fc81168dbe3a36",
+    "src/spatial_memory/mujoco_navigation.py": "b6ae78f884510b6f8dd6b5b87712af5563519adf18de8524af4f43714043c8d1",
+    "src/spatial_memory/mujoco_perception.py": "5e10e3be7d2178e3d5bf63630e39fbdf84311bd3a1f1f6e0644f85f3fc3d9464",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "status": "PASS_G1_MUJOCO_PERCEPTION_SMOKE",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+}

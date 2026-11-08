@@ -8,8 +8,9 @@ Research project investigating how robots can distinguish **transient human-indu
 
 > **Phase 2 status:** The pinned Unitree G1 MJCF is integrated into a bounded,
 > kinematic MuJoCo navigation smoke on an existing Phase 1.5 fit world. The G1
-> reached the goal with zero unwanted pose contacts; this is one waypoint
-> experiment, not walking or general 3D navigation evidence. See the
+> now turns toward each move and receives grid observations from MuJoCo rays.
+> Its first 3D-perception smoke reached the goal with zero unwanted pose
+> contacts; this is one waypoint experiment, not walking or general navigation evidence. See the
 > [Phase 2 validation report](docs/phase2_mujoco_validation.md).
 
 ## Research questions
@@ -303,3 +304,34 @@ The result, portable MJCF scene, trajectory and model/source hashes are in
 The offscreen renderer could not establish a CoreGraphics connection in this
 headless process. The saved trajectory passed a headless replay check with zero
 unwanted-contact frames. The 288-episode matrix has not been run for G1.
+
+## G1 heading and MuJoCo 3D perception smoke
+
+The follow-up smoke keeps the same admitted fit environment and adds heading
+control and a MuJoCo ray sensor. The supplied G1 model's local +X axis is its
+forward axis. Each grid move checks an in-place yaw sweep at increments no
+larger than 0.05 rad, followed by a translation sweep at increments no larger
+than 0.075 m. A collision blocks the maneuver and records whether turning or
+translation was blocked. The stand root height and joint pose remain fixed;
+this is kinematic motion, not actuated walking.
+
+The ray origin is attached to `torso_link` and is 0.864 m above the floor in
+the stand pose. The sensor casts 61 deterministic horizontal rays over 120
+degrees to 6 m, sampling the ray paths every 0.075 m. Visible paths become free
+cells, first hit geometries mark occupied cells, and cells outside visibility
+remain unknown. A dedicated MuJoCo geom group and body exclusion keep robot
+geometry out of observations; nearest-hit raycasting preserves occlusion. The
+controller receives only the ternary occupancy grid. It receives no geometry
+identity or evaluator truth.
+
+The fresh result bundle is
+`results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke/`; its
+`validation_report.json` contains the measured trajectory, sensor, collision,
+memory, fit-identity, model, and source data. The updated viewer supports both
+this run and the older `g1_smoke` trajectory. Start looped playback in macOS
+Terminal with:
+
+```bash
+.venv/bin/mjpython scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke --camera follow
+```

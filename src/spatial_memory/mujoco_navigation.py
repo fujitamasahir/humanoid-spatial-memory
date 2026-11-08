@@ -7,6 +7,25 @@ import xml.etree.ElementTree as ET
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 G1_XML = REPOSITORY_ROOT / 'third_party' / 'unitree_g1' / 'g1.xml'
+G1_FORWARD_AXIS = (1.0, 0.0, 0.0)  # Unitree MJCF body convention: local +X is anterior.
+
+
+def yaw_quaternion(yaw):
+    """MuJoCo free-joint quaternion (w, x, y, z) for a world-Z yaw."""
+    return (math.cos(yaw/2), 0.0, 0.0, math.sin(yaw/2))
+
+
+def desired_heading(start, target, cell_size=1.0):
+    """Yaw that turns the G1 local +X forward axis toward a grid displacement."""
+    dx = (target[0]-start[0])*cell_size
+    dy = (target[1]-start[1])*cell_size
+    if dx == 0 and dy == 0:
+        return None
+    return math.atan2(dy, dx)
+
+
+def angle_delta(target, current):
+    return (target-current+math.pi) % (2*math.pi)-math.pi
 
 
 @dataclass(frozen=True)
@@ -67,8 +86,13 @@ class MujocoNavigationScene:
         self._ped_geom_ids = {i for body in self.pedestrian_bodies for i in range(self.model.ngeom)
                               if int(self.model.geom_bodyid[i]) == body}
         self._floor_geom_id = self._geom_id('floor')
+        self.sensor_site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE,
+                                                'g1_ray_sensor')
+        if self.sensor_site_id < 0:
+            raise ValueError('Missing G1-attached ray sensor site')
         self._last_snapshot = None
-        self._set_pose(scenario.start)
+        self.heading_yaw = 0.0
+        self._set_pose(scenario.start, self.heading_yaw)
         self.mj.mj_forward(self.model, self.data)
 
     def _make_xml(self):
@@ -81,6 +105,13 @@ class MujocoNavigationScene:
         option = root.find('option')
         option.set('timestep', f'{self.timestep:.6g}')
         worldbody = root.find('worldbody')
+        torso = next((body for body in root.iter('body') if body.get('name') == 'torso_link'), None)
+        if torso is None:
+            raise ValueError('G1 model is missing torso_link for the attached perception site')
+        # At stand this places the horizontal ray origin about 0.864 m above
+        # the floor: above the ankle, below the 0.9 m obstacle tops.
+        ET.SubElement(torso, 'site', name='g1_ray_sensor', pos='0.05 0 0.03', size='0.012',
+                      rgba='1 0.8 0.1 1')
         spacing = self.cell_size
         extent_x = max(2.0, self.scenario.width * spacing / 2 + spacing)
         extent_y = max(2.0, self.scenario.height * spacing / 2 + spacing)
@@ -93,7 +124,7 @@ class MujocoNavigationScene:
         for x, y in sorted(self.scenario.walls):
             wx, wy = self.grid_to_world((x, y))
             ET.SubElement(worldbody, 'geom', name=f'wall_{x}_{y}', type='box', pos=f'{wx:.6g} {wy:.6g} 1.25',
-                          size=f'{half:.6g} {half:.6g} 1.25', rgba='0.23 0.25 0.29 1')
+                          size=f'{half:.6g} {half:.6g} 1.25', rgba='0.23 0.25 0.29 1', group='5')
         object_cells = set(self.scenario.obstacles)
         object_cells.update(tuple(e['cell']) for e in self.scenario.changes)
         object_cells.update(tuple(e['to']) for e in self.scenario.changes if 'to' in e)
@@ -105,11 +136,11 @@ class MujocoNavigationScene:
             base_z = 0 if (x, y) in self.scenario.obstacles else -1000
             body = ET.SubElement(worldbody, 'body', name=name, mocap='true', pos=f'{wx:.6g} {wy:.6g} {base_z}')
             ET.SubElement(body, 'geom', name=f'object_geom_{x}_{y}', type='box', pos='0 0 0.45',
-                          size=f'{half:.6g} {half:.6g} 0.45', rgba='0.65 0.35 0.16 1', contype='1', conaffinity='1')
+                          size=f'{half:.6g} {half:.6g} 0.45', rgba='0.65 0.35 0.16 1', contype='1', conaffinity='1', group='5')
         for index in range(len(self.scenario.pedestrians)):
             body = ET.SubElement(worldbody, 'body', name=f'pedestrian_{index}', mocap='true')
             ET.SubElement(body, 'geom', name=f'pedestrian_geom_{index}', type='capsule',
-                          fromto='0 0 0.20 0 0 1.28', size='0.19', rgba='0.87 0.28 0.22 1')
+                          fromto='0 0 0.20 0 0 1.28', size='0.19', rgba='0.87 0.28 0.22 1', group='5')
         return ET.tostring(root, encoding='unicode'), object_names
 
     def grid_to_world(self, cell):
@@ -148,11 +179,13 @@ class MujocoNavigationScene:
                 int(self.model.geom_type[geom]) == int(self.mj.mjtGeom.mjGEOM_SPHERE) and
                 float(self.model.geom_size[geom, 0]) <= 0.0051)
 
-    def _set_pose(self, cell):
+    def _set_pose(self, cell, yaw=0.0):
         x, y = self.grid_to_world(cell)
         self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = self._stand_root
         self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+2] = (x, y)
+        self.data.qpos[self.robot_qpos_adr+3:self.robot_qpos_adr+7] = yaw_quaternion(yaw)
         self.data.qvel[:] = 0
+        self.heading_yaw = float(yaw)
 
     def _sync_environment(self, world):
         for index, mocap_id in enumerate(self.pedestrian_mocaps):
@@ -184,39 +217,61 @@ class MujocoNavigationScene:
                 counts['persistent_obstacle'] += 1
         return ContactCounts(**counts)
 
-    def check_move(self, world, current, target):
-        """Check the swept G1 footprint from cell center to cell center."""
+    def check_move(self, world, current, target, current_yaw=None):
+        """Check a pivot sweep and then a translated sweep; reject on first collision."""
         old = self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7].copy()
+        current_yaw = self.heading_yaw if current_yaw is None else float(current_yaw)
+        wanted_yaw = desired_heading(current, target, self.cell_size)
+        if wanted_yaw is None:
+            return False, ContactCounts(), current_yaw, None
         self._sync_environment(world)
+        yaw_change = angle_delta(wanted_yaw, current_yaw)
+        rotation_samples = max(1, math.ceil(abs(yaw_change)/0.05))
+        for sample in range(1, rotation_samples+1):
+            fraction = sample/rotation_samples
+            yaw = current_yaw + yaw_change*fraction
+            self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+            self.data.qpos[self.robot_qpos_adr+3:self.robot_qpos_adr+7] = yaw_quaternion(yaw)
+            self.data.qvel[:] = 0
+            self.mj.mj_forward(self.model, self.data)
+            counts = self._contacts()
+            if counts.environmental:
+                self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+                self.data.qvel[:] = 0
+                self.mj.mj_forward(self.model, self.data)
+                return True, counts, current_yaw, 'rotation_collision'
         target_x, target_y = self.grid_to_world(target)
         distance = math.hypot(target_x-old[0], target_y-old[1])
         samples = max(1, math.ceil(distance / (self.cell_size/10)))
-        observed = dict.fromkeys(ContactCounts.__dataclass_fields__, 0)
         for sample in range(1, samples+1):
             fraction = sample/samples
             self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
             self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+2] = (
                 old[0] + (target_x-old[0])*fraction,
                 old[1] + (target_y-old[1])*fraction)
+            self.data.qpos[self.robot_qpos_adr+3:self.robot_qpos_adr+7] = yaw_quaternion(wanted_yaw)
             self.data.qvel[:] = 0
             self.mj.mj_forward(self.model, self.data)
             counts = self._contacts()
-            for key, value in vars(counts).items():
-                observed[key] = max(observed[key], value)
-        contacts = ContactCounts(**observed)
+            if counts.environmental:
+                self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+                self.data.qvel[:] = 0
+                self.mj.mj_forward(self.model, self.data)
+                return True, counts, current_yaw, 'translation_collision'
         self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
         self.data.qvel[:] = 0
         self.mj.mj_forward(self.model, self.data)
-        return contacts.environmental > 0, contacts
+        return False, ContactCounts(), wanted_yaw, None
 
     def update(self, world, frame):
         self._sync_environment(world)
-        self._set_pose(frame['position'])
+        self._set_pose(frame['position'], frame.get('heading_yaw', 0.0))
         self.mj.mj_forward(self.model, self.data)
         current = self._contacts()
         attempted = ContactCounts()
         if frame.get('blocked') and len(frame.get('planned') or []) > 1:
-            _, attempted = self.check_move(world, frame['position'], frame['planned'][1])
+            _, attempted, _, _ = self.check_move(world, frame['position'], frame['planned'][1],
+                                                  frame.get('heading_yaw', 0.0))
         self.data.time = frame['step'] * self.timestep
         self._last_snapshot = dict(step=frame['step'], robot=frame['position'],
             pedestrians=sorted(world.people()), active_objects=sorted(world.objects), contacts=vars(current))

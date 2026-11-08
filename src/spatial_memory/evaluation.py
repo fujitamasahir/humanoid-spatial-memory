@@ -16,7 +16,7 @@ def map_errors(memory, geometry, changed, departed):
 
 def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                 _planner=None, _observation_callback=None, _frame_callback=None,
-                _movement_checker=None):
+                _movement_checker=None, _observation_provider=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
@@ -26,10 +26,23 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
     controller = _controller_factory or ObservationController
     world = World(scenario)
     sensor = Sensor(**config['sensor'])
+    heading_yaw = 0.0
+    latest_observation_stats = {}
     # Per-time streams keep sensor noise paired regardless of observation schedules.
     def observe():
         rng = np.random.default_rng(np.random.SeedSequence([seed, world.step]))
-        return sensor.observe(world.occupancy(), position, rng)
+        nonlocal latest_observation_stats
+        if _observation_provider is None:
+            result = sensor.observe(world.occupancy(), position, rng)
+            latest_observation_stats = {}
+        else:
+            result = _observation_provider(world, position, heading_yaw)
+            latest_observation_stats = dict(getattr(_observation_provider.__self__,
+                'last_stats', {})) if getattr(_observation_provider, '__self__', None) else {}
+        result = np.asarray(result, dtype=np.int8)
+        if result.shape != (scenario.height, scenario.width) or not np.isin(result, (-1, 0, 1)).all():
+            raise ValueError('Observation provider must return a ternary world-sized array')
+        return result
 
     position = scenario.start
     initial = observe()
@@ -67,6 +80,8 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         frame = dict(step=world.step, position=position, geometry=world.geometry().copy(),
             people=people.copy(), memory=agent.memory.grid.copy(), planned=planned,
             executed=list(path_taken), errors=errors, blocked=bool(blocked), moved=bool(moved),
+            heading_yaw=float(heading_yaw),
+            observation_stats=dict(latest_observation_stats),
             observation_count=observations, **(decision or dict(observation_requested=True,
                 observation_granted=True, observation_score=None, observation_position=position)))
         # Evaluation-only adapters may observe simulator truth for rendering or
@@ -103,18 +118,29 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                                 or (position in world.people() and position not in prior_people))
         contact, moved = 0, False
         footprint_blocked = False
+        blocked_reason = None
         if len(planned) > 1:
             target = planned[1]
             nxt, contact = world.move(position, target)
             if (_movement_checker is not None and 0 <= target[0] < scenario.width
                     and 0 <= target[1] < scenario.height):
-                footprint_blocked, _ = _movement_checker(world, position, target)
+                check = _movement_checker(world, position, target, heading_yaw)
+                if len(check) == 2:
+                    footprint_blocked, _ = check
+                    next_heading, blocked_reason = heading_yaw, None
+                else:
+                    footprint_blocked, _, next_heading, blocked_reason = check
                 if footprint_blocked:
                     nxt, contact = position, 1
                     # A blocked physical move is an observation of occupied
                     # space at the target cell; route subsequent A* calls around it.
-                    if not world.occupancy()[target[1], target[0]]:
+                    if (blocked_reason == 'translation_collision'
+                            and not world.occupancy()[target[1], target[0]]):
                         agent.memory.grid[target[1], target[0]] = 1
+                elif not contact:
+                    heading_yaw = float(next_heading)
+            if contact and blocked_reason is None:
+                blocked_reason = 'grid_occupancy'
             blocked_attempts += contact
             moved = nxt != position
             distance += int(moved)
@@ -123,6 +149,12 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         capture(planned, decision, contact, moved)
         if footprint_blocked:
             frames[-1]['footprint_blocked'] = True
+        frames[-1]['blocked_reason'] = blocked_reason
+        if frames[-1]['moved']:
+            frames[-1]['heading_changed'] = bool(abs(
+                (heading_yaw - frames[-2]['heading_yaw'] + np.pi) % (2*np.pi) - np.pi) > 1e-9)
+        else:
+            frames[-1]['heading_changed'] = False
     failure_reason = None
     if position != scenario.goal:
         if not frames[-1]['planned']:
@@ -148,6 +180,26 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         persistent_change_events_elapsed=sum(e['step'] <= world.step for e in scenario.changes))
     if _movement_checker is not None:
         metrics['g1_footprint_blocked_attempts'] = sum(bool(frame.get('footprint_blocked')) for frame in frames)
+        metrics['g1_heading_changes'] = sum(bool(frame.get('heading_changed')) for frame in frames)
+        metrics['g1_blocked_movement_reasons'] = {
+            reason: sum(frame.get('blocked_reason') == reason for frame in frames)
+            for reason in ('rotation_collision', 'translation_collision', 'grid_occupancy')
+        }
+        metrics['g1_heading_change_records'] = [
+            {'step': frame['step'], 'position': frame['position'],
+             'heading_yaw': frame['heading_yaw']}
+            for frame in frames if frame.get('heading_changed')]
+    if _observation_provider is not None:
+        sensor_frames = [frame.get('observation_stats', {}) for frame in frames
+                         if frame.get('observation_granted', False)]
+        metrics['mujoco_sensor_rays'] = sum(int(frame.get('ray_count', 0)) for frame in sensor_frames)
+        metrics['mujoco_sensor_hits'] = sum(int(frame.get('ray_hits', 0)) for frame in sensor_frames)
+        metrics['mujoco_sensor_visible_cells'] = sum(int(frame.get('visible_cells', 0)) for frame in sensor_frames)
+        metrics['mujoco_sensor_free_cells'] = sum(int(frame.get('free_cells', 0)) for frame in sensor_frames)
+        metrics['mujoco_sensor_occupied_cells'] = sum(int(frame.get('occupied_cells', 0)) for frame in sensor_frames)
+        metrics['mujoco_sensor_hit_types'] = {
+            key: sum(int(frame.get('hits_by_type', {}).get(key, 0)) for frame in sensor_frames)
+            for key in ('walls', 'persistent_obstacles', 'pedestrians')}
     for key in ('g1_foot_floor_contact_pairs', 'g1_unwanted_floor_contact_pairs',
                 'g1_pedestrian_contact_pairs', 'g1_wall_contact_pairs',
                 'g1_persistent_obstacle_contact_pairs', 'g1_self_contact_pairs',

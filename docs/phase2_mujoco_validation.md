@@ -180,3 +180,68 @@ artifact absent from this checkout at
 `results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/__init__.py`.
 No Phase 1.5 data or native binding was changed. The failed test is unrelated to
 the G1 integration.
+
+## Heading control and MuJoCo 3D perception (2026-11-08)
+
+This follow-up preserves the previous proxy and G1 result directories. It uses
+the same admitted Phase 1.5 fit record, mechanism R / stored fit index 0 /
+schedule 0, with periodic observations and seed 42. The robot's local +X axis
+is the forward axis; the supplied MJCF model uses the Unitree/ROS convention
+with Z vertical. A world-Z yaw quaternion is written to `floating_base_joint`
+while the stand root height and all non-root keyframe positions stay fixed.
+Stationary steps retain the prior yaw. Each maneuver checks the rotation at
+increments no greater than 0.05 radians, then checks translation at increments
+no greater than 0.075 metres. The first collision rejects the complete maneuver
+and records `rotation_collision` or `translation_collision`.
+
+The separate `MujocoRayPerception` backend attaches its ray origin to a site on
+`torso_link`. The ray origin is 0.864 m high in the stand pose. The recorded
+configuration is 6 m maximum range, 120 degree horizontal field of view, 61
+rays, and 0.075 m sampling along each ray. The sensor calls MuJoCo's `mj_ray`
+interface using the environment-only geom group and excludes the robot body.
+Each ray stops at its first hit. Its visible path maps to free cells; the hit
+geometry's current transformed location maps to one occupied grid cell; all
+other cells remain unknown. The observation contains only -1/0/1 occupancy.
+Geometry identity is used for evaluator diagnostics only, not passed to memory
+controllers or A*. There is no occupancy-array shortcut and no future schedule
+input to the perception backend. Ray casting is deterministic for a fixed scene
+and pose; no random sensor noise is applied. The single horizontal sensing plane
+does not model vertical scanning, depth-camera noise, or latency. Since the
+robot is excluded from the ray query, self-occlusion is not modeled. Objects
+that do not intersect the ray plane or finite ray set can remain unknown.
+
+Twenty-two G1-specific regression tests cover all four cardinal headings and
+quaternions, stationary heading retention, an intermediate rotation collision,
+actual obstacle collision, wall occlusion, unknown cells, heading-dependent
+visibility, moving pedestrians, persistent-object appearance/removal,
+determinism, truth isolation, observation budgets, and the legacy 2D path.
+The focused set of G1 and Phase 1.4C evaluator tests passed **54 tests**.
+
+The actual end-to-end 3D perception smoke is saved under
+`results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke/`. It reached the
+goal in 72 elapsed environment steps with 69 successful moves, 51.75 m at the
+unchanged 0.75 m/cell assumption, and 19 observations including initialization.
+It recorded 23 heading changes, three translation-collision rejections, and
+zero unwanted pose contacts. The 61-ray sensor made 1,159 raycasts: 1,138
+intersected geometry (1,056 wall hits and 82 persistent-obstacle hits; zero
+pedestrian hits in this particular run). Across observations it classified 441
+visible cells, 291 free and 150 occupied. The run had zero stale-map errors and
+five terminal missed persistent changes; it does not claim perfect mapping.
+The existing occupancy scale was not adjusted. No environments were generated,
+and the runner rehashed the same 836 protected Phase 1.5 files before and after.
+
+The output includes CSV, trajectory, portable scene, validation report,
+environment/configuration provenance, model hashes, and source hashes. Headless
+playback validation loaded all 73 trajectory frames with zero unwanted-contact
+frames. The old `results/phase2_mujoco/g1_smoke` playback also loaded all 61
+frames, with zero unwanted-contact frames. The saved playback applies each
+frame's yaw and loops by default. Launch it on macOS with `mjpython`:
+
+```bash
+.venv/bin/mjpython scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke --camera follow
+```
+
+The `.gitignore` now excludes the derived display-only
+`results/phase2_mujoco/g1_smoke/scene_view.xml`; any existing local copy is kept.
+The full 288-episode matrix has not been run.

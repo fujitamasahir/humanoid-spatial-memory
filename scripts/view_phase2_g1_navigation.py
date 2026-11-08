@@ -1,6 +1,7 @@
 """Replay a saved G1 kinematic trajectory in the native MuJoCo Viewer."""
 import argparse
 import json
+import math
 from pathlib import Path
 import time
 import xml.etree.ElementTree as ET
@@ -89,6 +90,8 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
         wy = (y-(cells['height']-1)/2)*spacing
         data.qpos[qadr:qadr+7] = qroot
         data.qpos[qadr:qadr+2] = (wx, wy)
+        yaw = float(frame.get('heading_yaw', 0.0))
+        data.qpos[qadr+3:qadr+7] = (math.cos(yaw/2), 0.0, 0.0, math.sin(yaw/2))
         data.qvel[:] = 0
         data.mocap_pos[:] = 0
         for cell, mocap in object_ids.items():
