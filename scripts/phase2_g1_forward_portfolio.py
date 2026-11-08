@@ -21,8 +21,8 @@ from spatial_memory.phase15_bprime import VERSION
 from spatial_memory.simulation import scenario_from_bprime
 
 
-IDENTITY = f'{VERSION}:fit:R:80000000'
-DEFAULT_OUTPUT = ROOT / 'results/phase2_mujoco/g1_forward_facing_portfolio_fit_R_80000000_schedule0'
+DEFAULT_IDENTITY = f'{VERSION}:fit:BP:80010010'
+DEFAULT_OUTPUT = ROOT / 'results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010010_schedule0'
 
 
 def asset_inventory():
@@ -31,13 +31,41 @@ def asset_inventory():
             for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()]
 
 
-def run(output, *, max_steps=240):
+def screen_initial_routes(worlds):
+    """Screen admitted worlds using one authorized 3D ray observation each."""
+    records = []
+    for payload in worlds:
+        scenario = scenario_from_bprime(payload, 0)
+        scene = MujocoNavigationScene(scenario, cell_size=0.75, timestep=0.02)
+        sensor = MujocoRayPerception(scene, range_m=6.0, horizontal_fov_deg=120.0,
+                                     ray_count=61, sample_spacing_m=0.075)
+        observed = sensor.observe(World(scenario), scenario.start, 0.0)
+        route = plan_g1_forward_facing(observed, scenario.start, scenario.goal,
+            heading=0, unknown='optimistic',
+            local_extents=scene.footprint_half_extents_local, cell_size=scene.cell_size)
+        records.append({
+            'identity': payload['identity'], 'start': list(scenario.start),
+            'goal': list(scenario.goal), 'initial_occupied_observed_cells': int((observed == 1).sum()),
+            'initial_observation_ray_count': sensor.ray_count,
+            'initial_forward_route_found': bool(route),
+            'initial_route_action_count': len(route),
+            'initial_route_first_action': route[0] if route else None,
+            'selection_inputs': 'initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes',
+        })
+    return records
+
+
+def run(output, *, max_steps=240, environment_id=DEFAULT_IDENTITY):
     if output.exists():
         raise FileExistsError(f'Refusing to overwrite portfolio output: {output}')
     worlds = admitted_worlds()
-    payload = next((item for item in worlds if item['identity'] == IDENTITY), None)
+    screening = screen_initial_routes(worlds)
+    payload = next((item for item in worlds if item['identity'] == environment_id), None)
     if payload is None:
-        raise ValueError(f'Required already-admitted fit environment is missing: {IDENTITY}')
+        raise ValueError(f'Required already-admitted fit environment is missing: {environment_id}')
+    screen_record = next(record for record in screening if record['identity'] == environment_id)
+    if not screen_record['initial_forward_route_found']:
+        raise ValueError(f'Initial observed map has no forward route for {environment_id}')
     preservation = verify_preserved_prefix()
     run_commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT,
         capture_output=True, text=True, check=True).stdout.strip()
@@ -48,6 +76,9 @@ def run(output, *, max_steps=240):
         json.dump({'pid': os.getpid(), 'mode': 'forward_facing_portfolio_only',
                    'source_commit': run_commit}, handle, sort_keys=True)
         handle.flush()
+    (output/'initial_observation_route_screen.json').write_text(
+        json.dumps({'selection_policy': 'screen admitted fit worlds by one initial 3D ray observation and forward-only observed-map route availability; no simulator occupancy or collision probes',
+                    'worlds': screening}, sort_keys=True, indent=2)+'\n')
     scenario = scenario_from_bprime(payload, 0)
     scene = MujocoNavigationScene(scenario, cell_size=0.75, timestep=0.02)
     perception = MujocoRayPerception(scene, range_m=6.0, horizontal_fov_deg=120.0,
@@ -171,6 +202,8 @@ def run(output, *, max_steps=240):
         'environment_identity': payload['identity'], 'mechanism': payload['mechanism'],
         'fit_index': payload['index'], 'schedule_index': 0, 'seed': 42,
         'environment_source': 'existing admitted Phase 1.5 fit checkpoint; no environment regeneration',
+        'environment_selection': 'selected from initial-ray-only screen; selected identity must have an observed-memory forward route; screen contains no hidden occupancy or shield query results',
+        'initial_observation_route_screen_file': 'initial_observation_route_screen.json',
         'navigation_mode': 'forward-only cardinal translations after separately selected in-place cardinal turns',
         'perception': 'existing MuJoCo 3D ray sensor; planner receives only ternary observation memory',
         'route_planning': 'A* over position and heading using observed occupied cells, unknown policy, public footprint bounds and prior attempted-action feedback',
@@ -207,11 +240,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument('--max-steps', type=int, default=240)
+    parser.add_argument('--environment-id', default=DEFAULT_IDENTITY)
     args = parser.parse_args()
     if args.max_steps < 1:
         parser.error('--max-steps must be positive')
     output = args.output if args.output.is_absolute() else ROOT/args.output
-    print(json.dumps(run(output, max_steps=args.max_steps), sort_keys=True, indent=2))
+    print(json.dumps(run(output, max_steps=args.max_steps,
+                         environment_id=args.environment_id), sort_keys=True, indent=2))
 
 
 if __name__ == '__main__':

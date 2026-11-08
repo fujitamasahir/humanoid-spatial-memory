@@ -510,9 +510,12 @@ and default headless replay immutability.
 
 The evaluated planner may strafe or back up while retaining its heading. A
 separate demonstration mode is available through
-`scripts/phase2_g1_forward_portfolio.py`. It reads the already admitted R fit
-world with identity `phase1.5-v0.4-BPRIME-1:fit:R:80000000`, schedule 0, and
-uses the existing 3D ray observer and observation cap. Its A* state includes
+`scripts/phase2_g1_forward_portfolio.py`. It reads the already admitted BP fit
+world with identity `phase1.5-v0.4-BPRIME-1:fit:BP:80010010`, schedule 0, and
+uses the existing 3D ray observer and observation cap. The runner screens the
+admitted fit worlds with one initial ray observation each and records that
+selection screen; this uses no hidden occupancy or MuJoCo collision shield
+queries. Its A* state includes
 heading; every translation is forward along the current cardinal heading and
 turns are separate selected actions. Route planning sees only the ternary
 observed memory, public footprint dimensions and attempted-action feedback.
@@ -522,7 +525,7 @@ which the memory-based planner searches for another route. It does not query
 MuJoCo for unattempted alternatives or pass hidden occupancy to the planner.
 
 The output is stored separately at
-`results/phase2_mujoco/g1_forward_facing_portfolio_fit_R_80000000_schedule0/`.
+`results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010010_schedule0/`.
 It is not part of the 288-episode comparison. The viewer requires the separate
 `--portfolio-forward-demo` flag for this result type; the historical
 `--visual-gait` playback remains available for prior trajectories.
