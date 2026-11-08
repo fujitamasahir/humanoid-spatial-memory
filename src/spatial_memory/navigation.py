@@ -172,3 +172,70 @@ def plan_g1(grid, start, goal, *, heading=0, unknown='optimistic',
         actions.append(action)
         state = previous
     return list(reversed(actions))
+
+
+def plan_g1_forward_facing(grid, start, goal, *, heading=0, unknown='optimistic',
+                           local_extents=(0.22, 0.33), cell_size=0.75,
+                           blocked_actions=frozenset()):
+    """Observed-map A* allowing only cardinal turns and forward translations.
+
+    Like :func:`plan_g1`, this planner never queries the MuJoCo shield. The
+    public footprint and observed occupied cells reject known-unsafe sweeps;
+    only the first selected action is then checked against actual model
+    geometry by the evaluator's attempted-action checker.
+    """
+    if unknown not in {'optimistic', 'blocked'}:
+        raise ValueError('Unknown handling must be optimistic or blocked')
+    if len(local_extents) != 2 or min(local_extents) < 0 or cell_size <= 0:
+        raise ValueError('Invalid footprint or grid scale')
+    height, width = grid.shape
+    start_state = (int(start[0]), int(start[1]), int(heading) % 4)
+    blocked_actions = set(blocked_actions)
+    frontier = [(abs(start[0]-goal[0])+abs(start[1]-goal[1]), 0.0, 0, start_state)]
+    costs, parent = {start_state: 0.0}, {}
+    serial = 0
+    final = None
+    while frontier:
+        _, cost, _, state = heapq.heappop(frontier)
+        if cost != costs.get(state):
+            continue
+        x, y, face = state
+        if (x, y) == tuple(goal):
+            final = state
+            break
+        neighbors = []
+        dx, dy = CARDINALS[face]
+        target = (x+dx, y+dy)
+        tx, ty = target
+        if (0 <= tx < width and 0 <= ty < height
+                and grid[ty, tx] != 1
+                and not (unknown == 'blocked' and grid[ty, tx] == -1)):
+            action = ('move', target)
+            key = blocked_action_key((x, y), face, action)
+            if key not in blocked_actions and _move_clear(
+                    grid, (x, y), target, face, local_extents, cell_size):
+                neighbors.append(((tx, ty, face), action, 1.0))
+        for turn in ((face+1) % 4, (face-1) % 4):
+            action = ('turn', turn)
+            key = blocked_action_key((x, y), face, action)
+            if key not in blocked_actions and _turn_clear(
+                    grid, (x, y), face, turn, local_extents, cell_size):
+                neighbors.append(((x, y, turn), action, 0.25))
+        for next_state, action, step_cost in neighbors:
+            new_cost = cost + step_cost
+            if new_cost < costs.get(next_state, math.inf):
+                costs[next_state], parent[next_state] = new_cost, (state, action)
+                nx, ny, _ = next_state
+                heuristic = abs(nx-goal[0]) + abs(ny-goal[1])
+                serial += 1
+                heapq.heappush(frontier,
+                    (new_cost+heuristic, new_cost, serial, next_state))
+    if final is None:
+        return []
+    actions = []
+    state = final
+    while state != start_state:
+        previous, action = parent[state]
+        actions.append(action)
+        state = previous
+    return list(reversed(actions))

@@ -465,6 +465,90 @@ def test_g1_planner_uses_attempt_feedback_without_repeating_until_observation_ch
     assert metrics['observation_count'] == 4
 
 
+def test_forward_facing_planner_turns_before_walking_and_never_strafes_or_reverses():
+    from spatial_memory.navigation import CARDINALS, plan_g1_forward_facing
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    route = plan_g1_forward_facing(grid, (3, 3), (3, 6), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75)
+    assert route[0] == ('turn', 1)
+    face = 0
+    position = (3, 3)
+    for kind, value in route:
+        if kind == 'turn':
+            face = value
+        else:
+            dx, dy = CARDINALS[face]
+            assert value == (position[0]+dx, position[1]+dy)
+            position = value
+    assert position == (3, 6)
+
+
+def test_forward_facing_planner_routes_around_a_rotation_clearance_rejection():
+    from spatial_memory.navigation import plan_g1_forward_facing
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[4, 4] = 1
+    route = plan_g1_forward_facing(grid, (3, 3), (3, 5), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75)
+    assert route
+    # The known diagonal hit blocks an in-place north turn at the start; the
+    # observed-memory planner finds a forward-only detour before turning.
+    assert route[0] == ('move', (4, 3))
+    assert ('turn', 1) in route
+
+
+def test_actual_g1_turn_clearance_uses_only_attempted_mujoco_geometry():
+    # Empty geometry permits a selected turn. A pedestrian that occupies the
+    # robot's pivot at the attempted time rejects it through the actual model.
+    safe = ray_scenario(width=9, height=9, start=(3, 3), goal=(6, 6))
+    safe_scene = MujocoNavigationScene(safe)
+    safe_result = safe_scene.check_turn(World(safe), safe.start, 0, np.pi/2)
+    assert not safe_result[0]
+
+    occupied_pivot = ray_scenario(width=9, height=9, start=(3, 3), goal=(6, 6),
+        pedestrians=(((4, 3), (3, 3)),))
+    world = World(occupied_pivot)
+    world.step = 1
+    scene = MujocoNavigationScene(occupied_pivot)
+    blocked = scene.check_turn(world, occupied_pivot.start, 0, np.pi/2)
+    assert blocked[0] and blocked[3] == 'rotation_collision'
+    assert blocked[1].pedestrian > 0
+
+
+def test_forward_facing_episode_uses_observations_and_only_checks_selected_actions(monkeypatch):
+    from spatial_memory.navigation import plan_g1_forward_facing
+
+    scenario = ray_scenario(width=7, height=7, start=(2, 2), goal=(2, 4))
+    config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0), update_interval=1,
+        unknown='optimistic', max_steps=8, observation_cost=1, max_observations=8)
+    selected_checks = []
+
+    def no_oracle_move(*_args, **_kwargs):
+        raise AssertionError('Forward-facing planner consulted hidden World.move occupancy')
+
+    monkeypatch.setattr(World, 'move', no_oracle_move)
+
+    def planner(grid, position, goal, unknown, yaw, blocked):
+        return plan_g1_forward_facing(grid, position, goal, heading=round(yaw/(np.pi/2)),
+            unknown=unknown, local_extents=(0.22, 0.328), blocked_actions=blocked)
+
+    def checker(world, position, action, yaw):
+        selected_checks.append(action)
+        if action[0] == 'turn':
+            return False, None, action[1]*np.pi/2, None
+        return False, None, yaw, None
+
+    metrics, frames = run_episode(scenario, config, 'periodic', seed=42,
+        _observation_provider=lambda world, position, yaw: np.zeros((7, 7), np.int8),
+        _g1_planner=planner, _action_checker=checker)
+    assert metrics['success']
+    assert selected_checks and len(selected_checks) == sum(
+        frame.get('navigation_action') is not None for frame in frames)
+    assert selected_checks[0][0] == 'turn'
+    assert all(kind in {'turn', 'move'} for kind, _ in selected_checks)
+
+
 def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_design():
     from importlib.util import module_from_spec, spec_from_file_location
     from pathlib import Path
@@ -706,9 +790,17 @@ def test_visual_gait_default_headless_replay_preserves_saved_results():
     result = Path(__file__).resolve().parents[1] / \
         'results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_final'
     trajectory = result / 'trajectory.json'
-    before = hashlib.sha256(trajectory.read_bytes()).hexdigest()
+    full = result.parents[0] / 'g1_3d_perception_footprint_feedback_full_288'
+    protected = [trajectory, full/'episodes.csv', full/'summary.json']
+    before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in protected}
     default = viewer.replay(result, 0.1, viewer=False)
     explicit_default = viewer.replay(result, 0.1, viewer=False, visual_gait=False)
     assert default == explicit_default
     assert sum(count > 0 for count in default) == 0
-    assert hashlib.sha256(trajectory.read_bytes()).hexdigest() == before
+    visual_audit = {}
+    rendered = viewer.replay(result, 0.18, viewer=False, visual_gait=True,
+                             contact_audit=visual_audit)
+    assert len(rendered) > len(default)
+    assert visual_audit['rendered_poses'] == len(rendered)
+    assert visual_audit.get('unwanted_contact_frames', 0) == 0
+    assert {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in protected} == before

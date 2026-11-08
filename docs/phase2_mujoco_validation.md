@@ -505,3 +505,24 @@ it is not physically valid walking. Geometry group 5 remains visible in the
 viewer. The gait regression tests cover actual MJCF joint limits, deterministic
 poses, continuous root/heading interpolation, backward movement, stop settling
 and default headless replay immutability.
+
+### Separate forward-facing portfolio route
+
+The evaluated planner may strafe or back up while retaining its heading. A
+separate demonstration mode is available through
+`scripts/phase2_g1_forward_portfolio.py`. It reads the already admitted R fit
+world with identity `phase1.5-v0.4-BPRIME-1:fit:R:80000000`, schedule 0, and
+uses the existing 3D ray observer and observation cap. Its A* state includes
+heading; every translation is forward along the current cardinal heading and
+turns are separate selected actions. Route planning sees only the ternary
+observed memory, public footprint dimensions and attempted-action feedback.
+The single selected turn or translation is checked at the actual G1 MuJoCo
+collision geometry. A rejected turn is fed back as an action rejection, after
+which the memory-based planner searches for another route. It does not query
+MuJoCo for unattempted alternatives or pass hidden occupancy to the planner.
+
+The output is stored separately at
+`results/phase2_mujoco/g1_forward_facing_portfolio_fit_R_80000000_schedule0/`.
+It is not part of the 288-episode comparison. The viewer requires the separate
+`--portfolio-forward-demo` flag for this result type; the historical
+`--visual-gait` playback remains available for prior trajectories.

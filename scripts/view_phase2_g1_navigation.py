@@ -147,7 +147,7 @@ def display_scene_xml(result_dir: Path):
 
 
 def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop=True,
-           visual_gait=False):
+           visual_gait=False, contact_audit=None):
     model = mujoco.MjModel.from_xml_string(display_scene_xml(result_dir))
     print(f'View-only model extent: {model.stat.extent:.2f} m, '
           f'near clip: {model.vis.map.znear * model.stat.extent:.3f} m',
@@ -241,12 +241,38 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
             a, b = int(c.geom1), int(c.geom2)
             if ((a in allowed_foot_geoms and b == floor) or
                 (b in allowed_foot_geoms and a == floor)):
+                if contact_audit is not None:
+                    contact_audit['foot_floor_contact_pairs'] = \
+                        contact_audit.get('foot_floor_contact_pairs', 0) + 1
                 continue
             if a in g1_geoms or b in g1_geoms:
                 bad += 1
+                if contact_audit is not None:
+                    contact_audit['unwanted_contact_pairs'] = \
+                        contact_audit.get('unwanted_contact_pairs', 0) + 1
+                    other = b if a in g1_geoms else a
+                    name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_GEOM, other) or ''
+                    category = ('wall' if name.startswith('wall_') else
+                                'pedestrian' if name.startswith('pedestrian_geom_') else
+                                'persistent_obstacle' if name.startswith('object_geom_') else
+                                'floor' if other == floor else 'other')
+                    key = f'{category}_contact_pairs'
+                    contact_audit[key] = contact_audit.get(key, 0) + 1
+        if contact_audit is not None:
+            contact_audit['rendered_poses'] = contact_audit.get('rendered_poses', 0) + 1
+            if bad:
+                contact_audit['unwanted_contact_frames'] = \
+                    contact_audit.get('unwanted_contact_frames', 0) + 1
         return bad
 
     if not viewer:
+        if visual_gait:
+            results = []
+            for frame, scene_frame, phase, amplitude, travel_sign in \
+                    playback_samples(trajectory, speed, spacing, fps=30):
+                results.append(show_frame(frame, scene_frame,
+                    (phase, amplitude, travel_sign)))
+            return results
         return [show_frame(frame) for frame in trajectory]
 
     # Prime the state before creating the viewer; the default MuJoCo free camera
@@ -308,21 +334,37 @@ def main():
                         help='Play only once; otherwise replay until the viewer is closed')
     parser.add_argument('--visual-gait', action='store_true',
                         help='Add a presentation-only procedural gait; saved route and world are unchanged')
+    parser.add_argument('--portfolio-forward-demo', action='store_true',
+                        help='Play a separately generated forward-facing portfolio route with visual gait')
     parser.add_argument('--export-view-scene', type=Path,
                         help='Save a derived display-only MJCF for testing in the standard MuJoCo viewer')
     args = parser.parse_args()
     if args.speed <= 0:
         parser.error('--speed must be positive')
+    if args.visual_gait and args.portfolio_forward_demo:
+        parser.error('Choose either --visual-gait or --portfolio-forward-demo')
+    if args.portfolio_forward_demo:
+        provenance_path = args.result_dir/'provenance.json'
+        if not provenance_path.is_file():
+            parser.error('--portfolio-forward-demo requires its provenance.json')
+        provenance = json.loads(provenance_path.read_text(encoding='utf-8'))
+        if provenance.get('demo_type') != 'forward_facing_portfolio_only':
+            parser.error('Result directory is not a forward-facing portfolio demonstration')
     if args.export_view_scene is not None:
         args.export_view_scene.parent.mkdir(parents=True, exist_ok=True)
         args.export_view_scene.write_text(display_scene_xml(args.result_dir.resolve()),
                                           encoding='utf-8')
         print(f'Display-only scene: {args.export_view_scene}', flush=True)
+    contact_audit = {} if args.portfolio_forward_demo else None
     contacts = replay(args.result_dir.resolve(), args.speed,
                       viewer=not args.validate_only, camera=args.camera, loop=not args.once,
-                      visual_gait=args.visual_gait)
+                      visual_gait=args.visual_gait or args.portfolio_forward_demo,
+                      contact_audit=contact_audit)
     if args.validate_only:
-        print(json.dumps({'frames': len(contacts), 'unwanted_contact_frames': sum(n > 0 for n in contacts)}))
+        report = {'frames': len(contacts), 'unwanted_contact_frames': sum(n > 0 for n in contacts)}
+        if contact_audit is not None:
+            report['visual_only_contact_audit'] = contact_audit
+        print(json.dumps(report))
 
 
 if __name__ == '__main__':
