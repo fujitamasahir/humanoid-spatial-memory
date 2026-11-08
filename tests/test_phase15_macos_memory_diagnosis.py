@@ -71,7 +71,7 @@ def test_minimal_native_vm_worker_rules_out_python_startup_overhead(probe,mode):
         assert not r['extra_128_mib_mapping_succeeded'] and r['mapping_errno']==12
 
 
-def test_production_gate_remains_closed_and_previous_certificate_pin_unchanged():
+def test_production_gate_remains_closed_and_frozen_pin_is_distinguished_from_missing_native():
     import hashlib
     from spatial_memory.phase15_nauty_macos import MacBackend
     from spatial_memory.phase15_nauty import BackendFailure
@@ -79,5 +79,16 @@ def test_production_gate_remains_closed_and_previous_certificate_pin_unchanged()
     assert PRODUCTION_GENERATION_ENABLED is False
     with pytest.raises(BackendFailure,match='BLOCKED'):MacBackend()
     pin=json.loads((ROOT/'configs/phase15_nauty_macos_validation.json').read_text())
+    build=json.loads((ROOT/'results/phase1_5_bprime_macos/build_manifest.json').read_text())
+    assert hashlib.sha256((ROOT/'configs/phase15_nauty_macos_validation.json').read_bytes()).hexdigest()==build['validation_pin_sha256']
+    missing_native=[]
     for path,expected in pin['artifact_sha256'].items():
-        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==expected
+        artifact=ROOT/path
+        if not artifact.exists():
+            if path.endswith('.so'):missing_native.append(path)
+            continue
+        assert hashlib.sha256(artifact.read_bytes()).hexdigest()==expected
+    if missing_native:
+        migration=json.loads((ROOT/'results/phase1_5_bprime_macos/m3_environment_validation.json').read_text())
+        assert migration['native']['original_extension_available'] is False
+        assert set(missing_native)=={p for p in pin['artifact_sha256'] if p.endswith('.so') and not (ROOT/p).exists()}

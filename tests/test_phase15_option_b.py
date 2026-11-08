@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 from time import perf_counter
 import pytest
 from spatial_memory.phase15_macos_monitored import MonitoredBackend,PROFILE,LIMIT
-from spatial_memory.phase15_nauty import BackendFailure
+from spatial_memory.phase15_nauty import BackendFailure,NAMESPACE
 from spatial_memory.phase15_topology import graph_from_edges
 
 
@@ -24,16 +24,13 @@ def test_normal_concurrent_workers():
     assert all(r[1]['parent_samples'] and r[1]['peak_rss_bytes']<=LIMIT for r in results)
 
 
-@pytest.mark.parametrize('kind',['sustained','transient','crash','timeout','partial','malformed','missing'])
+@pytest.mark.parametrize('kind',['crash','timeout','partial','malformed','missing'])
 def test_failed_native_and_resource_workers_stop(monkeypatch,kind):
     b=MonitoredBackend()
-    prefix="import ctypes,time,sys,json,resource; "
     code={
-      'sustained':prefix+"c=ctypes.CDLL(None);c.malloc.restype=ctypes.c_void_p;p=c.malloc(560*1024*1024);ctypes.memset(p,1,560*1024*1024);time.sleep(30)",
-      'transient':prefix+"c=ctypes.CDLL(None);c.malloc.restype=ctypes.c_void_p;c.free.argtypes=[ctypes.c_void_p];p=c.malloc(560*1024*1024);ctypes.memset(p,1,560*1024*1024);c.free(p);time.sleep(.02);print(json.dumps({'peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}),flush=True)",
       'crash':"import os;os._exit(7)",
-      'timeout':prefix+"ctypes.CDLL(None).sleep(30)",
-      'partial':prefix+"sys.stdout.write('{');sys.stdout.flush();time.sleep(30)",
+      'timeout':"import time;time.sleep(30)",
+      'partial':"import sys,time;sys.stdout.write('{');sys.stdout.flush();time.sleep(30)",
       'malformed':"print('bad json',flush=True)",
       'missing':"print('{}',flush=True)"}[kind]
     processes=[]
@@ -45,7 +42,26 @@ def test_failed_native_and_resource_workers_stop(monkeypatch,kind):
     with pytest.raises(BackendFailure):b.exact_certificate(graph_from_edges(1,[]))
     assert perf_counter()-began<7 and b.process is None and processes[0].returncode is not None
     assert b.events[-1]['status']=='failed' and b.events[-1]['teardown']['reaped']
-    if kind=='sustained':assert 'resource_excess' in b.events[-1]['error']
+
+
+def _synthetic_worker(monkeypatch,backend,code):
+    processes=[]
+    def start():
+        backend.process=subprocess.Popen([sys.executable,'-I','-c',code],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        os.set_blocking(backend.process.stdin.fileno(),False);os.set_blocking(backend.process.stdout.fileno(),False)
+        processes.append(backend.process)
+    monkeypatch.setattr(backend,'_start',start)
+    return processes
+
+
+def test_parent_observed_rss_above_threshold_fails_closed(monkeypatch):
+    import spatial_memory.phase15_macos_monitored as module
+    monkeypatch.setattr(module,'resident_bytes',lambda _:LIMIT+1)
+    b=MonitoredBackend()
+    with pytest.raises(BackendFailure,match='parent observed RSS above threshold'):
+        b.exact_certificate(graph_from_edges(1,[]))
+    assert b.process is None and b.events[-1]['status']=='failed'
+    assert b.events[-1]['teardown']['reaped']
 
 
 def test_missing_parent_measurement_fails_closed(monkeypatch):
@@ -57,27 +73,18 @@ def test_missing_parent_measurement_fails_closed(monkeypatch):
     assert b.process is None
 
 
-def test_transient_native_peak_detected_when_parent_samples_miss_it(monkeypatch):
-    """A complete reply must reject the lifetime peak even after free()."""
+def test_worker_lifetime_peak_above_threshold_rejected_after_parent_samples_miss_it(monkeypatch):
+    """A reported transient peak must fail even when parent RSS samples stay low."""
     import spatial_memory.phase15_macos_monitored as module
     b=MonitoredBackend();processes=[]
-    code="""
-import ctypes,json,resource,sys,time
+    code=f"""import json,sys,time
 r=json.loads(sys.stdin.readline())
-c=ctypes.CDLL(None);c.malloc.argtypes=[ctypes.c_size_t];c.malloc.restype=ctypes.c_void_p;c.free.argtypes=[ctypes.c_void_p]
-p=c.malloc(560*1024*1024)
-if not p:raise MemoryError('probe allocation refused')
-ctypes.memset(p,1,560*1024*1024);c.free(p)
-peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-print(json.dumps(dict(id=r['id'],order=[0],namespace='phase1.5-v0.3-CANON-1',
-profile=PROFILE,pin_sha256=PIN,rss_unit='bytes',cpu_seconds=0,worker_seconds=0,
-peak_rss_bytes=peak,peak_measured_at=time.perf_counter())),flush=True)
+print(json.dumps(dict(id=r['id'],order=[0],namespace={NAMESPACE!r},
+profile={PROFILE!r},pin_sha256={b.pin_sha!r},rss_unit='bytes',cpu_seconds=0,worker_seconds=0,
+peak_rss_bytes={LIMIT+1},peak_measured_at=time.perf_counter())),flush=True)
 time.sleep(30)
-""".replace('profile=PROFILE','profile='+repr(PROFILE)).replace('pin_sha256=PIN','pin_sha256='+repr(b.pin_sha))
-    def start():
-        b.process=subprocess.Popen([sys.executable,'-I','-c',code],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        os.set_blocking(b.process.stdin.fileno(),False);os.set_blocking(b.process.stdout.fileno(),False);processes.append(b.process)
-    monkeypatch.setattr(b,'_start',start)
+"""
+    processes=_synthetic_worker(monkeypatch,b,code)
     monkeypatch.setattr(module,'resident_bytes',lambda _:1)
     with pytest.raises(BackendFailure,match='worker lifetime peak above threshold'):
         b.exact_certificate(graph_from_edges(1,[]))

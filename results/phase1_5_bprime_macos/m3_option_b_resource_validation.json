@@ -1,0 +1,99 @@
+{
+  "bounded_live_probe": {
+    "allocation_cap_bytes": 796917760,
+    "bytes_touched": 796917760,
+    "child_timeout_seconds": 8,
+    "cleanup": "finally kill/wait within 2 seconds; normal process exited 0",
+    "data": "randomized 4 MiB chunks",
+    "interpretation": "This sandbox did not produce an observed above-threshold RSS even after the bounded allocation. Allocation size alone does not establish RSS; this probe therefore does not validate real over-threshold detection.",
+    "parent_libproc_peak_bytes": 347881472,
+    "parent_samples": 231,
+    "threshold_bytes": 536870912,
+    "worker_ru_maxrss_bytes": 347045888
+  },
+  "changed_files": [
+    "tests/test_phase15_option_b.py",
+    "tests/test_phase15_macos_memory_diagnosis.py"
+  ],
+  "implementation": {
+    "deadline_seconds": 5,
+    "fail_closed_checks": [
+      "parent RSS sample above threshold",
+      "worker lifetime peak above threshold despite low parent samples",
+      "missing parent measurement",
+      "missing or malformed worker reply",
+      "worker crash",
+      "5-second timeout",
+      "worker is killed and reaped"
+    ],
+    "frozen_option_b_profile_unchanged": true,
+    "no_RLIMIT_AS_or_hard_VM_limit_added": true,
+    "nominal_parent_sample_interval_seconds": 0.01,
+    "runtime_code_changed": false,
+    "threshold_bytes": 536870912
+  },
+  "preservation": {
+    "all_836_checkpoint_and_receipt_hashes_rechecked": true,
+    "continuation_records": 105,
+    "hash_manifest": "results/phase1_5_bprime_macos/m3_checkpoint_receipt_manifest.json.gz",
+    "hash_manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1",
+    "original_records": 313,
+    "raw_data_modified": false,
+    "total_records": 418
+  },
+  "remaining_blocker": "Do not resume fit on this validation result. To validate measured RSS behavior, run the bounded synthetic probe in a native M3 process environment that can independently observe an RSS value above 536870912 bytes, retaining strict timeout/cleanup, then verify both parent and worker evidence paths. This task stops here.",
+  "resource_gate": {
+    "fully_validated": false,
+    "real_over_threshold_measurement": "NOT DEMONSTRATED in this sandbox",
+    "reason": "The bounded live probe reported sub-threshold RSS despite touching 760 MiB. Do not infer RSS from allocation size. No policy or threshold was weakened.",
+    "synthetic_acceptance_logic": "PASS: explicit reported worker or parent RSS above 512 MiB is rejected; missing evidence fails closed"
+  },
+  "root_causes": [
+    {
+      "classification": "Environment assumption, not resource-monitor defect.",
+      "failure": "Memory-diagnosis test expected every artifact in the prior pin to exist.",
+      "resolution": "Test now checks the frozen pin digest, production remains blocked, and records absent original native artifact separately from hashes of present artifacts."
+    },
+    {
+      "classification": "Test expectation defect.",
+      "failure": "Sustained 560 MiB test required the exact resource_excess reason.",
+      "resolution": "The 5-second deadline can expire before an excess sample; timeout kills and reaps the worker and fails closed. Outcome reason is timing-dependent; acceptance is not."
+    },
+    {
+      "classification": "Probe defect.",
+      "failure": "Transient 560 MiB test expected bytes allocated with repeated memset to equal resident RSS.",
+      "resolution": "On macOS allocated/virtual bytes need not be resident RSS; the uniform pattern is compressible, and the observed M3 ru_maxrss stayed below the threshold. Replaced with a synthetic above-threshold worker measurement while parent samples remain low."
+    }
+  ],
+  "schema": 1,
+  "scope": "Option B M3 resource-monitoring diagnosis and bounded synthetic validation only",
+  "status": "FAIL_CLOSED_LOGIC_VALIDATED; LIVE_OVER_THRESHOLD_MEASUREMENT_NOT_DEMONSTRATED",
+  "tests": {
+    "pynauty_native_suite_from_prior_M3_setup": {
+      "failed": 0,
+      "passed": 33
+    },
+    "stored_reference_C3_comparison": {
+      "canonical_calls": 30751,
+      "exact_key_discrepancies": 0,
+      "near_key_values": 8869,
+      "near_set_discrepancies": 0,
+      "records": 2368,
+      "status": "PASS"
+    },
+    "tests/test_phase15_macos_memory_diagnosis.py": {
+      "failed": 0,
+      "passed": 12
+    },
+    "tests/test_phase15_option_b.py + tests/test_phase15_macos_c3.py": {
+      "deselected": 1,
+      "deselected_case": "test_changed_pin_or_dependency_digest_refuses_before_worker relies on absent original native build path",
+      "failed": 0,
+      "passed": 24
+    },
+    "tests/test_phase15_recovery_continuation.py + tests/test_phase15_prefix_continuation.py": {
+      "failed": 0,
+      "passed": 18
+    }
+  }
+}
