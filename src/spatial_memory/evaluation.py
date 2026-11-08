@@ -121,7 +121,17 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         blocked_reason = None
         if len(planned) > 1:
             target = planned[1]
-            nxt, contact = world.move(position, target)
+            if _movement_checker is None:
+                # Legacy 2D evaluator path: discrete world occupancy gates moves.
+                nxt, contact = world.move(position, target)
+            elif not (0 <= target[0] < scenario.width and 0 <= target[1] < scenario.height):
+                # Bounds are public map dimensions, not hidden occupancy.
+                nxt, contact, blocked_reason = position, 1, 'map_boundary'
+            else:
+                # G1 movement is governed only by its modeled MuJoCo collision
+                # geometry. Do not call World.move here: it consults oracle
+                # occupancy and would leak hidden map state into action outcomes.
+                nxt, contact = target, 0
             if (_movement_checker is not None and 0 <= target[0] < scenario.width
                     and 0 <= target[1] < scenario.height):
                 check = _movement_checker(world, position, target, heading_yaw)
@@ -132,11 +142,9 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                     footprint_blocked, _, next_heading, blocked_reason = check
                 if footprint_blocked:
                     nxt, contact = position, 1
-                    # A blocked physical move is an observation of occupied
-                    # space at the target cell; route subsequent A* calls around it.
-                    if (blocked_reason == 'translation_collision'
-                            and not world.occupancy()[target[1], target[0]]):
-                        agent.memory.grid[target[1], target[0]] = 1
+                    # Contact/geometry rejection is evaluator feedback only.
+                    # The perception-only memory protocol is updated exclusively
+                    # by authorized observations in ``agent.refresh``.
                 elif not contact:
                     heading_yaw = float(next_heading)
             if contact and blocked_reason is None:

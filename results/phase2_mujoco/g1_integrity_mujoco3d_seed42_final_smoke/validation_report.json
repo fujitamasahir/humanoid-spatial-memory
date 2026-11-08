@@ -1,0 +1,59 @@
+{
+  "grid_scale_calibrated": false,
+  "grid_scale_m_per_cell": 0.75,
+  "measured_metrics": {
+    "elapsed_steps": 80,
+    "final_missed_persistent_changes": 8,
+    "final_stale_map_errors": 3,
+    "g1_blocked_movement_reasons": {
+      "grid_occupancy": 0,
+      "rotation_collision": 0,
+      "translation_collision": 80
+    },
+    "g1_foot_floor_contact_pairs": 648,
+    "g1_footprint_blocked_attempts": 80,
+    "g1_heading_change_records": [],
+    "g1_heading_changes": 0,
+    "g1_unwanted_contact_pairs": 0,
+    "missed_persistent_changes": 568,
+    "mujoco_sensor_free_cells": 0,
+    "mujoco_sensor_hit_types": {
+      "pedestrians": 0,
+      "persistent_obstacles": 0,
+      "walls": 1220
+    },
+    "mujoco_sensor_hits": 1220,
+    "mujoco_sensor_occupied_cells": 60,
+    "mujoco_sensor_rays": 1220,
+    "mujoco_sensor_visible_cells": 60,
+    "observation_count": 20,
+    "observation_requests_denied": 1,
+    "stale_map_errors": 243,
+    "success": false,
+    "travel_distance": 0,
+    "travel_distance_m": 0.0
+  },
+  "method": "periodic",
+  "mode": "smoke",
+  "model_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489",
+  "phase15_environments_generated": 0,
+  "preservation_files_rehashed": 836,
+  "schedule_index": 0,
+  "sensor_backend": "mujoco3d",
+  "sensor_configuration": {
+    "horizontal_fov_deg": 120.0,
+    "range_m": 6.0,
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "source_hashes": {
+    "scripts/phase2_mujoco_navigation.py": "44b9772595d331f43e76578dd4c60cb30148b04c95c433fdb79a640fee4a5b30",
+    "scripts/view_phase2_g1_navigation.py": "290872b2f81c45ee4596b2638cea8a5671c8f8defbcd0b3c401ed499db80fba8",
+    "src/spatial_memory/evaluation.py": "38957e4d4119d18aa6faa2cb5a6fa888f7a46a127b0d5eadceb3048892828b5f",
+    "src/spatial_memory/mujoco_navigation.py": "d2ebc62df10dd5646ded1f916c2833c4554fb413cbed0075d037943e13d1896e",
+    "src/spatial_memory/mujoco_perception.py": "f75c1834f47e3dd91ef23d2b283f55d163fc513fd170635fe3e6b3e11d700971",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "status": "FAIL_G1_SMOKE_GATE",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+}

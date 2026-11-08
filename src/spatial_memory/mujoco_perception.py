@@ -84,11 +84,11 @@ class MujocoRayPerception:
             if hit:
                 hit_count += 1
                 hit_geom = int(geom_id[0])
-                # Assign the single ray-hit geometry to its containing grid
-                # cell. Its boundary entry can lie just across a raster cell
-                # edge, while its current MuJoCo transform identifies where
-                # the observed surface belongs in the model's map.
-                cell = scene.world_to_grid(data.geom_xpos[hit_geom, :2])
+                # Map only the measured first-hit surface point. Geometry
+                # centers are privileged simulator state and can lie behind
+                # the visible boundary (or outside the ray's observed path).
+                surface = origin + direction * distance
+                cell = scene.world_to_grid(surface[:2])
                 x, y = cell
                 if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
                     occupied_cells.add(cell)

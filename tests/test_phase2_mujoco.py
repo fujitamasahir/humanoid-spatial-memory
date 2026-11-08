@@ -117,6 +117,42 @@ def test_evaluator_rejects_a_target_when_the_actual_g1_intersects_an_obstacle():
     assert metrics['g1_unwanted_contact_pairs'] == 0
 
 
+def test_hidden_occupancy_and_collision_rejection_do_not_write_agent_memory():
+    """Only authorized ternary observations may change the controller's map."""
+    from spatial_memory.scheduling import ObservationController
+
+    config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0), update_interval=1,
+        unknown='optimistic', max_steps=1, observation_cost=1, max_observations=1)
+    memories = []
+    original_move = World.move
+    for obstacles in ((), ((2, 1),)):
+        scenario = open_scenario(obstacles=obstacles)
+        before = None
+        def factory(initial, method, **kwargs):
+            nonlocal before
+            controller = ObservationController(initial, method, **kwargs)
+            before = controller.memory.grid.copy()
+            memories.append(controller)
+            return controller
+        # The synthetic movement gate reports an ambiguous blocked maneuver;
+        # it must not turn that feedback into a free map observation.
+        # A G1 episode must not delegate action acceptance to the oracle grid.
+        def forbidden_oracle_move(*args, **kwargs):
+            raise AssertionError('G1 movement consulted World.move ground truth')
+        World.move = forbidden_oracle_move
+        try:
+            run_episode(scenario, config, 'static', seed=42,
+                _controller_factory=factory,
+                _planner=lambda grid, start, goal, unknown: [start, (2, 1), goal],
+                _observation_provider=lambda world, position, yaw: np.full((5, 5), -1, np.int8),
+                _movement_checker=lambda world, current, target, yaw:
+                    (True, None, yaw, 'translation_collision'))
+        finally:
+            World.move = original_move
+        assert np.array_equal(memories[-1].memory.grid, before)
+    assert np.array_equal(memories[0].memory.grid, memories[1].memory.grid)
+
+
 def test_mocap_tracks_persistent_obstacle_change_without_regeneration():
     scenario = open_scenario(changes=(dict(step=1, action='add', cell=(2, 2)),))
     scene = MujocoNavigationScene(scenario)
@@ -183,7 +219,10 @@ def test_mujoco_ray_sensor_detects_a_visible_obstacle_as_occupied():
     scene = MujocoNavigationScene(scenario)
     sensor = MujocoRayPerception(scene)
     observation = sensor.observe(World(scenario), scenario.start, 0.0)
-    assert observation[3, 4] == 1
+    # The first-hit surface lies just across the raster boundary from the
+    # obstacle center; the center cell remains unknown to the sensor.
+    assert observation[3, 3] == 1
+    assert observation[3, 4] == -1
     assert sensor.last_stats['hits_by_type']['persistent_obstacles'] > 0
     assert sensor.last_stats['sensor_height_m'] < 0.9
 
@@ -193,9 +232,41 @@ def test_mujoco_rays_respect_occlusion_behind_a_wall():
     scenario = ray_scenario(obstacles=((5, 3),), extra_walls=divider)
     sensor = MujocoRayPerception(MujocoNavigationScene(scenario))
     observation = sensor.observe(World(scenario), scenario.start, 0.0)
-    assert observation[3, 3] == 1
+    assert observation[3, 2] == 1
     assert observation[3, 5] == -1
     assert sensor.last_stats['hits_by_type']['persistent_obstacles'] == 0
+
+
+def test_occupied_grid_cells_are_rasterized_from_first_hit_surface_points():
+    """Occupied cells correspond to measured ray intersections, not geom centers."""
+    scenario = ray_scenario(obstacles=((4, 3),))
+    scene = MujocoNavigationScene(scenario)
+    sensor = MujocoRayPerception(scene)
+    world = World(scenario)
+    sensor.observe(world, scenario.start, 0.0)
+    # Reconstruct the observed first-hit cells from independent ray distances.
+    # This guards against substituting geom_xpos (hidden center coordinates).
+    from spatial_memory.mujoco_navigation import G1_FORWARD_AXIS
+    import math
+    scene._sync_environment(world)
+    scene._set_pose(scenario.start, 0.0)
+    scene.mj.mj_forward(scene.model, scene.data)
+    origin = scene.data.site_xpos[scene.sensor_site_id].copy()
+    matrix = scene.data.site_xmat[scene.sensor_site_id].reshape(3, 3)
+    forward = matrix @ np.asarray(G1_FORWARD_AXIS)
+    left = matrix @ np.asarray((0., 1., 0.))
+    geom = np.full(1, -1, dtype=np.int32)
+    surfaces = set()
+    for offset in np.linspace(-math.radians(60), math.radians(60), 61):
+        direction = forward*math.cos(offset) + left*math.sin(offset)
+        direction[2] = 0
+        direction /= np.linalg.norm(direction)
+        distance = float(scene.mj.mj_ray(scene.model, scene.data, origin, direction,
+            sensor.geom_groups, True, scene.robot_body, geom))
+        if 0 <= distance <= sensor.range_m:
+            surfaces.add(scene.world_to_grid((origin + direction*distance)[:2]))
+    measured = { (int(x), int(y)) for y, x in np.argwhere(sensor.observe(world, scenario.start, 0.0) == 1) }
+    assert measured == surfaces
 
 
 def test_cells_outside_the_sensor_visibility_remain_unknown():
@@ -212,7 +283,8 @@ def test_ray_measurements_change_with_robot_heading():
     world = World(scenario)
     east = sensor.observe(world, scenario.start, 0.0)
     west = sensor.observe(world, scenario.start, np.pi)
-    assert east[3, 4] == 1
+    assert east[3, 3] == 1
+    assert east[3, 4] == -1
     assert west[3, 4] == -1
     assert not np.array_equal(east, west)
 
@@ -240,9 +312,9 @@ def test_persistent_obstacle_geometry_appears_and_disappears_in_rays():
     present = sensor.observe(world, scenario.start, 0.0)
     world.advance()
     removed = sensor.observe(world, scenario.start, 0.0)
-    assert before[3, 3] == 0
-    assert present[3, 3] == 1
-    assert removed[3, 3] == 0
+    assert before[3, 2] == 0
+    assert present[3, 2] == 1
+    assert removed[3, 2] == 0
 
 
 def test_3d_observations_are_deterministic_for_fixed_geometry_and_heading():
@@ -252,6 +324,53 @@ def test_3d_observations_are_deterministic_for_fixed_geometry_and_heading():
     second = sensor.observe(World(scenario), scenario.start, 0.0)
     assert np.array_equal(first, second)
     assert sensor.last_stats['ray_count'] == 61
+
+
+def test_environment_rays_do_not_self_detect_g1_collision_geometry():
+    scenario = ray_scenario(obstacles=((4, 3),), pedestrians=(((3, 3),),))
+    scene = MujocoNavigationScene(scenario)
+    sensor = MujocoRayPerception(scene)
+    sensor.observe(World(scenario), scenario.start, 0.0)
+    assert sensor.geom_groups[5] == 1
+    assert not np.any(sensor.geom_groups[:5])
+    assert sum(sensor.last_stats['hits_by_type'].values()) == sensor.last_stats['ray_hits']
+    # Every G1 collision geom is outside the environment ray group.
+    for geom_id in range(scene.model.ngeom):
+        body = int(scene.model.geom_bodyid[geom_id])
+        while body > 0:
+            if body == scene.robot_body:
+                assert int(scene.model.geom_group[geom_id]) != 5
+                break
+            body = int(scene.model.body_parentid[body])
+
+
+def test_view_scene_exposes_walls_objects_pedestrians_and_actual_g1(tmp_path):
+    import json
+    import mujoco
+    import xml.etree.ElementTree as ET
+    from importlib.util import module_from_spec, spec_from_file_location
+    from pathlib import Path
+
+    viewer_path = Path(__file__).resolve().parents[1] / 'scripts/view_phase2_g1_navigation.py'
+    spec = spec_from_file_location('phase2_g1_scene_visibility_test', viewer_path)
+    viewer = module_from_spec(spec)
+    spec.loader.exec_module(viewer)
+
+    scenario = ray_scenario(obstacles=((4, 3),), pedestrians=(((3, 3), (3, 2)),))
+    scene = MujocoNavigationScene(scenario)
+    (tmp_path/'scene.xml').write_text(scene.xml, encoding='utf-8')
+    (tmp_path/'scenario.json').write_text(json.dumps(dict(width=scenario.width,
+        height=scenario.height, cell_size_m=scene.cell_size)), encoding='utf-8')
+    display_root = ET.fromstring(viewer.display_scene_xml(tmp_path))
+    names = {g.get('name') for g in display_root.iter('geom')}
+    assert any(name.startswith('wall_') for name in names)
+    assert 'object_geom_4_3' in names
+    assert 'pedestrian_geom_0' in names
+    visible_environment = [g for g in display_root.iter('geom')
+        if g.get('name', '').startswith(('wall_', 'object_geom_', 'pedestrian_geom_'))]
+    assert visible_environment and all((g.get('group') or '0') == '0' for g in visible_environment)
+    model = mujoco.MjModel.from_xml_string(ET.tostring(display_root, encoding='unicode'))
+    assert mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, 'pelvis') >= 0
 
 
 def test_3d_sensor_updates_memory_without_passing_truth_to_policy_and_respects_budget():
@@ -272,7 +391,7 @@ def test_3d_sensor_updates_memory_without_passing_truth_to_policy_and_respects_b
     assert len(seen) == 1
     assert metrics['observation_count'] == 1
     assert metrics['observation_requests_denied'] > 0
-    assert frames[0]['memory'][3, 4] == 1
+    assert frames[0]['memory'][3, 3] == 1
     assert metrics['mujoco_sensor_rays'] == 61
     assert metrics['mujoco_sensor_hit_types']['persistent_obstacles'] > 0
 
@@ -305,15 +424,20 @@ def test_saved_g1_scene_has_display_only_rendering_bounds_without_changing_evide
     display_root = ET.fromstring(xml)
     statistic = display_root.find('statistic')
     assert statistic is not None
-    # Saved sensing geometry remains group 5, but generated viewer XML
-    # exposes it to the stock viewer (default groups 0, 1 and 2).
+    # The saved scene is immutable; the derived viewer XML exposes sensing
+    # geoms to the stock viewer (default groups 0, 1 and 2).
     saved_walls = [g for g in ET.parse(source).getroot().iter('geom')
                    if g.get('name', '').startswith('wall_')]
     visible_walls = [g for g in display_root.iter('geom')
                      if g.get('name', '').startswith('wall_')]
     assert saved_walls and len(saved_walls) == len(visible_walls)
-    assert all(g.get('group') == '5' for g in saved_walls)
-    assert all(g.get('group') == '0' for g in visible_walls)
+    assert all((g.get('group') or '0') == '0' for g in visible_walls)
+    saved_objects = [g for g in ET.parse(source).getroot().iter('geom')
+                     if g.get('name', '').startswith(('object_geom_', 'pedestrian_geom_'))]
+    visible_objects = [g for g in display_root.iter('geom')
+                       if g.get('name', '').startswith(('object_geom_', 'pedestrian_geom_'))]
+    assert len(saved_objects) == len(visible_objects)
+    assert all((g.get('group') or '0') == '0' for g in visible_objects)
     model = mujoco.MjModel.from_xml_string(xml)
     assert 1 < model.stat.extent < 100
     assert model.stat.extent * model.vis.map.znear < 1

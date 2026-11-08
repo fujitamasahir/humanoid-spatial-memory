@@ -245,3 +245,71 @@ frame's yaw and loops by default. Launch it on macOS with `mjpython`:
 The `.gitignore` now excludes the derived display-only
 `results/phase2_mujoco/g1_smoke/scene_view.xml`; any existing local copy is kept.
 The full 288-episode matrix has not been run.
+
+## Research-integrity correction and 3D comparison (2026-11-08)
+
+This section supersedes earlier statements above where they describe the
+current G1 3D sensor or current research-integrity gate. Earlier result files
+and text are historical and remain unchanged.
+
+The G1 action path no longer calls `World.move()`, which consults oracle grid
+occupancy. G1 moves are accepted or rejected only by the modeled MuJoCo
+collision geometry (map-boundary checks use public grid dimensions). The
+evaluator also no longer writes an occupied cell into controller memory when a
+G1 footprint sweep blocks movement. A blocked maneuver is retained as an
+evaluation metric only; it is not counted as a sensor reading and provides no
+direct memory update. Controller memory changes only through the authorized
+ternary observation refresh path. The controller is not given `World`, true
+occupancy, obstacle identity, or future pedestrian traces. Ground-truth maps,
+prescribed trace positions, and MuJoCo contact records remain evaluator-only.
+
+Ray-hit occupancy is now rasterized from the measured first intersection
+(`origin + direction * distance`), rather than from the hit geom's center.
+Visibility ends at the first-hit distance; samples behind it remain unknown.
+The hit cell therefore represents the discretized visible surface and may be
+adjacent to the hidden geom-center cell. Cell boundaries use deterministic
+nearest-center, half-up rounding with a small floating-point tie tolerance.
+This reflects the recorded 0.75 m grid discretization and avoids exposing
+sub-cell object centers. Walls, persistent objects, and pedestrian capsules
+are ray-tested; the G1 is excluded, so self-detection is absent by construction.
+The saved sensing settings are unchanged. The viewer derives display-only XML
+that makes group-5 environment geoms visible; stored experimental scenes are
+not edited.
+
+New regression coverage checks that different hidden occupancy and the same
+blocked maneuver do not change memory without an authorized observation, and
+independently reconstructs occupied surface cells from ray intersection
+distances. It also retains occlusion, unknown-space, heading, pedestrian,
+persistent-change, no-self-detection, determinism, and display-scene checks.
+The focused Phase 2 MuJoCo and Phase 1.4A evaluation set passed **58 tests**
+with 14 upstream Matplotlib/pyparsing deprecation warnings.
+
+With the corrected integrity path, the required fixed-seed smoke was run against
+the first admitted saved fit world (`phase1.5-v0.4-BPRIME-1:fit:R:80000000`,
+schedule 0, periodic controller), with the unchanged 80-step limit, 20-call
+observation cap including initialization, 0.75 m/cell assumption, MuJoCo ray
+perception, and G1 collision geometry. It **failed**: the robot stayed at its
+start for all 80 steps because every planned translation was rejected by a G1
+wall-footprint collision. It requested 20 observations, made 1,220 raycasts
+(all first hits classified as walls), changed heading zero times, traveled 0 m,
+and had zero unwanted pose contacts. The trajectory retained 648 intended
+foot-floor pairs. Failure reason: `deadline_repeated_blocked_attempts`. The
+controller did not receive collision-as-sensor updates; this keeps memory
+perception-only but exposes a limitation in the current point-grid A* plus G1
+footprint-check interaction. No environment, grid scale, or policy was tuned to
+force a pass.
+
+The failure report and reproducible artifacts are in
+`results/phase2_mujoco/g1_integrity_mujoco3d_seed42_final_smoke/`. Its runner
+rehashed all 836 protected Phase 1.5 checkpoint/receipt files before and after.
+Headless trajectory validation loaded 81 frames with zero unwanted-contact
+frames. The GUI viewer remains available through the documented macOS command;
+the headless environment did not visually open a native GUI window.
+
+Because this required smoke gate failed, the 36-world × 2-schedule × 4-method
+comparison was **not launched**. There are no comparison estimates or claims
+from this corrected implementation. In particular, no world-clustered paired
+uncertainty analysis is reported. Resolve the blocked-footprint routing issue
+under the same no-oracle, perception-only memory protocol and pass a new fixed
+smoke before starting the matrix. The older 288 proxy result is historical and
+must not be mixed with a future corrected 3D comparison.

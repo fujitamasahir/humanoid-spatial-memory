@@ -150,8 +150,12 @@ class MujocoNavigationScene:
 
     def world_to_grid(self, point):
         x, y = point
-        return (int(round(x/self.cell_size+(self.scenario.width-1)/2)),
-                int(round(y/self.cell_size+(self.scenario.height-1)/2)))
+        # Nearest cell center, with stable half-up handling at exact cell
+        # boundaries. MuJoCo ray intersections can differ by a few ulps at a
+        # box face; Python's banker's round would otherwise move identical
+        # physical boundary points between adjacent raster cells.
+        return (math.floor(x/self.cell_size+(self.scenario.width-1)/2+0.5+1e-12),
+                math.floor(y/self.cell_size+(self.scenario.height-1)/2+0.5+1e-12))
 
     def _body_id(self, name):
         result = self.mj.mj_name2id(self.model, self.mj.mjtObj.mjOBJ_BODY, name)
