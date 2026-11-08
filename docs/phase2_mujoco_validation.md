@@ -658,9 +658,14 @@ brew install ffmpeg  # only if ffmpeg is not already installed
   --camera trailing --fps 24 --speed 0.18 --mp4 --gif
 ```
 
-The new output will be saved under
-`results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1/`. It includes the
-rendered frames, MP4 master, palette PNG, GIF, representative still, metadata,
-candidate score report, visual contact audit, and artifact hash manifest. This
-is a presentation-only kinematic replay with a display-only joint gait, not
-physical walking control.
+The final output is in
+`results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1/`. It was rendered
+at 1280x720, 24 FPS, for 15.29 seconds (367 frames). It includes the rendered
+frames, MP4 master, generated global palette PNG, GIF, representative still,
+metadata, candidate score report, visual contact audit, and artifact hash
+manifest. GIF color validation found the intended bright gold and cyan colors
+in the encoded palette/frames. The render audit passed with zero unwanted
+contacts across all 367 displayed poses. The output metadata confirms that the
+selected source directory and the unchanged trajectory/scene SHA-256 values
+match the preserved source result. The animation remains a presentation-only
+kinematic replay with a display-only joint gait, not physical walking control.
