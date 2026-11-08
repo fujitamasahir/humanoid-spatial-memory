@@ -457,6 +457,7 @@ def test_g1_planner_uses_attempt_feedback_without_repeating_until_observation_ch
         _observation_provider=provider, _g1_planner=planner, _action_checker=checker)
     assert shield_calls == 2  # one rejected attempt, no duplicate on step 2, one reconsideration
     assert metrics['g1_distinct_rejected_actions'] == 1
+    assert metrics['g1_rejected_action_attempts'] == 1
     assert metrics['g1_blocked_movement_reasons']['translation_collision'] == 1
     assert metrics['g1_blocked_feedback_resets_after_changed_observation'] == 1
     assert planner_block_sets[1] == {key}
@@ -486,7 +487,7 @@ def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_de
                         g1_contact_free_success=method == 'periodic',
                         observation_count=method_index+schedule, observation_cost=method_index+schedule,
                         travel_distance_m=10.0+method_index, elapsed_steps=20+method_index,
-                        g1_distinct_rejected_actions=method_index, g1_navigation_no_route_steps=0,
+                        g1_navigation_no_route_steps=0,
                         g1_heading_changes=method_index, stale_map_errors=0,
                         false_persistent_occupancy_updates=0, missed_persistent_changes=0,
                         mujoco_sensor_rays=61, mujoco_sensor_hits=10,
@@ -494,6 +495,8 @@ def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_de
                         mujoco_sensor_free_cells=3, mujoco_sensor_hit_types={
                             'walls': 8, 'persistent_obstacles': 2, 'pedestrians': 0},
                         g1_unwanted_contact_pairs=0, g1_footprint_blocked_attempts=method_index,
+                        g1_rejected_action_attempts=method_index,
+                        g1_distinct_rejected_actions=method_index,
                         g1_blocked_feedback_resets_after_changed_observation=0,
                         g1_blocked_movement_reasons={'rotation_collision': 0,
                             'translation_collision': method_index, 'grid_occupancy': 0},
@@ -516,6 +519,21 @@ def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_de
     assert contrast['matched_world_schedule_pairs'] == 72
     assert contrast['left_minus_right_mean'] == -1.0
     assert contrast['cluster_bootstrap_95pct_ci'] == [-1.0, -1.0]
+
+
+def test_action_history_audit_separates_attempts_from_unique_transitions():
+    from importlib.util import module_from_spec, spec_from_file_location
+    from pathlib import Path
+
+    script = Path(__file__).resolve().parents[1] / 'scripts/audit_phase2_rejected_actions.py'
+    spec = spec_from_file_location('phase2_action_history_audit_test', script)
+    audit = module_from_spec(spec)
+    spec.loader.exec_module(audit)
+    move = dict(position=[2, 3], heading_index=0, action_kind='move', action=[3, 3])
+    turn = dict(position=[2, 3], heading_index=0, action_kind='turn', action=1)
+    result = audit.audit_records([move, dict(move), turn])
+    assert result == dict(attempts=3, unique_transitions=2,
+                          retries_after_local_observation_change=1)
 
 
 def test_3d_sensor_updates_memory_without_passing_truth_to_policy_and_respects_budget():

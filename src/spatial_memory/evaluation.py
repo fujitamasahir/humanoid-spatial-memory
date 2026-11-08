@@ -259,7 +259,11 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
     if _g1_planner is not None:
         metrics['g1_navigation_no_route_steps'] = no_route_steps
         metrics['g1_rejected_actions'] = rejected_action_records
-        metrics['g1_distinct_rejected_actions'] = len(rejected_action_records)
+        rejected_keys = {(tuple(record['position']), int(record['heading_index']),
+            record['action_kind'], tuple(record['action']) if record['action_kind'] == 'move'
+            else int(record['action'])) for record in rejected_action_records}
+        metrics['g1_rejected_action_attempts'] = len(rejected_action_records)
+        metrics['g1_distinct_rejected_actions'] = len(rejected_keys)
         metrics['g1_blocked_feedback_resets_after_changed_observation'] = blocked_feedback_resets
         metrics['g1_remaining_blocked_actions'] = len(blocked_actions)
         metrics['g1_heading_changes'] = sum(bool(frame.get('heading_changed')) for frame in frames)
