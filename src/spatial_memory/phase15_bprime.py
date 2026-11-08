@@ -15,6 +15,9 @@ VERSION = 'phase1.5-v0.4-BPRIME-1'
 MECHANISMS = ('R', 'BP', 'V', 'M')
 # Stable seed blocks: never renumber previously generated M identities.
 MECHANISM_SEED_OFFSETS = {'R': 0, 'BP': 10_000, 'V': 20_000, 'M': 30_000}
+# Methods used for new spatial-memory experiments; historical seed identities stay valid.
+ACTIVE_MECHANISMS = ('R', 'BP', 'M')
+
 PARTITIONS = {'fit': (80_000_000, 12), 'calibration': (80_100_000, 6),
               'selection': (80_200_000, 6)}
 PURPOSES = ('partition', 'tree', 'chords', 'doors', 'geometry', 'start-goal',
@@ -23,6 +26,16 @@ PURPOSES = ('partition', 'tree', 'chords', 'doors', 'geometry', 'start-goal',
 
 class IntegrityError(ValueError):
     """Stop: malformed construction, changed evidence, or unsupported identity."""
+
+
+def active_quota_complete(credits, partition):
+    """Check the three active environment families without generating candidates.
+
+    Historical candidate identities and seed allocations are intentionally stable.
+    """
+    development_partition(partition)
+    target = PARTITIONS[partition][1]
+    return all(credits.get(method, 0) == target for method in ACTIVE_MECHANISMS)
 
 
 def development_partition(partition):
