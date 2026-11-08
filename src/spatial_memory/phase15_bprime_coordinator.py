@@ -252,6 +252,24 @@ class Coordinator:
         self._apply(payload,job);self._clear_pending()
         return entry
 
+    def active_fit_status(self):
+        """Read-only three-method fit status from already restored evidence.
+
+        Does not advance candidate order, freeze the legacy partition, or generate
+        any worlds. Existing validated admissions remain the source of credits.
+        """
+        if self.part != 'fit' or not self._restored:
+            raise bp.IntegrityError('Restore the fit records before checking active quotas')
+        self.store._check_lock()
+        counts = self.index.credits(self._stage_key())
+        return dict(
+            partition='fit',
+            mechanisms=list(bp.ACTIVE_MECHANISMS),
+            credits={m: counts[m] for m in bp.ACTIVE_MECHANISMS},
+            target_per_mechanism=bp.PARTITIONS['fit'][1],
+            complete=bp.active_quota_complete(counts, 'fit'),
+        )
+
     def completion(self):
         self.store._check_lock()
         rows=self._scan()
