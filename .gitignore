@@ -17,7 +17,7 @@ dist/
 # Generated data and large media
 results/runs/
 results/raw/
-results/phase2_mujoco/g1_smoke/scene_view.xml
+results/phase2_mujoco/**/scene_view.xml
 *.mp4
 *.mov
 
