@@ -46,10 +46,27 @@ def load_viewer_helpers():
     return module
 
 
-def make_display_xml(source: Path) -> str:
-    """Create a view-only MJCF variant with translucent walls and route pins."""
+def make_display_xml(source: Path, *, offwidth: int = 1280,
+                     offheight: int = 720) -> str:
+    """Create a view-only MJCF with translucent walls and adequate offscreen buffers."""
+    if offwidth < 1 or offheight < 1:
+        raise ValueError("Offscreen framebuffer dimensions must be positive")
     viewer = load_viewer_helpers()
     root = ET.fromstring(viewer.display_scene_xml(source))
+    # The saved MuJoCo scene defaults to a 640 x 480 framebuffer. A Renderer
+    # request larger than that raises an error before its first image. Configure
+    # only the derived presentation XML; never edit source experiment scenes.
+    visual = root.find("visual")
+    if visual is None:
+        visual = ET.Element("visual")
+        worldbody_index = next((i for i, child in enumerate(root)
+                                if child.tag == "worldbody"), len(root))
+        root.insert(worldbody_index, visual)
+    global_settings = visual.find("global")
+    if global_settings is None:
+        global_settings = ET.SubElement(visual, "global")
+    global_settings.set("offwidth", str(offwidth))
+    global_settings.set("offheight", str(offheight))
     scenario = json.loads((source / "scenario.json").read_text())
     width, height, spacing = scenario["width"], scenario["height"], scenario["cell_size_m"]
     for geom in root.iter("geom"):
@@ -154,7 +171,7 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
     if output.exists():
         raise FileExistsError(f"Output directory already exists; refusing to overwrite: {output}")
 
-    xml = make_display_xml(source)
+    xml = make_display_xml(source, offwidth=width, offheight=height)
     model = mujoco.MjModel.from_xml_string(xml)
     data = mujoco.MjData(model)
     key = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_KEY, "stand")
@@ -186,8 +203,10 @@ def render_frames(source: Path, output: Path, *, camera_mode="portfolio", fps=FP
         renderer = mujoco.Renderer(model, height=height, width=width)
     except Exception as error:
         raise RuntimeError(
-            "MuJoCo offscreen rendering could not initialize a macOS graphics context. "
-            "Run from a logged-in macOS Terminal session; if needed use `.venv/bin/mjpython`. "
+            "MuJoCo offscreen rendering failed. The presentation scene requests "
+            f"a {width}x{height} framebuffer; verify the display-only MJCF "
+            "offwidth/offheight settings. On macOS, run in a logged-in Terminal "
+            "using `.venv/bin/mjpython` if native graphics access is unavailable. "
             f"Renderer error: {error}"
         ) from error
     frames_dir = output / "frames"
