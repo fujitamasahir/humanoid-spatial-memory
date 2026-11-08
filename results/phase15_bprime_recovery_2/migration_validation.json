@@ -1,0 +1,115 @@
+{
+  "base_commit": "1f5e87c",
+  "binding_path": "configs/phase15_macos_bindings/fit-recovery-2.json",
+  "binding_sha256": "84cfc8b95313ddb88cc23265a5f61255e900f15795b5c161d16e4f07a709bb3f",
+  "branch": "migration/phase15-m3-second-continuation-prep",
+  "c3_compatibility": {
+    "exact_key_discrepancies": 0,
+    "near_set_discrepancies": 0,
+    "source_report": "results/phase1_5_bprime_macos/m3_environment_validation.json",
+    "stored_reference_records": 2368
+  },
+  "live_rss_gate": {
+    "report": "results/phase1_5_bprime_macos/m3_live_rss_validation.json",
+    "report_sha256": "cb2698fd5393b0d2b644aa358406662dd0694b3588b8c51912b321accfb1ad67",
+    "status": "PASS_ABOVE_THRESHOLD_REJECTED"
+  },
+  "native": {
+    "artifact_sha256": "b6a11ebab2651ffedd790213cfc71913debc9c0cd430d25fda48d290d63568ed",
+    "deadline_seconds": 5,
+    "nauty": "2.8.8",
+    "option_b_profile": "phase1.5-v0.4-MACOS-RSS-B1",
+    "provenance": "separately rebuilt M3 arm64 artifact",
+    "pynauty": "2.8.8.1",
+    "threshold_bytes": 536870912
+  },
+  "next_candidate": {
+    "identity": "phase1.5-v0.4-BPRIME-1:fit:V:80020368",
+    "index": 368,
+    "mechanism": "V",
+    "sequence": 418
+  },
+  "prefix_path": "results/phase15_bprime_recovery_2/prefix.json",
+  "prefix_sha256": "dda08aba4d70ab9098bd01b1ae23217a83911d254507d9f7b6de71b254db3a7f",
+  "prefix_verification": {
+    "all_418_preserved": true,
+    "binding_sha256": "84cfc8b95313ddb88cc23265a5f61255e900f15795b5c161d16e4f07a709bb3f",
+    "continuation_run_id": "756a9c7c554b581df49311b62b885b00633224b1abcc7d6ea41983069c151246",
+    "credits": {
+      "BP": 12,
+      "M": 12,
+      "R": 12
+    },
+    "current_credits": {
+      "BP": 12,
+      "M": 12,
+      "R": 12
+    },
+    "cursors": {
+      "BP": 14,
+      "M": 12,
+      "R": 24,
+      "V": 368
+    },
+    "elapsed_seconds": 137.1354969170061,
+    "failure": null,
+    "mode": "verify",
+    "native_calls": 70204,
+    "next_job": {
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:V:80020368",
+      "index": 368,
+      "mechanism": "V",
+      "partition": "fit",
+      "sequence": 418
+    },
+    "parent_cpu_seconds": 129.747519,
+    "prefix_records": 418,
+    "prefix_sha256": "dda08aba4d70ab9098bd01b1ae23217a83911d254507d9f7b6de71b254db3a7f",
+    "registered_candidates_generated": 0,
+    "status": "PASS_NO_REGISTERED_GENERATION",
+    "total_fit_records": 418,
+    "worker_cpu_seconds": 4.007793000000024
+  },
+  "preservation": {
+    "changed": false,
+    "checkpoint_and_receipt_files_rehashed": 836,
+    "continuation_1_records": 105,
+    "original_records": 313,
+    "receipts": 418,
+    "records": 418
+  },
+  "remaining_gates_before_execute": [
+    "Commit and push this verification report. Then verify branch and runtime/native pin remain unchanged before running the separately gated execute command."
+  ],
+  "runtime": {
+    "architecture": "arm64",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+    "executable_sha256": "d4f152f2a753c94e0e7935c8ebbe6b2609979e1df7898422b577d0076383d08b",
+    "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "system": "Darwin"
+  },
+  "status": "PASS_PREPARATION_VERIFIED_NO_GENERATION",
+  "tests": {
+    "broader_legacy_selection": {
+      "failed": 19,
+      "failure_cause": "legacy default test pins point to the unavailable original artifact under results/runs/phase15_macos_build; the M3 rebuilt artifact is separately pinned and was used by the recovery verifier",
+      "files": [
+        "tests/test_phase15_prefix_continuation.py",
+        "tests/test_phase15_recovery_continuation.py",
+        "tests/test_phase15_option_b.py",
+        "tests/test_phase15_macos_c3.py",
+        "tests/test_phase15_macos_memory_diagnosis.py"
+      ],
+      "passed": 36
+    },
+    "failed": 0,
+    "passed": 30,
+    "recovery_verification": "PASS_NO_REGISTERED_GENERATION",
+    "registered_candidates_generated": 0,
+    "targeted_non_generative": [
+      "tests/test_phase15_prefix_continuation.py",
+      "tests/test_phase15_recovery_continuation.py",
+      "tests/test_phase15_macos_memory_diagnosis.py"
+    ]
+  }
+}
