@@ -130,7 +130,8 @@ def run(output, *, max_steps=240):
     (output/'scenario.json').write_text(json.dumps(scenario_record, sort_keys=True, indent=2)+'\n')
     trajectory = [{
         'step': frame['step'], 'position': list(frame['position']),
-        'heading_yaw': float(frame['heading_yaw']), 'heading_changed': frame['heading_changed'],
+        'heading_yaw': float(frame['heading_yaw']),
+        'heading_changed': bool(frame.get('heading_changed', False)),
         'navigation_action': frame.get('navigation_action'), 'moved': frame['moved'],
         'blocked': frame['blocked'], 'blocked_reason': frame.get('blocked_reason'),
         'observation_count': frame['observation_count'],
