@@ -18,7 +18,7 @@ from spatial_memory.mujoco_navigation import MujocoNavigationScene
 from spatial_memory.mujoco_perception import MujocoRayPerception
 from spatial_memory.navigation import HEADINGS, heading_index, plan_g1_forward_facing
 from spatial_memory.phase15_bprime import VERSION
-from spatial_memory.simulation import scenario_from_bprime
+from spatial_memory.simulation import World, scenario_from_bprime
 
 
 DEFAULT_IDENTITY = f'{VERSION}:fit:BP:80010010'
