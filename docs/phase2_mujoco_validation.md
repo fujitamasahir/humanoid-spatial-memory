@@ -630,14 +630,23 @@ goal completion, and zero unwanted contacts. The previous portfolio route had
 one heading change, 12 cells, and a 3-by-9-cell span. The selected trajectory is
 replayed as saved; it is not regenerated or modified.
 
-The default camera is now a smoothed heading-relative trailing follow view,
-slightly elevated and aimed ahead of G1. Walls use a brighter slate tint at
-0.38 opacity, the floor has a contrasting blue-gray tone, and G1's display-only
-materials receive a light lift for visibility. Cyan and gold markers have
-layered emissive halos. The pipeline reuses the viewer's interpolation and
-presentation-only gait and writes PNG frames, MP4, GIF, a representative still,
-metadata, candidate-selection rationale, and an artifact hash manifest. These
-are visual-only changes and do not affect collision or navigation metrics.
+The final presentation pass uses a fixed rear-side trailing camera with
+smoothed position and orientation; it follows the saved heading with a constant
+20-degree rear-side offset and does not intentionally orbit to the front. The
+camera stays slightly elevated and aims 0.65 m ahead of G1. Every G1 geom and
+bound material is forced to alpha 1.0 in the derived display scene. Maze walls
+use a brighter slate tint at 0.48 opacity, while the floor remains opaque and
+contrasting. The cyan START and bright gold GOAL pins use small emissive heads,
+narrow stems, layered luminous base rings, and pale glints. The translucent
+marker halos are presentation UI; the robot itself is fully opaque.
+
+The GIF is encoded from the rendered MP4 master, not from the PNG frames. The
+exporter uses a two-pass FFmpeg palette workflow: `palettegen` scans the full
+MP4 at 24 FPS with `stats_mode=full`, 256 colors, and no reserved transparency;
+`paletteuse` then applies the saved global palette with Sierra2_4A dithering and
+rectangle diff mode. The generated `gif_palette.png` and metadata record this
+conversion. All changes are view-only and do not affect collision or navigation
+metrics.
 
 On macOS, run from a logged-in Terminal session with MuJoCo's Cocoa helper. The
 following command exports frames, MP4, and GIF to a new directory:
@@ -645,19 +654,13 @@ following command exports frames, MP4, and GIF to a new directory:
 ```bash
 brew install ffmpeg  # only if ffmpeg is not already installed
 .venv/bin/mjpython scripts/export_phase2_portfolio_demo.py \
-  --output-dir results/phase2_mujoco/portfolio_export_g1_heading_follow_v4 \
-  --camera follow --fps 24 --speed 0.18 --mp4 --gif
+  --output-dir results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1 \
+  --camera trailing --fps 24 --speed 0.18 --mp4 --gif
 ```
 
-The polished output is in
-`results/phase2_mujoco/portfolio_export_g1_heading_follow_v4/`. It was rendered
-at 1280x720, 24 FPS, in 15.29 seconds (367 frames), with MP4, GIF, PNGs,
-metadata, candidate score report, visual contact audit, and an artifact manifest.
-The selected saved route's source trajectory and scene SHA-256 values match the
-export metadata. The rendered-pose audit passed with zero unwanted contacts
-(1,152 intended foot-floor contact pairs). The representative frame was
-visually reviewed.
-Focused tests cover follow-camera heading and smoothing, markers and colors,
-wall opacity, deterministic candidate scoring, source preservation, and
-render/export metadata. The robot uses kinematic root poses with a display-only
-joint gait; this is not physical walking control.
+The new output will be saved under
+`results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1/`. It includes the
+rendered frames, MP4 master, palette PNG, GIF, representative still, metadata,
+candidate score report, visual contact audit, and artifact hash manifest. This
+is a presentation-only kinematic replay with a display-only joint gait, not
+physical walking control.

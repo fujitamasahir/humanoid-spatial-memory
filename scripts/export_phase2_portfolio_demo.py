@@ -18,14 +18,22 @@ import mujoco
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke"
-DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_heading_follow_v4"
-WALL_RGBA = "0.40 0.48 0.56 0.38"
+DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1"
+WALL_RGBA = "0.40 0.48 0.56 0.48"
 FLOOR_RGBA = "0.57 0.65 0.68 1"
 FPS = 24
 SECONDS_PER_ACTION = 0.18
 FOLLOW_DISTANCE_M = 5.4
 FOLLOW_ELEVATION_DEG = -44.0
 FOLLOW_LOOKAHEAD_M = 0.65
+FOLLOW_REAR_OFFSET_DEG = 20.0
+FOLLOW_TARGET_SMOOTHING = 0.28
+FOLLOW_ORIENTATION_SMOOTHING = 0.42
+GIF_CONVERSION_METHOD = (
+    "MP4 master; two-pass FFmpeg palette workflow: palettegen stats_mode=full, "
+    "max_colors=256, reserve_transparent=0; then paletteuse dither=sierra2_4a, "
+    "diff_mode=rectangle at the source frame rate."
+)
 
 
 def sha256(raw: bytes) -> str:
@@ -167,11 +175,11 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
     if asset is None:
         asset = ET.SubElement(root, "asset")
     materials = (
-        ("portfolio_start_pin", "0.04 0.73 0.96 1", "0.28"),
-        ("portfolio_start_halo", "0.04 0.73 0.96 0.24", "0.42"),
-        ("portfolio_goal_pin", "1 0.62 0.10 1", "0.30"),
-        ("portfolio_goal_halo", "1 0.62 0.10 0.25", "0.45"),
-        ("portfolio_marker_glint", "1 0.94 0.68 0.95", "0.18"),
+        ("portfolio_start_pin", "0.025 0.78 1 1", "0.42"),
+        ("portfolio_start_halo", "0.025 0.78 1 0.30", "0.55"),
+        ("portfolio_goal_pin", "1 0.78 0.12 1", "0.52"),
+        ("portfolio_goal_halo", "1 0.78 0.12 0.34", "0.62"),
+        ("portfolio_marker_glint", "1 0.97 0.72 1", "0.26"),
     )
     for name, rgba, emission in materials:
         ET.SubElement(asset, "material", {"name": name, "rgba": rgba,
@@ -187,6 +195,24 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
             material.set("emission", emission)
             material.set("specular", "0.48")
             material.set("shininess", "0.58")
+    # Ensure all visible robot geoms and their assigned materials are opaque.
+    pelvis = root.find(".//body[@name='pelvis']")
+    if pelvis is not None:
+        for geom in pelvis.iter("geom"):
+            rgba = geom.get("rgba")
+            if rgba:
+                channels = rgba.split()
+                if len(channels) == 4:
+                    channels[3] = "1"
+                    geom.set("rgba", " ".join(channels))
+            material_name = geom.get("material")
+            if material_name:
+                robot_material = asset.find(f"material[@name='{material_name}']")
+                if robot_material is not None and robot_material.get("rgba"):
+                    channels = robot_material.get("rgba").split()
+                    if len(channels) == 4:
+                        channels[3] = "1"
+                        robot_material.set("rgba", " ".join(channels))
     for geom in root.iter("geom"):
         name = geom.get("name", "")
         if name.startswith("wall_"):
@@ -240,24 +266,29 @@ def camera_for(mode: str, trajectory: list[dict], scenario: dict, frame: dict,
         x, y = world(frame["position"])
         camera.lookat[:] = (x + FOLLOW_LOOKAHEAD_M * math.cos(yaw),
                             y + FOLLOW_LOOKAHEAD_M * math.sin(yaw), 0.95)
-        camera.azimuth = (math.degrees(yaw) + 180.0) % 360.0
+        # In MuJoCo's free-camera convention, azimuth zero views from behind
+        # a +X-facing body. A small constant rear-side offset avoids the old
+        # front-facing orbit while preserving a stable one-sided trailing view.
+        camera.azimuth = (math.degrees(yaw) + FOLLOW_REAR_OFFSET_DEG) % 360.0
         camera.elevation = FOLLOW_ELEVATION_DEG
         camera.distance = FOLLOW_DISTANCE_M
     return camera
 
 
 class FollowCamera:
-    """Smoothed trailing camera that looks slightly ahead along recorded yaw."""
+    """Smoothed one-sided trailing camera; never intentionally orbits to the front."""
     def __init__(self, trajectory: list[dict], scenario: dict, spacing: float,
-                 *, smoothing: float = 0.22):
+                 *, smoothing: float = FOLLOW_TARGET_SMOOTHING,
+                 orientation_smoothing: float = FOLLOW_ORIENTATION_SMOOTHING):
         self.trajectory = trajectory
         self.scenario = scenario
         self.spacing = spacing
         self.smoothing = smoothing
+        self.orientation_smoothing = orientation_smoothing
         self.camera = None
 
     def update(self, frame: dict) -> mujoco.MjvCamera:
-        desired = camera_for("follow", self.trajectory, self.scenario, frame, self.spacing)
+        desired = camera_for("trailing", self.trajectory, self.scenario, frame, self.spacing)
         if self.camera is None:
             self.camera = mujoco.MjvCamera()
             mujoco.mjv_defaultCamera(self.camera)
@@ -270,8 +301,9 @@ class FollowCamera:
         alpha = self.smoothing
         self.camera.lookat[:] += alpha * (desired.lookat - self.camera.lookat)
         delta = (desired.azimuth - self.camera.azimuth + 180.0) % 360.0 - 180.0
-        self.camera.azimuth = (self.camera.azimuth + alpha * delta) % 360.0
-        self.camera.elevation += alpha * (desired.elevation - self.camera.elevation)
+        orientation_alpha = self.orientation_smoothing
+        self.camera.azimuth = (self.camera.azimuth + orientation_alpha * delta) % 360.0
+        self.camera.elevation += orientation_alpha * (desired.elevation - self.camera.elevation)
         return self.camera
 
 
@@ -299,7 +331,7 @@ def apply_hud(frame: Image.Image, index: int, total: int, fps: int) -> Image.Ima
                            fill=(10, 20, 30, 168), outline=(255, 255, 255, 52), width=1)
     draw.ellipse((width - 214, 43, width - 198, 59), fill=(31, 184, 239, 255))
     draw.text((width - 187, 41), "START", fill=(245, 249, 252, 255), font=small)
-    draw.ellipse((width - 214, 67, width - 198, 83), fill=(255, 166, 31, 255))
+    draw.ellipse((width - 214, 67, width - 198, 83), fill=(255, 199, 31, 255))
     draw.text((width - 187, 65), "GOAL", fill=(245, 249, 252, 255), font=small)
     return Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
 
@@ -308,9 +340,10 @@ def _set_group(options, group: int, enabled: bool) -> None:
     options.geomgroup[group] = int(enabled)
 
 
-def render_frames(source: Path, output: Path, *, camera_mode="follow", fps=FPS,
+def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS,
                   width=1280, height=720, speed=SECONDS_PER_ACTION,
-                  source_selection: dict | None = None) -> dict:
+                  source_selection: dict | None = None,
+                  export_mp4: bool = False, export_gif: bool = False) -> dict:
     viewer = load_viewer_helpers()
     scenario = json.loads((source / "scenario.json").read_text())
     trajectory_path = source / "trajectory.json"
@@ -389,7 +422,8 @@ def render_frames(source: Path, output: Path, *, camera_mode="follow", fps=FPS,
     mujoco.mjv_defaultOption(option)
     _set_group(option, 5, True)
     option.flags[mujoco.mjtVisFlag.mjVIS_TRANSPARENT] = 1
-    follow_camera = FollowCamera(trajectory, scenario, spacing) if camera_mode == "follow" else None
+    follow_camera = (FollowCamera(trajectory, scenario, spacing)
+                     if camera_mode in {"trailing", "follow", "portfolio"} else None)
     count = 0
     try:
         for count, (frame, env_frame, phase, amplitude, travel_sign) in enumerate(samples):
@@ -473,17 +507,26 @@ def render_frames(source: Path, output: Path, *, camera_mode="follow", fps=FPS,
         "duration_seconds": total / fps,
         "resolution": {"width": width, "height": height},
         "camera_mode": camera_mode,
-        "camera": {"style": "smoothed heading-relative trailing/over-shoulder follow",
+        "camera": {"style": "stable one-sided rear-side trailing follow; no front orbit",
                    "distance_m": FOLLOW_DISTANCE_M,
                    "elevation_deg": FOLLOW_ELEVATION_DEG,
                    "lookahead_m": FOLLOW_LOOKAHEAD_M,
-                   "target_smoothing_alpha": 0.22,
-                   "azimuth_rule": "recorded heading yaw + 180 degrees"},
+                   "target_smoothing_alpha": FOLLOW_TARGET_SMOOTHING,
+                   "orientation_smoothing_alpha": FOLLOW_ORIENTATION_SMOOTHING,
+                   "rear_side_offset_deg": FOLLOW_REAR_OFFSET_DEG,
+                   "azimuth_rule": "recorded heading yaw + fixed 20 degree rear-side offset; MuJoCo azimuth 0 is behind +X heading"},
         "seconds_per_saved_action": speed,
         "walls_rgba": WALL_RGBA,
         "floor_rgba": FLOOR_RGBA,
-        "g1_presentation_materials": "view-only brighter blue-slate black material and neutral silver metal material; source MJCF and collision geometry unchanged",
-        "start_goal_markers": "non-colliding cyan/gold emissive pin with layered translucent halo and specular highlight",
+        "g1_rendered_alpha": 1.0,
+        "g1_presentation_materials": "view-only brighter blue-slate black material and neutral silver metal material, all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
+        "start_goal_markers": "non-colliding futuristic waypoint pin: cyan START and bright gold GOAL orb, narrow stem, layered luminous floating base rings, and pale specular glint; translucent halos are UI-only",
+        "gif_conversion": {
+            "master": "portfolio_demo.mp4",
+            "method": GIF_CONVERSION_METHOD,
+            "palette_file": "gif_palette.png",
+        },
+        "video_outputs": {"mp4": bool(export_mp4 or export_gif), "gif": bool(export_gif)},
         "visual_gait": "reused deterministic viewer gait_joint_targets and playback_samples; display-only, not physical locomotion",
         "visual_only_contact_audit_file": "visual_only_contact_audit.json",
         "source_trajectory_or_metrics_modified": False,
@@ -522,21 +565,26 @@ def encode_mp4(output: Path, fps: int) -> None:
 
 
 def encode_gif(output: Path, fps: int) -> None:
-    files = sorted((output / "frames").glob("frame_*.png"))
-    duration_ms = round(1000 / fps)
-    images = [Image.open(path).convert("RGB") for path in files]
-    if not images:
-        raise ValueError("No rendered frames available for GIF")
-    # Sample every frame into a compact contact sheet so the shared GIF palette
-    # includes colors that appear later in the sequence as well as at frame 0.
-    palette_sheet = Image.new("RGB", (96, 54 * len(images)))
-    for index, image in enumerate(images):
-        palette_sheet.paste(image.resize((96, 54), Image.Resampling.BILINEAR), (0, index * 54))
-    palette = palette_sheet.quantize(colors=192, method=Image.Quantize.MEDIANCUT)
-    converted = [image.quantize(palette=palette, dither=Image.Dither.NONE) for image in images]
-    converted[0].save(output / "portfolio_demo.gif", save_all=True,
-                      append_images=converted[1:], duration=duration_ms, loop=0,
-                      optimize=False, disposal=2)
+    """Convert the MP4 master to GIF using a global palette generated from that MP4."""
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise RuntimeError("GIF export requires ffmpeg for palette generation and use. Install it with `brew install ffmpeg`.")
+    mp4_path = output / "portfolio_demo.mp4"
+    if not mp4_path.is_file():
+        raise ValueError("GIF conversion requires portfolio_demo.mp4 as its master input")
+    palette_path = output / "gif_palette.png"
+    gif_path = output / "portfolio_demo.gif"
+    subprocess.run([
+        ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", str(mp4_path),
+        "-vf", f"fps={fps},palettegen=stats_mode=full:max_colors=256:reserve_transparent=0",
+        "-frames:v", "1", str(palette_path),
+    ], check=True)
+    subprocess.run([
+        ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", str(mp4_path),
+        "-i", str(palette_path), "-filter_complex",
+        f"fps={fps}[gifframes];[gifframes][1:v]paletteuse=dither=sierra2_4a:diff_mode=rectangle",
+        "-loop", "0", str(gif_path),
+    ], check=True)
 
 
 def write_artifact_manifest(output: Path) -> None:
@@ -555,7 +603,8 @@ def main(argv=None) -> int:
     parser.add_argument("--result-dir", type=Path,
                         help="Optional saved eligible source; default uses the deterministic best-route score")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--camera", choices=("follow", "overview"), default="follow")
+    parser.add_argument("--camera", choices=("trailing", "follow", "portfolio", "overview"),
+                        default="trailing")
     parser.add_argument("--fps", type=int, default=FPS)
     parser.add_argument("--width", type=int, default=1280)
     parser.add_argument("--height", type=int, default=720)
@@ -581,15 +630,16 @@ def main(argv=None) -> int:
         parser.error("Use 1..60 fps, width 320..3840, and height 180..2160")
     if args.speed <= 0:
         parser.error("--speed must be positive")
-    if args.mp4 and shutil.which("ffmpeg") is None:
-        parser.error("MP4 export needs ffmpeg; install it with `brew install ffmpeg` and rerun")
+    if (args.mp4 or args.gif) and shutil.which("ffmpeg") is None:
+        parser.error("MP4/GIF export needs ffmpeg; install it with `brew install ffmpeg` and rerun")
     if output.exists():
         parser.error(f"Refusing to overwrite existing output directory: {output}")
     try:
         metadata = render_frames(source, output, camera_mode=args.camera, fps=args.fps,
                                  width=args.width, height=args.height, speed=args.speed,
-                                 source_selection=selection_report)
-        if args.mp4:
+                                 source_selection=selection_report,
+                                 export_mp4=args.mp4 or args.gif, export_gif=args.gif)
+        if args.mp4 or args.gif:
             encode_mp4(output, args.fps)
         if args.gif:
             encode_gif(output, args.fps)

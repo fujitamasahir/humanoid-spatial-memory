@@ -34,15 +34,33 @@ def test_display_scene_has_readable_translucent_walls_and_cyan_gold_halo_pins():
         assert root.find(f".//geom[@name='portfolio_{key}_glint']") is not None
     model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
     wall_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "wall_0_0")
-    assert 0.30 <= model.geom_rgba[wall_id, 3] <= 0.50
+    assert 0.42 <= model.geom_rgba[wall_id, 3] <= 0.55
     floor_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM, "floor")
     floor_luma = float(np.dot(model.geom_rgba[floor_id, :3], (0.2126, 0.7152, 0.0722)))
     wall_luma = float(np.dot(model.geom_rgba[wall_id, :3], (0.2126, 0.7152, 0.0722)))
     assert floor_luma > wall_luma
     black_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_MATERIAL, "black")
     assert model.mat_rgba[black_id, 0] >= 0.4
-    for key, expected in (("start", (0.04, 0.73, 0.96)),
-                          ("goal", (1.0, 0.62, 0.10))):
+    # Every geom belonging to the G1 subtree and its bound material stays opaque.
+    robot_geom_ids = set()
+    for geom_id in range(model.ngeom):
+        body_id = int(model.geom_bodyid[geom_id])
+        while body_id > 0:
+            body_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, body_id) or ""
+            if body_name == "pelvis":
+                robot_geom_ids.add(geom_id)
+                break
+            body_id = int(model.body_parentid[body_id])
+    assert robot_geom_ids
+    assert all(model.geom_rgba[geom_id, 3] == pytest.approx(1.0)
+               for geom_id in robot_geom_ids)
+    robot_material_ids = {int(model.geom_matid[geom_id]) for geom_id in robot_geom_ids
+                          if int(model.geom_matid[geom_id]) >= 0}
+    assert robot_material_ids
+    assert all(model.mat_rgba[material_id, 3] == pytest.approx(1.0)
+               for material_id in robot_material_ids)
+    for key, expected in (("start", (0.025, 0.78, 1.0)),
+                          ("goal", (1.0, 0.78, 0.12))):
         geom_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_GEOM,
                                     f"portfolio_{key}_tip")
         rgba = model.mat_rgba[model.geom_matid[geom_id]]
@@ -69,34 +87,40 @@ def test_display_scene_allocates_requested_offscreen_framebuffer():
         exporter.make_display_xml(SOURCE, offwidth=0)
 
 
-def test_heading_relative_follow_camera_trails_and_looks_ahead_smoothly():
+def test_stable_trailing_camera_stays_in_the_rear_hemisphere_through_saved_route():
     import mujoco
 
     trajectory = json.loads((SOURCE / "trajectory.json").read_text())
     scenario = json.loads((SOURCE / "scenario.json").read_text())
-    for mode in ("follow", "overview"):
+    for mode in ("trailing", "follow", "portfolio", "overview"):
         first = exporter.camera_for(mode, trajectory, scenario, trajectory[0], .75)
         second = exporter.camera_for(mode, trajectory, scenario, trajectory[0], .75)
         assert np.array_equal(first.lookat, second.lookat)
         assert first.distance == second.distance
         assert first.type == mujoco.mjtCamera.mjCAMERA_FREE
     first = dict(trajectory[0], heading_yaw=0.0)
-    east = exporter.camera_for("follow", trajectory, scenario, first, .75)
-    assert east.azimuth == pytest.approx(180.0)
+    east = exporter.camera_for("trailing", trajectory, scenario, first, .75)
+    assert east.azimuth == pytest.approx(exporter.FOLLOW_REAR_OFFSET_DEG)
     cell_x = (first["position"][0] - (scenario["width"] - 1) / 2) * .75
     assert east.lookat[0] == pytest.approx(cell_x + exporter.FOLLOW_LOOKAHEAD_M)
     north_frame = dict(first, heading_yaw=np.pi / 2)
-    north = exporter.camera_for("follow", trajectory, scenario, north_frame, .75)
-    assert north.azimuth == pytest.approx(270.0)
+    north = exporter.camera_for("trailing", trajectory, scenario, north_frame, .75)
+    assert north.azimuth == pytest.approx(90 + exporter.FOLLOW_REAR_OFFSET_DEG)
     assert north.lookat[1] > east.lookat[1]
     assert east.distance == pytest.approx(exporter.FOLLOW_DISTANCE_M)
     assert east.elevation == pytest.approx(exporter.FOLLOW_ELEVATION_DEG)
-    tracker = exporter.FollowCamera(trajectory, scenario, .75, smoothing=.2)
+    tracker = exporter.FollowCamera(trajectory, scenario, .75)
     tracker.update(first)
     advanced = dict(first, position=[first["position"][0] + 2, first["position"][1]])
     smoothed = tracker.update(advanced)
-    immediate = exporter.camera_for("follow", trajectory, scenario, advanced, .75)
+    immediate = exporter.camera_for("trailing", trajectory, scenario, advanced, .75)
     assert smoothed.lookat[0] < immediate.lookat[0]
+
+    helper = exporter.load_viewer_helpers()
+    for frame, _, _, _, _ in helper.playback_samples(trajectory, .18, .75, fps=24):
+        camera = tracker.update(frame)
+        relative = (camera.azimuth - np.degrees(frame.get("heading_yaw", 0.0)) + 180) % 360 - 180
+        assert abs(relative) < 90, "follow camera crossed into the robot's front hemisphere"
 
 
 def test_source_selection_uses_a_deterministic_score_and_prefers_complex_safe_route():
@@ -133,9 +157,13 @@ def test_offscreen_frame_export_is_deterministic_and_preserves_source(monkeypatc
     before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths}
     outputs = [tmp_path / "first", tmp_path / "second"]
     metadata = [exporter.render_frames(SOURCE, output, fps=1, width=320, height=180,
-                                      speed=.01, camera_mode="follow") for output in outputs]
+                                      speed=.01, camera_mode="trailing", export_mp4=True,
+                                      export_gif=True) for output in outputs]
     assert metadata[0] == metadata[1]
     assert metadata[0]["source_trajectory_or_metrics_modified"] is False
+    assert metadata[0]["g1_rendered_alpha"] == 1.0
+    assert metadata[0]["video_outputs"] == {"mp4": True, "gif": True}
+    assert "palettegen stats_mode=full" in metadata[0]["gif_conversion"]["method"]
     for output in outputs:
         frame_paths = sorted((output / "frames").glob("frame_*.png"))
         assert len(frame_paths) == metadata[0]["output_frames"]
@@ -169,14 +197,18 @@ def test_hud_generation_is_deterministic():
     assert first.tobytes() == second.tobytes()
 
 
-def test_gif_encoding_works_from_saved_png_frames(tmp_path):
-    from PIL import Image
-
-    frames = tmp_path / "frames"
-    frames.mkdir()
-    Image.new("RGB", (40, 24), (0, 100, 200)).save(frames / "frame_00000.png")
-    Image.new("RGB", (40, 24), (200, 100, 0)).save(frames / "frame_00001.png")
+def test_gif_encoding_generates_and_uses_palette_from_mp4_master(monkeypatch, tmp_path):
+    monkeypatch.setattr(exporter.shutil, "which", lambda _: "/usr/local/bin/ffmpeg")
+    commands = []
+    monkeypatch.setattr(exporter.subprocess, "run", lambda command, **kwargs: commands.append(command))
+    (tmp_path / "portfolio_demo.mp4").write_bytes(b"mp4-master")
     exporter.encode_gif(tmp_path, 24)
-    with Image.open(tmp_path / "portfolio_demo.gif") as gif:
-        assert gif.n_frames == 2
-        assert gif.size == (40, 24)
+    assert len(commands) == 2
+    assert str(tmp_path / "portfolio_demo.mp4") in commands[0]
+    palette_filter = commands[0][commands[0].index("-vf") + 1]
+    assert "palettegen=stats_mode=full:max_colors=256:reserve_transparent=0" in palette_filter
+    assert str(tmp_path / "portfolio_demo.mp4") in commands[1]
+    gif_filter = commands[1][commands[1].index("-filter_complex") + 1]
+    assert "paletteuse=dither=sierra2_4a:diff_mode=rectangle" in gif_filter
+    assert str(tmp_path / "portfolio_demo.gif") == commands[1][-1]
+    assert "MP4 master" in exporter.GIF_CONVERSION_METHOD
