@@ -350,15 +350,11 @@ def render_proxy_snapshot(path, scene, scenario, frames, method):
     plt.close(figure)
 
 
-def provenance(worlds, config, mode, preserved, sensor_backend):
-    rev = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT,
-                         capture_output=True, text=True, check=True).stdout.strip()
-    status = subprocess.run(['git', 'status', '--short', '--branch'], cwd=ROOT,
-                            capture_output=True, text=True, check=True).stdout.strip()
+def provenance(worlds, config, mode, preserved, sensor_backend, *, git_commit, git_status):
     return {
         'mode': mode,
-        'git_commit': rev,
-        'git_status_at_start': status,
+        'git_commit': git_commit,
+        'git_status_at_start': git_status,
         'python': sys.version,
         'platform': platform.platform(),
         'architecture': platform.machine(),
@@ -403,6 +399,10 @@ def provenance(worlds, config, mode, preserved, sensor_backend):
 def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
     worlds = admitted_worlds()
     preserved = verify_preserved_prefix()
+    run_commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT,
+        capture_output=True, text=True, check=True).stdout.strip()
+    run_git_status = subprocess.run(['git', 'status', '--short', '--branch'], cwd=ROOT,
+        capture_output=True, text=True, check=True).stdout.strip()
     config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0),
                   update_interval=4, unknown='optimistic', max_steps=max_steps,
                   observation_cost=1, max_observations=20,
@@ -425,9 +425,8 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
     output.mkdir(parents=True)
     lock = output / 'run.lock'
     with lock.open('x') as handle:
-        handle.write(json.dumps({'pid': os.getpid(), 'mode': mode, 'commit':
-            subprocess.run(['git','rev-parse','HEAD'], cwd=ROOT, capture_output=True,
-                           text=True, check=True).stdout.strip()}))
+        handle.write(json.dumps({'pid': os.getpid(), 'mode': mode, 'commit': run_commit,
+                                 'git_status_at_start': run_git_status}))
         handle.flush()
         os.fsync(handle.fileno())
     rows = []
@@ -539,8 +538,10 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
         ],
     }
     (output/'summary.json').write_text(json.dumps(result, sort_keys=True, indent=2)+'\n', encoding='utf-8')
+    run_provenance = provenance(worlds, config, mode, preserved, sensor_backend,
+        git_commit=run_commit, git_status=run_git_status)
     (output/'provenance.json').write_text(json.dumps(
-        provenance(worlds, config, mode, preserved, sensor_backend), sort_keys=True, indent=2)+'\n', encoding='utf-8')
+        run_provenance, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     if mode == 'smoke':
         row = rows[0]
         validation = dict(status=result['status'], mode=mode, sensor_backend=sensor_backend,
@@ -563,7 +564,7 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
             grid_scale_calibrated=False, phase15_environments_generated=0,
             preservation_files_rehashed=preserved['files_checked'],
             model_sha256=sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
-            source_hashes=provenance(worlds, config, mode, preserved, sensor_backend)['source_hashes'])
+            source_hashes=run_provenance['source_hashes'])
         (output/'validation_report.json').write_text(
             json.dumps(validation, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     # Hash the just-written result set in an index after all evidence is durable.
