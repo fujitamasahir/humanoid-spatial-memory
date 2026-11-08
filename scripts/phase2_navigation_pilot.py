@@ -19,9 +19,9 @@ from spatial_memory.evaluation import run_episode
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STORES = (
-    'results/raw/phase15_macos_development',
-    'results/raw/phase15_bprime_fit_recovery_1',
-    'results/raw/phase15_bprime_fit_recovery_2',
+    'results/raw/phase15_macos_development/fit',
+    'results/raw/phase15_bprime_fit_recovery_1/store',
+    'results/raw/phase15_bprime_fit_recovery_2/store',
 )
 METHODS = ('static', 'periodic', 'age', 'uncertainty')
 
