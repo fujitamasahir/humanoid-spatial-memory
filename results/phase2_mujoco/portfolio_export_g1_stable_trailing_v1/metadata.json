@@ -1,0 +1,73 @@
+{
+  "camera": {
+    "azimuth_rule": "recorded heading yaw + fixed 20 degree rear-side offset; MuJoCo azimuth 0 is behind +X heading",
+    "distance_m": 5.4,
+    "elevation_deg": -44.0,
+    "lookahead_m": 0.65,
+    "orientation_smoothing_alpha": 0.42,
+    "rear_side_offset_deg": 20.0,
+    "style": "stable one-sided rear-side trailing follow; no front orbit",
+    "target_smoothing_alpha": 0.28
+  },
+  "camera_mode": "trailing",
+  "duration_seconds": 15.291666666666666,
+  "floor_rgba": "0.57 0.65 0.68 1",
+  "fps": 24,
+  "g1_presentation_materials": "view-only brighter blue-slate black material and neutral silver metal material, all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
+  "g1_rendered_alpha": 1.0,
+  "gif_conversion": {
+    "master": "portfolio_demo.mp4",
+    "method": "MP4 master; two-pass FFmpeg palette workflow: palettegen stats_mode=full, max_colors=256, reserve_transparent=0; then paletteuse dither=sierra2_4a, diff_mode=rectangle at the source frame rate.",
+    "palette_file": "gif_palette.png"
+  },
+  "git_commit": "3796c83c473be52c44a56c2421f5225f1a4c6982",
+  "model_hashes": {
+    "saved_scene_sha256": "db75b85d61102f09bbc0b1014847c0e651a3a8e4591a01c0e9690090467e8e7a",
+    "unitree_g1_assets_tree_sha256": "7606f3a10ab89fbae0648a08d2e5d4a3c63fd92c907af1ca497da827dfbfa70c",
+    "unitree_g1_mjcf_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489"
+  },
+  "output_frames": 367,
+  "renderer": {
+    "backend": "MuJoCo offscreen Renderer",
+    "mujoco_version": "3.17.0",
+    "python": "3.12.10"
+  },
+  "resolution": {
+    "height": 720,
+    "width": 1280
+  },
+  "seconds_per_saved_action": 0.18,
+  "source_code_sha256": {
+    "export_script": "1e27079284a8c4684347f92b5a08a46d04c00168b84b415c234b177044e73c6a",
+    "viewer_helpers": "3db8c093ad94055eee7cf7b27cb52ef265a7e093f9b7f9a81e253b40d0b20806"
+  },
+  "source_result_dir": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+  "source_scene_sha256": "db75b85d61102f09bbc0b1014847c0e651a3a8e4591a01c0e9690090467e8e7a",
+  "source_selection": {
+    "contact_free": true,
+    "eligible": true,
+    "heading_changes": 23,
+    "path_span_cells": {
+      "x": 14.0,
+      "y": 14.0
+    },
+    "result_dir": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+    "route_length_cells": 69.0,
+    "saved_poses": 73,
+    "score": 327.0,
+    "score_rule": "10 * heading_changes + route_length_cells + x_span_cells + y_span_cells",
+    "successful": true,
+    "unwanted_contact_pairs": 0
+  },
+  "source_trajectory_or_metrics_modified": false,
+  "source_trajectory_sha256": "07b162244f2551c2317e191c06da75b51e5119feef3468a9f87b1f8dcdf9457a",
+  "start_goal_markers": "non-colliding futuristic waypoint pin: cyan START and bright gold GOAL orb, narrow stem, layered luminous floating base rings, and pale specular glint; translucent halos are UI-only",
+  "trajectory_frames": 73,
+  "video_outputs": {
+    "gif": true,
+    "mp4": true
+  },
+  "visual_gait": "reused deterministic viewer gait_joint_targets and playback_samples; display-only, not physical locomotion",
+  "visual_only_contact_audit_file": "visual_only_contact_audit.json",
+  "walls_rgba": "0.40 0.48 0.56 0.48"
+}
