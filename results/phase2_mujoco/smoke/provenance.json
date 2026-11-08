@@ -6,8 +6,8 @@
     "reason_not_integrated": "GitHub DNS resolution failed in the execution environment; no G1 files were acquired.",
     "repository": "https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1"
   },
-  "git_commit": "12a22644613f5f438f8b1336d48941326c6bd242",
-  "git_status_at_start": "## migration/phase15-m3-second-continuation-prep...origin/migration/phase15-m3-second-continuation-prep\n M README.md\n M requirements.txt\n M src/spatial_memory/evaluation.py\n?? docs/phase2_mujoco_validation.md\n?? results/phase2_mujoco/\n?? scripts/phase2_mujoco_navigation.py\n?? src/spatial_memory/mujoco_navigation.py\n?? tests/test_phase2_mujoco.py",
+  "git_commit": "74b265aed403cdbd926c0a353eb41d8072ed63b2",
+  "git_status_at_start": "## phase2/mujoco-proxy-pilot\n D results/phase2_mujoco/full/artifact_manifest.json\n D results/phase2_mujoco/full/episodes.csv\n D results/phase2_mujoco/full/provenance.json\n D results/phase2_mujoco/full/run.lock\n D results/phase2_mujoco/full/summary.json\n D results/phase2_mujoco/smoke/.matplotlib-cache/fontlist-v390.json\n D results/phase2_mujoco/smoke/artifact_manifest.json\n M results/phase2_mujoco/smoke/episodes.csv\n D results/phase2_mujoco/smoke/provenance.json\n M results/phase2_mujoco/smoke/run.lock\n M results/phase2_mujoco/smoke/summary.json\n M scripts/phase2_mujoco_navigation.py",
   "methods": [
     "periodic"
   ],
@@ -39,7 +39,7 @@
     0
   ],
   "source_hashes": {
-    "scripts/phase2_mujoco_navigation.py": "a11e5ec2b5c57ce4adee9d983aceac76f47d42cec3cff61660f3673e733f9204",
+    "scripts/phase2_mujoco_navigation.py": "8448dd3c12b53b3ae88a54bd629a98c0e70d7993ff1451bcf64ae9445fd679b6",
     "src/spatial_memory/evaluation.py": "044350ed5fde16ba8763c4328726675ef09e164a22f695381cf2f39f33de3171",
     "src/spatial_memory/mujoco_navigation.py": "74084aa6a3b78026cbd18e160a12cd79150a71d6a4a09fdfa5ec8ef5cf2d9d8a",
     "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"

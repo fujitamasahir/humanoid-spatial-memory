@@ -13,6 +13,7 @@ from pathlib import Path
 import platform
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 
@@ -141,7 +142,7 @@ class Progress:
 def persist_csv(path, rows):
     fields = list(rows[0])
     with path.open('x', newline='', encoding='utf-8') as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)
         handle.flush()
@@ -185,7 +186,7 @@ def summarize(rows):
 def render_proxy_snapshot(path, scene, scenario, frames, method):
     """Matplotlib fallback for headless macOS where MuJoCo GL cannot connect."""
     import os
-    os.environ.setdefault('MPLCONFIGDIR', str(path.parent/'.matplotlib-cache'))
+    os.environ.setdefault('MPLCONFIGDIR', str(Path(tempfile.gettempdir())/'phase2-matplotlib-cache'))
     Path(os.environ['MPLCONFIGDIR']).mkdir(parents=True, exist_ok=True)
     import matplotlib
     matplotlib.use('Agg')

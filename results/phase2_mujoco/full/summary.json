@@ -1,5 +1,5 @@
 {
-  "elapsed_seconds": 4.596867458021734,
+  "elapsed_seconds": 4.15949416696094,
   "episodes": 288,
   "limits": [
     "Humanoid is a geometric collision proxy, not a Unitree G1 model.",
