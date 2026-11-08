@@ -1,0 +1,18 @@
+{
+  "actual_muJoCo_action_shield_queries": 7,
+  "actual_navigation_contact_metrics": {
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_self_contact_pairs": 0,
+    "g1_unwanted_floor_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0
+  },
+  "blocked_attempts": 1,
+  "forward_orientation_violations": [],
+  "goal_reached": false,
+  "selected_action_count": 7,
+  "shield_query_count_matches_selected_action_count": true,
+  "status": "FAIL",
+  "successful_translations": 4,
+  "unattempted_collision_queries": 0
+}

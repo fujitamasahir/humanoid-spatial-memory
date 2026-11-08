@@ -1,0 +1,52 @@
+[
+  {
+    "bytes": 18815,
+    "path": "initial_observation_route_screen.json",
+    "sha256": "aebeb0485c6acac614ae5929bb7a931d7c749e7c9f656361b412afcd93e10d84"
+  },
+  {
+    "bytes": 595,
+    "path": "navigation_safety.json",
+    "sha256": "82843d011055a9515c696ec0709d2be2a8e66be5274f47cba17fc63ae839cbf3"
+  },
+  {
+    "bytes": 16882,
+    "path": "provenance.json",
+    "sha256": "e3db2660da244e99895ea966971af2af5863b0c067edcb758daef2eec4a034bb"
+  },
+  {
+    "bytes": 116,
+    "path": "run.lock",
+    "sha256": "6471067624651e1324c870371cdb5362b604dcd17ad6a21d38608cc0ae4476f5"
+  },
+  {
+    "bytes": 210,
+    "path": "scenario.json",
+    "sha256": "536da82d0c176ff954fb64c8bf3b8a81d2d761c88bcb0a6324a0f60730822714"
+  },
+  {
+    "bytes": 44304,
+    "path": "scene.xml",
+    "sha256": "1000dbfab1e3d1d4ba88fe53282f59804655c106d0026417d2add107b38c0bfc"
+  },
+  {
+    "bytes": 2152,
+    "path": "summary.json",
+    "sha256": "e3688e8524facb215c4555b79f049c7fbc73a7f6d2c0fb0cbd132f60e18fafe1"
+  },
+  {
+    "bytes": 136333,
+    "path": "trajectory.json",
+    "sha256": "cd3169363be2a30bce4edc74d240f8a76c98f61ad7c62fcb89c03215491b051a"
+  },
+  {
+    "bytes": 596,
+    "path": "visual_only_contact_audit.json",
+    "sha256": "93de09475fd178a28c25aad8cc5a03787b8d3b5834b02f36075aae06d531e48a"
+  },
+  {
+    "bytes": 180,
+    "path": "visual_only_contact_audit_0.18s.json",
+    "sha256": "9f9cc5608effcb91f50df1e521e5cd8aa16e88961ab493257e4058aacb98d16e"
+  }
+]

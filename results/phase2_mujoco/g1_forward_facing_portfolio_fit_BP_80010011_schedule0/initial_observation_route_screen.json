@@ -1,0 +1,647 @@
+{
+  "selection_policy": "screen admitted fit worlds by one initial 3D ray observation and forward-only observed-map route availability; no simulator occupancy or collision probes",
+  "worlds": [
+    {
+      "goal": [
+        16,
+        1
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        5,
+        15
+      ]
+    },
+    {
+      "goal": [
+        17,
+        9
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        5,
+        15
+      ]
+    },
+    {
+      "goal": [
+        19,
+        20
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 7,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        9,
+        23
+      ]
+    },
+    {
+      "goal": [
+        10,
+        5
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        11,
+        14
+      ]
+    },
+    {
+      "goal": [
+        8,
+        19
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 7,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        9,
+        1
+      ]
+    },
+    {
+      "goal": [
+        21,
+        17
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 9,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        19,
+        6
+      ]
+    },
+    {
+      "goal": [
+        15,
+        23
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        11,
+        10
+      ]
+    },
+    {
+      "goal": [
+        4,
+        19
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 9,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        14,
+        11
+      ]
+    },
+    {
+      "goal": [
+        21,
+        10
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        23,
+        21
+      ]
+    },
+    {
+      "goal": [
+        11,
+        5
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 9,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        8,
+        19
+      ]
+    },
+    {
+      "goal": [
+        2,
+        19
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        16,
+        1
+      ]
+    },
+    {
+      "goal": [
+        16,
+        11
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        16,
+        23
+      ]
+    },
+    {
+      "goal": [
+        9,
+        14
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        3,
+        1
+      ]
+    },
+    {
+      "goal": [
+        1,
+        2
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 4,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        22,
+        11
+      ]
+    },
+    {
+      "goal": [
+        2,
+        3
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 4,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        22,
+        19
+      ]
+    },
+    {
+      "goal": [
+        14,
+        6
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 11,
+      "initial_route_action_count": 13,
+      "initial_route_first_action": [
+        "move",
+        [
+          13,
+          15
+        ]
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        12,
+        15
+      ]
+    },
+    {
+      "goal": [
+        6,
+        5
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 22,
+      "initial_route_first_action": [
+        "turn",
+        3
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        18,
+        13
+      ]
+    },
+    {
+      "goal": [
+        15,
+        3
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 8,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        5,
+        15
+      ]
+    },
+    {
+      "goal": [
+        1,
+        13
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 6,
+      "initial_route_action_count": 26,
+      "initial_route_first_action": [
+        "turn",
+        1
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        14,
+        2
+      ]
+    },
+    {
+      "goal": [
+        20,
+        7
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 15,
+      "initial_route_first_action": [
+        "turn",
+        3
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        22,
+        18
+      ]
+    },
+    {
+      "goal": [
+        7,
+        11
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 14,
+      "initial_route_action_count": 12,
+      "initial_route_first_action": [
+        "move",
+        [
+          6,
+          20
+        ]
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        5,
+        20
+      ]
+    },
+    {
+      "goal": [
+        16,
+        14
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 4,
+      "initial_route_action_count": 13,
+      "initial_route_first_action": [
+        "move",
+        [
+          14,
+          5
+        ]
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        13,
+        5
+      ]
+    },
+    {
+      "goal": [
+        11,
+        17
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+      "initial_forward_route_found": true,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 18,
+      "initial_route_first_action": [
+        "turn",
+        1
+      ],
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        18,
+        8
+      ]
+    },
+    {
+      "goal": [
+        13,
+        18
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 7,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        21,
+        15
+      ]
+    },
+    {
+      "goal": [
+        22,
+        13
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        10,
+        4
+      ]
+    },
+    {
+      "goal": [
+        10,
+        20
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        21,
+        22
+      ]
+    },
+    {
+      "goal": [
+        10,
+        20
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        22,
+        21
+      ]
+    },
+    {
+      "goal": [
+        18,
+        5
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 7,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        7,
+        10
+      ]
+    },
+    {
+      "goal": [
+        4,
+        14
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 8,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        14,
+        14
+      ]
+    },
+    {
+      "goal": [
+        8,
+        12
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        20,
+        11
+      ]
+    },
+    {
+      "goal": [
+        20,
+        22
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 6,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        8,
+        12
+      ]
+    },
+    {
+      "goal": [
+        6,
+        8
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 5,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        20,
+        16
+      ]
+    },
+    {
+      "goal": [
+        20,
+        13
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        8,
+        9
+      ]
+    },
+    {
+      "goal": [
+        8,
+        8
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 3,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        22,
+        21
+      ]
+    },
+    {
+      "goal": [
+        4,
+        18
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 6,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        8,
+        8
+      ]
+    },
+    {
+      "goal": [
+        22,
+        21
+      ],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+      "initial_forward_route_found": false,
+      "initial_observation_ray_count": 61,
+      "initial_occupied_observed_cells": 9,
+      "initial_route_action_count": 0,
+      "initial_route_first_action": null,
+      "selection_inputs": "initial 3D ray observation, public start/goal, public G1 extents; no MuJoCo collision shield probes",
+      "start": [
+        13,
+        18
+      ]
+    }
+  ]
+}

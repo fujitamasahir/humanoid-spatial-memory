@@ -1,0 +1,13 @@
+{
+  "duration_seconds": 10.666666666666666,
+  "foot_floor_contact_pairs": 980,
+  "fps": 30,
+  "interpretation": "Visual-only gait collision audit; separate from actual navigation safety metrics.",
+  "playback_speed_seconds_per_saved_action": 0.8,
+  "rendered_poses": 320,
+  "scene_sha256": "1000dbfab1e3d1d4ba88fe53282f59804655c106d0026417d2add107b38c0bfc",
+  "status": "PASS",
+  "trajectory_sha256": "cd3169363be2a30bce4edc74d240f8a76c98f61ad7c62fcb89c03215491b051a",
+  "unwanted_contact_frames": 0,
+  "viewer_source_sha256": "dc7cbb54881ee26226a60a4334d6a0e4e55052ee311578ddcd938f671a0160e5"
+}

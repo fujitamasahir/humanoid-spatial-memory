@@ -21,8 +21,8 @@ from spatial_memory.phase15_bprime import VERSION
 from spatial_memory.simulation import World, scenario_from_bprime
 
 
-DEFAULT_IDENTITY = f'{VERSION}:fit:BP:80010010'
-DEFAULT_OUTPUT = ROOT / 'results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010010_schedule0'
+DEFAULT_IDENTITY = f'{VERSION}:fit:BP:80010011'
+DEFAULT_OUTPUT = ROOT / 'results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0'
 
 
 def asset_inventory():
@@ -130,6 +130,7 @@ def run(output, *, max_steps=240, environment_id=DEFAULT_IDENTITY):
         previous = position
     action_count = sum(frame.get('navigation_action') is not None for frame in frames)
     actual_contact_metrics = {
+        'g1_foot_floor_contact_pairs': sum(f.get('g1_foot_floor_contact_pairs', 0) for f in frames),
         'g1_unwanted_floor_contact_pairs': sum(f.get('g1_unwanted_floor_contact_pairs', 0) for f in frames),
         'g1_pedestrian_contact_pairs': sum(f.get('g1_pedestrian_contact_pairs', 0) for f in frames),
         'g1_wall_contact_pairs': sum(f.get('g1_wall_contact_pairs', 0) for f in frames),
@@ -220,7 +221,9 @@ def run(output, *, max_steps=240, environment_id=DEFAULT_IDENTITY):
             ROOT/'scripts/view_phase2_g1_navigation.py', ROOT/'src/spatial_memory/navigation.py',
             ROOT/'src/spatial_memory/evaluation.py', ROOT/'src/spatial_memory/mujoco_navigation.py',
             ROOT/'src/spatial_memory/mujoco_perception.py')},
-        'reproduction_command': '.venv/bin/python scripts/phase2_g1_forward_portfolio.py --output <new-empty-directory>',
+        'reproduction_command': ('.venv/bin/python scripts/phase2_g1_forward_portfolio.py '
+            f'--environment-id {payload["identity"]} --output <new-empty-directory> '
+            f'--max-steps {max_steps}'),
         'viewer_command': ('.venv/bin/mjpython scripts/view_phase2_g1_navigation.py '
             f'--result-dir {output.relative_to(ROOT)} --camera overview '
             '--portfolio-forward-demo --speed 0.18 --once'),

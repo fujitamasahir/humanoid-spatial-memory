@@ -1,0 +1,6 @@
+{
+  "foot_floor_contact_pairs": 320,
+  "interpretation": "Visual-only gait collision audit; separate from navigation safety metrics.",
+  "rendered_poses": 86,
+  "status": "PASS"
+}

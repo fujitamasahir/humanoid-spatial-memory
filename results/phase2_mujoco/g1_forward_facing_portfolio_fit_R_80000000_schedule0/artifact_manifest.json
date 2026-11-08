@@ -1,0 +1,42 @@
+[
+  {
+    "bytes": 553,
+    "path": "navigation_safety.json",
+    "sha256": "3c0cdab3d0a5e0bee7a4beab73437dc7309fd3387f29d957bdbbd67fde43a933"
+  },
+  {
+    "bytes": 16208,
+    "path": "provenance.json",
+    "sha256": "c66c79e763070e1ba6470d1ee6e094ffbcaf4f30f05acb7447474f4d26edec96"
+  },
+  {
+    "bytes": 116,
+    "path": "run.lock",
+    "sha256": "9a7893805954d051a3832302bfc22414553ab6f1c8166d5c992d299552ea7b13"
+  },
+  {
+    "bytes": 208,
+    "path": "scenario.json",
+    "sha256": "a41ec5241d3bd3be3309f98ed61f76afe1a9b2531fed264a8e2ce0e9cf38efc1"
+  },
+  {
+    "bytes": 49131,
+    "path": "scene.xml",
+    "sha256": "db75b85d61102f09bbc0b1014847c0e651a3a8e4591a01c0e9690090467e8e7a"
+  },
+  {
+    "bytes": 2072,
+    "path": "summary.json",
+    "sha256": "e9c0d23454a372f4f3849fb774cab401afe19e7cef63e8247c57dde86f587645"
+  },
+  {
+    "bytes": 2379027,
+    "path": "trajectory.json",
+    "sha256": "be61418c563fe089e384bab49923c9a57a2b2430e2ebc33e5ec1d372323dd4f5"
+  },
+  {
+    "bytes": 184,
+    "path": "visual_only_contact_audit.json",
+    "sha256": "13a8bc6f82eef5e39e86b41b0425703445aca030dcfe87173dbfbc92f58e0f7d"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "bytes": 18815,
+    "path": "initial_observation_route_screen.json",
+    "sha256": "aebeb0485c6acac614ae5929bb7a931d7c749e7c9f656361b412afcd93e10d84"
+  },
+  {
+    "bytes": 553,
+    "path": "navigation_safety.json",
+    "sha256": "277ef223d12c3378918f82bdf05584eaf2713ea30a2d34818a3a0118c32665f2"
+  },
+  {
+    "bytes": 16567,
+    "path": "provenance.json",
+    "sha256": "8d2b5c43e0461745572309ce01dad130b9138472a21cd046f49f15e2fe3c9180"
+  },
+  {
+    "bytes": 116,
+    "path": "run.lock",
+    "sha256": "cac313bb1975503f56a88a69481053e55b41597d0a69db3843ebb0a0cc6394fe"
+  },
+  {
+    "bytes": 209,
+    "path": "scenario.json",
+    "sha256": "934162e097a217a661b6896e9823440ebcd8aaeada97226dc6496a46800b8dc8"
+  },
+  {
+    "bytes": 46365,
+    "path": "scene.xml",
+    "sha256": "0bb30ca3c0ee606af1c19d1ee042313f8081e72e6cbd716b7ee2fa0f0696388c"
+  },
+  {
+    "bytes": 2547,
+    "path": "summary.json",
+    "sha256": "0f6d6af384ea5504acb177f20394ed224620b874ac8d0f63bbe11ce632785f2b"
+  },
+  {
+    "bytes": 2330032,
+    "path": "trajectory.json",
+    "sha256": "326c9e6f222e5aedfd5004328491da83570e65b96fbd8b2d8c70f14d673fd9f9"
+  },
+  {
+    "bytes": 184,
+    "path": "visual_only_contact_audit.json",
+    "sha256": "62c2d44388ccdbe23a3435ca5734276e47182f473d79415b7cccec6de3b4b972"
+  }
+]

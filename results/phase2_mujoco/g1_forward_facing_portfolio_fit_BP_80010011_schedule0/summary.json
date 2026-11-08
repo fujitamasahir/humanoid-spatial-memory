@@ -1,0 +1,77 @@
+{
+  "blocked_movement_attempts": 0,
+  "budget_exhausted": false,
+  "collision_count": 0,
+  "contact_free_success": true,
+  "dynamic_contact_rate": 0.0,
+  "dynamic_contacts": 0,
+  "elapsed_steps": 13,
+  "failure_reason": null,
+  "false_persistent_occupancy_updates": 0,
+  "final_false_persistent_occupancy_updates": 0,
+  "final_missed_persistent_changes": 2,
+  "final_position": [
+    16,
+    14
+  ],
+  "final_stale_map_errors": 0,
+  "g1_attempt_pedestrian_contact_pairs": 0,
+  "g1_attempt_persistent_obstacle_contact_pairs": 0,
+  "g1_attempt_wall_contact_pairs": 0,
+  "g1_blocked_feedback_resets_after_changed_observation": 0,
+  "g1_blocked_movement_reasons": {
+    "grid_occupancy": 0,
+    "rotation_collision": 0,
+    "translation_collision": 0
+  },
+  "g1_contact_free_success": true,
+  "g1_distinct_rejected_actions": 0,
+  "g1_foot_floor_contact_pairs": 112,
+  "g1_footprint_blocked_attempts": 0,
+  "g1_heading_change_records": [
+    {
+      "heading_yaw": 1.5707963267948966,
+      "position": [
+        16,
+        5
+      ],
+      "step": 4
+    }
+  ],
+  "g1_heading_changes": 1,
+  "g1_navigation_no_route_steps": 0,
+  "g1_pedestrian_contact_pairs": 0,
+  "g1_persistent_obstacle_contact_pairs": 0,
+  "g1_rejected_action_attempts": 0,
+  "g1_rejected_actions": [],
+  "g1_remaining_blocked_actions": 0,
+  "g1_self_contact_pairs": 0,
+  "g1_unwanted_contact_pairs": 0,
+  "g1_unwanted_floor_contact_pairs": 0,
+  "g1_wall_contact_pairs": 0,
+  "max_observations": 20,
+  "max_steps": 240,
+  "method": "periodic",
+  "missed_persistent_changes": 6,
+  "mujoco_sensor_free_cells": 298,
+  "mujoco_sensor_hit_types": {
+    "pedestrians": 0,
+    "persistent_obstacles": 0,
+    "walls": 100
+  },
+  "mujoco_sensor_hits": 100,
+  "mujoco_sensor_occupied_cells": 30,
+  "mujoco_sensor_rays": 244,
+  "mujoco_sensor_visible_cells": 328,
+  "observation_cost": 4,
+  "observation_count": 4,
+  "observation_requests": 3,
+  "observation_requests_denied": 0,
+  "persistent_change_events_elapsed": 2,
+  "scenario": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011:schedule-0",
+  "seed": 42,
+  "split": "development",
+  "stale_map_errors": 0,
+  "success": true,
+  "travel_distance": 12
+}

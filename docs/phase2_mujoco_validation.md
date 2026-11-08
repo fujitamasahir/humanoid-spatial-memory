@@ -524,8 +524,31 @@ collision geometry. A rejected turn is fed back as an action rejection, after
 which the memory-based planner searches for another route. It does not query
 MuJoCo for unattempted alternatives or pass hidden occupancy to the planner.
 
-The output is stored separately at
-`results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010010_schedule0/`.
+The successful route uses existing fit identity
+`phase1.5-v0.4-BPRIME-1:fit:BP:80010011`, reaches its goal in 13 actions (12
+forward translations and one turn), with four observations and zero rejected
+actions. Actual navigation recorded zero unwanted floor, pedestrian, wall,
+persistent-obstacle or self contacts. A separate 30 FPS visual audit at 0.8
+seconds per saved action checks 320 interpolated poses over 10.67 seconds and
+records zero unwanted visual contact frames. Its 320 allowed foot-floor
+contact pairs are reported only in the visual audit, not as navigation metrics.
+
+Two attempted initial-ray-feasible environments were retained as failures: R
+`80000000` had no safe route from its initial observation, and BP `80010010`
+had a MuJoCo-rejected forward translation followed by no observed-map route.
+The selected BP `80010011` route completed successfully. These separate outputs
+are diagnostic portfolio attempts, not additions to the 288-episode comparison.
+
+The successful output is stored separately at
+`results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0/`.
 It is not part of the 288-episode comparison. The viewer requires the separate
 `--portfolio-forward-demo` flag for this result type; the historical
 `--visual-gait` playback remains available for prior trajectories.
+
+Record the successful roughly 10.7-second overview replay on macOS with:
+
+```bash
+.venv/bin/mjpython scripts/view_phase2_g1_navigation.py \
+  --result-dir results/phase2_mujoco/g1_forward_facing_portfolio_fit_BP_80010011_schedule0 \
+  --camera overview --portfolio-forward-demo --speed 0.8 --once
+```

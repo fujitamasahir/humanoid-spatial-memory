@@ -1,0 +1,15 @@
+{
+  "cell_size_m": 0.75,
+  "goal": [
+    16,
+    1
+  ],
+  "height": 25,
+  "name": "phase1.5-v0.4-BPRIME-1:fit:R:80000000:schedule-0",
+  "split": "development",
+  "start": [
+    5,
+    15
+  ],
+  "width": 25
+}

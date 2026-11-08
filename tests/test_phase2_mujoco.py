@@ -485,7 +485,7 @@ def test_forward_facing_planner_turns_before_walking_and_never_strafes_or_revers
 
 
 def test_forward_facing_planner_routes_around_a_rotation_clearance_rejection():
-    from spatial_memory.navigation import plan_g1_forward_facing
+    from spatial_memory.navigation import blocked_action_key, plan_g1_forward_facing
 
     grid = np.zeros((9, 9), dtype=np.int8)
     grid[4, 4] = 1
@@ -496,6 +496,16 @@ def test_forward_facing_planner_routes_around_a_rotation_clearance_rejection():
     # observed-memory planner finds a forward-only detour before turning.
     assert route[0] == ('move', (4, 3))
     assert ('turn', 1) in route
+
+    # If the actual attempted north pivot is rejected by MuJoCo while the
+    # observation is still unknown, feedback removes that transition and A*
+    # finds a different observed-map route without probing other poses.
+    open_memory = np.zeros((9, 9), dtype=np.int8)
+    rejected_turn = blocked_action_key((3, 3), 0, ('turn', 1))
+    alternative = plan_g1_forward_facing(open_memory, (3, 3), (3, 5), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        blocked_actions={rejected_turn})
+    assert alternative and alternative[0] != ('turn', 1)
 
 
 def test_actual_g1_turn_clearance_uses_only_attempted_mujoco_geometry():
