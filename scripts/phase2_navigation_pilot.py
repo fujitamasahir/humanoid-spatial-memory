@@ -9,6 +9,7 @@ import csv
 import gzip
 import hashlib
 import json
+import time
 from pathlib import Path
 
 from spatial_memory.phase15_bprime import ACTIVE_MECHANISMS, VERSION, seed_for
@@ -80,6 +81,9 @@ def main():
                   update_interval=4, unknown='optimistic', max_steps=args.max_steps,
                   observation_cost=1, max_observations=20)
     rows = []
+    total = len(worlds) * 2 * len(METHODS)
+    started = last_report = time.monotonic()
+    print(f'Starting Phase 2 pilot: 0/{total} episodes (0.0%)', flush=True)
     for payload in worlds:
         for schedule in (0, 1):
             scenario = scenario_from_bprime(payload, schedule)
@@ -87,6 +91,15 @@ def main():
                 metrics, _ = run_episode(scenario, config, method, seed=42)
                 rows.append(dict(mechanism=payload['mechanism'],
                                  world_identity=payload['identity'], schedule=schedule, **metrics))
+                now = time.monotonic()
+                completed = len(rows)
+                if now - last_report >= 900 or completed == total:
+                    elapsed = now - started
+                    remaining = elapsed / completed * (total - completed)
+                    print(f'Progress: {completed}/{total} ({100 * completed / total:.1f}%) | '
+                          f'elapsed {elapsed / 60:.1f} min | ETA {remaining / 60:.1f} min',
+                          flush=True)
+                    last_report = now
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open('w', newline='', encoding='utf-8') as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
