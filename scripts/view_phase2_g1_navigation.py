@@ -36,6 +36,12 @@ def display_scene_xml(result_dir: Path):
         meshdir = Path(compiler.get('meshdir'))
         if not meshdir.is_absolute():
             compiler.set('meshdir', str((scene_path.parent / meshdir).resolve()))
+    # The real environment is intentionally group 5 for MuJoCo ray filtering.
+    # The stock standalone viewer hides group 5; remap only this derived
+    # display scene to group 0 (visible by default). Never edit saved scene.xml.
+    for geom in root.iter('geom'):
+        if geom.get('group') == '5':
+            geom.set('group', '0')
     return ET.tostring(root, encoding='unicode')
 
 
@@ -133,6 +139,10 @@ def replay(result_dir: Path, speed: float, *, viewer=True, camera='follow', loop
           'Close the viewer window to stop.', flush=True)
     with mujoco.viewer.launch_passive(model, data) as handle:
         with handle.lock():
+            # MuJoCo only shows geom groups 0..2 by default. The walls,
+            # pedestrian proxies and persistent obstacles are group 5 to
+            # isolate 3D perception rays; turn them on in this *viewer*.
+            handle.opt.geomgroup[5] = 1
             if camera == 'overview':
                 handle.cam.type = mujoco.mjtCamera.mjCAMERA_FIXED
                 handle.cam.fixedcamid = int(overview)
