@@ -1,0 +1,230 @@
+{
+  "grid_scale_calibrated": false,
+  "grid_scale_m_per_cell": 0.75,
+  "measured_metrics": {
+    "elapsed_steps": 68,
+    "final_missed_persistent_changes": 5,
+    "final_stale_map_errors": 0,
+    "g1_blocked_feedback_resets_after_changed_observation": 10,
+    "g1_blocked_movement_reasons": {
+      "grid_occupancy": 0,
+      "rotation_collision": 0,
+      "translation_collision": 10
+    },
+    "g1_distinct_rejected_actions": 10,
+    "g1_foot_floor_contact_pairs": 552,
+    "g1_footprint_blocked_attempts": 10,
+    "g1_heading_change_records": [
+      {
+        "heading_yaw": 1.5707963267948966,
+        "position": [
+          14,
+          8
+        ],
+        "step": 28
+      },
+      {
+        "heading_yaw": 3.141592653589793,
+        "position": [
+          10,
+          7
+        ],
+        "step": 43
+      },
+      {
+        "heading_yaw": -1.5707963267948966,
+        "position": [
+          10,
+          8
+        ],
+        "step": 48
+      }
+    ],
+    "g1_heading_changes": 3,
+    "g1_navigation_no_route_steps": 0,
+    "g1_rejected_actions": [
+      {
+        "action": [
+          12,
+          11
+        ],
+        "action_kind": "move",
+        "heading_index": 0,
+        "position": [
+          11,
+          11
+        ],
+        "reason": "translation_collision",
+        "step": 11
+      },
+      {
+        "action": [
+          14,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 0,
+        "position": [
+          14,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 21
+      },
+      {
+        "action": [
+          13,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 0,
+        "position": [
+          13,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 23
+      },
+      {
+        "action": [
+          12,
+          7
+        ],
+        "action_kind": "move",
+        "heading_index": 0,
+        "position": [
+          13,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 24
+      },
+      {
+        "action": [
+          12,
+          8
+        ],
+        "action_kind": "move",
+        "heading_index": 0,
+        "position": [
+          13,
+          8
+        ],
+        "reason": "translation_collision",
+        "step": 26
+      },
+      {
+        "action": [
+          12,
+          7
+        ],
+        "action_kind": "move",
+        "heading_index": 1,
+        "position": [
+          13,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 31
+      },
+      {
+        "action": [
+          11,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 1,
+        "position": [
+          11,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 40
+      },
+      {
+        "action": [
+          10,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 1,
+        "position": [
+          10,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 42
+      },
+      {
+        "action": [
+          11,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 2,
+        "position": [
+          11,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 45
+      },
+      {
+        "action": [
+          11,
+          6
+        ],
+        "action_kind": "move",
+        "heading_index": 3,
+        "position": [
+          11,
+          7
+        ],
+        "reason": "translation_collision",
+        "step": 51
+      }
+    ],
+    "g1_unwanted_contact_pairs": 0,
+    "missed_persistent_changes": 313,
+    "mujoco_sensor_free_cells": 292,
+    "mujoco_sensor_hit_types": {
+      "pedestrians": 0,
+      "persistent_obstacles": 147,
+      "walls": 939
+    },
+    "mujoco_sensor_hits": 1086,
+    "mujoco_sensor_occupied_cells": 141,
+    "mujoco_sensor_rays": 1098,
+    "mujoco_sensor_visible_cells": 433,
+    "observation_count": 18,
+    "observation_requests_denied": 0,
+    "stale_map_errors": 0,
+    "success": true,
+    "travel_distance": 55,
+    "travel_distance_m": 41.25
+  },
+  "method": "periodic",
+  "mode": "smoke",
+  "model_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489",
+  "phase15_environments_generated": 0,
+  "preservation_files_rehashed": 836,
+  "schedule_index": 0,
+  "sensor_backend": "mujoco3d",
+  "sensor_configuration": {
+    "horizontal_fov_deg": 120.0,
+    "range_m": 6.0,
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "source_hashes": {
+    "scripts/phase2_mujoco_navigation.py": "4b2dc0cf8fc12338302f631e51f733ccad12f845cdceef390ff9709ef41210e7",
+    "scripts/view_phase2_g1_navigation.py": "290872b2f81c45ee4596b2638cea8a5671c8f8defbcd0b3c401ed499db80fba8",
+    "src/spatial_memory/evaluation.py": "2f8b470bf7c0a80508c6aeff62934c06cebdb44f5628df6f8de21d7fa073dd36",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "0cbab802be943c6c6ed4a8d0c602682f39cc80c2fc29cf6416bdc71fe8cc1fb2",
+    "src/spatial_memory/navigation.py": "831121cb0b803d345a0c15bc26f386b7c4c6a912b986bf7b58a4f859c6b7f821",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "status": "PASS_G1_MUJOCO_PERCEPTION_SMOKE",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+}

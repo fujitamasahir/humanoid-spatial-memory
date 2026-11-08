@@ -22,6 +22,7 @@ from spatial_memory.simulation import scenario_from_bprime
 from spatial_memory.evaluation import run_episode
 from spatial_memory.mujoco_navigation import MujocoNavigationScene
 from spatial_memory.mujoco_perception import MujocoRayPerception
+from spatial_memory.navigation import HEADINGS, heading_index, plan_g1
 
 STORES = (
     'results/raw/phase15_macos_development/fit',
@@ -147,11 +148,9 @@ def persist_csv(path, rows):
 
 
 def summarize(rows):
-    summary = {'episodes': len(rows), 'methods': {}}
-    for method in METHODS:
-        subset = [row for row in rows if row['method'] == method]
+    def aggregate(subset):
         n = max(1, len(subset))
-        summary['methods'][method] = {
+        return {
             'episodes': len(subset),
             'goal_completions': sum(bool(row['success']) for row in subset),
             'goal_completion_rate': sum(bool(row['success']) for row in subset) / n,
@@ -160,17 +159,24 @@ def summarize(rows):
             'g1_unwanted_contact_pairs': sum(row.get('g1_unwanted_contact_pairs', 0) for row in subset),
             'g1_footprint_blocked_attempts': sum(row.get('g1_footprint_blocked_attempts', 0) for row in subset),
             'g1_heading_changes': sum(row.get('g1_heading_changes', 0) for row in subset),
+            'g1_navigation_no_route_steps': sum(row.get('g1_navigation_no_route_steps', 0) for row in subset),
+            'g1_distinct_rejected_actions': sum(row.get('g1_distinct_rejected_actions', 0) for row in subset),
+            'g1_blocked_action_records': sum(row.get('g1_distinct_rejected_actions', 0) for row in subset),
+            'g1_blocked_feedback_resets_after_changed_observation': sum(
+                row.get('g1_blocked_feedback_resets_after_changed_observation', 0) for row in subset),
             'g1_blocked_movement_reasons': {
                 reason: sum(row.get('g1_blocked_movement_reasons', {}).get(reason, 0) for row in subset)
                 for reason in ('rotation_collision', 'translation_collision', 'grid_occupancy')},
             'mujoco_sensor_rays': sum(row.get('mujoco_sensor_rays', 0) for row in subset),
             'mujoco_sensor_hits': sum(row.get('mujoco_sensor_hits', 0) for row in subset),
             'mujoco_sensor_visible_cells': sum(row.get('mujoco_sensor_visible_cells', 0) for row in subset),
+            'mujoco_sensor_free_cells': sum(row.get('mujoco_sensor_free_cells', 0) for row in subset),
             'mujoco_sensor_occupied_cells': sum(row.get('mujoco_sensor_occupied_cells', 0) for row in subset),
             'mujoco_sensor_hit_types': {
                 kind: sum(row.get('mujoco_sensor_hit_types', {}).get(kind, 0) for row in subset)
                 for kind in ('walls', 'persistent_obstacles', 'pedestrians')},
             'mean_observations': sum(row['observation_count'] for row in subset) / n,
+            'total_observations': sum(row['observation_count'] for row in subset),
             'mean_observation_cost': sum(row['observation_cost'] for row in subset) / n,
             'blocked_movement_attempts': sum(row['blocked_movement_attempts'] for row in subset),
             'grid_dynamic_contacts': sum(row['dynamic_contacts'] for row in subset),
@@ -189,8 +195,101 @@ def summarize(rows):
             'final_false_persistent_occupancy_updates': sum(row['final_false_persistent_occupancy_updates'] for row in subset),
             'missed_persistent_change_cell_steps': sum(row['missed_persistent_changes'] for row in subset),
             'final_missed_persistent_changes': sum(row['final_missed_persistent_changes'] for row in subset),
+            'failure_reasons': {reason: sum(row.get('failure_reason') == reason for row in subset)
+                                for reason in sorted({row.get('failure_reason') for row in subset
+                                                     if row.get('failure_reason')})},
         }
-    return summary
+
+    return {
+        'episodes': len(rows),
+        'methods': {method: aggregate([row for row in rows if row['method'] == method])
+                    for method in METHODS},
+        'mechanisms': {
+            mechanism: {method: aggregate([row for row in rows
+                            if row['mechanism'] == mechanism and row['method'] == method])
+                        for method in METHODS}
+            for mechanism in ('R', 'BP', 'M')},
+    }
+
+
+PAIRED_METRICS = {
+    'goal_completion': lambda row: int(bool(row['success'])),
+    'contact_free_completion': lambda row: int(bool(row.get('g1_contact_free_success', False))),
+    'observations': lambda row: float(row['observation_count']),
+    'observation_cost': lambda row: float(row['observation_cost']),
+    'travel_distance_m': lambda row: float(row['travel_distance_m']),
+    'elapsed_steps': lambda row: float(row['elapsed_steps']),
+    'blocked_actions': lambda row: float(row['g1_distinct_rejected_actions']),
+    'no_route_steps': lambda row: float(row['g1_navigation_no_route_steps']),
+    'heading_changes': lambda row: float(row['g1_heading_changes']),
+    'sensor_rays': lambda row: float(row.get('mujoco_sensor_rays', 0)),
+    'sensor_visible_cells': lambda row: float(row.get('mujoco_sensor_visible_cells', 0)),
+    'stale_map_errors': lambda row: float(row['stale_map_errors']),
+    'false_persistent_occupancy_updates': lambda row: float(row['false_persistent_occupancy_updates']),
+    'missed_persistent_changes': lambda row: float(row['missed_persistent_changes']),
+}
+
+
+def validate_matched_design(rows):
+    if len(rows) != 288:
+        raise ValueError(f'Expected 288 complete episodes, found {len(rows)}')
+    worlds = {row['world_identity'] for row in rows}
+    if len(worlds) != 36:
+        raise ValueError(f'Expected 36 admitted world identities, found {len(worlds)}')
+    indexed = {}
+    for row in rows:
+        key = row['world_identity'], int(row['schedule']), row['method']
+        if key in indexed:
+            raise ValueError(f'Duplicate matched episode {key}')
+        indexed[key] = row
+    expected = {(world, schedule, method) for world in worlds
+                for schedule in (0, 1) for method in METHODS}
+    if indexed.keys() != expected:
+        raise ValueError('Comparison matrix is missing a world/schedule/method match')
+    return indexed
+
+
+def paired_world_clustered(rows, *, bootstrap_replicates=10000):
+    """Paired method differences with schedules averaged within 36 world clusters."""
+    import itertools
+    import numpy as np
+
+    indexed = validate_matched_design(rows)
+    result = {'clustering_unit': 'saved world_identity',
+        'within_cluster': 'average paired schedule-0 and schedule-1 differences',
+        'bootstrap_replicates': bootstrap_replicates, 'confidence_level': 0.95,
+        'contrasts': {}}
+    groups = {'overall': sorted({row['world_identity'] for row in rows})}
+    for mechanism in ('R', 'BP', 'M'):
+        groups[mechanism] = sorted({row['world_identity'] for row in rows
+                                    if row['mechanism'] == mechanism})
+    for group, worlds in groups.items():
+        contrasts = {}
+        for left, right in itertools.combinations(METHODS, 2):
+            metric_results = {}
+            for metric_index, (metric, value_fn) in enumerate(PAIRED_METRICS.items()):
+                cluster_differences = []
+                for world in worlds:
+                    schedule_differences = [
+                        value_fn(indexed[(world, schedule, left)])
+                        - value_fn(indexed[(world, schedule, right)])
+                        for schedule in (0, 1)]
+                    cluster_differences.append(float(np.mean(schedule_differences)))
+                values = np.asarray(cluster_differences, dtype=float)
+                rng = np.random.default_rng(42042 + len(metric_results) + metric_index*31
+                                             + METHODS.index(left)*701 + METHODS.index(right)*1301)
+                samples = rng.integers(0, len(values), size=(bootstrap_replicates, len(values)))
+                means = values[samples].mean(axis=1)
+                metric_results[metric] = {
+                    'left_minus_right_mean': float(values.mean()),
+                    'cluster_bootstrap_95pct_ci': [float(np.quantile(means, 0.025)),
+                                                   float(np.quantile(means, 0.975))],
+                    'world_clusters': len(values),
+                    'matched_world_schedule_pairs': 2*len(values),
+                }
+            contrasts[f'{left}_minus_{right}'] = metric_results
+        result['contrasts'][group] = contrasts
+    return result
 
 
 def render_proxy_snapshot(path, scene, scenario, frames, method):
@@ -274,12 +373,17 @@ def provenance(worlds, config, mode, preserved, sensor_backend):
             for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()
         ],
         'g1_mjcf_sha256': sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
-        'motion_model': 'kinematic waypoint placement with G1 yaw alignment and collision sweeps; not walking control',
+        'motion_model': 'cardinal kinematic translation plus separately checked in-place G1 turns; not walking control',
+        'sensor_mapping_policy': 'ray-distance surface rasterization with directional 0.005-cell box-overlap correction; no geom-center use',
+        'reproduction_command': ('.venv/bin/python scripts/phase2_mujoco_navigation.py '
+            f'{mode} --output <new-empty-result-directory> --max-steps {config["max_steps"]} '
+            '--heartbeat-seconds 900 --sensor-backend mujoco3d'),
         'source_hashes': {
             'scripts/phase2_mujoco_navigation.py': sha(Path(__file__).read_bytes()),
             'scripts/view_phase2_g1_navigation.py': sha((ROOT/'scripts/view_phase2_g1_navigation.py').read_bytes()),
             'src/spatial_memory/mujoco_navigation.py': sha((ROOT/'src/spatial_memory/mujoco_navigation.py').read_bytes()),
             'src/spatial_memory/mujoco_perception.py': sha((ROOT/'src/spatial_memory/mujoco_perception.py').read_bytes()),
+            'src/spatial_memory/navigation.py': sha((ROOT/'src/spatial_memory/navigation.py').read_bytes()),
             'src/spatial_memory/evaluation.py': sha((ROOT/'src/spatial_memory/evaluation.py').read_bytes()),
             'src/spatial_memory/simulation.py': sha((ROOT/'src/spatial_memory/simulation.py').read_bytes()),
         },
@@ -306,6 +410,9 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                   mujoco_cell_size_m=0.75, mujoco_timestep_seconds=0.02,
                   mujoco_ray_sensor=dict(range_m=6.0, horizontal_fov_deg=120.0,
                                          ray_count=61, sample_spacing_m=0.075),
+                  g1_navigation=dict(footprint_source='pinned G1 collision geometry',
+                      local_half_extents_m=None, motion='cardinal kinematic translation with separate in-place turns',
+                      observed_occupancy_only=True, rejected_action_history=True),
                   sensor_backend=sensor_backend)
     if mode == 'smoke':
         selected = worlds[0]
@@ -334,10 +441,21 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                 timestep=config['mujoco_timestep_seconds'])
             perception = (MujocoRayPerception(scene, **config['mujoco_ray_sensor'])
                           if sensor_backend == 'mujoco3d' else None)
+            config['g1_navigation']['local_half_extents_m'] = list(scene.footprint_half_extents_local)
+            def g1_plan(grid, position, goal, unknown, yaw, blocked):
+                return plan_g1(grid, position, goal, heading=heading_index(yaw),
+                    unknown=unknown, local_extents=scene.footprint_half_extents_local,
+                    cell_size=scene.cell_size, blocked_actions=blocked)
+            def check_action(world, position, action, yaw):
+                kind, value = action
+                if kind == 'move':
+                    return scene.check_move(world, position, tuple(value), yaw, target_yaw=yaw)
+                return scene.check_turn(world, position, yaw, HEADINGS[int(value)])
             metrics, frames = run_episode(scenario, config, method, seed=42,
                 _frame_callback=scene.update,
-                _movement_checker=lambda world, current, target, yaw: scene.check_move(world, current, target, yaw),
-                _observation_provider=perception.observe if perception is not None else None)
+                _observation_provider=perception.observe if perception is not None else None,
+                _g1_planner=g1_plan if sensor_backend == 'mujoco3d' else None,
+                _action_checker=check_action if sensor_backend == 'mujoco3d' else None)
             metrics['travel_distance_m'] = metrics['travel_distance'] * scene.cell_size
             row = dict(mechanism=payload['mechanism'], world_identity=payload['identity'],
                        schedule=schedule, **metrics)
@@ -345,6 +463,12 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
             if first_scene is None:
                 first_scene = (scene, scenario, frames, payload, schedule, method)
             progress.done()
+    paired_analysis = None
+    if mode == 'full':
+        validate_matched_design(rows)
+        paired_analysis = paired_world_clustered(rows)
+        (output/'paired_world_clustered_analysis.json').write_text(
+            json.dumps(paired_analysis, sort_keys=True, indent=2)+'\n', encoding='utf-8')
     if mode == 'smoke':
         scene, scenario, frames, payload, schedule, method = first_scene
         # Keep the replay MJCF portable relative to the repository checkout.
@@ -360,6 +484,8 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                            heading_yaw=frame.get('heading_yaw', 0.0),
                            heading_changed=frame.get('heading_changed', False),
                            blocked_reason=frame.get('blocked_reason'),
+                           navigation_action=frame.get('navigation_action'),
+                           blocked_action_count=frame.get('blocked_action_count', 0),
                            memory_grid=frame['memory'].tolist(),
                            observation_stats=frame.get('observation_stats', {}),
                            people=frame.get('g1_pedestrians', []),
@@ -395,16 +521,21 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
         'episodes': len(rows),
         'elapsed_seconds': time.monotonic()-started,
         'summary': summarize(rows),
+        'paired_world_clustered_analysis': ('paired_world_clustered_analysis.json'
+                                            if mode == 'full' else None),
         'limits': [
             'Robot is the pinned Unitree G1 model, initialized from its stand keyframe and translated kinematically.',
             'Root waypoint placement is kinematic; no gait, actuator control, balance, or walking is simulated.',
             'Grid scale is the documented assumption 0.75 m per cell; no scale fitting was performed.',
             'Only eight small ankle-roll sphere contacts against the floor are treated as intended foot-floor contacts.',
-            'G1 yaw is aligned with travel; each move checks in-place rotation and translation sweeps against real collision geoms.',
+            'G1 uses cardinal kinematic translation with explicit in-place turns; only the selected action is checked by MuJoCo.',
+            'Navigation uses public G1 collision bounds and observed occupied cells; the shield is not queried for unattempted routes.',
+            'Rejected actions remain separate from occupancy memory and are reconsidered only after relevant local observed memory changes.',
             'The 3D sensor uses MuJoCo rays; the policy receives only ternary occupancy measurements, not geom identities or evaluator truth.',
             'All other G1 floor, wall, obstacle, pedestrian, and self contacts are unwanted; collisions block maneuvers with a recorded reason.',
             'Pedestrians are prescribed proxies and do not react to the robot.',
-            'The existing 2D sensor and memory planner remain the agent model; MuJoCo truth is evaluator-only.',
+            'MuJoCo ground truth is used only for ray geometry synchronization and evaluator-only metrics, never planner occupancy.',
+            'Ray-box face positions within the measured collision-box/raster-boundary overlap are assigned to the cell beyond the boundary in ray direction.',
         ],
     }
     (output/'summary.json').write_text(json.dumps(result, sort_keys=True, indent=2)+'\n', encoding='utf-8')
@@ -418,6 +549,9 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                 'success', 'elapsed_steps', 'travel_distance', 'travel_distance_m',
                 'observation_count', 'observation_requests_denied', 'g1_heading_changes',
                 'g1_heading_change_records', 'g1_footprint_blocked_attempts',
+                'g1_navigation_no_route_steps', 'g1_rejected_actions',
+                'g1_distinct_rejected_actions',
+                'g1_blocked_feedback_resets_after_changed_observation',
                 'g1_blocked_movement_reasons', 'g1_unwanted_contact_pairs',
                 'g1_foot_floor_contact_pairs', 'mujoco_sensor_rays', 'mujoco_sensor_hits',
                 'mujoco_sensor_visible_cells', 'mujoco_sensor_free_cells',

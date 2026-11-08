@@ -6,6 +6,13 @@ import numpy as np
 from .mujoco_navigation import G1_FORWARD_AXIS
 
 
+# Scene boxes use half width 0.505 cell while raster-cell boundaries are at
+# 0.5 cell. A measured box face can therefore fall 0.005 cell into its
+# neighbor. Snap only points within that explicit overlap tolerance, and only
+# toward the ray's measured direction of travel.
+BOX_BOUNDARY_OVERLAP_CELLS = 0.505 - 0.5
+
+
 class MujocoRayPerception:
     """Deterministic horizontal ray sensor attached to the G1 torso site.
 
@@ -69,18 +76,22 @@ class MujocoRayPerception:
             direction /= np.linalg.norm(direction)
             distance = float(mj.mj_ray(model, data, origin, direction, self.geom_groups,
                                        True, scene.robot_body, geom_id))
+            hit = distance >= 0 and distance <= self.range_m
             visible_distance = self.range_m if distance < 0 else min(distance, self.range_m)
             ray_cells = []
             steps = max(1, math.ceil(visible_distance/self.sample_spacing_m))
             for step in range(steps+1):
                 ray_distance = min(step*self.sample_spacing_m, visible_distance)
+                # A first-hit endpoint is not free space. The start point and
+                # measured samples strictly before that endpoint remain free.
+                if hit and ray_distance >= distance - 1e-10:
+                    continue
                 point = origin + direction*ray_distance
                 cell = scene.world_to_grid(point[:2])
                 x, y = cell
                 if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
                     ray_cells.append(cell)
                     free_cells.add(cell)
-            hit = distance >= 0 and distance <= self.range_m
             if hit:
                 hit_count += 1
                 hit_geom = int(geom_id[0])
@@ -88,7 +99,7 @@ class MujocoRayPerception:
                 # centers are privileged simulator state and can lie behind
                 # the visible boundary (or outside the ray's observed path).
                 surface = origin + direction * distance
-                cell = scene.world_to_grid(surface[:2])
+                cell = self._surface_cell(surface[:2], direction[:2])
                 x, y = cell
                 if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
                     occupied_cells.add(cell)
@@ -100,15 +111,39 @@ class MujocoRayPerception:
                     hits_by_type['pedestrians'] += 1
             cells_by_ray.append(ray_cells)
 
-        for x, y in free_cells:
+        # A cell containing any measured first-hit surface is conservatively
+        # occupied: a free ray through another part of the 0.75 m cell does not
+        # establish that the whole cell is clear. Boundary snapping above keeps
+        # box faces from falsely assigning that hit to the adjacent free cell.
+        conflicts = free_cells & occupied_cells
+        for x, y in free_cells - conflicts:
             observation[y, x] = 0
         for x, y in occupied_cells:
             observation[y, x] = 1
         self.last_stats = dict(
             ray_count=self.ray_count, ray_hits=hit_count, hits_by_type=hits_by_type,
             visible_cells=len(free_cells | occupied_cells), free_cells=len(free_cells-occupied_cells),
-            occupied_cells=len(occupied_cells), range_m=self.range_m,
+            occupied_cells=len(occupied_cells-conflicts), conflicting_cells=len(conflicts),
+            occupied_boundary_overlap_cells=BOX_BOUNDARY_OVERLAP_CELLS, range_m=self.range_m,
             horizontal_fov_deg=self.horizontal_fov_deg,
             sensor_origin_world=origin.tolist(), sensor_height_m=float(origin[2]),
             visible_cells_by_ray=[len(cells) for cells in cells_by_ray])
         return observation
+
+    def _surface_cell(self, point, direction):
+        """Rasterize a measured surface, accounting for the documented box edge overlap."""
+        scene = self.scene
+        values = (point[0]/scene.cell_size+(scene.scenario.width-1)/2,
+                  point[1]/scene.cell_size+(scene.scenario.height-1)/2)
+        result = []
+        for value, component in zip(values, direction):
+            lower = math.floor(value)
+            boundary = lower + 0.5
+            if abs(value-boundary) <= BOX_BOUNDARY_OVERLAP_CELLS + 1e-10:
+                # Resolve the 0.005-cell collision-box overhang to the cell
+                # containing the obstacle, using only the ray's approach side.
+                result.append(lower+1 if component > 0 else lower if component < 0
+                              else math.floor(value+0.5+1e-12))
+            else:
+                result.append(math.floor(value+0.5+1e-12))
+        return tuple(result)

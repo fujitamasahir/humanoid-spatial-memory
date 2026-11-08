@@ -34,6 +34,7 @@ def test_actual_g1_stand_keyframe_and_floating_base_are_loaded():
     assert scene.robot_qpos_adr == 0
     scene.update(World(scene.scenario), dict(step=0, position=(1, 1), planned=[(1, 1)], blocked=False))
     assert scene.world_to_grid(scene.data.qpos[:2]) == (1, 1)
+    assert np.allclose(scene.footprint_half_extents_local, (0.219, 0.328), atol=0.002)
 
 
 def test_forward_axis_quaternion_and_heading_for_all_cardinal_directions():
@@ -219,10 +220,13 @@ def test_mujoco_ray_sensor_detects_a_visible_obstacle_as_occupied():
     scene = MujocoNavigationScene(scenario)
     sensor = MujocoRayPerception(scene)
     observation = sensor.observe(World(scenario), scenario.start, 0.0)
-    # The first-hit surface lies just across the raster boundary from the
-    # obstacle center; the center cell remains unknown to the sensor.
-    assert observation[3, 3] == 1
-    assert observation[3, 4] == -1
+    # Box-face boundary snapping puts the first-hit cell with the obstacle,
+    # leaving the adjacent approach cell free.
+    assert observation[3, 4] == 1
+    assert observation[3, 3] == 0
+    assert sensor.last_stats['free_cells'] > 0
+    assert sensor.last_stats['occupied_cells'] > 0
+    assert sensor.last_stats['conflicting_cells'] >= 0
     assert sensor.last_stats['hits_by_type']['persistent_obstacles'] > 0
     assert sensor.last_stats['sensor_height_m'] < 0.9
 
@@ -232,7 +236,8 @@ def test_mujoco_rays_respect_occlusion_behind_a_wall():
     scenario = ray_scenario(obstacles=((5, 3),), extra_walls=divider)
     sensor = MujocoRayPerception(MujocoNavigationScene(scenario))
     observation = sensor.observe(World(scenario), scenario.start, 0.0)
-    assert observation[3, 2] == 1
+    assert observation[3, 3] == 1
+    assert observation[3, 2] == 0
     assert observation[3, 5] == -1
     assert sensor.last_stats['hits_by_type']['persistent_obstacles'] == 0
 
@@ -244,8 +249,8 @@ def test_occupied_grid_cells_are_rasterized_from_first_hit_surface_points():
     sensor = MujocoRayPerception(scene)
     world = World(scenario)
     sensor.observe(world, scenario.start, 0.0)
-    # Reconstruct the observed first-hit cells from independent ray distances.
-    # This guards against substituting geom_xpos (hidden center coordinates).
+    # Reconstruct observed first-hit cells from ray distances and the explicit
+    # 0.005-cell box-edge tolerance, never from hidden geometry centers.
     from spatial_memory.mujoco_navigation import G1_FORWARD_AXIS
     import math
     scene._sync_environment(world)
@@ -264,9 +269,30 @@ def test_occupied_grid_cells_are_rasterized_from_first_hit_surface_points():
         distance = float(scene.mj.mj_ray(scene.model, scene.data, origin, direction,
             sensor.geom_groups, True, scene.robot_body, geom))
         if 0 <= distance <= sensor.range_m:
-            surfaces.add(scene.world_to_grid((origin + direction*distance)[:2]))
+            point = origin + direction*distance
+            surfaces.add(sensor._surface_cell(point[:2], direction[:2]))
     measured = { (int(x), int(y)) for y, x in np.argwhere(sensor.observe(world, scenario.start, 0.0) == 1) }
     assert measured == surfaces
+    assert sensor.observe(world, scenario.start, 0.0)[scenario.start[1], scenario.start[0]] == 0
+
+
+def test_first_observation_preserves_free_approach_and_assigns_wall_to_far_cell():
+    # The .37875 m wall face is 0.00375 m beyond the .375 m raster boundary.
+    scenario = ray_scenario(start=(5, 3), goal=(7, 3), extra_walls=((6, 2), (6, 3), (6, 4)))
+    scene = MujocoNavigationScene(scenario)
+    sensor = MujocoRayPerception(scene)
+    observation = sensor.observe(World(scenario), scenario.start, 0.0)
+    assert observation[3, 5] == 0
+    assert observation[3, 6] == 1
+    assert sensor.last_stats['free_cells'] >= 1
+
+
+def test_occupied_surface_wins_only_in_its_measured_cell_not_the_approach_cell():
+    scenario = ray_scenario(obstacles=((4, 3),))
+    sensor = MujocoRayPerception(MujocoNavigationScene(scenario))
+    observation = sensor.observe(World(scenario), scenario.start, 0.0)
+    assert observation[3, 3] == 0
+    assert observation[3, 4] == 1
 
 
 def test_cells_outside_the_sensor_visibility_remain_unknown():
@@ -283,8 +309,8 @@ def test_ray_measurements_change_with_robot_heading():
     world = World(scenario)
     east = sensor.observe(world, scenario.start, 0.0)
     west = sensor.observe(world, scenario.start, np.pi)
-    assert east[3, 3] == 1
-    assert east[3, 4] == -1
+    assert east[3, 4] == 1
+    assert east[3, 3] == 0
     assert west[3, 4] == -1
     assert not np.array_equal(east, west)
 
@@ -312,9 +338,9 @@ def test_persistent_obstacle_geometry_appears_and_disappears_in_rays():
     present = sensor.observe(world, scenario.start, 0.0)
     world.advance()
     removed = sensor.observe(world, scenario.start, 0.0)
-    assert before[3, 2] == 0
-    assert present[3, 2] == 1
-    assert removed[3, 2] == 0
+    assert before[3, 3] == 0
+    assert present[3, 3] == 1
+    assert removed[3, 3] == 0
 
 
 def test_3d_observations_are_deterministic_for_fixed_geometry_and_heading():
@@ -373,6 +399,125 @@ def test_view_scene_exposes_walls_objects_pedestrians_and_actual_g1(tmp_path):
     assert mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, 'pelvis') >= 0
 
 
+def test_g1_footprint_planner_routes_around_observed_occupancy_and_is_deterministic():
+    from spatial_memory.navigation import plan_g1
+
+    grid = np.zeros((7, 7), dtype=np.int8)
+    grid[3, 3] = 1
+    first = plan_g1(grid, (1, 3), (5, 3), local_extents=(0.22, 0.328))
+    second = plan_g1(grid, (1, 3), (5, 3), local_extents=(0.22, 0.328))
+    assert first and first == second
+    assert all(not (kind == 'move' and value == (3, 3)) for kind, value in first)
+    # Movement can be lateral while yaw remains fixed, allowing the robot to
+    # leave a tight wall before a planner-permitted safe turn.
+    assert any(kind == 'move' and value[1] != 3 for kind, value in first)
+
+
+def test_footprint_clearance_depends_on_heading():
+    from spatial_memory.navigation import _overlaps_known_occupied
+
+    grid = np.full((5, 5), -1, dtype=np.int8)
+    grid[3, 2] = 1
+    # Deliberately asymmetric public footprint proves the orientation transform.
+    assert _overlaps_known_occupied(grid, 2, 2, 0, (0.1, 0.6), 0.75)
+    assert not _overlaps_known_occupied(grid, 2, 2, np.pi/2, (0.1, 0.6), 0.75)
+
+
+def test_g1_planner_uses_attempt_feedback_without_repeating_until_observation_changes():
+    from spatial_memory.navigation import blocked_action_key
+
+    scenario = open_scenario()
+    config = dict(sensor=dict(radius=3, occlusion=True, noise=0.0), update_interval=1,
+        unknown='optimistic', max_steps=3, observation_cost=1, max_observations=4)
+    action = ('move', (2, 1))
+    key = blocked_action_key(scenario.start, 0, action)
+    observations = [np.full((5, 5), -1, np.int8) for _ in range(4)]
+    observations[1][1, 2] = 0
+    observations[2][1, 2] = 0  # no information change: keep the rejection
+    observations[3][1, 2] = 0
+    observations[3][2, 2] = 0  # new local information: allow reconsideration
+    obs_calls, planner_block_sets, shield_calls = 0, [], 0
+    def provider(world, position, yaw):
+        nonlocal obs_calls
+        result = observations[min(obs_calls, len(observations)-1)].copy()
+        obs_calls += 1
+        return result
+    def planner(grid, position, goal, unknown, yaw, blocked):
+        planner_block_sets.append(set(blocked))
+        if position == scenario.start:
+            return [] if key in blocked else [action]
+        return []
+    def checker(world, position, attempted, yaw):
+        nonlocal shield_calls
+        shield_calls += 1
+        if shield_calls == 1:
+            return True, None, yaw, 'translation_collision'
+        return False, None, yaw, None
+    metrics, _ = run_episode(scenario, config, 'periodic', seed=42,
+        _observation_provider=provider, _g1_planner=planner, _action_checker=checker)
+    assert shield_calls == 2  # one rejected attempt, no duplicate on step 2, one reconsideration
+    assert metrics['g1_distinct_rejected_actions'] == 1
+    assert metrics['g1_blocked_movement_reasons']['translation_collision'] == 1
+    assert metrics['g1_blocked_feedback_resets_after_changed_observation'] == 1
+    assert planner_block_sets[1] == {key}
+    assert planner_block_sets[2] == set()
+    assert metrics['observation_count'] == 4
+
+
+def test_full_comparison_summary_and_world_clustered_pairing_validate_matched_design():
+    from importlib.util import module_from_spec, spec_from_file_location
+    from pathlib import Path
+    from spatial_memory.phase15_bprime import ACTIVE_MECHANISMS
+
+    script = Path(__file__).resolve().parents[1] / 'scripts/phase2_mujoco_navigation.py'
+    spec = spec_from_file_location('phase2_runner_cluster_test', script)
+    runner = module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    methods = ('static', 'periodic', 'age', 'uncertainty')
+    rows = []
+    for mechanism in ACTIVE_MECHANISMS:
+        for world_index in range(12):
+            identity = f'{mechanism}:{world_index}'
+            for schedule in (0, 1):
+                for method_index, method in enumerate(methods):
+                    row = dict(mechanism=mechanism, world_identity=identity,
+                        schedule=schedule, method=method, success=method == 'periodic',
+                        contact_free_success=method == 'periodic',
+                        g1_contact_free_success=method == 'periodic',
+                        observation_count=method_index+schedule, observation_cost=method_index+schedule,
+                        travel_distance_m=10.0+method_index, elapsed_steps=20+method_index,
+                        g1_distinct_rejected_actions=method_index, g1_navigation_no_route_steps=0,
+                        g1_heading_changes=method_index, stale_map_errors=0,
+                        false_persistent_occupancy_updates=0, missed_persistent_changes=0,
+                        mujoco_sensor_rays=61, mujoco_sensor_hits=10,
+                        mujoco_sensor_visible_cells=5, mujoco_sensor_occupied_cells=2,
+                        mujoco_sensor_free_cells=3, mujoco_sensor_hit_types={
+                            'walls': 8, 'persistent_obstacles': 2, 'pedestrians': 0},
+                        g1_unwanted_contact_pairs=0, g1_footprint_blocked_attempts=method_index,
+                        g1_blocked_feedback_resets_after_changed_observation=0,
+                        g1_blocked_movement_reasons={'rotation_collision': 0,
+                            'translation_collision': method_index, 'grid_occupancy': 0},
+                        blocked_movement_attempts=method_index, dynamic_contacts=0,
+                        g1_pedestrian_contact_pairs=0, g1_wall_contact_pairs=0,
+                        g1_persistent_obstacle_contact_pairs=0,
+                        g1_attempt_pedestrian_contact_pairs=0, g1_attempt_wall_contact_pairs=0,
+                        g1_attempt_persistent_obstacle_contact_pairs=0,
+                        travel_distance=10.0, final_stale_map_errors=0,
+                        final_false_persistent_occupancy_updates=0,
+                        final_missed_persistent_changes=0)
+                    rows.append(row)
+    indexed = runner.validate_matched_design(rows)
+    assert len(indexed) == 288
+    summary = runner.summarize(rows)
+    assert summary['mechanisms']['R']['periodic']['episodes'] == 24
+    paired = runner.paired_world_clustered(rows, bootstrap_replicates=200)
+    contrast = paired['contrasts']['overall']['static_minus_periodic']['goal_completion']
+    assert contrast['world_clusters'] == 36
+    assert contrast['matched_world_schedule_pairs'] == 72
+    assert contrast['left_minus_right_mean'] == -1.0
+    assert contrast['cluster_bootstrap_95pct_ci'] == [-1.0, -1.0]
+
+
 def test_3d_sensor_updates_memory_without_passing_truth_to_policy_and_respects_budget():
     scenario = ray_scenario(obstacles=((4, 3),))
     scene = MujocoNavigationScene(scenario)
@@ -391,7 +536,7 @@ def test_3d_sensor_updates_memory_without_passing_truth_to_policy_and_respects_b
     assert len(seen) == 1
     assert metrics['observation_count'] == 1
     assert metrics['observation_requests_denied'] > 0
-    assert frames[0]['memory'][3, 3] == 1
+    assert frames[0]['memory'][3, 4] == 1
     assert metrics['mujoco_sensor_rays'] == 61
     assert metrics['mujoco_sensor_hit_types']['persistent_obstacles'] > 0
 

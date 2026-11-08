@@ -4,6 +4,8 @@ import math
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
+import numpy as np
+
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 G1_XML = REPOSITORY_ROOT / 'third_party' / 'unitree_g1' / 'g1.xml'
@@ -94,6 +96,37 @@ class MujocoNavigationScene:
         self.heading_yaw = 0.0
         self._set_pose(scenario.start, self.heading_yaw)
         self.mj.mj_forward(self.model, self.data)
+        self.footprint_half_extents_local = self._measure_footprint_half_extents()
+
+    def _measure_footprint_half_extents(self):
+        """Conservative local X/Y bounds from public G1 collision geoms only."""
+        root = self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+2].copy()
+        extents = [0.0, 0.0]
+        for geom in self._robot_geom_ids:
+            kind = int(self.model.geom_type[geom])
+            size = np.asarray(self.model.geom_size[geom], dtype=float)
+            rotation = np.asarray(self.data.geom_xmat[geom]).reshape(3, 3)
+            center = np.asarray(self.data.geom_xpos[geom, :2])-root
+            for axis_index, axis in enumerate((np.array([1., 0., 0.]),
+                                                np.array([0., 1., 0.]))):
+                local_axis = rotation.T @ axis
+                if kind == int(self.mj.mjtGeom.mjGEOM_BOX):
+                    support = float(np.sum(np.abs(local_axis)*size[:3]))
+                elif kind == int(self.mj.mjtGeom.mjGEOM_SPHERE):
+                    support = float(size[0])
+                elif kind in (int(self.mj.mjtGeom.mjGEOM_CAPSULE),
+                              int(self.mj.mjtGeom.mjGEOM_CYLINDER)):
+                    support = float(size[0]*np.hypot(local_axis[0], local_axis[1])
+                                    + size[1]*abs(local_axis[2]))
+                elif kind == int(self.mj.mjtGeom.mjGEOM_ELLIPSOID):
+                    support = float(np.sqrt(np.sum((local_axis*size[:3])**2)))
+                else:
+                    # Mesh bounding spheres are conservative and part of the
+                    # pinned robot model, not environment geometry.
+                    support = float(self.model.geom_rbound[geom])
+                extents[axis_index] = max(extents[axis_index],
+                    abs(float(np.dot(axis[:2], center)))+support)
+        return tuple(extents)
 
     def _make_xml(self):
         if not G1_XML.is_file():
@@ -221,11 +254,12 @@ class MujocoNavigationScene:
                 counts['persistent_obstacle'] += 1
         return ContactCounts(**counts)
 
-    def check_move(self, world, current, target, current_yaw=None):
-        """Check a pivot sweep and then a translated sweep; reject on first collision."""
+    def check_move(self, world, current, target, current_yaw=None, *, target_yaw=None):
+        """Check a pivot sweep then translation; explicit target_yaw allows strafing."""
         old = self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7].copy()
         current_yaw = self.heading_yaw if current_yaw is None else float(current_yaw)
-        wanted_yaw = desired_heading(current, target, self.cell_size)
+        wanted_yaw = (desired_heading(current, target, self.cell_size)
+                      if target_yaw is None else float(target_yaw))
         if wanted_yaw is None:
             return False, ContactCounts(), current_yaw, None
         self._sync_environment(world)
@@ -267,15 +301,38 @@ class MujocoNavigationScene:
         self.mj.mj_forward(self.model, self.data)
         return False, ContactCounts(), wanted_yaw, None
 
+    def check_turn(self, world, position, current_yaw, target_yaw):
+        """Check only an attempted in-place turn; do not probe other poses."""
+        old = self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7].copy()
+        current_yaw, target_yaw = float(current_yaw), float(target_yaw)
+        self._sync_environment(world)
+        yaw_change = angle_delta(target_yaw, current_yaw)
+        samples = max(1, math.ceil(abs(yaw_change)/0.05))
+        for sample in range(1, samples+1):
+            yaw = current_yaw + yaw_change*sample/samples
+            self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+            self.data.qpos[self.robot_qpos_adr+3:self.robot_qpos_adr+7] = yaw_quaternion(yaw)
+            self.data.qvel[:] = 0
+            self.mj.mj_forward(self.model, self.data)
+            counts = self._contacts()
+            if counts.environmental:
+                self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+                self.data.qvel[:] = 0
+                self.mj.mj_forward(self.model, self.data)
+                return True, counts, current_yaw, 'rotation_collision'
+        self.data.qpos[self.robot_qpos_adr:self.robot_qpos_adr+7] = old
+        self.data.qvel[:] = 0
+        self.mj.mj_forward(self.model, self.data)
+        return False, ContactCounts(), target_yaw, None
+
     def update(self, world, frame):
         self._sync_environment(world)
         self._set_pose(frame['position'], frame.get('heading_yaw', 0.0))
         self.mj.mj_forward(self.model, self.data)
         current = self._contacts()
+        # Attempt contacts are supplied by the single selected-action shield
+        # check in run_episode. Rechecking here would be an unaccounted probe.
         attempted = ContactCounts()
-        if frame.get('blocked') and len(frame.get('planned') or []) > 1:
-            _, attempted, _, _ = self.check_move(world, frame['position'], frame['planned'][1],
-                                                  frame.get('heading_yaw', 0.0))
         self.data.time = frame['step'] * self.timestep
         self._last_snapshot = dict(step=frame['step'], robot=frame['position'],
             pedestrians=sorted(world.people()), active_objects=sorted(world.objects), contacts=vars(current))

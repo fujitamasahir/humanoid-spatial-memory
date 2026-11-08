@@ -1,0 +1,47 @@
+[
+  {
+    "bytes": 4403,
+    "path": "episodes.csv",
+    "sha256": "0138cfed0c960be9a4cf7218863af6d67ba8965c4d86f1f6c574e404d2de83e4"
+  },
+  {
+    "bytes": 17030,
+    "path": "provenance.json",
+    "sha256": "798150742f7594fdeb758699d3e12ecc9b168aecb23ebe6eac59014f7c7a2190"
+  },
+  {
+    "bytes": 357,
+    "path": "render_unavailable.json",
+    "sha256": "d75f86bc430e78435423c82c5c3208ea915a6ea5c105f0e70e14bb80bfeb570d"
+  },
+  {
+    "bytes": 85,
+    "path": "run.lock",
+    "sha256": "917d87218ce9ba1dff03de747f7e43434b1fca4562285ea708dcb8570789f3d1"
+  },
+  {
+    "bytes": 57,
+    "path": "scenario.json",
+    "sha256": "381fd3de4e04deb6b40fb65c43cdc38ddb61b35c1f929b75a4613fb2d24fc2c8"
+  },
+  {
+    "bytes": 49131,
+    "path": "scene.xml",
+    "sha256": "db75b85d61102f09bbc0b1014847c0e651a3a8e4591a01c0e9690090467e8e7a"
+  },
+  {
+    "bytes": 8262,
+    "path": "summary.json",
+    "sha256": "90711c0910816e648875b57dfd8bcc1d442130ab0aede377af58c3e7ce3ce456"
+  },
+  {
+    "bytes": 853933,
+    "path": "trajectory.json",
+    "sha256": "b6dc8fcd8aa7073fd70262546bc5a5796d8c23e252f7237222a3f034066f8686"
+  },
+  {
+    "bytes": 7240,
+    "path": "validation_report.json",
+    "sha256": "a6b654345cb4065bc75fc3ef22216f1daaf93d400f3dddf5040d711e47b77183"
+  }
+]

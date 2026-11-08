@@ -313,3 +313,66 @@ uncertainty analysis is reported. Resolve the blocked-footprint routing issue
 under the same no-oracle, perception-only memory protocol and pass a new fixed
 smoke before starting the matrix. The older 288 proxy result is historical and
 must not be mixed with a future corrected 3D comparison.
+
+## Ray boundary and G1 route recovery (2026-11-08)
+
+This newer section supersedes the preceding smoke-gate status. The integrity
+smoke's zero-free-cell result came from rasterizing the measured ray surface
+with ordinary nearest-center rounding. For the observed adjacent wall, the G1
+sensor was at 0.864 m and the wall face was 0.37875 m from its cell center.
+The raster half-cell is 0.375 m, so that face protruded 0.00375 m into the
+approach cell. All 61 rays hit that nearby wall and their measured surface
+points were rounded into the robot's current cell; occupied status then erased
+the short, genuinely free path from sensor origin to wall.
+
+The sensor now excludes the first-hit endpoint from free-path samples and
+directionally snaps measured surfaces within 0.005 cell of a raster boundary
+to the cell on the far side. This tolerance is derived from the saved MuJoCo
+environment box half-width (0.505 cell) and raster half-width (0.5 cell); no
+geom center is read. At this grid scale, a cell with any first-hit surface
+remains conservatively occupied, while the measured approach cell remains
+free. Cells behind the first hit remain unknown. The revised first observation
+at the original R fit start reports free at `(5,15)` and occupied at the
+adjacent wall cell `(6,15)`. Conflicting free-path and surface evidence is
+reported separately in sensor statistics.
+
+G1 routing now uses a state `(grid position, cardinal heading)`. Its public
+collision-geometry bounds measured from the pinned MJCF in stand pose are
+0.218955 m along local X and 0.327997 m along local Y. The planner checks
+four-cardinal translations and separate in-place turns against the agent's
+observed occupied cells using those orientation-dependent bounds and the
+documented 0.75 m cell boxes. It does not call the MuJoCo safety shield for
+unattempted alternatives. The selected action alone is submitted to the shield;
+the kinematic model can translate laterally or backward while preserving its
+heading, then turn when known observations and the public footprint permit.
+
+Rejected `(position, heading, action)` transitions are held separately from
+occupancy memory. Each carries a signature of nearby agent memory; it is not
+retried until a new observation changes that local evidence. No obstacle cell
+is added to memory due to rejection. If the memory/footprint graph has no route,
+the runner records a no-route step and waits for the configured observation
+schedule or a relevant observed dynamic change. All four methods use the same
+routing, footprint and selected-action safety rules; only their observation
+schedules differ. Collision shield feedback is not charged as an observation
+and exposes only accepted/rejected action plus contact reason/counts, not
+obstacle identity.
+
+The first footprint-planner smoke version reached 45 m but did not reach the
+goal in 80 steps after broad observation changes repeatedly cleared old blocked
+actions. Its failed outcome is preserved in
+`results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_v2/`. Restricting
+reconsideration to changed local memory evidence removed that oscillation. The
+subsequent smoke reached the goal in 68 steps with 55 moves (41.25 m), 18
+observations, 10 rejected actions, 3 heading changes, no unwanted contacts,
+zero terminal stale-map errors and 5 missed persistent changes. That result is
+in `results/phase2_mujoco/g1_g1footprint_feedback_seed42_smoke_v3/`. The fixed
+80-step, 20-observation budget and 0.75 m/cell assumption were unchanged.
+
+The focused Phase 2 MuJoCo plus Phase 1.4A evaluation set passed **64 tests**
+(14 upstream Matplotlib/pyparsing deprecation warnings). Coverage includes
+wall-boundary assignment and approach free-space, first-hit surfaces,
+occlusion/unknown cells, G1 footprint extents, orientation-specific clearance,
+blocked-action suppression and local-evidence reconsideration, no-oracle
+action acceptance, viewer visibility, and matched-design/world-clustered
+analysis. The 288-episode comparison is pending the final clean-commit smoke
+and provenance gate.
