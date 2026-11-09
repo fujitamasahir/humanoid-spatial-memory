@@ -1,0 +1,27 @@
+[
+  {
+    "bytes": 432722,
+    "path": "benchmark_comparison.json",
+    "sha256": "ed589678af311835d47da84e0ce70bec4562e93467a180a6611c9e0d2376c9db"
+  },
+  {
+    "bytes": 207559,
+    "path": "episode_comparison.json",
+    "sha256": "665c20bc3b560d8846f23c8e4cf26450a17aa3f3f3f5bae5d66325f1f86c880f"
+  },
+  {
+    "bytes": 2549,
+    "path": "optimization_report.md",
+    "sha256": "7c736c3dbd562e9d2687e2dd43fafcbaedfbff0952309c80020a0edce75e4122"
+  },
+  {
+    "bytes": 11947,
+    "path": "profiling.json",
+    "sha256": "b4c6a6f5fb7b486c5b48bae1afa08d890977263a71f70ca27781adc015d92b8c"
+  },
+  {
+    "bytes": 894,
+    "path": "provenance.json",
+    "sha256": "d7381739c5ff7ac215f7d052c72bdebaaf4f66db81d156ae49c0497d8d487bc9"
+  }
+]

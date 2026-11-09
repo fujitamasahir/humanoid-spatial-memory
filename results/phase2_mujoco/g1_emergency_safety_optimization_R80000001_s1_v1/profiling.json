@@ -1,0 +1,361 @@
+{
+  "cprofile": {
+    "legacy_single_ray": {
+      "note": "cProfile adds overhead; use separate unprofiled trials for absolute timings.",
+      "profiled_scans": 8,
+      "profiler_total_seconds": 0.08383270800000002,
+      "top_functions": [
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.083808083,
+          "file": "src/spatial_memory/emergency_safety.py",
+          "function": "scan",
+          "line": 31,
+          "self_seconds": 0.00019995900000000001
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.08343220800000001,
+          "file": "HEAD:src/spatial_memory/mujoco_perception.py",
+          "function": "observe",
+          "line": 41,
+          "self_seconds": 0.000254542
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.082467542,
+          "file": "HEAD:src/spatial_memory/mujoco_perception.py",
+          "function": "observe_current",
+          "line": 49,
+          "self_seconds": 0.037804606000000004
+        },
+        {
+          "calls": 28064,
+          "cumulative_seconds": 0.027844410000000003,
+          "file": "src/spatial_memory/mujoco_navigation.py",
+          "function": "world_to_grid",
+          "line": 184,
+          "self_seconds": 0.023876764
+        },
+        {
+          "calls": 58696,
+          "cumulative_seconds": 0.004157885,
+          "file": "~",
+          "function": "<built-in method math.floor>",
+          "line": 0,
+          "self_seconds": 0.004157885
+        },
+        {
+          "calls": 1448,
+          "cumulative_seconds": 0.00399623,
+          "file": "~",
+          "function": "<built-in method mujoco._functions.mj_ray>",
+          "line": 0,
+          "self_seconds": 0.00399623
+        },
+        {
+          "calls": 30368,
+          "cumulative_seconds": 0.0029799350000000004,
+          "file": "~",
+          "function": "<built-in method builtins.min>",
+          "line": 0,
+          "self_seconds": 0.0029799350000000004
+        },
+        {
+          "calls": 1464,
+          "cumulative_seconds": 0.002962136,
+          "file": ".venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py",
+          "function": "norm",
+          "line": 2575,
+          "self_seconds": 0.001625064
+        },
+        {
+          "calls": 28920,
+          "cumulative_seconds": 0.0022486760000000002,
+          "file": "~",
+          "function": "<method 'add' of 'set' objects>",
+          "line": 0,
+          "self_seconds": 0.0022486760000000002
+        },
+        {
+          "calls": 31224,
+          "cumulative_seconds": 0.002232434,
+          "file": "~",
+          "function": "<method 'append' of 'list' objects>",
+          "line": 0,
+          "self_seconds": 0.002232434
+        },
+        {
+          "calls": 856,
+          "cumulative_seconds": 0.0016841900000000001,
+          "file": "HEAD:src/spatial_memory/mujoco_perception.py",
+          "function": "_surface_cell",
+          "line": 141,
+          "self_seconds": 0.0012476660000000001
+        },
+        {
+          "calls": 1464,
+          "cumulative_seconds": 0.000652881,
+          "file": "~",
+          "function": "<method 'dot' of 'numpy.ndarray' objects>",
+          "line": 0,
+          "self_seconds": 0.000652881
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.0006362080000000001,
+          "file": "~",
+          "function": "<built-in method mujoco._functions.mj_forward>",
+          "line": 0,
+          "self_seconds": 0.0006362080000000001
+        },
+        {
+          "calls": 1464,
+          "cumulative_seconds": 0.000258254,
+          "file": ".venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py",
+          "function": "isComplexType",
+          "line": 128,
+          "self_seconds": 0.000171088
+        },
+        {
+          "calls": 1464,
+          "cumulative_seconds": 0.00020756500000000002,
+          "file": "~",
+          "function": "<method 'ravel' of 'numpy.ndarray' objects>",
+          "line": 0,
+          "self_seconds": 0.00020756500000000002
+        },
+        {
+          "calls": 2928,
+          "cumulative_seconds": 0.000199017,
+          "file": "~",
+          "function": "<built-in method builtins.issubclass>",
+          "line": 0,
+          "self_seconds": 0.000199017
+        },
+        {
+          "calls": 1448,
+          "cumulative_seconds": 0.000192396,
+          "file": "~",
+          "function": "<built-in method builtins.max>",
+          "line": 0,
+          "self_seconds": 0.000192396
+        },
+        {
+          "calls": 16,
+          "cumulative_seconds": 0.000155291,
+          "file": ".venv/lib/python3.12/site-packages/numpy/_core/numeric.py",
+          "function": "argwhere",
+          "line": 591,
+          "self_seconds": 2.5041000000000003e-05
+        },
+        {
+          "calls": 1456,
+          "cumulative_seconds": 0.000125832,
+          "file": "~",
+          "function": "<built-in method math.cos>",
+          "line": 0,
+          "self_seconds": 0.000125832
+        },
+        {
+          "calls": 1456,
+          "cumulative_seconds": 0.000124627,
+          "file": "~",
+          "function": "<built-in method math.sin>",
+          "line": 0,
+          "self_seconds": 0.000124627
+        }
+      ]
+    },
+    "optimized_multi_ray": {
+      "note": "cProfile adds overhead; use separate unprofiled trials for absolute timings.",
+      "profiled_scans": 8,
+      "profiler_total_seconds": 0.005260250000000001,
+      "top_functions": [
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.005240166,
+          "file": "src/spatial_memory/emergency_safety.py",
+          "function": "scan",
+          "line": 31,
+          "self_seconds": 0.00015183200000000002
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.004983250000000001,
+          "file": "src/spatial_memory/mujoco_perception.py",
+          "function": "observe",
+          "line": 52,
+          "self_seconds": 9.501000000000001e-06
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.004516291,
+          "file": "src/spatial_memory/mujoco_perception.py",
+          "function": "observe_current",
+          "line": 60,
+          "self_seconds": 2.7124000000000003e-05
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.0044891670000000005,
+          "file": "src/spatial_memory/mujoco_perception.py",
+          "function": "_observe_current",
+          "line": 67,
+          "self_seconds": 0.002139835
+        },
+        {
+          "calls": 856,
+          "cumulative_seconds": 0.00139042,
+          "file": "src/spatial_memory/mujoco_perception.py",
+          "function": "_surface_cell",
+          "line": 183,
+          "self_seconds": 0.001005374
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.000455542,
+          "file": "~",
+          "function": "<built-in method mujoco._functions.mj_multiRay>",
+          "line": 0,
+          "self_seconds": 0.000455542
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 0.000415792,
+          "file": "~",
+          "function": "<built-in method mujoco._functions.mj_forward>",
+          "line": 0,
+          "self_seconds": 0.000415792
+        },
+        {
+          "calls": 2568,
+          "cumulative_seconds": 0.00018420600000000002,
+          "file": "~",
+          "function": "<built-in method math.floor>",
+          "line": 0,
+          "self_seconds": 0.00018420600000000002
+        },
+        {
+          "calls": 24,
+          "cumulative_seconds": 0.00014800000000000002,
+          "file": ".venv/lib/python3.12/site-packages/numpy/_core/numeric.py",
+          "function": "argwhere",
+          "line": 591,
+          "self_seconds": 2.5160000000000003e-05
+        },
+        {
+          "calls": 1712,
+          "cumulative_seconds": 0.00011277900000000001,
+          "file": "~",
+          "function": "<method 'append' of 'list' objects>",
+          "line": 0,
+          "self_seconds": 0.00011277900000000001
+        },
+        {
+          "calls": 48,
+          "cumulative_seconds": 0.000105544,
+          "file": ".venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py",
+          "function": "_wrapfunc",
+          "line": 51,
+          "self_seconds": 1.9634000000000002e-05
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 9.295700000000001e-05,
+          "file": "~",
+          "function": "<method 'update' of 'set' objects>",
+          "line": 0,
+          "self_seconds": 1.5377000000000002e-05
+        },
+        {
+          "calls": 1712,
+          "cumulative_seconds": 8.806100000000001e-05,
+          "file": "~",
+          "function": "<built-in method builtins.abs>",
+          "line": 0,
+          "self_seconds": 8.806100000000001e-05
+        },
+        {
+          "calls": 24,
+          "cumulative_seconds": 8.4212e-05,
+          "file": ".venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py",
+          "function": "norm",
+          "line": 2575,
+          "self_seconds": 4.4958000000000006e-05
+        },
+        {
+          "calls": 168,
+          "cumulative_seconds": 7.758e-05,
+          "file": "src/spatial_memory/mujoco_perception.py",
+          "function": "<genexpr>",
+          "line": 134,
+          "self_seconds": 7.758e-05
+        },
+        {
+          "calls": 856,
+          "cumulative_seconds": 6.933900000000001e-05,
+          "file": "~",
+          "function": "<method 'add' of 'set' objects>",
+          "line": 0,
+          "self_seconds": 6.933900000000001e-05
+        },
+        {
+          "calls": 24,
+          "cumulative_seconds": 6.0709000000000004e-05,
+          "file": ".venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py",
+          "function": "transpose",
+          "line": 630,
+          "self_seconds": 4.958000000000001e-06
+        },
+        {
+          "calls": 24,
+          "cumulative_seconds": 5.5083e-05,
+          "file": ".venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py",
+          "function": "nonzero",
+          "line": 2018,
+          "self_seconds": 5.29e-06
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 4.8291e-05,
+          "file": ".venv/lib/python3.12/site-packages/numpy/lib/_stride_tricks_impl.py",
+          "function": "broadcast_to",
+          "line": 367,
+          "self_seconds": 4.123e-06
+        },
+        {
+          "calls": 8,
+          "cumulative_seconds": 4.4168e-05,
+          "file": ".venv/lib/python3.12/site-packages/numpy/lib/_stride_tricks_impl.py",
+          "function": "_broadcast_to",
+          "line": 340,
+          "self_seconds": 2.9003000000000003e-05
+        }
+      ]
+    }
+  },
+  "dominant_profile_findings": [
+    "Before optimization, the Python raster loop repeatedly called world_to_grid for tens of thousands of ray samples per scan.",
+    "The original 181 individual mj_ray calls were measurable but smaller than the Python sample-to-grid work.",
+    "The optimized path batches intersections with mj_multiRay and vectorizes sample-to-grid conversion; hit classification remains first-hit and per-ray."
+  ],
+  "episode": {
+    "max_steps": 80,
+    "observation_policy": "static",
+    "schedule": 1,
+    "seed": 42,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+  },
+  "historical_unprofiled_reference": {
+    "interpretation": "Saved five-pair, unprofiled timing. cProfile is used only for relative call hot spots.",
+    "original_181_scan_median_ms": 6.2626455,
+    "original_181_scan_p95_ms": 8.458541,
+    "source": "results/phase2_mujoco/g1_static_safety_timing_R80000001_s1_v1/timing_comparison.json"
+  },
+  "source_hashes": {
+    "legacy_perception_at_head": "98fe8c732c8331f61e75ce1828679575cc201ad60d2ae26ba8f805f272e6bd1e",
+    "saved_timing_json": "bd26313ee874ef86ed4ef57efbc6fa9dbcb9c68bfde0c394b2d47e570892cac4"
+  },
+  "status": "PASS_PROFILED_BEFORE_COMPARATIVE_BENCHMARK"
+}

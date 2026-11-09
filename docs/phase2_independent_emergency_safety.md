@@ -20,7 +20,7 @@ For each control step the harness performs these operations in order:
 6. Check only the final selected action with the existing MuJoCo collision shield.
 7. Apply the kinematic action and record contacts.
 
-The emergency sensor scans once per simulated step with 360-degree horizontal coverage, a 2.0 m range, 181 rays at 2-degree increments, and 0.075 m samples along each ray. It uses MuJoCo first-hit geometry, ignores the G1 body, and returns ray-derived occupied/free cells and proxy classifications. It does not read `World.people()`, proxy centers, route schedules, or future positions. The current simulated pose is placed in MuJoCo as part of the physical sensor backend; the safety controller receives only its measured ray result.
+The emergency sensor scans once per simulated step with 360-degree horizontal coverage, a 2.0 m range, 181 rays at 2-degree increments, and 0.075 m samples along each ray. It uses MuJoCo first-hit geometry, ignores the G1 body, and returns ray-derived occupied/free cells and proxy classifications. It does not read `World.people()`, proxy centers, route schedules, or future positions. The current simulated pose is placed in MuJoCo as part of the physical sensor backend; the safety controller receives only its measured ray result. The default implementation uses MuJoCo `mj_multiRay` to cast all rays together and vectorized rasterization of measured ray samples; it preserves the 181-ray sensor contract.
 
 The emergency scanner keeps a short-lived track derived from measured hit-cell clusters and maintains its own temporary local grid. Safety scans never call `agent.refresh`, never change the Static controller's cap, and never write into the spatial-memory grid. Unknown or recently changing motion is handled conservatively using the simulator's one-cardinal-cell-per-step movement bound. The action controller uses the public G1 footprint and requires every cell in a lateral/retreat swept footprint to be measured free. It never calls the collision shield for candidate actions. The shield checks only the final selected action.
 
@@ -70,3 +70,9 @@ Focused checks:
 ```
 
 The safety layer only resolves this target run under the tested model and timing. It uses conservative cell-level reachability and can wait or detour; results for other scenes, pedestrian policies, sensor occlusion, or dynamic interactions remain untested.
+
+## Single-episode implementation optimization
+
+The follow-up behavior-preserving optimization benchmark is saved in [`g1_emergency_safety_optimization_R80000001_s1_v1`](../results/phase2_mujoco/g1_emergency_safety_optimization_R80000001_s1_v1/optimization_report.md). It profiles the prior single-ray implementation and compares it with the default batched implementation, plus experimental 91- and 61-ray variants. In five paired trials on this Mac, the 181-ray scan median fell from 6.127 ms (P95 8.024 ms) to 0.483 ms (P95 0.688 ms); median episode time fell from 665.2 ms to 236.3 ms. The sample-to-grid raster loop dominated the original profile; see the artifact for exact timings, per-step costs, and individual trials.
+
+The optimized 181-ray result reproduced the saved 76-step trajectory and all sensor records exactly, including the step-52 proxy detection and wait intervention, with zero unwanted contacts and one Static spatial-memory observation. This is still one episode and is not a general safety guarantee. Reduced-resolution settings remain experimental and are not the default. Adaptive downsampling is omitted because a low-resolution scan with no return cannot establish that an unseen or occluded proxy is absent.

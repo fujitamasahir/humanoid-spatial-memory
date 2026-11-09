@@ -35,10 +35,14 @@ def test_emergency_sensor_is_360_degree_and_sees_visible_capsule_proxy():
     s = scenario(pedestrians=(((3, 3),),))
     scene = MujocoNavigationScene(s)
     sensor = IndependentEmergencySafetySensor(scene)
+    assert sensor.rays.ray_backend == 'multi'
     scan = sensor.scan(World(s), s.start, 0.0)
     assert sensor.rays.horizontal_fov_deg == 360.0
     assert sensor.rays.range_m == 2.0
     assert sensor.rays.ray_count == 181
+    expected_angles = np.deg2rad(np.arange(-180, 182, 2))
+    assert np.allclose(sensor.rays._ray_cosines, np.cos(expected_angles), atol=1e-15)
+    assert np.allclose(sensor.rays._ray_sines, np.sin(expected_angles), atol=1e-15)
     assert scan['record']['hits_by_type']['pedestrians'] > 0
     assert scan['visible_pedestrian_cells']
     assert scan['record']['free_cells'] > 0
@@ -52,6 +56,57 @@ def test_emergency_sensor_respects_wall_occlusion():
     assert scan['record']['hits_by_type']['walls'] > 0
     assert scan['record']['hits_by_type']['pedestrians'] == 0
     assert not scan['visible_pedestrian_cells']
+
+
+def test_multiray_181_matches_saved_sensor_observations_and_reference_intersections():
+    """Validate distance/geom returns and exact old trace at the target states."""
+    import json
+    import sys
+    sys.path.insert(0, str(ROOT / 'scripts'))
+    import evaluate_g1_static_independent_safety as evaluator
+    from spatial_memory.simulation import scenario_from_bprime
+    from spatial_memory.mujoco_perception import MujocoRayPerception
+
+    trace_path = ROOT / 'results/phase2_mujoco/g1_static_independent_safety_R80000001_s1_v5/safety_episode_trace.json'
+    trace = json.loads(trace_path.read_text())
+    _row, _events, payload = evaluator._load_source_episode()
+    target = scenario_from_bprime(payload, 1)
+    scene = MujocoNavigationScene(target)
+    world = World(target)
+    reference = MujocoRayPerception(scene, range_m=2.0,
+        horizontal_fov_deg=360.0, ray_count=181, sample_spacing_m=0.075,
+        ray_backend='single')
+    optimized = MujocoRayPerception(scene, range_m=2.0,
+        horizontal_fov_deg=360.0, ray_count=181, sample_spacing_m=0.075,
+        ray_backend='multi')
+    safety_sensor = IndependentEmergencySafetySensor(scene, ray_backend='multi')
+
+    for frame in trace[1:]:
+        expected = frame['emergency_safety_scan']
+        world.step = int(frame['step'])
+        position = expected['position_before_action']
+        yaw = expected['heading_yaw_before_action']
+        optimized_record = safety_sensor.scan(world, position, yaw)['record']
+        assert optimized_record == expected
+
+        if frame['step'] not in (1, 50, 52, 54, 59, 76):
+            continue
+        reference_grid = reference.observe(world, position, yaw)
+        reference_distances = reference.last_ray_distances.copy()
+        reference_geoms = reference.last_ray_geom_ids.copy()
+        optimized_grid = optimized.observe(world, position, yaw)
+        optimized_distances = optimized.last_ray_distances.copy()
+        optimized_geoms = optimized.last_ray_geom_ids.copy()
+        assert np.array_equal(reference_grid, optimized_grid)
+        in_range_reference = (reference_distances >= 0) & (reference_distances <= 2.0)
+        in_range_optimized = ((optimized_distances >= 0)
+                              & (optimized_distances <= 2.0))
+        assert np.array_equal(in_range_reference, in_range_optimized)
+        assert np.array_equal(reference_geoms[in_range_reference],
+                              optimized_geoms[in_range_optimized])
+        assert np.allclose(reference_distances[in_range_reference],
+                           optimized_distances[in_range_optimized],
+                           atol=1e-12, rtol=1e-12)
 
 
 def test_emergency_sensor_uses_only_current_simulated_proxy_pose_not_future_index():

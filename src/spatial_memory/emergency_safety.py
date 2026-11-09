@@ -21,11 +21,11 @@ class IndependentEmergencySafetySensor:
     """360-degree MuJoCo ray scanner with a short, observation-only track."""
 
     def __init__(self, scene, *, range_m=2.0, ray_count=181,
-                 sample_spacing_m=0.075):
+                 sample_spacing_m=0.075, ray_backend='multi'):
         self.scene = scene
         self.rays = MujocoRayPerception(scene, range_m=range_m,
             horizontal_fov_deg=360.0, ray_count=ray_count,
-            sample_spacing_m=sample_spacing_m)
+            sample_spacing_m=sample_spacing_m, ray_backend=ray_backend)
         self.history = deque(maxlen=3)
 
     def scan(self, world, position, heading_yaw):

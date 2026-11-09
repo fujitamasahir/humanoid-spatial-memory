@@ -1,0 +1,14 @@
+{
+  "commit_before_optimization": "a7070c96175c4f249daf84f4e43ff7b9aa8a8c0e",
+  "mujoco": "3.17.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "protected_phase15_files_rehashed": 836,
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "saved_trace_sha256": "cee65fb971a4fc93e579343f317432af7b424b55bfe44adb237b8a8f281d7d3f",
+  "source_hashes": {
+    "scripts/benchmark_g1_emergency_safety_optimization.py": "b959a8651ae5f44535fbc84cd79586ab4fef93ae4541d1901717f8a606e27af9",
+    "scripts/evaluate_g1_static_independent_safety.py": "fdd68cdb0941d7861b08263eba7eae43542f867e6f5fcb59170f4d897d3e4d96",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f"
+  }
+}

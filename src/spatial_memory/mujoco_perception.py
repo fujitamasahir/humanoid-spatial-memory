@@ -23,20 +23,31 @@ class MujocoRayPerception:
     """
 
     def __init__(self, scene, *, range_m=6.0, horizontal_fov_deg=120.0,
-                 ray_count=61, sample_spacing_m=0.075):
+                 ray_count=61, sample_spacing_m=0.075, ray_backend='single'):
         values = (range_m, horizontal_fov_deg, sample_spacing_m)
         if not all(math.isfinite(v) and v > 0 for v in values):
             raise ValueError('range, FOV, and sample spacing must be positive and finite')
         if horizontal_fov_deg > 360 or type(ray_count) is not int or ray_count < 2:
             raise ValueError('FOV must be <=360 degrees and ray_count must be >=2')
+        if ray_backend not in {'single', 'multi'}:
+            raise ValueError("ray_backend must be 'single' or 'multi'")
+        if ray_backend == 'multi' and not hasattr(scene.mj, 'mj_multiRay'):
+            raise RuntimeError('This MuJoCo build does not provide mj_multiRay')
         self.scene = scene
         self.range_m = float(range_m)
         self.horizontal_fov_deg = float(horizontal_fov_deg)
         self.ray_count = ray_count
         self.sample_spacing_m = float(sample_spacing_m)
+        self.ray_backend = ray_backend
+        half_fov = math.radians(self.horizontal_fov_deg) / 2
+        angles = np.linspace(-half_fov, half_fov, self.ray_count)
+        self._ray_cosines = np.cos(angles)
+        self._ray_sines = np.sin(angles)
         self.geom_groups = np.zeros(6, dtype=np.uint8)
         self.geom_groups[5] = 1
         self.last_stats = {}
+        self.last_ray_distances = np.empty(0, dtype=np.float64)
+        self.last_ray_geom_ids = np.empty(0, dtype=np.int32)
 
     def observe(self, world, position, heading_yaw):
         """Sync evaluator-owned geometry, then return only what rays observe."""
@@ -47,6 +58,13 @@ class MujocoRayPerception:
         return self.observe_current()
 
     def observe_current(self):
+        return self._observe_current(self.ray_backend)
+
+    def observe_current_reference(self):
+        """Single-ray reference path retained for equivalence validation."""
+        return self._observe_current('single')
+
+    def _observe_current(self, ray_backend):
         scene, mj = self.scene, self.scene.mj
         model, data = scene.model, scene.data
         origin = np.asarray(data.site_xpos[scene.sensor_site_id], dtype=np.float64).copy()
@@ -63,40 +81,65 @@ class MujocoRayPerception:
         observation = np.full(shape, -1, dtype=np.int8)
         free_cells, occupied_cells = set(), set()
         hits_by_type = dict(walls=0, persistent_obstacles=0, pedestrians=0)
-        angles = np.linspace(-math.radians(self.horizontal_fov_deg)/2,
-                             math.radians(self.horizontal_fov_deg)/2,
-                             self.ray_count)
-        geom_id = np.full(1, -1, dtype=np.int32)
-        cells_by_ray = []
+        directions = (self._ray_cosines[:, None] * forward[None, :]
+                      + self._ray_sines[:, None] * left[None, :])
+        directions[:, 2] = 0.0
+        directions /= np.linalg.norm(directions, axis=1)[:, None]
+        if ray_backend == 'multi':
+            geom_ids = np.full(self.ray_count, -1, dtype=np.int32)
+            distances = np.full(self.ray_count, -1.0, dtype=np.float64)
+            mj.mj_multiRay(model, data, origin, directions.reshape(-1).copy(), self.geom_groups,
+                           True, scene.robot_body, geom_ids, distances, None,
+                           self.ray_count, self.range_m)
+        else:
+            geom_ids = np.full(self.ray_count, -1, dtype=np.int32)
+            distances = np.empty(self.ray_count, dtype=np.float64)
+            for index, direction in enumerate(directions):
+                distances[index] = mj.mj_ray(model, data, origin, direction,
+                    self.geom_groups, True, scene.robot_body, geom_ids[index:index+1])
+        self.last_ray_distances = distances.copy()
+        self.last_ray_geom_ids = geom_ids.copy()
         hit_count = 0
         visible_pedestrian_cells = set()
         visible_persistent_obstacle_cells = set()
 
-        for offset in angles:
-            direction = forward*math.cos(offset) + left*math.sin(offset)
-            direction[2] = 0.0
-            direction /= np.linalg.norm(direction)
-            distance = float(mj.mj_ray(model, data, origin, direction, self.geom_groups,
-                                       True, scene.robot_body, geom_id))
-            hit = distance >= 0 and distance <= self.range_m
-            visible_distance = self.range_m if distance < 0 else min(distance, self.range_m)
-            ray_cells = []
-            steps = max(1, math.ceil(visible_distance/self.sample_spacing_m))
-            for step in range(steps+1):
-                ray_distance = min(step*self.sample_spacing_m, visible_distance)
-                # A first-hit endpoint is not free space. The start point and
-                # measured samples strictly before that endpoint remain free.
-                if hit and ray_distance >= distance - 1e-10:
-                    continue
-                point = origin + direction*ray_distance
-                cell = scene.world_to_grid(point[:2])
-                x, y = cell
-                if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
-                    ray_cells.append(cell)
-                    free_cells.add(cell)
+        hits = (distances >= 0.0) & (distances <= self.range_m)
+        visible_distances = np.where(distances < 0.0, self.range_m,
+                                     np.minimum(distances, self.range_m))
+        sample_counts = np.maximum(1, np.ceil(
+            visible_distances / self.sample_spacing_m).astype(np.int32))
+        offsets = np.arange(int(sample_counts.max()) + 1, dtype=np.float64)
+        ray_distances = np.minimum(offsets[None, :] * self.sample_spacing_m,
+                                   visible_distances[:, None])
+        valid_samples = offsets[None, :] <= sample_counts[:, None]
+        # A first-hit endpoint is not free space; retain only measured samples
+        # strictly before the endpoint, matching the original per-ray loop.
+        valid_samples &= (~hits[:, None] |
+                          (ray_distances < distances[:, None] - 1e-10))
+        sample_x = origin[0] + directions[:, None, 0] * ray_distances
+        sample_y = origin[1] + directions[:, None, 1] * ray_distances
+        grid_x = np.floor(sample_x / scene.cell_size
+                          + (scene.scenario.width - 1) / 2 + 0.5 + 1e-12).astype(np.int64)
+        grid_y = np.floor(sample_y / scene.cell_size
+                          + (scene.scenario.height - 1) / 2 + 0.5 + 1e-12).astype(np.int64)
+        valid_samples &= ((grid_x >= 0) & (grid_x < scene.scenario.width)
+                          & (grid_y >= 0) & (grid_y < scene.scenario.height))
+        sample_ray_indices = np.broadcast_to(
+            np.arange(self.ray_count, dtype=np.int32)[:, None], valid_samples.shape)
+        cells_by_ray = np.bincount(sample_ray_indices[valid_samples],
+                                   minlength=self.ray_count).tolist()
+        free_mask = np.zeros(shape, dtype=np.bool_)
+        if np.any(valid_samples):
+            free_mask[grid_y[valid_samples], grid_x[valid_samples]] = True
+            free_cells.update((int(x), int(y))
+                              for y, x in np.argwhere(free_mask))
+
+        for ray_index, direction in enumerate(directions):
+            distance = float(distances[ray_index])
+            hit = bool(hits[ray_index])
             if hit:
                 hit_count += 1
-                hit_geom = int(geom_id[0])
+                hit_geom = int(geom_ids[ray_index])
                 # Map only the measured first-hit surface point. Geometry
                 # centers are privileged simulator state and can lie behind
                 # the visible boundary (or outside the ray's observed path).
@@ -115,7 +158,6 @@ class MujocoRayPerception:
                     hits_by_type['pedestrians'] += 1
                     if 0 <= x < scene.scenario.width and 0 <= y < scene.scenario.height:
                         visible_pedestrian_cells.add((x, y))
-            cells_by_ray.append(ray_cells)
 
         # A cell containing any measured first-hit surface is conservatively
         # occupied: a free ray through another part of the 0.75 m cell does not
@@ -133,7 +175,7 @@ class MujocoRayPerception:
             occupied_boundary_overlap_cells=BOX_BOUNDARY_OVERLAP_CELLS, range_m=self.range_m,
             horizontal_fov_deg=self.horizontal_fov_deg,
             sensor_origin_world=origin.tolist(), sensor_height_m=float(origin[2]),
-            visible_cells_by_ray=[len(cells) for cells in cells_by_ray],
+            visible_cells_by_ray=cells_by_ray,
             visible_pedestrian_cells=sorted(map(list, visible_pedestrian_cells)),
             visible_persistent_obstacle_cells=sorted(map(list, visible_persistent_obstacle_cells)))
         return observation
