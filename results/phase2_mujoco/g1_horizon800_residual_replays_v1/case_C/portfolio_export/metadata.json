@@ -1,0 +1,177 @@
+{
+  "camera": {
+    "azimuth_deg": 138.0,
+    "distance_m": 3.9,
+    "elevation_deg": -42.0,
+    "fixed_world_azimuth_deg": 138.0,
+    "fixed_world_elevation_deg": -42.0,
+    "lookahead_m": 0.65,
+    "orientation_rule": "azimuth and elevation are constant for every frame; robot heading is not read by camera control",
+    "style": "fixed-world-direction tracking observer; translation-only tracking, no orbit",
+    "target_smoothing_alpha": 0.28,
+    "tracking_rule": "camera look-at target follows robot XY plus fixed world +X lookahead, smoothed with a fixed alpha; orientation never changes"
+  },
+  "camera_mode": "trailing",
+  "duration_seconds": 80.16666666666667,
+  "experiment_data_or_policy_modified": false,
+  "floor_rgba": "0.67 0.75 0.79 1",
+  "fps": 12,
+  "g1_presentation_materials": "native Unitree G1 black/silver colors and texture assignments preserved; all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
+  "g1_rendered_alpha": 1.0,
+  "gif_conversion": {
+    "master": "portfolio_demo.mp4",
+    "method": "MP4 master; two-pass FFmpeg palette workflow: palettegen stats_mode=full, max_colors=256, reserve_transparent=0; then paletteuse dither=sierra2_4a, diff_mode=rectangle at the source frame rate.",
+    "palette_file": "gif_palette.png"
+  },
+  "gif_validation": {
+    "duration_ms_total": 80160,
+    "frames": 962,
+    "max_frame_delay_ms": 90,
+    "min_frame_delay_ms": 80,
+    "resolution": [
+      800,
+      450
+    ]
+  },
+  "git_commit": "5787ec562586a8630e64fa094bbd077cfd64e3c1",
+  "global_dynamic_geom_transparency": false,
+  "lighting": {
+    "directional_fill_count": 4,
+    "floor_rgba": "0.67 0.75 0.79 1",
+    "headlight_ambient": "0.36 0.39 0.44",
+    "headlight_diffuse": "0.58 0.62 0.68",
+    "style": "bright cool ambient fill with four broad shadow-free directional room fills plus original key light"
+  },
+  "loop_diagnostics": {
+    "action_kind_counts": {
+      "move": 282,
+      "no_action": 1,
+      "turn": 197
+    },
+    "constant_final_pose_suffix": {
+      "all_suffix_frames_report_no_feasible_forward_route": false,
+      "end_step": 479,
+      "final_heading_yaw_rad": -1.570796,
+      "final_position": [
+        20,
+        13
+      ],
+      "saved_frames_including_start": 1,
+      "start_step": 479,
+      "stationary_transitions_after_final_turn": 0
+    },
+    "diagnosis": "no_long_constant_pose_suffix",
+    "exact_cycle_search_periods_checked": [
+      2,
+      100
+    ],
+    "exact_repeated_position_heading_cycle_found": false,
+    "exact_repeated_position_heading_cycles_before_terminal_no_route": [],
+    "final_coordinate_revisits": {
+      "action_counts_in_interval": {},
+      "blocked_actions_after_first_visit": 0,
+      "coordinate": [
+        20,
+        13
+      ],
+      "first_turn_step": null,
+      "first_visit_step": 479,
+      "last_turn_step": null,
+      "steps_until_no_route_suffix": 0,
+      "successful_translations_after_first_visit": 0,
+      "turn_actions_in_interval": 0
+    },
+    "most_visited_cells": [
+      {
+        "position": [
+          8,
+          4
+        ],
+        "saved_frames": 11
+      },
+      {
+        "position": [
+          13,
+          14
+        ],
+        "saved_frames": 10
+      },
+      {
+        "position": [
+          8,
+          6
+        ],
+        "saved_frames": 10
+      },
+      {
+        "position": [
+          8,
+          5
+        ],
+        "saved_frames": 10
+      },
+      {
+        "position": [
+          14,
+          14
+        ],
+        "saved_frames": 9
+      }
+    ],
+    "moving_transitions": 188,
+    "path_length_cells": 188.0,
+    "trajectory_steps": 479,
+    "unique_grid_positions": 88,
+    "unique_position_heading_states": 259
+  },
+  "marker_glow_design": "Compact cyan/gold sphere-and-stem markers with high-emission heads, nested luminous base rings, and small pale glints, restored toward reference image 1. MuJoCo has no bloom pass; emission and layered geometry approximate bloom.",
+  "model_hashes": {
+    "saved_scene_sha256": "9f7ece1341df6f8fd5c2b4a1c0905074d3a3a8c359b222a86daad08dd98470cf",
+    "unitree_g1_assets_tree_sha256": "7606f3a10ab89fbae0648a08d2e5d4a3c63fd92c907af1ca497da827dfbfa70c",
+    "unitree_g1_mjcf_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489"
+  },
+  "opacity_fix": "Disabled mjVIS_TRANSPARENT, which had faded dynamic geoms globally. G1 geoms/materials are alpha 1.0; only maze wall geoms receive WALL_RGBA alpha. Marker shells are presentation-only UI layers.",
+  "output_frames": 962,
+  "presentation_note": "Marker design follows reference image 1's compact glowing orb, narrow stem, and base ring. Robot colors follow reference image 4 and the native Unitree G1 MJCF black/silver materials. The saved source trajectory is replayed unchanged.",
+  "presentation_replay_only": true,
+  "renderer": {
+    "backend": "MuJoCo offscreen Renderer",
+    "mujoco_version": "3.17.0",
+    "python": "3.12.10"
+  },
+  "resolution": {
+    "height": 450,
+    "width": 800
+  },
+  "robot_appearance_source": "native Unitree G1 MJCF materials, textures, and colors from third_party/unitree_g1/g1.xml; display export preserves original black/silver accent assignments and only forces alpha to 1.0",
+  "seconds_per_saved_action": 0.1,
+  "source_code_sha256": {
+    "export_script": "1135c6ac32a62d49b3d4b0833fa90463f4aa49ad0bfcb7ddda5f80b5aad1d5b0",
+    "viewer_helpers": "3db8c093ad94055eee7cf7b27cb52ef265a7e093f9b7f9a81e253b40d0b20806"
+  },
+  "source_horizon800_trace_sha256": "be3216b94baf6c80ce61089cc30af35b1f350fca3326d2dc7bc5bbae059b0383",
+  "source_result_dir": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_C/replay_source",
+  "source_saved_episode": {
+    "policy": "static",
+    "schedule": 1,
+    "seed": 42,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+  },
+  "source_scene_sha256": "9f7ece1341df6f8fd5c2b4a1c0905074d3a3a8c359b222a86daad08dd98470cf",
+  "source_trajectory_or_metrics_modified": false,
+  "source_trajectory_sha256": "62f7067ec64109cd26ea2d2693622ede318c82238b0c3166928006df4dba555a",
+  "start_goal_markers": "restored compact sphere-and-stem waypoint style from reference image 1: cyan START and gold GOAL heads, narrow stems, compact layered luminous ellipsoid base rings and a small glint; stronger emission retained; non-colliding presentation UI, not the enlarged shell style from reference image 2",
+  "thumbnail_framing": {
+    "camera_distance_m": 3.9,
+    "description": "Tighter fixed-direction tracking frame keeps G1 larger while retaining nearby corridor context."
+  },
+  "trajectory_frames": 480,
+  "trajectory_source_sha256": "62f7067ec64109cd26ea2d2693622ede318c82238b0c3166928006df4dba555a",
+  "video_outputs": {
+    "gif": true,
+    "mp4": true
+  },
+  "visual_gait": "reused deterministic viewer gait_joint_targets and playback_samples; display-only, not physical locomotion",
+  "visual_only_contact_audit_file": "visual_only_contact_audit.json",
+  "walls_rgba": "0.40 0.51 0.62 0.56"
+}

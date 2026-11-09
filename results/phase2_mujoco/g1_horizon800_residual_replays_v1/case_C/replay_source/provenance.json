@@ -1,0 +1,15 @@
+{
+  "pedestrian_visualization_source": "saved evaluator-only coordinates; display only",
+  "policy": "static",
+  "pose_and_heading_source": "saved trajectory; not regenerated",
+  "scene_sha256": "9f7ece1341df6f8fd5c2b4a1c0905074d3a3a8c359b222a86daad08dd98470cf",
+  "schedule": 1,
+  "seed": 42,
+  "source_experiment_directory": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_unreached_h400_h800_v1",
+  "source_kind": "presentation-only replay from saved 800-step episode trace",
+  "source_trace_file": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_unreached_h400_h800_v1/unreached_traces.jsonl.gz",
+  "source_trace_sha256": "be3216b94baf6c80ce61089cc30af35b1f350fca3326d2dc7bc5bbae059b0383",
+  "steps": 480,
+  "trajectory_sha256": "62f7067ec64109cd26ea2d2693622ede318c82238b0c3166928006df4dba555a",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+}

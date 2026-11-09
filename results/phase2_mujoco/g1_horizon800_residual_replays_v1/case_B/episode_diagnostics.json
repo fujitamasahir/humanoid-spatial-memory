@@ -1,0 +1,85 @@
+{
+  "action_kind_counts": {
+    "move": 252,
+    "no_action": 362,
+    "turn": 187
+  },
+  "constant_final_pose_suffix": {
+    "all_suffix_frames_report_no_feasible_forward_route": true,
+    "end_step": 800,
+    "final_heading_yaw_rad": 1.570796,
+    "final_position": [
+      1,
+      23
+    ],
+    "saved_frames_including_start": 361,
+    "start_step": 440,
+    "stationary_transitions_after_final_turn": 360
+  },
+  "diagnosis": "roamed_and_revisited_then_stopped_with_no_feasible_forward_route",
+  "exact_cycle_search_periods_checked": [
+    2,
+    100
+  ],
+  "exact_repeated_position_heading_cycle_found": false,
+  "exact_repeated_position_heading_cycles_before_terminal_no_route": [],
+  "final_coordinate_revisits": {
+    "action_counts_in_interval": {
+      "move": 69,
+      "turn": 55
+    },
+    "blocked_actions_after_first_visit": 28,
+    "coordinate": [
+      1,
+      23
+    ],
+    "first_turn_step": 318,
+    "first_visit_step": 316,
+    "last_turn_step": 438,
+    "steps_until_no_route_suffix": 124,
+    "successful_translations_after_first_visit": 41,
+    "turn_actions_in_interval": 55
+  },
+  "most_visited_cells": [
+    {
+      "position": [
+        1,
+        23
+      ],
+      "saved_frames": 367
+    },
+    {
+      "position": [
+        20,
+        22
+      ],
+      "saved_frames": 8
+    },
+    {
+      "position": [
+        21,
+        23
+      ],
+      "saved_frames": 8
+    },
+    {
+      "position": [
+        10,
+        19
+      ],
+      "saved_frames": 7
+    },
+    {
+      "position": [
+        1,
+        21
+      ],
+      "saved_frames": 7
+    }
+  ],
+  "moving_transitions": 155,
+  "path_length_cells": 155.0,
+  "trajectory_steps": 800,
+  "unique_grid_positions": 110,
+  "unique_position_heading_states": 243
+}

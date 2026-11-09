@@ -1,0 +1,9 @@
+{
+  "candidate_or_environment_generation": false,
+  "experiment_reruns": 0,
+  "horizon800_artifacts_verified": 5,
+  "horizon800_source_manifest_sha256": "88e4931fad5957be81fc6d554e446085d8f64597a7cfd88081b59abcd1ab9513",
+  "original_288_result_verified": true,
+  "phase15_files_verified": 836,
+  "source_files_modified": false
+}

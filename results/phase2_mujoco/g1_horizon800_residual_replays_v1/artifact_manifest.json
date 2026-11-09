@@ -1,0 +1,212 @@
+[
+  {
+    "bytes": 1290,
+    "path": "README.md",
+    "sha256": "b6853f0f05b8bc11ce4ff79d3b10ffb1cfdac4103fb921be6767d82d53edd88e"
+  },
+  {
+    "bytes": 1742,
+    "path": "case_A/episode_diagnostics.json",
+    "sha256": "de4e880920432110dca662bef25bdf0d863761d1a2e2269bf94924f09f4cc001"
+  },
+  {
+    "bytes": 854,
+    "path": "case_A/portfolio_export/gif_palette.png",
+    "sha256": "ffe0688b589ecc75d0522c06bb26f91074476fb22025d9c6a2447aaa3b1c6252"
+  },
+  {
+    "bytes": 7096,
+    "path": "case_A/portfolio_export/metadata.json",
+    "sha256": "2182b6fa349184ed21f572ecf4d8c6e801640ba545cca58e48fc64a904bd1668"
+  },
+  {
+    "bytes": 48618695,
+    "path": "case_A/portfolio_export/portfolio_demo.gif",
+    "sha256": "9da60bd9b7231f3c59cd45c588a7f48cfd7d335d120c77759e9b5c65ef14fec4"
+  },
+  {
+    "bytes": 3985946,
+    "path": "case_A/portfolio_export/portfolio_demo.mp4",
+    "sha256": "a4ff2cc5e9965523115935d48ff3814f683e47f91807ec70e88896e12bb89f83"
+  },
+  {
+    "bytes": 531,
+    "path": "case_A/portfolio_export/presentation_note.md",
+    "sha256": "b6e7cc1131023b1ed0c9aa340411324aa12e6bd307ded2ab54a55bd3ff5edd88"
+  },
+  {
+    "bytes": 38123,
+    "path": "case_A/portfolio_export/representative.png",
+    "sha256": "b3634b7262f559167b9a34b6ca6e185129e6314e4a12ba3ff33a19d488e4ff02"
+  },
+  {
+    "bytes": 324,
+    "path": "case_A/portfolio_export/visual_only_contact_audit.json",
+    "sha256": "54d95409f87e4b0bffdd904babb6713e1c2639833ec7a38c7cec7ffe88dc9b4b"
+  },
+  {
+    "bytes": 894,
+    "path": "case_A/replay_source/provenance.json",
+    "sha256": "cf2baed1125ba1d42028075e9a7085a1814e2340b91d5e8d471b33384b10d9ad"
+  },
+  {
+    "bytes": 121,
+    "path": "case_A/replay_source/scenario.json",
+    "sha256": "c052c402625366cb4194fbfca5a1e491c21f692f44ab98be4acd999df85dc0f0"
+  },
+  {
+    "bytes": 46777,
+    "path": "case_A/replay_source/scene.xml",
+    "sha256": "51dc2de51c40917552bf99c6eeabe34fff8f56a48b9509b038db09f909e4cf6f"
+  },
+  {
+    "bytes": 350,
+    "path": "case_A/replay_source/summary.json",
+    "sha256": "5912ee0457f9e9f78fcecd9da80d5fb736fcf1fa39741eb210035d35819b9794"
+  },
+  {
+    "bytes": 507931,
+    "path": "case_A/replay_source/trajectory.json",
+    "sha256": "e98fc5bfc129f7faae643dce2dbc1f95fafd658b593b51effc7fd15fac738cf4"
+  },
+  {
+    "bytes": 1741,
+    "path": "case_B/episode_diagnostics.json",
+    "sha256": "473ad12b7d8e835dfc8061d26d28787edf48f452a03c4cf5823712734ac1c520"
+  },
+  {
+    "bytes": 827,
+    "path": "case_B/portfolio_export/gif_palette.png",
+    "sha256": "3f99819b5cd64e76f2ba0af9bf6562cbbd636253d0b9c6f1804e260b5ebcc271"
+  },
+  {
+    "bytes": 7095,
+    "path": "case_B/portfolio_export/metadata.json",
+    "sha256": "9cae537cd5ca0192d26545f7222a1ecd4764885c20e67a4d6684148449f90afd"
+  },
+  {
+    "bytes": 47794064,
+    "path": "case_B/portfolio_export/portfolio_demo.gif",
+    "sha256": "a68ee9d71a1455dcdb364af02655b83af1f9ce8928fb95c6b99b128a7989690e"
+  },
+  {
+    "bytes": 3693226,
+    "path": "case_B/portfolio_export/portfolio_demo.mp4",
+    "sha256": "5c4e8a807b35c33b5435a2fd5e1f57c897e7d84b085a57b1e5863eae6a98a352"
+  },
+  {
+    "bytes": 531,
+    "path": "case_B/portfolio_export/presentation_note.md",
+    "sha256": "8487ca3b4fbb11b65ad3a399a008500d1612453eb46aeb664667b2ebe8ebe0cb"
+  },
+  {
+    "bytes": 41968,
+    "path": "case_B/portfolio_export/representative.png",
+    "sha256": "31f0b5cca3f5dd19d5e980d7d1ad6f24997ffc2235fa21b9eb0f4a3eef1cb028"
+  },
+  {
+    "bytes": 324,
+    "path": "case_B/portfolio_export/visual_only_contact_audit.json",
+    "sha256": "aafe04dc95f78ea70cf8429361258829103785ea191119f64f58560c7d2ffdc2"
+  },
+  {
+    "bytes": 894,
+    "path": "case_B/replay_source/provenance.json",
+    "sha256": "d9212da98af9b3676fad492f2338c3190dcc6f90c4c178816bdd9a6d7c2657ca"
+  },
+  {
+    "bytes": 121,
+    "path": "case_B/replay_source/scenario.json",
+    "sha256": "c052c402625366cb4194fbfca5a1e491c21f692f44ab98be4acd999df85dc0f0"
+  },
+  {
+    "bytes": 47639,
+    "path": "case_B/replay_source/scene.xml",
+    "sha256": "c187773adddc6ef6ebb511939e8094adabcfa59683d8b4e3a1cfb461149d91a1"
+  },
+  {
+    "bytes": 350,
+    "path": "case_B/replay_source/summary.json",
+    "sha256": "dea1697029160222a4c3a4a808a29f5536cd40155a12407de9daa316f3bb3803"
+  },
+  {
+    "bytes": 501669,
+    "path": "case_B/replay_source/trajectory.json",
+    "sha256": "acc76ade2b81bd966e823c6bb60cd86edbc1bc20d2404ab89a612595b8ce91d0"
+  },
+  {
+    "bytes": 1657,
+    "path": "case_C/episode_diagnostics.json",
+    "sha256": "464c18345dcd3b11e2dd7f55fd5f6f78d0ed23850610080b85c973eddfea6be0"
+  },
+  {
+    "bytes": 827,
+    "path": "case_C/portfolio_export/gif_palette.png",
+    "sha256": "7f2c77d0b6b0d18e6002f0523edd256076dc0eeea3bb49bae70040bfe2af2594"
+  },
+  {
+    "bytes": 7000,
+    "path": "case_C/portfolio_export/metadata.json",
+    "sha256": "30892da8cc9e8489792346660b0f30200d490dfc02e9295796c7638823e20352"
+  },
+  {
+    "bytes": 70315417,
+    "path": "case_C/portfolio_export/portfolio_demo.gif",
+    "sha256": "63e4e7b1737e2eed75bd3598dedde2e9922af617233b30c8a9efc97d3aad8524"
+  },
+  {
+    "bytes": 5509001,
+    "path": "case_C/portfolio_export/portfolio_demo.mp4",
+    "sha256": "d990dde96f9b1f23b7f0b4fdbdb14357617dd9a9b9890d6fde33ab6818ca4c79"
+  },
+  {
+    "bytes": 531,
+    "path": "case_C/portfolio_export/presentation_note.md",
+    "sha256": "134882ab5fe2347cd22325e40b07d6dbb7c5693077c0d9fd7c39c096d87c2649"
+  },
+  {
+    "bytes": 63958,
+    "path": "case_C/portfolio_export/representative.png",
+    "sha256": "f8f07b8c6fd5e28f119e02a5bc333cc4a4f13529c75a972d66fba6c134dab36d"
+  },
+  {
+    "bytes": 322,
+    "path": "case_C/portfolio_export/visual_only_contact_audit.json",
+    "sha256": "348caac75c412a2c848d92d52860bcc162c8ea5242808208102e87432d5c03de"
+  },
+  {
+    "bytes": 893,
+    "path": "case_C/replay_source/provenance.json",
+    "sha256": "7b0027ec32d2718f0e6966936cbd3a1369bd828008456bb9a2e3b6f62bf2fa18"
+  },
+  {
+    "bytes": 120,
+    "path": "case_C/replay_source/scenario.json",
+    "sha256": "266f4357f8a968acc809535c0e2c077bcb5289b47baf0a68c29548a992ac6bdd"
+  },
+  {
+    "bytes": 68062,
+    "path": "case_C/replay_source/scene.xml",
+    "sha256": "9f7ece1341df6f8fd5c2b4a1c0905074d3a3a8c359b222a86daad08dd98470cf"
+  },
+  {
+    "bytes": 353,
+    "path": "case_C/replay_source/summary.json",
+    "sha256": "64658c2aed2c04be8a9e50584302d8d4057c6b73ee5cd0bff3a340ba55a87046"
+  },
+  {
+    "bytes": 290135,
+    "path": "case_C/replay_source/trajectory.json",
+    "sha256": "62f7067ec64109cd26ea2d2693622ede318c82238b0c3166928006df4dba555a"
+  },
+  {
+    "bytes": 9188,
+    "path": "render_validation.json",
+    "sha256": "8ed5edb8d4c7003c176d9886b7bdbe0b25312636d10be6cb5db6fe56619b7001"
+  },
+  {
+    "bytes": 329,
+    "path": "source_validation.json",
+    "sha256": "760d0571426e86f897f78e9fc5505a80b58e9df5d1818dab11d5c52ce0d89ead"
+  }
+]

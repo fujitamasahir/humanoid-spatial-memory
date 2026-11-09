@@ -1,0 +1,37 @@
+[
+  {
+    "bytes": 827,
+    "path": "gif_palette.png",
+    "sha256": "7f2c77d0b6b0d18e6002f0523edd256076dc0eeea3bb49bae70040bfe2af2594"
+  },
+  {
+    "bytes": 7000,
+    "path": "metadata.json",
+    "sha256": "30892da8cc9e8489792346660b0f30200d490dfc02e9295796c7638823e20352"
+  },
+  {
+    "bytes": 70315417,
+    "path": "portfolio_demo.gif",
+    "sha256": "63e4e7b1737e2eed75bd3598dedde2e9922af617233b30c8a9efc97d3aad8524"
+  },
+  {
+    "bytes": 5509001,
+    "path": "portfolio_demo.mp4",
+    "sha256": "d990dde96f9b1f23b7f0b4fdbdb14357617dd9a9b9890d6fde33ab6818ca4c79"
+  },
+  {
+    "bytes": 531,
+    "path": "presentation_note.md",
+    "sha256": "134882ab5fe2347cd22325e40b07d6dbb7c5693077c0d9fd7c39c096d87c2649"
+  },
+  {
+    "bytes": 63958,
+    "path": "representative.png",
+    "sha256": "f8f07b8c6fd5e28f119e02a5bc333cc4a4f13529c75a972d66fba6c134dab36d"
+  },
+  {
+    "bytes": 322,
+    "path": "visual_only_contact_audit.json",
+    "sha256": "348caac75c412a2c848d92d52860bcc162c8ea5242808208102e87432d5c03de"
+  }
+]

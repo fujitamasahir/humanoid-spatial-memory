@@ -1,0 +1,14 @@
+{
+  "elapsed_steps": "479",
+  "final_position": "[20,13]",
+  "g1_backward_actions": "0",
+  "g1_forward_actions": "282",
+  "g1_in_place_turns": "197",
+  "g1_lateral_actions": "0",
+  "g1_pedestrian_contact_pairs": "0",
+  "g1_unwanted_contact_pairs": "0",
+  "g1_unwanted_contact_states": "0",
+  "g1_waits": "0",
+  "goal_step": "479",
+  "success": "True"
+}
