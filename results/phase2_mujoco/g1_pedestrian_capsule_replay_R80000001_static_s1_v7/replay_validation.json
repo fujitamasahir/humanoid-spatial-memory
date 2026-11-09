@@ -1,0 +1,56 @@
+{
+  "fit_record": {
+    "path": "results/raw/phase15_macos_development/fit/records/4148e456253ed9ac83a876ffb6b2b2f1b93e3a8c29f4c12ecdef2d89a7f1d55b.json.gz",
+    "sha256": "f51a5385cad5640538160b1c0ceeca2fdcdda51234232c2a8c0b2ae3afe43f28"
+  },
+  "note": "The 288-episode result retained action events, not per-frame pose trajectories. This display trace was rebuilt by deterministic replay and accepted only after saved outcome counters and all recorded non-move actions matched exactly. No candidate or maze was regenerated.",
+  "pedestrian_proxy": {
+    "centerline_endpoints_z_m": [
+      0.2,
+      1.28
+    ],
+    "kind": "MuJoCo mocap capsule; not a humanoid model",
+    "overall_height_m": 1.46,
+    "radius_m": 0.19,
+    "trajectory_source": "saved B-prime schedule positions"
+  },
+  "replay_comparisons": {
+    "blocked_attempts": true,
+    "contact_free_success": true,
+    "elapsed_steps": true,
+    "forward_actions": true,
+    "in_place_turns": true,
+    "non_move_action_trace": true,
+    "pedestrian_contacts": true,
+    "success": true,
+    "unwanted_contacts": true
+  },
+  "saved_episode_metrics": {
+    "contact_free_success": false,
+    "elapsed_steps": 80,
+    "final_position": [
+      11,
+      4
+    ],
+    "g1_footprint_blocked_attempts": 12,
+    "g1_forward_actions": 33,
+    "g1_in_place_turns": 22,
+    "g1_pedestrian_contact_pairs": 234,
+    "g1_unwanted_contact_pairs": 234,
+    "success": false
+  },
+  "source_episode": {
+    "episode_seed": 42,
+    "method": "static",
+    "schedule_index": 1,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+  },
+  "source_files_sha256": {
+    "action_events.json": "eecf1fb1b218ab3d32e87c254d7b630dd3b972440f0e684baf39bcd8d60b1530",
+    "episodes.csv": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "provenance.json": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f"
+  },
+  "source_full_run": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "status": "PASS_DETERMINISTIC_EPISODE_REPLAY_MATCH",
+  "trajectory_frames": 81
+}

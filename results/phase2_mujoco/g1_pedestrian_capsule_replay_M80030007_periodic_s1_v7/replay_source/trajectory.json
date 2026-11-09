@@ -1,0 +1,5043 @@
+[
+  {
+    "step": 0,
+    "position": [
+      20,
+      16
+    ],
+    "planned": [
+      [
+        20,
+        16
+      ],
+      [
+        19,
+        16
+      ],
+      [
+        18,
+        16
+      ],
+      [
+        17,
+        16
+      ],
+      [
+        16,
+        16
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        13,
+        16
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        7,
+        16
+      ],
+      [
+        6,
+        16
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": false,
+    "navigation_action": null,
+    "navigation_action_reason": null,
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 1,
+    "position": [
+      20,
+      16
+    ],
+    "planned": [
+      [
+        20,
+        16
+      ],
+      [
+        20,
+        16
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        20,
+        13
+      ],
+      [
+        20,
+        12
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        19,
+        8
+      ],
+      [
+        18,
+        8
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 2,
+    "position": [
+      20,
+      15
+    ],
+    "planned": [
+      [
+        20,
+        16
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        20,
+        13
+      ],
+      [
+        20,
+        12
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        19,
+        8
+      ],
+      [
+        18,
+        8
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        20,
+        15
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 3,
+    "position": [
+      20,
+      14
+    ],
+    "planned": [
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        20,
+        13
+      ],
+      [
+        20,
+        12
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        19,
+        8
+      ],
+      [
+        18,
+        8
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        20,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 4,
+    "position": [
+      20,
+      14
+    ],
+    "planned": [
+      [
+        20,
+        14
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        19,
+        14
+      ],
+      [
+        18,
+        14
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        14,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 5,
+    "position": [
+      19,
+      14
+    ],
+    "planned": [
+      [
+        20,
+        14
+      ],
+      [
+        19,
+        14
+      ],
+      [
+        18,
+        14
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        14,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        19,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 6,
+    "position": [
+      18,
+      14
+    ],
+    "planned": [
+      [
+        19,
+        14
+      ],
+      [
+        18,
+        14
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        14,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        18,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 7,
+    "position": [
+      17,
+      14
+    ],
+    "planned": [
+      [
+        18,
+        14
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        14,
+        14
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        12,
+        14
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        10,
+        14
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        17,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 8,
+    "position": [
+      16,
+      14
+    ],
+    "planned": [
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        16,
+        13
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 9,
+    "position": [
+      16,
+      14
+    ],
+    "planned": [
+      [
+        16,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        16,
+        13
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 10,
+    "position": [
+      16,
+      13
+    ],
+    "planned": [
+      [
+        16,
+        14
+      ],
+      [
+        16,
+        13
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        13
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 11,
+    "position": [
+      16,
+      12
+    ],
+    "planned": [
+      [
+        16,
+        13
+      ],
+      [
+        16,
+        12
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 12,
+    "position": [
+      16,
+      11
+    ],
+    "planned": [
+      [
+        16,
+        12
+      ],
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 13,
+    "position": [
+      16,
+      10
+    ],
+    "planned": [
+      [
+        16,
+        11
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 14,
+    "position": [
+      16,
+      9
+    ],
+    "planned": [
+      [
+        16,
+        10
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 15,
+    "position": [
+      16,
+      8
+    ],
+    "planned": [
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        16,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 16,
+    "position": [
+      16,
+      8
+    ],
+    "planned": [
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 17,
+    "position": [
+      15,
+      8
+    ],
+    "planned": [
+      [
+        16,
+        8
+      ],
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        15,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 18,
+    "position": [
+      14,
+      8
+    ],
+    "planned": [
+      [
+        15,
+        8
+      ],
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        14,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 19,
+    "position": [
+      13,
+      8
+    ],
+    "planned": [
+      [
+        14,
+        8
+      ],
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        13,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 20,
+    "position": [
+      12,
+      8
+    ],
+    "planned": [
+      [
+        13,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        12,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 21,
+    "position": [
+      12,
+      8
+    ],
+    "planned": [
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 22,
+    "position": [
+      12,
+      9
+    ],
+    "planned": [
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        12,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 23,
+    "position": [
+      12,
+      10
+    ],
+    "planned": [
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        12,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 24,
+    "position": [
+      12,
+      10
+    ],
+    "planned": [
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        5,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 25,
+    "position": [
+      11,
+      10
+    ],
+    "planned": [
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        11,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 26,
+    "position": [
+      10,
+      10
+    ],
+    "planned": [
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        10,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 27,
+    "position": [
+      10,
+      10
+    ],
+    "planned": [
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        9,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 28,
+    "position": [
+      10,
+      10
+    ],
+    "planned": [
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 29,
+    "position": [
+      10,
+      11
+    ],
+    "planned": [
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        10,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 30,
+    "position": [
+      10,
+      12
+    ],
+    "planned": [
+      [
+        10,
+        11
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        10,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 31,
+    "position": [
+      10,
+      12
+    ],
+    "planned": [
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 32,
+    "position": [
+      9,
+      12
+    ],
+    "planned": [
+      [
+        10,
+        12
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        9,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 33,
+    "position": [
+      8,
+      12
+    ],
+    "planned": [
+      [
+        9,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        8,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 34,
+    "position": [
+      8,
+      12
+    ],
+    "planned": [
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 35,
+    "position": [
+      8,
+      11
+    ],
+    "planned": [
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        8,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 36,
+    "position": [
+      8,
+      10
+    ],
+    "planned": [
+      [
+        8,
+        11
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        8,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 37,
+    "position": [
+      8,
+      10
+    ],
+    "planned": [
+      [
+        8,
+        10
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 38,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        8,
+        10
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        7,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 39,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": true,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 40,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "wait",
+      "dynamic_threat_uncertain_no_safe_retreat"
+    ],
+    "navigation_action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 41,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "wait",
+      "dynamic_threat_uncertain_no_safe_retreat"
+    ],
+    "navigation_action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+    "people": [
+      [
+        6,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 42,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "wait",
+      "dynamic_threat_uncertain_no_safe_retreat"
+    ],
+    "navigation_action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 43,
+    "position": [
+      7,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "wait",
+      "dynamic_threat_uncertain_no_safe_retreat"
+    ],
+    "navigation_action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 44,
+    "position": [
+      6,
+      10
+    ],
+    "planned": [
+      [
+        7,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 45,
+    "position": [
+      6,
+      10
+    ],
+    "planned": [
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 46,
+    "position": [
+      6,
+      11
+    ],
+    "planned": [
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        5,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 47,
+    "position": [
+      6,
+      12
+    ],
+    "planned": [
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 48,
+    "position": [
+      6,
+      12
+    ],
+    "planned": [
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        10
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 49,
+    "position": [
+      5,
+      12
+    ],
+    "planned": [
+      [
+        6,
+        12
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 50,
+    "position": [
+      4,
+      12
+    ],
+    "planned": [
+      [
+        5,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        4,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 51,
+    "position": [
+      4,
+      12
+    ],
+    "planned": [
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 52,
+    "position": [
+      3,
+      12
+    ],
+    "planned": [
+      [
+        4,
+        12
+      ],
+      [
+        3,
+        12
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "sidestep",
+      [
+        3,
+        12
+      ]
+    ],
+    "navigation_action_reason": "observed_static_obstacle_blocks_forward_path",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 53,
+    "position": [
+      3,
+      12
+    ],
+    "planned": [
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 54,
+    "position": [
+      2,
+      12
+    ],
+    "planned": [
+      [
+        3,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 3.141592653589793,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        2,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 55,
+    "position": [
+      2,
+      12
+    ],
+    "planned": [
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 56,
+    "position": [
+      2,
+      11
+    ],
+    "planned": [
+      [
+        2,
+        12
+      ],
+      [
+        2,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        2,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 57,
+    "position": [
+      2,
+      10
+    ],
+    "planned": [
+      [
+        2,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        2,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 58,
+    "position": [
+      2,
+      9
+    ],
+    "planned": [
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        2,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 59,
+    "position": [
+      2,
+      8
+    ],
+    "planned": [
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": -1.5707963267948966,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        2,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 60,
+    "position": [
+      2,
+      8
+    ],
+    "planned": [
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": false,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": true,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        4,
+        12
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 61,
+    "position": [
+      3,
+      8
+    ],
+    "planned": [
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 62,
+    "position": [
+      4,
+      8
+    ],
+    "planned": [
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        4,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 63,
+    "position": [
+      5,
+      8
+    ],
+    "planned": [
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  },
+  {
+    "step": 64,
+    "position": [
+      6,
+      8
+    ],
+    "planned": [
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        8
+      ]
+    ],
+    "moved": true,
+    "blocked": false,
+    "heading_yaw": 0.0,
+    "heading_changed": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        4,
+        11
+      ]
+    ],
+    "active_objects": [],
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0
+  }
+]

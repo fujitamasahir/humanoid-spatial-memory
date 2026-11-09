@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "contact_free_success": true,
+  "g1_unwanted_contact_pairs": 0,
+  "g1_pedestrian_contact_pairs": 0,
+  "elapsed_steps": 64,
+  "final_position": [
+    6,
+    8
+  ],
+  "g1_forward_actions": 43,
+  "g1_in_place_turns": 16,
+  "g1_footprint_blocked_attempts": 2
+}

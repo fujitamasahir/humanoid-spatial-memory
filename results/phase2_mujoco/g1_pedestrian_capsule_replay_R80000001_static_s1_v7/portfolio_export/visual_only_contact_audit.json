@@ -1,0 +1,11 @@
+{
+  "contact_categories": {
+    "pedestrian": 936
+  },
+  "foot_floor_contact_pairs": 2204,
+  "interpretation": "Presentation-only MuJoCo pose contact audit; kinematic root poses and visual gait, separate from navigation safety metrics.",
+  "rendered_poses": 327,
+  "status": "FAIL",
+  "unwanted_contact_frames": 24,
+  "unwanted_contact_pairs": 936
+}

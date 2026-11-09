@@ -176,7 +176,10 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float,
             rebuilt_events.append(dict(world_identity=identity, schedule_index=schedule,
                 method=method, step=frame["step"], position=list(frame["position"]),
                 heading_yaw=frame.get("heading_yaw"), action_kind=action[0],
-                action_value=action[1], reason=frame.get("navigation_action_reason"),
+                # JSON action logs store coordinate targets as arrays; match
+                # that representation for observed-clear lateral sidesteps.
+                action_value=list(action[1]) if isinstance(action[1], tuple) else action[1],
+                reason=frame.get("navigation_action_reason"),
                 accepted=not frame.get("blocked", False),
                 collision_checked=action[0] != "wait"))
     comparisons["non_move_action_trace"] = rebuilt_events == source_events
