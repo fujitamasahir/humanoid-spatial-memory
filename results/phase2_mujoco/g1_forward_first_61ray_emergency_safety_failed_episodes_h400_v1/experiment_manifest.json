@@ -1,0 +1,589 @@
+{
+  "baseline_artifacts_verified": 6,
+  "evaluator_source_hashes": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "original_288_episode_result_modified": false,
+  "phase15_preservation_verification": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "prefix_validation": {
+    "first_81_trace_frames_match_source_for_every_episode": true,
+    "source_unsuccessful_endpoint_step": 80
+  },
+  "selected_episode_keys": [
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      0,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      0,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      1,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      1,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      1,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      1,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      1,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      0,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      1,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      0,
+      "age",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      0,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      1,
+      "periodic",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      1,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      0,
+      "uncertainty",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      1,
+      "uncertainty",
+      42
+    ]
+  ],
+  "selection_rule": "success=false in source episodes.csv; 63 selected from the 288 saved rows",
+  "source_evaluation_conditions": {
+    "admitted_worlds_reused": 36,
+    "candidate_or_world_generation": false,
+    "only_changed_config_key": "max_steps",
+    "policy_config_original": {
+      "common_horizon_metrics": true,
+      "g1_navigation": {
+        "footprint_source": "pinned G1 collision geometry",
+        "forward_translation_default": true,
+        "local_half_extents_m": [
+          0.218954831277208,
+          0.3279970912029507
+        ],
+        "motion": "cardinal kinematic translation with separate in-place turns",
+        "observed_occupancy_only": true,
+        "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+        "rejected_action_history": true,
+        "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+        "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+        "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+      },
+      "max_observations": 20,
+      "max_steps": 80,
+      "mujoco_cell_size_m": 0.75,
+      "mujoco_ray_sensor": {
+        "horizontal_fov_deg": 120.0,
+        "range_m": 6.0,
+        "ray_count": 61,
+        "sample_spacing_m": 0.075
+      },
+      "mujoco_timestep_seconds": 0.02,
+      "observation_cost": 1,
+      "sensor": {
+        "noise": 0.0,
+        "occlusion": true,
+        "radius": 3
+      },
+      "sensor_backend": "mujoco3d",
+      "unknown": "optimistic",
+      "update_interval": 4
+    },
+    "policy_config_used": {
+      "common_horizon_metrics": true,
+      "g1_navigation": {
+        "footprint_source": "pinned G1 collision geometry",
+        "forward_translation_default": true,
+        "local_half_extents_m": [
+          0.218954831277208,
+          0.3279970912029507
+        ],
+        "motion": "cardinal kinematic translation with separate in-place turns",
+        "observed_occupancy_only": true,
+        "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+        "rejected_action_history": true,
+        "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+        "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+        "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+      },
+      "max_observations": 20,
+      "max_steps": 400,
+      "mujoco_cell_size_m": 0.75,
+      "mujoco_ray_sensor": {
+        "horizontal_fov_deg": 120.0,
+        "range_m": 6.0,
+        "ray_count": 61,
+        "sample_spacing_m": 0.075
+      },
+      "mujoco_timestep_seconds": 0.02,
+      "observation_cost": 1,
+      "sensor": {
+        "noise": 0.0,
+        "occlusion": true,
+        "radius": 3
+      },
+      "sensor_backend": "mujoco3d",
+      "unknown": "optimistic",
+      "update_interval": 4
+    },
+    "safety_config": {
+      "horizontal_fov_deg": 360.0,
+      "range_m": 2.0,
+      "ray_backend": "multi",
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "seed": 42
+  },
+  "source_hashes_before_run": {
+    "baseline_manifest_sha256": "154b10726b6796469117840158441b16ee68aa2896c490a4c66345a644d4dfa6",
+    "evaluator_source_hashes": {
+      "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+      "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+      "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+      "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+      "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+      "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+      "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+      "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+      "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+    },
+    "source_episode_csv_sha256": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "source_experiment_manifest_sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+    "source_manifest_sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+    "source_trace_sha256": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7"
+  },
+  "source_result_directory": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+  "summary": {
+    "cohort_size": 63,
+    "contact_episodes_by_400": 0,
+    "contact_free_goal_completions_by_400": 60,
+    "goal_completions_by_400": 60,
+    "goal_step_counts": {
+      "not_reached": [
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010004|schedule=0|static|seed=42",
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010004|schedule=1|static|seed=42",
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030008|schedule=1|static|seed=42"
+      ],
+      "reached": {
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010001|schedule=0|static|seed=42": 202,
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010001|schedule=0|uncertainty|seed=42": 93,
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010001|schedule=1|static|seed=42": 202,
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010001|schedule=1|uncertainty|seed=42": 93,
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010012|schedule=0|static|seed=42": 215,
+        "phase1.5-v0.4-BPRIME-1:fit:BP:80010012|schedule=1|static|seed=42": 215,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=0|age|seed=42": 88,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=0|periodic|seed=42": 101,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=0|static|seed=42": 283,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=0|uncertainty|seed=42": 93,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=1|periodic|seed=42": 89,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=1|static|seed=42": 270,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000|schedule=1|uncertainty|seed=42": 93,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030002|schedule=0|static|seed=42": 132,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030002|schedule=1|static|seed=42": 132,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030003|schedule=0|static|seed=42": 82,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030003|schedule=1|static|seed=42": 82,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030004|schedule=0|static|seed=42": 379,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030004|schedule=0|uncertainty|seed=42": 95,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030004|schedule=1|static|seed=42": 287,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030004|schedule=1|uncertainty|seed=42": 95,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030005|schedule=0|static|seed=42": 102,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030005|schedule=1|static|seed=42": 102,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030007|schedule=0|static|seed=42": 152,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030007|schedule=1|age|seed=42": 93,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030007|schedule=1|periodic|seed=42": 89,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030007|schedule=1|static|seed=42": 166,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030008|schedule=0|static|seed=42": 241,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030008|schedule=1|age|seed=42": 166,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030008|schedule=1|periodic|seed=42": 194,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030008|schedule=1|uncertainty|seed=42": 138,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=0|age|seed=42": 90,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=0|static|seed=42": 135,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=0|uncertainty|seed=42": 115,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=1|age|seed=42": 90,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=1|static|seed=42": 135,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009|schedule=1|uncertainty|seed=42": 115,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010|schedule=0|static|seed=42": 252,
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010|schedule=1|static|seed=42": 252,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=0|age|seed=42": 121,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=0|periodic|seed=42": 90,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=0|static|seed=42": 350,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=0|uncertainty|seed=42": 99,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=1|periodic|seed=42": 90,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=1|static|seed=42": 354,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000000|schedule=1|uncertainty|seed=42": 99,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000003|schedule=1|static|seed=42": 216,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000003|schedule=1|uncertainty|seed=42": 177,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000007|schedule=0|static|seed=42": 99,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000007|schedule=1|static|seed=42": 99,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000014|schedule=0|static|seed=42": 125,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000014|schedule=1|static|seed=42": 161,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000017|schedule=0|static|seed=42": 110,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000017|schedule=0|uncertainty|seed=42": 154,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000017|schedule=1|static|seed=42": 110,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000017|schedule=1|uncertainty|seed=42": 114,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000018|schedule=0|static|seed=42": 212,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000018|schedule=0|uncertainty|seed=42": 82,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000018|schedule=1|static|seed=42": 212,
+        "phase1.5-v0.4-BPRIME-1:fit:R:80000018|schedule=1|uncertainty|seed=42": 82
+      }
+    },
+    "mean_goal_step_among_completions": 151.73333333333332,
+    "original_80_step_failures": 63,
+    "still_not_reached_by_400": 3
+  },
+  "task": "rerun only previously failed 61-ray episodes at horizon 400"
+}
