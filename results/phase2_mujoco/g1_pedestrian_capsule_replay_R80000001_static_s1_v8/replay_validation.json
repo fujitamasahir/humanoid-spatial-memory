@@ -1,0 +1,22 @@
+{
+  "emergency_safety_interventions": 7,
+  "emergency_safety_scans": 76,
+  "final_position": [
+    17,
+    9
+  ],
+  "goal_reached": true,
+  "note": "The saved trace positions, headings, and proxy cells drive this visual replay. Kinematic presentation only; this is not a new experiment or physical walking simulation.",
+  "observation_policy": "static with Emergency Safety Sensor",
+  "scene_sha256": "7f9e01df7abf341ed08fc604677e714f6b015c1058fb9deb3e75931ec61f1fa2",
+  "scene_source": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v7/replay_source",
+  "schedule": 1,
+  "seed": 42,
+  "source_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+  "source_safety_metrics_sha256": "0a8f040148c40071961b30585481b0c2f2ae6710f41ddaaa8f3c7013d5bc3a27",
+  "source_trace": "results/phase2_mujoco/g1_static_independent_safety_R80000001_s1_v5/safety_episode_trace.json",
+  "source_trace_sha256": "cee65fb971a4fc93e579343f317432af7b424b55bfe44adb237b8a8f281d7d3f",
+  "trajectory_frames": 77,
+  "trajectory_origin": "Direct presentation replay of the saved Emergency Safety Sensor trace; no episode rerun.",
+  "unwanted_contact_pairs": 0
+}

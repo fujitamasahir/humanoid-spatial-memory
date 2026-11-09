@@ -1,0 +1,86 @@
+{
+  "camera": {
+    "azimuth_deg": 138.0,
+    "distance_m": 3.9,
+    "elevation_deg": -42.0,
+    "fixed_world_azimuth_deg": 138.0,
+    "fixed_world_elevation_deg": -42.0,
+    "lookahead_m": 0.65,
+    "orientation_rule": "azimuth and elevation are constant for every frame; robot heading is not read by camera control",
+    "style": "fixed-world-direction tracking observer; translation-only tracking, no orbit",
+    "target_smoothing_alpha": 0.28,
+    "tracking_rule": "camera look-at target follows robot XY plus fixed world +X lookahead, smoothed with a fixed alpha; orientation never changes"
+  },
+  "camera_mode": "tracking",
+  "duration_seconds": 12.958333333333334,
+  "emergency_safety_interventions": 7,
+  "floor_rgba": "0.67 0.75 0.79 1",
+  "fps": 24,
+  "g1_presentation_materials": "native Unitree G1 black/silver colors and texture assignments preserved; all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
+  "g1_rendered_alpha": 1.0,
+  "gif_conversion": {
+    "master": "portfolio_demo.mp4",
+    "method": "MP4 master; two-pass FFmpeg palette workflow: palettegen stats_mode=full, max_colors=256, reserve_transparent=0; then paletteuse dither=sierra2_4a, diff_mode=rectangle at the source frame rate.",
+    "palette_file": "gif_palette.png"
+  },
+  "git_commit": "a7070c96175c4f249daf84f4e43ff7b9aa8a8c0e",
+  "global_dynamic_geom_transparency": false,
+  "lighting": {
+    "directional_fill_count": 4,
+    "floor_rgba": "0.67 0.75 0.79 1",
+    "headlight_ambient": "0.36 0.39 0.44",
+    "headlight_diffuse": "0.58 0.62 0.68",
+    "style": "bright cool ambient fill with four broad shadow-free directional room fills plus original key light"
+  },
+  "marker_glow_design": "Compact cyan/gold sphere-and-stem markers with high-emission heads, nested luminous base rings, and small pale glints, restored toward reference image 1. MuJoCo has no bloom pass; emission and layered geometry approximate bloom.",
+  "model_hashes": {
+    "saved_scene_sha256": "7f9e01df7abf341ed08fc604677e714f6b015c1058fb9deb3e75931ec61f1fa2",
+    "unitree_g1_assets_tree_sha256": "7606f3a10ab89fbae0648a08d2e5d4a3c63fd92c907af1ca497da827dfbfa70c",
+    "unitree_g1_mjcf_sha256": "106adfe8ad759da081d4eaef3a34fc28d6c4c99f3c7f4a385decbac402a51489"
+  },
+  "opacity_fix": "Disabled mjVIS_TRANSPARENT, which had faded dynamic geoms globally. G1 geoms/materials are alpha 1.0; only maze wall geoms receive WALL_RGBA alpha. Marker shells are presentation-only UI layers.",
+  "output_frames": 311,
+  "presentation_note": "Direct replay of the saved Emergency Safety Sensor episode trace; includes recorded waits and lateral avoidance. No experiment was rerun.",
+  "renderer": {
+    "backend": "MuJoCo offscreen Renderer",
+    "mujoco_version": "3.17.0",
+    "python": "3.12.10"
+  },
+  "resolution": {
+    "height": 720,
+    "width": 1280
+  },
+  "robot_appearance_source": "native Unitree G1 MJCF materials, textures, and colors from third_party/unitree_g1/g1.xml; display export preserves original black/silver accent assignments and only forces alpha to 1.0",
+  "safety_episode_success": true,
+  "safety_episode_unwanted_contact_pairs": 0,
+  "seconds_per_saved_action": 0.15,
+  "source_code_sha256": {
+    "export_script": "1135c6ac32a62d49b3d4b0833fa90463f4aa49ad0bfcb7ddda5f80b5aad1d5b0",
+    "viewer_helpers": "3db8c093ad94055eee7cf7b27cb52ef265a7e093f9b7f9a81e253b40d0b20806"
+  },
+  "source_experiment_episode": {
+    "observation_policy": "static with Emergency Safety Sensor",
+    "schedule_index": 1,
+    "seed": 42,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+  },
+  "source_result_dir": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v8/replay_source",
+  "source_scene_sha256": "7f9e01df7abf341ed08fc604677e714f6b015c1058fb9deb3e75931ec61f1fa2",
+  "source_trace": "results/phase2_mujoco/g1_static_independent_safety_R80000001_s1_v5/safety_episode_trace.json",
+  "source_trace_sha256": "cee65fb971a4fc93e579343f317432af7b424b55bfe44adb237b8a8f281d7d3f",
+  "source_trajectory_or_metrics_modified": false,
+  "source_trajectory_sha256": "192a933fc2462ab55196300f245c244b8e2639c32bf461ffab1255725deed124",
+  "start_goal_markers": "restored compact sphere-and-stem waypoint style from reference image 1: cyan START and gold GOAL heads, narrow stems, compact layered luminous ellipsoid base rings and a small glint; stronger emission retained; non-colliding presentation UI, not the enlarged shell style from reference image 2",
+  "thumbnail_framing": {
+    "camera_distance_m": 3.9,
+    "description": "Tighter fixed-direction tracking frame keeps G1 larger while retaining nearby corridor context."
+  },
+  "trajectory_frames": 77,
+  "video_outputs": {
+    "gif": true,
+    "mp4": true
+  },
+  "visual_gait": "reused deterministic viewer gait_joint_targets and playback_samples; display-only, not physical locomotion",
+  "visual_only_contact_audit_file": "visual_only_contact_audit.json",
+  "walls_rgba": "0.40 0.51 0.62 0.56"
+}
