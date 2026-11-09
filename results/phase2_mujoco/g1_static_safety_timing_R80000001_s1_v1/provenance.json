@@ -1,0 +1,16 @@
+{
+  "commit": "58b7b34450995e829ef376b6ec14a72b28c65f1f",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "prior_result_hashes": {
+    "artifact_manifest.json": "3f82488144bb1346a1d10ae7080119e607ee0a2574ddac8c9620968b1e6e5b27",
+    "episode_comparison.json": "54407b1daffeac2a3cb029926842f13c8e9d7ea14aee1cb3868bc8bc7aa69c93",
+    "safety_episode_trace.json": "cee65fb971a4fc93e579343f317432af7b424b55bfe44adb237b8a8f281d7d3f"
+  },
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "source_hashes": {
+    "scripts/benchmark_g1_static_safety_timing.py": "5e8ed478bf2894cf70dc471e6297349b9f7ff7ce9f636536992e10eab08cf6e9",
+    "scripts/evaluate_g1_static_independent_safety.py": "fdd68cdb0941d7861b08263eba7eae43542f867e6f5fcb59170f4d897d3e4d96",
+    "src/spatial_memory/emergency_safety.py": "0171e02a1e7ca92ae389ec99db8b4ddd93cbefa4d57666f2ea269b76e8c4886d",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa"
+  }
+}
