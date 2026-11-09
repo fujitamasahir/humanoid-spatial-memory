@@ -1,0 +1,22 @@
+[
+  {
+    "path": "g1_split_screen.gif",
+    "size": 16447417,
+    "sha256": "6151cb0277a4882e22e598696c59d5531f8807d55586701e8a95682bed6e4819"
+  },
+  {
+    "path": "g1_split_screen.mp4",
+    "size": 1917205,
+    "sha256": "d13fc93c14e8b40bb7b8a4ba61eb8f8738dc395850bd85b3906b7137d0e6b8fd"
+  },
+  {
+    "path": "map_preview.png",
+    "size": 37611,
+    "sha256": "8c3a9f655a6c809859c61ed9cff2d9a3a7cbebecad65b279a9697cc10df60ab9"
+  },
+  {
+    "path": "metadata.json",
+    "size": 716,
+    "sha256": "27f50d66cf9b6b77338f2946d2955358903bd2d907cb5a6af2a1fbe48ff9315e"
+  }
+]

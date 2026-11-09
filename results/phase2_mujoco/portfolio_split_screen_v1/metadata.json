@@ -1,0 +1,18 @@
+{
+  "source_video": "results/phase2_mujoco/portfolio_export_g1_bright_thumbnail_v1/portfolio_demo.mp4",
+  "saved_run": "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke",
+  "video_sha256": "d8ce6f244e61e175c6625b8a108378a7594626004e1847fadd03aa32f2a95cd3",
+  "trajectory_sha256": "07b162244f2551c2317e191c06da75b51e5119feef3468a9f87b1f8dcdf9457a",
+  "composite_mp4": "g1_split_screen.mp4",
+  "composite_gif": "g1_split_screen.gif",
+  "output_size": [
+    1920,
+    720
+  ],
+  "fps": 24,
+  "action_speed": 0.18,
+  "frames": 367,
+  "frames_per_action": 5,
+  "source_steps": 72,
+  "visualization_note": "Right panel shows evaluator ground-truth maze geometry and saved pose, not the robot's perceived map."
+}
