@@ -1,0 +1,197 @@
+{
+  "baseline_artifacts_verified": 6,
+  "evaluator_source_hashes": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "original_288_and_h400_results_modified": false,
+  "phase15_preservation_verification": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "prefix_validation": {
+    "steps_0_through_400_match_h400_source_for_all_three": true
+  },
+  "selected_episode_keys": [
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      0,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      1,
+      "static",
+      42
+    ],
+    [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      1,
+      "static",
+      42
+    ]
+  ],
+  "source400_artifacts_verified": 5,
+  "source_evaluation_conditions": {
+    "admitted_worlds_reused": 36,
+    "candidate_or_world_generation": false,
+    "only_changed_config_key": "max_steps",
+    "policy_config_original": {
+      "common_horizon_metrics": true,
+      "g1_navigation": {
+        "footprint_source": "pinned G1 collision geometry",
+        "forward_translation_default": true,
+        "local_half_extents_m": [
+          0.218954831277208,
+          0.3279970912029507
+        ],
+        "motion": "cardinal kinematic translation with separate in-place turns",
+        "observed_occupancy_only": true,
+        "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+        "rejected_action_history": true,
+        "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+        "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+        "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+      },
+      "max_observations": 20,
+      "max_steps": 80,
+      "mujoco_cell_size_m": 0.75,
+      "mujoco_ray_sensor": {
+        "horizontal_fov_deg": 120.0,
+        "range_m": 6.0,
+        "ray_count": 61,
+        "sample_spacing_m": 0.075
+      },
+      "mujoco_timestep_seconds": 0.02,
+      "observation_cost": 1,
+      "sensor": {
+        "noise": 0.0,
+        "occlusion": true,
+        "radius": 3
+      },
+      "sensor_backend": "mujoco3d",
+      "unknown": "optimistic",
+      "update_interval": 4
+    },
+    "policy_config_used": {
+      "common_horizon_metrics": true,
+      "g1_navigation": {
+        "footprint_source": "pinned G1 collision geometry",
+        "forward_translation_default": true,
+        "local_half_extents_m": [
+          0.218954831277208,
+          0.3279970912029507
+        ],
+        "motion": "cardinal kinematic translation with separate in-place turns",
+        "observed_occupancy_only": true,
+        "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+        "rejected_action_history": true,
+        "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+        "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+        "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+      },
+      "max_observations": 20,
+      "max_steps": 800,
+      "mujoco_cell_size_m": 0.75,
+      "mujoco_ray_sensor": {
+        "horizontal_fov_deg": 120.0,
+        "range_m": 6.0,
+        "ray_count": 61,
+        "sample_spacing_m": 0.075
+      },
+      "mujoco_timestep_seconds": 0.02,
+      "observation_cost": 1,
+      "sensor": {
+        "noise": 0.0,
+        "occlusion": true,
+        "radius": 3
+      },
+      "sensor_backend": "mujoco3d",
+      "unknown": "optimistic",
+      "update_interval": 4
+    },
+    "safety_config": {
+      "horizontal_fov_deg": 360.0,
+      "range_m": 2.0,
+      "ray_backend": "multi",
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "seed": 42
+  },
+  "source_hashes": {
+    "horizon400_csv_sha256": "fcf0b69fa6331bccff8c8e8aca8dacc0b074417ed87e79472ac667b6c681345a",
+    "horizon400_manifest_sha256": "d1d20f50b000b48437fcdfa389d3dcd92b74f89c8fe47ac40b900127c5c300bf",
+    "horizon400_trace_sha256": "81ee1a5ff45012da67a723e58e8d7ad5814de0336e3a433335596203038329a3",
+    "original_288_episode_csv_sha256": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "original_288_manifest_sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a"
+  },
+  "source_result_directories": [
+    "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+    "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_failed_episodes_h400_v1"
+  ],
+  "summary": {
+    "cohort_size": 3,
+    "contact_episodes_by_800": 0,
+    "contact_free_goal_completions_by_800": 1,
+    "episodes": [
+      {
+        "elapsed_steps": 800,
+        "final_position": [
+          1,
+          23
+        ],
+        "goal_step": null,
+        "policy": "static",
+        "schedule": 0,
+        "seed": 42,
+        "success": false,
+        "unwanted_contact_pairs": 0,
+        "unwanted_contact_states": 0,
+        "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+      },
+      {
+        "elapsed_steps": 800,
+        "final_position": [
+          1,
+          23
+        ],
+        "goal_step": null,
+        "policy": "static",
+        "schedule": 1,
+        "seed": 42,
+        "success": false,
+        "unwanted_contact_pairs": 0,
+        "unwanted_contact_states": 0,
+        "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+      },
+      {
+        "elapsed_steps": 479,
+        "final_position": [
+          20,
+          13
+        ],
+        "goal_step": 479,
+        "policy": "static",
+        "schedule": 1,
+        "seed": 42,
+        "success": true,
+        "unwanted_contact_pairs": 0,
+        "unwanted_contact_states": 0,
+        "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+      }
+    ],
+    "goal_completions_by_800": 1,
+    "previous_horizon400_failures": 3,
+    "still_not_reached_by_800": 2
+  },
+  "task": "replay only the three 400-step residual failures at horizon 800"
+}

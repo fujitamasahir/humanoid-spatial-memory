@@ -1,0 +1,55 @@
+{
+  "cohort_size": 3,
+  "contact_episodes_by_800": 0,
+  "contact_free_goal_completions_by_800": 1,
+  "episodes": [
+    {
+      "elapsed_steps": 800,
+      "final_position": [
+        1,
+        23
+      ],
+      "goal_step": null,
+      "policy": "static",
+      "schedule": 0,
+      "seed": 42,
+      "success": false,
+      "unwanted_contact_pairs": 0,
+      "unwanted_contact_states": 0,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+    },
+    {
+      "elapsed_steps": 800,
+      "final_position": [
+        1,
+        23
+      ],
+      "goal_step": null,
+      "policy": "static",
+      "schedule": 1,
+      "seed": 42,
+      "success": false,
+      "unwanted_contact_pairs": 0,
+      "unwanted_contact_states": 0,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+    },
+    {
+      "elapsed_steps": 479,
+      "final_position": [
+        20,
+        13
+      ],
+      "goal_step": 479,
+      "policy": "static",
+      "schedule": 1,
+      "seed": 42,
+      "success": true,
+      "unwanted_contact_pairs": 0,
+      "unwanted_contact_states": 0,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+    }
+  ],
+  "goal_completions_by_800": 1,
+  "previous_horizon400_failures": 3,
+  "still_not_reached_by_800": 2
+}
