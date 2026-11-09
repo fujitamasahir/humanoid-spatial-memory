@@ -2,7 +2,9 @@
 
 ## Scope and result
 
-This is a separate **Static Spatial Memory + Continuous Safety Sensing** condition. It is not the original Static policy. Only the already-saved R / `80000001` / schedule 1 / Static / seed 42 episode was evaluated; the 288-episode benchmark was not run.
+The sections below preserve the original one-episode pilot and 181-ray implementation benchmark. The pilot initially covered only the saved R / `80000001` / schedule 1 / Static / seed 42 case. The later final evaluation extended the optimized 61-ray condition across all 288 matched episodes; see the [final evaluation report](../results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/phase2_final_report.md) and its [machine-readable summary](../results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/summary.json).
+
+In the full matched benchmark, goal completion was 225/288 with and without the emergency sensor. Unwanted pedestrian-proxy contact episodes decreased from 1 to 0 (234 geometry contact pairs across 6 contact states to zero). The target R episode became a success, while one M / schedule 1 / Periodic success was lost, so the total goal count did not change. This is evidence for the tested 36 development mazes, two fixed schedules, and seed 42 only; it does not establish general or real-world safety. The 61-ray scanner ran on every simulation step and accumulated 837,591 emergency raycasts.
 
 The baseline replay matched the saved v3 episode: the G1 did not reach the goal, recorded 6 unwanted-contact states and 234 capsule-proxy contact pairs, used one spatial-memory observation, and ended at step 80 at `(11,4)`. The independent-sensor episode reached the goal at step 76, recorded zero unwanted contacts, and retained exactly one spatial-memory observation. This single result does not establish general pedestrian safety.
 
