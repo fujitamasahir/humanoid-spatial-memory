@@ -512,9 +512,9 @@ def test_forward_facing_planner_routes_around_a_rotation_clearance_rejection():
     route = plan_g1_forward_facing(grid, (3, 3), (3, 5), heading=0,
         local_extents=(0.22, 0.328), cell_size=0.75)
     assert route
-    # The known diagonal hit blocks an in-place north turn at the start; the
-    # observed-memory planner finds a forward-only detour before turning.
-    assert route[0] == ('move', (4, 3))
+    # The AABB diagonal overlap no longer pre-rejects the turn. The selected
+    # turn is checked once by the actual MuJoCo shield in the evaluator.
+    assert route[0] == ('turn', 1)
     assert ('turn', 1) in route
 
     # If the actual attempted north pivot is rejected by MuJoCo while the
@@ -526,6 +526,17 @@ def test_forward_facing_planner_routes_around_a_rotation_clearance_rejection():
         local_extents=(0.22, 0.328), cell_size=0.75,
         blocked_actions={rejected_turn})
     assert alternative and alternative[0] != ('turn', 1)
+
+
+def test_forward_facing_turns_are_not_filtered_by_rectangular_clearance():
+    from spatial_memory.navigation import _turn_clear, plan_g1_forward_facing
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[4, 4] = 1
+    assert not _turn_clear(grid, (3, 3), 0, 1, (0.22, 0.328), 0.75)
+    route = plan_g1_forward_facing(grid, (3, 3), (3, 5), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75)
+    assert route[0] == ('turn', 1)
 
 
 def test_actual_g1_turn_clearance_uses_only_attempted_mujoco_geometry():

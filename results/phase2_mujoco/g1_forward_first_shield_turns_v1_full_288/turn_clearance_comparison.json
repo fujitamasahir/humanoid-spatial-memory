@@ -1,0 +1,129 @@
+{
+  "episodes": {
+    "new": 288,
+    "new_contact_free_successes": 224,
+    "new_episodes_with_unwanted_contact": 2,
+    "new_successes": 225,
+    "new_turn_actions": 3964,
+    "new_turns_rejected_by_shield": 3,
+    "new_unattempted_collision_queries": 0,
+    "prior": 288,
+    "prior_contact_free_successes": 21,
+    "prior_successes": 21,
+    "prior_turn_actions": 225
+  },
+  "input_hashes": {
+    "results/phase2_mujoco/g1_forward_first_default_full_288/episodes.csv": "20fb6dfd48431a353ea0d8c02c145c82eed4697cb837fcbf97bf32bb8e7a4b2a",
+    "results/phase2_mujoco/g1_forward_first_default_full_288/provenance.json": "8a3780bd638f3ced2a7f8ff6054e73c9e2230ee0000437be616c47efb687784d",
+    "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288/episodes.csv": "e3d76d3a785e99f6cdc5d5f4e5a162199c86ca21bde3fa9b59b7851cf603fe09",
+    "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288/provenance.json": "9e7e715570d36867975a5625029ba09e7afc291b16b0ebe50ad4738909399950"
+  },
+  "integrity_checks": {
+    "cell_size_m": 0.75,
+    "existing_results_modified": false,
+    "identical_36_world_identities": true,
+    "identical_episode_horizon": 80,
+    "identical_episode_seed": 42,
+    "identical_observation_methods": [
+      "static",
+      "periodic",
+      "age",
+      "uncertainty"
+    ],
+    "identical_schedule_indices": [
+      0,
+      1
+    ],
+    "unattempted_collision_queries": 0
+  },
+  "interpretation": "Prospective navigation policy comparison; no fitted maze or episode environment was regenerated.",
+  "new_result_dir": "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288",
+  "new_run_status": "COMPLETE_G1_PHASE2_PILOT",
+  "per_maze_csv": "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288/per_maze_comparison.csv",
+  "prior_result_dir": "results/phase2_mujoco/g1_forward_first_default_full_288",
+  "status": "PASS_NEW_288_EPISODE_TURN_FEEDBACK_COMPARISON",
+  "summary": {
+    "by_mechanism": {
+      "BP": {
+        "episodes": 96,
+        "episodes_with_unwanted_contacts": 0,
+        "new_contact_free_completions": 88,
+        "new_goal_completions": 88,
+        "new_selected_turns": 950,
+        "new_turns_rejected_by_actual_mujoco_shield": 0,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 21,
+        "prior_goal_completions": 21
+      },
+      "M": {
+        "episodes": 96,
+        "episodes_with_unwanted_contacts": 1,
+        "new_contact_free_completions": 62,
+        "new_goal_completions": 63,
+        "new_selected_turns": 1675,
+        "new_turns_rejected_by_actual_mujoco_shield": 0,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 0,
+        "prior_goal_completions": 0
+      },
+      "R": {
+        "episodes": 96,
+        "episodes_with_unwanted_contacts": 1,
+        "new_contact_free_completions": 74,
+        "new_goal_completions": 74,
+        "new_selected_turns": 1339,
+        "new_turns_rejected_by_actual_mujoco_shield": 3,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 0,
+        "prior_goal_completions": 0
+      }
+    },
+    "by_method": {
+      "age": {
+        "episodes": 72,
+        "episodes_with_unwanted_contacts": 0,
+        "new_contact_free_completions": 66,
+        "new_goal_completions": 66,
+        "new_selected_turns": 726,
+        "new_turns_rejected_by_actual_mujoco_shield": 0,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 6,
+        "prior_goal_completions": 6
+      },
+      "periodic": {
+        "episodes": 72,
+        "episodes_with_unwanted_contacts": 1,
+        "new_contact_free_completions": 66,
+        "new_goal_completions": 67,
+        "new_selected_turns": 770,
+        "new_turns_rejected_by_actual_mujoco_shield": 0,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 5,
+        "prior_goal_completions": 5
+      },
+      "static": {
+        "episodes": 72,
+        "episodes_with_unwanted_contacts": 1,
+        "new_contact_free_completions": 36,
+        "new_goal_completions": 36,
+        "new_selected_turns": 1593,
+        "new_turns_rejected_by_actual_mujoco_shield": 3,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 6,
+        "prior_goal_completions": 6
+      },
+      "uncertainty": {
+        "episodes": 72,
+        "episodes_with_unwanted_contacts": 0,
+        "new_contact_free_completions": 56,
+        "new_goal_completions": 56,
+        "new_selected_turns": 875,
+        "new_turns_rejected_by_actual_mujoco_shield": 0,
+        "new_unattempted_collision_queries": 0,
+        "prior_contact_free_completions": 4,
+        "prior_goal_completions": 4
+      }
+    }
+  },
+  "turn_policy": "A* does not apply the public-footprint AABB as an in-place turn prefilter. The evaluator checks only the selected turn using actual G1 MuJoCo geometry; rejected turn feedback suppresses repeat selection until relevant observed memory changes."
+}

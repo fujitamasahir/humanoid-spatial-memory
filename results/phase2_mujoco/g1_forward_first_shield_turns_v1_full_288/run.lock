@@ -1,0 +1,1 @@
+{"pid": 93227, "mode": "full", "commit": "d25b3df344e2c6134065cbf672e1c5023d8eb081", "git_status_at_start": "## phase2/mujoco-proxy-pilot...origin/phase2/mujoco-proxy-pilot\n M scripts/phase2_mujoco_navigation.py\n M src/spatial_memory/navigation.py\n M tests/test_phase2_mujoco.py"}

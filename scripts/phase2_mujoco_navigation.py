@@ -405,7 +405,7 @@ def provenance(worlds, config, mode, preserved, sensor_backend, *, git_commit, g
             for path in sorted((ROOT/'third_party/unitree_g1').rglob('*')) if path.is_file()
         ],
         'g1_mjcf_sha256': sha((ROOT/'third_party/unitree_g1/g1.xml').read_bytes()),
-        'motion_model': 'forward-first cardinal kinematic translation plus separately checked turns; observed static obstacle sidesteps and observation-verified oncoming-pedestrian retreats only; not walking control',
+        'motion_model': 'forward-first cardinal kinematic translation; A* does not reject in-place turns with a footprint AABB, and checks only its selected turn through the actual G1 MuJoCo action shield; rejected turns feed back to A*; observed static obstacle sidesteps and observation-verified oncoming-pedestrian retreats only; not walking control',
         'movement_policy_comparison': {
             'previous_full_comparison': 'results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288',
             'difference': 'The previous comparison allowed cardinal lateral/backward translations while preserving heading. This comparison uses forward-first turns with rule-gated static-object sidesteps and observed-threat retreats.',
@@ -456,6 +456,7 @@ def run(mode, output, max_steps, heartbeat_seconds, sensor_backend='mujoco3d'):
                       local_half_extents_m=None, motion='cardinal kinematic translation with separate in-place turns',
                       observed_occupancy_only=True, rejected_action_history=True,
                       forward_translation_default=True,
+                      turn_clearance='deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback',
                       sidestep_eligibility='recent ray hit classified as a persistent obstacle in the forward cell; lateral sweep and next-forward cell observed free',
                       retreat_eligibility='recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait',
                       pedestrian_prediction='motion inferred only from observed first-hit cells; no simulator schedule or future positions'),

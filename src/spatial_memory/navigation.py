@@ -179,10 +179,13 @@ def plan_g1_forward_facing(grid, start, goal, *, heading=0, unknown='optimistic'
                            blocked_actions=frozenset()):
     """Observed-map A* allowing only cardinal turns and forward translations.
 
-    Like :func:`plan_g1`, this planner never queries the MuJoCo shield. The
-    public footprint and observed occupied cells reject known-unsafe sweeps;
-    only the first selected action is then checked against actual model
-    geometry by the evaluator's attempted-action checker.
+    The planner never queries hidden simulator state or the MuJoCo action
+    shield. Forward translations use the public footprint and observed cells
+    for conservative clearance. In-place turns are not prefiltered with the
+    footprint AABB: only the selected turn is checked by the evaluator's
+    actual-model action shield. A rejected turn is returned as attempted-action
+    feedback in ``blocked_actions`` and A* replans without repeating it until
+    local observation evidence changes.
     """
     if unknown not in {'optimistic', 'blocked'}:
         raise ValueError('Unknown handling must be optimistic or blocked')
@@ -218,8 +221,11 @@ def plan_g1_forward_facing(grid, start, goal, *, heading=0, unknown='optimistic'
         for turn in ((face+1) % 4, (face-1) % 4):
             action = ('turn', turn)
             key = blocked_action_key((x, y), face, action)
-            if key not in blocked_actions and _turn_clear(
-                    grid, (x, y), face, turn, local_extents, cell_size):
+            # A rotated footprint AABB can overlap diagonal cell boxes even
+            # when the pinned articulated G1 collision geoms clear the turn.
+            # Defer this one action to the existing actual-geometry shield;
+            # never probe unselected turns or consult hidden occupancy here.
+            if key not in blocked_actions:
                 neighbors.append(((x, y, turn), action, 0.25))
         for next_state, action, step_cost in neighbors:
             new_cost = cost + step_cost
