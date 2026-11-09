@@ -1,0 +1,122 @@
+{
+  "baseline_result_dir": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "baseline_trace_origin": "Three matched no-sensor replay traces in the 61-ray result; episode signatures match original saved baseline rows.",
+  "controlled_replays": "controlled_replays.json",
+  "episodes": {
+    "case_A": {
+      "baseline_contact_states": 0,
+      "baseline_elapsed_steps": 64,
+      "baseline_observation_steps": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64
+      ],
+      "baseline_pedestrian_contact_pairs": 0,
+      "baseline_success": true,
+      "changed_fields": [
+        "position",
+        "action",
+        "moved"
+      ],
+      "first_divergent_step": 38,
+      "same_ground_truth_pedestrian_positions_by_aligned_step": true,
+      "sensor_contact_states": 0,
+      "sensor_elapsed_steps": 80,
+      "sensor_observation_steps": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76
+      ],
+      "sensor_pedestrian_contact_pairs": 0,
+      "sensor_success": false
+    },
+    "case_B": {
+      "baseline_contact_states": 6,
+      "baseline_elapsed_steps": 80,
+      "baseline_observation_steps": [
+        0
+      ],
+      "baseline_pedestrian_contact_pairs": 234,
+      "baseline_success": false,
+      "changed_fields": [
+        "position",
+        "action",
+        "moved"
+      ],
+      "first_divergent_step": 52,
+      "same_ground_truth_pedestrian_positions_by_aligned_step": true,
+      "sensor_contact_states": 0,
+      "sensor_elapsed_steps": 76,
+      "sensor_observation_steps": [
+        0
+      ],
+      "sensor_pedestrian_contact_pairs": 0,
+      "sensor_success": true
+    }
+  },
+  "original_evaluation_files_modified": false,
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "result_scope": "retrospective diagnostics only; no policy or experiment parameters changed",
+  "safety_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+  "sensor_trace_origin": "Primary saved 61-ray evaluation trace; original rows and trace files are read-only.",
+  "software": {
+    "pillow": "13.0.0",
+    "python": "3.12.10"
+  },
+  "source_hashes": {
+    "61ray_episode_trace_sha256": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7",
+    "61ray_episodes_sha256": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "61ray_manifest_sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+    "baseline_episodes_sha256": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "baseline_provenance_sha256": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "evaluation_script_sha256": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "matched_timing_baseline_trace_sha256": "c6817ab576e99983ddac59d05aff70784822753aa6feb5c2fb6df6a69210246f",
+    "portfolio_renderer_sha256": "1135c6ac32a62d49b3d4b0833fa90463f4aa49ad0bfcb7ddda5f80b5aad1d5b0",
+    "viewer_helpers_sha256": "3db8c093ad94055eee7cf7b27cb52ef265a7e093f9b7f9a81e253b40d0b20806"
+  },
+  "task": "causal saved-trace comparison for two Phase 2 outcome changes",
+  "visualization": {
+    "camera": "same fixed-world-direction trailing camera and scale on both panels",
+    "fps": 20,
+    "g1_animation": "presentation-only kinematic gait; not physical locomotion",
+    "height": 450,
+    "seconds_per_simulated_step": 0.15,
+    "synchronization": "both start at frame 0; shorter stream holds its last frame; combined GIF loops from the beginning after the longer stream ends",
+    "trajectory_source": "saved trace poses/headings; no navigation episode rerun for GIF generation",
+    "width": 1600
+  }
+}

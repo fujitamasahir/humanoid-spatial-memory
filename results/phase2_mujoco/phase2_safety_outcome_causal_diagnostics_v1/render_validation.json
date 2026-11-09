@@ -1,0 +1,132 @@
+{
+  "case_A": {
+    "after_render": {
+      "camera_mode": "trailing",
+      "duration_seconds": 12.3,
+      "fps": 20,
+      "output_frames": 246,
+      "resolution": {
+        "height": 450,
+        "width": 800
+      },
+      "seconds_per_saved_action": 0.15
+    },
+    "before_render": {
+      "camera_mode": "trailing",
+      "duration_seconds": 9.9,
+      "fps": 20,
+      "output_frames": 198,
+      "resolution": {
+        "height": 450,
+        "width": 800
+      },
+      "seconds_per_saved_action": 0.15
+    },
+    "closeup_gif": {
+      "bytes": 6736270,
+      "duration_seconds": 1.65,
+      "fps_nominal": 20,
+      "frame_count": 33,
+      "frame_delay_ms": 50,
+      "loop": 0,
+      "path": "case_A_first_divergence_closeup.gif",
+      "resolution": [
+        1600,
+        450
+      ],
+      "sha256": "48294f9e8030054afdeb709aa60b48d980dbdd98586d4cab998314ebd9f29df0",
+      "step_window_inclusive": [
+        34,
+        44
+      ]
+    },
+    "divergence_preview": "case_A_first_divergence.png",
+    "fps": 20,
+    "frame_indices": {
+      "after_end": 245,
+      "before_end": 197
+    },
+    "frozen_panel": "before",
+    "main_gif": {
+      "bytes": 47266414,
+      "duration_seconds": 12.3,
+      "fps_nominal": 20,
+      "frame_count": 246,
+      "frame_delay_ms": 50,
+      "loop": 0,
+      "path": "M80030007_periodic_before_after_safety_sensor.gif",
+      "resolution": [
+        1600,
+        450
+      ],
+      "sha256": "a54a42375a6b9bc683d4e3573cb86654fb209006dbefe36c5a265daa69701414"
+    },
+    "seconds_per_simulation_step": 0.15,
+    "synchronized_frame_count": 246
+  },
+  "case_B": {
+    "after_render": {
+      "camera_mode": "trailing",
+      "duration_seconds": 11.7,
+      "fps": 20,
+      "output_frames": 234,
+      "resolution": {
+        "height": 450,
+        "width": 800
+      },
+      "seconds_per_saved_action": 0.15
+    },
+    "before_render": {
+      "camera_mode": "trailing",
+      "duration_seconds": 12.3,
+      "fps": 20,
+      "output_frames": 246,
+      "resolution": {
+        "height": 450,
+        "width": 800
+      },
+      "seconds_per_saved_action": 0.15
+    },
+    "closeup_gif": {
+      "bytes": 6146120,
+      "duration_seconds": 1.95,
+      "fps_nominal": 20,
+      "frame_count": 39,
+      "frame_delay_ms": 50,
+      "loop": 0,
+      "path": "case_B_first_divergence_closeup.gif",
+      "resolution": [
+        1600,
+        450
+      ],
+      "sha256": "45c254dda8fe0b806f36d2f0ab0e2c2d6d447721c004e44779ff53b79793db09",
+      "step_window_inclusive": [
+        48,
+        60
+      ]
+    },
+    "divergence_preview": "case_B_first_divergence.png",
+    "fps": 20,
+    "frame_indices": {
+      "after_end": 233,
+      "before_end": 245
+    },
+    "frozen_panel": "after",
+    "main_gif": {
+      "bytes": 36324701,
+      "duration_seconds": 12.3,
+      "fps_nominal": 20,
+      "frame_count": 246,
+      "frame_delay_ms": 50,
+      "loop": 0,
+      "path": "R80000001_static_before_after_safety_sensor.gif",
+      "resolution": [
+        1600,
+        450
+      ],
+      "sha256": "85d69bd4ef0a98333b6a905039a4eea4fbf8aaaf9f85296dc14fd4586f194cbb"
+    },
+    "seconds_per_simulation_step": 0.15,
+    "synchronized_frame_count": 246
+  }
+}

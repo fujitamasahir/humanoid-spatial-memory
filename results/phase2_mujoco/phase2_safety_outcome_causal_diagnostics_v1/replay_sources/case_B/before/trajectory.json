@@ -1,0 +1,2210 @@
+[
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": null,
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      15
+    ],
+    "step": 0
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      15
+    ],
+    "step": 1
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        14
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      14
+    ],
+    "step": 2
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        13
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 3
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 4
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 5
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        13
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 6
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 7
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 3.141592653589793,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      13
+    ],
+    "step": 8
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 3.141592653589793,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        4,
+        13
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      4,
+      13
+    ],
+    "step": 9
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      4,
+      13
+    ],
+    "step": 10
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        4,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      4,
+      13
+    ],
+    "step": 11
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 3.141592653589793,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      2
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      4,
+      13
+    ],
+    "step": 12
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 3.141592653589793,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        13
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      13
+    ],
+    "step": 13
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      13
+    ],
+    "step": 14
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        12
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      12
+    ],
+    "step": 15
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        11
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      11
+    ],
+    "step": 16
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      10
+    ],
+    "step": 17
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        3,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      9
+    ],
+    "step": 18
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      3,
+      9
+    ],
+    "step": 19
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        4,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      4,
+      9
+    ],
+    "step": 20
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      9
+    ],
+    "step": 21
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      9
+    ],
+    "step": 22
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      9
+    ],
+    "step": 23
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      10
+    ],
+    "step": 24
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      10
+    ],
+    "step": 25
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        10
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      10
+    ],
+    "step": 26
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      10
+    ],
+    "step": 27
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        9
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      9
+    ],
+    "step": 28
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      8
+    ],
+    "step": 29
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      8
+    ],
+    "step": 30
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        8
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      8
+    ],
+    "step": 31
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      8
+    ],
+    "step": 32
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        7
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      7
+    ],
+    "step": 33
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      7
+    ],
+    "step": 34
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        7
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      7
+    ],
+    "step": 35
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      7
+    ],
+    "step": 36
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        6
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      6
+    ],
+    "step": 37
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      6
+    ],
+    "step": 38
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        6
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      6
+    ],
+    "step": 39
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      6
+    ],
+    "step": 40
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        5
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      5
+    ],
+    "step": 41
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      5
+    ],
+    "step": 42
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        5
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      5
+    ],
+    "step": 43
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      5
+    ],
+    "step": 44
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": -1.5707963267948966,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        5,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      4
+    ],
+    "step": 45
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      0
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      5,
+      4
+    ],
+    "step": 46
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        6,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      6,
+      4
+    ],
+    "step": 47
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        7,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      7,
+      4
+    ],
+    "step": 48
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        8,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      8,
+      4
+    ],
+    "step": 49
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        9,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        10,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      9,
+      4
+    ],
+    "step": 50
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        10,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      10,
+      4
+    ],
+    "step": 51
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": true,
+    "navigation_action": [
+      "move",
+      [
+        11,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        5
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 52
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "move",
+      [
+        12,
+        4
+      ]
+    ],
+    "navigation_action_reason": "forward_route_segment",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 53
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      1
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 54
+  },
+  {
+    "active_objects": [],
+    "blocked": true,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": [
+      "turn",
+      3
+    ],
+    "navigation_action_reason": "route_direction_change",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 55
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 56
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 57
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 39,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 58
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 59
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 60
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 61
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 62
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 63
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 64
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 65
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        11,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 66
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 67
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 68
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 69
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 70
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 71
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 72
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 73
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 74
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 75
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 76
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        4
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 77
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 78
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        3
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 79
+  },
+  {
+    "active_objects": [],
+    "blocked": false,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_persistent_obstacle_contact_pairs": 0,
+    "g1_wall_contact_pairs": 0,
+    "heading_changed": false,
+    "heading_yaw": 0.0,
+    "moved": false,
+    "navigation_action": null,
+    "navigation_action_reason": "no_feasible_forward_route",
+    "people": [
+      [
+        10,
+        2
+      ]
+    ],
+    "planned": [],
+    "position": [
+      11,
+      4
+    ],
+    "step": 80
+  }
+]

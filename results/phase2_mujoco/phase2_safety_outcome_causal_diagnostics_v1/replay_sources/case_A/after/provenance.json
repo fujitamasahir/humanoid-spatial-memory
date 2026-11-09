@@ -1,0 +1,16 @@
+{
+  "frame_count": 81,
+  "kind": "presentation-only replay source from saved per-step trace",
+  "object_state_source": "saved schedule reconstructed only to display scene objects; not used by an agent or controller",
+  "pedestrian_pose_source": "evaluator-only positions copied from saved trace for retrospective visualization only",
+  "policy": "periodic",
+  "pose_source": "saved trace; positions and headings are unchanged",
+  "result_directory": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+  "scene_sha256": "7319a14f0782605cbc1a242a177a7857686a9c33f8b859799c6f2ba671b9b0e5",
+  "schedule": 1,
+  "seed": 42,
+  "source_trace_file": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/episode_traces.jsonl.gz",
+  "source_trace_sha256": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7",
+  "trajectory_sha256": "c70e6adf967903270ff14a1c7caee2418852476cecd80a6d78d4a588cf9ed2db",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+}

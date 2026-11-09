@@ -1,0 +1,16 @@
+{
+  "frame_count": 81,
+  "kind": "presentation-only replay source from saved per-step trace",
+  "object_state_source": "saved schedule reconstructed only to display scene objects; not used by an agent or controller",
+  "pedestrian_pose_source": "evaluator-only positions copied from saved trace for retrospective visualization only",
+  "policy": "static",
+  "pose_source": "saved trace; positions and headings are unchanged",
+  "result_directory": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "scene_sha256": "7f9e01df7abf341ed08fc604677e714f6b015c1058fb9deb3e75931ec61f1fa2",
+  "schedule": 1,
+  "seed": 42,
+  "source_trace_file": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/baseline_traces.jsonl.gz",
+  "source_trace_sha256": "c6817ab576e99983ddac59d05aff70784822753aa6feb5c2fb6df6a69210246f",
+  "trajectory_sha256": "e67b2491e1b6423d77018a526006b06dd44ffaa3bb0f4a8965f0ce64313ed053",
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+}
