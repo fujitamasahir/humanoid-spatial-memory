@@ -1,0 +1,102 @@
+[
+  {
+    "bytes": 49358,
+    "path": "baseline_comparison.csv",
+    "sha256": "ebdec09bd1c8ceaf76cc98870bdfc869f4fe497c95390d721992929377df5808"
+  },
+  {
+    "bytes": 143192,
+    "path": "baseline_traces.jsonl.gz",
+    "sha256": "c6817ab576e99983ddac59d05aff70784822753aa6feb5c2fb6df6a69210246f"
+  },
+  {
+    "bytes": 12499148,
+    "path": "episode_records.jsonl",
+    "sha256": "4d0d86a2e59d57839f7e7662c70ddb8997c3f7ccee7e7fd8b254f6eea587227b"
+  },
+  {
+    "bytes": 313046,
+    "path": "episode_traces.jsonl.gz",
+    "sha256": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7"
+  },
+  {
+    "bytes": 677724,
+    "path": "episodes.csv",
+    "sha256": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0"
+  },
+  {
+    "bytes": 14314,
+    "path": "experiment_manifest.json",
+    "sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a"
+  },
+  {
+    "bytes": 1277,
+    "path": "failure_analysis.md",
+    "sha256": "fddf5bb4a7d95083129e0304e367ee243a64c0a52a8cdc5e74b5e8aa30857699"
+  },
+  {
+    "bytes": 55432,
+    "path": "figures/contact_free_success_by_policy.png",
+    "sha256": "d4d5e62ec5bcbf793108b715f8cfe0d1788cf185d695524fa14cd395fae4b6f3"
+  },
+  {
+    "bytes": 71586,
+    "path": "figures/emergency_sensing_cost_by_policy.png",
+    "sha256": "81d89a006bedba2e095b0add1f55e44283b25ec2ffed46682b55cba86eb69552"
+  },
+  {
+    "bytes": 41286,
+    "path": "figures/episode_runtime_distributions.png",
+    "sha256": "1d15ff70308a82478fca80ad3e6058a005565c2b3093b195bb986c89a08def2c"
+  },
+  {
+    "bytes": 52298,
+    "path": "figures/goal_success_by_policy.png",
+    "sha256": "01cd74198194c8109f80e4f03996b48a5f5bd24df6a9d73064fdd10a13f2e570"
+  },
+  {
+    "bytes": 49305,
+    "path": "figures/interventions_and_contacts_by_policy.png",
+    "sha256": "499cb188afaeb787112c9b5e7e2ceeefde387cf73f3bc581f7e79e83bf4a38a4"
+  },
+  {
+    "bytes": 55240,
+    "path": "figures/spatial_memory_observations_by_policy.png",
+    "sha256": "63e51c8c8e372dff56c00d3587c831e3558c4495ad3dff06d3b5c6107ca9e3d5"
+  },
+  {
+    "bytes": 691,
+    "path": "metric_derivation.json",
+    "sha256": "d18824a92ca62f7ac17716be1d51a47de6454a2ce974beb6cc886bf7461058ea"
+  },
+  {
+    "bytes": 5466,
+    "path": "phase2_final_report.md",
+    "sha256": "f6b141ffe7839b06aa7406d9e9e01af70277a165eed06d8f8f73921aea0c79d4"
+  },
+  {
+    "bytes": 9894,
+    "path": "policy_comparison.csv",
+    "sha256": "f9da9fc758725b68e249db9449074c2507dff92d14550af16f86acdebb9e630d"
+  },
+  {
+    "bytes": 122,
+    "path": "run_state.json",
+    "sha256": "0a39d7acb4b393dc4992e51df8a9e63d2bca9e47e1a8905bb15e831451e3962d"
+  },
+  {
+    "bytes": 178010,
+    "path": "runtime_comparison.json",
+    "sha256": "e85815c608aee742533c784336a04630f410282035fd57ec2a0404c44e824170"
+  },
+  {
+    "bytes": 6556042,
+    "path": "runtime_pairs.jsonl",
+    "sha256": "a382e10c37ba9d5b876050e420594ecb99fc3c6f6d71dc133fa4f651088d5742"
+  },
+  {
+    "bytes": 22268,
+    "path": "summary.json",
+    "sha256": "c0fa30206bf695df88037518026fa3dd1d4903df0c6f27e0f3bdf228a60c16fc"
+  }
+]

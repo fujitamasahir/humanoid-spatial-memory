@@ -1,0 +1,714 @@
+{
+  "baseline_contact_state_source": "Three deterministic matched no-sensor episode replays; state count is per frame with any unwanted G1 contact pair.",
+  "by_policy": {
+    "age": {
+      "contact_free_goal_completion_rate": 0.9166666666666666,
+      "contact_free_goal_completions": 66,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.442335625,
+        "median": 0.3712295,
+        "p95": 0.776917,
+        "total": 31.848165
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.3000017638888889,
+        "median": 0.288833,
+        "p95": 0.361917,
+        "total": 21.600127
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 161.12182533333333,
+        "median": 137.0424165,
+        "p95": 314.914166,
+        "total": 11600.771424
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 113.00980776388889,
+        "median": 92.377958,
+        "p95": 261.361083,
+        "total": 8136.706159
+      },
+      "goal_completion_rate": 0.9166666666666666,
+      "goal_completions": 66,
+      "mean_emergency_rays": 2469.652777777778,
+      "mean_emergency_scans": 40.486111111111114,
+      "mean_goal_step_successes": 36.89393939393939,
+      "mean_path_length_m": 22.395833333333332,
+      "mean_selected_action_shield_queries": 40.416666666666664,
+      "mean_spatial_memory_observations": 11.805555555555555,
+      "mean_spatial_memory_rays": 720.1388888888889,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 47.868069444444444,
+        "median": 43.10724999999999,
+        "p95": 74.096666,
+        "total": 3446.5009999999997
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 6.464354055555556,
+        "median": 5.348084,
+        "p95": 12.215627,
+        "total": 465.433492
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 21,
+      "total_emergency_interventions": 5,
+      "total_emergency_lateral_avoidances": 0,
+      "total_emergency_rays": 177815,
+      "total_emergency_scans": 2915,
+      "total_emergency_sensor_time_ms": 950.560999,
+      "total_emergency_waits": 5,
+      "total_forward_actions": 2185,
+      "total_lateral_actions": 1,
+      "total_spatial_memory_observations": 850,
+      "total_spatial_memory_rays": 51850,
+      "total_turns": 724,
+      "total_waits": 5,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "periodic": {
+      "contact_free_goal_completion_rate": 0.9166666666666666,
+      "contact_free_goal_completions": 66,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.3920330138888889,
+        "median": 0.3651045,
+        "p95": 0.628416,
+        "total": 28.226377
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.29674361111111114,
+        "median": 0.28983349999999997,
+        "p95": 0.357167,
+        "total": 21.36554
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 166.66191726388888,
+        "median": 138.3446245,
+        "p95": 317.810459,
+        "total": 11999.658043
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 114.193844875,
+        "median": 85.968604,
+        "p95": 261.99154200000004,
+        "total": 8221.956831
+      },
+      "goal_completion_rate": 0.9166666666666666,
+      "goal_completions": 66,
+      "mean_emergency_rays": 2574.7083333333335,
+      "mean_emergency_scans": 42.208333333333336,
+      "mean_goal_step_successes": 38.77272727272727,
+      "mean_path_length_m": 23.041666666666668,
+      "mean_selected_action_shield_queries": 42.111111111111114,
+      "mean_spatial_memory_observations": 11.11111111111111,
+      "mean_spatial_memory_rays": 677.7777777777778,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 52.214293347222224,
+        "median": 43.2972915,
+        "p95": 116.2255,
+        "total": 3759.429121
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 5.766211986111111,
+        "median": 4.8920625,
+        "p95": 10.066041,
+        "total": 415.167263
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 20,
+      "total_emergency_interventions": 7,
+      "total_emergency_lateral_avoidances": 0,
+      "total_emergency_rays": 185379,
+      "total_emergency_scans": 3039,
+      "total_emergency_sensor_time_ms": 958.372592,
+      "total_emergency_waits": 7,
+      "total_forward_actions": 2259,
+      "total_lateral_actions": 0,
+      "total_spatial_memory_observations": 800,
+      "total_spatial_memory_rays": 48800,
+      "total_turns": 773,
+      "total_waits": 7,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "static": {
+      "contact_free_goal_completion_rate": 0.5138888888888888,
+      "contact_free_goal_completions": 37,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.40563204166666667,
+        "median": 0.3816045,
+        "p95": 0.574917,
+        "total": 29.205507
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.297982625,
+        "median": 0.292875,
+        "p95": 0.341959,
+        "total": 21.454749
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 219.5114392361111,
+        "median": 213.9550625,
+        "p95": 419.457291,
+        "total": 15804.823625
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 163.0480932361111,
+        "median": 171.44743749999998,
+        "p95": 329.648166,
+        "total": 11739.462712999999
+      },
+      "goal_completion_rate": 0.5138888888888888,
+      "goal_completions": 37,
+      "mean_emergency_rays": 3773.527777777778,
+      "mean_emergency_scans": 61.861111111111114,
+      "mean_goal_step_successes": 44.7027027027027,
+      "mean_path_length_m": 21.458333333333332,
+      "mean_selected_action_shield_queries": 61.361111111111114,
+      "mean_spatial_memory_observations": 1.0,
+      "mean_spatial_memory_rays": 61.0,
+      "median_emergency_rays": 4575.0,
+      "median_emergency_scans": 75.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 56.17632116666667,
+        "median": 44.4023335,
+        "p95": 133.415458,
+        "total": 4044.695124
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 0.6474688333333334,
+        "median": 0.5503335,
+        "p95": 0.940042,
+        "total": 46.617756
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 70,
+      "total_emergency_interventions": 40,
+      "total_emergency_lateral_avoidances": 4,
+      "total_emergency_rays": 271694,
+      "total_emergency_scans": 4454,
+      "total_emergency_sensor_time_ms": 1421.300124,
+      "total_emergency_waits": 36,
+      "total_forward_actions": 2830,
+      "total_lateral_actions": 4,
+      "total_spatial_memory_observations": 72,
+      "total_spatial_memory_rays": 4392,
+      "total_turns": 1584,
+      "total_waits": 36,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "uncertainty": {
+      "contact_free_goal_completion_rate": 0.7777777777777778,
+      "contact_free_goal_completions": 56,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.4208280833333333,
+        "median": 0.352375,
+        "p95": 0.925958,
+        "total": 30.299622
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.30090683333333335,
+        "median": 0.2879795,
+        "p95": 0.384167,
+        "total": 21.665292
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 181.09908220833333,
+        "median": 139.011042,
+        "p95": 392.634667,
+        "total": 13039.133919
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 131.75529331944443,
+        "median": 97.288917,
+        "p95": 318.27520799999996,
+        "total": 9486.381119
+      },
+      "goal_completion_rate": 0.7777777777777778,
+      "goal_completions": 56,
+      "mean_emergency_rays": 2815.3194444444443,
+      "mean_emergency_scans": 46.15277777777778,
+      "mean_goal_step_successes": 36.482142857142854,
+      "mean_path_length_m": 23.479166666666668,
+      "mean_selected_action_shield_queries": 45.90277777777778,
+      "mean_spatial_memory_observations": 8.319444444444445,
+      "mean_spatial_memory_rays": 507.4861111111111,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 49.09196248611111,
+        "median": 40.345917,
+        "p95": 106.1785,
+        "total": 3534.621299
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 4.486651111111111,
+        "median": 3.606354,
+        "p95": 11.238124,
+        "total": 323.03888
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 44,
+      "total_emergency_interventions": 23,
+      "total_emergency_lateral_avoidances": 5,
+      "total_emergency_rays": 202703,
+      "total_emergency_scans": 3323,
+      "total_emergency_sensor_time_ms": 1121.846843,
+      "total_emergency_waits": 18,
+      "total_forward_actions": 2419,
+      "total_lateral_actions": 5,
+      "total_spatial_memory_observations": 599,
+      "total_spatial_memory_rays": 36539,
+      "total_turns": 881,
+      "total_waits": 18,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    }
+  },
+  "episode_design": {
+    "horizon": 80,
+    "policies": {
+      "age": 72,
+      "periodic": 72,
+      "static": 72,
+      "uncertainty": 72
+    },
+    "schedules": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "worlds": 36
+  },
+  "interpretation_limits": [
+    "36 development mazes, two saved proxy schedules, one seed only.",
+    "The G1 root is moved kinematically; no physical walking controller or balance is simulated.",
+    "Pedestrians are prescribed, non-reactive capsule proxies.",
+    "Successful contact-free results apply only to this benchmark; no real-world safety claim.",
+    "A single seed and development-only world set limit generalization."
+  ],
+  "overall": {
+    "contact_free_goal_completion_rate": 0.78125,
+    "contact_free_goal_completions": 225,
+    "contact_states": 0,
+    "emergency_scan_p95_ms": {
+      "count": 288,
+      "mean": 0.4152071909722222,
+      "median": 0.367167,
+      "p95": 0.677167,
+      "total": 119.579671
+    },
+    "emergency_scan_time_ms": {
+      "count": 288,
+      "mean": 0.29890870833333333,
+      "median": 0.2894585,
+      "p95": 0.361917,
+      "total": 86.085708
+    },
+    "episode_runtime_ms": {
+      "count": 288,
+      "mean": 182.09856601041668,
+      "median": 148.7232295,
+      "p95": 361.441458,
+      "total": 52444.387011
+    },
+    "episodes": 288,
+    "episodes_with_unwanted_contact": 0,
+    "evaluation_loop_ms": {
+      "count": 288,
+      "mean": 130.50175979861112,
+      "median": 102.4588745,
+      "p95": 300.356,
+      "total": 37584.506822
+    },
+    "goal_completion_rate": 0.78125,
+    "goal_completions": 225,
+    "mean_emergency_rays": 2908.3020833333335,
+    "mean_emergency_scans": 47.677083333333336,
+    "mean_goal_step_successes": 38.626666666666665,
+    "mean_path_length_m": 22.59375,
+    "mean_selected_action_shield_queries": 47.447916666666664,
+    "mean_spatial_memory_observations": 8.059027777777779,
+    "mean_spatial_memory_rays": 491.60069444444446,
+    "median_emergency_rays": 2623.0,
+    "median_emergency_scans": 43.0,
+    "proxy_contact_pairs": 0,
+    "scene_construction_ms": {
+      "count": 288,
+      "mean": 51.33766161111111,
+      "median": 42.828937499999995,
+      "p95": 106.1785,
+      "total": 14785.246544
+    },
+    "spatial_memory_processing_time_ms": {
+      "count": 288,
+      "mean": 4.341171496527778,
+      "median": 3.855417,
+      "p95": 10.563292,
+      "total": 1250.257391
+    },
+    "total_backward_actions": 0,
+    "total_emergency_detected_scans": 155,
+    "total_emergency_interventions": 75,
+    "total_emergency_lateral_avoidances": 9,
+    "total_emergency_rays": 837591,
+    "total_emergency_scans": 13731,
+    "total_emergency_sensor_time_ms": 4452.080558,
+    "total_emergency_waits": 66,
+    "total_forward_actions": 9693,
+    "total_lateral_actions": 10,
+    "total_spatial_memory_observations": 2321,
+    "total_spatial_memory_rays": 141581,
+    "total_turns": 3962,
+    "total_waits": 66,
+    "unselected_action_shield_queries": 0,
+    "unwanted_contact_pairs_all_categories": 0
+  },
+  "policy_comparison_csv": "policy_comparison.csv",
+  "previous_baseline": {
+    "contact_free_goal_completion_rate": 0.78125,
+    "contact_free_goal_completions": 225,
+    "contact_states": 6,
+    "emergency_scan_p95_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "emergency_scan_time_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "episode_runtime_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "episodes": 288,
+    "episodes_with_unwanted_contact": 1,
+    "evaluation_loop_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "goal_completion_rate": 0.78125,
+    "goal_completions": 225,
+    "mean_emergency_rays": 0.0,
+    "mean_emergency_scans": 0.0,
+    "mean_goal_step_successes": 38.333333333333336,
+    "mean_path_length_m": 22.494791666666668,
+    "mean_selected_action_shield_queries": 47.34375,
+    "mean_spatial_memory_observations": 8.034722222222221,
+    "mean_spatial_memory_rays": 490.11805555555554,
+    "median_emergency_rays": 0.0,
+    "median_emergency_scans": 0.0,
+    "proxy_contact_pairs": 234,
+    "scene_construction_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "spatial_memory_processing_time_ms": {
+      "count": 288,
+      "mean": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "total": 0.0
+    },
+    "total_backward_actions": 0,
+    "total_emergency_detected_scans": 0,
+    "total_emergency_interventions": 0,
+    "total_emergency_lateral_avoidances": 0,
+    "total_emergency_rays": 0,
+    "total_emergency_scans": 0,
+    "total_emergency_sensor_time_ms": 0.0,
+    "total_emergency_waits": 0,
+    "total_forward_actions": 9669,
+    "total_lateral_actions": 2,
+    "total_spatial_memory_observations": 2314,
+    "total_spatial_memory_rays": 141154,
+    "total_turns": 3964,
+    "total_waits": 5,
+    "unselected_action_shield_queries": 0,
+    "unwanted_contact_pairs_all_categories": 234
+  },
+  "primary_288_execution_wall_seconds": null,
+  "primary_288_process_wall_clock_persisted": false,
+  "runtime_comparison": "runtime_comparison.json",
+  "runtime_comparison_summary": {
+    "baseline_episode_wall_ms": {
+      "count": 864,
+      "mean": 153.12702805787038,
+      "median": 122.85347949999999,
+      "p95": 296.954709,
+      "total": 132301.752242
+    },
+    "methodology": {
+      "hardware_and_software": "same machine and process, matched environment/schedule/policy/seed",
+      "historical_wall_clock_not_compared": true,
+      "loop_boundary": "run_episode only; includes scanning, policy, selected shield and metric bookkeeping",
+      "order": "baseline-first / sensor-first alternated within key",
+      "paired_episode_repetitions": 3,
+      "wall_boundary": "before scene construction through completed episode"
+    },
+    "paired_episode_delta_ms": {
+      "count": 288,
+      "mean": 17.278852138888887,
+      "median": 13.173229000000006,
+      "p95": 49.61804200000006,
+      "total": 4976.309416
+    },
+    "paired_relative_overhead_percent": {
+      "count": 288,
+      "mean": 11.687467781617356,
+      "median": 10.616753297077434,
+      "p95": 27.932553357997136,
+      "total": 3365.9907211057985
+    },
+    "per_policy": {
+      "age": {
+        "baseline_median_ms": {
+          "count": 72,
+          "mean": 133.451835,
+          "median": 114.396125,
+          "p95": 254.543458,
+          "total": 9608.53212
+        },
+        "baseline_per_step_ms": {
+          "count": 72,
+          "mean": 3.353757158180152,
+          "median": 3.2809156549295775,
+          "p95": 4.77884585,
+          "total": 241.47051538897094
+        },
+        "paired_delta_ms": {
+          "count": 72,
+          "mean": 14.396202013888887,
+          "median": 11.116437499999996,
+          "p95": 35.11854199999999,
+          "total": 1036.5265449999997
+        },
+        "paired_episode_count": 72,
+        "paired_relative_overhead_percent": {
+          "count": 72,
+          "mean": 9.620060077681483,
+          "median": 9.16790205921523,
+          "p95": 20.00892632293038,
+          "total": 692.6443255930667
+        },
+        "sensor_median_ms": {
+          "count": 72,
+          "mean": 147.8480370138889,
+          "median": 117.354708,
+          "p95": 295.7005,
+          "total": 10645.058665
+        },
+        "sensor_per_step_ms": {
+          "count": 72,
+          "mean": 3.6525358405347568,
+          "median": 3.5874418455377572,
+          "p95": 4.565216188405798,
+          "total": 262.98258051850246
+        }
+      },
+      "periodic": {
+        "baseline_median_ms": {
+          "count": 72,
+          "mean": 135.53407530555555,
+          "median": 117.536229,
+          "p95": 276.083833,
+          "total": 9758.453422
+        },
+        "baseline_per_step_ms": {
+          "count": 72,
+          "mean": 3.2891817223307633,
+          "median": 3.1743182747826086,
+          "p95": 4.2958708,
+          "total": 236.82108400781496
+        },
+        "paired_delta_ms": {
+          "count": 72,
+          "mean": 15.918093666666666,
+          "median": 10.285750499999999,
+          "p95": 46.51120800000001,
+          "total": 1146.1027439999998
+        },
+        "paired_episode_count": 72,
+        "paired_relative_overhead_percent": {
+          "count": 72,
+          "mean": 11.765720835966437,
+          "median": 9.2961426305076,
+          "p95": 32.61194330252047,
+          "total": 847.1319001895835
+        },
+        "sensor_median_ms": {
+          "count": 72,
+          "mean": 151.4521689722222,
+          "median": 132.5868335,
+          "p95": 288.56874999999997,
+          "total": 10904.556166
+        },
+        "sensor_per_step_ms": {
+          "count": 72,
+          "mean": 3.6286510266590093,
+          "median": 3.5687535995297806,
+          "p95": 4.756116279069768,
+          "total": 261.2628739194487
+        }
+      },
+      "static": {
+        "baseline_median_ms": {
+          "count": 72,
+          "mean": 172.07588316666667,
+          "median": 177.7205205,
+          "p95": 288.444833,
+          "total": 12389.463588
+        },
+        "baseline_per_step_ms": {
+          "count": 72,
+          "mean": 2.7940954046836755,
+          "median": 2.7801500763771183,
+          "p95": 3.7119338624999996,
+          "total": 201.17486913722465
+        },
+        "paired_delta_ms": {
+          "count": 72,
+          "mean": 22.554477902777776,
+          "median": 20.863478999999984,
+          "p95": 48.938916000000006,
+          "total": 1623.922409
+        },
+        "paired_episode_count": 72,
+        "paired_relative_overhead_percent": {
+          "count": 72,
+          "mean": 13.3797169420579,
+          "median": 12.492857529579668,
+          "p95": 22.0358318200925,
+          "total": 963.3396198281688
+        },
+        "sensor_median_ms": {
+          "count": 72,
+          "mean": 194.63036106944443,
+          "median": 206.858,
+          "p95": 322.688666,
+          "total": 14013.385997
+        },
+        "sensor_per_step_ms": {
+          "count": 72,
+          "mean": 3.159232129028623,
+          "median": 2.9389338897245763,
+          "p95": 4.3753044615384615,
+          "total": 227.46471329006087
+        }
+      },
+      "uncertainty": {
+        "baseline_median_ms": {
+          "count": 72,
+          "mean": 152.58607743055555,
+          "median": 104.6380005,
+          "p95": 362.30933300000004,
+          "total": 10986.197575
+        },
+        "baseline_per_step_ms": {
+          "count": 72,
+          "mean": 3.3363866869516956,
+          "median": 3.1708485,
+          "p95": 4.786076562500001,
+          "total": 240.21984146052208
+        },
+        "paired_delta_ms": {
+          "count": 72,
+          "mean": 16.24663497222222,
+          "median": 11.1623965,
+          "p95": 79.119459,
+          "total": 1169.757718
+        },
+        "paired_episode_count": 72,
+        "paired_relative_overhead_percent": {
+          "count": 72,
+          "mean": 11.984373270763603,
+          "median": 10.579566601083087,
+          "p95": 38.09213644250934,
+          "total": 862.8748754949795
+        },
+        "sensor_median_ms": {
+          "count": 72,
+          "mean": 168.8327124027778,
+          "median": 120.762021,
+          "p95": 380.601542,
+          "total": 12155.955292999999
+        },
+        "sensor_per_step_ms": {
+          "count": 72,
+          "mean": 3.644705580317076,
+          "median": 3.42754739375,
+          "p95": 5.437939575,
+          "total": 262.41880178282946
+        }
+      }
+    },
+    "sensor_episode_wall_ms": {
+      "count": 864,
+      "mean": 169.29347950925927,
+      "median": 136.4823955,
+      "p95": 334.071208,
+      "total": 146269.566296
+    }
+  },
+  "status": "PASS_COMPLETE_288_EPISODE_MATRIX"
+}

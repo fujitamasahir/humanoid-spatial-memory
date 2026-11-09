@@ -1,0 +1,314 @@
+{
+  "architecture": "arm64",
+  "baseline_commit": "41e4bf78004ea31b7e428891e71c1fb5d5387f3b",
+  "baseline_file_hashes": {
+    "action_events.json": "eecf1fb1b218ab3d32e87c254d7b630dd3b972440f0e684baf39bcd8d60b1530",
+    "episodes.csv": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "paired_world_clustered_analysis.json": "187cb6fb7fa0968fb165bad612bd762ece4753c94f5a9c584ee8364eda73d80f",
+    "provenance.json": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "run.lock": "4255cc02d95f5a08e40ecec3340e300ae906eb8b1c9047eef06b0c9112ddc3a6",
+    "summary.json": "c0a3b0c32b027cec376ddc6d47438131cb0707c7a46fa067e81d7b30e3455501"
+  },
+  "baseline_match_design": {
+    "difference": "The previous comparison allowed cardinal lateral/backward translations while preserving heading. This comparison uses forward-first turns with rule-gated static-object sidesteps and observed-threat retreats.",
+    "interpretation": "Results compare navigation policies under a movement-policy change; they are not a locomotion-actuation comparison.",
+    "matched": "Same 36 saved fit identities, two schedules, four observation methods, seed, 0.75 m/cell assumption and observation cap.",
+    "previous_full_comparison": "results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288"
+  },
+  "baseline_provenance_sha256": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+  "baseline_result_dir": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "collision_shield": "Only the final selected non-wait action is checked once.",
+  "commit": "20345a5",
+  "decision_information": "Current and previous ray-derived observations only; no future proxy positions, schedule lookup, ground-truth occupancy, or unselected shield queries.",
+  "derived_analysis_revisions": [
+    {
+      "formula": "observation_count * spatial_memory_sensor.ray_count",
+      "reason": "Recomputed derived spatial-memory ray totals from logged observation counts and frozen 61-ray configuration; raw episode_records.jsonl and runtime_pairs.jsonl are unchanged."
+    }
+  ],
+  "emergency_safety_sensor": {
+    "horizontal_fov_deg": 360.0,
+    "range_m": 2.0,
+    "ray_backend": "multi",
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "episode_seed": 42,
+  "evaluation_source_commit": "20345a5",
+  "expected_episode_count": 288,
+  "experiment_name": "Phase 2 matched 61-ray emergency safety evaluation",
+  "git_status_at_start": "## phase2/mujoco-proxy-pilot...origin/phase2/mujoco-proxy-pilot\n?? scripts/evaluate_phase2_61ray_emergency_safety_full_288.py\n?? tests/test_phase2_final_61ray_eval.py",
+  "grid_scale_calibrated": false,
+  "grid_scale_m_per_cell": 0.75,
+  "independence": "Emergency measurements do not update spatial-memory state or observation counters.",
+  "max_steps": 80,
+  "mujoco_version": "3.17.0",
+  "observation_policies": [
+    "static",
+    "periodic",
+    "age",
+    "uncertainty"
+  ],
+  "phase15_preservation_verification": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "phase15_world_generation": false,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "preflight": {
+    "baseline_signature_match": true,
+    "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "policy": "static",
+    "schedule": 1,
+    "seed": 42,
+    "sensor_configuration": {
+      "horizontal_fov_deg": 360.0,
+      "range_m": 2.0,
+      "ray_backend": "multi",
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "sensor_result": {
+      "elapsed_steps": 76,
+      "emergency_safety_interventions": 7,
+      "emergency_safety_raycasts": 4636,
+      "emergency_safety_scans": 76,
+      "final_position": [
+        17,
+        9
+      ],
+      "g1_actual_collision_shield_queries": 70,
+      "g1_pedestrian_contact_pairs": 0,
+      "g1_spatial_memory_observations": 1,
+      "g1_unselected_action_shield_queries": 0,
+      "g1_unwanted_contact_pairs": 0,
+      "success": true
+    },
+    "status": "PASS_TARGET_EPISODE_PREFLIGHT",
+    "trace_step_52": {
+      "action": [
+        "wait",
+        "observed_destination_risk_current_footprint_clear"
+      ],
+      "action_reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_intervention": {
+        "escape_clearance_source": "current G1 footprint is outside the observed one-step reachable hazard set",
+        "escape_swept_footprint_cells": [
+          [
+            10,
+            4
+          ]
+        ],
+        "heading_yaw": 0.0,
+        "motion_estimate": {
+          "state": "uncertain_after_recent_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            0.0
+          ]
+        },
+        "position_before_action": [
+          10,
+          4
+        ],
+        "reachable_proxy_cells_from_observations": [
+          [
+            10,
+            5
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            5
+          ]
+        ],
+        "reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+        "selected_action_after": [
+          "wait",
+          "observed_destination_risk_current_footprint_clear"
+        ],
+        "selected_action_before": [
+          "move",
+          [
+            11,
+            4
+          ]
+        ],
+        "selected_action_footprint_cells_at_risk": [
+          [
+            11,
+            4
+          ]
+        ],
+        "stationary_footprint_cells_at_risk": [],
+        "step": 52,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            5
+          ]
+        ]
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 3,
+          "persistent_obstacles": 0,
+          "walls": 29
+        },
+        "motion_estimate": {
+          "state": "uncertain_after_recent_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            0.0
+          ]
+        },
+        "position_before_action": [
+          10,
+          4
+        ],
+        "ray_count": 61,
+        "ray_hits": 32,
+        "step": 52,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            5
+          ]
+        ],
+        "visible_persistent_obstacle_cells": []
+      },
+      "evaluator_only_proxy_cells": [
+        [
+          11,
+          5
+        ]
+      ],
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        4
+      ],
+      "step": 52
+    }
+  },
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "runtime_timing_repetitions_per_matched_episode": 3,
+  "safety_sensor_frequency": "one scan after each world.advance before scheduled observation and action selection",
+  "schedule_indices": [
+    0,
+    1
+  ],
+  "source_hash_amendments": [
+    {
+      "previous_script_sha256": "dfa009adce40cacd82db68c914a13505e0f33c59c769f5c23784d579b52ba5b9",
+      "reason": "Corrected post-run spatial-memory verification: adaptive observation policies may observe at different counts after safety interventions change their route; validation now checks recorded observation-step accounting and Static=1. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "a2170263f8e2b663e49877e2231b1abfc07f106a40df43a533684c61d9b3549c"
+    },
+    {
+      "previous_script_sha256": "a2170263f8e2b663e49877e2231b1abfc07f106a40df43a533684c61d9b3549c",
+      "reason": "Post-run verification/metric corrections only: adaptive observation policies may have different counts after routes change, so validate observation-step accounting and Static=1; derive exact spatial-memory ray counts as logged authorized observations times the frozen 61-ray configuration because the timed provider closure does not expose generic last_stats. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "4d66aa5638ecd9b6a9c562db06fcd9b4a9dc309b09ce2de626693508c5eefb2c"
+    },
+    {
+      "previous_script_sha256": "4d66aa5638ecd9b6a9c562db06fcd9b4a9dc309b09ce2de626693508c5eefb2c",
+      "reason": "Post-run verification/metric corrections only: adaptive observation policies may have different counts after routes change, so validate observation-step accounting and Static=1; derive exact spatial-memory ray counts as logged authorized observations times the frozen 61-ray configuration because the timed provider closure does not expose generic last_stats. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "00b99d97965c285568a9e6a7b9b861d2a58cdbed3ee612f47384eb236a3d7449"
+    },
+    {
+      "previous_script_sha256": "00b99d97965c285568a9e6a7b9b861d2a58cdbed3ee612f47384eb236a3d7449",
+      "reason": "Post-run verification/metric corrections only: adaptive observation policies may have different counts after routes change, so validate observation-step accounting and Static=1; derive exact spatial-memory ray counts as logged authorized observations times the frozen 61-ray configuration because the timed provider closure does not expose generic last_stats. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "c2f2aeac29be646d3eafbd1a70a7f5170e11745c025b702f58ec44666cb21670"
+    },
+    {
+      "previous_script_sha256": "c2f2aeac29be646d3eafbd1a70a7f5170e11745c025b702f58ec44666cb21670",
+      "reason": "Post-run verification/metric corrections only: adaptive observation policies may have different counts after routes change, so validate observation-step accounting and Static=1; derive exact spatial-memory ray counts as logged authorized observations times the frozen 61-ray configuration because the timed provider closure does not expose generic last_stats. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "b99d100efa638611ddc06b47104060326ad0dbffc7f9440af8d6382c0c29a5cd"
+    },
+    {
+      "previous_script_sha256": "b99d100efa638611ddc06b47104060326ad0dbffc7f9440af8d6382c0c29a5cd",
+      "reason": "Post-run verification/metric corrections only: adaptive observation policies may have different counts after routes change, so validate observation-step accounting and Static=1; derive exact spatial-memory ray counts as logged authorized observations times the frozen 61-ray configuration because the timed provider closure does not expose generic last_stats. No episode controller, sensor, scenario, or policy parameters changed.",
+      "resumed_script_sha256": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1"
+    }
+  ],
+  "source_hashes": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "source_world_identities": [
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+  ],
+  "spatial_memory_sensor": {
+    "horizontal_fov_deg": 120.0,
+    "range_m": 6.0,
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "status": "61_RAY_FULL_288_EVALUATION",
+  "timing_boundary": "episode wall from before scene creation through run_episode completion; loop timing encloses run_episode; sensor timing encloses each emergency scan",
+  "world_count": 36
+}

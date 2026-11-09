@@ -1,0 +1,8 @@
+{
+  "episode_records_jsonl_modified": false,
+  "formula": "observation_count * spatial_memory_sensor.ray_count",
+  "metric": "mujoco_sensor_rays / spatial_memory_rays",
+  "ray_count_per_authorized_observation": 61,
+  "reason": "The timed observation-provider closure does not expose the bound sensor last_stats attribute to run_episode generic bookkeeping; per-episode observation timings and steps were recorded directly. Ray count is exact from the frozen sensor configuration and count of granted observations.",
+  "source": "Append-only episode_records.jsonl observation_count and spatial_memory_observation_steps, plus frozen experiment_manifest.json spatial_memory_sensor.ray_count"
+}
