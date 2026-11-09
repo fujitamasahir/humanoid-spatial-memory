@@ -1,0 +1,56 @@
+{
+  "fit_record": {
+    "path": "results/raw/phase15_macos_development/fit/records/1e9e8fd6b4d5774ccde8e090922cee51cf04ac8c71c20bdbf6f2e649ab993cb7.json.gz",
+    "sha256": "159f9578cb992db5184eb42766da0fbff11afaee2808a49f5afdb55a5fee02be"
+  },
+  "note": "The 288-episode result retained action events, not per-frame pose trajectories. This display trace was rebuilt by deterministic replay and accepted only after saved outcome counters and all recorded non-move actions matched exactly. No candidate or maze was regenerated.",
+  "pedestrian_proxy": {
+    "centerline_endpoints_z_m": [
+      0.2,
+      1.28
+    ],
+    "kind": "MuJoCo mocap capsule; not a humanoid model",
+    "overall_height_m": 1.46,
+    "radius_m": 0.19,
+    "trajectory_source": "saved B-prime schedule positions"
+  },
+  "replay_comparisons": {
+    "blocked_attempts": true,
+    "contact_free_success": true,
+    "elapsed_steps": true,
+    "forward_actions": true,
+    "in_place_turns": true,
+    "non_move_action_trace": true,
+    "pedestrian_contacts": true,
+    "success": true,
+    "unwanted_contacts": true
+  },
+  "saved_episode_metrics": {
+    "contact_free_success": false,
+    "elapsed_steps": 76,
+    "final_position": [
+      6,
+      8
+    ],
+    "g1_footprint_blocked_attempts": 2,
+    "g1_forward_actions": 44,
+    "g1_in_place_turns": 16,
+    "g1_pedestrian_contact_pairs": 234,
+    "g1_unwanted_contact_pairs": 234,
+    "success": true
+  },
+  "source_episode": {
+    "episode_seed": 42,
+    "method": "periodic",
+    "schedule_index": 1,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+  },
+  "source_files_sha256": {
+    "action_events.json": "6f37630e4c4af0676eed27208c8441c5e66d38517b1f71d480de85eecb21b663",
+    "episodes.csv": "e3d76d3a785e99f6cdc5d5f4e5a162199c86ca21bde3fa9b59b7851cf603fe09",
+    "provenance.json": "9e7e715570d36867975a5625029ba09e7afc291b16b0ebe50ad4738909399950"
+  },
+  "source_full_run": "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288",
+  "status": "PASS_DETERMINISTIC_EPISODE_REPLAY_MATCH",
+  "trajectory_frames": 77
+}
