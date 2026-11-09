@@ -1,0 +1,750 @@
+{
+  "count_by_method": {
+    "BP": 12,
+    "M": 12,
+    "R": 12
+  },
+  "mazes": [
+    {
+      "free_cell_count": 417,
+      "goal": [
+        16,
+        1
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "image": "R/R_80000000.png",
+      "image_sha256": "2669eeca5472e138a5fe02ae92779fa2346c1e9105c8ebdbcd32120d7d8f8474",
+      "mechanism": "R",
+      "seed": 80000000,
+      "source_record": "results/raw/phase15_macos_development/fit/records/d479b0f99857a1dd562385458578c16005b870c978a8cd2e5187db97663f8f4f.json.gz",
+      "source_record_sha256": "2da617bc7ab77d4ef59f8948785b80de202a4daec5b33909cb57444e78e3fe2b",
+      "start": [
+        5,
+        15
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 419,
+      "goal": [
+        17,
+        9
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+      "image": "R/R_80000001.png",
+      "image_sha256": "41112f0068d39934a478e41f27b3a5dc0ffb854c663592f0bb98030408f18ff2",
+      "mechanism": "R",
+      "seed": 80000001,
+      "source_record": "results/raw/phase15_macos_development/fit/records/4148e456253ed9ac83a876ffb6b2b2f1b93e3a8c29f4c12ecdef2d89a7f1d55b.json.gz",
+      "source_record_sha256": "f51a5385cad5640538160b1c0ceeca2fdcdda51234232c2a8c0b2ae3afe43f28",
+      "start": [
+        5,
+        15
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 418,
+      "goal": [
+        19,
+        20
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+      "image": "R/R_80000003.png",
+      "image_sha256": "cb86dbbca05fd53aebec20aa62b8171fbe4d336ded5553858d804c6ecbdc4936",
+      "mechanism": "R",
+      "seed": 80000003,
+      "source_record": "results/raw/phase15_macos_development/fit/records/4bfb251d27c9b3af4b3e65ad59d88ac385946d61212bac175c5b595ec96d4d54.json.gz",
+      "source_record_sha256": "09c8af92b98eba8692046610c18a9d172ab5c8e60582199f11392d2b56c9e30b",
+      "start": [
+        9,
+        23
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 416,
+      "goal": [
+        10,
+        5
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+      "image": "R/R_80000007.png",
+      "image_sha256": "a0c1a79eb247d1387afe4222771b052e67fcf0e0851abf962217d7d09a1108a1",
+      "mechanism": "R",
+      "seed": 80000007,
+      "source_record": "results/raw/phase15_macos_development/fit/records/347fb0d6325b208e423dca0891a4711cf2629504775d3a6c8e68abf6a8bcd31c.json.gz",
+      "source_record_sha256": "b2cbbdc4e0b1a2135627d042f364fc7c8b7774cb86fab433c993412b6f5c326c",
+      "start": [
+        11,
+        14
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 417,
+      "goal": [
+        8,
+        19
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+      "image": "R/R_80000012.png",
+      "image_sha256": "44c96345fb9b2b317a56f0c54f75e5577887d695aebfaf4bc46e7af0799247f6",
+      "mechanism": "R",
+      "seed": 80000012,
+      "source_record": "results/raw/phase15_macos_development/fit/records/e92df0196dfad818c82ad48d9f2af707923f2e578ff917c62e34a1f4d8f31057.json.gz",
+      "source_record_sha256": "a749f9a8d8270ce4b58191569420258b018725eb7bc39bec253b0593f7a4739f",
+      "start": [
+        9,
+        1
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 418,
+      "goal": [
+        21,
+        17
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+      "image": "R/R_80000014.png",
+      "image_sha256": "7b9dd51334aede91954d39cc71af934986623c547a7440bc01458c70c441a94a",
+      "mechanism": "R",
+      "seed": 80000014,
+      "source_record": "results/raw/phase15_macos_development/fit/records/735559e7ecb7623f7da7daf6989c68cb83ef94f621e5372cc24c889930a165f1.json.gz",
+      "source_record_sha256": "4e275b7920a3406d1eb8297176c14edc4ab694cfd47938313b7c94f2dadaa4e7",
+      "start": [
+        19,
+        6
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 418,
+      "goal": [
+        15,
+        23
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      "image": "R/R_80000017.png",
+      "image_sha256": "89677534085b0adbe63d35edc7b62a16a80e221aa9ce332a91f725a04da4dea4",
+      "mechanism": "R",
+      "seed": 80000017,
+      "source_record": "results/raw/phase15_macos_development/fit/records/156cf8af889f1507557b1a3cf54586adf3b0d7db89a955ffeb50e005284b01b4.json.gz",
+      "source_record_sha256": "76c935ce16734af6a2fa4835505eccf7f97388120560e7b0119ee6d3ee2721cf",
+      "start": [
+        11,
+        10
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 417,
+      "goal": [
+        4,
+        19
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "image": "R/R_80000018.png",
+      "image_sha256": "4c810229dd841310ffadcd47a076d97989255e24e9c553cf6f05328a1bf82b69",
+      "mechanism": "R",
+      "seed": 80000018,
+      "source_record": "results/raw/phase15_macos_development/fit/records/f032d348b5345964ad32616c84ccc8f6d8948b8799457f5b62bbc365991f315f.json.gz",
+      "source_record_sha256": "04e0232f2a41e9abadc30279c2592ff2b2469b9a93c2d2d43f8258b5ed2db199",
+      "start": [
+        14,
+        11
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 419,
+      "goal": [
+        21,
+        10
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+      "image": "R/R_80000019.png",
+      "image_sha256": "13ce0758e77e4490b725f2cb6ae758cea0aeeaf03cbcdd31c81d3395c41d06a6",
+      "mechanism": "R",
+      "seed": 80000019,
+      "source_record": "results/raw/phase15_macos_development/fit/records/5d113c5bcaf8dbe664c55b290988519fe05989dc8dc233617ae4b670cf2f5ae6.json.gz",
+      "source_record_sha256": "d5cc5bfad88cdb3ec6b574321a3ea8aaa7fdf9e2402e084b93a4b7e213102028",
+      "start": [
+        23,
+        21
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 421,
+      "goal": [
+        11,
+        5
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+      "image": "R/R_80000021.png",
+      "image_sha256": "22345d4225fa26407ff3c7f91c58a825c7a5818d0902e44f1a25c3d8e89484e2",
+      "mechanism": "R",
+      "seed": 80000021,
+      "source_record": "results/raw/phase15_macos_development/fit/records/03019e043d47329d9707eaa9f54d9c38502fd4a071bc76f4d2d135c204369770.json.gz",
+      "source_record_sha256": "19d18d56cf694c4558bcb98181bfd16a53e5a3a4d80391810586f7daad0d984b",
+      "start": [
+        8,
+        19
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 420,
+      "goal": [
+        2,
+        19
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+      "image": "R/R_80000022.png",
+      "image_sha256": "9025afe3a9aabc55990202e6baf678b7878eefde29d1760fecfcdede9a4d7917",
+      "mechanism": "R",
+      "seed": 80000022,
+      "source_record": "results/raw/phase15_macos_development/fit/records/cd5a224b77438f014424f2132e33a84b5c8b5bf4d4ed47c130e2f26b2754b793.json.gz",
+      "source_record_sha256": "bd1df79aa84a2a36abdc2ef9db07ed9d5fb982eeb6a28237956ca29bf2fb3e1b",
+      "start": [
+        16,
+        1
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 418,
+      "goal": [
+        16,
+        11
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+      "image": "R/R_80000023.png",
+      "image_sha256": "fbd9b4a3853d36e69b3791299ae45dccb0632e945a528bcec9a52e1e39765f0e",
+      "mechanism": "R",
+      "seed": 80000023,
+      "source_record": "results/raw/phase15_macos_development/fit/records/cbbad81cae6f18a07ca921839b690d811ba0b924ed0a5e7463c6823e18617e45.json.gz",
+      "source_record_sha256": "4121a5dc91846b33d0bd704d3ce4b6c6ec968484af6f0e708ad98f8addc5174c",
+      "start": [
+        16,
+        23
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 413,
+      "goal": [
+        9,
+        14
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+      "image": "BP/BP_80010000.png",
+      "image_sha256": "9943ce074fc32d2a905559b1e01c054c25491a47ee97e4f688a19f3135fc2ea4",
+      "mechanism": "BP",
+      "seed": 80010000,
+      "source_record": "results/raw/phase15_macos_development/fit/records/31737759f2e2f41a3be21f03545709867b340d11beee4ae2e87474c2872de07d.json.gz",
+      "source_record_sha256": "c972a92ec0ed357fd08da2d6e358bc0ff5ef2f88567d3417c44e406d8dbe54ec",
+      "start": [
+        3,
+        1
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 415,
+      "goal": [
+        1,
+        2
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "image": "BP/BP_80010001.png",
+      "image_sha256": "48b17caca358fd5f6110612ae35845e6527af82f658c30fbdc1bde78a7c9efde",
+      "mechanism": "BP",
+      "seed": 80010001,
+      "source_record": "results/raw/phase15_macos_development/fit/records/0bd7ccc44c38ec4e10f72112d44d8188f399e9da85985ac245c2eacc956fae08.json.gz",
+      "source_record_sha256": "bf3ba2958a8df279567e52c6a446120a1843824b48a895955a79777ad4a5bd24",
+      "start": [
+        22,
+        11
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 415,
+      "goal": [
+        2,
+        3
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+      "image": "BP/BP_80010002.png",
+      "image_sha256": "13da689b042f55fb5e7f4d0d27a598e21d7ce11a024bc6a98609c24729b68ab4",
+      "mechanism": "BP",
+      "seed": 80010002,
+      "source_record": "results/raw/phase15_macos_development/fit/records/3418beed5aae910716a98a0a1599bc3802797394ef4e6b4d5800088cc85f5e41.json.gz",
+      "source_record_sha256": "5582af510b2b599614cfbac32f7ef00f27e3e01c42c04de5a84a8ae1beb5d9a5",
+      "start": [
+        22,
+        19
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 429,
+      "goal": [
+        14,
+        6
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      "image": "BP/BP_80010004.png",
+      "image_sha256": "31c835562c833509f604260c3373e1d6ba1ffbc5b24669cbfaff3880f1240a5c",
+      "mechanism": "BP",
+      "seed": 80010004,
+      "source_record": "results/raw/phase15_macos_development/fit/records/cec84c0794ff71436e52375525609f0dee54d9b470483ab650307ef0e53464c5.json.gz",
+      "source_record_sha256": "384d26465509158ed2d653444f0071acfaff4f25e0e15bb221a22e94c85e9deb",
+      "start": [
+        12,
+        15
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 431,
+      "goal": [
+        6,
+        5
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+      "image": "BP/BP_80010005.png",
+      "image_sha256": "3173221025e5cf1aec748fde404a256e3165380ff5e79b691da544bf609b13a4",
+      "mechanism": "BP",
+      "seed": 80010005,
+      "source_record": "results/raw/phase15_macos_development/fit/records/1afe582296dc395fa3c2d1472fa2cb010e8ff2cde89070b9e292257bb2190fed.json.gz",
+      "source_record_sha256": "bb14582b80e932acba6408ee80a5ce7fac9b1e06006655409cf563fca1d791df",
+      "start": [
+        18,
+        13
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 432,
+      "goal": [
+        15,
+        3
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+      "image": "BP/BP_80010006.png",
+      "image_sha256": "e184537e50e18563abe85f0d0dc0c2e64afccb3103cadd1c9368a2c0b96a0d17",
+      "mechanism": "BP",
+      "seed": 80010006,
+      "source_record": "results/raw/phase15_macos_development/fit/records/e9fcdbd068317d0cbdb90a029881cb71994eec59bb991ccf5d56bbb618e55907.json.gz",
+      "source_record_sha256": "de8c278dc1ebd5ed186341a33f9966e0275edfdfd43bd9ba3109f1b8aae050e5",
+      "start": [
+        5,
+        15
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 450,
+      "goal": [
+        1,
+        13
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+      "image": "BP/BP_80010007.png",
+      "image_sha256": "9b0a4bdd8f3bc4f8592efaf0ce8c0a2ea2b8af0bb15a6b10b7a9fdcde07a1050",
+      "mechanism": "BP",
+      "seed": 80010007,
+      "source_record": "results/raw/phase15_macos_development/fit/records/232a86a08d196dc0d3025bf6ebe1f23a145a204fc06d513f8dfa7c0f1c35ceec.json.gz",
+      "source_record_sha256": "1c02901d0badee000be524a88cb29be60baa0d7cc67f26d9a3217e6677d4bc49",
+      "start": [
+        14,
+        2
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 443,
+      "goal": [
+        20,
+        7
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+      "image": "BP/BP_80010009.png",
+      "image_sha256": "315fb05f47fb8da3f98a8a3d142faebb946b02c080d5b94b03c0a50bd7276a01",
+      "mechanism": "BP",
+      "seed": 80010009,
+      "source_record": "results/raw/phase15_macos_development/fit/records/2bf01351e28b27dbf219cd58426528a9dd5136e6085fcca278ca9a24a855b339.json.gz",
+      "source_record_sha256": "b63133ee065270f9cd261367f68765cc7c7e7778c4bdf79cd4cbd2bd06707ac7",
+      "start": [
+        22,
+        18
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 426,
+      "goal": [
+        7,
+        11
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+      "image": "BP/BP_80010010.png",
+      "image_sha256": "640933b89edfe26d8de8da241cdf5e2f5d26056b9ee709961d805390756e32e7",
+      "mechanism": "BP",
+      "seed": 80010010,
+      "source_record": "results/raw/phase15_macos_development/fit/records/fcf671f540db7258b68e3d1c521e4c7ac4850d41c08b7b5fbac9bbe6e1ec823a.json.gz",
+      "source_record_sha256": "47e68d84df75310207916dcbe8dfa963ab6fe0b5c132b33a1b5d54fc3a1c92e0",
+      "start": [
+        5,
+        20
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 446,
+      "goal": [
+        16,
+        14
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+      "image": "BP/BP_80010011.png",
+      "image_sha256": "0bfa40df6766e6c8008d2e81c4726aa7e9168eaff40b33304e0f0b3681d44199",
+      "mechanism": "BP",
+      "seed": 80010011,
+      "source_record": "results/raw/phase15_macos_development/fit/records/5b7eb1f7b3350d69c54f5b4d3bcd6bd65ddb1129bd1a26c7df1bef5ea0b7256f.json.gz",
+      "source_record_sha256": "d96eb44796c7fc8a0f41ea6d4b341e5870cfe321cf5bf0290ce54db518bca336",
+      "start": [
+        13,
+        5
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 413,
+      "goal": [
+        11,
+        17
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+      "image": "BP/BP_80010012.png",
+      "image_sha256": "bd72019b35843f2ef87ff4edc223519d838965a531e1dfea7c66e9f2ce65dc22",
+      "mechanism": "BP",
+      "seed": 80010012,
+      "source_record": "results/raw/phase15_macos_development/fit/records/efcbd53b5c181bed4d02ddfbf108c3f6352469eeafc4e8cccc0c9c18dbb53d7b.json.gz",
+      "source_record_sha256": "6e4284c269b823cc14350d99cd808a0d807751df6c5e078f0ef3496a856712f8",
+      "start": [
+        18,
+        8
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 404,
+      "goal": [
+        13,
+        18
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+      "image": "BP/BP_80010013.png",
+      "image_sha256": "365cab5572c71180c07812761ecea21852f20940e1671d26624e2854a2ff71f8",
+      "mechanism": "BP",
+      "seed": 80010013,
+      "source_record": "results/raw/phase15_macos_development/fit/records/3b1fc2364bf3f931c09adfd008081276c230707e561c5c2e3466b79488124f79.json.gz",
+      "source_record_sha256": "64a4133e2470b171996d3d08fa3612fb41c4084570f4278dfd62fc6b5041d1e4",
+      "start": [
+        21,
+        15
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 253,
+      "goal": [
+        22,
+        13
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      "image": "M/M_80030000.png",
+      "image_sha256": "7459001f997fc712c8d23e6615acbceadacc918b4759e196b1f7902e2cc05fc3",
+      "mechanism": "M",
+      "seed": 80030000,
+      "source_record": "results/raw/phase15_macos_development/fit/records/078d037b76a00f430e1f15d247654c208ec5592792fa5854426f52a1b9da0d37.json.gz",
+      "source_record_sha256": "acc13c07460d5964f32bb7ff9209bdb899806048fd96835343908cc017aa26f7",
+      "start": [
+        10,
+        4
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 253,
+      "goal": [
+        10,
+        20
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+      "image": "M/M_80030001.png",
+      "image_sha256": "6323a4b6ec47f23c02d7f0728bde474a06d4c73428efb7d2e11e614f06312063",
+      "mechanism": "M",
+      "seed": 80030001,
+      "source_record": "results/raw/phase15_macos_development/fit/records/3550289e433c9ccdbd3baae175a18d61d63739f076fd1497459d224148de64ca.json.gz",
+      "source_record_sha256": "9c95a32460f12b41df9f04c52261b779d701221049239c5bc65ba0b5bdefdb4d",
+      "start": [
+        21,
+        22
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 250,
+      "goal": [
+        10,
+        20
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      "image": "M/M_80030002.png",
+      "image_sha256": "c16129661aa8fea2f1a608b7b1144ad7d329eb588d323959d092158b690df86e",
+      "mechanism": "M",
+      "seed": 80030002,
+      "source_record": "results/raw/phase15_macos_development/fit/records/f875a4bba9e96f976367a14ed46625f91da553e6a6d1b15db0c0d099f22bec98.json.gz",
+      "source_record_sha256": "4ce9bfae8dec651539d277c24836637edf8c7ab51a507c8e38fce582560b0b7e",
+      "start": [
+        22,
+        21
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 255,
+      "goal": [
+        18,
+        5
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+      "image": "M/M_80030003.png",
+      "image_sha256": "09fb1ffa53df72c77ad4d22fcc927850111ab3b558bc20e4a816c8c4a2f96b2a",
+      "mechanism": "M",
+      "seed": 80030003,
+      "source_record": "results/raw/phase15_macos_development/fit/records/2c90bd47a8834fbe1b745ce19d6873c368875a5f90bccbbb3dfb49cfc75abb6b.json.gz",
+      "source_record_sha256": "14bf4fe6e53978c990304d2a7f255db5e46a9a62ac6873bea28ca46330b5d021",
+      "start": [
+        7,
+        10
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 256,
+      "goal": [
+        4,
+        14
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "image": "M/M_80030004.png",
+      "image_sha256": "58c2ec3c7bb5fb6a52283e14c64e6f8f44b764b7c8d1a9b50e7c32e3a76e8146",
+      "mechanism": "M",
+      "seed": 80030004,
+      "source_record": "results/raw/phase15_macos_development/fit/records/106f0f54b4146a33d2bff745703bac6387386a50448d0d441cf004819a9abe23.json.gz",
+      "source_record_sha256": "23cc053b57525e7175c779354f33a23c5a7017315286e95f967086d14ddc2a1c",
+      "start": [
+        14,
+        14
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 252,
+      "goal": [
+        8,
+        12
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+      "image": "M/M_80030005.png",
+      "image_sha256": "40f1b196e4f05d174314d44d02f1aff8d9618291419c1221a6c284ecbee62513",
+      "mechanism": "M",
+      "seed": 80030005,
+      "source_record": "results/raw/phase15_macos_development/fit/records/16110260790f582ec0a4068b4c64ad916e222c571d18db66974236b878d66816.json.gz",
+      "source_record_sha256": "ebe34cc4fe224524a671dc12fc51f7693ae0b34d7561e84fa9797feaf29f23df",
+      "start": [
+        20,
+        11
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 253,
+      "goal": [
+        20,
+        22
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+      "image": "M/M_80030006.png",
+      "image_sha256": "3225f423595362fa659fb21bae4f3d41605130c0a9be03ab3df3c6127eafa24a",
+      "mechanism": "M",
+      "seed": 80030006,
+      "source_record": "results/raw/phase15_macos_development/fit/records/caed6bf0bd6f08add111648b93a5be5989f44273169f4741e301bada2dfa2970.json.gz",
+      "source_record_sha256": "02c76edfdaa3dc58696156eabd33ef2271594caada3ea0c35e84e354f1191580",
+      "start": [
+        8,
+        12
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 257,
+      "goal": [
+        6,
+        8
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "image": "M/M_80030007.png",
+      "image_sha256": "f764c6691447b5b6c96b0a9b54432b153d428d66e4668366803285959d457d78",
+      "mechanism": "M",
+      "seed": 80030007,
+      "source_record": "results/raw/phase15_macos_development/fit/records/1e9e8fd6b4d5774ccde8e090922cee51cf04ac8c71c20bdbf6f2e649ab993cb7.json.gz",
+      "source_record_sha256": "159f9578cb992db5184eb42766da0fbff11afaee2808a49f5afdb55a5fee02be",
+      "start": [
+        20,
+        16
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 251,
+      "goal": [
+        20,
+        13
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      "image": "M/M_80030008.png",
+      "image_sha256": "a721632c3c0d1d53409b61481594ea786795f83c466d4f34c60dcce41014e907",
+      "mechanism": "M",
+      "seed": 80030008,
+      "source_record": "results/raw/phase15_macos_development/fit/records/49feeed151d4cd6924c07f5ec2b013060fd47252b26709491cd5f10f0bd82a59.json.gz",
+      "source_record_sha256": "e6561ca54d25dc82ac85feeb8e50a3d697380349ba8e375c2b47f7d9d20182ec",
+      "start": [
+        8,
+        9
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 254,
+      "goal": [
+        8,
+        8
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      "image": "M/M_80030009.png",
+      "image_sha256": "b2b3f1b2428f4a84aff090c98eae3bd3c6472118d9f917cbd8951312611ea263",
+      "mechanism": "M",
+      "seed": 80030009,
+      "source_record": "results/raw/phase15_macos_development/fit/records/6660089ce98041b00a528fd529cca90dec82390f2eac5b56935bc65ea73646a2.json.gz",
+      "source_record_sha256": "8ab456d216901319d807bff6118d5d23e754480088c509eab8fc13e354a8a06a",
+      "start": [
+        22,
+        21
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 251,
+      "goal": [
+        4,
+        18
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+      "image": "M/M_80030010.png",
+      "image_sha256": "32a5b5ce0b83da3c5d3be4e8dbd1537f083fc9d96db7f7873ea1cefec7a708e4",
+      "mechanism": "M",
+      "seed": 80030010,
+      "source_record": "results/raw/phase15_macos_development/fit/records/4900de902f39562dc20165db17afa1efae62e01e0128c3bf6b1ed74e436f3462.json.gz",
+      "source_record_sha256": "ef565e1ec71a9b76a63998555b6f519c2266b920b9be8704cdd9b669fdacea90",
+      "start": [
+        8,
+        8
+      ],
+      "width": 25
+    },
+    {
+      "free_cell_count": 260,
+      "goal": [
+        22,
+        21
+      ],
+      "height": 25,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+      "image": "M/M_80030011.png",
+      "image_sha256": "c54409055a9b38c510d7800ce7b9651171dfdff0cdac0be6350530777ac1a3a8",
+      "mechanism": "M",
+      "seed": 80030011,
+      "source_record": "results/raw/phase15_macos_development/fit/records/dfcb61661ce0ab6375e139a4ef21913144033c2c1476cee0e259afbcbeecbf6e.json.gz",
+      "source_record_sha256": "66ca142d50d81911bf9bd7f6de5a767c0af55d7d35168e563bd1195537e8c171",
+      "start": [
+        13,
+        18
+      ],
+      "width": 25
+    }
+  ],
+  "rendering": {
+    "cell_size_px": 19,
+    "coordinate_convention": "x increases right; positive world y increases upward",
+    "free_cell_color": "#e7f0f5",
+    "goal_marker": "#f4b928",
+    "projection": "top-down orthographic grid",
+    "start_marker": "#00c9ee",
+    "wall_color": "#203544"
+  },
+  "selection": "The 36 world identities listed in the existing completed Phase 2 288-episode provenance: 12 each for R, BP, M. No environment was regenerated.",
+  "source_comparison_dir": "results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288",
+  "source_provenance": {
+    "counts": {
+      "BP": 12,
+      "M": 12,
+      "R": 12
+    },
+    "path": "results/phase2_mujoco/g1_3d_perception_footprint_feedback_full_288/provenance.json",
+    "sha256": "b6801d3283662b1842d92d23dde9bd8df4c62768c54f53a0a5bb59b2564b1185"
+  },
+  "title": "Phase 1.5 saved fit maze top views"
+}
