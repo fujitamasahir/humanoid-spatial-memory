@@ -18,7 +18,8 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
                 _planner=None, _observation_callback=None, _frame_callback=None,
                 _movement_checker=None, _observation_provider=None,
                 _g1_planner=None, _action_checker=None,
-                _initial_observation_callback=None, _g1_action_reason=None):
+                _initial_observation_callback=None, _g1_action_reason=None,
+                _emergency_safety_sensor=None, _emergency_safety_controller=None):
     from .simulation import World
     from .observation import Sensor
     from .scheduling import AdaptiveParameters, ObservationController
@@ -111,6 +112,13 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         before = world.geometry()
         world.advance()
         changed[:] |= before != world.geometry()
+        # Independent emergency sensing runs after the simulated world moves
+        # and before scheduled memory observations or action selection.
+        emergency_measurement = None
+        emergency_intervention = None
+        if _emergency_safety_sensor is not None:
+            emergency_measurement = _emergency_safety_sensor(
+                world, position, heading_yaw)
         decision = agent.decide(world.step, position)
         if decision["observation_granted"]:
             observation = observe()
@@ -136,6 +144,17 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
             if _g1_action_reason is not None:
                 selected_action_reason = _g1_action_reason(
                     selected_action, position, heading_yaw)
+            if (_emergency_safety_controller is not None
+                    and emergency_measurement is not None):
+                safety_choice = _emergency_safety_controller(
+                    agent.memory.grid, position, scenario.goal, heading_yaw,
+                    selected_action, emergency_measurement, world.step,
+                    frozenset(blocked_actions))
+                if safety_choice is not None:
+                    selected_action = safety_choice.get('action', selected_action)
+                    emergency_intervention = safety_choice.get('intervention')
+                    if emergency_intervention:
+                        selected_action_reason = emergency_intervention['reason']
             route_positions = [position]
             for kind, value in route:
                 route_positions.append(tuple(value)
@@ -156,7 +175,8 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         if _g1_planner is not None and selected_action is not None:
             kind, value = selected_action
             if kind == 'wait':
-                selected_action_reason = str(value)
+                if emergency_intervention is None:
+                    selected_action_reason = str(value)
             else:
                 was_blocked, attempt_counts, next_heading, blocked_reason = _action_checker(
                     world, position, selected_action, heading_yaw)
@@ -220,6 +240,10 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
             path_taken.append(position)
         blocked_attempts += contact
         capture(planned, decision, contact, moved)
+        if emergency_measurement is not None:
+            frames[-1]['emergency_safety_scan'] = emergency_measurement['record']
+        if emergency_intervention is not None:
+            frames[-1]['emergency_safety_intervention'] = emergency_intervention
         if attempt_counts is not None:
             frames[-1].update(
                 g1_attempt_pedestrian_contact_pairs=attempt_counts.pedestrian,
@@ -331,6 +355,20 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         metrics['mujoco_sensor_hit_types'] = {
             key: sum(int(frame.get('hits_by_type', {}).get(key, 0)) for frame in sensor_frames)
             for key in ('walls', 'persistent_obstacles', 'pedestrians')}
+    safety_scans = [frame['emergency_safety_scan'] for frame in frames
+                    if 'emergency_safety_scan' in frame]
+    if safety_scans:
+        metrics['emergency_safety_scans'] = len(safety_scans)
+        metrics['emergency_safety_raycasts'] = sum(int(scan['ray_count']) for scan in safety_scans)
+        metrics['emergency_safety_ray_hits'] = sum(int(scan['ray_hits']) for scan in safety_scans)
+        metrics['emergency_safety_pedestrian_ray_hits'] = sum(
+            int(scan['hits_by_type']['pedestrians']) for scan in safety_scans)
+        metrics['emergency_safety_visible_free_cells'] = sum(
+            int(scan['free_cells']) for scan in safety_scans)
+        metrics['emergency_safety_visible_occupied_cells'] = sum(
+            int(scan['occupied_cells']) for scan in safety_scans)
+        metrics['emergency_safety_interventions'] = sum(
+            'emergency_safety_intervention' in frame for frame in frames)
     for key in ('g1_foot_floor_contact_pairs', 'g1_unwanted_floor_contact_pairs',
                 'g1_pedestrian_contact_pairs', 'g1_wall_contact_pairs',
                 'g1_persistent_obstacle_contact_pairs', 'g1_self_contact_pairs',

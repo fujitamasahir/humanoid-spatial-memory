@@ -1,0 +1,19 @@
+{
+  "protected_files_rehashed": 836,
+  "source_hashes": {
+    "scripts/evaluate_g1_static_independent_safety.py": "fdd68cdb0941d7861b08263eba7eae43542f867e6f5fcb59170f4d897d3e4d96",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "0171e02a1e7ca92ae389ec99db8b4ddd93cbefa4d57666f2ea269b76e8c4886d",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "98fe8c732c8331f61e75ce1828679575cc201ad60d2ae26ba8f805f272e6bd1e",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c"
+  },
+  "source_result_sha256": {
+    "action_events.json": "eecf1fb1b218ab3d32e87c254d7b630dd3b972440f0e684baf39bcd8d60b1530",
+    "episodes.csv": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "provenance.json": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "run.lock": "4255cc02d95f5a08e40ecec3340e300ae906eb8b1c9047eef06b0c9112ddc3a6"
+  },
+  "starting_commit": "e775ef7e662e6e92ad654d8a775c56e4129b3a55"
+}

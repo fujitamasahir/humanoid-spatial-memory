@@ -1,0 +1,1170 @@
+{
+  "baseline": {
+    "contact_free_success": false,
+    "elapsed_steps": 80,
+    "emergency_safety_interventions": 0,
+    "emergency_safety_pedestrian_ray_hits": 0,
+    "emergency_safety_ray_hits": 0,
+    "emergency_safety_raycasts": 0,
+    "emergency_safety_scans": 0,
+    "final_position": [
+      11,
+      4
+    ],
+    "g1_actual_collision_shield_queries": 55,
+    "g1_backward_actions": 0,
+    "g1_forward_actions": 33,
+    "g1_in_place_turns": 22,
+    "g1_lateral_actions": 0,
+    "g1_pedestrian_contact_pairs": 234,
+    "g1_selected_actions_requiring_collision_check": 55,
+    "g1_shield_query_count_valid": true,
+    "g1_unattempted_collision_queries": 0,
+    "g1_unwanted_contact_pairs": 234,
+    "g1_unwanted_contact_states": 6,
+    "g1_waits": 0,
+    "spatial_memory_observations": 1,
+    "success": false
+  },
+  "baseline_replay_comparisons": {
+    "elapsed_steps": true,
+    "forward_actions": true,
+    "lateral_actions": true,
+    "non_move_action_trace": true,
+    "only_selected_shield_queries": true,
+    "pedestrian_contact_pairs": true,
+    "spatial_memory_observations": true,
+    "success": true,
+    "unwanted_contact_pairs": true
+  },
+  "baseline_timeline_evaluator_diagnostic_only": [
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          10,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": true,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        9,
+        4
+      ],
+      "robot_position_before_action": [
+        8,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": null,
+      "selected_action": [
+        "move",
+        [
+          9,
+          4
+        ]
+      ],
+      "step": 50
+    },
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": true,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        10,
+        4
+      ],
+      "robot_position_before_action": [
+        9,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": null,
+      "selected_action": [
+        "move",
+        [
+          10,
+          4
+        ]
+      ],
+      "step": 51
+    },
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": true,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        11,
+        4
+      ],
+      "robot_position_before_action": [
+        10,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": null,
+      "selected_action": [
+        "move",
+        [
+          11,
+          4
+        ]
+      ],
+      "step": 52
+    },
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          4
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": false,
+      "pedestrian_contact_pairs_after_action": 39,
+      "robot_position_after_action": [
+        11,
+        4
+      ],
+      "robot_position_before_action": [
+        11,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": null,
+      "selected_action": [
+        "move",
+        [
+          12,
+          4
+        ]
+      ],
+      "step": 53
+    }
+  ],
+  "experiment_identity": {
+    "max_steps": 80,
+    "observation_policy": "static",
+    "schedule": 1,
+    "seed": 42,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+  },
+  "fit_record": {
+    "path": "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "payload_sha256": "5f866702af4f0f177f5012448262063a13d475b564d8a2156b0d4d0a7e2d5e46"
+  },
+  "limitations": [
+    "The pedestrian is a simplified moving capsule proxy, not a human model.",
+    "The result is one saved episode only and does not establish general pedestrian safety.",
+    "A reachable-cell safety bound is conservative and may cause waits or detours.",
+    "The ray sensor shares the simulated MuJoCo collision world as a physical sensing backend but returns only ray observations to the safety controller."
+  ],
+  "policy_note": "This is Static Spatial Memory + Continuous Safety Sensing, not the original Static baseline.",
+  "preserved_phase15_evidence": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "protected_source_outputs_modified": false,
+  "safety_sensor": {
+    "angular_spacing_deg": 2.0,
+    "cadence": "one scan after each world.advance and before observation scheduling/action selection",
+    "direct_proxy_coordinates_accessed_by_controller": false,
+    "future_proxy_positions_accessed": false,
+    "horizontal_fov_deg": 360.0,
+    "measurements": "MuJoCo first-hit ray intersections, hit classifications, and only ray-traversed free cells; self body excluded",
+    "name": "Independent Emergency Safety Sensor",
+    "proxy_motion": "estimated from successive observed first-hit cell clusters; unknown/stopped direction expands one cardinal step conservatively",
+    "range_m": 2.0,
+    "ray_count_per_scan": 181,
+    "sample_spacing_m": 0.075,
+    "separate_from_spatial_memory": true,
+    "shield_role": "one final selected action check only; no unselected candidate checks",
+    "spatial_memory_updates_from_safety_scan": 0
+  },
+  "safety_timeline": [
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          10,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": true,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        9,
+        4
+      ],
+      "robot_position_before_action": [
+        8,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": {
+        "estimated_pedestrian_hit_cluster_cells": [
+          [
+            10.0,
+            5.0
+          ]
+        ],
+        "free_cells": 24,
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 6,
+          "persistent_obstacles": 0,
+          "walls": 82
+        },
+        "horizontal_fov_deg": 360.0,
+        "measured_free_cells_xy": [
+          [
+            7,
+            1
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            9,
+            1
+          ],
+          [
+            7,
+            2
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            2
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            11,
+            3
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            4
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            5
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "measured_occupied_cells_xy": [
+          [
+            6,
+            2
+          ],
+          [
+            6,
+            3
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            10,
+            6
+          ]
+        ],
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "occupied_cells": 7,
+        "position_before_action": [
+          8,
+          4
+        ],
+        "range_m": 2.0,
+        "ray_count": 181,
+        "ray_hits": 88,
+        "step": 50,
+        "visible_pedestrian_cells": [
+          [
+            10,
+            5
+          ]
+        ],
+        "visible_persistent_obstacle_cells": []
+      },
+      "selected_action": [
+        "move",
+        [
+          9,
+          4
+        ]
+      ],
+      "step": 50
+    },
+    {
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": true,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        10,
+        4
+      ],
+      "robot_position_before_action": [
+        9,
+        4
+      ],
+      "safety_intervention": null,
+      "safety_scan": {
+        "estimated_pedestrian_hit_cluster_cells": [
+          [
+            11.0,
+            5.0
+          ]
+        ],
+        "free_cells": 25,
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 6,
+          "persistent_obstacles": 0,
+          "walls": 75
+        },
+        "horizontal_fov_deg": 360.0,
+        "measured_free_cells_xy": [
+          [
+            8,
+            1
+          ],
+          [
+            9,
+            1
+          ],
+          [
+            10,
+            1
+          ],
+          [
+            7,
+            2
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            2
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            11,
+            3
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            4
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            5
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            12,
+            5
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "measured_occupied_cells_xy": [
+          [
+            6,
+            3
+          ],
+          [
+            12,
+            3
+          ],
+          [
+            12,
+            4
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            11,
+            6
+          ]
+        ],
+        "motion_estimate": {
+          "state": "measured_motion",
+          "velocity_cells_per_step": [
+            1.0,
+            0.0
+          ]
+        },
+        "occupied_cells": 8,
+        "position_before_action": [
+          9,
+          4
+        ],
+        "range_m": 2.0,
+        "ray_count": 181,
+        "ray_hits": 81,
+        "step": 51,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            5
+          ]
+        ],
+        "visible_persistent_obstacle_cells": []
+      },
+      "selected_action": [
+        "move",
+        [
+          10,
+          4
+        ]
+      ],
+      "step": 51
+    },
+    {
+      "action_reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          5
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": false,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        10,
+        4
+      ],
+      "robot_position_before_action": [
+        10,
+        4
+      ],
+      "safety_intervention": {
+        "escape_clearance_source": "current G1 footprint is outside the observed one-step reachable hazard set",
+        "escape_swept_footprint_cells": [
+          [
+            10,
+            4
+          ]
+        ],
+        "heading_yaw": 0.0,
+        "motion_estimate": {
+          "state": "uncertain_after_recent_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            0.0
+          ]
+        },
+        "position_before_action": [
+          10,
+          4
+        ],
+        "reachable_proxy_cells_from_observations": [
+          [
+            10,
+            5
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            5
+          ]
+        ],
+        "reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+        "selected_action_after": [
+          "wait",
+          "observed_destination_risk_current_footprint_clear"
+        ],
+        "selected_action_before": [
+          "move",
+          [
+            11,
+            4
+          ]
+        ],
+        "selected_action_footprint_cells_at_risk": [
+          [
+            11,
+            4
+          ]
+        ],
+        "stationary_footprint_cells_at_risk": [],
+        "step": 52,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            5
+          ]
+        ]
+      },
+      "safety_scan": {
+        "estimated_pedestrian_hit_cluster_cells": [
+          [
+            11.0,
+            5.0
+          ]
+        ],
+        "free_cells": 23,
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 10,
+          "persistent_obstacles": 0,
+          "walls": 83
+        },
+        "horizontal_fov_deg": 360.0,
+        "measured_free_cells_xy": [
+          [
+            9,
+            1
+          ],
+          [
+            10,
+            1
+          ],
+          [
+            11,
+            1
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            2
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            11,
+            3
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            4
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            5
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            12,
+            5
+          ],
+          [
+            13,
+            5
+          ]
+        ],
+        "measured_occupied_cells_xy": [
+          [
+            12,
+            2
+          ],
+          [
+            12,
+            3
+          ],
+          [
+            12,
+            4
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            6
+          ]
+        ],
+        "motion_estimate": {
+          "state": "uncertain_after_recent_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            0.0
+          ]
+        },
+        "occupied_cells": 8,
+        "position_before_action": [
+          10,
+          4
+        ],
+        "range_m": 2.0,
+        "ray_count": 181,
+        "ray_hits": 93,
+        "step": 52,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            5
+          ]
+        ],
+        "visible_persistent_obstacle_cells": []
+      },
+      "selected_action": [
+        "wait",
+        "observed_destination_risk_current_footprint_clear"
+      ],
+      "step": 52
+    },
+    {
+      "action_reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+      "blocked": false,
+      "capsule_cells_evaluator_only_after_world_advance": [
+        [
+          11,
+          4
+        ]
+      ],
+      "heading_before_action": 0.0,
+      "moved": false,
+      "pedestrian_contact_pairs_after_action": 0,
+      "robot_position_after_action": [
+        10,
+        4
+      ],
+      "robot_position_before_action": [
+        10,
+        4
+      ],
+      "safety_intervention": {
+        "escape_clearance_source": "current G1 footprint is outside the observed one-step reachable hazard set",
+        "escape_swept_footprint_cells": [
+          [
+            10,
+            4
+          ]
+        ],
+        "heading_yaw": 0.0,
+        "motion_estimate": {
+          "state": "measured_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            -1.0
+          ]
+        },
+        "position_before_action": [
+          10,
+          4
+        ],
+        "reachable_proxy_cells_from_observations": [
+          [
+            11,
+            3
+          ],
+          [
+            11,
+            4
+          ]
+        ],
+        "reason": "observed_destination_risk_wait_is_safer_than_selected_action",
+        "selected_action_after": [
+          "wait",
+          "observed_destination_risk_current_footprint_clear"
+        ],
+        "selected_action_before": [
+          "move",
+          [
+            11,
+            4
+          ]
+        ],
+        "selected_action_footprint_cells_at_risk": [
+          [
+            11,
+            4
+          ]
+        ],
+        "stationary_footprint_cells_at_risk": [],
+        "step": 53,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            4
+          ]
+        ]
+      },
+      "safety_scan": {
+        "estimated_pedestrian_hit_cluster_cells": [
+          [
+            11.0,
+            4.0
+          ]
+        ],
+        "free_cells": 23,
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 15,
+          "persistent_obstacles": 0,
+          "walls": 78
+        },
+        "horizontal_fov_deg": 360.0,
+        "measured_free_cells_xy": [
+          [
+            9,
+            1
+          ],
+          [
+            10,
+            1
+          ],
+          [
+            11,
+            1
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            2
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            11,
+            3
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            4
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            5
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            11,
+            5
+          ],
+          [
+            12,
+            5
+          ],
+          [
+            13,
+            5
+          ]
+        ],
+        "measured_occupied_cells_xy": [
+          [
+            12,
+            2
+          ],
+          [
+            12,
+            3
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            12,
+            4
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            6
+          ]
+        ],
+        "motion_estimate": {
+          "state": "measured_motion",
+          "velocity_cells_per_step": [
+            0.0,
+            -1.0
+          ]
+        },
+        "occupied_cells": 8,
+        "position_before_action": [
+          10,
+          4
+        ],
+        "range_m": 2.0,
+        "ray_count": 181,
+        "ray_hits": 93,
+        "step": 53,
+        "visible_pedestrian_cells": [
+          [
+            11,
+            4
+          ]
+        ],
+        "visible_persistent_obstacle_cells": []
+      },
+      "selected_action": [
+        "wait",
+        "observed_destination_risk_current_footprint_clear"
+      ],
+      "step": 53
+    }
+  ],
+  "source_file_sha256": {
+    "action_events.json": "eecf1fb1b218ab3d32e87c254d7b630dd3b972440f0e684baf39bcd8d60b1530",
+    "episodes.csv": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "provenance.json": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "run.lock": "4255cc02d95f5a08e40ecec3340e300ae906eb8b1c9047eef06b0c9112ddc3a6"
+  },
+  "source_full_run": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "static_memory_unchanged_all_frames": true,
+  "status": "PASS_SINGLE_EPISODE_INDEPENDENT_SAFETY_EVALUATION",
+  "with_independent_safety_sensor": {
+    "contact_free_success": true,
+    "elapsed_steps": 76,
+    "emergency_safety_interventions": 7,
+    "emergency_safety_pedestrian_ray_hits": 105,
+    "emergency_safety_ray_hits": 7899,
+    "emergency_safety_raycasts": 13756,
+    "emergency_safety_scans": 76,
+    "final_position": [
+      17,
+      9
+    ],
+    "g1_actual_collision_shield_queries": 70,
+    "g1_backward_actions": 0,
+    "g1_forward_actions": 45,
+    "g1_in_place_turns": 24,
+    "g1_lateral_actions": 1,
+    "g1_pedestrian_contact_pairs": 0,
+    "g1_selected_actions_requiring_collision_check": 70,
+    "g1_shield_query_count_valid": true,
+    "g1_unattempted_collision_queries": 0,
+    "g1_unwanted_contact_pairs": 0,
+    "g1_unwanted_contact_states": 0,
+    "g1_waits": 6,
+    "spatial_memory_observations": 1,
+    "success": true
+  }
+}
