@@ -1,0 +1,32 @@
+[
+  {
+    "bytes": 1426420,
+    "path": "action_events.json",
+    "sha256": "eecf1fb1b218ab3d32e87c254d7b630dd3b972440f0e684baf39bcd8d60b1530"
+  },
+  {
+    "bytes": 564865,
+    "path": "episodes.csv",
+    "sha256": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5"
+  },
+  {
+    "bytes": 165877,
+    "path": "paired_world_clustered_analysis.json",
+    "sha256": "187cb6fb7fa0968fb165bad612bd762ece4753c94f5a9c584ee8364eda73d80f"
+  },
+  {
+    "bytes": 19312,
+    "path": "provenance.json",
+    "sha256": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f"
+  },
+  {
+    "bytes": 654,
+    "path": "run.lock",
+    "sha256": "4255cc02d95f5a08e40ecec3340e300ae906eb8b1c9047eef06b0c9112ddc3a6"
+  },
+  {
+    "bytes": 47903,
+    "path": "summary.json",
+    "sha256": "c0a3b0c32b027cec376ddc6d47438131cb0707c7a46fa067e81d7b30e3455501"
+  }
+]

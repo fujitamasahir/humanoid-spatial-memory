@@ -298,6 +298,45 @@ def _eligible_obstacle_sidestep(grid, position, heading, static_obstacle_cells,
     return None
 
 
+def _eligible_pedestrian_sidestep(grid, position, heading, pedestrian_cells,
+                                  local_extents, cell_size, blocked_actions):
+    """Move one cell sideways from a close observed pedestrian when clearance is known.
+
+    This is a one-step escape from a currently observed dynamic threat. It uses
+    only the agent's ternary memory, the measured pedestrian hit cells, public
+    footprint bounds, and prior selected-action feedback.
+    """
+    x, y = map(int, position)
+    face = int(heading) % 4
+    dx, dy = CARDINALS[face]
+    close = []
+    for px, py in pedestrian_cells:
+        rx, ry = float(px)-x, float(py)-y
+        along, lateral = rx*dx+ry*dy, -rx*dy+ry*dx
+        if 0 < along <= 1.75 and abs(lateral) <= 0.75:
+            close.append((along, lateral))
+    if not close:
+        return None
+    # Prefer the side farther from the measured cluster. Stable sign order
+    # resolves ties deterministically.
+    nearest_lateral = min(close, key=lambda value: (value[0], abs(value[1])))[1]
+    preferred_signs = (-1, 1) if nearest_lateral >= 0 else (1, -1)
+    for sign in preferred_signs:
+        side = (-dy*sign, dx*sign)
+        target = (x+side[0], y+side[1])
+        if not (0 <= target[0] < grid.shape[1] and 0 <= target[1] < grid.shape[0]):
+            continue
+        if grid[target[1], target[0]] != 0:
+            continue
+        action = ('sidestep', target)
+        if blocked_action_key(position, face, action) in blocked_actions:
+            continue
+        if _move_clear_observed_free(grid, position, target, face,
+                local_extents, cell_size):
+            return action
+    return None
+
+
 def assess_observed_pedestrian_risk(position, heading, context, *, step,
                                     horizon_steps=2.0, near_cells=1.75,
                                     body_clearance_cells=0.75):
@@ -343,7 +382,12 @@ def plan_g1_default_policy(grid, start, goal, *, heading=0, unknown='optimistic'
     blocked_actions = set(blocked_actions)
     risk = assess_observed_pedestrian_risk(start, face, pedestrian_context or {}, step=step)
     if risk:
+        pedestrian_cells = (pedestrian_context or {}).get('visible_cells', ())
         if risk == 'dynamic_motion_uncertain':
+            sidestep = _eligible_pedestrian_sidestep(grid, start, face,
+                pedestrian_cells, local_extents, cell_size, blocked_actions)
+            if sidestep is not None:
+                return [sidestep]
             return [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
         dx, dy = CARDINALS[face]
         retreat_target = (start[0]-dx, start[1]-dy)
@@ -353,6 +397,10 @@ def plan_g1_default_policy(grid, start, goal, *, heading=0, unknown='optimistic'
                 and _move_clear_observed_free(grid, start, retreat_target, face,
                     local_extents, cell_size)):
             return [retreat]
+        sidestep = _eligible_pedestrian_sidestep(grid, start, face,
+            pedestrian_cells, local_extents, cell_size, blocked_actions)
+        if sidestep is not None:
+            return [sidestep]
         return [('wait', 'imminent_dynamic_threat_retreat_not_observed_clear')]
     sidestep = _eligible_obstacle_sidestep(grid, start, face,
         set(static_obstacle_cells), local_extents, cell_size, blocked_actions)

@@ -1,0 +1,300 @@
+{
+  "baseline": {
+    "actions": {
+      "backward": 0,
+      "forward": 9670,
+      "lateral": 1,
+      "turn": 3964,
+      "wait": 9
+    },
+    "contact_free_goal_completions": 224,
+    "episodes": 288,
+    "episodes_with_unwanted_pedestrian_contacts": 2,
+    "failure_reasons": {
+      "deadline_before_goal": 62,
+      "deadline_no_footprint_aware_route": 1
+    },
+    "goal_completions": 225,
+    "observation_cost": 2317,
+    "observations": 2317,
+    "selected_action_shield_queries": 13635,
+    "unselected_collision_queries": 0,
+    "unwanted_pedestrian_contact_pairs": 468
+  },
+  "baseline_contact_diagnoses": [
+    {
+      "action_block_reason": "rotation_collision",
+      "action_blocked": true,
+      "action_reason": "rotation_collision",
+      "action_shield_integrity": {
+        "queries": 55,
+        "query_count_valid": true,
+        "selected_actions_required_check": 55,
+        "unselected_queries": 0
+      },
+      "attempt_pedestrian_contact_pairs_at_first_contact": 39,
+      "first_contact_step": 53,
+      "foreseeability": "No: the static observation policy had only the initial scan; zero pedestrian rays/cells. The pedestrian entered G1\u2019s stationary cell unseen.",
+      "g1_heading_cardinal": 0,
+      "g1_position": [
+        11,
+        4
+      ],
+      "latest_permitted_observation": {
+        "fov_deg": 120.0,
+        "range_m": 6.0,
+        "sensor_origin_world": [
+          -5.2039635,
+          2.25,
+          0.8640000000000001
+        ],
+        "sensor_pedestrian_ray_hits": 0,
+        "step": 0,
+        "visible_pedestrian_cells": []
+      },
+      "method": "static",
+      "pedestrian_currently_visible_at_contact": false,
+      "pedestrian_positions_pre_contact_and_contact": [
+        [
+          [
+            11,
+            5
+          ]
+        ],
+        [
+          [
+            11,
+            4
+          ]
+        ]
+      ],
+      "pose_pedestrian_contact_pairs_at_first_contact": 39,
+      "reconstructed_timeline": "results/phase2_mujoco/pedestrian_contact_diagnosis_v4",
+      "risk_assessment": null,
+      "saved_metrics_match": {
+        "backward_actions": true,
+        "blocked_attempts": true,
+        "contact_free_success": true,
+        "elapsed_steps": true,
+        "forward_actions": true,
+        "lateral_actions": true,
+        "observations": true,
+        "pedestrian_contacts": true,
+        "success": true,
+        "turns": true,
+        "unwanted_contacts": true,
+        "waits": true
+      },
+      "saved_non_move_action_trace_matches": true,
+      "schedule": 1,
+      "seed": 42,
+      "selected_action": [
+        "move",
+        [
+          12,
+          4
+        ]
+      ],
+      "shield_integrity": {
+        "queries": 55,
+        "query_count_valid": true,
+        "selected_actions_required_check": 55,
+        "unselected_queries": 0
+      },
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+    },
+    {
+      "action_block_reason": null,
+      "action_blocked": false,
+      "action_reason": null,
+      "action_shield_integrity": {
+        "queries": 60,
+        "query_count_valid": true,
+        "selected_actions_required_check": 60,
+        "unselected_queries": 0
+      },
+      "attempt_pedestrian_contact_pairs_at_first_contact": 0,
+      "first_contact_step": 55,
+      "foreseeability": "Partially: step 52 observed the pedestrian one cell ahead (15 ray hits), but with one cluster the direction was uncertain. Retreat clearance was not observed, so policy waited; proxy entered G1 before next scan.",
+      "g1_heading_cardinal": 3,
+      "g1_position": [
+        4,
+        12
+      ],
+      "latest_permitted_observation": {
+        "fov_deg": 120.0,
+        "range_m": 6.0,
+        "sensor_origin_world": [
+          -6.0,
+          -0.0460365,
+          0.8640000000000001
+        ],
+        "sensor_pedestrian_ray_hits": 15,
+        "step": 52,
+        "visible_pedestrian_cells": [
+          [
+            4,
+            11
+          ]
+        ]
+      },
+      "method": "periodic",
+      "pedestrian_currently_visible_at_contact": false,
+      "pedestrian_positions_pre_contact_and_contact": [
+        [
+          [
+            4,
+            11
+          ]
+        ],
+        [
+          [
+            4,
+            12
+          ]
+        ]
+      ],
+      "pose_pedestrian_contact_pairs_at_first_contact": 39,
+      "reconstructed_timeline": "results/phase2_mujoco/pedestrian_contact_diagnosis_v4",
+      "risk_assessment": "dynamic_motion_uncertain",
+      "saved_metrics_match": {
+        "backward_actions": true,
+        "blocked_attempts": true,
+        "contact_free_success": true,
+        "elapsed_steps": true,
+        "forward_actions": true,
+        "lateral_actions": true,
+        "observations": true,
+        "pedestrian_contacts": true,
+        "success": true,
+        "turns": true,
+        "unwanted_contacts": true,
+        "waits": true
+      },
+      "saved_non_move_action_trace_matches": true,
+      "schedule": 1,
+      "seed": 42,
+      "selected_action": [
+        "wait",
+        "dynamic_threat_uncertain_no_safe_retreat"
+      ],
+      "shield_integrity": {
+        "queries": 60,
+        "query_count_valid": true,
+        "selected_actions_required_check": 60,
+        "unselected_queries": 0
+      },
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+    }
+  ],
+  "baseline_result_dir": "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288",
+  "changed_episodes": [
+    {
+      "method": "periodic",
+      "new_pedestrian_contacts": 0,
+      "new_success": "True",
+      "old_pedestrian_contacts": 234,
+      "old_success": "True",
+      "schedule": 1,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+    }
+  ],
+  "delta_new_minus_baseline": {
+    "actions": {
+      "backward": 0,
+      "forward": -1,
+      "lateral": 1,
+      "turn": 0,
+      "wait": -4
+    },
+    "contact_free_goal_completions": 1,
+    "episodes_with_contacts": -1,
+    "goal_completions": 0,
+    "observation_cost": -3,
+    "observations": -3,
+    "pedestrian_contact_pairs": -234
+  },
+  "integrity": {
+    "M_probe_report_sha256": "4b0637b087a0329321a470b6cf031f5132d6d5eaa3500586ded2e3a62b162a2b",
+    "baseline_artifacts_checked": 6,
+    "baseline_episodes_csv_sha256": "e3d76d3a785e99f6cdc5d5f4e5a162199c86ca21bde3fa9b59b7851cf603fe09",
+    "baseline_provenance_sha256": "9e7e715570d36867975a5625029ba09e7afc291b16b0ebe50ad4738909399950",
+    "baseline_run_lock_sha256": "df6e41150da19692322b879bf48f400fe4db31a07c1574a89f8875c51a86f775",
+    "diagnostic_report_sha256": "f9ad582e94347a439a84223f2494f3de62f17f9e3659646fa7e9cce0423348eb",
+    "new_artifacts_checked": 6,
+    "new_episodes_csv_sha256": "2d89214f3d492e332ceef81b865114e8e8f385bf1d24f5ba88c36b854140c4a5",
+    "new_provenance_sha256": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "new_run_lock_sha256": "4255cc02d95f5a08e40ecec3340e300ae906eb8b1c9047eef06b0c9112ddc3a6",
+    "phase15_protected_files": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "phase15_protected_files_reverified": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    }
+  },
+  "interpretation": "One of two contacts was prevented. The R static-policy contact remains unobservable before collision under its one-observation policy; safety is reduced but not fully resolved.",
+  "matched_design": {
+    "episode_keys_identical": true,
+    "episodes": 288,
+    "grid_cell_size_m": 0.75,
+    "max_observations": 20,
+    "max_steps": 80,
+    "observation_policies": [
+      "static",
+      "periodic",
+      "age",
+      "uncertainty"
+    ],
+    "schedules": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "worlds": 36
+  },
+  "new": {
+    "actions": {
+      "backward": 0,
+      "forward": 9669,
+      "lateral": 2,
+      "turn": 3964,
+      "wait": 5
+    },
+    "contact_free_goal_completions": 225,
+    "episodes": 288,
+    "episodes_with_unwanted_pedestrian_contacts": 1,
+    "failure_reasons": {
+      "deadline_before_goal": 62,
+      "deadline_no_footprint_aware_route": 1
+    },
+    "goal_completions": 225,
+    "observation_cost": 2314,
+    "observations": 2314,
+    "selected_action_shield_queries": 13635,
+    "unselected_collision_queries": 0,
+    "unwanted_pedestrian_contact_pairs": 234
+  },
+  "new_result_dir": "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288",
+  "status": "PASS_MATCHED_288_REEVALUATION_AND_PRESERVATION_CHECK",
+  "updated_M_case_targeted_replay": {
+    "action_shield_integrity": {
+      "queries": 60,
+      "query_count_valid": true,
+      "selected_actions_required_check": 60,
+      "unselected_queries": 0
+    },
+    "backward_actions": 0,
+    "contact_free_success": true,
+    "elapsed_steps": 64,
+    "forward_actions": 43,
+    "lateral_actions": 1,
+    "lateral_escape_step": 52,
+    "pedestrian_contact_pairs": 0,
+    "success": true,
+    "trajectory_report": "results/phase2_mujoco/pedestrian_contact_m_probe_v4",
+    "turns": 16,
+    "waits": 4
+  }
+}

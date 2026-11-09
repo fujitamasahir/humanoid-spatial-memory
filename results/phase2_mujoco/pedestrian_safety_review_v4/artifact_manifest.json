@@ -1,0 +1,12 @@
+[
+  {
+    "bytes": 9145,
+    "path": "comparison.json",
+    "sha256": "8d915c290c8780d9b4bed5b9970cfefd29f46071cc857efdfaa74454c32393cf"
+  },
+  {
+    "bytes": 4727,
+    "path": "investigation.md",
+    "sha256": "2dbd5c9d7b80f3d6580be8a9e700abf6741c1c40bbea7614a1b0aab72190c0e1"
+  }
+]

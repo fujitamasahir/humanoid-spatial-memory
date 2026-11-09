@@ -1,0 +1,3476 @@
+{
+  "baseline": "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288",
+  "baseline_action_events_sha256": "6f37630e4c4af0676eed27208c8441c5e66d38517b1f71d480de85eecb21b663",
+  "baseline_episode_csv_sha256": "e3d76d3a785e99f6cdc5d5f4e5a162199c86ca21bde3fa9b59b7851cf603fe09",
+  "baseline_provenance_sha256": "9e7e715570d36867975a5625029ba09e7afc291b16b0ebe50ad4738909399950",
+  "diagnostic_scope": "retrospective only; hidden simulator positions appear only in explicitly evaluator-only fields; not available to online planner",
+  "episodes": [
+    {
+      "action_shield_integrity": {
+        "queries": 60,
+        "query_count_valid": true,
+        "selected_actions_required_check": 60,
+        "unselected_queries": 0
+      },
+      "action_trace_matches_saved": false,
+      "contact_frames": [],
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "mechanism": "M",
+      "method": "periodic",
+      "metric_comparisons": {
+        "backward_actions": true,
+        "blocked_attempts": true,
+        "contact_free_success": false,
+        "elapsed_steps": false,
+        "forward_actions": false,
+        "lateral_actions": false,
+        "observations": false,
+        "pedestrian_contacts": false,
+        "success": true,
+        "turns": true,
+        "unwanted_contacts": false,
+        "waits": false
+      },
+      "replay_matches_saved": false,
+      "replayed_metrics": {
+        "backward_actions": 0,
+        "contact_free_success": true,
+        "elapsed_steps": 64,
+        "forward_actions": 43,
+        "lateral_actions": 1,
+        "pedestrian_contact_pairs": 0,
+        "success": true,
+        "turns": 16,
+        "waits": 4
+      },
+      "saved_contact_free_success": false,
+      "saved_contacts": 234,
+      "saved_success": true,
+      "schedule": 1,
+      "seed": 42,
+      "sensor_observation_policy": {
+        "horizontal_fov_deg": 120.0,
+        "observation_budget": 20,
+        "observations_used": 17,
+        "range_m": 6.0,
+        "ray_count": 61
+      },
+      "timeline": [
+        {
+          "action": null,
+          "action_reason": null,
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0460365,
+              3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 0,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 0,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            20,
+            16
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 0,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            3
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0460365,
+              3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 0,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 0,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            20,
+            16
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 1,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              20,
+              15
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0460365,
+              3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 0,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 0,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            20,
+            15
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 2,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              20,
+              14
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0460365,
+              3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 0,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 0,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            20,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 3,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0,
+              1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 4,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 4,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            20,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 4,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              19,
+              14
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0,
+              1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 4,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 4,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            19,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 5,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              18,
+              14
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0,
+              1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 4,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 4,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            18,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 6,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              17,
+              14
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              6.0,
+              1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 4,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 4,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            17,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 7,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              14
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.7039635,
+              1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 8,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 8,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 8,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            3
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.7039635,
+              1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 8,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 8,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            14
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 9,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              13
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.7039635,
+              1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 8,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 8,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            13
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 10,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.7039635,
+              1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 8,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 8,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 11,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              11
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 12,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 12,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            11
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 12,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 12,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 12,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 13,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              9
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 12,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 12,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            9
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 14,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              16,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 12,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 12,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 15,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 16,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 16,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            16,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 16,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              15,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 16,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 16,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            15,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 17,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              14,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 16,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 16,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            14,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 18,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              13,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              3.0,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 16,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 16,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            13,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 19,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              12,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              0.7039635,
+              -3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 20,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 20,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            12,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 20,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            1
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              0.7039635,
+              -3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 20,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 20,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            12,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 21,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              12,
+              9
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              0.7039635,
+              -3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 20,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 20,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            12,
+            9
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 22,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              12,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              0.7039635,
+              -3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 20,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 20,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            12,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 23,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              12
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              1.0222156454631204e-17,
+              -1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 24,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 24,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            12,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 24,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              11,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              12
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              1.0222156454631204e-17,
+              -1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 24,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 24,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            11,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 25,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              10,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              1.0222156454631204e-17,
+              -1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 24,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 24,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 26,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              9,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 27,
+          "blocked": true,
+          "blocked_reason": "translation_collision",
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              1.0222156454631204e-17,
+              -1.4539635,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 24,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 24,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 27,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            1
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 28,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 28,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 28,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              10,
+              11
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 28,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 28,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            11
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 29,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              10,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              12
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 28,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 28,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 30,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 28,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 28,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            10,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 31,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              9,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              5.637845236894713e-18,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 32,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 32,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            9,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 32,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              8,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              5.637845236894713e-18,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 32,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 32,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            8,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 33,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            3
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              5.637845236894713e-18,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 32,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 32,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            8,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 34,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              8,
+              11
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              11
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -1.5460365,
+              5.637845236894713e-18,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 32,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 32,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            8,
+            11
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 35,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              8,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.0,
+              -0.7960365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 36,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 36,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            8,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 36,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.0,
+              -0.7960365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 36,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 36,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            8,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 37,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              7,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.0,
+              -0.7960365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 36,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 36,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 38,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              6,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 15,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": true,
+          "blocked_reason": "translation_collision",
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.0,
+              -0.7960365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 36,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 36,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 39,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "wait",
+            "dynamic_threat_uncertain_no_safe_retreat"
+          ],
+          "action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 40,
+            "visible_pedestrian_cells": [
+              [
+                6,
+                10
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 40,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                6.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": "dynamic_motion_uncertain",
+          "step": 40,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "wait",
+            "dynamic_threat_uncertain_no_safe_retreat"
+          ],
+          "action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              6,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 40,
+            "visible_pedestrian_cells": [
+              [
+                6,
+                10
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 40,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                6.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": "dynamic_motion_uncertain",
+          "step": 41,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "wait",
+            "dynamic_threat_uncertain_no_safe_retreat"
+          ],
+          "action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 40,
+            "visible_pedestrian_cells": [
+              [
+                6,
+                10
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 40,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                6.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": "dynamic_motion_uncertain",
+          "step": 42,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "wait",
+            "dynamic_threat_uncertain_no_safe_retreat"
+          ],
+          "action_reason": "dynamic_threat_uncertain_no_safe_retreat",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 40,
+            "visible_pedestrian_cells": [
+              [
+                6,
+                10
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 40,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                6.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            7,
+            10
+          ],
+          "risk_assessment_at_decision": "dynamic_motion_uncertain",
+          "step": 43,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              6,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 7,
+            "step": 44,
+            "visible_pedestrian_cells": [
+              [
+                5,
+                10
+              ]
+            ]
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [
+              [
+                40,
+                6.0,
+                10.0
+              ],
+              [
+                44,
+                5.0,
+                10.0
+              ]
+            ],
+            "last_step": 44,
+            "max_age_steps": 8,
+            "reliable": true,
+            "visible_cells": [
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 44,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            1
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 7,
+            "step": 44,
+            "visible_pedestrian_cells": [
+              [
+                5,
+                10
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [
+              [
+                40,
+                6.0,
+                10.0
+              ],
+              [
+                44,
+                5.0,
+                10.0
+              ]
+            ],
+            "last_step": 44,
+            "max_age_steps": 8,
+            "reliable": true,
+            "visible_cells": [
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 45,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              6,
+              11
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              5,
+              10
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 7,
+            "step": 44,
+            "visible_pedestrian_cells": [
+              [
+                5,
+                10
+              ]
+            ]
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [
+              [
+                40,
+                6.0,
+                10.0
+              ],
+              [
+                44,
+                5.0,
+                10.0
+              ]
+            ],
+            "last_step": 44,
+            "max_age_steps": 8,
+            "reliable": true,
+            "visible_cells": [
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            11
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 46,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              6,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 1,
+          "heading_yaw_rad": 1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -3.7960365,
+              -1.5,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 7,
+            "step": 44,
+            "visible_pedestrian_cells": [
+              [
+                5,
+                10
+              ]
+            ]
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [
+              [
+                40,
+                6.0,
+                10.0
+              ],
+              [
+                44,
+                5.0,
+                10.0
+              ]
+            ],
+            "last_step": 44,
+            "max_age_steps": 8,
+            "reliable": true,
+            "visible_cells": [
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 47,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              10
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -4.5,
+              0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 48,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 48,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 48,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              5,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -4.5,
+              0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 48,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 48,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            5,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 49,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              4,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -4.5,
+              0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 48,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 48,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            4,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 50,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            3
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -4.5,
+              0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 48,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 48,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            4,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 51,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "sidestep",
+            [
+              3,
+              12
+            ]
+          ],
+          "action_reason": "observed_static_obstacle_blocks_forward_path",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -6.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 52,
+            "visible_pedestrian_cells": [
+              [
+                4,
+                11
+              ]
+            ]
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 52,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                4.0,
+                11.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            3,
+            12
+          ],
+          "risk_assessment_at_decision": "dynamic_motion_uncertain",
+          "step": 52,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            2
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -6.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 52,
+            "visible_pedestrian_cells": [
+              [
+                4,
+                11
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 52,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                4.0,
+                11.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            3,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 53,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              2,
+              12
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 2,
+          "heading_yaw_rad": 3.141592653589793,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -6.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 52,
+            "visible_pedestrian_cells": [
+              [
+                4,
+                11
+              ]
+            ]
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 52,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                4.0,
+                11.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 54,
+          "visible_pedestrian_currently": true,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            3
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -6.0,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 15,
+            "step": 52,
+            "visible_pedestrian_cells": [
+              [
+                4,
+                11
+              ]
+            ]
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 52,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": [
+              [
+                4.0,
+                11.0
+              ]
+            ]
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            12
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 55,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              2,
+              11
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 56,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 56,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            11
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 56,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              2,
+              10
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 56,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 56,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            10
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 57,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              2,
+              9
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 56,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 56,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            9
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 58,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              2,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 3,
+          "heading_yaw_rad": -1.5707963267948966,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -0.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 56,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 56,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 59,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "turn",
+            0
+          ],
+          "action_reason": "route_direction_change",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              12
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 60,
+            "visible_pedestrian_cells": []
+          },
+          "moved": false,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 60,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            2,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 60,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              3,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 60,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 60,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            3,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 61,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              4,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 60,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 60,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            4,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 62,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              5,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -7.5,
+              -3.0460365,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 60,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 60,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            5,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 63,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        },
+        {
+          "action": [
+            "move",
+            [
+              6,
+              8
+            ]
+          ],
+          "action_reason": "forward_route_segment",
+          "attempt_pedestrian_contact_pairs": 0,
+          "attempt_wall_contact_pairs": 0,
+          "blocked": false,
+          "blocked_reason": null,
+          "current_pedestrian_cells_evaluator_only": [
+            [
+              4,
+              11
+            ]
+          ],
+          "heading_cardinal": 0,
+          "heading_yaw_rad": 0.0,
+          "latest_permitted_observation": {
+            "fov_deg": 120.0,
+            "range_m": 6.0,
+            "sensor_origin_world": [
+              -5.2039635,
+              -3.0,
+              0.8640000000000001
+            ],
+            "sensor_pedestrian_ray_hits": 0,
+            "step": 64,
+            "visible_pedestrian_cells": []
+          },
+          "moved": true,
+          "observed_motion_context_at_decision": {
+            "history": [],
+            "last_step": 64,
+            "max_age_steps": 8,
+            "reliable": false,
+            "visible_cells": []
+          },
+          "pedestrian_contacts": 0,
+          "position": [
+            6,
+            8
+          ],
+          "risk_assessment_at_decision": null,
+          "step": 64,
+          "visible_pedestrian_currently": false,
+          "wall_contacts": 0
+        }
+      ],
+      "trajectory_source": "saved admitted B-prime fit record and existing schedule; evaluator-only replay"
+    }
+  ]
+}

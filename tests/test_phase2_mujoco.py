@@ -684,11 +684,84 @@ def test_unreliable_nearby_pedestrian_motion_causes_wait_not_blind_retreat():
 
     grid = np.zeros((9, 9), dtype=np.int8)
     grid[3, 4] = 1
+    grid[2, 3] = grid[4, 3] = -1
     uncertain = {'visible_cells': ((4, 3),), 'history': (), 'reliable': False,
                  'last_step': 5, 'max_age_steps': 8}
     action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
         pedestrian_context=uncertain, step=5)
     assert action == [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
+
+
+def test_uncertain_close_pedestrian_uses_only_observed_clear_lateral_escape():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    # Regression shape for the M:80030007 periodic collision: pedestrian
+    # detection is close and forward, but its motion estimate is uncertain.
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[3, 4] = 1  # measured pedestrian first-hit cell
+    context = {'visible_cells': ((4.0, 3.0),), 'history': (), 'reliable': False,
+               'last_step': 5, 'max_age_steps': 8}
+    action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=context, step=5)
+    assert action == [('sidestep', (3, 2))]
+
+    # When the observed threat is offset to the robot's left, choose the
+    # observed-free right side rather than moving toward it.
+    offset_grid = grid.copy()
+    offset_grid[4, 4] = 1
+    left_threat = {**context, 'visible_cells': ((4.0, 3.5),)}
+    action = plan_g1_default_policy(offset_grid, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=left_threat, step=5)
+    assert action == [('sidestep', (3, 2))]
+
+    # Unknown side cells are not clearances. With both side corridors unknown,
+    # the policy remains stationary instead of probing a maneuver.
+    uncertain = grid.copy()
+    uncertain[2, 3] = uncertain[4, 3] = -1
+    action = plan_g1_default_policy(uncertain, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=context, step=5)
+    assert action == [('wait', 'dynamic_threat_uncertain_no_safe_retreat')]
+
+
+def test_departing_pedestrian_does_not_trigger_dynamic_retreat_or_sidestep():
+    from spatial_memory.navigation import plan_g1_default_policy
+
+    grid = np.zeros((9, 9), dtype=np.int8)
+    grid[3, 4] = 1
+    departing = {'visible_cells': ((4.0, 3.0),),
+        'history': ((0, 3.0, 3.0), (4, 4.0, 3.0)), 'reliable': True,
+        'last_step': 4, 'max_age_steps': 8}
+    action = plan_g1_default_policy(grid, (3, 3), (6, 3), heading=0,
+        local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=departing, step=5)
+    assert action[0][0] not in {'retreat', 'sidestep'}
+
+
+def test_pedestrian_occluded_by_wall_is_not_given_to_tracker_or_policy():
+    scenario = ray_scenario(obstacles=((4, 3),), pedestrians=(((5, 3),),))
+    sensor = MujocoRayPerception(MujocoNavigationScene(scenario))
+    sensor.observe(World(scenario), scenario.start, 0.0)
+    assert sensor.last_stats['hits_by_type']['pedestrians'] == 0
+    assert sensor.last_stats['visible_pedestrian_cells'] == []
+
+
+def test_failing_static_contact_case_has_no_permitted_pedestrian_detection():
+    """R:80000001 has one static observation and cannot react to hidden motion."""
+    scenario = ray_scenario(obstacles=((4, 3),), pedestrians=(((5, 3),),))
+    sensor = MujocoRayPerception(MujocoNavigationScene(scenario))
+    sensor.observe(World(scenario), scenario.start, 0.0)
+    # The policy receives no pedestrian class/cell; evaluator truth is not an
+    # input to plan_g1_default_policy. A null context cannot authorize retreat.
+    assert sensor.last_stats['visible_pedestrian_cells'] == []
+    from spatial_memory.navigation import plan_g1_default_policy
+    grid = np.zeros((9, 9), dtype=np.int8)
+    action = plan_g1_default_policy(grid, scenario.start, scenario.goal,
+        heading=0, local_extents=(0.22, 0.328), cell_size=0.75,
+        pedestrian_context=None)
+    assert action[0][0] in {'move', 'turn'}
 
 
 def test_observed_pedestrian_tracker_uses_only_measured_cells_and_needs_two_observations():
