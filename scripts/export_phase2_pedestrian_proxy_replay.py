@@ -33,9 +33,9 @@ from spatial_memory.simulation import scenario_from_bprime
 
 DEFAULT_RESULT = ROOT / "results/phase2_mujoco/g1_forward_first_shield_turns_v1_full_288"
 DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/g1_pedestrian_capsule_replay_M80030007_periodic_s1_v1"
-IDENTITY = "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
-METHOD = "periodic"
-SCHEDULE = 1
+DEFAULT_IDENTITY = "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+DEFAULT_METHOD = "periodic"
+DEFAULT_SCHEDULE = 1
 REPLAY_WALL_RGBA = "0.18 0.23 0.30 0.16"
 REPLAY_CAPSULE_RGBA = "0.95 0.30 0.22 0.24"
 
@@ -64,7 +64,8 @@ def load_payload(identity: str) -> tuple[dict, Path, bytes]:
     raise FileNotFoundError(f"Saved fit record not found: {identity}")
 
 
-def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
+def replay(result_dir: Path, output_dir: Path, fps: int, speed: float,
+           identity: str, method: str, schedule: int) -> dict:
     result_dir = result_dir.resolve()
     output_dir = output_dir.resolve()
     if output_dir.exists():
@@ -73,18 +74,18 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
     source_action_bytes = (result_dir / "action_events.json").read_bytes()
     source_provenance_bytes = (result_dir / "provenance.json").read_bytes()
     rows = list(csv.DictReader(source_episode_bytes.decode().splitlines()))
-    matches = [r for r in rows if r["world_identity"] == IDENTITY
-               and int(r["schedule"]) == SCHEDULE and r["method"] == METHOD]
+    matches = [r for r in rows if r["world_identity"] == identity
+               and int(r["schedule"]) == schedule and r["method"] == method]
     if len(matches) != 1:
         raise ValueError(f"Expected one saved episode row, found {len(matches)}")
     source_row = matches[0]
     provenance = json.loads(source_provenance_bytes)
     config = json.loads(json.dumps(provenance["policy_config"]))
-    payload, record_path, record_bytes = load_payload(IDENTITY)
+    payload, record_path, record_bytes = load_payload(identity)
     world_payloads = {item["identity"]: item for item in runner.admitted_worlds()}
-    if IDENTITY not in world_payloads or world_payloads[IDENTITY]["identity"] != payload["identity"]:
+    if identity not in world_payloads or world_payloads[identity]["identity"] != payload["identity"]:
         raise ValueError("Target fit identity is not admitted by the existing saved-world inventory")
-    scenario = scenario_from_bprime(payload, SCHEDULE)
+    scenario = scenario_from_bprime(payload, schedule)
     scene = MujocoNavigationScene(scenario,
         cell_size=config["mujoco_cell_size_m"],
         timestep=config["mujoco_timestep_seconds"])
@@ -141,7 +142,7 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
             return scene.check_move(world, position, tuple(value), yaw, target_yaw=yaw)
         return scene.check_turn(world, position, yaw, HEADINGS[int(value)])
 
-    metrics, frames = run_episode(scenario, config, METHOD, seed=42,
+    metrics, frames = run_episode(scenario, config, method, seed=42,
         _frame_callback=scene.update, _observation_provider=perception.observe,
         _g1_planner=planner, _action_checker=check_action,
         _initial_observation_callback=record_observation,
@@ -166,14 +167,14 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
         "unwanted_contacts": int(metrics["g1_unwanted_contact_pairs"]) == int(source_row["g1_unwanted_contact_pairs"]),
     }
     source_events = [e for e in json.loads(source_action_bytes)
-        if e["world_identity"] == IDENTITY and e["schedule_index"] == SCHEDULE
-        and e["method"] == METHOD]
+        if e["world_identity"] == identity and e["schedule_index"] == schedule
+        and e["method"] == method]
     rebuilt_events = []
     for frame in frames:
         action = frame.get("navigation_action")
         if action is not None and action[0] != "move":
-            rebuilt_events.append(dict(world_identity=IDENTITY, schedule_index=SCHEDULE,
-                method=METHOD, step=frame["step"], position=list(frame["position"]),
+            rebuilt_events.append(dict(world_identity=identity, schedule_index=schedule,
+                method=method, step=frame["step"], position=list(frame["position"]),
                 heading_yaw=frame.get("heading_yaw"), action_kind=action[0],
                 action_value=action[1], reason=frame.get("navigation_action_reason"),
                 accepted=not frame.get("blocked", False),
@@ -219,14 +220,14 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
         "robot_model": "third_party/unitree_g1/g1.xml; actual Unitree G1 model",
         "robot_model_files": model_files,
         "reconstructed_from": str(result_dir.relative_to(ROOT)),
-        "source_world_identity": IDENTITY, "schedule_index": SCHEDULE,
-        "method": METHOD, "episode_seed": 42,
+        "source_world_identity": identity, "schedule_index": schedule,
+        "method": method, "episode_seed": 42,
     }, indent=2)+"\n")
     replay_report = {
         "status": "PASS_DETERMINISTIC_EPISODE_REPLAY_MATCH",
         "source_full_run": str(result_dir.relative_to(ROOT)),
-        "source_episode": {"world_identity": IDENTITY, "schedule_index": SCHEDULE,
-                           "method": METHOD, "episode_seed": 42},
+        "source_episode": {"world_identity": identity, "schedule_index": schedule,
+                           "method": method, "episode_seed": 42},
         "source_files_sha256": {
             "episodes.csv": digest(source_episode_bytes),
             "action_events.json": digest(source_action_bytes),
@@ -283,7 +284,7 @@ def replay(result_dir: Path, output_dir: Path, fps: int, speed: float) -> dict:
     metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True)+"\n")
     (render_dir / "presentation_note.md").write_text(
         "# Presentation-only moving pedestrian proxy replay\n\n"
-        f"- Replayed saved episode: `{IDENTITY}`, schedule {SCHEDULE}, method `{METHOD}`.\n"
+        f"- Replayed saved episode: `{identity}`, schedule {schedule}, method `{method}`.\n"
         "- The pedestrian is a 0.19 m radius MuJoCo mocap capsule following the stored B-prime schedule; it is not a humanoid model. Its centerline is 1.08 m and total capsule height is 1.46 m.\n"
         "- The full 288 run did not retain per-frame poses. This trace was reconstructed by deterministic replay; saved episode metrics and all recorded non-move action events matched.\n"
         f"- Presentation wall RGBA: `{REPLAY_WALL_RGBA}`. The proxy display alpha is `{REPLAY_CAPSULE_RGBA.split()[-1]}`; geometry, filters, and G1 are unchanged.\n"
@@ -299,8 +300,13 @@ def main() -> int:
     parser.add_argument("--fps", type=int, default=24)
     parser.add_argument("--speed", type=float, default=0.15,
                         help="seconds per experiment step; 0.15 gives an approximately 13-second replay")
+    parser.add_argument("--identity", default=DEFAULT_IDENTITY)
+    parser.add_argument("--method", choices=("static", "periodic", "event_triggered"),
+                        default=DEFAULT_METHOD)
+    parser.add_argument("--schedule", type=int, default=DEFAULT_SCHEDULE)
     args = parser.parse_args()
-    report = replay(args.result_dir, args.output_dir, args.fps, args.speed)
+    report = replay(args.result_dir, args.output_dir, args.fps, args.speed,
+                    args.identity, args.method, args.schedule)
     print(json.dumps({"status": report["status"],
         "output": str(args.output_dir / "portfolio_export"),
         "gif": str(args.output_dir / "portfolio_export/portfolio_demo.gif"),

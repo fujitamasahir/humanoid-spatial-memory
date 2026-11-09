@@ -376,8 +376,10 @@ def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS
         raise ValueError("Portfolio source trajectory must contain multiple saved poses")
     scenario.setdefault("start", trajectory[0]["position"])
     scenario.setdefault("goal", trajectory[-1]["position"])
-    if trajectory[0]["position"] != scenario["start"] or trajectory[-1]["position"] != scenario["goal"]:
-        raise ValueError("Source trajectory does not match its saved start and goal")
+    # Failed/unfinished episodes are valid presentation sources too: the saved
+    # goal marker remains the episode goal even when the final pose is elsewhere.
+    if trajectory[0]["position"] != scenario["start"]:
+        raise ValueError("Source trajectory does not begin at its saved start")
     if output.exists():
         raise FileExistsError(f"Output directory already exists; refusing to overwrite: {output}")
 
