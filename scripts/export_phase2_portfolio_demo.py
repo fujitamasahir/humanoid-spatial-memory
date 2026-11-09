@@ -18,17 +18,16 @@ import mujoco
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "results/phase2_mujoco/g1_mujoco3d_heading_perception_smoke"
-DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1"
-WALL_RGBA = "0.40 0.48 0.56 0.48"
-FLOOR_RGBA = "0.57 0.65 0.68 1"
+DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/portfolio_export_g1_bright_thumbnail_v1"
+WALL_RGBA = "0.40 0.51 0.62 0.56"
+FLOOR_RGBA = "0.67 0.75 0.79 1"
 FPS = 24
 SECONDS_PER_ACTION = 0.18
-FOLLOW_DISTANCE_M = 5.4
-FOLLOW_ELEVATION_DEG = -44.0
+FOLLOW_DISTANCE_M = 3.9
+FOLLOW_ELEVATION_DEG = -42.0
 FOLLOW_LOOKAHEAD_M = 0.65
-FOLLOW_REAR_OFFSET_DEG = 20.0
 FOLLOW_TARGET_SMOOTHING = 0.28
-FOLLOW_ORIENTATION_SMOOTHING = 0.42
+FOLLOW_AZIMUTH_DEG = 138.0
 GIF_CONVERSION_METHOD = (
     "MP4 master; two-pass FFmpeg palette workflow: palettegen stats_mode=full, "
     "max_colors=256, reserve_transparent=0; then paletteuse dither=sierra2_4a, "
@@ -166,6 +165,13 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
         global_settings = ET.SubElement(visual, "global")
     global_settings.set("offwidth", str(offwidth))
     global_settings.set("offheight", str(offheight))
+    headlight = visual.find("headlight")
+    if headlight is None:
+        headlight = ET.SubElement(visual, "headlight")
+    headlight.set("active", "1")
+    headlight.set("ambient", "0.36 0.39 0.44")
+    headlight.set("diffuse", "0.58 0.62 0.68")
+    headlight.set("specular", "0.20 0.22 0.26")
     scenario = json.loads((source / "scenario.json").read_text())
     trajectory = json.loads((source / "trajectory.json").read_text())
     scenario.setdefault("start", trajectory[0]["position"])
@@ -175,27 +181,21 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
     if asset is None:
         asset = ET.SubElement(root, "asset")
     materials = (
-        ("portfolio_start_pin", "0.025 0.78 1 1", "0.42"),
-        ("portfolio_start_halo", "0.025 0.78 1 0.30", "0.55"),
-        ("portfolio_goal_pin", "1 0.78 0.12 1", "0.52"),
-        ("portfolio_goal_halo", "1 0.78 0.12 0.34", "0.62"),
-        ("portfolio_marker_glint", "1 0.97 0.72 1", "0.26"),
+        ("portfolio_start_pin", "0.0 0.78 1 1", "0.82"),
+        ("portfolio_start_halo", "0.0 0.72 1 0.32", "0.95"),
+        ("portfolio_start_core", "0.48 1 1 1", "1.0"),
+        ("portfolio_goal_pin", "1 0.76 0.08 1", "0.88"),
+        ("portfolio_goal_halo", "1 0.70 0.04 0.34", "0.98"),
+        ("portfolio_goal_core", "1 0.94 0.42 1", "1.0"),
+        ("portfolio_marker_base", "0.07 0.10 0.14 1", "0.16"),
+        ("portfolio_marker_glint", "1 0.99 0.82 1", "0.80"),
     )
     for name, rgba, emission in materials:
         ET.SubElement(asset, "material", {"name": name, "rgba": rgba,
                                            "emission": emission, "specular": "0.45",
                                            "shininess": "0.65"})
-    # A small presentation-only material lift makes the dark G1 meshes legible
-    # when translucent wall geometry overlaps the camera ray.
-    for material_name, rgba, emission in (("black", "0.58 0.65 0.70 1", "0.12"),
-                                          ("metal", "0.82 0.86 0.89 1", "0.05")):
-        material = asset.find(f"material[@name='{material_name}']")
-        if material is not None:
-            material.set("rgba", rgba)
-            material.set("emission", emission)
-            material.set("specular", "0.48")
-            material.set("shininess", "0.58")
-    # Ensure all visible robot geoms and their assigned materials are opaque.
+    # Preserve native G1 black/silver colors and texture/material assignments;
+    # only force alpha to 1 for all explicitly colored robot geoms/materials.
     pelvis = root.find(".//body[@name='pelvis']")
     if pelvis is not None:
         for geom in pelvis.iter("geom"):
@@ -222,28 +222,49 @@ def make_display_xml(source: Path, *, offwidth: int = 1280,
     worldbody = root.find("worldbody")
     if worldbody is None:
         raise ValueError("Saved scene has no worldbody")
-    for key, label, material, halo in (("start", "START", "portfolio_start_pin", "portfolio_start_halo"),
-                                       ("goal", "GOAL", "portfolio_goal_pin", "portfolio_goal_halo")):
+    # Broad, shadow-free fill lights keep side corridors readable where the
+    # original single central key light left most rooms underlit.
+    fill_lights = (
+        ("portfolio_fill_north", "0.35 0.40 0.48", "0.06 0.07 0.09", "0.4 0.2 -1"),
+        ("portfolio_fill_south", "0.28 0.34 0.42", "0.05 0.06 0.08", "-0.4 -0.2 -1"),
+        ("portfolio_fill_east", "0.30 0.36 0.44", "0.05 0.06 0.08", "-0.2 0.4 -1"),
+        ("portfolio_fill_west", "0.30 0.36 0.44", "0.05 0.06 0.08", "0.2 -0.4 -1"),
+    )
+    for name, diffuse, ambient, direction in fill_lights:
+        if worldbody.find(f"light[@name='{name}']") is None:
+            ET.SubElement(worldbody, "light", {
+                "name": name, "directional": "true", "pos": "0 0 12",
+                "dir": direction, "diffuse": diffuse, "ambient": ambient,
+                "specular": "0.02 0.02 0.03", "castshadow": "false",
+            })
+    for key, label, material, halo, core in (("start", "START", "portfolio_start_pin", "portfolio_start_halo", "portfolio_start_core"),
+                                              ("goal", "GOAL", "portfolio_goal_pin", "portfolio_goal_halo", "portfolio_goal_core")):
         cell = scenario[key]
         x = (float(cell[0]) - (width - 1) / 2) * spacing
         y = (float(cell[1]) - (height - 1) / 2) * spacing
         body = ET.SubElement(worldbody, "body", {
             "name": f"portfolio_{key}_marker", "pos": f"{x:.6f} {y:.6f} 0",
         })
-        # Layered flat ellipsoids make a restrained halo around a small pin.
-        for suffix, z, sizes, mat in (("halo_outer", 1.43, "0.25 0.25 0.022", halo),
-                                      ("halo_inner", 1.46, "0.16 0.16 0.026", halo)):
+        # A dark floating plinth, luminous rings, and toroidal head approximate
+        # the supplied futuristic map-pin references using stable MJCF primitives.
+        for suffix, z, sizes, mat in (("base", 1.405, "0.22 0.22 0.030", "portfolio_marker_base"),
+                                      ("halo_outer", 1.440, "0.27 0.27 0.020", halo),
+                                      ("halo_inner", 1.462, "0.17 0.17 0.018", core)):
             ET.SubElement(body, "geom", {"name": f"portfolio_{key}_{suffix}",
                 "type": "ellipsoid", "pos": f"0 0 {z}", "size": sizes,
                 "material": mat, "contype": "0", "conaffinity": "0", "group": "0"})
+        # Restore compact sphere-and-stem silhouette with luminous floating base.
         ET.SubElement(body, "geom", {"name": f"portfolio_{key}_stem", "type": "cylinder",
-            "pos": "0 0 1.75", "size": "0.032 0.25", "material": material,
+            "pos": "0 0 1.74", "size": "0.032 0.25", "material": material,
             "contype": "0", "conaffinity": "0", "group": "0"})
         ET.SubElement(body, "geom", {"name": f"portfolio_{key}_tip", "type": "ellipsoid",
-            "pos": "0 0 2.02", "size": "0.105 0.105 0.12", "material": material,
+            "pos": "0 0 2.02", "size": "0.115 0.115 0.12", "material": material,
+            "contype": "0", "conaffinity": "0", "group": "0"})
+        ET.SubElement(body, "geom", {"name": f"portfolio_{key}_core", "type": "sphere",
+            "pos": "0 0 2.02", "size": "0.057", "material": core,
             "contype": "0", "conaffinity": "0", "group": "0"})
         ET.SubElement(body, "geom", {"name": f"portfolio_{key}_glint", "type": "sphere",
-            "pos": "0.035 -0.032 2.06", "size": "0.028", "material": "portfolio_marker_glint",
+            "pos": "0.035 -0.032 2.06", "size": "0.020", "material": "portfolio_marker_glint",
             "contype": "0", "conaffinity": "0", "group": "0"})
     return ET.tostring(root, encoding="unicode")
 
@@ -253,8 +274,8 @@ def camera_for(mode: str, trajectory: list[dict], scenario: dict, frame: dict,
     camera = mujoco.MjvCamera()
     mujoco.mjv_defaultCamera(camera)
     camera.type = mujoco.mjtCamera.mjCAMERA_FREE
-    camera.azimuth = 138.0
-    camera.elevation = -48.0
+    camera.azimuth = FOLLOW_AZIMUTH_DEG
+    camera.elevation = FOLLOW_ELEVATION_DEG
     def world(cell):
         return ((float(cell[0]) - (scenario["width"] - 1) / 2) * spacing,
                 (float(cell[1]) - (scenario["height"] - 1) / 2) * spacing)
@@ -262,29 +283,24 @@ def camera_for(mode: str, trajectory: list[dict], scenario: dict, frame: dict,
         camera.lookat[:] = (0.0, 0.0, 0.85)
         camera.distance = max(scenario["width"], scenario["height"]) * spacing * 1.45
     else:
-        yaw = float(frame.get("heading_yaw", 0.0))
         x, y = world(frame["position"])
-        camera.lookat[:] = (x + FOLLOW_LOOKAHEAD_M * math.cos(yaw),
-                            y + FOLLOW_LOOKAHEAD_M * math.sin(yaw), 0.95)
-        # In MuJoCo's free-camera convention, azimuth zero views from behind
-        # a +X-facing body. A small constant rear-side offset avoids the old
-        # front-facing orbit while preserving a stable one-sided trailing view.
-        camera.azimuth = (math.degrees(yaw) + FOLLOW_REAR_OFFSET_DEG) % 360.0
+        # The look direction is fixed in world coordinates. Tracking changes
+        # only the look-at target (and hence camera translation), never azimuth
+        # or elevation. Small world +X lookahead exposes upcoming maze geometry.
+        camera.lookat[:] = (x + FOLLOW_LOOKAHEAD_M, y, 0.95)
         camera.elevation = FOLLOW_ELEVATION_DEG
         camera.distance = FOLLOW_DISTANCE_M
     return camera
 
 
 class FollowCamera:
-    """Smoothed one-sided trailing camera; never intentionally orbits to the front."""
+    """Translate smoothly while preserving a constant world viewing direction."""
     def __init__(self, trajectory: list[dict], scenario: dict, spacing: float,
-                 *, smoothing: float = FOLLOW_TARGET_SMOOTHING,
-                 orientation_smoothing: float = FOLLOW_ORIENTATION_SMOOTHING):
+                 *, smoothing: float = FOLLOW_TARGET_SMOOTHING):
         self.trajectory = trajectory
         self.scenario = scenario
         self.spacing = spacing
         self.smoothing = smoothing
-        self.orientation_smoothing = orientation_smoothing
         self.camera = None
 
     def update(self, frame: dict) -> mujoco.MjvCamera:
@@ -300,10 +316,6 @@ class FollowCamera:
             return self.camera
         alpha = self.smoothing
         self.camera.lookat[:] += alpha * (desired.lookat - self.camera.lookat)
-        delta = (desired.azimuth - self.camera.azimuth + 180.0) % 360.0 - 180.0
-        orientation_alpha = self.orientation_smoothing
-        self.camera.azimuth = (self.camera.azimuth + orientation_alpha * delta) % 360.0
-        self.camera.elevation += orientation_alpha * (desired.elevation - self.camera.elevation)
         return self.camera
 
 
@@ -338,6 +350,17 @@ def apply_hud(frame: Image.Image, index: int, total: int, fps: int) -> Image.Ima
 
 def _set_group(options, group: int, enabled: bool) -> None:
     options.geomgroup[group] = int(enabled)
+
+
+def make_render_options() -> mujoco.MjvOption:
+    """Show explicit wall alpha without globally fading dynamic geoms."""
+    option = mujoco.MjvOption()
+    mujoco.mjv_defaultOption(option)
+    _set_group(option, 5, True)
+    # mjVIS_TRANSPARENT fades dynamic geoms, including the G1 and marker bodies.
+    # Walls already carry presentation-only alpha in the derived MJCF.
+    option.flags[mujoco.mjtVisFlag.mjVIS_TRANSPARENT] = 0
+    return option
 
 
 def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS,
@@ -418,12 +441,9 @@ def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS
         ) from error
     frames_dir = output / "frames"
     frames_dir.mkdir(parents=True)
-    option = mujoco.MjvOption()
-    mujoco.mjv_defaultOption(option)
-    _set_group(option, 5, True)
-    option.flags[mujoco.mjtVisFlag.mjVIS_TRANSPARENT] = 1
+    option = make_render_options()
     follow_camera = (FollowCamera(trajectory, scenario, spacing)
-                     if camera_mode in {"trailing", "follow", "portfolio"} else None)
+                     if camera_mode in {"tracking", "trailing", "follow", "portfolio"} else None)
     count = 0
     try:
         for count, (frame, env_frame, phase, amplitude, travel_sign) in enumerate(samples):
@@ -507,20 +527,34 @@ def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS
         "duration_seconds": total / fps,
         "resolution": {"width": width, "height": height},
         "camera_mode": camera_mode,
-        "camera": {"style": "stable one-sided rear-side trailing follow; no front orbit",
+        "camera": {"style": "fixed-world-direction tracking observer; translation-only tracking, no orbit",
+                   "fixed_world_azimuth_deg": FOLLOW_AZIMUTH_DEG,
+                   "fixed_world_elevation_deg": FOLLOW_ELEVATION_DEG,
+                   "orientation_rule": "azimuth and elevation are constant for every frame; robot heading is not read by camera control",
+                   "tracking_rule": "camera look-at target follows robot XY plus fixed world +X lookahead, smoothed with a fixed alpha; orientation never changes",
                    "distance_m": FOLLOW_DISTANCE_M,
                    "elevation_deg": FOLLOW_ELEVATION_DEG,
                    "lookahead_m": FOLLOW_LOOKAHEAD_M,
                    "target_smoothing_alpha": FOLLOW_TARGET_SMOOTHING,
-                   "orientation_smoothing_alpha": FOLLOW_ORIENTATION_SMOOTHING,
-                   "rear_side_offset_deg": FOLLOW_REAR_OFFSET_DEG,
-                   "azimuth_rule": "recorded heading yaw + fixed 20 degree rear-side offset; MuJoCo azimuth 0 is behind +X heading"},
+                   "azimuth_deg": FOLLOW_AZIMUTH_DEG},
         "seconds_per_saved_action": speed,
         "walls_rgba": WALL_RGBA,
         "floor_rgba": FLOOR_RGBA,
         "g1_rendered_alpha": 1.0,
-        "g1_presentation_materials": "view-only brighter blue-slate black material and neutral silver metal material, all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
-        "start_goal_markers": "non-colliding futuristic waypoint pin: cyan START and bright gold GOAL orb, narrow stem, layered luminous floating base rings, and pale specular glint; translucent halos are UI-only",
+        "global_dynamic_geom_transparency": False,
+        "opacity_fix": "Disabled mjVIS_TRANSPARENT, which had faded dynamic geoms globally. G1 geoms/materials are alpha 1.0; only maze wall geoms receive WALL_RGBA alpha. Marker shells are presentation-only UI layers.",
+        "marker_glow_design": "Compact cyan/gold sphere-and-stem markers with high-emission heads, nested luminous base rings, and small pale glints, restored toward reference image 1. MuJoCo has no bloom pass; emission and layered geometry approximate bloom.",
+        "g1_presentation_materials": "native Unitree G1 black/silver colors and texture assignments preserved; all G1 geoms/materials forced alpha 1; source MJCF and collision geometry unchanged",
+        "lighting": {"style": "bright cool ambient fill with four broad shadow-free directional room fills plus original key light",
+                     "headlight_ambient": "0.36 0.39 0.44",
+                     "headlight_diffuse": "0.58 0.62 0.68",
+                     "directional_fill_count": 4,
+                     "floor_rgba": FLOOR_RGBA},
+        "thumbnail_framing": {"camera_distance_m": FOLLOW_DISTANCE_M,
+                              "description": "Tighter fixed-direction tracking frame keeps G1 larger while retaining nearby corridor context."},
+        "start_goal_markers": "restored compact sphere-and-stem waypoint style from reference image 1: cyan START and gold GOAL heads, narrow stems, compact layered luminous ellipsoid base rings and a small glint; stronger emission retained; non-colliding presentation UI, not the enlarged shell style from reference image 2",
+        "robot_appearance_source": "native Unitree G1 MJCF materials, textures, and colors from third_party/unitree_g1/g1.xml; display export preserves original black/silver accent assignments and only forces alpha to 1.0",
+        "presentation_note": "Marker design follows reference image 1's compact glowing orb, narrow stem, and base ring. Robot colors follow reference image 4 and the native Unitree G1 MJCF black/silver materials. The saved source trajectory is replayed unchanged.",
         "gif_conversion": {
             "master": "portfolio_demo.mp4",
             "method": GIF_CONVERSION_METHOD,
@@ -549,6 +583,12 @@ def render_frames(source: Path, output: Path, *, camera_mode="trailing", fps=FPS
         (output / "source_selection.json").write_text(
             json.dumps(source_selection, indent=2, sort_keys=True) + "\n")
     (output / "metadata.json").write_text(json.dumps(settings, indent=2, sort_keys=True) + "\n")
+    (output / "presentation_note.md").write_text(
+        "# Presentation-only export note\n\n"
+        "- Marker design source: reference image 1; compact cyan/gold glowing head, narrow stem, and layered base ring.\n"
+        "- Robot appearance source: reference image 4 and native Unitree G1 materials/textures; native black head/foot accents are preserved and all G1 alpha remains 1.0.\n"
+        f"- Source trajectory: `{settings['source_result_dir']}`; its recorded poses are replayed unchanged.\n"
+        "- Camera: fixed world azimuth/elevation with translation-only smoothed tracking.\n")
     write_artifact_manifest(output)
     return settings
 
@@ -603,8 +643,8 @@ def main(argv=None) -> int:
     parser.add_argument("--result-dir", type=Path,
                         help="Optional saved eligible source; default uses the deterministic best-route score")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--camera", choices=("trailing", "follow", "portfolio", "overview"),
-                        default="trailing")
+    parser.add_argument("--camera", choices=("tracking", "trailing", "follow", "portfolio", "overview"),
+                        default="tracking")
     parser.add_argument("--fps", type=int, default=FPS)
     parser.add_argument("--width", type=int, default=1280)
     parser.add_argument("--height", type=int, default=720)

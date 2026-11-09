@@ -630,15 +630,32 @@ goal completion, and zero unwanted contacts. The previous portfolio route had
 one heading change, 12 cells, and a 3-by-9-cell span. The selected trajectory is
 replayed as saved; it is not regenerated or modified.
 
-The final presentation pass uses a fixed rear-side trailing camera with
-smoothed position and orientation; it follows the saved heading with a constant
-20-degree rear-side offset and does not intentionally orbit to the front. The
-camera stays slightly elevated and aims 0.65 m ahead of G1. Every G1 geom and
-bound material is forced to alpha 1.0 in the derived display scene. Maze walls
-use a brighter slate tint at 0.48 opacity, while the floor remains opaque and
-contrasting. The cyan START and bright gold GOAL pins use small emissive heads,
-narrow stems, layered luminous base rings, and pale glints. The translucent
-marker halos are presentation UI; the robot itself is fully opaque.
+The current homepage-thumbnail pass uses a fixed-world-direction tracking camera.
+Its free-camera azimuth is 138 degrees and elevation is -42 degrees for every
+frame. Camera control does not read the robot heading. It follows by smoothing
+the look-at target translation toward the robot's world XY position plus a
+fixed +X lookahead of 0.65 m; it never changes azimuth or elevation. The
+tracking distance is tightened to 3.9 m to make G1 larger while retaining
+nearby corridor context. This is an
+external observer perspective, not a heading-relative trailing camera. Every
+G1 geom and bound material is forced to alpha 1.0 in the derived display scene,
+while native MJCF colors and texture assignments are preserved. In particular,
+the native black head and ankle accents are no longer recolored blue-white.
+Maze walls use a brighter cool slate tint at 0.56 opacity, while the floor
+remains opaque and contrasting. Increased cool ambient headlight and four
+shadow-free directional fill lights illuminate all rooms and corridors instead
+of relying on the original central key light alone. The restored cyan and gold
+markers follow the compact sphere,
+narrow stem, and layered base ring from reference image 1. MuJoCo's primitives
+approximate the shape; higher emission keeps the glow visible.
+
+The previous render exposed why the G1 looked translucent despite compiled geom
+and material alpha values of 1.0: the exporter enabled MuJoCo's global
+`mjVIS_TRANSPARENT` visualization flag, which fades dynamic geoms. The exporter
+now keeps that flag disabled and relies on the explicit wall RGBA alpha. Cyan
+and gold marker materials retain strong emission in the restored compact design.
+MuJoCo has no bloom pass in this pipeline, so the glow is an emissive layered
+approximation.
 
 The GIF is encoded from the rendered MP4 master, not from the PNG frames. The
 exporter uses a two-pass FFmpeg palette workflow: `palettegen` scans the full
@@ -654,18 +671,14 @@ following command exports frames, MP4, and GIF to a new directory:
 ```bash
 brew install ffmpeg  # only if ffmpeg is not already installed
 .venv/bin/mjpython scripts/export_phase2_portfolio_demo.py \
-  --output-dir results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1 \
-  --camera trailing --fps 24 --speed 0.18 --mp4 --gif
+  --output-dir results/phase2_mujoco/portfolio_export_g1_bright_thumbnail_v1 \
+  --camera tracking --fps 24 --speed 0.18 --mp4 --gif
 ```
 
-The final output is in
-`results/phase2_mujoco/portfolio_export_g1_stable_trailing_v1/`. It was rendered
-at 1280x720, 24 FPS, for 15.29 seconds (367 frames). It includes the rendered
-frames, MP4 master, generated global palette PNG, GIF, representative still,
-metadata, candidate score report, visual contact audit, and artifact hash
-manifest. GIF color validation found the intended bright gold and cyan colors
-in the encoded palette/frames. The render audit passed with zero unwanted
-contacts across all 367 displayed poses. The output metadata confirms that the
-selected source directory and the unchanged trajectory/scene SHA-256 values
-match the preserved source result. The animation remains a presentation-only
-kinematic replay with a display-only joint gait, not physical walking control.
+The command writes the new output to
+`results/phase2_mujoco/portfolio_export_g1_bright_thumbnail_v1/`, using the
+existing deterministic source selection. A completed render contains frames,
+MP4 master, global palette PNG, GIF, representative still, metadata, candidate
+score report, visual contact audit, and artifact hash manifest. GIF colors use
+the same two-pass global FFmpeg palette workflow. This is a presentation-only
+kinematic replay with display-only joint gait, not physical walking control.
