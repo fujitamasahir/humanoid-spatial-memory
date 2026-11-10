@@ -1,0 +1,18 @@
+{
+  "source_video": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_A/portfolio_export/portfolio_demo.mp4",
+  "saved_run": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_A/replay_source",
+  "video_sha256": "a4ff2cc5e9965523115935d48ff3814f683e47f91807ec70e88896e12bb89f83",
+  "trajectory_sha256": "e98fc5bfc129f7faae643dce2dbc1f95fafd658b593b51effc7fd15fac738cf4",
+  "composite_mp4": "g1_split_screen.mp4",
+  "composite_gif": "g1_split_screen.gif",
+  "output_size": [
+    1920,
+    720
+  ],
+  "fps": 12,
+  "action_speed": 0.1,
+  "frames": 1604,
+  "frames_per_action": 2,
+  "source_steps": 800,
+  "visualization_note": "Right panel shows evaluator ground-truth maze geometry and saved pose, not the robot's perceived map."
+}
