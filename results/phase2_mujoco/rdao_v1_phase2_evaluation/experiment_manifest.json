@@ -1,0 +1,158 @@
+{
+  "baseline_artifact_hashes": {
+    "baseline_comparison.csv": "ebdec09bd1c8ceaf76cc98870bdfc869f4fe497c95390d721992929377df5808",
+    "baseline_traces.jsonl.gz": "c6817ab576e99983ddac59d05aff70784822753aa6feb5c2fb6df6a69210246f",
+    "episode_records.jsonl": "4d0d86a2e59d57839f7e7662c70ddb8997c3f7ccee7e7fd8b254f6eea587227b",
+    "episode_traces.jsonl.gz": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7",
+    "episodes.csv": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "experiment_manifest.json": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+    "failure_analysis.md": "fddf5bb4a7d95083129e0304e367ee243a64c0a52a8cdc5e74b5e8aa30857699",
+    "figures/contact_free_success_by_policy.png": "d4d5e62ec5bcbf793108b715f8cfe0d1788cf185d695524fa14cd395fae4b6f3",
+    "figures/emergency_sensing_cost_by_policy.png": "81d89a006bedba2e095b0add1f55e44283b25ec2ffed46682b55cba86eb69552",
+    "figures/episode_runtime_distributions.png": "1d15ff70308a82478fca80ad3e6058a005565c2b3093b195bb986c89a08def2c",
+    "figures/goal_success_by_policy.png": "01cd74198194c8109f80e4f03996b48a5f5bd24df6a9d73064fdd10a13f2e570",
+    "figures/interventions_and_contacts_by_policy.png": "499cb188afaeb787112c9b5e7e2ceeefde387cf73f3bc581f7e79e83bf4a38a4",
+    "figures/spatial_memory_observations_by_policy.png": "63e51c8c8e372dff56c00d3587c831e3558c4495ad3dff06d3b5c6107ca9e3d5",
+    "metric_derivation.json": "d18824a92ca62f7ac17716be1d51a47de6454a2ce974beb6cc886bf7461058ea",
+    "phase2_final_report.md": "f6b141ffe7839b06aa7406d9e9e01af70277a165eed06d8f8f73921aea0c79d4",
+    "policy_comparison.csv": "f9da9fc758725b68e249db9449074c2507dff92d14550af16f86acdebb9e630d",
+    "run_state.json": "0a39d7acb4b393dc4992e51df8a9e63d2bca9e47e1a8905bb15e831451e3962d",
+    "runtime_comparison.json": "e85815c608aee742533c784336a04630f410282035fd57ec2a0404c44e824170",
+    "runtime_pairs.jsonl": "a382e10c37ba9d5b876050e420594ecb99fc3c6f6d71dc133fa4f651088d5742",
+    "summary.json": "c0fa30206bf695df88037518026fa3dd1d4903df0c6f27e0f3bdf228a60c16fc"
+  },
+  "baseline_h800_timing_artifacts": {
+    "episode_records.jsonl": "009676c00b689126e60e35dc18d17c0c3d6d1f59d242533d35140f43c77bdf5a",
+    "episode_traces.jsonl.gz": "b421fb0daf2050eaa8f2d1b840d9bad2b8af0a0249e7a9af24c4d44c2986ec0d",
+    "episodes.csv": "81143637947f7fa08c729ca6e42d10a3b7668089629c8f2ef03caa818e0e0847",
+    "experiment_manifest.json": "cc866e732582fcf8d12e638bb6746286e60988237b12a9a3fc0335101cfac362",
+    "phase_timings.jsonl.gz": "bd9663b64bca437a3f9884bd492a08a7db688d082fa1c0396fbc73466f575435",
+    "provenance.json": "835398a7ddc50c90896cfb19a9af7d5e10df8fe1a4cd1ab328f14b15862201aa",
+    "report.md": "b1e61dfd91b45bf49e7600a0c363f27b0c7e68d7afdbb24e6ea2cb9e1f71ad83",
+    "run_state.json": "23aa4d1e75ef16b7d81403feed42758b9c4f5ff3bb4de203f12a21d248241db8",
+    "summary.json": "7429a71109b07b5dfa3d8ceeb1df9fd807a46a2f4c42937f6a267cf6d244fbfc",
+    "trajectory_prefix_comparison.json": "d3d973006cea9e6d88fdc6321a5be1fe1431c3543fba1d65ef529ce7edb37ae4"
+  },
+  "baseline_h800_timing_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_h800_timed_v1",
+  "baseline_observation_scheduler_timing_source": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_h800_timed_v1",
+  "baseline_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+  "baseline_timing_prefix_rule": "Take the first saved observation-decision timing calls equal to the exact horizon-80 elapsed step count; prior trace-prefix verification shows the same decisions through that horizon.",
+  "changed_conditions": [
+    "new observation policy RDAO v1"
+  ],
+  "commit": "49235eb8b625be2296b16b021641130bd9c371a9",
+  "environment_generation": false,
+  "experiment": "Phase 2 RDAO v1 evaluation",
+  "grid_scale_m_per_cell": 0.75,
+  "held_out_loaded": false,
+  "horizon": 80,
+  "independent_safety_sensor": {
+    "horizontal_fov_deg": 360.0,
+    "range_m": 2.0,
+    "ray_backend": "multi",
+    "ray_count": 61,
+    "sample_spacing_m": 0.075
+  },
+  "max_observations": 20,
+  "memory_sensor": {
+    "horizontal_fov_deg": 120,
+    "range_m": 6,
+    "rays": 61
+  },
+  "parameters": {
+    "budget_price": 0.04,
+    "max_candidate_regions": 12,
+    "observation_cooldown_steps": 4,
+    "region_width_cells": 2,
+    "route_lookahead_actions": 6,
+    "score_threshold": 0.22,
+    "stale_after_steps": 12,
+    "stale_full_uncertainty_steps": 64,
+    "unknown_blocker_open_probability": 0.5
+  },
+  "phase15_preserved_files_verified": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "post_run_amendments": [
+    {
+      "change": "Separately report first observation-timing difference and first movement/action difference. No episode code or data changed.",
+      "scope": "diagnostic report generation"
+    },
+    {
+      "change": "Set the new result rows spatial_memory_rays=mujoco_sensor_rays=observation_count\u00d761, matching the frozen ray configuration. This is deterministic bookkeeping and does not alter decisions or simulation.",
+      "scope": "derived ray-count metric"
+    }
+  ],
+  "schedules": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "source_hashes": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/evaluate_rdao_phase2.py": "996776d4481c4fbdc0c36d3add3f76f40b27b0899b0048fdb9e348c0aacc8717",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "source_hashes_at_finalization": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/evaluate_rdao_phase2.py": "d2aa701e6db059e156af53ce610c0f21d1b2e59804a50c1bcbdb3eac302111a8",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "threshold_selected_before_case_results": true,
+  "world_count": 36,
+  "world_identities": [
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "existing_experiment_files_modified": false,
+  "formula": "observation_count * 61",
+  "metric": "mujoco_sensor_rays and spatial_memory_rays",
+  "observation_count_includes": "initial authorized spatial-memory observation and all later grants",
+  "raw_action_policy_changed": false,
+  "source": "Each authorized call uses the frozen 61-ray MuJoCo memory sensor; generic evaluator ray statistics are not exposed through the timed callback adapter."
+}

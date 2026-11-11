@@ -1,0 +1,7 @@
+case,comparison_policy,comparison_steps,comparison_success,first_divergence_step,first_movement_or_action_divergence_step,first_observation_timing_divergence_step,rdao_steps,rdao_success,schedule,world_identity
+case_A,periodic,72,True,13,13,4,71,True,1,phase1.5-v0.4-BPRIME-1:fit:R:80000003
+case_A,uncertainty,80,False,14,14,5,71,True,1,phase1.5-v0.4-BPRIME-1:fit:R:80000003
+case_B,periodic,71,True,3,3,2,50,True,0,phase1.5-v0.4-BPRIME-1:fit:R:80000007
+case_B,uncertainty,31,True,3,3,2,50,True,0,phase1.5-v0.4-BPRIME-1:fit:R:80000007
+case_C,periodic,35,True,8,8,4,33,True,1,phase1.5-v0.4-BPRIME-1:fit:R:80000021
+case_C,uncertainty,74,True,14,14,9,33,True,1,phase1.5-v0.4-BPRIME-1:fit:R:80000021

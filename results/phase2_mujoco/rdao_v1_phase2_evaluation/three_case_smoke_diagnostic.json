@@ -1,0 +1,13 @@
+{
+  "case_count": 3,
+  "decision_count": 154,
+  "denials": 0,
+  "every_step_request_warning": false,
+  "noninitial_observations": 27,
+  "observation_activation_warning": false,
+  "request_fraction": 0.17532467532467533,
+  "requests": 27,
+  "status": "DIAGNOSTIC_ONLY",
+  "tuning_after_case_inspection": false,
+  "unwanted_contact_pairs": 0
+}
