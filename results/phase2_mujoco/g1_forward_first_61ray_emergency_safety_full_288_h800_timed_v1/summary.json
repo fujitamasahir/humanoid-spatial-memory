@@ -1,0 +1,513 @@
+{
+  "comparison_to_horizon_80": {
+    "additional_goal_completions_by_h800": 61,
+    "h800_goal_completions": 286,
+    "h800_unwanted_contact_episodes": 0,
+    "h80_goal_completions": 225,
+    "h80_unwanted_contact_episodes": 0
+  },
+  "design": {
+    "episodes": 288,
+    "grid_scale_m_per_cell": 0.75,
+    "horizon": 800,
+    "policies": [
+      "static",
+      "periodic",
+      "age",
+      "uncertainty"
+    ],
+    "schedules": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "world_regeneration": false,
+    "worlds": 36
+  },
+  "integrity": {
+    "baseline_result_hashes_verified": 20,
+    "controller_or_policy_code_modified": false,
+    "h400_result_hashes_verified": 5,
+    "hidden_state_used_for_decision": false,
+    "only_selected_action_collision_check": true,
+    "phase15_preserved_files_verified": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "prior_h800_result_hashes_verified": 5
+  },
+  "movement_comparison": {
+    "horizon_400_cohort_size": 63,
+    "horizon_400_full_matrix_comparison_available": false,
+    "horizon_400_prior_cohort_exact": true,
+    "horizon_80_all_288_exact": true
+  },
+  "new_phase_timing_definitions": {
+    "map_update": "Memory.update only; includes initial observed-map population and each granted observation refresh.",
+    "observation_decision": "ObservationController.decide only, including policy scoring/request and budget grant decision.",
+    "ordinary_astar": "plan_g1_forward_facing only; excludes policy wrappers, sensors, and collision shield."
+  },
+  "outcomes": {
+    "contact_free_goal_completion_rate": 0.9930555555555556,
+    "contact_free_goal_completions": 286,
+    "contact_states": 0,
+    "emergency_scan_p95_ms": {
+      "count": 288,
+      "mean": 0.4717954097222222,
+      "median": 0.368708,
+      "p95": 0.931458,
+      "total": 135.877078
+    },
+    "emergency_scan_time_ms": {
+      "count": 288,
+      "mean": 0.2988299826388889,
+      "median": 0.292979,
+      "p95": 0.350958,
+      "total": 86.063035
+    },
+    "episode_runtime_ms": {
+      "count": 288,
+      "mean": 342.54870791319445,
+      "median": 209.782854,
+      "p95": 748.178291,
+      "total": 98654.027879
+    },
+    "episodes": 288,
+    "episodes_with_unwanted_contact": 0,
+    "evaluation_loop_ms": {
+      "count": 288,
+      "mean": 268.01042970833333,
+      "median": 146.12289600000003,
+      "p95": 665.565417,
+      "total": 77187.003756
+    },
+    "goal_completion_rate": 0.9930555555555556,
+    "goal_completions": 286,
+    "mean_emergency_rays": 4209.423611111111,
+    "mean_emergency_scans": 69.00694444444444,
+    "mean_goal_step_successes": 63.89510489510489,
+    "mean_path_length_m": 28.984375,
+    "mean_selected_action_shield_queries": 66.29513888888889,
+    "mean_spatial_memory_observations": 8.26388888888889,
+    "mean_spatial_memory_rays": 504.09722222222223,
+    "median_emergency_rays": 2623.0,
+    "median_emergency_scans": 43.0,
+    "proxy_contact_pairs": 0,
+    "scene_construction_ms": {
+      "count": 288,
+      "mean": 74.2417660625,
+      "median": 56.077374999999996,
+      "p95": 159.170791,
+      "total": 21381.628626
+    },
+    "spatial_memory_processing_time_ms": {
+      "count": 288,
+      "mean": 4.4523886840277775,
+      "median": 3.8384584999999998,
+      "p95": 10.430254,
+      "total": 1282.287941
+    },
+    "total_backward_actions": 1,
+    "total_emergency_detected_scans": 189,
+    "total_emergency_interventions": 90,
+    "total_emergency_lateral_avoidances": 10,
+    "total_emergency_rays": 1212314,
+    "total_emergency_scans": 19874,
+    "total_emergency_sensor_time_ms": 6679.443464,
+    "total_emergency_waits": 79,
+    "total_forward_actions": 13063,
+    "total_lateral_actions": 11,
+    "total_spatial_memory_observations": 2380,
+    "total_spatial_memory_rays": 145180,
+    "total_turns": 6018,
+    "total_waits": 79,
+    "unselected_action_shield_queries": 0,
+    "unwanted_contact_pairs_all_categories": 0
+  },
+  "per_policy": {
+    "age": {
+      "contact_free_goal_completion_rate": 1.0,
+      "contact_free_goal_completions": 72,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.46501790277777777,
+        "median": 0.3672285,
+        "p95": 0.899,
+        "total": 33.481289
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.29988411111111113,
+        "median": 0.2944585,
+        "p95": 0.356208,
+        "total": 21.591656
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 227.90568054166667,
+        "median": 200.1279165,
+        "p95": 453.920792,
+        "total": 16409.208999
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 158.06235997222223,
+        "median": 129.723083,
+        "p95": 345.659583,
+        "total": 11380.489918
+      },
+      "goal_completion_rate": 1.0,
+      "goal_completions": 72,
+      "mean_emergency_rays": 2611.9861111111113,
+      "mean_emergency_scans": 42.81944444444444,
+      "mean_goal_step_successes": 42.81944444444444,
+      "mean_path_length_m": 23.395833333333332,
+      "mean_selected_action_shield_queries": 42.75,
+      "mean_spatial_memory_observations": 11.805555555555555,
+      "mean_spatial_memory_rays": 720.1388888888889,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 69.56878986111111,
+        "median": 57.307875,
+        "p95": 132.750708,
+        "total": 5008.95287
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 6.382513430555556,
+        "median": 5.790333,
+        "p95": 11.264293,
+        "total": 459.540967
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 22,
+      "total_emergency_interventions": 5,
+      "total_emergency_lateral_avoidances": 0,
+      "total_emergency_rays": 188063,
+      "total_emergency_scans": 3083,
+      "total_emergency_sensor_time_ms": 1174.101057,
+      "total_emergency_waits": 5,
+      "total_forward_actions": 2301,
+      "total_lateral_actions": 1,
+      "total_spatial_memory_observations": 850,
+      "total_spatial_memory_rays": 51850,
+      "total_turns": 776,
+      "total_waits": 5,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "periodic": {
+      "contact_free_goal_completion_rate": 1.0,
+      "contact_free_goal_completions": 72,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.46282059722222224,
+        "median": 0.37077099999999996,
+        "p95": 0.921916,
+        "total": 33.323083
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.302430625,
+        "median": 0.294917,
+        "p95": 0.352459,
+        "total": 21.775005
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 236.9104497638889,
+        "median": 207.97927049999998,
+        "p95": 484.458375,
+        "total": 17057.552383
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 155.86407294444444,
+        "median": 135.1183335,
+        "p95": 328.954584,
+        "total": 11222.213252
+      },
+      "goal_completion_rate": 1.0,
+      "goal_completions": 72,
+      "mean_emergency_rays": 2721.277777777778,
+      "mean_emergency_scans": 44.611111111111114,
+      "mean_goal_step_successes": 44.611111111111114,
+      "mean_path_length_m": 24.208333333333332,
+      "mean_selected_action_shield_queries": 44.513888888888886,
+      "mean_spatial_memory_observations": 11.11111111111111,
+      "mean_spatial_memory_rays": 677.7777777777778,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 80.7435943888889,
+        "median": 57.526187,
+        "p95": 185.41591599999998,
+        "total": 5813.538796
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 5.920214805555555,
+        "median": 5.204855,
+        "p95": 10.441626,
+        "total": 426.255466
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 21,
+      "total_emergency_interventions": 7,
+      "total_emergency_lateral_avoidances": 0,
+      "total_emergency_rays": 195932,
+      "total_emergency_scans": 3212,
+      "total_emergency_sensor_time_ms": 1048.819397,
+      "total_emergency_waits": 7,
+      "total_forward_actions": 2387,
+      "total_lateral_actions": 0,
+      "total_spatial_memory_observations": 800,
+      "total_spatial_memory_rays": 48800,
+      "total_turns": 818,
+      "total_waits": 7,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "static": {
+      "contact_free_goal_completion_rate": 0.9722222222222222,
+      "contact_free_goal_completions": 70,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.5198419722222222,
+        "median": 0.373729,
+        "p95": 1.112917,
+        "total": 37.428622
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.29563483333333335,
+        "median": 0.2941875,
+        "p95": 0.335084,
+        "total": 21.285708
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 651.0980601527777,
+        "median": 290.6583955,
+        "p95": 1590.603875,
+        "total": 46879.060331
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 578.9424959444444,
+        "median": 215.1495415,
+        "p95": 1283.206125,
+        "total": 41683.859707999996
+      },
+      "goal_completion_rate": 0.9722222222222222,
+      "goal_completions": 70,
+      "mean_emergency_rays": 8301.930555555555,
+      "mean_emergency_scans": 136.09722222222223,
+      "mean_goal_step_successes": 117.12857142857143,
+      "mean_path_length_m": 41.666666666666664,
+      "mean_selected_action_shield_queries": 125.66666666666667,
+      "mean_spatial_memory_observations": 1.0,
+      "mean_spatial_memory_rays": 61.0,
+      "median_emergency_rays": 4575.0,
+      "median_emergency_scans": 75.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 71.8372603888889,
+        "median": 56.05775,
+        "p95": 123.97825,
+        "total": 5172.282748
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 0.6426106388888889,
+        "median": 0.5591045,
+        "p95": 1.065417,
+        "total": 46.267966
+      },
+      "total_backward_actions": 1,
+      "total_emergency_detected_scans": 102,
+      "total_emergency_interventions": 55,
+      "total_emergency_lateral_avoidances": 5,
+      "total_emergency_rays": 597739,
+      "total_emergency_scans": 9799,
+      "total_emergency_sensor_time_ms": 3215.708153,
+      "total_emergency_waits": 49,
+      "total_forward_actions": 5628,
+      "total_lateral_actions": 5,
+      "total_spatial_memory_observations": 72,
+      "total_spatial_memory_rays": 4392,
+      "total_turns": 3414,
+      "total_waits": 49,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    },
+    "uncertainty": {
+      "contact_free_goal_completion_rate": 1.0,
+      "contact_free_goal_completions": 72,
+      "contact_states": 0,
+      "emergency_scan_p95_ms": {
+        "count": 72,
+        "mean": 0.43950116666666666,
+        "median": 0.3538335,
+        "p95": 0.939792,
+        "total": 31.644084
+      },
+      "emergency_scan_time_ms": {
+        "count": 72,
+        "mean": 0.2973703611111111,
+        "median": 0.28964599999999996,
+        "p95": 0.348208,
+        "total": 21.410666
+      },
+      "episode_runtime_ms": {
+        "count": 72,
+        "mean": 254.28064119444443,
+        "median": 192.405917,
+        "p95": 604.578375,
+        "total": 18308.206166
+      },
+      "episodes": 72,
+      "episodes_with_unwanted_contact": 0,
+      "evaluation_loop_ms": {
+        "count": 72,
+        "mean": 179.17278997222223,
+        "median": 130.29081250000002,
+        "p95": 450.259833,
+        "total": 12900.440878
+      },
+      "goal_completion_rate": 1.0,
+      "goal_completions": 72,
+      "mean_emergency_rays": 3202.5,
+      "mean_emergency_scans": 52.5,
+      "mean_goal_step_successes": 52.5,
+      "mean_path_length_m": 26.666666666666668,
+      "mean_selected_action_shield_queries": 52.25,
+      "mean_spatial_memory_observations": 9.13888888888889,
+      "mean_spatial_memory_rays": 557.4722222222222,
+      "median_emergency_rays": 2196.0,
+      "median_emergency_scans": 36.0,
+      "proxy_contact_pairs": 0,
+      "scene_construction_ms": {
+        "count": 72,
+        "mean": 74.8174196111111,
+        "median": 55.31125,
+        "p95": 180.079625,
+        "total": 5386.854212
+      },
+      "spatial_memory_processing_time_ms": {
+        "count": 72,
+        "mean": 4.864215861111111,
+        "median": 3.6479774999999997,
+        "p95": 11.000083,
+        "total": 350.223542
+      },
+      "total_backward_actions": 0,
+      "total_emergency_detected_scans": 44,
+      "total_emergency_interventions": 23,
+      "total_emergency_lateral_avoidances": 5,
+      "total_emergency_rays": 230580,
+      "total_emergency_scans": 3780,
+      "total_emergency_sensor_time_ms": 1240.814857,
+      "total_emergency_waits": 18,
+      "total_forward_actions": 2747,
+      "total_lateral_actions": 5,
+      "total_spatial_memory_observations": 658,
+      "total_spatial_memory_rays": 40138,
+      "total_turns": 1010,
+      "total_waits": 18,
+      "unselected_action_shield_queries": 0,
+      "unwanted_contact_pairs_all_categories": 0
+    }
+  },
+  "status": "PASS_COMPLETE_288_EPISODE_MATRIX_H800_TIMED",
+  "still_unreached_at_horizon_800": [
+    {
+      "final_position": [
+        1,
+        23
+      ],
+      "method": "static",
+      "schedule": 0,
+      "seed": 42,
+      "steps": 800,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+    },
+    {
+      "final_position": [
+        1,
+        23
+      ],
+      "method": "static",
+      "schedule": 1,
+      "seed": 42,
+      "steps": 800,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+    }
+  ],
+  "timing_phase_totals_and_call_distributions": {
+    "episode_wall": {
+      "calls": 288,
+      "mean_ms": 342.5487078888889,
+      "median_ms": 209.782854,
+      "p95_ms": 748.178291,
+      "total_ms": 98654.027872
+    },
+    "independent_safety_sensor": {
+      "calls": 288,
+      "mean_ms": 23.19251201736111,
+      "median_ms": 13.2270205,
+      "p95_ms": 74.546876,
+      "total_ms": 6679.443461
+    },
+    "map_update": {
+      "calls": 2380,
+      "mean_ms": 0.02202733319327731,
+      "median_ms": 0.01625,
+      "p95_ms": 0.02175,
+      "total_ms": 52.425053
+    },
+    "observation_decision": {
+      "calls": 19874,
+      "mean_ms": 0.012260670121767132,
+      "median_ms": 0.001,
+      "p95_ms": 0.044292,
+      "total_ms": 243.668558
+    },
+    "ordinary_astar": {
+      "calls": 19873,
+      "mean_ms": 1.5727943172646304,
+      "median_ms": 0.664,
+      "p95_ms": 9.021667,
+      "total_ms": 31256.141467
+    },
+    "selected_action_collision_check": {
+      "calls": 288,
+      "mean_ms": 78.32854940972223,
+      "median_ms": 45.1828105,
+      "p95_ms": 282.536914,
+      "total_ms": 22558.62223
+    },
+    "spatial_memory_sensor": {
+      "calls": 288,
+      "mean_ms": 4.452388663194444,
+      "median_ms": 3.8384585,
+      "p95_ms": 10.430254,
+      "total_ms": 1282.287935
+    }
+  }
+}

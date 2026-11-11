@@ -1,0 +1,3674 @@
+{
+  "added_timing_scope": {
+    "map_update": "Memory.update only; includes initial observed-map population and each granted observation refresh.",
+    "observation_decision": "ObservationController.decide only, including policy scoring/request and budget grant decision.",
+    "ordinary_astar": "plan_g1_forward_facing only; excludes policy wrappers, sensors, and collision shield."
+  },
+  "baseline_artifacts": {
+    "baseline_comparison.csv": "ebdec09bd1c8ceaf76cc98870bdfc869f4fe497c95390d721992929377df5808",
+    "baseline_traces.jsonl.gz": "c6817ab576e99983ddac59d05aff70784822753aa6feb5c2fb6df6a69210246f",
+    "episode_records.jsonl": "4d0d86a2e59d57839f7e7662c70ddb8997c3f7ccee7e7fd8b254f6eea587227b",
+    "episode_traces.jsonl.gz": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7",
+    "episodes.csv": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "experiment_manifest.json": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+    "failure_analysis.md": "fddf5bb4a7d95083129e0304e367ee243a64c0a52a8cdc5e74b5e8aa30857699",
+    "figures/contact_free_success_by_policy.png": "d4d5e62ec5bcbf793108b715f8cfe0d1788cf185d695524fa14cd395fae4b6f3",
+    "figures/emergency_sensing_cost_by_policy.png": "81d89a006bedba2e095b0add1f55e44283b25ec2ffed46682b55cba86eb69552",
+    "figures/episode_runtime_distributions.png": "1d15ff70308a82478fca80ad3e6058a005565c2b3093b195bb986c89a08def2c",
+    "figures/goal_success_by_policy.png": "01cd74198194c8109f80e4f03996b48a5f5bd24df6a9d73064fdd10a13f2e570",
+    "figures/interventions_and_contacts_by_policy.png": "499cb188afaeb787112c9b5e7e2ceeefde387cf73f3bc581f7e79e83bf4a38a4",
+    "figures/spatial_memory_observations_by_policy.png": "63e51c8c8e372dff56c00d3587c831e3558c4495ad3dff06d3b5c6107ca9e3d5",
+    "metric_derivation.json": "d18824a92ca62f7ac17716be1d51a47de6454a2ce974beb6cc886bf7461058ea",
+    "phase2_final_report.md": "f6b141ffe7839b06aa7406d9e9e01af70277a165eed06d8f8f73921aea0c79d4",
+    "policy_comparison.csv": "f9da9fc758725b68e249db9449074c2507dff92d14550af16f86acdebb9e630d",
+    "run_state.json": "0a39d7acb4b393dc4992e51df8a9e63d2bca9e47e1a8905bb15e831451e3962d",
+    "runtime_comparison.json": "e85815c608aee742533c784336a04630f410282035fd57ec2a0404c44e824170",
+    "runtime_pairs.jsonl": "a382e10c37ba9d5b876050e420594ecb99fc3c6f6d71dc133fa4f651088d5742",
+    "summary.json": "c0fa30206bf695df88037518026fa3dd1d4903df0c6f27e0f3bdf228a60c16fc"
+  },
+  "baseline_experiment_manifest_sha256": "1f3278ab98fa680be758af805ce5c0d9a2379027262b6e4b2263fa7a63031a2a",
+  "baseline_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1",
+  "collision_queries": "Only the selected non-wait action is checked; unselected action shield query count remains zero.",
+  "commit": "1e140d16dd580c3cd6d6db686fc3fb76237183de",
+  "decision_information": "Only the existing observation memory, permitted ray observations and feedback are passed to decision callbacks; no future proxy trajectory or hidden occupancy is provided.",
+  "episode_count": 288,
+  "experiment_name": "Phase 2 matched 61-ray emergency safety evaluation, 800-step horizon with phase timings",
+  "grid_scale_m_per_cell": 0.75,
+  "max_steps": 800,
+  "phase15_fit_files_modified": false,
+  "policies": [
+    "static",
+    "periodic",
+    "age",
+    "uncertainty"
+  ],
+  "policy_config": {
+    "common_horizon_metrics": true,
+    "g1_navigation": {
+      "footprint_source": "pinned G1 collision geometry",
+      "forward_translation_default": true,
+      "local_half_extents_m": [
+        0.218954831277208,
+        0.3279970912029507
+      ],
+      "motion": "cardinal kinematic translation with separate in-place turns",
+      "observed_occupancy_only": true,
+      "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+      "rejected_action_history": true,
+      "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+      "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+      "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+    },
+    "max_observations": 20,
+    "max_steps": 800,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_ray_sensor": {
+      "horizontal_fov_deg": 120.0,
+      "range_m": 6.0,
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "sensor_backend": "mujoco3d",
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "previous_h400_artifacts": {
+    "experiment_manifest.json": "d1d20f50b000b48437fcdfa389d3dcd92b74f89c8fe47ac40b900127c5c300bf",
+    "failed_episode_traces.jsonl.gz": "81ee1a5ff45012da67a723e58e8d7ad5814de0336e3a433335596203038329a3",
+    "failed_episodes_horizon400.csv": "fcf0b69fa6331bccff8c8e8aca8dacc0b074417ed87e79472ac667b6c681345a",
+    "report.md": "3270dc5fbdaac1acdc844ba421566333f54b15944ee57fb9b39a857c429d164a",
+    "summary.json": "05e181096221381ee409d2f26b883f754f05a9c32003e78e6b502068f1db0dd7"
+  },
+  "previous_h400_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_failed_episodes_h400_v1",
+  "previous_h800_artifacts": {
+    "experiment_manifest.json": "88e4931fad5957be81fc6d554e446085d8f64597a7cfd88081b59abcd1ab9513",
+    "report.md": "43dcd2b39ac56e7eee8d96eb0a6930a799eb1d65e2febd1cc67638568c554300",
+    "summary.json": "bd47db5833afe1f17a5088bfe88514f1a3df29358baac357732b2b9fddf2689c",
+    "unreached_horizon800.csv": "f1cd9732af714ad8577286f104d0ce99299b3a9144012d0baa319c26de1d18b4",
+    "unreached_traces.jsonl.gz": "be3216b94baf6c80ce61089cc30af35b1f350fca3326d2dc7bc5bbae059b0383"
+  },
+  "previous_h800_result_dir": "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_unreached_h400_h800_v1",
+  "schedules": [
+    0,
+    1
+  ],
+  "seed": 42,
+  "status": "PASS_COMPLETE_288_EPISODE_MATRIX_H800_TIMED",
+  "trace_prefix_validation": {
+    "h80": {
+      "all_exact": true,
+      "episode_details": [
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 60,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 60,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 70,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 80,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 70,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 80,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 40,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 40,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 28,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 66,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 66,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 33,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 54,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 33,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 54,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 14,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 14,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 14,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 14,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 35,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 74,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 74,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 31,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 21,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 31,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 77,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 52,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 52,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 42,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 52,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 42,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 52,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 56,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 58,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 54,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 58,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 46,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 41,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 44,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 46,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 41,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 31,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 33,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 31,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 33,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 34,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 47,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 48,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 54,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 57,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 57,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 73,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 76,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 76,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030011",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 57,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 75,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 29,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 77,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 23,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 67,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 67,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 72,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 73,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 72,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 72,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 32,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 58,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 68,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 58,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 81,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 47,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 27,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 26,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 47,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 27,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 37,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 38,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 35,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 36,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 50,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 75,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 57,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 48,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 45,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 57,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 48,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 22,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 20,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 30,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 24,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+            1,
+            "uncertainty",
+            42
+          ]
+        }
+      ],
+      "frames_compared": 14019,
+      "matched_episode_count": 288,
+      "mismatches": [],
+      "source_episode_count": 288
+    },
+    "prior_h400_cohort": {
+      "all_exact": true,
+      "episode_details": [
+        {
+          "compared_frames": 203,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 94,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 203,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 94,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 401,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 401,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 216,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 216,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 89,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 102,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 284,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 94,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 90,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 271,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 94,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 133,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 133,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 83,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 83,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 380,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 96,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 288,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 96,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 103,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 103,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 153,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 94,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 90,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 167,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 242,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 167,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 195,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 401,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 139,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 91,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 136,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 116,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 91,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 136,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 116,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 253,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 253,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 122,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "age",
+            42
+          ]
+        },
+        {
+          "compared_frames": 91,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 351,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 100,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 91,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "periodic",
+            42
+          ]
+        },
+        {
+          "compared_frames": 355,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 100,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 217,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 178,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 100,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 100,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 126,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 162,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 111,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 155,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 111,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 115,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+            1,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 213,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 83,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            0,
+            "uncertainty",
+            42
+          ]
+        },
+        {
+          "compared_frames": 213,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "static",
+            42
+          ]
+        },
+        {
+          "compared_frames": 83,
+          "exact_match": true,
+          "key": [
+            "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+            1,
+            "uncertainty",
+            42
+          ]
+        }
+      ],
+      "frames_compared": 10367,
+      "matched_episode_count": 63,
+      "mismatches": [],
+      "source_episode_count": 63
+    }
+  },
+  "world_count": 36,
+  "world_identities": [
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000001",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000003",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000007",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000012",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000014",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000019",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000021",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000022",
+    "phase1.5-v0.4-BPRIME-1:fit:R:80000023",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010002",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010005",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010006",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010007",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010009",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010010",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010011",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010012",
+    "phase1.5-v0.4-BPRIME-1:fit:BP:80010013",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030001",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030003",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030005",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030006",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030010",
+    "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+  ],
+  "world_regeneration": false
+}

@@ -1,0 +1,27 @@
+{
+  "architecture": "arm64",
+  "conditions": {
+    "changed_only": "max_steps: 80 -> 800",
+    "sensor_and_navigation_callbacks": "reused unchanged from the existing 61-ray evaluator",
+    "timing_instrumentation": "three perf_counter_ns wrappers; returns/exceptions forwarded unchanged"
+  },
+  "git_commit": "1e140d16dd580c3cd6d6db686fc3fb76237183de",
+  "mujoco_version": "3.17.0",
+  "original_80_result_sha256": "155de0857d081696b203c151f8a0239fb4bcb772bad0d06a6244bd529311aac4",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "prior_400_result_manifest_sha256": "de09bb6c2b23e7a829023fc3cb85d4f57225dabf805feed0feb2c059ebb13f04",
+  "prior_800_result_manifest_sha256": "a076a9be803490120eaa64bf691a4a9285c09499645fff2766262d9555e48212",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "source_hashes": {
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288_h800_timed.py": "812cb52c7536d880505ea66c0a93de29749b86c4ff5f36fd241abe608ae9b06c",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "d8f3f269b7f7536e7adcaf2869c93072c3f54d245e49b91a907d095703d6c0aa",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  }
+}

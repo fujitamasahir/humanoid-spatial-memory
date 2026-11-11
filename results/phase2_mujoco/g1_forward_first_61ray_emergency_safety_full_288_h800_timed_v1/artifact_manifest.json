@@ -1,0 +1,52 @@
+[
+  {
+    "bytes": 17986028,
+    "path": "episode_records.jsonl",
+    "sha256": "009676c00b689126e60e35dc18d17c0c3d6d1f59d242533d35140f43c77bdf5a"
+  },
+  {
+    "bytes": 431421,
+    "path": "episode_traces.jsonl.gz",
+    "sha256": "b421fb0daf2050eaa8f2d1b840d9bad2b8af0a0249e7a9af24c4d44c2986ec0d"
+  },
+  {
+    "bytes": 905623,
+    "path": "episodes.csv",
+    "sha256": "81143637947f7fa08c729ca6e42d10a3b7668089629c8f2ef03caa818e0e0847"
+  },
+  {
+    "bytes": 86593,
+    "path": "experiment_manifest.json",
+    "sha256": "cc866e732582fcf8d12e638bb6746286e60988237b12a9a3fc0335101cfac362"
+  },
+  {
+    "bytes": 99737,
+    "path": "phase_timings.jsonl.gz",
+    "sha256": "bd9663b64bca437a3f9884bd492a08a7db688d082fa1c0396fbc73466f575435"
+  },
+  {
+    "bytes": 2046,
+    "path": "provenance.json",
+    "sha256": "835398a7ddc50c90896cfb19a9af7d5e10df8fe1a4cd1ab328f14b15862201aa"
+  },
+  {
+    "bytes": 925,
+    "path": "report.md",
+    "sha256": "b1e61dfd91b45bf49e7600a0c363f27b0c7e68d7afdbb24e6ea2cb9e1f71ad83"
+  },
+  {
+    "bytes": 40,
+    "path": "run_state.json",
+    "sha256": "23aa4d1e75ef16b7d81403feed42758b9c4f5ff3bb4de203f12a21d248241db8"
+  },
+  {
+    "bytes": 15853,
+    "path": "summary.json",
+    "sha256": "7429a71109b07b5dfa3d8ceeb1df9fd807a46a2f4c42937f6a267cf6d244fbfc"
+  },
+  {
+    "bytes": 71806,
+    "path": "trajectory_prefix_comparison.json",
+    "sha256": "d3d973006cea9e6d88fdc6321a5be1fe1431c3543fba1d65ef529ce7edb37ae4"
+  }
+]
