@@ -1,0 +1,41 @@
+{
+  "accepted_observations_exactly_verified": 27,
+  "episode_count": 3,
+  "episodes_with_new_visible_near_route": 3,
+  "input_sha256": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/case_A_rdao_trace.json": "545a84fa530258f94aa61a77a867685c002a5076f82c93ea4e4a9fe850031ba4",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/case_B_rdao_trace.json": "5e1f3ae5db9e6840a3d45344d605b3a6a11d56688ea9d0b67162c76574c8d5cd",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/case_C_rdao_trace.json": "a05207048ac795e168a4d4125101a652e67b6b872ae48cf38757c97bb1e9749d"
+  },
+  "limits": [
+    "World truth is used only by the diagnostic shadow sensor, never the original agent.",
+    "Saved actions and observation timings are frozen; no counterfactual outcome is estimated.",
+    "A sensor-visible unknown cell need not change the G1 route or improve success.",
+    "Center-cell-angle disagreement is not by itself a rejected decision.",
+    "Development cases and primary fit worlds are not independent held-out evidence."
+  ],
+  "rejected_decisions": 127,
+  "rejection_reason_counts": {
+    "best_region_score_below_budget_adjusted_threshold": 48,
+    "no_visible_uncertain_route_relevant_region": 79
+  },
+  "scope": "cases",
+  "source_sha256": {
+    "scripts/diagnose_rdao_visibility_replay.py": "d2d5a3dab284bca4358e572340d1d790c85df0b02fc8f661e74599e3835b0bb3",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "status": "DESCRIPTIVE_EVALUATOR_ONLY_NOT_CAUSAL",
+  "totals": {
+    "center_outside_fov_but_visible": 119,
+    "center_outside_range_but_visible": 81,
+    "missed_near_route": 113,
+    "new_free": 974,
+    "new_near_route": 247,
+    "new_occupied": 388,
+    "newly_visible": 1362,
+    "occlusion_or_other_zero_but_visible": 308,
+    "predicted_zero_but_visible": 507
+  }
+}
