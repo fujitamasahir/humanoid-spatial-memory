@@ -205,8 +205,9 @@ executed on the user's pinned MuJoCo environment.
 
 Do NOT conclude that footprint visibility alone is an
 improved RDAO v2; online full fit screen was 59/72
-successes vs RDAO57/72, matched matched-dose Periodic
-benchmark approx 66/72, with *more* observations and
+successes vs RDAO 57/72 and ordinary Periodic/Age
+baselines of 66/72 each; the prior matched-dose periodic
+post-hoc control instead attained 58/72, with *more* observations and
 distance on aggregate. Observational accuracy gains
 on route-near cell-pose pairs do not suffice for
 online movement efficiency gains.
