@@ -1,0 +1,107 @@
+{
+  "aggregates": {
+    "every": {
+      "any_unwanted_contact_episodes": 0,
+      "baseline_successes": 57,
+      "episodes": 72,
+      "episodes_with_override": 34,
+      "gated_successes": 58,
+      "harmed_successes": 1,
+      "harmed_worlds": [
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+      ],
+      "mean_baseline_distance_m": 24.489583333333332,
+      "mean_baseline_horizon_censored_steps": 44.736111111111114,
+      "mean_baseline_observations": 9.11111111111111,
+      "mean_baseline_steps_among_successes": 35.45614035087719,
+      "mean_delta_distance_m": 0.16666666666666666,
+      "mean_delta_observations": -0.5277777777777778,
+      "mean_gate_plan_time_ms_including_normal_plan": 8.706884236111112,
+      "mean_gated_distance_m": 24.65625,
+      "mean_gated_horizon_censored_steps": 44.65277777777778,
+      "mean_gated_observations": 8.583333333333334,
+      "mean_gated_steps_among_successes": 36.12068965517241,
+      "rescue_worlds": [
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+      ],
+      "rescued_failures": 2,
+      "total_evaluated_observations": 546,
+      "total_overrides": 73,
+      "total_unwanted_contacts": 0,
+      "unique_worlds": 36
+    },
+    "first": {
+      "any_unwanted_contact_episodes": 0,
+      "baseline_successes": 57,
+      "episodes": 72,
+      "episodes_with_override": 34,
+      "gated_successes": 61,
+      "harmed_successes": 0,
+      "harmed_worlds": [],
+      "mean_baseline_distance_m": 24.489583333333332,
+      "mean_baseline_horizon_censored_steps": 44.736111111111114,
+      "mean_baseline_observations": 9.11111111111111,
+      "mean_baseline_steps_among_successes": 35.45614035087719,
+      "mean_delta_distance_m": -0.03125,
+      "mean_delta_observations": -0.2916666666666667,
+      "mean_gate_plan_time_ms_including_normal_plan": 8.137791555555555,
+      "mean_gated_distance_m": 24.458333333333332,
+      "mean_gated_horizon_censored_steps": 44.263888888888886,
+      "mean_gated_observations": 8.819444444444445,
+      "mean_gated_steps_among_successes": 37.81967213114754,
+      "rescue_worlds": [
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+      ],
+      "rescued_failures": 4,
+      "total_evaluated_observations": 563,
+      "total_overrides": 34,
+      "total_unwanted_contacts": 0,
+      "unique_worlds": 36
+    }
+  },
+  "episodes": 72,
+  "gate_guard_counts": {
+    "every": {
+      "destination_not_observed_free_after_update": 55,
+      "new_first_action_not_turn": 413,
+      "no_new_map_cells": 3,
+      "passed_observed_cell_and_footprint_checks": 73,
+      "prior_action_not_forward": 2
+    },
+    "first": {
+      "destination_not_observed_free_after_update": 38,
+      "first_override_already_used": 250,
+      "new_first_action_not_turn": 239,
+      "passed_observed_cell_and_footprint_checks": 34,
+      "prior_action_not_forward": 2
+    }
+  },
+  "limitations": [
+    "All 36 fit worlds are development data previously used to diagnose and choose this gate.",
+    "The paired two schedules are correlated and are not 72 independent worlds.",
+    "A guard based solely on observed-free destination and public swept footprint can still produce long-term adverse navigation effects.",
+    "This is a kinematic-root MuJoCo G1 navigation proxy, not demonstrated dynamic walking.",
+    "The independent emergency sensor and actual-model selected-action shield remain unchanged; every safety regression must be reported.",
+    "Extra old-policy planning after an observation incurs computation; time is reported but may vary by machine.",
+    "A matched observation budget limit is not equal realized observation dose.",
+    "No held-out result or superiority over Periodic/Age has been established."
+  ],
+  "max_memory_observations": 20,
+  "online_signal_only": true,
+  "original_method": "rdao_v1",
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "policies": [
+    "first",
+    "every"
+  ],
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "EXPLORATORY_FIT_WORLD_ONLINE_GATE_SCREEN_NOT_HELD_OUT",
+  "worlds": 36
+}

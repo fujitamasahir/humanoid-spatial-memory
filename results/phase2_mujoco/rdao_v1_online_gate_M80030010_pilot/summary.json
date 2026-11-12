@@ -1,0 +1,98 @@
+{
+  "aggregates": {
+    "every": {
+      "any_unwanted_contact_episodes": 0,
+      "baseline_successes": 0,
+      "episodes": 2,
+      "episodes_with_override": 2,
+      "gated_successes": 2,
+      "harmed_successes": 0,
+      "harmed_worlds": [],
+      "mean_baseline_distance_m": 41.25,
+      "mean_baseline_horizon_censored_steps": 80,
+      "mean_baseline_observations": 20,
+      "mean_baseline_steps_among_successes": null,
+      "mean_delta_distance_m": -26.25,
+      "mean_delta_observations": -14,
+      "mean_gate_plan_time_ms_including_normal_plan": 2.6584575,
+      "mean_gated_distance_m": 15.0,
+      "mean_gated_horizon_censored_steps": 28,
+      "mean_gated_observations": 6,
+      "mean_gated_steps_among_successes": 28,
+      "rescue_worlds": [
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+      ],
+      "rescued_failures": 2,
+      "total_evaluated_observations": 10,
+      "total_overrides": 2,
+      "total_unwanted_contacts": 0,
+      "unique_worlds": 1
+    },
+    "first": {
+      "any_unwanted_contact_episodes": 0,
+      "baseline_successes": 0,
+      "episodes": 2,
+      "episodes_with_override": 2,
+      "gated_successes": 2,
+      "harmed_successes": 0,
+      "harmed_worlds": [],
+      "mean_baseline_distance_m": 41.25,
+      "mean_baseline_horizon_censored_steps": 80,
+      "mean_baseline_observations": 20,
+      "mean_baseline_steps_among_successes": null,
+      "mean_delta_distance_m": -26.25,
+      "mean_delta_observations": -14,
+      "mean_gate_plan_time_ms_including_normal_plan": 2.6683130000000004,
+      "mean_gated_distance_m": 15.0,
+      "mean_gated_horizon_censored_steps": 28,
+      "mean_gated_observations": 6,
+      "mean_gated_steps_among_successes": 28,
+      "rescue_worlds": [
+        "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+      ],
+      "rescued_failures": 2,
+      "total_evaluated_observations": 10,
+      "total_overrides": 2,
+      "total_unwanted_contacts": 0,
+      "unique_worlds": 1
+    }
+  },
+  "episodes": 2,
+  "gate_guard_counts": {
+    "every": {
+      "new_first_action_not_turn": 8,
+      "passed_observed_cell_and_footprint_checks": 2
+    },
+    "first": {
+      "first_override_already_used": 8,
+      "passed_observed_cell_and_footprint_checks": 2
+    }
+  },
+  "limitations": [
+    "All 36 fit worlds are development data previously used to diagnose and choose this gate.",
+    "The paired two schedules are correlated and are not 72 independent worlds.",
+    "A guard based solely on observed-free destination and public swept footprint can still produce long-term adverse navigation effects.",
+    "This is a kinematic-root MuJoCo G1 navigation proxy, not demonstrated dynamic walking.",
+    "The independent emergency sensor and actual-model selected-action shield remain unchanged; every safety regression must be reported.",
+    "Extra old-policy planning after an observation incurs computation; time is reported but may vary by machine.",
+    "A matched observation budget limit is not equal realized observation dose.",
+    "No held-out result or superiority over Periodic/Age has been established."
+  ],
+  "max_memory_observations": 20,
+  "online_signal_only": true,
+  "original_method": "rdao_v1",
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "policies": [
+    "first",
+    "every"
+  ],
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "EXPLORATORY_FIT_WORLD_ONLINE_GATE_SCREEN_NOT_HELD_OUT",
+  "worlds": 1
+}
