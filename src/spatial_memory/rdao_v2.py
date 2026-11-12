@@ -3,7 +3,7 @@
 Opt-in DEVELOPMENT controller, not a validated policy. Combines the
 footprint-extent visibility candidate with one-step observation opportunity
 preservation. Postpone scanning a region when the same uncertain cells are
-likely significantly more visible after the FIRST nominal public-map G1 action.
+likely significantly better-covered after the FIRST nominal public-map G1 action.
 
 No oracle geometry, shadow raycasts, episode-specific steps/identities,
 future sensor returns or special movement privileges. G1 planning,
@@ -77,6 +77,34 @@ def footprint_visibility_public(grid, position, yaw, cell, *,
     return float(confidence)
 
 
+def viewpoint_quality_public(grid, position, yaw, cell, *,
+                             cell_size_m, range_m, horizontal_fov_deg,
+                             ray_count, unknown_open_probability=.5):
+    """Public-map visibility feasibility times angular sensor-coverage proxy.
+
+    The base footprint score is almost binary in angle: rotating in place
+    would otherwise NEVER improve a currently visible cell's predicted
+    score. Multiply by an explicit conservative FOV-edge margin from 0 to 1,
+    estimating how fully a cell's angular extent is within the sensor cone.
+    This is a HEURISTIC geometric quality, not calibrated hit probability.
+    """
+    visible = footprint_visibility_public(
+        grid, position, yaw, cell, cell_size_m=cell_size_m,
+        range_m=range_m, horizontal_fov_deg=horizontal_fov_deg,
+        ray_count=ray_count,
+        unknown_open_probability=unknown_open_probability)
+    if visible <= 0:
+        return 0.0
+    dx, dy = int(cell[0])-int(position[0]), int(cell[1])-int(position[1])
+    dist = math.hypot(dx, dy) * cell_size_m
+    extent = math.atan2(cell_size_m*HALF_CELL_DIAGONAL,
+                        max(dist, cell_size_m*.25))
+    half = math.radians(horizontal_fov_deg)/2.0
+    relative = abs(_wrap_angle(math.atan2(dy, dx)-float(yaw)))
+    angular_coverage = max(0.0, min(
+        1.0, (half + extent - relative) / max(2*extent, 1e-12)))
+    return visible * angular_coverage
+
 def next_public_viewpoint(grid, position, yaw, route):
     """One hypothetical public route action; not a real-world oracle check.
 
@@ -124,6 +152,8 @@ class RDAOv2ViewpointController(RDAOController):
         for item in results:
             item["v2_base_score"] = float(item["score"])
             item["v2_next_visibility"] = None
+            item["v2_current_view_quality"] = None
+            item["v2_next_view_quality"] = None
             item["v2_deferred"] = False
             item["v2_next_view_action"] = next_view[2] if next_view else None
             if next_view is None:
@@ -132,17 +162,24 @@ class RDAOv2ViewpointController(RDAOController):
             cells = item["cells"]
             if not cells or float(item["visibility"]) <= 0.0:
                 continue
-            predicted_next = float(np.mean([
-                footprint_visibility_public(
-                    self.memory.grid, future_pos, future_yaw, cell,
-                    cell_size_m=self.cell_size_m, range_m=self.range_m,
-                    horizontal_fov_deg=self.horizontal_fov_deg,
-                    ray_count=self.ray_count,
-                    unknown_open_probability=(
-                        self.parameters.unknown_blocker_open_probability))
+            kwargs = dict(
+                cell_size_m=self.cell_size_m, range_m=self.range_m,
+                horizontal_fov_deg=self.horizontal_fov_deg,
+                ray_count=self.ray_count,
+                unknown_open_probability=(
+                    self.parameters.unknown_blocker_open_probability))
+            now = float(np.mean([
+                viewpoint_quality_public(
+                    self.memory.grid, position, yaw, cell, **kwargs)
                 for cell in cells
             ]))
-            now = float(item["visibility"])
+            predicted_next = float(np.mean([
+                viewpoint_quality_public(
+                    self.memory.grid, future_pos, future_yaw, cell, **kwargs)
+                for cell in cells
+            ]))
+            item["v2_current_view_quality"] = now
+            item["v2_next_view_quality"] = predicted_next
             item["v2_next_visibility"] = predicted_next
             if (predicted_next >= now * MIN_RELATIVE_GAIN and
                     predicted_next - now >= MIN_ABSOLUTE_GAIN):
