@@ -1,0 +1,109 @@
+{
+  "episodes": 2,
+  "evaluated_unknown_cell_pose_pairs": 1657,
+  "limitations": [
+    "All observed scans were naturally selected by the OLD RDAO v1 scheduler in FIT worlds; this is selection-biased, not full-pose generalization.",
+    "Each unknown-cell/pose measurement is a correlated observation, not an independent trial; repeated worlds/schedules must not be treated independently.",
+    "Prediction positive means score>0, a heuristic feasibility classification, NOT calibrated P(measured).",
+    "Previously known cells are excluded; this tests new-information observation only.",
+    "Truth labels are actual authorized 61-ray observations stored from MuJoCo, never hidden environment occupancy.",
+    "A cell outside the footprint envelope is not evaluated as a negative, and positive cases outside it are explicitly counted.",
+    "Footprint candidate is an angular/radial overapproximation retaining the original memory center-line occlusion heuristic, not true ray-cell intersection.",
+    "An observation that reveals cells does not necessarily change route or success.",
+    "No new MuJoCo rollout, no code changes to the live RDAO controller, and NO held-out evaluation."
+  ],
+  "metrics": {
+    "footprint": {
+      "all": {
+        "actual_visible": 324,
+        "false_positive_rate": 0.46511627906976744,
+        "fn": 64,
+        "fp": 620,
+        "precision": 0.29545454545454547,
+        "predicted_visible": 880,
+        "recall": 0.8024691358024691,
+        "specificity": 0.5348837209302325,
+        "tn": 713,
+        "tp": 260
+      },
+      "route_near": {
+        "actual_visible": 189,
+        "false_positive_rate": 0.7602739726027398,
+        "fn": 31,
+        "fp": 111,
+        "precision": 0.587360594795539,
+        "predicted_visible": 269,
+        "recall": 0.8359788359788359,
+        "specificity": 0.23972602739726026,
+        "tn": 35,
+        "tp": 158
+      }
+    },
+    "legacy": {
+      "all": {
+        "actual_visible": 324,
+        "false_positive_rate": 0.3360840210052513,
+        "fn": 101,
+        "fp": 448,
+        "precision": 0.3323397913561848,
+        "predicted_visible": 671,
+        "recall": 0.6882716049382716,
+        "specificity": 0.6639159789947486,
+        "tn": 885,
+        "tp": 223
+      },
+      "route_near": {
+        "actual_visible": 189,
+        "false_positive_rate": 0.7328767123287672,
+        "fn": 42,
+        "fp": 107,
+        "precision": 0.5787401574803149,
+        "predicted_visible": 254,
+        "recall": 0.7777777777777778,
+        "specificity": 0.2671232876712329,
+        "tn": 39,
+        "tp": 147
+      }
+    }
+  },
+  "naturally_authorized_noninitial_observations": 25,
+  "per_world": [
+    {
+      "events": 25,
+      "footprint": {
+        "actual_visible": 324,
+        "false_positive_rate": 0.46511627906976744,
+        "fn": 64,
+        "fp": 620,
+        "precision": 0.29545454545454547,
+        "predicted_visible": 880,
+        "recall": 0.8024691358024691,
+        "specificity": 0.5348837209302325,
+        "tn": 713,
+        "tp": 260
+      },
+      "legacy": {
+        "actual_visible": 324,
+        "false_positive_rate": 0.3360840210052513,
+        "fn": 101,
+        "fp": 448,
+        "precision": 0.3323397913561848,
+        "predicted_visible": 671,
+        "recall": 0.6882716049382716,
+        "specificity": 0.6639159789947486,
+        "tn": 885,
+        "tp": 223
+      },
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+    }
+  ],
+  "positive_labels_outside_conservative_envelope": 4,
+  "raw_new_unknown_cells": 328,
+  "source_sha256": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/experiment_manifest.json": "17b5d35bc0dc268e235b07bb2a683858c1e1b472c0c3e9224a9ac3ea801c9521",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb",
+    "results/phase2_mujoco/rdao_v1_visibility_probe_primary/summary.json": "638993ad8a6ff3483ce195dc075b421fb864feb4554c1c45a1ad9e4a23440ea1"
+  },
+  "status": "READ_ONLY_FIT_VISIBILITY_FEASIBILITY_AUDIT_NOT_ONLINE_POLICY",
+  "worlds": 1
+}
