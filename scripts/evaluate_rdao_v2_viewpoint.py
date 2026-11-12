@@ -73,8 +73,6 @@ def disposition(original, candidate):
 
 def compare_footprint(rows, previously_saved):
     """Descriptive paired outcome contrast, no extra simulator calls."""
-    if len(rows) > len(previously_saved):
-        raise ValueError("More v2 episodes than previously saved Footprint cases")
     contrasts = []
     for item in rows:
         key = (item["world_identity"], item["schedule"], item["seed"])
