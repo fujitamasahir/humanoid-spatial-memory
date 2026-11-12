@@ -1,0 +1,93 @@
+{
+  "arm_aggregates": {
+    "00": {
+      "distance_m": [
+        15.0,
+        15.0
+      ],
+      "goal_completions": 2,
+      "observations": [
+        6,
+        6
+      ],
+      "steps": [
+        28,
+        28
+      ],
+      "unwanted_contacts": 0
+    },
+    "01": {
+      "distance_m": [
+        41.25,
+        41.25
+      ],
+      "goal_completions": 0,
+      "observations": [
+        20,
+        20
+      ],
+      "steps": [
+        80,
+        80
+      ],
+      "unwanted_contacts": 0
+    },
+    "10": {
+      "distance_m": [
+        15.0,
+        15.0
+      ],
+      "goal_completions": 2,
+      "observations": [
+        7,
+        7
+      ],
+      "steps": [
+        28,
+        28
+      ],
+      "unwanted_contacts": 0
+    },
+    "11": {
+      "distance_m": [
+        41.25,
+        41.25
+      ],
+      "goal_completions": 0,
+      "observations": [
+        20,
+        20
+      ],
+      "steps": [
+        80,
+        80
+      ],
+      "unwanted_contacts": 0
+    }
+  },
+  "arm_definition": {
+    "00": "suppress observation at 3 without early observation",
+    "01": "baseline, no observation at 2, natural observation at 3",
+    "10": "force observation at 2, suppress at 3",
+    "11": "force observations at both 2 and 3"
+  },
+  "episodes_per_variant": 2,
+  "frozen_hashes": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "limitations": [
+    "The two schedules are correlated repeats of one development world, not two independent worlds.",
+    "Outcomes beyond step 3 respond adaptively to changing maps, poses and observation requests.",
+    "Each arm has the same maximum observation budget but actual final sensing dose is not fixed.",
+    "The designated observation times came from a posthoc, evaluator-guided diagnosis.",
+    "No online candidate selection rule or held-out benefit is established."
+  ],
+  "preserved_phase15": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "purpose": "Separate early observation from omission of a later observation",
+  "status": "EXPLORATORY_2X2_OBSERVATION_TIMING_DIAGNOSTIC_NOT_POLICY",
+  "world_suffix": "M:80030010"
+}

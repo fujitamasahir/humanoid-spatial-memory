@@ -1,0 +1,9 @@
+world_identity,schedule,seed,variant,observe_step2,observe_step3,success,elapsed_steps,observations,distance_m,turns,blocked_attempts,emergency_interventions,unwanted_contacts,delta_steps_vs_baseline,delta_observations_vs_baseline,first_action_or_pose_divergence_step,step2_memory_changed,step3_memory_changed,step2_first_astar_action_changed,step3_first_astar_action_changed
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,0,42,01,False,True,False,80,20,41.25,25,0,0,0,0,0,,0,7,,True
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,0,42,00,False,False,True,28,6,15.0,8,0,0,0,-52,-14,3,0,0,,
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,0,42,10,True,False,True,28,7,15.0,8,0,0,0,-52,-13,3,2,0,False,
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,0,42,11,True,True,False,80,20,41.25,25,0,0,0,0,0,,2,5,False,True
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,1,42,01,False,True,False,80,20,41.25,25,0,0,0,0,0,,0,7,,True
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,1,42,00,False,False,True,28,6,15.0,8,0,0,0,-52,-14,3,0,0,,
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,1,42,10,True,False,True,28,7,15.0,8,0,0,0,-52,-13,3,2,0,False,
+phase1.5-v0.4-BPRIME-1:fit:M:80030010,1,42,11,True,True,False,80,20,41.25,25,0,0,0,0,0,,2,5,False,True
