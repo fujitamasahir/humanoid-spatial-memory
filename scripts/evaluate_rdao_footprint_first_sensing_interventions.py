@@ -43,6 +43,7 @@ from evaluate_rdao_one_shot_interventions import (
     _saved_observation_steps, _sha, _write_csv,
 )
 from evaluate_rdao_online_safe_gate_screen import _jsonable
+from analyze_rdao_footprint_visibility_online_forensics import first_differences
 
 PRIMARY = ROOT / "results/phase2_mujoco/rdao_v1_phase2_evaluation"
 FOOTPRINT = ROOT / "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1"
@@ -242,6 +243,12 @@ def run():
             if ((mode == "extra" and suppressed)
                     or (mode == "swap" and len(suppressed) > 1)):
                 raise RuntimeError("Unexpected post-target observation suppression")
+            first_later_sense, first_later_motion = first_differences(
+                footprint[key], observed_trace)
+            if first_later_sense is not None and first_later_sense < step:
+                raise RuntimeError("Forced sensing diverged from Footprint before target")
+            if first_later_motion is not None and first_later_motion < step:
+                raise RuntimeError("Forced action diverged from Footprint before target")
             record = {
                 "world_identity": world, "schedule": schedule, "seed": seed,
                 "first_added_footprint_observation_step": step,
@@ -274,6 +281,10 @@ def run():
                     _first_difference(original[key], footprint[key]),
                 "forced_first_action_matches_footprint":
                     scan["first_step_action_matches_footprint"],
+                "forced_vs_footprint_first_later_sensing_difference_step":
+                    first_later_sense if first_later_sense is not None else "",
+                "forced_vs_footprint_first_motion_difference_step":
+                    first_later_motion if first_later_motion is not None else "",
                 "forced_new_route_matches_footprint":
                     scan["post_update_route_matches_footprint"],
                 "first_forced_scan_changed_cells": scan["changed_cells"],
