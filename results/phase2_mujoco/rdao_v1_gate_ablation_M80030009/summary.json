@@ -1,0 +1,26 @@
+{
+  "baseline_and_existing_first_every_reproduced": true,
+  "episode_pairs": 2,
+  "notes": [
+    "Step allowlists were selected after reading prior outcomes and cannot be deployed online.",
+    "Removing an earlier gate changes subsequent trajectory, observation timing, and availability of later gate steps.",
+    "If a later event vanishes or changes under the intervention, the scenario is not a controlled isolation of that event's independent effect.",
+    "No held-out worlds have been read or simulated.",
+    "The G1 is a kinematic-root MuJoCo navigation proxy, not actual biped walking.",
+    "Two schedule repeats per world are correlated, not independent world replications."
+  ],
+  "preserved_phase15": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "selected_worlds": [
+    "M:80030009"
+  ],
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_online_safe_gate_fit72_screen_v1/paired_online_gate.csv": "8291075496298c9d29ff5975155284e1742984afcdd1113eea8841cc1698890e",
+    "results/phase2_mujoco/rdao_v1_online_safe_gate_forensics_v1/focus_gate_events.csv": "c55d003422f6315cd9c2dd82f770fcaa1e3033b7fa710eb015e77ae13fddc5b2",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "RETROSPECTIVE_GATE_STEP_CAUSAL_ABLATION_NOT_AN_ONLINE_POLICY"
+}

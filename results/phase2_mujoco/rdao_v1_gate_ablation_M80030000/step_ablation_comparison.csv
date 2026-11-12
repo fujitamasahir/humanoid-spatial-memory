@@ -1,0 +1,11 @@
+world_identity,schedule,seed,regime,preselected_all_override_steps,allowed_step_interventions,actually_applied_gate_steps,eligible_gate_candidates_excluded,baseline_success,success,baseline_steps,steps,delta_steps,baseline_observations,observations,delta_observations,baseline_distance_m,distance_m,delta_distance_m,turns,unwanted_contacts,first_action_or_pose_difference_from_original
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,0,42,none,"[37, 58, 67]",[],[],4,False,False,80,80,0,20,20,0,39.0,39.0,0.0,28,0,
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,0,42,first,"[37, 58, 67]",[37],[37],3,False,False,80,80,0,20,19,-1,39.0,38.25,-0.75,29,0,37
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,0,42,first_second,"[37, 58, 67]","[37, 58]","[37, 58]",1,False,False,80,80,0,20,18,-2,39.0,38.25,-0.75,29,0,37
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,0,42,first_third,"[37, 58, 67]","[37, 67]",[37],3,False,False,80,80,0,20,19,-1,39.0,38.25,-0.75,29,0,37
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,0,42,all,"[37, 58, 67]","[37, 58, 67]","[37, 58, 67]",0,False,False,80,80,0,20,18,-2,39.0,38.25,-0.75,29,0,37
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,1,42,none,"[13, 17, 50]",[],[],2,True,True,74,74,0,17,17,0,41.25,41.25,0.0,19,0,
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,1,42,first,"[13, 17, 50]",[13],[13],2,True,True,74,78,4,17,18,1,41.25,42.75,1.5,21,0,13
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,1,42,first_second,"[13, 17, 50]","[13, 17]","[13, 17]",1,True,False,74,80,6,17,18,1,41.25,42.75,1.5,23,0,13
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,1,42,first_third,"[13, 17, 50]","[13, 50]",[13],2,True,True,74,78,4,17,18,1,41.25,42.75,1.5,21,0,13
+phase1.5-v0.4-BPRIME-1:fit:M:80030000,1,42,all,"[13, 17, 50]","[13, 17, 50]","[13, 17, 50]",0,True,False,74,80,6,17,18,1,41.25,42.75,1.5,23,0,13
