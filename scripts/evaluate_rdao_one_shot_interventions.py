@@ -284,6 +284,7 @@ def main():
     if len(by_world) != 36:
         raise ValueError("Expected exactly 36 admitted fit worlds")
     summaries = []
+    trace_records = []
     for index, (key, step) in enumerate(selected, 1):
         identity, schedule, seed = key
         payload = by_world[identity]
@@ -319,6 +320,11 @@ def main():
                 raise RuntimeError("Swap intervention suppressed more than one observation")
 
             now = _metrics(row)
+            if now['observations'] > 20 or int(row.get('g1_unselected_action_shield_queries', 0)) != 0 or not _bool(row['g1_shield_query_count_valid']):
+                raise RuntimeError('Observation budget or independent action-shield invariant violated')
+            trace_records.append({'world_identity': identity, 'schedule': schedule,
+                                  'seed': seed, 'forced_step': step,
+                                  'variant': mode, 'outcome': now, 'trace': trace})
             summaries.append({
                 "world_identity": identity, "schedule": schedule, "seed": seed,
                 "cohort": args.cohort, "forced_step": step, "variant": mode,
@@ -384,6 +390,12 @@ def main():
         "overall": overall,
         "frozen_input_sha256": hashes_before,
         "phase15_preservation": original_preservation,
+        "implementation_sha256": {str(p.relative_to(ROOT)): _sha(p) for p in (
+            ROOT / 'src/spatial_memory/rdao.py',
+            ROOT / 'src/spatial_memory/navigation.py',
+            ROOT / 'src/spatial_memory/mujoco_perception.py',
+            ROOT / 'scripts/evaluate_rdao_phase2.py',
+            ROOT / 'scripts/evaluate_rdao_one_shot_interventions.py')},
         "causal_scope": ("One authorized observation imposed at an externally "
             "pre-selected development step, not a new online observation policy."),
         "notes": [
@@ -397,6 +409,19 @@ def main():
     }
     output.mkdir(parents=True)
     _write_csv(output / "episode_intervention_comparison.csv", summaries)
+    # Keep complete step-wise intervention evidence for later divergence
+    # inspection; map/route snapshots may contain non-finite route costs.
+    def sanitize(value):
+        if isinstance(value, float) and not math.isfinite(value):
+            return None
+        if isinstance(value, dict):
+            return {k: sanitize(v) for k, v in value.items()}
+        if isinstance(value, (tuple, list)):
+            return [sanitize(v) for v in value]
+        return value
+    with gzip.open(output / "intervention_traces.jsonl.gz", "wt", encoding="utf-8") as stream:
+        for item in trace_records:
+            stream.write(json.dumps(sanitize(item), sort_keys=True, allow_nan=False) + "\n")
     (output / "summary.json").write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"output": str(output), **overall}, indent=2))
 
