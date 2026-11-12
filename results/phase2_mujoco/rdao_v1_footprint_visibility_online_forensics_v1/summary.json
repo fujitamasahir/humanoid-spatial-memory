@@ -1,0 +1,70 @@
+{
+  "episodes": 72,
+  "first_changed_executed_action": 32,
+  "first_changed_observation_timing": 50,
+  "focus_world_schedule_pairs": [
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+    },
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+    },
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+    },
+    {
+      "schedule": 1,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+    },
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+    },
+    {
+      "schedule": 1,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+    },
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+    },
+    {
+      "schedule": 0,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+    },
+    {
+      "schedule": 1,
+      "world": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+    }
+  ],
+  "limitations": [
+    "No further MuJoCo simulation or intervention was run.",
+    "An observed trajectory divergence after changed sensing may have many downstream causes.",
+    "The goal outcome and emergency intervention counts are posthoc labels, not online model inputs.",
+    "The two pedestrian schedules per world are correlated; 72 cases do not equal 72 independent mazes.",
+    "Original failure at horizon80 is a censored event, not a measured completion time.",
+    "All 36 worlds are fitted development worlds, not held-out evaluation.",
+    "A visibility model can produce more detections without reducing observations or route cost."
+  ],
+  "paired_categories": {
+    "both_horizon_censored_failures": 13,
+    "common_success_better": 8,
+    "common_success_same_steps": 42,
+    "common_success_worse": 7,
+    "rescued": 2
+  },
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/visibility_online_traces.jsonl.gz": "0612cefbc10585cf80a8a0657344b2290a214dcaa69a99002c41fd62d58e4c38",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb",
+    "results/phase2_mujoco/rdao_v1_visibility_extent_audit_v1/summary.json": "da62ce88ce72f53926458d70670891a06d2720fd8826cae8dbb95f673a069dec"
+  },
+  "status": "READ_ONLY_FIT_EPISODE_TRACE_DIAGNOSIS_NOT_NEW_INTERVENTIONS",
+  "total_delta_distance_m": 42.0,
+  "total_delta_observations": 59,
+  "total_delta_steps_horizon_censored": 6,
+  "worlds": 36
+}
