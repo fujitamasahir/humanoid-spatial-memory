@@ -1,0 +1,96 @@
+{
+  "episodes": 72,
+  "footprint_and_v2": {
+    "footprint_successes": 59,
+    "mean_footprint_censored_steps": 44.81944444444444,
+    "mean_footprint_distance_m": 25.072916666666668,
+    "mean_footprint_observations": 9.930555555555555,
+    "mean_v2_censored_steps": 44.30555555555556,
+    "mean_v2_distance_m": 24.354166666666668,
+    "mean_v2_observations": 9.555555555555555,
+    "paired_common_success": {
+      "episodes": 59,
+      "step_better": 8,
+      "step_same": 42,
+      "step_worse": 9
+    },
+    "v2_harms_vs_footprint": 0,
+    "v2_rescues_vs_footprint": 2,
+    "v2_successes": 61
+  },
+  "limitations": [
+    "The view-ahead rule and constants are an exploratory development hypothesis; do not tune on held-out worlds.",
+    "The 36 FIT mazes were repeatedly examined, so these results are NOT independent generalization evidence.",
+    "The next viewpoint is computed on public remembered cells only, not a shield-verified actual next pose.",
+    "Deferring a scan does not guarantee the next scan is authorized, useful or still reachable.",
+    "Footprint predicted-visibility score is an uncalibrated public-map feasibility estimate.",
+    "Mean capped steps among failures are right-censored, not actual goal completion times.",
+    "Two pedestrian schedules in one maze are correlated rather than independent world samples.",
+    "The v2 controller is single-threaded because original v1 uses a module visibility function hook.",
+    "Selected-action true-geometry shield and independent emergency ray sensor are unchanged.",
+    "No dynamic walking or real Unitree G1 hardware has been evaluated."
+  ],
+  "original_and_v2": {
+    "episodes": 72,
+    "episodes_changed_executed_action_or_pose": 23,
+    "episodes_changed_observation_schedule": 44,
+    "harm_worlds": [],
+    "harmed_successes": 0,
+    "mean_original_censored_steps": 44.736111111111114,
+    "mean_original_distance_m": 24.489583333333332,
+    "mean_original_observations": 9.11111111111111,
+    "mean_original_scheduler_ms": 316.3635101666667,
+    "mean_original_steps_successes_only": 35.45614035087719,
+    "mean_variant_censored_steps": 44.30555555555556,
+    "mean_variant_distance_m": 24.354166666666668,
+    "mean_variant_observations": 9.555555555555555,
+    "mean_variant_scheduler_ms": 325.48197008333335,
+    "mean_variant_steps_successes_only": 37.868852459016395,
+    "original_successes": 57,
+    "paired_common_success": {
+      "distance_better": 2,
+      "distance_same": 52,
+      "distance_worse": 3,
+      "episodes": 57,
+      "steps_better": 5,
+      "steps_same": 46,
+      "steps_worse": 6,
+      "total_delta_distance_m": 1.5,
+      "total_delta_steps": 7
+    },
+    "rescue_worlds": [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+    ],
+    "rescued_failures": 4,
+    "variant_contacts": 0,
+    "variant_successes": 61,
+    "worlds": 36
+  },
+  "parameters": {
+    "min_absolute_next_visibility_gain": 0.1,
+    "min_relative_next_visibility_gain": 1.25,
+    "no_first_action_gate": true,
+    "observation_cap": 20,
+    "only_defer_move_into_known_free": true,
+    "score_multiplier_if_next_view_is_better": 0.5
+  },
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/summary.json": "ad8a7554af649a907f618d8457bc7945d75254036a06552c4382f186634eecf1",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/experiment_manifest.json": "17b5d35bc0dc268e235b07bb2a683858c1e1b472c0c3e9224a9ac3ea801c9521",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "RDAO_V2_VIEWPOINT_DEV_FIT_SCREEN_NOT_DEPLOYED_NOT_HELD_OUT",
+  "v2_deferred_candidate_region_scores": 310,
+  "v2_steps_with_deferred_region": 240,
+  "v2_unwanted_contact_pairs": 0,
+  "variant": "RDAOv2ViewpointController",
+  "worlds": 36
+}
