@@ -1,0 +1,31 @@
+{
+  "arm_count": 6,
+  "independent_world_layouts": 3,
+  "limitations": [
+    "All first/second steps were chosen from outcomes on already inspected development FIT worlds; no model fitting, new worlds or held-out evaluation.",
+    "Each fixed two-step intervention changes later memory, sensing and navigation, so its full observed effect is a compound downstream feedback response.",
+    "Same pose and raw sensor values at a selected scan are checked against the saved Footprint run, but memory_before may differ after intervening on earlier observations.",
+    "The first-only control is rerun and reproduced semantically before making a causal comparison; original RDAO is also reproduced.",
+    "The original RDAO predictor is preserved after forced interventions. This is NOT the continuing Footprint visibility policy.",
+    "The swap strategy suppresses one future original scheduler observation; it does not guarantee matched final observation dose.",
+    "Two pedestrian schedules of the same maze are correlated and not independent worlds.",
+    "Unwanted contacts are always reported, not filtered or used as a model feature.",
+    "The G1 navigation simulator is a kinematic-root MuJoCo proxy, not full dynamic walking."
+  ],
+  "protected_phase15_prefix": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_footprint_first_sensing_causes_v1/first_sensing_causal_comparison.csv": "dc2f60dc709f01bb8e7cef6a9096264d5e90c2a493f494f126e37cda8d39686a",
+    "results/phase2_mujoco/rdao_v1_footprint_first_sensing_causes_v1/first_sensing_causal_traces.jsonl.gz": "415f48b60259ac89247657979088e8f11661fe3c222050353c0e3903fa1907f9",
+    "results/phase2_mujoco/rdao_v1_footprint_first_sensing_causes_v1/summary.json": "a765fecae0ec3b715fd3920dbc8c64987899d5a965dc9b2945af3ca597bf6391",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/visibility_online_traces.jsonl.gz": "0612cefbc10585cf80a8a0657344b2290a214dcaa69a99002c41fd62d58e4c38",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "RETROSPECTIVE_FIT_SECOND_SENSING_CAUSAL_ABLATION_NOT_ONLINE_POLICY",
+  "total_unwanted_contact_pairs": 0,
+  "unwanted_contact_episodes": 0
+}
