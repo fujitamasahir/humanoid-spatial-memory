@@ -1,0 +1,71 @@
+{
+  "causal_scope": "One authorized observation imposed at an externally pre-selected development step, not a new online observation policy.",
+  "cohort": "priority",
+  "frozen_input_sha256": {
+    "results/phase2_mujoco/rdao_v1_opportunity_analysis/episode_opportunity_summary.csv": "70ce9167e5f1878686ec3a4515fcf5ba56d57c28a8b011b333a6d68e4a8a96c8",
+    "results/phase2_mujoco/rdao_v1_opportunity_analysis/priority_failure_cases.csv": "9b817c78d03f7b356fdbe141c2467549c273fa311184e9511c12086ae822327e",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb",
+    "results/phase2_mujoco/rdao_v1_visibility_probe_primary/summary.json": "638993ad8a6ff3483ce195dc075b421fb864feb4554c1c45a1ad9e4a23440ea1"
+  },
+  "implementation_sha256": {
+    "scripts/evaluate_rdao_one_shot_interventions.py": "7cdc22d803053927786ab872f25101cf806bd3799fa69fb9bfe6aaa5aca2b9ae",
+    "scripts/evaluate_rdao_phase2.py": "d2aa701e6db059e156af53ce610c0f21d1b2e59804a50c1bcbdb3eac302111a8",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580"
+  },
+  "notes": [
+    "Priority cases are specifically RDAO failures rescued by Periodic: outcome-selected, not representative.",
+    "Normal RDAO decision, observation model and independent Emergency Safety remain unchanged except forced step and optional later suppression.",
+    "The step was selected with evaluator-only shadow sensing, never passed as a live value-of-information score.",
+    "Swap replaces one subsequent naturally requested observation, not necessarily the same final observation count.",
+    "Observation budget is unchanged; compare actual dose explicitly.",
+    "No evidence of generalization or superiority over Periodic/Age is established by this test."
+  ],
+  "overall": {
+    "extra": {
+      "baseline_successes": 0,
+      "cases": 2,
+      "episodes_with_forced_astar_action_change": 0,
+      "exact_final_dose_matches": 0,
+      "harmed_successes": 0,
+      "mean_censored_step_delta": 0.0,
+      "mean_observation_delta": 1.0,
+      "rescued_failures": 0,
+      "successes": 0,
+      "swap_completed": 0
+    },
+    "swap": {
+      "baseline_successes": 0,
+      "cases": 2,
+      "episodes_with_forced_astar_action_change": 0,
+      "exact_final_dose_matches": 0,
+      "harmed_successes": 0,
+      "mean_censored_step_delta": 0.0,
+      "mean_observation_delta": 1.0,
+      "rescued_failures": 0,
+      "successes": 0,
+      "swap_completed": 2
+    }
+  },
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "selected": [
+    {
+      "forced_step": 2,
+      "schedule": 0,
+      "seed": 42,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+    },
+    {
+      "forced_step": 2,
+      "schedule": 1,
+      "seed": 42,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+    }
+  ],
+  "status": "EXPLORATORY_DEVELOPMENT_INTERVENTION_NOT_HELD_OUT"
+}
