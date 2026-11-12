@@ -1,0 +1,35 @@
+{
+  "forced_first_scan_equals_footprint_scan": true,
+  "intervention_arms": {
+    "extra": 2,
+    "swap": 2
+  },
+  "limitations": [
+    "The intervention step is selected with knowledge of the previous Footprint run, so this is causal diagnosis, not a deployable trigger.",
+    "Forced-first-sensing reproduces the SAME physical scan, but the existing RDAO scheduler keeps original visibility scoring and original candidate-region cooldown.",
+    "The Footprint intervention alters the entire online visibility model and may trigger many later additional observations; this study isolates its FIRST changed sensing decision only.",
+    "The SWAP control suppresses the next naturally requested observation; final observation doses can still differ and are reported exactly.",
+    "A first scan that matches does not imply the same future observed memory or equal later actions.",
+    "Two schedules of the same maze are correlated and not independent random worlds.",
+    "Horizon-80 failure is right-censored and cannot be compared as an uncensored arrival time.",
+    "Selected-only shield, unchanged emergency sensor, no unwanted contacts and 20 memory observations are required.",
+    "All results are previously used 36 development FIT worlds; no held-out suite is read or simulated.",
+    "The G1 MuJoCo controller is kinematic-root navigation proxy, not demonstrated dynamic biped locomotion."
+  ],
+  "not_exact_observation_dose_matched_by_default": true,
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/visibility_online_traces.jsonl.gz": "0612cefbc10585cf80a8a0657344b2290a214dcaa69a99002c41fd62d58e4c38",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_forensics_v1/summary.json": "e19e13d8461a6c40de12383bb7541179a8e6bd28d3c626e8cb2ec345c74de819",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "status": "RETROSPECTIVE_FIT_FIRST_SENSING_INTERVENTION_NOT_AN_ONLINE_POLICY",
+  "total_unwanted_contact_pairs": 0,
+  "unwanted_contact_episodes": 0,
+  "world_schedule_cases": 2
+}
