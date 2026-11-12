@@ -26,7 +26,8 @@ def frame(step, *, observation, effect=None, action=None):
         "heading_yaw": 0.,
         "observation_granted": bool(observation),
         "action": action or ["turn", 0],
-        "rdao": {"observation_effect": effect},
+        "rdao": {"observation_effect": effect, "position": [10, 8],
+                 "heading_yaw": 0.0},
     }
 
 
@@ -82,10 +83,20 @@ def test_fidelity_rejects_sensor_difference():
 
 def test_fidelity_rejects_nonidentical_pre_observation_pose():
     original, candidate, forced = three_traces()
-    forced["steps"][1]["position"] = [11, 8]
+    forced["steps"][1]["rdao"]["position"] = [11, 8]
     with pytest.raises(RuntimeError, match="pre-observation position"):
         intervention_matches_first_footprint_scan(original, candidate,
                                                   forced, 1)
+
+
+def test_post_action_pose_can_differ_even_when_sensor_pose_matches():
+    original, candidate, forced = three_traces()
+    original["steps"][1]["position"] = [11, 8]
+    candidate["steps"][1]["position"] = [10, 8]
+    forced["steps"][1]["position"] = [10, 8]
+    result = intervention_matches_first_footprint_scan(
+        original, candidate, forced, 1)
+    assert result["changed_cells"] == 1
 
 
 def test_first_sensing_delta_requires_real_mismatch():
