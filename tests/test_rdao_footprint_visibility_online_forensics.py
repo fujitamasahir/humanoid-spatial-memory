@@ -66,6 +66,9 @@ def test_first_sensing_must_precede_action_change():
 def test_cannot_claim_action_before_observation_change():
     left, right = traces()
     right["steps"][1]["action"] = ["move", [1, 0]]
+    right["steps"][1]["observation_granted"] = False
+    right["steps"][1]["observation_count"] = 1
+    right["steps"][2]["observation_granted"] = True
     with pytest.raises(RuntimeError, match="before visibility"):
         check_case(left, right, row(
             first_changed_action_or_pose_step="1",
