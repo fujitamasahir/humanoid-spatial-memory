@@ -113,7 +113,7 @@ not imply that the action is beneficial to the global route.
 ## Interpretation
 
 The controlled single-step intervention in M:80030010 establishes
-that an unsafe-or-premature replanning response is a plausible local
+that an overly reactive replanning response is a plausible local
 causal failure mode: observe normally and update memory, but retain
 one previously safe forward action, and the 80-step outcome is
 rescued. This does NOT mean that step-3 sensor data are incorrect
