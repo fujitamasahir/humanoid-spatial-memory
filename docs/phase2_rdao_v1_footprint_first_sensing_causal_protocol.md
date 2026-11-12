@@ -19,7 +19,7 @@ Original evidence and analysis:
 - results/phase2_mujoco/rdao_v1_footprint_visibility_online_forensics_v1/
   summary.json
 
-184? NO: the verified focused timeline has exactly **183 rows**.
+The verified focused timeline has exactly **183 rows**.
 Its original and footprint traces were matched against 72 paired
 records. 50 episodes change sensing, but only 32 change executed
 action/pose; 18 alter sensing with NO executed motion change.
@@ -177,6 +177,10 @@ is crucial: otherwise later outcomes may be ascribed
 to inconsistent perception rather than different
 observation decisions.
 
+The new comparison also records the first later sensing and
+action divergence between the forced-first-scan control
+and the previously saved continuous Footprint policy.
+
 The two forced conditions keep the ORIGINAL
 visibility model for later decisions, and do NOT
 update the footprint region's original RDAO
@@ -194,7 +198,7 @@ and compare realized observation counts.
 Both controls preserve the RDAO observation cap=20,
 normal G1 planning, unchanged independent Emergency
 Safety controller and selected-action collision
-shield, expected zero unwanted contacts, the
+shield, explicit reporting of any unwanted contacts, the
 Phase1.5 preserved prefix and original results
 checksum invariants.
 
