@@ -120,9 +120,15 @@ def intervention_matches_first_footprint_scan(original, footprint, forced, step)
     for name in fields:
         if effect_b[name] != effect_c[name]:
             raise RuntimeError(f"Forced versus footprint same-pose memory mismatch: {name}")
+    # Each frame's top-level position and heading are POST-action.
+    # Observations occur BEFORE selected navigation, so compare the
+    # pre-action public pose recorded in RDAO diagnostics instead.
     for name in ("position", "heading_yaw"):
-        if a[name] != b[name] or a[name] != c[name]:
-            raise RuntimeError(f"Intervention changes pre-observation {name}")
+        before_value = a["rdao"][name]
+        if (before_value != b["rdao"][name]
+                or before_value != c["rdao"][name]):
+            raise RuntimeError(
+                f"Intervention changes pre-observation {name}")
     return {
         "changed_cells": int(effect_c["memory_changed_cell_count"]),
         "visible_cells": int(effect_c["visible_cell_count"]),
