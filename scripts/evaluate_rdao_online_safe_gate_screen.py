@@ -278,8 +278,11 @@ def main():
                                   e["override_applied"])
                 _compare_trace(base_trace, gated_trace, before_step=before_step)
                 first_diff = _first_difference(base_trace, gated_trace)
-                if first_diff is None or first_diff < before_step:
-                    raise RuntimeError("Gate applied without a valid first action divergence")
+                # A legitimate gate can be vetoed by the unchanged emergency
+                # controller or selected-action collision shield, so an
+                # attempted override need not cause actual action divergence.
+                if first_diff is not None and first_diff < before_step:
+                    raise RuntimeError("Gated action diverged before any override")
             recorded_gate_calls = [
                 e for e in state["events"] if e["override_applied"]]
             if policy == "first" and len(recorded_gate_calls) > 1:
