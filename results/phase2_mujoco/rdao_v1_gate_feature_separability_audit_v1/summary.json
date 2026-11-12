@@ -1,0 +1,202 @@
+{
+  "caveats": [
+    "These are two outcome-informed fit worlds for rescue; no held-out validation.",
+    "The two schedules of a world are correlated rather than independent maze replicates.",
+    "Event labels from EVERY are omitted from causal classifier comparisons because multiple gates may fire per episode.",
+    "The selected three-feature signature is a negative diagnostic only, not a proof that no richer predictive features exist.",
+    "Same arrival step can conceal changed distances, observations or trajectory shape.",
+    "Both failed by horizon are censored; no arrival-time equivalence is asserted.",
+    "The nominal RDAO A* route cost is NOT the executed pedestrian-aware G1 policy value.",
+    "The old nominal route's now-known blockers are public updated observations, NOT oracle geometry.",
+    "Return-to-origin is a POSTHOC future label, never a decision-time feature.",
+    "A deterministic optimal path planner on one fixed updated map satisfies V(s) <= c(s,a)+V(s'): such myopic value comparison alone cannot demonstrate that old-action gating improves expected performance."
+  ],
+  "event_counts": {
+    "every": 73,
+    "first": 34
+  },
+  "first_distinct_worlds": 19,
+  "first_effect_feature_distributions": {
+    "both_failed_by_horizon": {
+      "episodes": 11,
+      "mean_delta_censored_steps": 0.0,
+      "mean_first_blocker_translation": 3.0,
+      "mean_memory_changed_cells": 12.0,
+      "mean_nominal_cost_increase": 7.25,
+      "mean_observed_free_nonbackward_branches": 1.5454545454545454,
+      "unique_worlds": 7
+    },
+    "rescued": {
+      "episodes": 4,
+      "mean_delta_censored_steps": -27.0,
+      "mean_first_blocker_translation": 2.5,
+      "mean_memory_changed_cells": 7.5,
+      "mean_nominal_cost_increase": 3.75,
+      "mean_observed_free_nonbackward_branches": 1.0,
+      "unique_worlds": 2
+    },
+    "same_arrival_step": {
+      "episodes": 5,
+      "mean_delta_censored_steps": 0.0,
+      "mean_first_blocker_translation": 2.8,
+      "mean_memory_changed_cells": 15.0,
+      "mean_nominal_cost_increase": 0.8,
+      "mean_observed_free_nonbackward_branches": 1.2,
+      "unique_worlds": 3
+    },
+    "slower_success": {
+      "episodes": 14,
+      "mean_delta_censored_steps": 5.285714285714286,
+      "mean_first_blocker_translation": 3.0,
+      "mean_memory_changed_cells": 15.857142857142858,
+      "mean_nominal_cost_increase": 5.982142857142857,
+      "mean_observed_free_nonbackward_branches": 1.5714285714285714,
+      "unique_worlds": 8
+    }
+  },
+  "first_step_effects": {
+    "both_failed_by_horizon": 11,
+    "rescued": 4,
+    "same_arrival_step": 5,
+    "slower_success": 14
+  },
+  "first_worlds_with_two_schedules": 15,
+  "identical_three_feature_conflicts": [
+    {
+      "distinct_effect_categories": [
+        "same_arrival_step",
+        "slower_success"
+      ],
+      "episodes": [
+        {
+          "delta_censored_steps": 0.0,
+          "delta_distance_m": 0.0,
+          "effect": "same_arrival_step",
+          "schedule": 0,
+          "step": 4,
+          "world": "M:80030004"
+        },
+        {
+          "delta_censored_steps": 0.0,
+          "delta_distance_m": 0.0,
+          "effect": "same_arrival_step",
+          "schedule": 1,
+          "step": 4,
+          "world": "M:80030004"
+        },
+        {
+          "delta_censored_steps": 2.0,
+          "delta_distance_m": 1.5,
+          "effect": "slower_success",
+          "schedule": 0,
+          "step": 7,
+          "world": "M:80030005"
+        },
+        {
+          "delta_censored_steps": 2.0,
+          "delta_distance_m": 1.5,
+          "effect": "slower_success",
+          "schedule": 1,
+          "step": 7,
+          "world": "M:80030005"
+        }
+      ],
+      "features": {
+        "first_occupied_translation_in_old_nominal_route": 3.0,
+        "nominal_cost_increase": 0.5,
+        "nonbackward_observed_free_neighbors": 1.0
+      },
+      "worlds": 2
+    },
+    {
+      "distinct_effect_categories": [
+        "both_failed_by_horizon",
+        "slower_success"
+      ],
+      "episodes": [
+        {
+          "delta_censored_steps": 2.0,
+          "delta_distance_m": 1.5,
+          "effect": "slower_success",
+          "schedule": 0,
+          "step": 14,
+          "world": "BP:80010001"
+        },
+        {
+          "delta_censored_steps": 2.0,
+          "delta_distance_m": 1.5,
+          "effect": "slower_success",
+          "schedule": 1,
+          "step": 14,
+          "world": "BP:80010001"
+        },
+        {
+          "delta_censored_steps": 0.0,
+          "delta_distance_m": -0.75,
+          "effect": "both_failed_by_horizon",
+          "schedule": 1,
+          "step": 15,
+          "world": "M:80030008"
+        }
+      ],
+      "features": {
+        "first_occupied_translation_in_old_nominal_route": 2.0,
+        "nominal_cost_increase": 12.5,
+        "nonbackward_observed_free_neighbors": 1.0
+      },
+      "worlds": 2
+    },
+    {
+      "distinct_effect_categories": [
+        "both_failed_by_horizon",
+        "rescued"
+      ],
+      "episodes": [
+        {
+          "delta_censored_steps": 0.0,
+          "delta_distance_m": -0.75,
+          "effect": "both_failed_by_horizon",
+          "schedule": 0,
+          "step": 37,
+          "world": "M:80030000"
+        },
+        {
+          "delta_censored_steps": 0.0,
+          "delta_distance_m": 0.0,
+          "effect": "both_failed_by_horizon",
+          "schedule": 1,
+          "step": 45,
+          "world": "M:80030007"
+        },
+        {
+          "delta_censored_steps": -52.0,
+          "delta_distance_m": -26.25,
+          "effect": "rescued",
+          "schedule": 0,
+          "step": 3,
+          "world": "M:80030010"
+        },
+        {
+          "delta_censored_steps": -52.0,
+          "delta_distance_m": -26.25,
+          "effect": "rescued",
+          "schedule": 1,
+          "step": 3,
+          "world": "M:80030010"
+        }
+      ],
+      "features": {
+        "first_occupied_translation_in_old_nominal_route": 3.0,
+        "nominal_cost_increase": 4.5,
+        "nonbackward_observed_free_neighbors": 1.0
+      },
+      "worlds": 3
+    }
+  ],
+  "revisited_origin_within_six_steps_first": 21,
+  "source_file_sha256": "1759a9e5691cb3d5e9078fa39da0cb2c860fe6907d0b5bae937b828ef3fe6a69",
+  "status": "POSTHOC_FIT_FEATURE_SEPARABILITY_AUDIT_NOT_TRAINING",
+  "unknown_neighbor_count_distribution": {
+    "0": 34
+  }
+}
