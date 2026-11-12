@@ -37,11 +37,17 @@ established efficiency advantage.
 
 The complete step-level traces were compared.
 
-At step 2 (robot heading west after the selected turn), the forced
-ordinary sensor updates exactly two previously unknown cells:
+At step 2 the robot is at (8,8), with a **south-facing heading before the action**. The forced ordinary sensor observes from this pre-action pose, then the robot turns west. The observation updates exactly two previously unknown cells:
 
 - (7, 8) -> observed free
 - (7, 9) -> observed occupied
+
+At the original step-2 rejected decision, the shadow visibility probe
+shows both of these route-near cells would be revealed by the actual
+sensor, while predicted_cell_visibility returned zero for both.
+Exactly one cell center failed the angular-FOV test; the other fell
+in the occlusion/other-zero category. The RDAO scheduler therefore
+generated no candidate region at that step.
 
 The RDAO forward-facing nominal A* immediately before and after
 this observation is unchanged, with route cost **14.5** and first action
