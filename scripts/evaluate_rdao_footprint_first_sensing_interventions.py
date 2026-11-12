@@ -230,10 +230,13 @@ def run():
             scan = intervention_matches_first_footprint_scan(
                 original[key], footprint[key], observed_trace, step)
             met = _metrics(observed_row)
-            if (met["observations"] > 20 or met["unwanted_contacts"] != 0 or
+            if (met["observations"] > 20 or
                     int(observed_row.get("g1_unselected_action_shield_queries", 0)) != 0 or
                     not _bool(observed_row["g1_shield_query_count_valid"])):
-                raise RuntimeError("Intervention failed 20-budget or contact/safety guard")
+                raise RuntimeError("Intervention violated 20-budget or shield-query invariant")
+            # Contact outcomes are empirical safety measurements, not file
+            # integrity failures: retain/report any regression rather than
+            # silently excluding the candidate run. No rollout is promoted.
             suppressed = [f["step"] for f in observed_trace["steps"] if
                           f.get("rdao", {}).get("intervention_suppressed")]
             if ((mode == "extra" and suppressed)
@@ -315,6 +318,10 @@ def run():
         "source_hashes": source_hashes,
         "phase15_preservation": preservation,
         "forced_first_scan_equals_footprint_scan": True,
+        "unwanted_contact_episodes": sum(
+            row["forced_unwanted_contacts"] > 0 for row in rows),
+        "total_unwanted_contact_pairs": sum(
+            row["forced_unwanted_contacts"] for row in rows),
         "not_exact_observation_dose_matched_by_default": True,
         "limitations": [
             "The intervention step is selected with knowledge of the previous Footprint run, so this is causal diagnosis, not a deployable trigger.",
@@ -335,6 +342,8 @@ def run():
     print(json.dumps({
         "output": str(args.output),
         "cases": len(targets),
+        "unwanted_contact_episodes": summary["unwanted_contact_episodes"],
+        "total_unwanted_contact_pairs": summary["total_unwanted_contact_pairs"],
         "high_interest": [
             {k: v for k, v in row.items() if k in (
                 "world_identity", "schedule", "intervention",
