@@ -1,0 +1,63 @@
+{
+  "aggregates": {
+    "episodes": 2,
+    "episodes_changed_executed_action_or_pose": 0,
+    "episodes_changed_observation_schedule": 0,
+    "harm_worlds": [],
+    "harmed_successes": 0,
+    "mean_original_censored_steps": 27,
+    "mean_original_distance_m": 15.75,
+    "mean_original_observations": 6,
+    "mean_original_scheduler_ms": 202.563832,
+    "mean_original_steps_successes_only": 27,
+    "mean_variant_censored_steps": 27,
+    "mean_variant_distance_m": 15.75,
+    "mean_variant_observations": 6,
+    "mean_variant_scheduler_ms": 186.184875,
+    "mean_variant_steps_successes_only": 27,
+    "original_successes": 2,
+    "paired_common_success": {
+      "distance_better": 0,
+      "distance_same": 2,
+      "distance_worse": 0,
+      "episodes": 2,
+      "steps_better": 0,
+      "steps_same": 2,
+      "steps_worse": 0,
+      "total_delta_distance_m": 0.0,
+      "total_delta_steps": 0
+    },
+    "rescue_worlds": [],
+    "rescued_failures": 0,
+    "variant_contacts": 0,
+    "variant_successes": 2,
+    "worlds": 1
+  },
+  "changed": "only RDAO predicted_cell_visibility function, no gate",
+  "condition": "footprint_angular_radial_feasibility_in_existing_RDAO_route_regions",
+  "limitations": [
+    "This candidate was chosen after examining fit-world sensor and navigation results, so completion is descriptive development screening.",
+    "Each world has two correlated pedestrian schedules; the number of independent world layouts is smaller than the episode count.",
+    "The offline label is sensor-measured cell feasibility on naturally selected observations, not calibrated prospective observation information.",
+    "The candidate changes region visibility scores and therefore may change observation schedule, total dose, paths and measured latency.",
+    "A posthoc measured positive on an already observed sample is not evidence that the new policy will observe the same cells prospectively.",
+    "Zero unwanted contact is required, but success and observation efficiency must also beat original RDAO and simple Periodic/Age baselines.",
+    "Primary G1 is a MuJoCo kinematic-root navigation proxy, not walking dynamics.",
+    "No held-out or new independently sampled worlds were used."
+  ],
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "same_emergency_and_selected_action_shield": true,
+  "same_observation_budget_20": true,
+  "same_route_relevance": true,
+  "same_scheduler_threshold": true,
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/experiment_manifest.json": "17b5d35bc0dc268e235b07bb2a683858c1e1b472c0c3e9224a9ac3ea801c9521",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb",
+    "results/phase2_mujoco/rdao_v1_visibility_extent_audit_v1/summary.json": "da62ce88ce72f53926458d70670891a06d2720fd8826cae8dbb95f673a069dec"
+  },
+  "status": "POSTHOC_SELECTED_FIT_VISIBILITY_ONLINE_SCREEN_NOT_HELD_OUT"
+}
