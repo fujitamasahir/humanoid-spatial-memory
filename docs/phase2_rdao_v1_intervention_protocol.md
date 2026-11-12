@@ -100,7 +100,9 @@ separately:
 
 The default output directory is cohort-specific, and an existing
 directory is never overwritten. Each run writes
-episode_intervention_comparison.csv and summary.json.
+episode_intervention_comparison.csv, summary.json, and a compressed
+intervention_traces.jsonl.gz containing the complete step-wise RDAO
+and navigation divergence diagnostics.
 
 ## Decision rules
 
