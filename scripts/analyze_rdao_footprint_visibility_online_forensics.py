@@ -199,7 +199,8 @@ def build_timeline(world, schedule, row, original, candidate,
     a = {int(f["step"]): f for f in original["steps"]}
     b = {int(f["step"]): f for f in candidate["steps"]}
     start = max(0, sense - before)
-    stop = min(80, max(sense, action or sense) + after)
+    last_saved_step = max(max(a), max(b))
+    stop = min(80, last_saved_step, max(sense, action or sense) + after)
     timeline = []
     for step in range(start, stop + 1):
         af = frame_features(a.get(step))
