@@ -114,8 +114,17 @@ def online_gate_decision(before, after, start, goal, kwargs, original_planner,
     return route, result
 
 
-def run_candidate(payload, schedule, policy):
-    """Attach a first/every route gate to normal frozen G1 planner callback."""
+def run_candidate(payload, schedule, policy, *, allowed_gate_steps=None):
+    """Attach online gate; optional step allowlist is diagnostic ONLY.
+
+    allowed_gate_steps=None preserves the original world-agnostic algorithm
+    byte-for-byte at the decision site. A supplied allowlist forces the
+    normal updated-map G1 plan at other times, even if an online candidate
+    would otherwise pass. Such step-specific counterfactuals are deliberately
+    evaluator-guided, NOT deployable online policies.
+    """
+    if allowed_gate_steps is not None:
+        allowed_gate_steps = frozenset(int(v) for v in allowed_gate_steps)
     original_controller = evaluator.RDAOController
     original_planner = evaluator.base.plan_g1_default_policy
     state = {"events": [], "overrides": 0, "gate_ns": 0}
@@ -138,6 +147,18 @@ def run_candidate(payload, schedule, policy):
             original_planner, prior_overrides=state["overrides"], policy=policy)
         elapsed = perf_counter_ns() - started
         event["step"] = int(agent.current_step)
+        if allowed_gate_steps is not None:
+            candidate = bool(event["override_applied"])
+            event["eligible_before_intervention_filter"] = candidate
+            event["allowed_by_step_intervention"] = int(agent.current_step) in allowed_gate_steps
+            if candidate and not event["allowed_by_step_intervention"]:
+                # The old action remains just a rejected candidate.
+                # Fall back to the true updated-map G1 route (not a
+                # new observation and not an unselected shield query).
+                route = original_planner(grid, start, goal, **kwargs)
+                event["override_applied"] = False
+                event["chosen_action"] = event["new_action"]
+                event["guard"] = "diagnostic_step_filter_forced_normal_replan"
         event["gate_eval_ns_including_new_plan"] = int(elapsed)
         event["position"] = [int(start[0]), int(start[1])]
         state["events"].append(event)
