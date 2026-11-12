@@ -124,8 +124,8 @@ def empty_confusion():
 
 
 def add_confusion(c, truth, positive):
-    c["tp" if truth else "fp"] += int(positive and truth or positive and not truth)
-    c["fn" if truth else "tn"] += int(not positive and truth or not positive and not truth)
+    key = ("tp" if truth else "fp") if positive else ("fn" if truth else "tn")
+    c[key] += 1
 
 
 def quality(c):
@@ -196,7 +196,7 @@ def frame_samples(frame, *, cell_size=CELL_M, range_m=RANGE_M,
     raw_new = 0
     envelope_new = 0
     outside_envelope = 0
-    known_labels = []
+    candidate_cells = 0
     for y, x in unknown:
         cell = (int(x), int(y))
         label = cell in raw
@@ -222,12 +222,12 @@ def frame_samples(frame, *, cell_size=CELL_M, range_m=RANGE_M,
             add_confusion(counts[method]["all"], label, estimate > 0)
             if near:
                 add_confusion(counts[method]["route_near"], label, estimate > 0)
-        known_labels.append((near, label, legacy > 0, proposed > 0))
+        candidate_cells += 1
     return {
         "counts": counts, "position": pos, "raw_new": raw_new,
         "envelope_new": envelope_new,
         "observed_new_outside_envelope": outside_envelope,
-        "unknown_candidates_in_envelope": len(known_labels),
+        "unknown_candidates_in_envelope": candidate_cells,
     }
 
 
@@ -254,13 +254,6 @@ def run():
     source = PRIMARY / "primary_traces.jsonl.gz"
     manifest = PRIMARY / "experiment_manifest.json"
     expected = json.loads(manifest.read_text(encoding="utf-8"))
-    if sha(source) != expected["source_hashes"].get(
-            "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz",
-            sha(source)):
-        # The original manifest lists source-code hashes, not primary outputs;
-        # SHA256 is recorded independently below and compared to the
-        # previously committed visibility-probe integrity hash.
-        raise RuntimeError("Unexpected primary trace checksum")
     reference = json.loads((
         ROOT / "results/phase2_mujoco/rdao_v1_visibility_probe_primary/summary.json"
     ).read_text(encoding="utf-8"))
@@ -334,12 +327,6 @@ def run():
     if len(cases) == 72 and observed != 584:
         raise RuntimeError(
             f"Expected 584 naturally granted noninitial observations; got {observed}")
-    if observed != sum(int(q["legacy_all_tp"])+int(q["legacy_all_fn"])
-                       for q in per_step) - 0 + outside:
-        # Observed is number of scans; raw positives are cell counts,
-        # so this check would be invalid. Use the actual proper
-        # cell-count relation below instead.
-        pass
     if measured_new != (
             total["legacy"]["all"]["tp"] + total["legacy"]["all"]["fn"] + outside):
         raise RuntimeError("Candidate envelope excludes unaccounted visible cells")
