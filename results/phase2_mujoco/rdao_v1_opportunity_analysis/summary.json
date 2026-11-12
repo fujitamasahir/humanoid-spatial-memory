@@ -1,0 +1,84 @@
+{
+  "cohorts": {
+    "rdao_failure": {
+      "episodes": 15,
+      "first_20_fraction_missed_route_near_pct": 62.288,
+      "first_20_fraction_new_route_near_pct": 70.763,
+      "first_20_rejected_decisions": 236,
+      "fraction_decisions_with_new_route_near_pct": 62.22,
+      "fraction_decisions_with_predicted_zero_route_near_pct": 52.648,
+      "rejected_decisions": 982
+    },
+    "rdao_failure_age_success": {
+      "episodes": 9,
+      "first_20_fraction_missed_route_near_pct": 59.712,
+      "first_20_fraction_new_route_near_pct": 69.065,
+      "first_20_rejected_decisions": 139,
+      "fraction_decisions_with_new_route_near_pct": 61.76,
+      "fraction_decisions_with_predicted_zero_route_near_pct": 50.085,
+      "rejected_decisions": 591
+    },
+    "rdao_failure_periodic_success": {
+      "episodes": 10,
+      "first_20_fraction_missed_route_near_pct": 65.0,
+      "first_20_fraction_new_route_near_pct": 76.25,
+      "first_20_rejected_decisions": 160,
+      "fraction_decisions_with_new_route_near_pct": 63.775,
+      "fraction_decisions_with_predicted_zero_route_near_pct": 54.338,
+      "rejected_decisions": 657
+    },
+    "rdao_success": {
+      "episodes": 57,
+      "first_20_fraction_missed_route_near_pct": 40.805,
+      "first_20_fraction_new_route_near_pct": 51.143,
+      "first_20_rejected_decisions": 919,
+      "fraction_decisions_with_new_route_near_pct": 55.106,
+      "fraction_decisions_with_predicted_zero_route_near_pct": 44.894,
+      "rejected_decisions": 1655
+    }
+  },
+  "limitations": [
+    "The 72 worlds/schedules are development fit data, not held-out validation.",
+    "Per-step cell counts re-count cells across different rejection steps.",
+    "Longer failed episodes have more opportunities; compare per-decision and first-20 rates.",
+    "Visible unknown cells can be navigation-irrelevant, and false-negative prediction does not prove a route would change.",
+    "No intervention or causal outcome claim is made; the shadow sensor is evaluator-only."
+  ],
+  "priority_episodes_with_predicted_zero_route_near": 15,
+  "probe_accepted_observations_exactly_verified": 584,
+  "probe_rejected_decisions": 2637,
+  "rdao_failed_but_age_succeeded_episodes": 9,
+  "rdao_failed_but_periodic_succeeded_episodes": 10,
+  "rdao_failed_episodes": 15,
+  "rdao_success_episodes": 57,
+  "reason_summary": [
+    {
+      "fraction_with_missed_route_near_pct": 63.612,
+      "fraction_with_new_route_near_pct": 87.242,
+      "reason": "best_region_score_below_budget_adjusted_threshold",
+      "rejected_decisions": 1113,
+      "sum_missed_near_route": 1550,
+      "sum_new_near_route": 5195,
+      "sum_newly_visible": 15827,
+      "with_new_route_near_cells": 971,
+      "with_predicted_zero_route_near_cells": 708
+    },
+    {
+      "fraction_with_missed_route_near_pct": 36.22,
+      "fraction_with_new_route_near_pct": 36.22,
+      "reason": "no_visible_uncertain_route_relevant_region",
+      "rejected_decisions": 1524,
+      "sum_missed_near_route": 1093,
+      "sum_new_near_route": 1093,
+      "sum_newly_visible": 8095,
+      "with_new_route_near_cells": 552,
+      "with_predicted_zero_route_near_cells": 552
+    }
+  ],
+  "rejected_decision_reason_counts": {
+    "best_region_score_below_budget_adjusted_threshold": 1113,
+    "no_visible_uncertain_route_relevant_region": 1524
+  },
+  "source": "results/phase2_mujoco/rdao_v1_visibility_probe_primary",
+  "status": "EXPLORATORY_DESCRIPTIVE_NOT_CAUSAL"
+}
