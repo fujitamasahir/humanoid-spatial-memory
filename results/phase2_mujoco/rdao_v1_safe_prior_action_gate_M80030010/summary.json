@@ -1,0 +1,40 @@
+{
+  "cases": 2,
+  "caveats": [
+    "One pre-selected original observation step in an outcome-selected fit world.",
+    "Only the FIRST previous G1 action can be reused, and only after public map/footprint validation.",
+    "Independent Emergency Safety and selected-action collision shield are unchanged.",
+    "Actual sensing frequency/dose after intervention may change endogenously.",
+    "Any improvement is not evidence of an autonomous deployable RDAO v2."
+  ],
+  "frozen_hashes": {
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb"
+  },
+  "gated_observations": [
+    6,
+    6
+  ],
+  "gated_steps": [
+    28,
+    28
+  ],
+  "gated_successes": 2,
+  "original_observations": [
+    20,
+    20
+  ],
+  "original_steps": [
+    80,
+    80
+  ],
+  "original_successes": 0,
+  "overrides_applied": 2,
+  "preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "status": "EXPLORATORY_POST_OBSERVATION_ACTION_GATE_NOT_ONLINE_POLICY",
+  "unwanted_contacts": 0,
+  "world_suffix": "M:80030010"
+}
