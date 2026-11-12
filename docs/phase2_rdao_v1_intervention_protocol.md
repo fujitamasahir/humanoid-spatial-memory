@@ -23,6 +23,23 @@ The follow-up decision-level analysis found:
 These are exploratory, outcome-conditioned observations, NOT a proof that
 more memory observations increase arrival success.
 
+### Concrete first-opportunity snapshots (step 2)
+
+Both schedules of each listed world have the same values at this step:
+
+| World | RDAO score / threshold | Previously unknown cells the shadow sensor revealed | Route-near newly visible | Selected-cell-zero visibility route-near | Candidate regions |
+|---|---|---:|---:|---:|---:|
+| R:80000018 | 0.01174 / 0.25842 | 25 | 18 | 3 | 7 |
+| BP:80010012 | 0.00879 / 0.25421 | 34 | 17 | 1 | 7 |
+| M:80030010 | 0 / 0.25053 | 2 | 2 | 2 | 0 |
+
+Thus R:80000018 is a useful **low-score despite nearby information**
+case, whereas M:80030010 is a useful **no candidate despite observable
+information** case. For M:80030010 both RDAO episodes used the full
+20-observation cap and still failed; simply adding an early observation
+may displace a later one instead of increasing the total dose. These
+facts motivate both the extra and swap intervention conditions.
+
 **Testable hypothesis:** a single ordinary spatial-memory observation
 shifted to the first rejected route-near opportunity can change subsequent
 navigation and, for some failed episodes, improve goal completion or
