@@ -39,6 +39,7 @@ from spatial_memory.rdao_v2 import (
 PRIMARY = ROOT / "results/phase2_mujoco/rdao_v1_phase2_evaluation"
 FOOTPRINT = ROOT / "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1"
 V2 = ROOT / "results/phase2_mujoco/rdao_v2_viewpoint_fit72_v1"
+V21 = ROOT / "results/phase2_mujoco/rdao_v21_current_view_quality_fit72_v1"
 DEFAULT_OUTPUT = ROOT / "results/phase2_mujoco/rdao_v22_decision_protected_fit72_v1"
 PROTECTED = (
     PRIMARY / "primary_episodes.csv",
@@ -48,6 +49,8 @@ PROTECTED = (
     FOOTPRINT / "summary.json",
     V2 / "paired_rdao_v2_viewpoint.csv",
     V2 / "summary.json",
+    V21 / "paired_v21_vs_v1.csv",
+    V21 / "summary.json",
 )
 
 
@@ -157,12 +160,16 @@ def run():
     footprint_index = {_key(x): x for x in footprint_rows}
     v2_rows = _load_csv(V2 / "paired_rdao_v2_viewpoint.csv")
     v2_index = {_key(x): x for x in v2_rows}
+    v21_rows = _load_csv(V21 / "paired_v21_vs_v1.csv")
+    v21_index = {_key(x): x for x in v21_rows}
     if (len(original_rows) != 72 or len(original_index) != 72
             or len(original_traces) != 72
             or len(footprint_rows) != 72 or len(footprint_index) != 72
             or len(v2_rows) != 72 or len(v2_index) != 72
+            or len(v21_rows) != 72 or len(v21_index) != 72
             or set(original_index) != set(original_traces)
             or set(original_index) != set(v2_index)
+            or set(original_index) != set(v21_index)
             or set(original_index) != set(footprint_index)):
         raise RuntimeError("Frozen 72-case comparisons are missing or disagree")
     preserved = navigation.verify_preserved_prefix()
@@ -237,7 +244,7 @@ def run():
         results.append(rec)
         saved_traces.append({
             "key": list(key),
-            "variant": "rdao_v22_current_quality",
+            "variant": "rdao_v22_decision_protected",
             "metrics": now, "trace": trace,
         })
         print(f"Completed {ix}/{len(selected)}: {world} schedule {schedule}",
@@ -252,14 +259,17 @@ def run():
         results, footprint_index, "footprint_only")
     v2_summary, v2_contrast = compare_saved(
         results, v2_index, "v2_viewpoint")
+    v21_summary, v21_contrast = compare_saved(
+        results, v21_index, "v21_current_quality")
     summary = {
-        "status": "RDAO_V22_CURRENT_VIEW_QUALITY_DEV_FIT_NOT_HELD_OUT",
+        "status": "RDAO_V22_DECISION_PROTECTED_DEV_FIT_NOT_HELD_OUT",
         "variant": "RDAOv22DecisionProtectedController",
         "hypothesis": "Discount edge observations only for noncritical immediate route counterfactuals; protect all candidate regions whose free/occupied states change first action or reachability",
         "prespecified_v2_unchanged": True,
         "v22_relative_to_v1": v1_summary,
         "v22_relative_to_footprint": footprint_summary,
         "v22_relative_to_v2": v2_summary,
+        "v22_relative_to_v21": v21_summary,
         "v22_protected_region_scores": sum(
             x["v22_protected_region_scores"] for x in results),
         "v22_discounted_region_scores": sum(
@@ -289,7 +299,7 @@ def run():
             "Reducing observations can decrease goal success; both successes and harmed successes must be counted.",
             "H80-censored steps do not measure time-to-goal for failures.",
             "Two pedestrian schedules per maze are correlated.",
-            "v2.1 uses a single-threaded module-level visibility hook; not for concurrent use.",
+            "v2.2 inherits v2's single-threaded module-level visibility hook; not for concurrent use.",
             "No dynamic walking hardware or full articulated biped motion is evaluated.",
         ],
     }
@@ -297,6 +307,7 @@ def run():
     _write_csv(args.output/"paired_v22_vs_v1.csv", results)
     _write_csv(args.output/"paired_v22_vs_footprint.csv", fp_contrast)
     _write_csv(args.output/"paired_v22_vs_v2.csv", v2_contrast)
+    _write_csv(args.output/"paired_v22_vs_v21.csv", v21_contrast)
     with gzip.open(args.output/"v22_traces.jsonl.gz",
                    "wt", encoding="utf-8") as f:
         for item in saved_traces:
@@ -309,6 +320,7 @@ def run():
         "output": str(args.output),
         "v1_comparison": v1_summary,
         "v2_comparison": v2_summary,
+        "v21_comparison": v21_summary,
         "footprint_comparison": footprint_summary,
         "unwanted_contacts": v1_summary["variant_contacts"],
     }, sort_keys=True, indent=2, allow_nan=False))
