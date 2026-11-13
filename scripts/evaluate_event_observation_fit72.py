@@ -37,7 +37,7 @@ import evaluate_phase2_61ray_emergency_safety_full_288 as base
 import evaluate_rdao_phase2 as rdao_evaluator
 import phase2_mujoco_navigation as navigation
 from evaluate_rdao_one_shot_interventions import (
-    _bool, _compare_trace, _metrics, _sha, _write_csv,
+    _bool, _compare_trace, _load_csv, _metrics, _sha, _write_csv,
 )
 from evaluate_rdao_online_safe_gate_screen import _jsonable
 from spatial_memory.event_observation import (
@@ -48,9 +48,10 @@ BASE = ROOT/"results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_
 DEFAULT_OUTPUT = ROOT/"results/phase2_mujoco/event_observation_fit72_v1"
 PROTECTED = (
     BASE/"episodes.csv",
-    BASE/"provenance.json",
+    base.BASELINE/"provenance.json",
     BASE/"episode_traces.jsonl.gz",
     BASE/"artifact_manifest.json",
+    base.BASELINE/"artifact_manifest.json",
 )
 
 
@@ -257,8 +258,17 @@ def main():
         parser.error("--max-cases must be positive")
     if args.output.exists():
         raise FileExistsError(f"Will not overwrite saved result {args.output}")
-    baseline_rows, baseline_index, provenance, _ = base.load_baseline()
+    # The config provenance comes from the preceding, fully hashed
+    # 288-row G1 experiment, but the COMPARISON ARM MUST be the
+    # preserved 61-ray Emergency Safety H80 matrix, not that predecessor.
+    _, _, provenance, _ = base.load_baseline()
     frozen = base.frozen_config(provenance)
+    baseline_rows = _load_csv(BASE/"episodes.csv")
+    baseline_index = {
+        (row["world_identity"], int(row["schedule"]),
+         row["method"], int(row["seed"])): row
+        for row in baseline_rows
+    }
     source_hashes = {str(p.relative_to(ROOT)):_sha(p) for p in PROTECTED}
     prefix = navigation.verify_preserved_prefix()
     worlds = {x["identity"]:x for x in navigation.admitted_worlds()}
@@ -267,7 +277,9 @@ def main():
         for x in baseline_rows if x["method"] in ("periodic","age")})
     if (len(worlds) != 36 or len(keys) != 72 or
         len(baseline_rows) != 288 or len(baseline_index) != 288 or
-        set(worlds) != {x[0] for x in keys}):
+        set(worlds) != {x[0] for x in keys} or
+        set(row["method"] for row in baseline_rows) !=
+            {"periodic", "age", "static", "uncertainty"}):
         raise RuntimeError("Missing 72 paired original FIT cases")
     with gzip.open(BASE/"episode_traces.jsonl.gz","rt",encoding="utf-8") as stream:
         traces = [json.loads(s) for s in stream if s.strip()]
