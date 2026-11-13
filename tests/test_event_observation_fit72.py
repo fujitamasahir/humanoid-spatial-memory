@@ -57,7 +57,9 @@ def test_run_candidate_restores_global_evaluator_after_failure(monkeypatch):
         raise RuntimeError("synthetic MuJoCo error")
     monkeypatch.setattr(screen.base,"run_case",
                         lambda *args,**kwargs: screen.base.run_episode(
-                            None,{},args[2]))
+                            None,{},args[2],
+                            _action_checker=lambda *a: (False,None,0.,None),
+                            _g1_planner=lambda *a: []))
     monkeypatch.setattr(screen.base,"run_episode",broken)
     with pytest.raises(RuntimeError,match="synthetic MuJoCo error"):
         screen.run_candidate({},0,"periodic",{})
