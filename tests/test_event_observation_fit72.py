@@ -153,3 +153,40 @@ def test_frozen_evidence_paths_and_correct_h80_reference_matrix():
                for row in h80) == 66
     assert sum(row["success"] == "True" and row["method"] == "age"
                for row in h80) == 66
+
+
+
+def test_noninitial_scan_accounting_excludes_step_zero():
+    """The real first frame already includes the initial memory scan.
+
+    Event controller does not call refresh() for the initial scan, so
+    compare only subsequent authorized observation steps to its log.
+    """
+    trace = {"steps": [
+        {"step": 0, "observation_granted": True},
+        {"step": 1, "observation_granted": False},
+        {"step": 2, "observation_granted": True},
+        {"step": 3, "observation_granted": False},
+        {"step": 4, "observation_granted": True},
+    ]}
+    assert screen._noninitial_granted_scan_steps(trace) == [2, 4]
+    assert 1 + len(screen._noninitial_granted_scan_steps(trace)) == 3
+
+
+def test_only_initial_memory_observation_has_empty_event_log():
+    trace = {"steps": [
+        {"step": 0, "observation_granted": True},
+        {"step": 1, "observation_granted": False},
+        {"step": 2, "observation_granted": False},
+    ]}
+    assert screen._noninitial_granted_scan_steps(trace) == []
+
+
+@pytest.mark.parametrize("trace", [
+    {"steps": []},
+    {"steps": [{"step": 0, "observation_granted": False}]},
+    {"steps": [{"step": 1, "observation_granted": True}]},
+])
+def test_scan_accounting_rejects_malformed_missing_initial_frame(trace):
+    with pytest.raises(RuntimeError, match="Step 0 initial"):
+        screen._noninitial_granted_scan_steps(trace)
