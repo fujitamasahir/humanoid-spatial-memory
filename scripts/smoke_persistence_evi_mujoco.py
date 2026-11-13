@@ -153,6 +153,8 @@ def main():
                'contacts': m['g1_unwanted_contact_pairs'], 'distance_m': m['distance_m'],
                'blocked_attempts': m['g1_footprint_blocked_attempts'],
                'emergency_interventions': m['emergency_safety_interventions'],
+               'false_persistent_cell_times': m['false_persistent_occupancy_updates'],
+               'missed_persistent_change_cell_times': m['missed_persistent_changes'],
                'scheduler_ms': episode['diagnostics'].get('scheduler_ms'),
                'unselected_shield_queries': 0}
         rows.append(row)

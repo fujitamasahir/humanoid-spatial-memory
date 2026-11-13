@@ -94,9 +94,11 @@ rays, emergency scans/rays/interventions, blocked attempts, calibration (Brier,
 log loss and reliability bins BEFORE observations), inference changes, scheduler
 compute, predicted versus route-change proxies. Calibration at observed cells
 is policy-selected; it cannot establish global calibration. False persistent
-occupancy and missed persistent geometry require evaluator-only labelled
-longitudinal geometry, never online inputs; without it report unavailable,
-not zero. Sensor hits do not identify persistent classes. Adaptation is tested
+occupancy and missed persistent geometry use the existing evaluator-only
+`map_errors` cell-time sums over longitudinal geometry and departed pedestrian
+source masks, including the initial frame. They are not online inputs. These
+raster metrics are not calibrated physical geometry labels. Sensor hits do not
+identify persistent classes for B. Adaptation is tested
 with known synthetic transient and sustained histories.
 
 Reject B if it does not reduce false persistence/missed changes and improve

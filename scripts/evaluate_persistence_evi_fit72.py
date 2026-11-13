@@ -134,6 +134,11 @@ def pair_row(key, method, arm, baseline, candidate, diagnostics):
     result['candidate_method'] = arm
     result['candidate_blocked_attempts'] = int(candidate['g1_footprint_blocked_attempts'])
     result['reference_blocked_attempts'] = int(baseline['g1_footprint_blocked_attempts'])
+    for metric in ('false_persistent_occupancy_updates', 'missed_persistent_changes'):
+        for side, row in [('reference', baseline), ('candidate', candidate)]:
+            result[side+'_'+metric] = int(row[metric])
+    result['candidate_brier'] = (diagnostics['calibration_belief']['brier']
+                                 if diagnostics.get('calibration_belief') else None)
     return result
 
 
@@ -155,6 +160,9 @@ def summarize_pairs(rows):
                for metric in ('success', 'observations', 'steps_h80', 'distance_m')}})
     result['candidate_blocked_attempts'] = sum(r['candidate_blocked_attempts'] for r in rows)
     result['reference_blocked_attempts'] = sum(r['reference_blocked_attempts'] for r in rows)
+    for metric in ('false_persistent_occupancy_updates', 'missed_persistent_changes'):
+        for side in ('reference', 'candidate'):
+            result[side+'_'+metric] = sum(r[side+'_'+metric] for r in rows)
     return result
 
 
@@ -216,8 +224,8 @@ def main():
         'paired_comparisons': {arm+'_vs_'+method: summarize_pairs(
             [r for r in pairs if r['candidate_method'] == arm and r['reference_method'] == method])
             for arm in ARMS for method in ('periodic', 'age')},
-        'unavailable_metrics': ['evaluator-labelled false persistent occupancy',
-            'missed persistent geometry changes', 'causal realized EVI'],
+        'unavailable_metrics': ['full-world occupancy probability calibration', 'causal realized EVI'],
+        'memory_error_definition': 'Original evaluator-only cell-time sums, including initial frame; not online labels.',
         'correlation': 'Two schedules of each maze are correlated; no independent-test inference.',
         'protected_evidence_unchanged': True}
     reference.base.write_json(args.output/'summary.json', summary)

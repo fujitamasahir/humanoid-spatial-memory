@@ -88,6 +88,8 @@ def test_paired_summary_clusters_schedules_and_censors_failures():
                 side+'_distance_m': 6., side+'_emergency_scans': 8,
                 side+'_emergency_rays': 488, side+'_episode_wall_seconds': .1,
                 side+'_unwanted_contacts': 0})
+            row[side+'_false_persistent_occupancy_updates'] = 0
+            row[side+'_missed_persistent_changes'] = 0
         rows.append(row)
     summary = screen.summarize_pairs(rows)
     assert summary['independent_maze_layouts'] == 1
