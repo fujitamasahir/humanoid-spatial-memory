@@ -1,0 +1,3 @@
+world_identity,schedule,seed,reference,reference_success,candidate_success,reference_observations,candidate_observations,reference_steps_h80,candidate_steps_h80,reference_distance_m,candidate_distance_m,reference_unwanted_contacts,candidate_unwanted_contacts,delta_observations,delta_steps_h80,delta_distance_m
+phase1.5-v0.4-BPRIME-1:fit:BP:80010000,0,42,footprint_only,True,True,6,5,27,33,15.75,17.25,0,0,-1,6,1.5
+phase1.5-v0.4-BPRIME-1:fit:BP:80010000,1,42,footprint_only,True,True,6,5,27,33,15.75,17.25,0,0,-1,6,1.5

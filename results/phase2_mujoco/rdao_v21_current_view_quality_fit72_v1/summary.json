@@ -1,0 +1,135 @@
+{
+  "hypothesis": "Use existing v2 angular view quality for current region feasibility as well as lookahead; suppress low-coverage edge scans",
+  "limitations": [
+    "Original and alternative results use repeatedly inspected fit36 world layouts, not independent holdout.",
+    "Only candidate-region visibility scoring changes; G1 physical actions and shield remain untouched.",
+    "Angular overlap quality is a geometric heuristic, not an actual observation return probability.",
+    "No guarantee the next hypothetical move or turn passes true physical action shield.",
+    "Reducing observations can decrease goal success; both successes and harmed successes must be counted.",
+    "H80-censored steps do not measure time-to-goal for failures.",
+    "Two pedestrian schedules per maze are correlated.",
+    "v2.1 uses a single-threaded module-level visibility hook; not for concurrent use.",
+    "No dynamic walking hardware or full articulated biped motion is evaluated."
+  ],
+  "parameters": {
+    "current_view_visibility": "footprint_extent * angular_coverage",
+    "max_memory_observations": 20,
+    "next_view_min_absolute_gain": 0.1,
+    "next_view_min_relative_gain": 1.25,
+    "next_view_score_multiplier": 0.5,
+    "next_view_visibility": "footprint_extent * angular_coverage",
+    "no_step_world_allowlist": true,
+    "original_v1_score_threshold_and_budget_price": true
+  },
+  "phase15_preservation": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "prespecified_v2_unchanged": true,
+  "source_hashes": {
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/summary.json": "ad8a7554af649a907f618d8457bc7945d75254036a06552c4382f186634eecf1",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/experiment_manifest.json": "17b5d35bc0dc268e235b07bb2a683858c1e1b472c0c3e9224a9ac3ea801c9521",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_traces.jsonl.gz": "8abe5d55495c3ca5f828de586e46a13b8f6f4af071a9264ac9a698fd56e086eb",
+    "results/phase2_mujoco/rdao_v2_viewpoint_fit72_v1/paired_rdao_v2_viewpoint.csv": "d4d89e49bcec08b2d1794a594cdd1bb654aae07e422b454009ec3c36a013d337",
+    "results/phase2_mujoco/rdao_v2_viewpoint_fit72_v1/summary.json": "4cd5c9f73a5f08d084494883ea4d85ad0381e3f8ae3d77a29566b6714873b27c"
+  },
+  "status": "RDAO_V21_CURRENT_VIEW_QUALITY_DEV_FIT_NOT_HELD_OUT",
+  "v21_deferred_region_scores": 459,
+  "v21_relative_to_footprint": {
+    "candidate_successes": 59,
+    "common_success": {
+      "distance_better": 5,
+      "distance_same": 44,
+      "distance_worse": 8,
+      "episodes": 57,
+      "step_better": 4,
+      "step_same": 31,
+      "step_worse": 22
+    },
+    "episodes": 72,
+    "harms": 2,
+    "mean_candidate_distance_m": 24.0,
+    "mean_candidate_observations": 8.569444444444445,
+    "mean_candidate_steps_h80": 45.81944444444444,
+    "mean_reference_distance_m": 25.072916666666668,
+    "mean_reference_observations": 9.930555555555555,
+    "mean_reference_steps_h80": 44.81944444444444,
+    "reference": "footprint_only",
+    "reference_successes": 59,
+    "rescues": 2,
+    "total_delta_distance_m": -77.25,
+    "total_delta_observations": -98,
+    "total_delta_steps_h80": 72
+  },
+  "v21_relative_to_v1": {
+    "episodes": 72,
+    "episodes_changed_executed_action_or_pose": 30,
+    "episodes_changed_observation_schedule": 39,
+    "harm_worlds": [
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+    ],
+    "harmed_successes": 2,
+    "mean_original_censored_steps": 44.736111111111114,
+    "mean_original_distance_m": 24.489583333333332,
+    "mean_original_observations": 9.11111111111111,
+    "mean_original_scheduler_ms": 316.3635101666667,
+    "mean_original_steps_successes_only": 35.45614035087719,
+    "mean_variant_censored_steps": 45.81944444444444,
+    "mean_variant_distance_m": 24.0,
+    "mean_variant_observations": 8.569444444444445,
+    "mean_variant_scheduler_ms": 363.35645365277776,
+    "mean_variant_steps_successes_only": 38.28813559322034,
+    "original_successes": 57,
+    "paired_common_success": {
+      "distance_better": 1,
+      "distance_same": 47,
+      "distance_worse": 7,
+      "episodes": 55,
+      "steps_better": 1,
+      "steps_same": 38,
+      "steps_worse": 16,
+      "total_delta_distance_m": 12.0,
+      "total_delta_steps": 80
+    },
+    "rescue_worlds": [
+      "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+    ],
+    "rescued_failures": 4,
+    "variant_contacts": 0,
+    "variant_successes": 59,
+    "worlds": 36
+  },
+  "v21_relative_to_v2": {
+    "candidate_successes": 59,
+    "common_success": {
+      "distance_better": 3,
+      "distance_same": 46,
+      "distance_worse": 8,
+      "episodes": 57,
+      "step_better": 5,
+      "step_same": 35,
+      "step_worse": 17
+    },
+    "episodes": 72,
+    "harms": 4,
+    "mean_candidate_distance_m": 24.0,
+    "mean_candidate_observations": 8.569444444444445,
+    "mean_candidate_steps_h80": 45.81944444444444,
+    "mean_reference_distance_m": 24.354166666666668,
+    "mean_reference_observations": 9.555555555555555,
+    "mean_reference_steps_h80": 44.30555555555556,
+    "reference": "v2_viewpoint",
+    "reference_successes": 61,
+    "rescues": 2,
+    "total_delta_distance_m": -25.5,
+    "total_delta_observations": -71,
+    "total_delta_steps_h80": 109
+  },
+  "v21_steps_with_deferral": 359,
+  "v21_unwanted_contact_pairs": 0,
+  "variant": "RDAOv21CurrentQualityController"
+}
