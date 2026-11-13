@@ -116,6 +116,7 @@ def run_candidate(payload, schedule, method, config):
     agent = context["controller"]
     if agent is None:
         raise RuntimeError("Candidate observer was not initialized")
+    row["event_scheduler_total_ms"] = agent.scheduler_decision_total_ns / 1e6
     row["event_observation_count"] = agent.event_observation_count
     row["ordinary_observation_count"] = agent.ordinary_observation_count
     row["feedback_blocked_count"] = agent.feedback_blocked_count
@@ -140,10 +141,14 @@ def make_pair_row(key, method, reference, candidate):
         "candidate_distance_m":new["travel_distance_m"],
         "reference_observations":old["observations"],
         "candidate_observations":new["observations"],
+        "reference_memory_rays":old["observations"] * 61,
+        "candidate_memory_rays":new["observations"] * 61,
         "reference_unwanted_contacts":old["unwanted_contacts"],
         "candidate_unwanted_contacts":new["unwanted_contacts"],
         "reference_emergency_scans":int(reference["emergency_safety_scans"]),
         "candidate_emergency_scans":int(candidate["emergency_safety_scans"]),
+        "reference_emergency_rays":int(reference["emergency_safety_raycasts"]),
+        "candidate_emergency_rays":int(candidate["emergency_safety_raycasts"]),
         "reference_emergency_interventions":
             old["emergency_interventions"],
         "candidate_emergency_interventions":
@@ -154,6 +159,7 @@ def make_pair_row(key, method, reference, candidate):
             int(candidate["feedback_blocked_count"]),
         "candidate_no_route_feedback_count":
             int(candidate["feedback_no_route_count"]),
+        "candidate_scheduler_total_ms":float(candidate["event_scheduler_total_ms"]),
         "candidate_episode_wall_seconds":
             float(candidate["episode_wall_time_seconds"]),
         "reference_episode_wall_seconds":
@@ -185,6 +191,9 @@ def aggregate_pairs(rows):
         "baseline_mean_observations":avg("reference_observations"),
         "candidate_mean_observations":avg("candidate_observations"),
         "total_delta_observations":delta("observations"),
+        "baseline_mean_memory_rays":avg("reference_memory_rays"),
+        "candidate_mean_memory_rays":avg("candidate_memory_rays"),
+        "total_delta_memory_rays":delta("memory_rays"),
         "baseline_mean_censored_steps":avg("reference_steps_h80"),
         "candidate_mean_censored_steps":avg("candidate_steps_h80"),
         "total_delta_censored_steps":delta("steps_h80"),
@@ -193,6 +202,9 @@ def aggregate_pairs(rows):
         "total_delta_distance_m":delta("distance_m"),
         "baseline_mean_emergency_scans":avg("reference_emergency_scans"),
         "candidate_mean_emergency_scans":avg("candidate_emergency_scans"),
+        "baseline_mean_emergency_rays":avg("reference_emergency_rays"),
+        "candidate_mean_emergency_rays":avg("candidate_emergency_rays"),
+        "candidate_mean_scheduler_ms":avg("candidate_scheduler_total_ms"),
         "baseline_mean_wall_time_seconds":avg("reference_episode_wall_seconds"),
         "candidate_mean_wall_time_seconds":avg("candidate_episode_wall_seconds"),
         "candidate_event_triggered_scans":sum(
