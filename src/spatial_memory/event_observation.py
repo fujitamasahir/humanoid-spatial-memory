@@ -34,6 +34,7 @@ No assertions of superior completion or sensing efficiency.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from time import perf_counter_ns
 import numpy as np
 
 from .scheduling import ObservationController
@@ -84,6 +85,7 @@ class EventTriggeredObservationController:
         self.event_observation_count = 0
         self.ordinary_observation_count = 0
         self.decisions = []
+        self.scheduler_decision_total_ns = 0
         self.observation_log = []
         self._next_scan_reason = None
 
@@ -121,9 +123,11 @@ class EventTriggeredObservationController:
         return bool(step > 0 and score >= observer.threshold()), float(score)
 
     def decide(self, step, position):
+        start_ns = perf_counter_ns()
         step = int(step)
         self.last_decision_step = step  # current public decision time for post-action feedback
         if step < 1:
+            self.scheduler_decision_total_ns += perf_counter_ns() - start_ns
             return {
                 "observation_requested": False,
                 "observation_granted": False,
@@ -159,6 +163,7 @@ class EventTriggeredObservationController:
             "event_reason": reason,
         }
         self._next_scan_reason = reason if allowed else None
+        self.scheduler_decision_total_ns += perf_counter_ns() - start_ns
         self.decisions.append({
             "step":step, "baseline_due":bool(baseline_due),
             "pending_blocked":bool(self._blocked_pending),
