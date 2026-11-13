@@ -128,3 +128,28 @@ def test_g1_no_route_callback_is_next_step_feedback(monkeypatch):
     row,_=screen.run_candidate({},0,"age",{})
     assert row["feedback_no_route_count"]==1
     assert row["event_observation_count"]==1
+
+
+
+def test_frozen_evidence_paths_and_correct_h80_reference_matrix():
+    """Regression: provenance is PREDECESSOR, comparator is safety H80.
+
+    Prior bug tried to read nonexistent H80/provenance.json; a second
+    bug compared the candidates with pre-safety predecessor episodes.
+    """
+    assert screen.base.BASELINE != screen.BASE
+    assert screen.base.BASELINE / "provenance.json" in screen.PROTECTED
+    assert screen.BASE / "provenance.json" not in screen.PROTECTED
+    assert all(path.is_file() for path in screen.PROTECTED)
+    h80 = screen._load_csv(screen.BASE / "episodes.csv")
+    predecessor, _, provenance, _ = screen.base.load_baseline()
+    config = screen.base.frozen_config(provenance)
+    assert len(h80) == len(predecessor) == 288
+    assert config["max_steps"] == 80
+    assert config["mujoco_ray_sensor"]["ray_count"] == 61
+    assert {row["method"] for row in h80} == {
+        "periodic", "age", "static", "uncertainty"}
+    assert sum(row["success"] == "True" and row["method"] == "periodic"
+               for row in h80) == 66
+    assert sum(row["success"] == "True" and row["method"] == "age"
+               for row in h80) == 66
