@@ -1,0 +1,17 @@
+[
+  {
+    "path": "periodic.json.gz",
+    "bytes": 956,
+    "sha256": "518db595b34aed8df91993691f658dcef3b433e3f0cb387758ebab1ffdbbd878"
+  },
+  {
+    "path": "provenance.json",
+    "bytes": 4677,
+    "sha256": "901969d22e03ee0c388a6727b11dd4815d8a26e68d29ec1dd0a6060344d84fdf"
+  },
+  {
+    "path": "status.json",
+    "bytes": 153,
+    "sha256": "f329231875af08e6074e729c654cceec66aadd009e8845facefc6f1f7d9dab10"
+  }
+]

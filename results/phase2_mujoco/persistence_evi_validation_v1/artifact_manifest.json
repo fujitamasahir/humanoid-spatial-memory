@@ -1,0 +1,77 @@
+[
+  {
+    "path": "command.json",
+    "bytes": 630,
+    "sha256": "a39e44b3ae022b0627d6b975ede38ad2fa2bb9852cada12bf663a61addecbcb8"
+  },
+  {
+    "path": "command_final.json",
+    "bytes": 636,
+    "sha256": "78f5e9b8c31562bf67f956ac3e3b4f7e8af1cd1758a34052105a914c477f5f9c"
+  },
+  {
+    "path": "fit_smoke_attempt.json",
+    "bytes": 291,
+    "sha256": "5a714c5e8151f59f7b69816051f11e45c4227faf0057f25a15f2cc2aafe8f2e6"
+  },
+  {
+    "path": "fit_smoke_attempt.log",
+    "bytes": 971,
+    "sha256": "7624cd2572192f22d8ab81887c833400e4068c68772226545b1b9934cb7b9dd6"
+  },
+  {
+    "path": "new_tests.log",
+    "bytes": 237,
+    "sha256": "8e8420cbd6c80ade85dba90fc682f2ad5834e69583c00f2af28a234720637f36"
+  },
+  {
+    "path": "new_tests.xml",
+    "bytes": 3328,
+    "sha256": "f0b8bf5a9dcf1f8f4ba887f6fc85cf6e6e089efea870d3cb67c2cecd9c550cb4"
+  },
+  {
+    "path": "new_tests_command.json",
+    "bytes": 268,
+    "sha256": "a7611aa1613084dfd424ae2e7d249085b190c6f48a76cebef8943e46581170df"
+  },
+  {
+    "path": "preexisting_failure_original_evaluation.json",
+    "bytes": 673,
+    "sha256": "30f562c3e0da1612381a4eb48ba3f4bb9b6664ed04765f4d3f456be2d0d3073e"
+  },
+  {
+    "path": "preexisting_failure_original_evaluation.log",
+    "bytes": 2100,
+    "sha256": "b2d5dd1dc31d99b8c9888a3c9bdae6264ff4d042f5eb202fa43c91927ae1e488"
+  },
+  {
+    "path": "preservation_checks.json",
+    "bytes": 2289,
+    "sha256": "1cf0dd3e7e5a4954fb638486b731f029ed0d20ee234e86593a5bdc55915a33f5"
+  },
+  {
+    "path": "provenance.json",
+    "bytes": 3286,
+    "sha256": "3d85250432147cbee15ce4829f0b41a25dbd6d3f3dcb5f9633ee9abe742c80e6"
+  },
+  {
+    "path": "regression.log",
+    "bytes": 2331,
+    "sha256": "ed56d69e9f4c1ccc737b200d9db95c83b5365bc21781f47a2e4b904f7710d1a3"
+  },
+  {
+    "path": "regression.xml",
+    "bytes": 20481,
+    "sha256": "17cfcec2fae44f242398eac28a1775f512024da7b39d1fa8f78c1e7b1e9f1a32"
+  },
+  {
+    "path": "regression_final.log",
+    "bytes": 2337,
+    "sha256": "232f038a292bb355f235a1b62739449b811fe926df310e43747d109be4438dcd"
+  },
+  {
+    "path": "regression_final.xml",
+    "bytes": 20746,
+    "sha256": "670daff503fc3b4a847bc702855493aee83d34083313d2e5056206ded1ae0486"
+  }
+]

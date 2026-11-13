@@ -1,0 +1,37 @@
+[
+  {
+    "path": "age.json.gz",
+    "bytes": 1162,
+    "sha256": "a8e11f905b958c0d329bbd9ec66f514be0ea7723f2328caad159ad2031c7d318"
+  },
+  {
+    "path": "b_age.json.gz",
+    "bytes": 1642,
+    "sha256": "acb6bb069f8a1ccfb0847afe553af08e621b2104352f8e10e57aac1d0e6394cd"
+  },
+  {
+    "path": "bc.json.gz",
+    "bytes": 1640,
+    "sha256": "12fa0d0f8bbd1ccb74181a31b752ec09435f3b7d594d2fc266f50980dbd12603"
+  },
+  {
+    "path": "c_ternary.json.gz",
+    "bytes": 1892,
+    "sha256": "af60657188246537f3ffcd0df1d1343988769652039727afcf528de3074322bd"
+  },
+  {
+    "path": "periodic.json.gz",
+    "bytes": 1169,
+    "sha256": "804bce1583ec30c781770d8d9b52c202833ab8d3126c65826d4a0ef42253c127"
+  },
+  {
+    "path": "provenance.json",
+    "bytes": 4525,
+    "sha256": "36b4a85009960e2d37605e5044dd90da74e4c3d7a750a1b0f166903027d170f1"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 2367,
+    "sha256": "3a718a74da2b185d1ba0d67b7e8ddbe7c1e5a2fb07f6055a3b34b57564f3c27a"
+  }
+]

@@ -1,0 +1,39 @@
+........................................................................ [ 52%]
+.........................F......................................         [100%]
+=================================== FAILURES ===================================
+_ test_multiray_181_matches_saved_sensor_observations_and_reference_intersections _
+
+    def test_multiray_181_matches_saved_sensor_observations_and_reference_intersections():
+        """Validate distance/geom returns and exact old trace at the target states."""
+        import json
+        import sys
+        sys.path.insert(0, str(ROOT / 'scripts'))
+        import evaluate_g1_static_independent_safety as evaluator
+        from spatial_memory.simulation import scenario_from_bprime
+        from spatial_memory.mujoco_perception import MujocoRayPerception
+    
+        trace_path = ROOT / 'results/phase2_mujoco/g1_static_independent_safety_R80000001_s1_v5/safety_episode_trace.json'
+        trace = json.loads(trace_path.read_text())
+>       _row, _events, payload = evaluator._load_source_episode()
+
+tests/test_phase2_emergency_safety.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/evaluate_g1_static_independent_safety.py:57: in _load_source_episode
+    payload = next(item for item in runner.admitted_worlds()
+scripts/phase2_mujoco_navigation.py:66: in admitted_worlds
+    for payload in checkpoints():
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def checkpoints():
+        seen = set()
+        for relative in STORES:
+            directory = ROOT / relative / 'records'
+            if not directory.is_dir():
+>               raise FileNotFoundError(f'Missing committed fit store: {directory}')
+E               FileNotFoundError: Missing committed fit store: /Users/masahir0/Desktop/humanoid-spatial-memory/results/raw/phase15_macos_development/fit/records
+
+scripts/phase2_mujoco_navigation.py:48: FileNotFoundError
+- generated xml file: /Users/masahir0/Desktop/humanoid-spatial-memory/results/phase2_mujoco/persistence_evi_validation_v1/regression.xml -
+=========================== short test summary info ============================
+FAILED tests/test_phase2_emergency_safety.py::test_multiray_181_matches_saved_sensor_observations_and_reference_intersections
+1 failed, 135 passed in 1.85s

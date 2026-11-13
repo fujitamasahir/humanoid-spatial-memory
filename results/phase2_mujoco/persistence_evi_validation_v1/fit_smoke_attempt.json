@@ -1,0 +1,13 @@
+{
+  "argv": [
+    ".venv312/bin/python",
+    "scripts/evaluate_persistence_evi_fit72.py",
+    "--max-cases",
+    "2",
+    "--output",
+    "results/phase2_mujoco/persistence_evi_smoke2_v1"
+  ],
+  "returncode": 1,
+  "status": "BLOCKED_MISSING_EXISTING_FIT_STORES",
+  "policies_evaluated": 0
+}

@@ -1,0 +1,22 @@
+{
+  "original_commit": "9fe33e4d13b526f7ed786772e4821ecab5c5983b",
+  "identical_to_original": {
+    "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/episodes.csv": "3fbe9509a0b6a0432a7c9e89fe399ecc5e59a86a76b3752a3c13c0eac046a3d0",
+    "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288/provenance.json": "68434a316e4e4ad88db2b7228c7c37a946c6830749ab670e93a0e961b7b7482f",
+    "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/episode_traces.jsonl.gz": "935bd3b4a127274bf6186b77334e7f2250fa73b14381fd0c7ff1d72338cba7d7",
+    "results/phase2_mujoco/g1_forward_first_61ray_emergency_safety_full_288_v1/artifact_manifest.json": "155de0857d081696b203c151f8a0239fb4bcb772bad0d06a6244bd529311aac4",
+    "results/phase2_mujoco/g1_forward_first_shield_turns_v3_pedestrian_avoidance_full_288/artifact_manifest.json": "154b10726b6796469117840158441b16ee68aa2896c490a4c66345a644d4dfa6",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/event_observation.py": "6abfcc9849c9c9096232608f3052ba2ef7fdd9dc8f427c1d1caa8a34df059fc0",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580",
+    "src/spatial_memory/rdao_v2.py": "a8fc0e218edec2094f4dbb115fac113851dafa900b59c77dbc4117d26fe6242a",
+    "src/spatial_memory/rdao_v21_quality.py": "23857d77bd251df91b82291da8179fd52dc815ced50ea4fcf5dabb505b918521",
+    "src/spatial_memory/rdao_v22_decision_protected.py": "52d51d2e110a85cda292cd74b489fc5750b5c436e8616e887ed30810a57ede74",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1"
+  },
+  "raw_prefix_verification": "NOT_POSSIBLE_MISSING_RAW_STORES"
+}

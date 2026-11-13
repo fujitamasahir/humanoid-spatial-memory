@@ -1,0 +1,5 @@
+{
+  "status": "FAILED_DEVELOPMENT_ATTEMPT",
+  "reason": "INCOMPLETE: ndarray JSON serialization error after first episode",
+  "completed_study": false
+}

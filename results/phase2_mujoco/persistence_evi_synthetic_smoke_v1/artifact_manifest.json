@@ -1,0 +1,12 @@
+[
+  {
+    "path": "provenance.json",
+    "bytes": 4615,
+    "sha256": "cd8962ede177717152062caa28a3c991e9d9b69a442e8f7eee94da2d0a1da38c"
+  },
+  {
+    "path": "status.json",
+    "bytes": 158,
+    "sha256": "48b517eec8f22560cefb58abe4cbfd6946b4128f9da176988595dc8cb3924fd2"
+  }
+]

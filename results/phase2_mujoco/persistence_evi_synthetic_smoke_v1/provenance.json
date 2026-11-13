@@ -1,0 +1,88 @@
+{
+  "branch": "phase2/mujoco-proxy-pilot",
+  "commit": "9fe33e4d13b526f7ed786772e4821ecab5c5983b",
+  "config": {
+    "common_horizon_metrics": true,
+    "g1_navigation": {
+      "footprint_source": "pinned G1 collision geometry",
+      "forward_translation_default": true,
+      "local_half_extents_m": [
+        0.218954831277208,
+        0.3279970912029507
+      ],
+      "motion": "cardinal kinematic translation with separate in-place turns",
+      "observed_occupancy_only": true,
+      "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+      "rejected_action_history": true,
+      "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+      "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+      "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+    },
+    "max_observations": 20,
+    "max_steps": 80,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_ray_sensor": {
+      "horizontal_fov_deg": 120.0,
+      "range_m": 6.0,
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "sensor_backend": "mujoco3d",
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "dependencies": {
+    "mujoco": "3.17.0",
+    "numpy": "2.2.6",
+    "pytest": "8.3.5"
+  },
+  "dirty_status": " M .gitignore\n M src/spatial_memory/evaluation.py\n?? docs/phase2_persistence_evi_protocol.md\n?? scripts/evaluate_persistence_evi_fit72.py\n?? scripts/smoke_persistence_evi_mujoco.py\n?? src/spatial_memory/evi.py\n?? src/spatial_memory/persistence.py\n?? tests/test_persistence_evi.py\n?? tests/test_persistence_evi_evaluation.py\n",
+  "evi_parameters": {
+    "failure_cost": 80.0,
+    "max_candidates": 3,
+    "plan_cost": 0.01,
+    "scarcity_cost": 0.5,
+    "sensing_cost": 0.5
+  },
+  "not_phase15_population": true,
+  "persistence_parameters": {
+    "confidence": 0.95,
+    "free_prior_exposure": 30.0,
+    "free_threshold": 0.2,
+    "max_rate": 0.35,
+    "min_rate": 0.001,
+    "occupied_prior_exposure": 6.0,
+    "occupied_threshold": 0.8,
+    "persistence_horizon": 8.0,
+    "prior_transitions": 0.3
+  },
+  "python": "3.12.16",
+  "scenario": "smoke_scenario() in source",
+  "source_sha256": {
+    "docs/phase2_persistence_evi_protocol.md": "cf3fea39d68214f6bf10dd16bbf25d51c3ff4fa0081da6d1402912466a757ff4",
+    "scripts/evaluate_persistence_evi_fit72.py": "1fce2e5fa810fe5ab45bd1927abd393b359cbc077b925e6d7859bb54d4bd4b1a",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/evi.py": "e92b293bad905ae8fe1d77b898a7c0926b557183b985ee22170d263adfd50326",
+    "src/spatial_memory/memory.py": "2976b6c1db5b90798a361cff6993e5d3852254fbf2266d612b7876e1280407c9",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/persistence.py": "e6795f0b06c04452adae0ec5781b538fbfb3c5409228742ce22aa115ed168b20",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "status": "SYNTHETIC_INTEGRATION_ONLY",
+  "synthetic_source_sha256": "b2f94fdbb645cb2c111ff668b16d801c2ee224348286980a1cd730378f3dea4c",
+  "tracked_diff_sha256": "5b5e9ef67f9f660624ab06122d9cd9828fa455697f1fc7be9406447dc6a681b8"
+}

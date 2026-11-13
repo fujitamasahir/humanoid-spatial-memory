@@ -1,0 +1,12 @@
+{
+  "argv": [
+    ".venv312/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_persistence_evi.py",
+    "tests/test_persistence_evi_evaluation.py",
+    "--junitxml=results/phase2_mujoco/persistence_evi_validation_v1/new_tests.xml",
+    "-q"
+  ],
+  "returncode": 0
+}

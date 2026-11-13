@@ -1,0 +1,81 @@
+{
+  "efficacy_or_baseline_reproduction_claim": false,
+  "rows": [
+    {
+      "arm": "periodic",
+      "blocked_attempts": 0,
+      "contacts": 0,
+      "distance_m": 6.0,
+      "emergency_interventions": 0,
+      "emergency_rays": 488,
+      "emergency_scans": 8,
+      "memory_rays": 183,
+      "paid_scans": 3,
+      "scheduler_ms": null,
+      "steps": 8,
+      "success": true,
+      "unselected_shield_queries": 0
+    },
+    {
+      "arm": "age",
+      "blocked_attempts": 0,
+      "contacts": 0,
+      "distance_m": 6.0,
+      "emergency_interventions": 0,
+      "emergency_rays": 488,
+      "emergency_scans": 8,
+      "memory_rays": 183,
+      "paid_scans": 3,
+      "scheduler_ms": null,
+      "steps": 8,
+      "success": true,
+      "unselected_shield_queries": 0
+    },
+    {
+      "arm": "b_age",
+      "blocked_attempts": 0,
+      "contacts": 0,
+      "distance_m": 6.0,
+      "emergency_interventions": 0,
+      "emergency_rays": 488,
+      "emergency_scans": 8,
+      "memory_rays": 183,
+      "paid_scans": 3,
+      "scheduler_ms": 0.521833,
+      "steps": 8,
+      "success": true,
+      "unselected_shield_queries": 0
+    },
+    {
+      "arm": "c_ternary",
+      "blocked_attempts": 0,
+      "contacts": 0,
+      "distance_m": 6.0,
+      "emergency_interventions": 0,
+      "emergency_rays": 488,
+      "emergency_scans": 8,
+      "memory_rays": 61,
+      "paid_scans": 1,
+      "scheduler_ms": 17.746499,
+      "steps": 8,
+      "success": true,
+      "unselected_shield_queries": 0
+    },
+    {
+      "arm": "bc",
+      "blocked_attempts": 0,
+      "contacts": 0,
+      "distance_m": 6.0,
+      "emergency_interventions": 0,
+      "emergency_rays": 488,
+      "emergency_scans": 8,
+      "memory_rays": 61,
+      "paid_scans": 1,
+      "scheduler_ms": 17.852628,
+      "steps": 8,
+      "success": true,
+      "unselected_shield_queries": 0
+    }
+  ],
+  "status": "COMPLETED_SYNTHETIC_INTEGRATION_ONLY"
+}

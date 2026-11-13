@@ -1,0 +1,9 @@
+{
+  "argv": [
+    ".venv312/bin/python",
+    "-c",
+    "import sys,types,subprocess,pytest\nsys.path.insert(0,'src')\nimport spatial_memory\nm=types.ModuleType('spatial_memory.evaluation')\nm.__package__='spatial_memory'\nexec(subprocess.check_output(['git','show','9fe33e4d13b526f7ed786772e4821ecab5c5983b:src/spatial_memory/evaluation.py'],text=True),m.__dict__)\nsys.modules['spatial_memory.evaluation']=m\nraise SystemExit(pytest.main(['tests/test_phase2_emergency_safety.py::test_multiray_181_matches_saved_sensor_observations_and_reference_intersections','-q']))\n"
+  ],
+  "returncode": 1,
+  "original_evaluation_commit": "9fe33e4d13b526f7ed786772e4821ecab5c5983b"
+}

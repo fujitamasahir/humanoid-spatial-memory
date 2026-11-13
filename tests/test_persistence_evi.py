@@ -163,3 +163,39 @@ def test_uncertainty_without_action_change_postpones():
     assert result['value'] > 0
     assert result['delay_regret'] == 0
     assert result['net_value'] < 0
+
+
+def test_c_controller_authorizes_one_real_refresh_then_consumes_grant():
+    initial = np.zeros((5, 7), dtype=np.int8)
+    initial[1:4, 2] = 1
+    initial[2, 2] = -1
+    agent = PersistenceEVIController(initial, 'age', persistence=False,
+                                     max_observations=20, sensor=SENSOR)
+    agent.set_navigation_context(goal=(5, 2), yaw=0., unknown='optimistic')
+    decision = agent.decide(1, (1, 2))
+    assert decision['observation_granted']
+    assert agent.used == 1  # a grant is not yet a sensor reading
+    with pytest.raises(RuntimeError, match='consumed'):
+        agent.decide(2, (1, 2))
+    observed = initial.copy()
+    observed[2, 2] = 0
+    agent.refresh(observed, 1)
+    assert agent.used == 2
+    assert agent.observation_log[0]['predicted_value'] > 0
+    assert agent.observation_log[0]['observed_candidate_outcome'] == 0
+    with pytest.raises(RuntimeError, match='Unauthorized'):
+        agent.refresh(observed, 1)
+
+
+def test_scarce_budget_can_defer_same_navigation_information():
+    grid = np.zeros((5, 7), dtype=np.int8)
+    grid[1:4, 2] = 1
+    grid[2, 2] = -1
+    probability = np.zeros(grid.shape)
+    probability[2, 2] = .5
+    enough = information_value(grid, probability, (1, 2), (5, 2), 0.,
+                               'optimistic', SENSOR, 19)
+    scarce = information_value(grid, probability, (1, 2), (5, 2), 0.,
+                               'optimistic', SENSOR, 1)
+    assert enough['net_value'] > 0 > scarce['net_value']
+    assert enough['value'] == scarce['value']

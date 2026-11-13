@@ -1,0 +1,21 @@
+{
+  "argv": [
+    ".venv312/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_persistence_evi.py",
+    "tests/test_persistence_evi_evaluation.py",
+    "tests/test_event_observation.py",
+    "tests/test_event_observation_fit72.py",
+    "tests/test_phase2_mujoco.py",
+    "tests/test_phase2_emergency_safety.py",
+    "tests/test_phase2_final_61ray_eval.py",
+    "tests/test_rdao.py",
+    "tests/test_rdao_v2_viewpoint.py",
+    "tests/test_rdao_v21_quality.py",
+    "tests/test_rdao_v22_decision_protected.py",
+    "--junitxml=results/phase2_mujoco/persistence_evi_validation_v1/regression.xml",
+    "-q"
+  ],
+  "returncode": 1
+}

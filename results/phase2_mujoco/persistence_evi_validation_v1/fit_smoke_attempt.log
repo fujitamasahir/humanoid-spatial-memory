@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/evaluate_persistence_evi_fit72.py", line 237, in <module>
+    main()
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/evaluate_persistence_evi_fit72.py", line 178, in main
+    worlds = {w['identity']: w for w in reference.navigation.admitted_worlds()}
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/phase2_mujoco_navigation.py", line 66, in admitted_worlds
+    for payload in checkpoints():
+                   ^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/phase2_mujoco_navigation.py", line 48, in checkpoints
+    raise FileNotFoundError(f'Missing committed fit store: {directory}')
+FileNotFoundError: Missing committed fit store: /Users/masahir0/Desktop/humanoid-spatial-memory/results/raw/phase15_macos_development/fit/records
