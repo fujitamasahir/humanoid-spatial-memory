@@ -275,7 +275,7 @@ def main():
                 payload,key[1],method,json.loads(json.dumps(frozen)),with_safety=True)
             if rdao_evaluator._signature(reference) != rdao_evaluator._signature(reproduced):
                 raise RuntimeError(f"Frozen baseline metric reproduction failed {refkey}")
-            _compare_trace(saved_traces[refkey],baseline_trace)
+            _compare_trace(saved_traces[refkey], base._jsonable_row(baseline_trace))
             candidate,trace = run_candidate(payload,key[1],method,frozen)
             if (not _bool(candidate["g1_shield_query_count_valid"])
                 or int(candidate["g1_unselected_action_shield_queries"]) != 0
