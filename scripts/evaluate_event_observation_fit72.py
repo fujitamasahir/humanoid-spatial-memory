@@ -55,6 +55,24 @@ PROTECTED = (
 )
 
 
+def _noninitial_granted_scan_steps(trace):
+    """Only scheduled memory scans, excluding the initial Step 0 scan.
+
+    The frozen episode loop captures the *initial* observation at Step 0
+    as observation_granted=True. EventObservationController is initialized
+    from that already-realized scan and logs only later authorized refreshes.
+    The initial scan is accounted for separately by 1 + len(log).
+    """
+    frames = trace["steps"]
+    if not frames or int(frames[0]["step"]) != 0 or not bool(
+            frames[0]["observation_granted"]):
+        raise RuntimeError("Trace lacks required Step 0 initial observation")
+    return [
+        int(frame["step"]) for frame in frames
+        if int(frame["step"]) > 0 and bool(frame["observation_granted"])
+    ]
+
+
 def run_candidate(payload, schedule, method, config):
     """Only the observation controller and public-feedback callbacks change.
 
@@ -307,12 +325,13 @@ def main():
                 or int(candidate["observation_count"]) !=
                         1 + len(candidate["event_observation_log"])):
                 raise RuntimeError(f"Event candidate safety/count invariant violated {refkey}")
-            scan_steps=[int(frame["step"]) for frame in trace["steps"]
-                        if frame["observation_granted"]]
+            scan_steps = _noninitial_granted_scan_steps(trace)
             logged_steps=[int(e["step"]) for e in
                           candidate["event_observation_log"]]
             if scan_steps != logged_steps:
-                raise RuntimeError(f"Event realized observation steps differ from log {refkey}")
+                raise RuntimeError(
+                    f"Event realized noninitial observation steps differ "
+                    f"from log {refkey}: trace={scan_steps}, log={logged_steps}")
             if candidate["event_observation_count"] + candidate[
                     "ordinary_observation_count"] != len(scan_steps):
                 raise RuntimeError("Event scan classification did not partition scans")
