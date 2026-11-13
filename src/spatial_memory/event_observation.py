@@ -122,6 +122,7 @@ class EventTriggeredObservationController:
 
     def decide(self, step, position):
         step = int(step)
+        self.last_decision_step = step  # current public decision time for post-action feedback
         if step < 1:
             return {
                 "observation_requested": False,
