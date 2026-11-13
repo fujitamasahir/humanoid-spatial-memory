@@ -1,7 +1,7 @@
 # RDAO v2.2 fit72 findings and freeze-for-independent-evaluation decision
 
 **Date:** 2026-11-12. Development-only result.
-**Repository branch:** \`phase2/mujoco-proxy-pilot\`.
+**Repository branch:** `phase2/mujoco-proxy-pilot`.
 **Worlds:** 36 repeatedly inspected Phase 1.5 B' FIT maze identities,
 2 correlated pedestrian schedules each, horizon80, sensor cap20, seed42.
 **Status:** v2.2 results saved and verified, not promoted to the default
@@ -51,11 +51,11 @@ However, versus v2 viewpoint:
   same, 1 worse.
 
 The three meaningful relative-to-v2 changed cases are:
-1. \`R:80000017\`, schedule0: still reaches, but arrival
+1. `R:80000017`, schedule0: still reaches, but arrival
    **58 -> 73**, distance **29.25 -> 36.75m**, and
    memory scans **10 -> 12**.
-2. \`R:80000018\`, schedule0: reach79 -> H80 failure.
-3. \`R:80000018\`, schedule1: reach79 -> H80 failure.
+2. `R:80000018`, schedule0: reach79 -> H80 failure.
+3. `R:80000018`, schedule1: reach79 -> H80 failure.
 
 The two R:80000018 schedule outcomes are correlated
 because they share the same maze layout. They
@@ -140,7 +140,7 @@ freeze in a separate protocol:
 
 **Access note:** Phase1.5 B' code intentionally
 restricts admitted worlds to the existing FIT store:
-\`scenario_from_bprime\` requires a validated FIT
+`scenario_from_bprime` requires a validated FIT
 payload; the coordinator's production generator is
 disabled unless separately authorized. It is not
 appropriate to directly synthesize records that
