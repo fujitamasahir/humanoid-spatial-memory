@@ -119,6 +119,9 @@ def run_episode(scenario, config, method, seed, *, _controller_factory=None,
         if _emergency_safety_sensor is not None:
             emergency_measurement = _emergency_safety_sensor(
                 world, position, heading_yaw)
+        if hasattr(agent, 'set_navigation_context'):
+            agent.set_navigation_context(goal=scenario.goal, yaw=heading_yaw,
+                                         unknown=config['unknown'])
         decision = agent.decide(world.step, position)
         if decision["observation_granted"]:
             observation = observe()
