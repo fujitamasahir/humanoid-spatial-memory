@@ -132,6 +132,8 @@ class DefeatChoreography:
             raise ValueError('Pinned G1 defeat contact landmarks were not found')
         self.hand_local=np.array([.075,0,0])
         self.targets=None
+        self.settled=None
+        self.arm_anchors={}
         self.hand_orientation={}
         self.hand_clearance={}
         for side,body in zip(('left','right'),self.hand_bodies):
@@ -173,16 +175,21 @@ class DefeatChoreography:
     def hand_pos(self,body):
         return self.data.xpos[body]+self.data.xmat[body].reshape(3,3)@self.hand_local
 
-    def solve_hand(self,side,body,target,bow):
+    def arm_indices(self,side):
         joint_names=[side+'_'+name+'_joint' for name in
                      ('shoulder_pitch','shoulder_roll','shoulder_yaw','elbow',
                       'wrist_roll','wrist_pitch','wrist_yaw')]
-        indices=[self.ids[name] for name in joint_names if name in self.ids]
+        return [self.ids[name] for name in joint_names if name in self.ids]
+
+    def solve_hand(self,side,body,target,bow,orientation=None,precise=False):
+        indices=self.arm_indices(side)
         dofs=[int(self.model.jnt_dofadr[i]) for i in indices]
         jacp=np.zeros((3,self.model.nv));jacr=np.zeros_like(jacp)
-        desired=self.hand_orientation[side]
-        weight=.20*bow
-        for _ in range(45):
+        desired=self.hand_orientation[side] if orientation is None else orientation
+        weight=.27*bow
+        position_tol=.00025 if precise else .002
+        rotation_tol=.002 if precise else .035
+        for _ in range(60 if precise else 55):
             pos=self.hand_pos(body)
             actual=self.data.xmat[body].reshape(3,3)
             error=target-pos
@@ -190,23 +197,72 @@ class DefeatChoreography:
             mj.mju_mat2Quat(quat,(desired@actual.T).ravel())
             if quat[0]<0: quat=-quat
             mj.mju_quat2Vel(angular,quat,1.)
-            if np.linalg.norm(error)<.004 and (bow<.05 or np.linalg.norm(angular)<.06): break
+            if np.linalg.norm(error)<position_tol and (bow<.05 or np.linalg.norm(angular)<rotation_tol): break
             mj.mj_jac(self.model,self.data,jacp,jacr,pos,body)
             J=np.vstack((jacp[:,dofs],weight*jacr[:,dofs]))
             residual=np.concatenate((error,weight*angular))
-            delta=J.T@np.linalg.solve(J@J.T+.0015*np.eye(6),residual)
+            delta=J.T@np.linalg.solve(J@J.T+(.00008 if precise else .0015)*np.eye(6),residual)
             for i,dq in zip(indices,np.clip(delta,-.22,.22)):
                 adr=int(self.model.jnt_qposadr[i])
                 name=mj.mj_id2name(self.model,mj.mjtObj.mjOBJ_JOINT,i)
                 self.set_joint(name,self.data.qpos[adr]+dq)
             mj.mj_forward(self.model,self.data)
 
+    def tremble_arms(self,phase):
+        """Arm self-motion in the planted-palm Jacobian null space.
+
+        Base, knees and spine remain exactly at the settled pose. A correction
+        restores the achieved palm position AND orientation; reject any frame
+        that cannot preserve contact within the small visual tolerance.
+        """
+        m,d=self.model,self.data
+        for side,body in zip(('left','right'),self.hand_bodies):
+            indices=self.arm_indices(side)
+            qadr=[int(m.jnt_qposadr[i]) for i in indices]
+            dofs=[int(m.jnt_dofadr[i]) for i in indices]
+            neutral=d.qpos[qadr].copy()
+            target,orientation=self.arm_anchors[side]
+            jacp=np.zeros((3,m.nv));jacr=np.zeros_like(jacp)
+            mj.mj_jac(m,d,jacp,jacr,self.hand_pos(body),body)
+            J=np.vstack((jacp[:,dofs],.27*jacr[:,dofs]))
+            _,singular,Vt=np.linalg.svd(J,full_matrices=True)
+            rank=int(np.count_nonzero(singular>1e-6))
+            null=Vt[rank:].T
+            if not null.size: continue
+            # Favor elbow swivel / shoulder movement; wrist only compensates.
+            preference=np.array([1. if 'shoulder_yaw' in (mj.mj_id2name(m,mj.mjtObj.mjOBJ_JOINT,i) or '')
+                                 else .65 if 'elbow' in (mj.mj_id2name(m,mj.mjtObj.mjOBJ_JOINT,i) or '')
+                                 else 0. for i in indices])
+            delta=null@(null.T@preference)
+            if np.linalg.norm(delta)<1e-7: delta=null[:,0]
+            delta/=max(np.max(np.abs(delta)),1e-8)
+            sign=1 if side=='left' else -1
+            amplitude=sign*(.075*math.sin(3*phase)+.035*math.sin(5*phase))
+            for factor in (1.,.5,.25):
+                for i,value,shift in zip(indices,neutral,delta):
+                    name=mj.mj_id2name(m,mj.mjtObj.mjOBJ_JOINT,i)
+                    self.set_joint(name,value+factor*amplitude*shift)
+                mj.mj_forward(m,d)
+                self.solve_hand(side,body,target,1.,orientation=orientation,precise=True)
+                pos_error=np.linalg.norm(self.hand_pos(body)-target)
+                rot_error=np.linalg.norm(d.xmat[body].reshape(3,3)-orientation)
+                if pos_error<=.0008 and rot_error<=.006:
+                    break
+            else:
+                d.qpos[qadr]=neutral
+                mj.mj_forward(m,d)
+
     def pose(self,kneel,bow,phase):
-        m,d=self.model,self.data;d.qpos[:]=self.stand
-        # Stable knees-down stage, followed by folding forward onto the palms.
-        # The root pitch and hip angles counterbalance so the knees stay planted.
-        sob=math.sin(phase*3);sway=math.sin(phase*2)
-        pitch=.82*bow+.012*bow*sob
+        m,d=self.model,self.data
+        if kneel==1. and bow==1. and self.settled is not None:
+            d.qpos[:]=self.settled
+            mj.mj_forward(m,d)
+            self.tremble_arms(phase)
+            return
+        d.qpos[:]=self.stand
+        # G1 waist pitch is limited to +/- .52 radians. Combine the
+        # pelvic pitch and waist pitch to make the torso horizontal.
+        pitch=(math.pi/2-.51)*bow
         d.qpos[self.root_adr+3:self.root_adr+7]=(math.cos(pitch/2),0,math.sin(pitch/2),0)
         targets={}
         for side,sign in (('left',1),('right',-1)):
@@ -214,7 +270,7 @@ class DefeatChoreography:
                 side+'_hip_pitch_joint':-.18-pitch,
                 side+'_hip_roll_joint':sign*.07,
                 side+'_hip_yaw_joint':0,
-                side+'_knee_joint':2.14,
+                side+'_knee_joint':2.14-.36*bow,
                 side+'_ankle_pitch_joint':-.82,
                 side+'_ankle_roll_joint':0,
                 side+'_shoulder_pitch_joint':.18-1.77*bow,
@@ -223,14 +279,27 @@ class DefeatChoreography:
                 side+'_elbow_joint':1.36+.17*bow,
                 side+'_wrist_pitch_joint':-.22*bow,
             })
-        targets['waist_pitch_joint']=.49*bow+.014*bow*sob
-        targets['waist_roll_joint']=.012*bow*sway
+        targets['waist_pitch_joint']=.51*bow
+        targets['waist_roll_joint']=0.
         for name,target in targets.items():
             idx=self.ids.get(name)
             if idx is not None:
                 orig=self.stand[int(m.jnt_qposadr[idx])]
                 self.set_joint(name,orig+(target-orig)*kneel)
         mj.mj_forward(m,d)
+        # Measure thigh direction from the real skeleton, not just joint
+        # offsets. With the torso horizontal, vertical thighs form ~90°.
+        if bow>0:
+            for side in ('left','right'):
+                hip=mj.mj_name2id(m,mj.mjtObj.mjOBJ_BODY,side+'_hip_pitch_link')
+                knee=mj.mj_name2id(m,mj.mjtObj.mjOBJ_BODY,side+'_knee_link')
+                name=side+'_hip_pitch_joint'
+                q=int(m.jnt_qposadr[self.ids[name]])
+                for _ in range(4):
+                    v=d.xpos[knee]-d.xpos[hip]
+                    correction=math.atan2(float(v[0]),float(-v[2]))
+                    self.set_joint(name,d.qpos[q]+bow*correction)
+                    mj.mj_forward(m,d)
         d.qpos[self.root_adr+2]+=self.floor-self.lowest()
         mj.mj_forward(m,d)
         if bow>0:
@@ -246,6 +315,10 @@ class DefeatChoreography:
             for side,body,target in zip(('left','right'),self.hand_bodies,self.targets):
                 initial=self.hand_pos(body)
                 self.solve_hand(side,body,initial*(1-bow)+target*bow,bow)
+        if kneel==1. and bow==1.:
+            self.settled=d.qpos.copy()
+            self.arm_anchors={side:(self.hand_pos(body).copy(),d.xmat[body].reshape(3,3).copy())
+                              for side,body in zip(('left','right'),self.hand_bodies)}
 
 def generate(out, motion=None, reaction=None, still_strategy=None):
     src=ROOT/'third_party/unitree_g1/g1.xml'
@@ -355,9 +428,9 @@ def generate(out, motion=None, reaction=None, still_strategy=None):
                     for i in range(total):
                         y,x=divmod(i,COLS)
                         sheet[y*HEIGHT:(y+1)*HEIGHT,x*WIDTH:(x+1)*WIDTH]=render(i)
-                    save(name+'-defeat-motion-v12.png',sheet)
+                    save(name+'-defeat-motion-v13.png',sheet)
                 else:
-                    save(name+'-defeat-pose-v12.png',render())
+                    save(name+'-defeat-pose-v13.png',render())
             elif not motion:
                 save(name+'.png',render())
             else:

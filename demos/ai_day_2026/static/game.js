@@ -3,6 +3,7 @@ const $=id=>document.getElementById(id);let catalog=[],mazeIndex=0,objects=[],pe
 let difficulty='easy',difficultyRules={},pendingDifficulty='easy',settingsOpen=false;
 const LEVELS=['easy','medium','hard'];
 let skipping=false,reviewSteps=[],reviewCursor=0,reviewRequest=0,reviewOpening=false;
+let reviewHold={dir:0,since:0,next:0};
 const rules=()=>difficultyRules[difficulty];
 const colors={wall:'#263647',free:'#101a26',unknown:'#5f6978',memoryFree:'#174247',memoryWall:'#60413a',object:'#f19a43',ped:'#f26970',cyan:'#49e0eb',gold:'#ffca63',robot:'#64b4ff'};
 async function api(url,options={}){const r=await fetch(url,{headers:{'Content-Type':'application/json'},...options});let d=await r.json();if(!r.ok)throw Error(d.detail||d.error||`HTTP ${r.status}`);return d}
@@ -112,8 +113,8 @@ if(settingsOpen){if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(6,()=>setMaze(mazeIndex-1));repeat(7,()=>setMaze(mazeIndex+1));if(edge(14)||edge(12))cycleStrategy(-1);if(edge(15)||edge(13))cycleStrategy(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
 else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
 else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
-else if($('reviewScreen').classList.contains('active')){repeat(14,()=>moveReview(-1));repeat(15,()=>moveReview(1));if(edge(1))closeReview()}
-}else{for(const k of Object.keys(repeats))delete repeats[k]}gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
+else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else updateReviewSeek(gp,cur,now)}
+}else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
 window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
@@ -121,7 +122,7 @@ const motionCache=new Map();let motionToken=0;
 function motionAsset(name,reaction=''){
  const key=name+'|'+reaction;
  if(!motionCache.has(key)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=12'});
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=13'});
   motionCache.set(key,promise);promise.catch(()=>motionCache.delete(key));
  }
  return motionCache.get(key);
@@ -291,7 +292,7 @@ function showResultReaction(name,human,celebrate=true){
   if(token!==resultEffectToken)return;
   console.warn(error);
   canvas.hidden=true;img.hidden=false;
-  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=12';
+  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=13';
  });
 }
 function burstConfetti(token){
@@ -325,7 +326,7 @@ async function openReview(){
   $('reviewStrategy').textContent=r.strategy.toUpperCase();$('reviewDifficulty').textContent=r.difficulty.toUpperCase();
   $('reviewLimit').textContent='/ '+r.step_limit;
   $('reviewSlider').max=String(reviewSteps.length-1);
-  screen('reviewScreen');await renderReview(reviewSteps.length-1);
+  resetReviewHold();screen('reviewScreen');await renderReview(reviewSteps.length-1);
  }catch(error){toast(error.message)}finally{reviewOpening=false}
 }
 async function renderReview(index){
@@ -346,9 +347,30 @@ async function renderReview(index){
   $('reviewStep').textContent=s.step;$('reviewScans').textContent=s.observations;
  }catch(error){if(request===reviewRequest)toast(error.message)}
 }
-function moveReview(delta){renderReview(reviewCursor+delta)}
+function reviewSeek(state,dir,now){
+ if(!dir)return {state:{dir:0,since:0,next:0},delta:0};
+ if(dir!==state.dir)return {state:{dir,since:now,next:now+330},delta:dir};
+ if(now<state.next)return {state,delta:0};
+ const held=now-state.since;
+ const stride=held>=1800?5:held>=900?2:1;
+ const interval=held>=1800?80:held>=900?105:145;
+ return {state:{dir,since:state.since,next:now+interval},delta:dir*stride};
+}
+function resetReviewHold(){reviewHold={dir:0,since:0,next:0}}
+function updateReviewSeek(gp,buttons,now){
+ const x=gp.axes[0]||0;
+ const deadzone=reviewHold.dir?.24:.34;
+ const dir=buttons.has(14)&&buttons.has(15)?0:
+           buttons.has(14)?-1:buttons.has(15)?1:Math.abs(x)>deadzone?Math.sign(x):0;
+ const next=reviewSeek(reviewHold,dir,now);reviewHold=next.state;
+ if(next.delta)moveReview(next.delta);
+}
+function moveReview(delta){
+ const next=Math.max(0,Math.min(reviewSteps.length-1,reviewCursor+delta));
+ if(next!==reviewCursor)renderReview(next);
+}
 function closeReview(){
- ++reviewRequest;
+ resetReviewHold();++reviewRequest;
  if(!$('reviewScreen').classList.contains('active'))return;
  screen('resultScreen');
  if(lastResult)showResultReaction(lastResult.strategy,lastResult.winner==='HUMAN WINS',false);
