@@ -1,6 +1,6 @@
 # BEAT THE HUMANOID: Human vs AI
 
-Offline, local-only visitor game for the BYU AI Day 2026 showcase. Visitors pick one of the **36 admitted Phase 1.5 mazes**, place a small number of static objects and moving pedestrian proxies, choose **Periodic**, **Age**, or **Uncertainty**, and watch the existing Phase 2 G1 navigation policy attempt the maze.
+Offline, local-only visitor game for showcases. Visitors pick one of the **36 admitted Phase 1.5 mazes**, place a small number of static objects and moving pedestrian proxies, choose **Periodic**, **Age**, or **Uncertainty**, and watch the existing Phase 2 G1 navigation policy attempt the maze.
 
 ## Isolation and frozen source
 
