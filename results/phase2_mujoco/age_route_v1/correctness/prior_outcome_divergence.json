@@ -1,0 +1,115 @@
+{
+  "caveat": "Saved-trajectory timing comparison only; not causal replay. Matching previous poses do not certify identical memory or simulator state.",
+  "changed_outcomes": [
+    {
+      "age_granted_at_difference": true,
+      "age_paid": 20,
+      "age_success": true,
+      "episode": 26,
+      "first_common_step_grant_difference": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000",
+      "previous_saved_pose_equal": true,
+      "schedule": 1,
+      "veto_decision_at_difference": {
+        "age_request": true,
+        "age_score": 1.0,
+        "deadline": false,
+        "reason": "defer",
+        "used_before": 1,
+        "view_request": false,
+        "view_score": 0.0
+      },
+      "veto_granted_at_difference": false,
+      "veto_paid": 20,
+      "veto_success": false
+    },
+    {
+      "age_granted_at_difference": true,
+      "age_paid": 20,
+      "age_success": false,
+      "episode": 40,
+      "first_common_step_grant_difference": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "previous_saved_pose_equal": true,
+      "schedule": 1,
+      "veto_decision_at_difference": {
+        "age_request": true,
+        "age_score": 1.0,
+        "deadline": false,
+        "reason": "defer",
+        "used_before": 1,
+        "view_request": false,
+        "view_score": 0.0
+      },
+      "veto_granted_at_difference": false,
+      "veto_paid": 15,
+      "veto_success": true
+    },
+    {
+      "age_granted_at_difference": true,
+      "age_paid": 17,
+      "age_success": true,
+      "episode": 50,
+      "first_common_step_grant_difference": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "previous_saved_pose_equal": true,
+      "schedule": 1,
+      "veto_decision_at_difference": {
+        "age_request": true,
+        "age_score": 1.0,
+        "deadline": false,
+        "reason": "defer",
+        "used_before": 1,
+        "view_request": false,
+        "view_score": 0.0
+      },
+      "veto_granted_at_difference": false,
+      "veto_paid": 20,
+      "veto_success": false
+    },
+    {
+      "age_granted_at_difference": true,
+      "age_paid": 13,
+      "age_success": true,
+      "episode": 63,
+      "first_common_step_grant_difference": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "previous_saved_pose_equal": true,
+      "schedule": 0,
+      "veto_decision_at_difference": {
+        "age_request": true,
+        "age_score": 1.0,
+        "deadline": false,
+        "reason": "defer",
+        "used_before": 1,
+        "view_request": false,
+        "view_score": 0.0
+      },
+      "veto_granted_at_difference": false,
+      "veto_paid": 11,
+      "veto_success": false
+    },
+    {
+      "age_granted_at_difference": true,
+      "age_paid": 13,
+      "age_success": true,
+      "episode": 64,
+      "first_common_step_grant_difference": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "previous_saved_pose_equal": true,
+      "schedule": 1,
+      "veto_decision_at_difference": {
+        "age_request": true,
+        "age_score": 1.0,
+        "deadline": false,
+        "reason": "defer",
+        "used_before": 1,
+        "view_request": false,
+        "view_score": 0.0
+      },
+      "veto_granted_at_difference": false,
+      "veto_paid": 11,
+      "veto_success": false
+    }
+  ]
+}

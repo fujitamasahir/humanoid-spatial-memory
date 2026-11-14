@@ -1,0 +1,53 @@
+{
+  "base": "3e381a8d32a966a02f697020e063e35c1098855d",
+  "commit": "d3d13dbd4de53a5152ea344dc5f8befc9fe574bf",
+  "config": {
+    "common_horizon_metrics": true,
+    "g1_navigation": {
+      "footprint_source": "pinned G1 collision geometry",
+      "forward_translation_default": true,
+      "local_half_extents_m": [
+        0.218954831277208,
+        0.3279970912029507
+      ],
+      "motion": "cardinal kinematic translation with separate in-place turns",
+      "observed_occupancy_only": true,
+      "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+      "rejected_action_history": true,
+      "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+      "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+      "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+    },
+    "max_observations": 20,
+    "max_steps": 80,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_ray_sensor": {
+      "horizontal_fov_deg": 120.0,
+      "range_m": 6.0,
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "sensor_backend": "mujoco3d",
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "descriptive_not_independent": true,
+  "reference_manifest_sha256": "8f2e8cd2113c68131ba6b8e572d6f3950fdc8427c7da5eebaddbd68b152882ca",
+  "source_sha256": {
+    "docs/age_route_protocol.md": "7f646166f0eb8d489d5266e98f7e9dde31ff65523dfece60969ccb20493f944f",
+    "scripts/run_age_route_fit72.py": "037bb80fbee56feb7bdc773f10c4c027a6ae28add8a43d6bef5bdb9bb9417acf",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/route_age.py": "dc6335fbfe1793328895c55a6b18fd9296afb7f9a2c8b5b97296189cde378da3",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/view_age.py": "b6cd1202f23a01c69f5838f9214f55245bb32f3ecf223968f432e858c5b37561",
+    "tests/test_route_age.py": "4519270766c6ec826e5101dfd5e850e152069947990c7aba782100daf34f406d"
+  }
+}
