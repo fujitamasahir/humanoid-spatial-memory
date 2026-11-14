@@ -1,0 +1,9 @@
+{
+  "demo_branch": "demo/ai-day-2026",
+  "research_branch_at_creation": "phase2/mujoco-proxy-pilot",
+  "research_commit_at_creation": "b6cb1fa233fbcd30b7ea26e88b865a69db96b91e",
+  "demo_branch_existing_at_task_start": true,
+  "demo_branch_head_at_task_start": "b6cb1fa233fbcd30b7ea26e88b865a69db96b91e",
+  "merge_base_at_task_start": "b6cb1fa233fbcd30b7ea26e88b865a69db96b91e",
+  "note": "Development is isolated on demo/ai-day-2026. No merge, rebase, or push to the research branch is intended."
+}
