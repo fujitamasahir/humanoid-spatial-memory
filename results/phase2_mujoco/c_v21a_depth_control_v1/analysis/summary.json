@@ -1,0 +1,473 @@
+{
+  "arms": {
+    "age": {
+      "episodes": 72,
+      "goals": 66,
+      "mean_blocked_attempts": 0.5,
+      "mean_combined_rays": 3189.7916666666665,
+      "mean_elapsed_steps": 40.486111111111114,
+      "mean_emergency_safety_interventions": 0.06944444444444445,
+      "mean_episode_wall_time_seconds": 0.15323760994444444,
+      "mean_paid_memory_scans": 11.805555555555555,
+      "mean_scheduler_ms": 1.1657961666666667,
+      "mean_travel_distance_m": 22.395833333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "c0": {
+      "episodes": 72,
+      "goals": 46,
+      "mean_blocked_attempts": 7.097222222222222,
+      "mean_combined_rays": 3579.5138888888887,
+      "mean_elapsed_steps": 53.30555555555556,
+      "mean_emergency_safety_interventions": 0.5555555555555556,
+      "mean_episode_wall_time_seconds": 0.339961579875,
+      "mean_paid_memory_scans": 5.375,
+      "mean_scheduler_ms": 152.48179711111112,
+      "mean_travel_distance_m": 21.041666666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "c_k": {
+      "episodes": 72,
+      "goals": 54,
+      "mean_blocked_attempts": 6.027777777777778,
+      "mean_combined_rays": 3503.2638888888887,
+      "mean_elapsed_steps": 51.138888888888886,
+      "mean_emergency_safety_interventions": 0.5555555555555556,
+      "mean_episode_wall_time_seconds": 0.33358295768055557,
+      "mean_paid_memory_scans": 6.291666666666667,
+      "mean_scheduler_ms": 151.50105780555555,
+      "mean_travel_distance_m": 21.21875,
+      "mean_unwanted_contacts": 0
+    },
+    "c_topology3d": {
+      "episodes": 72,
+      "goals": 52,
+      "mean_blocked_attempts": 4.597222222222222,
+      "mean_combined_rays": 3543.9305555555557,
+      "mean_elapsed_steps": 49.68055555555556,
+      "mean_emergency_safety_interventions": 0.2361111111111111,
+      "mean_episode_wall_time_seconds": 0.4761394086388889,
+      "mean_paid_memory_scans": 8.416666666666666,
+      "mean_scheduler_ms": 288.35893144444447,
+      "mean_travel_distance_m": 22.40625,
+      "mean_unwanted_contacts": 0
+    },
+    "h1_k": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.4305555555555554,
+      "mean_combined_rays": 3715.0694444444443,
+      "mean_elapsed_steps": 45.19444444444444,
+      "mean_emergency_safety_interventions": 0.3055555555555556,
+      "mean_episode_wall_time_seconds": 0.2656584207361111,
+      "mean_paid_memory_scans": 15.708333333333334,
+      "mean_scheduler_ms": 95.75767929166666,
+      "mean_travel_distance_m": 21.510416666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "h1_topology": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.125,
+      "mean_combined_rays": 3667.625,
+      "mean_elapsed_steps": 44.333333333333336,
+      "mean_emergency_safety_interventions": 0.2638888888888889,
+      "mean_episode_wall_time_seconds": 0.37169572916666666,
+      "mean_paid_memory_scans": 15.791666666666666,
+      "mean_scheduler_ms": 204.9157512361111,
+      "mean_travel_distance_m": 21.302083333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_k": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.4305555555555554,
+      "mean_combined_rays": 3715.0694444444443,
+      "mean_elapsed_steps": 45.19444444444444,
+      "mean_emergency_safety_interventions": 0.3055555555555556,
+      "mean_episode_wall_time_seconds": 0.2668822807361111,
+      "mean_paid_memory_scans": 15.708333333333334,
+      "mean_scheduler_ms": 98.75927244444445,
+      "mean_travel_distance_m": 21.510416666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_topology": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.125,
+      "mean_combined_rays": 3667.625,
+      "mean_elapsed_steps": 44.333333333333336,
+      "mean_emergency_safety_interventions": 0.2638888888888889,
+      "mean_episode_wall_time_seconds": 0.3687328460138889,
+      "mean_paid_memory_scans": 15.791666666666666,
+      "mean_scheduler_ms": 202.43961243055554,
+      "mean_travel_distance_m": 21.302083333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "periodic": {
+      "episodes": 72,
+      "goals": 66,
+      "mean_blocked_attempts": 0.6527777777777778,
+      "mean_combined_rays": 3252.4861111111113,
+      "mean_elapsed_steps": 42.208333333333336,
+      "mean_emergency_safety_interventions": 0.09722222222222222,
+      "mean_episode_wall_time_seconds": 0.182265090375,
+      "mean_paid_memory_scans": 11.11111111111111,
+      "mean_scheduler_ms": 0.06939969444444445,
+      "mean_travel_distance_m": 23.041666666666668,
+      "mean_unwanted_contacts": 0
+    }
+  },
+  "caveat": "36 previously reused maze lineages; two schedules are correlated. No independent validation.",
+  "paired": [
+    {
+      "all_episode_delta": {
+        "blocked_attempts": -2.5972222222222223,
+        "combined_rays": 211.80555555555554,
+        "elapsed_steps": -5.944444444444445,
+        "emergency_safety_interventions": -0.25,
+        "episode_wall_time_seconds": -0.06792453694444445,
+        "paid_memory_scans": 9.416666666666666,
+        "scheduler_ms": -55.743378513888885,
+        "travel_distance_m": 0.2916666666666667,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_k",
+      "common_success_delta": {
+        "blocked_attempts": -1.3584905660377358,
+        "combined_rays": 211.77358490566039,
+        "elapsed_steps": -4.867924528301887,
+        "emergency_safety_interventions": -0.1320754716981132,
+        "episode_wall_time_seconds": -0.037982079358490566,
+        "paid_memory_scans": 8.339622641509434,
+        "scheduler_ms": -31.320510396226414,
+        "travel_distance_m": -1.0471698113207548,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 53,
+      "harms": 1,
+      "reference": "c_k",
+      "rescues": 4
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 0,
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": 0.0012238599999999991,
+        "paid_memory_scans": 0,
+        "scheduler_ms": 3.0015931527777786,
+        "travel_distance_m": 0.0,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_k",
+      "common_success_delta": {
+        "blocked_attempts": 0,
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": -6.901378947368557e-05,
+        "paid_memory_scans": 0,
+        "scheduler_ms": 2.364548736842105,
+        "travel_distance_m": 0.0,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 57,
+      "harms": 0,
+      "reference": "h1_k",
+      "rescues": 0
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": -1.4722222222222223,
+        "combined_rays": 123.69444444444444,
+        "elapsed_steps": -5.347222222222222,
+        "emergency_safety_interventions": 0.027777777777777776,
+        "episode_wall_time_seconds": -0.10444367947222222,
+        "paid_memory_scans": 7.375,
+        "scheduler_ms": -83.44318020833333,
+        "travel_distance_m": -1.1041666666666667,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_topology",
+      "common_success_delta": {
+        "blocked_attempts": -1.0961538461538463,
+        "combined_rays": 215.84615384615384,
+        "elapsed_steps": -4.096153846153846,
+        "emergency_safety_interventions": -0.1346153846153846,
+        "episode_wall_time_seconds": -0.05478355453846154,
+        "paid_memory_scans": 7.634615384615385,
+        "scheduler_ms": -45.60471371153846,
+        "travel_distance_m": -1.0384615384615385,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 52,
+      "harms": 0,
+      "reference": "c_topology3d",
+      "rescues": 5
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 0,
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": -0.002962883152777782,
+        "paid_memory_scans": 0,
+        "scheduler_ms": -2.4761388055555575,
+        "travel_distance_m": 0.0,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_topology",
+      "common_success_delta": {
+        "blocked_attempts": 0,
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": -0.0020396258070175463,
+        "paid_memory_scans": 0,
+        "scheduler_ms": -2.4996388421052638,
+        "travel_distance_m": 0.0,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 57,
+      "harms": 0,
+      "reference": "h1_topology",
+      "rescues": 0
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.9305555555555554,
+        "combined_rays": 525.2777777777778,
+        "elapsed_steps": 4.708333333333333,
+        "emergency_safety_interventions": 0.2361111111111111,
+        "episode_wall_time_seconds": 0.11242081079166666,
+        "paid_memory_scans": 3.9027777777777777,
+        "scheduler_ms": 94.591883125,
+        "travel_distance_m": -0.8854166666666666,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_k",
+      "common_success_delta": {
+        "blocked_attempts": 1.3392857142857142,
+        "combined_rays": 577.3214285714286,
+        "elapsed_steps": 3.4285714285714284,
+        "emergency_safety_interventions": 0.017857142857142856,
+        "episode_wall_time_seconds": 0.09384297541071429,
+        "paid_memory_scans": 6.035714285714286,
+        "scheduler_ms": 77.52719207142857,
+        "travel_distance_m": 0.4017857142857143,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 56,
+      "harms": 10,
+      "reference": "age",
+      "rescues": 1
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.7777777777777777,
+        "combined_rays": 462.5833333333333,
+        "elapsed_steps": 2.986111111111111,
+        "emergency_safety_interventions": 0.20833333333333334,
+        "episode_wall_time_seconds": 0.08339333036111111,
+        "paid_memory_scans": 4.597222222222222,
+        "scheduler_ms": 95.68827959722222,
+        "travel_distance_m": -1.53125,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_k",
+      "common_success_delta": {
+        "blocked_attempts": 1.1454545454545455,
+        "combined_rays": 529.0363636363636,
+        "elapsed_steps": 1.8727272727272728,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": 0.05706257565454546,
+        "paid_memory_scans": 6.8,
+        "scheduler_ms": 76.43754363636364,
+        "travel_distance_m": -0.02727272727272727,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 55,
+      "harms": 11,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.9305555555555554,
+        "combined_rays": 525.2777777777778,
+        "elapsed_steps": 4.708333333333333,
+        "emergency_safety_interventions": 0.2361111111111111,
+        "episode_wall_time_seconds": 0.11364467079166667,
+        "paid_memory_scans": 3.9027777777777777,
+        "scheduler_ms": 97.59347627777778,
+        "travel_distance_m": -0.8854166666666666,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_k",
+      "common_success_delta": {
+        "blocked_attempts": 1.3392857142857142,
+        "combined_rays": 577.3214285714286,
+        "elapsed_steps": 3.4285714285714284,
+        "emergency_safety_interventions": 0.017857142857142856,
+        "episode_wall_time_seconds": 0.09353965483928571,
+        "paid_memory_scans": 6.035714285714286,
+        "scheduler_ms": 79.86926848214286,
+        "travel_distance_m": 0.4017857142857143,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 56,
+      "harms": 10,
+      "reference": "age",
+      "rescues": 1
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.7777777777777777,
+        "combined_rays": 462.5833333333333,
+        "elapsed_steps": 2.986111111111111,
+        "emergency_safety_interventions": 0.20833333333333334,
+        "episode_wall_time_seconds": 0.08461719036111111,
+        "paid_memory_scans": 4.597222222222222,
+        "scheduler_ms": 98.68987275,
+        "travel_distance_m": -1.53125,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_k",
+      "common_success_delta": {
+        "blocked_attempts": 1.1454545454545455,
+        "combined_rays": 529.0363636363636,
+        "elapsed_steps": 1.8727272727272728,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": 0.05666447803636364,
+        "paid_memory_scans": 6.8,
+        "scheduler_ms": 78.74814032727272,
+        "travel_distance_m": -0.02727272727272727,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 55,
+      "harms": 11,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.625,
+        "combined_rays": 477.8333333333333,
+        "elapsed_steps": 3.8472222222222223,
+        "emergency_safety_interventions": 0.19444444444444445,
+        "episode_wall_time_seconds": 0.21845811922222222,
+        "paid_memory_scans": 3.986111111111111,
+        "scheduler_ms": 203.74995506944444,
+        "travel_distance_m": -1.09375,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_topology",
+      "common_success_delta": {
+        "blocked_attempts": 1.0357142857142858,
+        "combined_rays": 518.5,
+        "elapsed_steps": 2.3392857142857144,
+        "emergency_safety_interventions": 0.017857142857142856,
+        "episode_wall_time_seconds": 0.1842645587857143,
+        "paid_memory_scans": 6.160714285714286,
+        "scheduler_ms": 173.275662875,
+        "travel_distance_m": 0.08035714285714286,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 56,
+      "harms": 10,
+      "reference": "age",
+      "rescues": 1
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.4722222222222223,
+        "combined_rays": 415.1388888888889,
+        "elapsed_steps": 2.125,
+        "emergency_safety_interventions": 0.16666666666666666,
+        "episode_wall_time_seconds": 0.18943063879166666,
+        "paid_memory_scans": 4.680555555555555,
+        "scheduler_ms": 204.84635154166668,
+        "travel_distance_m": -1.7395833333333333,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h1_topology",
+      "common_success_delta": {
+        "blocked_attempts": 0.8545454545454545,
+        "combined_rays": 471.3636363636364,
+        "elapsed_steps": 0.7818181818181819,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": 0.14640391887272727,
+        "paid_memory_scans": 6.945454545454545,
+        "scheduler_ms": 171.22822516363635,
+        "travel_distance_m": -0.35454545454545455,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 55,
+      "harms": 11,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.625,
+        "combined_rays": 477.8333333333333,
+        "elapsed_steps": 3.8472222222222223,
+        "emergency_safety_interventions": 0.19444444444444445,
+        "episode_wall_time_seconds": 0.21549523606944446,
+        "paid_memory_scans": 3.986111111111111,
+        "scheduler_ms": 201.27381626388888,
+        "travel_distance_m": -1.09375,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_topology",
+      "common_success_delta": {
+        "blocked_attempts": 1.0357142857142858,
+        "combined_rays": 518.5,
+        "elapsed_steps": 2.3392857142857144,
+        "emergency_safety_interventions": 0.017857142857142856,
+        "episode_wall_time_seconds": 0.18219262344642856,
+        "paid_memory_scans": 6.160714285714286,
+        "scheduler_ms": 170.73084225,
+        "travel_distance_m": 0.08035714285714286,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 56,
+      "harms": 10,
+      "reference": "age",
+      "rescues": 1
+    },
+    {
+      "all_episode_delta": {
+        "blocked_attempts": 2.4722222222222223,
+        "combined_rays": 415.1388888888889,
+        "elapsed_steps": 2.125,
+        "emergency_safety_interventions": 0.16666666666666666,
+        "episode_wall_time_seconds": 0.1864677556388889,
+        "paid_memory_scans": 4.680555555555555,
+        "scheduler_ms": 202.3702127361111,
+        "travel_distance_m": -1.7395833333333333,
+        "unwanted_contacts": 0
+      },
+      "candidate": "h3_topology",
+      "common_success_delta": {
+        "blocked_attempts": 0.8545454545454545,
+        "combined_rays": 471.3636363636364,
+        "elapsed_steps": 0.7818181818181819,
+        "emergency_safety_interventions": 0,
+        "episode_wall_time_seconds": 0.1443192316909091,
+        "paid_memory_scans": 6.945454545454545,
+        "scheduler_ms": 168.85327601818182,
+        "travel_distance_m": -0.35454545454545455,
+        "unwanted_contacts": 0
+      },
+      "common_successes": 55,
+      "harms": 11,
+      "reference": "periodic",
+      "rescues": 2
+    }
+  ],
+  "status": "DESCRIPTIVE_DEPTH_ABLATION"
+}

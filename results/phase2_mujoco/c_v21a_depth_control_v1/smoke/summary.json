@@ -1,0 +1,59 @@
+{
+  "arms": {
+    "h1_k": {
+      "episodes": 2,
+      "goals": 2,
+      "mean_blocked_attempts": 0,
+      "mean_combined_rays": 2501,
+      "mean_elapsed_steps": 27,
+      "mean_emergency_safety_interventions": 0,
+      "mean_episode_wall_time_seconds": 0.298066458,
+      "mean_paid_memory_scans": 14,
+      "mean_scheduler_ms": 77.69679149999999,
+      "mean_travel_distance_m": 15.75,
+      "mean_unwanted_contacts": 0
+    },
+    "h1_topology": {
+      "episodes": 2,
+      "goals": 2,
+      "mean_blocked_attempts": 0,
+      "mean_combined_rays": 2745,
+      "mean_elapsed_steps": 27,
+      "mean_emergency_safety_interventions": 0,
+      "mean_episode_wall_time_seconds": 0.2813969375,
+      "mean_paid_memory_scans": 18,
+      "mean_scheduler_ms": 162.297311,
+      "mean_travel_distance_m": 15.75,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_k": {
+      "episodes": 2,
+      "goals": 2,
+      "mean_blocked_attempts": 0,
+      "mean_combined_rays": 2501,
+      "mean_elapsed_steps": 27,
+      "mean_emergency_safety_interventions": 0,
+      "mean_episode_wall_time_seconds": 0.1980130835,
+      "mean_paid_memory_scans": 14,
+      "mean_scheduler_ms": 79.0664175,
+      "mean_travel_distance_m": 15.75,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_topology": {
+      "episodes": 2,
+      "goals": 2,
+      "mean_blocked_attempts": 0,
+      "mean_combined_rays": 2745,
+      "mean_elapsed_steps": 27,
+      "mean_emergency_safety_interventions": 0,
+      "mean_episode_wall_time_seconds": 0.2924874375,
+      "mean_paid_memory_scans": 18,
+      "mean_scheduler_ms": 172.535186,
+      "mean_travel_distance_m": 15.75,
+      "mean_unwanted_contacts": 0
+    }
+  },
+  "episodes": 8,
+  "h3_replay_parity": true,
+  "status": "PASS_SMOKE"
+}
