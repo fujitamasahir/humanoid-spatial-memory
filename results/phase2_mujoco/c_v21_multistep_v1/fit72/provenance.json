@@ -1,0 +1,44 @@
+{
+  "FIT_is_descriptive_not_independent": true,
+  "binding_sha256": "dbc7e6f4c86b5ccabf2bafb61b17d6d36ddfee8ca68509ddf9b8f8cbe3659fa1",
+  "config": {
+    "common_horizon_metrics": true,
+    "g1_navigation": {
+      "footprint_source": "pinned G1 collision geometry",
+      "forward_translation_default": true,
+      "local_half_extents_m": [
+        0.218954831277208,
+        0.3279970912029507
+      ],
+      "motion": "cardinal kinematic translation with separate in-place turns",
+      "observed_occupancy_only": true,
+      "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+      "rejected_action_history": true,
+      "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+      "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+      "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+    },
+    "max_observations": 20,
+    "max_steps": 80,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_ray_sensor": {
+      "horizontal_fov_deg": 120.0,
+      "range_m": 6.0,
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "sensor_backend": "mujoco3d",
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "review_sha256": "e02fd22d57a3768e5d72f5312bb30f7b37ad81387cce620c15b9bcd3f8067067",
+  "same_machine_references": "../reference_replays",
+  "source_commit": "c504a8c7486eb27136fed4ddba8585253a62eb87"
+}

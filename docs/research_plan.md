@@ -107,3 +107,11 @@ The formal synthetic gate and isolated conformance review must both pass
 before any new-policy navigation screen. The original Phase1.5 population and
 unapproved independent cohorts remain unchanged. No automatic G1-aware EVI
 follow-on is authorized by this task.
+
+C v2.1 v1 completed the numerical synthetic gate and isolated conformance
+review, followed by its conditional smoke, 288 new-policy FIT episodes and
+two actual-scan schedule contrasts in one maze. All four new policies reached
+57/72, with zero unwanted contacts but substantially increased paid sensing.
+The joint sensing/navigation objective failed; no independent cohort or
+automatic G1-aware follow-on was executed. See
+[`c_v21_multistep_research_report.md`](c_v21_multistep_research_report.md).

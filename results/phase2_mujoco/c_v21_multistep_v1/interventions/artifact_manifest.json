@@ -1,0 +1,32 @@
+[
+  {
+    "bytes": 19238,
+    "path": "episode_001_scan_later.json.gz",
+    "sha256": "f4dc03290186c856f5c6332436e870dbde7b6b7e10202b71dc8b8fa1de2f5f4c"
+  },
+  {
+    "bytes": 19012,
+    "path": "episode_001_scan_now.json.gz",
+    "sha256": "3fb1e74416480ad1f41786422142c63e1aae59818090c68679f8259195bd09f0"
+  },
+  {
+    "bytes": 19222,
+    "path": "episode_002_scan_later.json.gz",
+    "sha256": "1da14f905409fe1fe00d1cadd22b69e0a40901ebafa23fab7e7e95fef1e50df7"
+  },
+  {
+    "bytes": 18973,
+    "path": "episode_002_scan_now.json.gz",
+    "sha256": "f945a22c028a57791fa8b7ddb93b55528377c5abe14b1207fb4a884e7c761d2b"
+  },
+  {
+    "bytes": 589,
+    "path": "selection_before_replays.json",
+    "sha256": "d6bb5173bbdcb892d6bc3143d92d07d9a4df5ec18264f9ba7b88d345b111950c"
+  },
+  {
+    "bytes": 7101,
+    "path": "summary.json",
+    "sha256": "fdecd6cb51cabaf6ec218b5452c4cdb91c95dd0f0442518ad149e1c1fb25af38"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "scripts/evaluate_c_v21_fit72.py"
+  ],
+  "elapsed_seconds": 186.95665849998477,
+  "peak_process_rss_bytes": 857948160,
+  "rss_unit": "bytes on macOS",
+  "status": "COMPLETED"
+}

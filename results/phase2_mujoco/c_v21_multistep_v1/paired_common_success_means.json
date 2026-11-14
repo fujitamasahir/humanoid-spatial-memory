@@ -1,0 +1,86 @@
+[
+  {
+    "candidate": "ms_k",
+    "mean_steps_distance": {
+      "C-K": [
+        40.79245283018868,
+        19.867924528301888
+      ],
+      "ms_k": [
+        35.924528301886795,
+        18.82075471698113
+      ]
+    },
+    "reference": "C-K"
+  },
+  {
+    "candidate": "ms_k_visibility",
+    "mean_steps_distance": {
+      "C-K": [
+        40.79245283018868,
+        19.867924528301888
+      ],
+      "ms_k_visibility": [
+        35.84905660377358,
+        18.82075471698113
+      ]
+    },
+    "reference": "C-K"
+  },
+  {
+    "candidate": "ms_topology",
+    "mean_steps_distance": {
+      "C-Topology3-d": [
+        38.01923076923077,
+        19.08173076923077
+      ],
+      "ms_topology": [
+        33.92307692307692,
+        18.04326923076923
+      ]
+    },
+    "reference": "C-Topology3-d"
+  },
+  {
+    "candidate": "ms_topology_visibility",
+    "mean_steps_distance": {
+      "C-Topology3-d": [
+        38.01923076923077,
+        19.08173076923077
+      ],
+      "ms_topology_visibility": [
+        33.92307692307692,
+        18.04326923076923
+      ]
+    },
+    "reference": "C-Topology3-d"
+  },
+  {
+    "candidate": "ms_k_visibility",
+    "mean_steps_distance": {
+      "ms_k": [
+        36.03508771929825,
+        18.82894736842105
+      ],
+      "ms_k_visibility": [
+        35.98245614035088,
+        18.82894736842105
+      ]
+    },
+    "reference": "ms_k"
+  },
+  {
+    "candidate": "ms_topology_visibility",
+    "mean_steps_distance": {
+      "ms_topology": [
+        34.94736842105263,
+        18.513157894736842
+      ],
+      "ms_topology_visibility": [
+        34.94736842105263,
+        18.513157894736842
+      ]
+    },
+    "reference": "ms_topology"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "chosen": [
+    {
+      "arm": "ms_k_visibility",
+      "episode": 7,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      "schedule": 0,
+      "step": 10,
+      "used_before": 7
+    },
+    {
+      "arm": "ms_k_visibility",
+      "episode": 8,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+      "schedule": 1,
+      "step": 10,
+      "used_before": 7
+    }
+  ],
+  "eligible_states": 15,
+  "rule": "lexicographic same-prefix opportunity disagreement; max2 distinct keys; no outcome selection",
+  "source_commit": "c504a8c7486eb27136fed4ddba8585253a62eb87"
+}

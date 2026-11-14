@@ -1,0 +1,111 @@
+{
+  "artifact_files_verified": {
+    "fit72": 291,
+    "fit_smoke2": 11,
+    "interventions": 6,
+    "reference_replays": 362
+  },
+  "episodes_verified": 660,
+  "fixture_population_unchanged": true,
+  "frozen_source_unchanged": true,
+  "future_visibility_caveat": "Selected target observed at a real scan does not validate future observability, which may have no actual reading.",
+  "intervention_full_prefix_checks": [
+    {
+      "case": 1,
+      "first_actual_action_pose_heading_difference": 12,
+      "full_predecision_trace_equal": true,
+      "full_untreated_trace_equal": true,
+      "selection": {
+        "arm": "ms_k_visibility",
+        "episode": 7,
+        "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+        "schedule": 0,
+        "step": 10,
+        "used_before": 7
+      }
+    },
+    {
+      "case": 2,
+      "first_actual_action_pose_heading_difference": 12,
+      "full_predecision_trace_equal": true,
+      "full_untreated_trace_equal": true,
+      "selection": {
+        "arm": "ms_k_visibility",
+        "episode": 8,
+        "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004",
+        "schedule": 1,
+        "step": 10,
+        "used_before": 7
+      }
+    }
+  ],
+  "legacy_alias_warning": "Do not use frozen fit.flat evi_* one-step classifiers or its zero copy-read fallback for new arms; direct multi-step decision fields above are authoritative. Original files preserved.",
+  "multistep_counters_and_observation_diagnostics": {
+    "ms_k": {
+      "active_mean_V": 1.7706927137800847,
+      "active_mean_delay": 0.21117779645679124,
+      "actual_noninitial_grants": 1059,
+      "authorization_reasons": {
+        "budget_exhausted": 699,
+        "no_information_is_cheaper": 1313,
+        "postpone_without_extra_expected_cost": 183,
+        "scan_avoids_lost_opportunity_or_delay": 1059
+      },
+      "budget_skipped_decisions": 699,
+      "counterfactual_grid_copy_cell_reads": 15891250,
+      "predicted_target_not_seen_at_actual_scan": 71,
+      "predicted_target_visible_at_actual_scan": 988,
+      "scored_decisions": 2555
+    },
+    "ms_k_visibility": {
+      "active_mean_V": 1.7790454121789876,
+      "active_mean_delay": 0.1254164805603803,
+      "actual_noninitial_grants": 1064,
+      "authorization_reasons": {
+        "budget_exhausted": 701,
+        "no_information_is_cheaper": 1313,
+        "postpone_without_extra_expected_cost": 173,
+        "scan_avoids_lost_opportunity_or_delay": 1064
+      },
+      "budget_skipped_decisions": 701,
+      "counterfactual_grid_copy_cell_reads": 15860000,
+      "predicted_target_not_seen_at_actual_scan": 81,
+      "predicted_target_visible_at_actual_scan": 983,
+      "scored_decisions": 2550
+    },
+    "ms_topology": {
+      "active_mean_V": 1.6706679583607116,
+      "active_mean_delay": 0.21070267365811002,
+      "actual_noninitial_grants": 1065,
+      "authorization_reasons": {
+        "budget_exhausted": 606,
+        "no_information_is_cheaper": 1333,
+        "postpone_without_extra_expected_cost": 188,
+        "scan_avoids_lost_opportunity_or_delay": 1065
+      },
+      "budget_skipped_decisions": 606,
+      "counterfactual_grid_copy_cell_reads": 9697500,
+      "predicted_target_not_seen_at_actual_scan": 87,
+      "predicted_target_visible_at_actual_scan": 978,
+      "scored_decisions": 2586
+    },
+    "ms_topology_visibility": {
+      "active_mean_V": 1.6623905339119216,
+      "active_mean_delay": 0.15792212949238849,
+      "actual_noninitial_grants": 1065,
+      "authorization_reasons": {
+        "budget_exhausted": 609,
+        "no_information_is_cheaper": 1336,
+        "postpone_without_extra_expected_cost": 182,
+        "scan_avoids_lost_opportunity_or_delay": 1065
+      },
+      "budget_skipped_decisions": 609,
+      "counterfactual_grid_copy_cell_reads": 9686250,
+      "predicted_target_not_seen_at_actual_scan": 94,
+      "predicted_target_visible_at_actual_scan": 971,
+      "scored_decisions": 2583
+    }
+  },
+  "postprocessing_source_sha256": "2dabf48051f9de357d21ba19f9fb639bbaef4347a2af453daaf6afb35971b33f",
+  "status": "PASS_POSTRUN_REPORTING_AND_SENSOR_SAFETY_CHECKS"
+}
