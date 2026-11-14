@@ -1,0 +1,27 @@
+[
+  {
+    "bytes": 101354,
+    "path": "discovery.png",
+    "sha256": "47fc0d5d1acfd7cbc4a5cde69f1adf8743db352dfe755186851225d5b7d1963e"
+  },
+  {
+    "bytes": 30355,
+    "path": "episode_records.csv",
+    "sha256": "cc33be1e9f55f82bbdd674c7ffdd8bbba5d938dafc1bf9968dbdb22c0bcbbba2"
+  },
+  {
+    "bytes": 634752,
+    "path": "scan_records.csv",
+    "sha256": "700e2969351a07779d8eb10d1e17889bf019a6bcb94b22c9507be21136632af4"
+  },
+  {
+    "bytes": 92352,
+    "path": "source_inventory.json",
+    "sha256": "522ffbca208c84edb86c7dce0d98e8abf5f719198653dec0856a7c47e0c634de"
+  },
+  {
+    "bytes": 11710,
+    "path": "summary.json",
+    "sha256": "91050dea8fd43ad9c08770d1078eea509529e27d8824f1430ce6f3717cc4f9bd"
+  }
+]

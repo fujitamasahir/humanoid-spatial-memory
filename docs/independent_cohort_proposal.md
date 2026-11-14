@@ -180,3 +180,17 @@ common-success navigation cost and computation together. Freeze exact CAA
 source/history semantics before sealed evaluation; no FIT-derived tuning.
 The24-lineage pilot and80/200-lineage cohorts remain unapproved, ungenerated
 and unopened; all owner/custodian/admission requirements above remain.
+
+## Concrete DAO prospective design (proposal only)
+
+The detailed [DAO navigation protocol](dao_independent_navigation_protocol.md)
+now specifies layout/event distributions, partitioned streams, exact/near-
+duplicate admission, custodian access, candidate selection/confirmation,
+strong Periodic/Age/CAA controls and proposed joint endpoints. For DAO it
+supersedes the older four-arm pilot suggestion and informal200-lineage power
+rationale above.200 independent lineages do NOT automatically justify a
+3-percentage-point completion noninferiority margin: with paired-lineage
+SD0.50 the stated approximation needs2181, not200. Size, margins and analysis
+validation require explicit prospective approval. The24 pilot and80 development
+lineages and provisional200 sealed lineages are all ungenerated, unadmitted
+and unopened. No reserve access is authorized by this update.

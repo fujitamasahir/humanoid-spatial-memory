@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 1886,
+    "path": "correctness.json",
+    "sha256": "45820515880a8be31be35b1672c1fc69bbdcc115ac6e3a6a9c51664133358166"
+  },
+  {
+    "bytes": 290071,
+    "path": "fixtures.json",
+    "sha256": "8ae54dee1e4d3a1f65bb08e06f031fbce6640cc351890f850b7256f805ee4e2f"
+  },
+  {
+    "bytes": 300,
+    "path": "tests.log",
+    "sha256": "0fbefbb56b56a8dfd643379918560a956bfaa5f1549fa79c7eaa691b0fe61937"
+  },
+  {
+    "bytes": 18499,
+    "path": "tests.xml",
+    "sha256": "58209f784213797b749e07bac1bcd2be836e745df1902dbee5eb6ba49654cdd8"
+  }
+]

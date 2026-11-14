@@ -137,3 +137,16 @@ traces; uniform Age-6 loses seven goals. Freeze these development results
 and stop FIT tuning. No proposed independent cohort was generated/accessed.
 See [`caa_research_report.md`](caa_research_report.md) for all outcomes,
 negative findings, paired uncertainty and the proposed independent next step.
+
+## Discovery-aware Observation (DAO) engineering scope
+
+CAA findings remain frozen, including the single-case two-scan saving and
+absence of a joint movement benefit. DAO tests public-memory prediction of
+never-observed cells, distinct from stale verification and actual changed-known
+readings. Frontier predictions stop at the first unknown cell and are compared
+with optimistic public-memory rays; neither is a real sensor reading or
+calibrated information gain. Four small Age5-anchored variants, fixed controls,
+unit tests and a frozen48-public-state mechanism suite are authorized.
+See `dao_protocol.md` and `dao_independent_navigation_protocol.md`. Existing
+FIT evidence is descriptive only. No new FIT72 screen, proposed navigation
+population generation/admission/access or reserved-world read is authorized.
