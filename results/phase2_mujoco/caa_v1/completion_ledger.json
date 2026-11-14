@@ -1,0 +1,36 @@
+{
+  "correctness_tests_passed": 108,
+  "executed_commands": [
+    ".venv/bin/python scripts/audit_caa_history.py",
+    ".venv/bin/python scripts/run_caa_fit72.py check",
+    ".venv/bin/python scripts/run_caa_fit72.py smoke",
+    ".venv/bin/python scripts/run_caa_fit72.py full",
+    "MPLCONFIGDIR=/private/tmp/caa-matplotlib .venv/bin/python scripts/run_caa_fit72.py report",
+    "MPLCONFIGDIR=/private/tmp/caa-matplotlib .venv/bin/python scripts/verify_caa_results.py"
+  ],
+  "formal_actual_sensor_instrumented_episodes": 518,
+  "frozen_source_files_unchanged": 25,
+  "full_episodes": 504,
+  "full_matrix_executions": 1,
+  "joint_sensing_navigation_gain": false,
+  "missing_inputs": [],
+  "new_caa_tests": 26,
+  "new_or_reserved_cohorts_accessed": false,
+  "original_checkpoint_receipt_pairs_verified": 2907,
+  "periodic_setup_replay_episodes": 216,
+  "post_outcome_policy_changes": false,
+  "postprocessing_verifier_sha256": "f80a0648164b5e6a607e9dc99888dedb08de07fb2dd2b73d7f834f7e817e60ef",
+  "primary_target_met": [
+    "caa_fast",
+    "caa_full"
+  ],
+  "protected_files_verified": 836,
+  "report_sha256": "0c2c7bb5c9122c736d3720c925ddec24052473c0db5eab1bcf41d025effc4960",
+  "retrospective_episodes": 144,
+  "setup_revisions": "Two superseded pre-freeze checks/Periodic replays retained; final correctness/protocol binding alone authorizes CAA navigation.",
+  "smoke_episodes": 14,
+  "source_freeze_commit": "6dea670c4794be2c4d5e67e50115f5f463e24f25",
+  "status": "COMPLETE",
+  "stored_episode_checks": 878,
+  "unresolved_blockers": []
+}

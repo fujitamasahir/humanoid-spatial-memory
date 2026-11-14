@@ -126,3 +126,14 @@ EVI, topology, future visibility or event triggers. See `caa_protocol.md`,
 `age5_frozen_baseline.md` and the pre-implementation audit
 `caa_retrospective_analysis.md`. All results remain development-only; new
 independent cohorts require approval. No automatic subsequent iteration.
+
+CAA v1 completed 108 passing correctness tests, the 14-episode smoke and
+one frozen 504-episode seven-arm matrix. CAA-Fast/Full retain 66/72 goals
+and zero unwanted contacts while reducing paid scans from Age-5's 770 to
+768 (0.26%). This marginally meets the descriptive primary target, but
+common-success movement does not improve; no joint sensing/navigation gain
+or independent superiority is established. CAA-Slow exactly matches Age-5
+traces; uniform Age-6 loses seven goals. Freeze these development results
+and stop FIT tuning. No proposed independent cohort was generated/accessed.
+See [`caa_research_report.md`](caa_research_report.md) for all outcomes,
+negative findings, paired uncertainty and the proposed independent next step.

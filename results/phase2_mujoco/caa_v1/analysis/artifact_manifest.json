@@ -1,0 +1,32 @@
+[
+  {
+    "bytes": 55998,
+    "path": "history_deadlines.png",
+    "sha256": "0b46d62e94bea310c7ceb29314af8dbc6de2dd72ea52a9e65117403755f2b95e"
+  },
+  {
+    "bytes": 102022,
+    "path": "outcomes.png",
+    "sha256": "06ba47e513bc120371b7d6bc1b552659f9fce18dc9da2b159e9a5accbb5d5b73"
+  },
+  {
+    "bytes": 172107,
+    "path": "paired_episode_deltas.csv",
+    "sha256": "0412a5b33aeb60d044b76858f801e9a2f4df3d77bc2874e0138d0d175330f999"
+  },
+  {
+    "bytes": 46013,
+    "path": "representative_trajectory.png",
+    "sha256": "3e1f4d8c90df09d9d1e2b3207843fad410c6eccd05b28e16c126f47fc5728cf1"
+  },
+  {
+    "bytes": 35872,
+    "path": "results.json",
+    "sha256": "25812055148ce23288edd650ea00b743806411968789115ce8a3bba646b2da7f"
+  },
+  {
+    "bytes": 789,
+    "path": "summary.md",
+    "sha256": "e88f5566d2ff4eea06416d2f986bfab3cef0b2e534ce5bc71a01c4fbbd1f223f"
+  }
+]
