@@ -1,0 +1,31 @@
+{
+  "FIT_data_accessed": false,
+  "candidate_arms_executed": false,
+  "family_count": 8,
+  "fixture_count": 80,
+  "fixture_population_sha256": "12b69988068a1c91316b81773135801b52e8818c58067a52c2856217d1111098",
+  "frozen_before_candidate_policy_execution": true,
+  "protocol": "docs/phase2_c_v2d_topology_protocol.md",
+  "seed_namespace": 2026111600,
+  "source_sha256": {
+    "docs/c_v2d_computational_complexity.md": "df9d1f8f0ea400b98e616c92fc9bf50c4f72c5ec1d93292fae25841e25961a53",
+    "docs/phase2_c_v2d_fit_intervention_protocol.md": "da3779dd74685be21e2debe5866cbf303cbdcb6ba600f24cb8496b5985edd33c",
+    "docs/phase2_c_v2d_topology_protocol.md": "cb4016d18ef1910259f87f681b6881119eb60a48586149a0e0959765702e4882",
+    "scripts/c_v2d_fixtures.py": "dcaf890f8b43cf795dfe6626300c78a8ec9f29bae533731b3d7a52f6abb58e44",
+    "scripts/review_c_v2d_mechanism.py": "a2cb8d68d83f034df95a5451d921ce7a54589997dfe9026e66dd8fe076b4487a",
+    "scripts/run_c_v2d_topology_fixtures.py": "9e75f3e2b65969dc57bc589da4120318c8dbe8127eed09504feeccf2e4cba24b",
+    "scripts/validate_c_v2d_fixture_annotations.py": "aca8f7f06cb31d493bfb2a02a4f90411535dd5ab36ba50fcc738c31fb9682e71",
+    "src/spatial_memory/candidate_coverage.py": "4e3da23fa49b348d3a8b6e320e63e170ba283131d09271a5dc9793f33cffe067",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/topology_evi_c.py": "2c44d90de038a1b0d8a5a7856911f585fd289e807947748aa9d01548e94799d1",
+    "src/spatial_memory/topology_evi_d.py": "849c6ac0d6fd207e9d6d662f437c806f8fe30c1006c325c3a88e023ac00f0f96",
+    "src/spatial_memory/topology_reference.py": "a12c4d63525a21d5373103754fc046609afaddd4ca93d24f410a1f6ae7075f74",
+    "src/spatial_memory/topology_review_d.py": "9652e2e75a726bebad8e645cfc44cd746fc524031c11dae2956307d7e19141e4",
+    "tests/test_c_v2c_fixture_annotations.py": "d71cdd1a894331a517e54d36ab1898f47e5abd0d32054b0ef4a081ebf3ee7731",
+    "tests/test_topology_evi_c_correctness.py": "825f2fc397a445d97ef4a2813092c6167bad70b0c6e7df1d3839abca3be4b7f0",
+    "tests/test_topology_evi_d_equivalence.py": "458161ce1f5d0223bebf2604aa5acbc96930b2bae9275c2b26cba6008df5b140",
+    "tests/test_topology_evi_d_v2c_regression.py": "48d014f053fafc298c563c8a75adf183278a1b315a1938522c1a4c5b20808b0f",
+    "tests/test_topology_review_d.py": "08ae6bb47886e8812d0ac7ba522fb36d06dfc850c4730f41d9483a899da5dfb7"
+  }
+}
