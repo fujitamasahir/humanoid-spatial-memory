@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css?v=4">
+<link rel="stylesheet" href="/static/style.css?v=5">
 </head>
 <body>
 <div class="grain"></div>
@@ -16,7 +16,7 @@
     <p class="intro">Stop the robot in 80 steps.</p>
     
     
-    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=4" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=5" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -27,7 +27,7 @@
   </div>
   <div class="setup-right">
     <div class="panel-heading"><span>ENVIRONMENT EDITOR</span><span class="key"><i></i> G1 START <i class="gold"></i> GOAL</span></div>
-    <div class="inventory"><button id="objectTool" class="tool"><kbd>X</kbd><span>OBJECT</span><span id="objectCount"></span></button><button id="pedTool" class="tool"><kbd>Y</kbd><span>PEDESTRIAN</span><span id="pedCount"></span></button><button id="removeTool" class="tool"><kbd>B</kbd> REMOVE</button></div><div class="carousel"><button id="prevMaze" class="trigger" aria-label="LT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">LT</text></svg><span>‹</span></button><canvas id="prevPreview" width="300" height="300"></canvas><canvas id="editorCanvas" width="900" height="760"></canvas><canvas id="nextPreview" width="300" height="300"></canvas><button id="nextMaze" class="trigger" aria-label="RT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">RT</text></svg><span>›</span></button></div><div id="mazeIdentity" class="maze-name"></div>
+    <div class="inventory"><button id="objectTool" class="tool"><kbd>X</kbd><span>OBJECT</span><span id="objectCount"></span></button><button id="pedTool" class="tool"><kbd>Y</kbd><span>PEDESTRIAN</span><span id="pedCount"></span></button><button id="removeTool" class="tool"><kbd>B</kbd> REMOVE</button></div><div class="carousel"><button id="prevMaze" class="trigger" aria-label="LT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">LT</text></svg><span>‹</span></button><canvas id="editorCanvas" width="900" height="760"></canvas><button id="nextMaze" class="trigger" aria-label="RT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">RT</text></svg><span>›</span></button></div><div id="mazeIdentity" class="maze-name"></div><div id="mazeStrip" class="maze-strip" aria-label="Choose from 36 mazes"></div>
     
   </div>
 </section>
@@ -46,5 +46,5 @@
 </main>
 
 <div id="toast" role="status"></div>
-<script src="/static/game.js?v=4"></script>
+<script src="/static/game.js?v=5"></script>
 </body></html>

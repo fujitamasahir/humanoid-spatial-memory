@@ -6,11 +6,12 @@ import zlib
 import numpy as np
 
 def png(rgb):
-    h,w,_=rgb.shape
+    h,w,channels=rgb.shape
+    if channels not in (3,4): raise ValueError('Expected RGB or RGBA')
     def chunk(t,d):
         return struct.pack('>I',len(d))+t+d+struct.pack('>I',zlib.crc32(t+d)&0xffffffff)
     raw=b''.join(b'\x00'+row.tobytes() for row in rgb)
-    return base64.b64encode(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',w,h,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,1))+chunk(b'IEND',b'')).decode('ascii')
+    return base64.b64encode(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',w,h,8,6 if channels==4 else 2,0,0,0))+chunk(b'IDAT',zlib.compress(raw,1))+chunk(b'IEND',b'')).decode('ascii')
 
 class ShowcaseRenderer:
     def __init__(self,scene,strategy):

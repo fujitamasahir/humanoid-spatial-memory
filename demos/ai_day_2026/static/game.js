@@ -13,7 +13,24 @@ const [sx,sy]=maze.start,[gx,gy]=maze.goal;ctx.save();ctx.translate(d.x+(sx+.5)*
 if(trajectory.length>1){ctx.beginPath();trajectory.forEach((p,i)=>{const X=d.x+(p[0]+.5)*d.scale,Y=d.y+(displayY(p[1])+.5)*d.scale;i?ctx.lineTo(X,Y):ctx.moveTo(X,Y)});ctx.strokeStyle='#62bdffb0';ctx.lineWidth=Math.max(2,d.scale*.12);ctx.stroke()}
 if(robot){const [x,y]=robot.position;const cx=d.x+(x+.5)*d.scale,cy=d.y+(displayY(y)+.5)*d.scale;ctx.save();ctx.translate(cx,cy);ctx.rotate((northUp?-1:1)*robot.heading_yaw);ctx.fillStyle=colors.robot;ctx.shadowColor=colors.robot;ctx.shadowBlur=d.scale*.8;ctx.beginPath();ctx.moveTo(d.scale*.4,0);ctx.lineTo(-d.scale*.25,-d.scale*.25);ctx.lineTo(-d.scale*.18,d.scale*.25);ctx.closePath();ctx.fill();ctx.restore()}
 if(editor&&cursorCell){const[x,y]=cursorCell;ctx.strokeStyle='#eaf8ff';ctx.lineWidth=3;ctx.strokeRect(d.x+x*d.scale+1,d.y+displayY(y)*d.scale+1,d.scale-2,d.scale-2)} }
-function renderEditor(){const m=current();drawMap($('editorCanvas'),m,{objects,peds:pedestrians,editor:true,cursorCell:cursor});$('mazeIdentity').textContent=`MAZE ${String(mazeIndex+1).padStart(2,'0')} / ${catalog.length} · ${m.mechanism}`;for(const [id,delta] of [['prevPreview',-1],['nextPreview',1]])drawMap($(id),catalog[(mazeIndex+delta+catalog.length)%catalog.length]);for(const [id,used,icon] of [['objectCount',objects.length,'◆'],['pedCount',pedestrians.length,'♟']]){const el=$(id);el.replaceChildren(...Array.from({length:Number(el.dataset.max)},(_,i)=>{const s=document.createElement('i');s.textContent=icon;s.className=i<used?'spent':'';return s}))}}
+let stripIndex=-1;
+function updateMazeStrip(){
+ const strip=$('mazeStrip');
+ if(!strip.children.length){
+  catalog.forEach((m,index)=>{
+   const button=document.createElement('button');button.type='button';button.title='Maze '+(index+1)+' · '+m.mechanism;
+   button.setAttribute('aria-label',button.title);button.onclick=()=>setMaze(index);
+   const canvas=document.createElement('canvas');canvas.width=m.width;canvas.height=m.height;
+   const ctx=canvas.getContext('2d');ctx.fillStyle='#0c1622';ctx.fillRect(0,0,m.width,m.height);
+   ctx.fillStyle=({R:'#659fe0',BP:'#a58be7',M:'#56c6aa'}[m.mechanism]||'#94a6b8');
+   for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)if(m.wall_rows[y][x]==='1')ctx.fillRect(x,m.height-1-y,1,1);
+   button.append(canvas);strip.append(button);
+  });
+ }
+ if(stripIndex===mazeIndex)return;stripIndex=mazeIndex;
+ Array.from(strip.children).forEach((b,index)=>{b.classList.toggle('selected',index===mazeIndex);b.setAttribute('aria-pressed',String(index===mazeIndex))});
+}
+function renderEditor(){const m=current();drawMap($('editorCanvas'),m,{northUp:true,objects,peds:pedestrians,editor:true,cursorCell:cursor});$('mazeIdentity').textContent=`MAZE ${String(mazeIndex+1).padStart(2,'0')} / ${catalog.length} · ${m.mechanism}`;updateMazeStrip();for(const [id,used,icon] of [['objectCount',objects.length,'◆'],['pedCount',pedestrians.length,'♟']]){const el=$(id);el.replaceChildren(...Array.from({length:Number(el.dataset.max)},(_,i)=>{const s=document.createElement('i');s.textContent=icon;s.className=i<used?'spent':'';return s}))}}
 async function validate(){const rev=revision;const v=await api('/api/validate',{method:'POST',body:JSON.stringify({maze_id:current().id,objects,pedestrians})});if(rev!==revision||editing)return v;const el=$('validation');el.textContent=v.valid?'Layout valid — a footprint-safe route remains.':v.errors.join(' ');el.classList.toggle('error',!v.valid);$('startBtn').disabled=!v.valid;return v}
 function clearEdits(){objects=[];pedestrians=[];validate().catch(e=>toast(e.message));renderEditor()}
 let editing=false,starting=false,revision=0;
@@ -26,10 +43,19 @@ async function place(cell,remove=false,kind=tool){
  editing=true;$('startBtn').disabled=true;
  try{const v=await api('/api/validate',{method:'POST',body:JSON.stringify({maze_id:m.id,objects:o,pedestrians:q})});if(!v.valid){toast(v.errors.join(' '));return}objects=o;pedestrians=q;renderEditor()}catch(e){toast(e.message)}finally{editing=false;$('startBtn').disabled=false}
 }
-function moveCursor(dx,dy){const m=current();cursor=[Math.max(0,Math.min(m.width-1,cursor[0]+dx)),Math.max(0,Math.min(m.height-1,cursor[1]+dy))];renderEditor()}
+function moveCursor(dx,dy){const m=current();cursor=[Math.max(0,Math.min(m.width-1,cursor[0]+dx)),Math.max(0,Math.min(m.height-1,cursor[1]-dy))];renderEditor()}
 function cycleStrategy(delta){const all=['periodic','age','uncertainty'];const i=all.indexOf(strategy);document.querySelector(`[data-strategy="${all[(i+delta+all.length)%all.length]}"]`)?.click()}
 function setMaze(n){if(editing||starting)return;revision++;mazeIndex=(n+catalog.length)%catalog.length;cursor=[Math.min(cursor[0],current().width-1),Math.min(cursor[1],current().height-1)];clearEdits()}
-$('editorCanvas').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());cursor=[Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale)];cursor[0]=Math.max(0,Math.min(current().width-1,cursor[0]));cursor[1]=Math.max(0,Math.min(current().height-1,cursor[1]));renderEditor()});$('editorCanvas').addEventListener('pointerdown',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());const x=Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),y=Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale);cursor=[x,y];place(cursor,e.button===2)});$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>{strategy=b.dataset.strategy;$('hero').dataset.pose=strategy;$('portraitStatus').hidden=true;$('heroImage').hidden=false;$('heroImage').src='/api/portrait/'+strategy+'?v=4';playHeroMotion(strategy);document.querySelectorAll('.strategy').forEach(x=>x.classList.toggle('active',x===b))});
+function pointerCell(e){
+ const canvas=e.currentTarget,r=canvas.getBoundingClientRect(),d=dimensions(canvas,current());
+ const scale=Math.min(r.width/canvas.width,r.height/canvas.height);
+ const px=(e.clientX-r.left-(r.width-canvas.width*scale)/2)/scale;
+ const py=(e.clientY-r.top-(r.height-canvas.height*scale)/2)/scale;
+ return [Math.floor((px-d.x)/d.scale),current().height-1-Math.floor((py-d.y)/d.scale)];
+}
+$('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);cursor=[Math.max(0,Math.min(current().width-1,x)),Math.max(0,Math.min(current().height-1,y))];renderEditor()});
+$('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
+$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>{strategy=b.dataset.strategy;$('hero').dataset.pose=strategy;$('portraitStatus').hidden=true;$('heroImage').hidden=false;$('heroImage').src='/api/portrait/'+strategy+'?v=5';playHeroMotion(strategy);document.querySelectorAll('.strategy').forEach(x=>x.classList.toggle('active',x===b))});
 function screen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active')}
 async function startChallenge(cfg=null){if(starting||editing)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
 $('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'){lastResult=s.result;showResult(s.result)}}}
@@ -54,7 +80,7 @@ $('heroImage').onerror=async()=>{const img=$('heroImage'),url=img.src;img.hidden
 const motionCache=new Map();let motionToken=0;
 function motionAsset(name){
  if(!motionCache.has(name)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=4'});
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=5'});
   motionCache.set(name,promise);promise.catch(()=>motionCache.delete(name));
  }
  return motionCache.get(name);
@@ -70,10 +96,10 @@ async function playHeroMotion(name){
   function tick(now){
    if(token!==motionToken)return;
    const elapsed=now-start;
-   if(elapsed>=2000||!$('setupScreen').classList.contains('active')){
+   if(elapsed>=3000||!$('setupScreen').classList.contains('active')){
     canvas.hidden=true;img.classList.remove('motion-playing');return;
    }
-   const frame=Math.min(29,Math.floor(elapsed*15/1000));
+   const frame=Math.min(59,Math.floor(elapsed*20/1000));
    ctx.drawImage(atlas,(frame%6)*360,Math.floor(frame/6)*480,360,480,0,0,360,480);
    requestAnimationFrame(tick);
   }

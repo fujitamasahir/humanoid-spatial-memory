@@ -78,7 +78,7 @@ if __name__ == '__main__':
     uvicorn.run('app:app', host='127.0.0.1', port=8765, access_log=False)
 
 _portrait_lock=threading.Lock()
-_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v4'
+_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v5'
 @app.get('/api/portrait/{strategy}')
 def portrait(strategy: str, motion: bool=False):
     if strategy not in ('periodic','age','uncertainty'):
@@ -88,7 +88,7 @@ def portrait(strategy: str, motion: bool=False):
         if not path.exists():
             try:
                 subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)]+([strategy] if motion else []),
-                               check=True,timeout=90,capture_output=True,text=True)
+                               check=True,timeout=240,capture_output=True,text=True)
             except subprocess.CalledProcessError as exc:
                 detail=(exc.stderr or exc.stdout or str(exc)).strip()
                 print('G1 portrait generation failed:',detail,flush=True)
