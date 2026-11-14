@@ -1,0 +1,27 @@
+[
+  {
+    "bytes": 541,
+    "path": "gate.json",
+    "sha256": "7d38bab0780581f43f693c1484c66c7a93fb05ff7c6bac4b976691aa6b5ae272"
+  },
+  {
+    "bytes": 410,
+    "path": "integrity_before.json",
+    "sha256": "74ba92fa62abf50283b608fcda9e7dfc5b2eb448784f7f4e2ced809ff9934c04"
+  },
+  {
+    "bytes": 107800,
+    "path": "matrix_spec.json",
+    "sha256": "6706dcb327168f86eb540041c032e3bccc4a1d003aa03f8e139c771958b4f009"
+  },
+  {
+    "bytes": 235,
+    "path": "tests.log",
+    "sha256": "6f2b37e003b5efa1046957a0f887b3237193ec0f09699d2004e87686770c8fcb"
+  },
+  {
+    "bytes": 8168,
+    "path": "tests.xml",
+    "sha256": "dd6f76386fa67af41cd1e5c3e3ecbb0edf20b8b9ce527e8ffddcf4844459c69a"
+  }
+]
