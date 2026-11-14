@@ -70,6 +70,12 @@ formal result is archived as invalid; no causal replay or FIT72 screen was
 run. See `docs/c_v2b_topology_research_report.md`; do not treat its numeric
 screen as evidence for further FIT work.
 
+C v2.0c is now a separate correctness-first implementation and protocol. An
+independent brute-force BFS reference, exhaustive small-grid checks, 1,000
+seeded randomized public-grid cases, and pre-policy annotation validation are
+required before its 48-case formal mechanism suite. FIT access remains gated
+on both the numeric screen and an independent conformance review.
+
 ## Intended portfolio outcome
 
 Reproducible code, clear research question, defensible baselines, ablations, repeated-seed results with uncertainty, failure analysis, and a candid simulation limitations section.

@@ -15,8 +15,8 @@ from spatial_memory.mujoco_perception import MujocoRayPerception
 
 FIT=ROOT/'results/phase2_mujoco/persistence_evi_fit72_restored_local_v1'
 INTEGRITY=ROOT/'results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/integrity_verification.json'
-ARMS=('c0_audit','c_k','c_route3','c_routek','c_topology3')
-LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK','c_topology3':'C-Topology3'}
+ARMS=('c0_audit','c_k','c_route3','c_routek','c_topology3','c_topology3c')
+LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK','c_topology3':'C-Topology3-b-invalid','c_topology3c':'C-Topology3-c'}
 DEFAULT_ARMS=('c0_audit','c_k','c_route3','c_topology3')
 
 def read_accepted_gate(path):
@@ -24,7 +24,7 @@ def read_accepted_gate(path):
     document=json.loads(path.read_text())
     status=document.get('mechanism_gate',{}).get('status')
     review_path=path.parent/'gate_review.json'
-    review_required='c_v2b_topology_protocol' in str(document.get('protocol',''))
+    review_required='topology_protocol' in str(document.get('protocol',''))
     if review_required and not review_path.is_file():
         raise RuntimeError('C v2b FIT evaluation requires a passing gate_review.json')
     if review_path.is_file():
