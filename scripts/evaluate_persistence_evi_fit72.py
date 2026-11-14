@@ -213,8 +213,11 @@ def main():
             save_episode(args.output, number, arm, row, trace, diagnostic)
             for method in ('periodic', 'age'):
                 pairs.append(pair_row(key, method, arm, references[method], row, diagnostic))
-        reference._write_csv(args.output/'pairs.csv', pairs)
         print(f'Completed {number}/{len(keys)}: {key[:2]} (5 arms)', flush=True)
+    # The CSV writer is exclusive by design. Publish the aggregate exactly
+    # once after all requested cases complete; writing it in-loop made the
+    # second checkpoint fail with FileExistsError and left a partial table.
+    reference._write_csv(args.output/'pairs.csv', pairs)
     if (reference.navigation.verify_preserved_prefix() != prefix or
         protected != {str(p.relative_to(ROOT)): reference._sha(p) for p in reference.PROTECTED}):
         raise RuntimeError('Protected historical evidence changed')

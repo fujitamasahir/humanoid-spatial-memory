@@ -1,0 +1,67 @@
+[
+  {
+    "bytes": 2722,
+    "path": "episode_001_age.json.gz",
+    "sha256": "60676f5ade2d6ef70b2f99189795c3a1144e16e44fd4a929a1faafd516d09f36"
+  },
+  {
+    "bytes": 3581,
+    "path": "episode_001_b_age.json.gz",
+    "sha256": "b749f938b98290574ef39028b6e9d6b751391d1c93540edb774b3dfad50e8e28"
+  },
+  {
+    "bytes": 4064,
+    "path": "episode_001_bc.json.gz",
+    "sha256": "5df61f3fceb1a1123cf6e15b3d525d464d937ae21931e1ec15b61bf1b6ad791f"
+  },
+  {
+    "bytes": 3892,
+    "path": "episode_001_c_ternary.json.gz",
+    "sha256": "6d9aa1c6c5f4efc8e67803a839a42ea38da6dc5b0872ca5d3b3ce8306e2dbe64"
+  },
+  {
+    "bytes": 2570,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "aea3c11164fb059905cf1e3eed6b3a2f2cedf9dde8c5f9bfd9ad181a61ad7250"
+  },
+  {
+    "bytes": 2721,
+    "path": "episode_002_age.json.gz",
+    "sha256": "0b2f648baa0ac9024e65e607a1fe4d84040f57e18fca43b4f5a4902bc35e2929"
+  },
+  {
+    "bytes": 3565,
+    "path": "episode_002_b_age.json.gz",
+    "sha256": "9415bdd6066020756c88dec0e5dc504f064366c2b5606e323793b9adde9fd924"
+  },
+  {
+    "bytes": 4060,
+    "path": "episode_002_bc.json.gz",
+    "sha256": "692f8eb7565af750d24e3b2a223ced96c0a766fc40ca8b8eaea40c1a6444a4ad"
+  },
+  {
+    "bytes": 3904,
+    "path": "episode_002_c_ternary.json.gz",
+    "sha256": "d54561f1f44599fa3bfbf580c8df9556f456de39278a75cde2e88e52c11b17fe"
+  },
+  {
+    "bytes": 2575,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "2ced9b3a5c80fd0465957ecc096049c6b0db8de857067a14ac43de1243597dcb"
+  },
+  {
+    "bytes": 3186,
+    "path": "pairs.csv",
+    "sha256": "bcc9abc1add56373167ad2671026886f5e67064c0bf5b12c68671d4cb73fd45a"
+  },
+  {
+    "bytes": 5292,
+    "path": "provenance.json",
+    "sha256": "0b9472f1d420d9b9f1d0fc50c7989ebaadec52b72b8ddaadc6016d3e71d13a1d"
+  },
+  {
+    "bytes": 14594,
+    "path": "summary.json",
+    "sha256": "f3c3dc92ae09b883c7ade37b8469042848cad3ba4773f92fda3a80ad11670d2a"
+  }
+]
