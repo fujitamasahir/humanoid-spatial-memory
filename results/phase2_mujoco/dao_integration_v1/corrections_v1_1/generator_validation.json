@@ -1,0 +1,130 @@
+{
+  "inventory_commitment": "3e1794c07f8a4177c2f758dc738c28231d5f1d88626e28020dd197005c79097d",
+  "namespace": "TEST:v1_1",
+  "new_v1_1_TEST_payloads": 12,
+  "original_v1_payloads_retained": 12,
+  "production_payloads": 0,
+  "records": [
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": false,
+      "island_rejected_connectivity": true,
+      "lineage": "TEST:v1_1:tree:25x25:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": false,
+      "island_rejected_connectivity": true,
+      "lineage": "TEST:v1_1:tree:33x33:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": false,
+      "island_rejected_connectivity": true,
+      "lineage": "TEST:v1_1:tree:41x41:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:loop:25x25:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": false,
+      "island_rejected_connectivity": true,
+      "lineage": "TEST:v1_1:loop:33x33:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:loop:41x41:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:rooms:25x25:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:rooms:33x33:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:rooms:41x41:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:mixed:25x25:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:mixed:33x33:101"
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "connected": true,
+      "island_applied": true,
+      "island_rejected_connectivity": false,
+      "lineage": "TEST:v1_1:mixed:41x41:101"
+    }
+  ],
+  "source_commit": "eb02ab0014a9da326198df1df20d7107b78e9b39"
+}

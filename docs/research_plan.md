@@ -160,3 +160,24 @@ fixtures did not activate veto suppression; conservative corridor prediction
 can undercount deep discovery. No threshold/fixture tuning or new navigation
 cohort/screen was performed. See [`dao_research_report.md`](dao_research_report.md).
 The independent proposal remains pending owner decisions and power validation.
+
+## DAO G1 integration and TEST infrastructure (completed engineering task)
+
+Frozen DAO now has a versioned G1 adapter, actual-sensor hand-scene diagnostics,
+TEST-only generator/admission logs and synthetic statistical analysis code.
+48 completed navigation episodes plus120 separate fixture scans were published;
+one incomplete formal attempt and its versioned route-compatibility recovery
+are retained.180 integration/regression tests plus18 versioned correction tests
+pass. The pedestrian fixture recorded contacts in all four variants: safety
+acceptance fails, despite preserved original safety code. No independent
+superiority or real DAO winner is established.
+
+Generator v1's off-certificate occlusion treatment disconnected4 TEST layouts;
+separate v1.1 preserves original evidence and validates full connectivity.
+Approximate CI simulations showed undercoverage; optional conservative finite-
+sample bounds trade power/sample size for coverage. Production admission,
+opaque prior signatures, independent custody, safety review and approved
+statistical/distribution choices remain prerequisites. See
+[`dao_integration_research_report.md`](dao_integration_research_report.md) and
+[`dao_pilot_v1_protocol.md`](dao_pilot_v1_protocol.md). No production population,
+reserved access, full FIT72 screen, DAO retuning or pilot execution occurred.

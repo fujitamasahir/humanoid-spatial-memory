@@ -1,0 +1,8 @@
+{
+  "docs/dao_generator_v1_1_recovery.md": "683e51aa29b20f55abc9bbe67a40cd3f6169f2c50f8187122afdefe8b3b2caa6",
+  "scripts/check_dao_corrections_v1_1.py": "5db2080e740dcf3fbe092d5277d6e18bdfff375ebb4bd7c164563c1982dda665",
+  "src/spatial_memory/dao_generator_v1_1.py": "12d59d862c660e950658f0c80797dded07c90f4c5312d606a3818b476be13fdd",
+  "src/spatial_memory/dao_statistical_bounds_v1_1.py": "cc5290a6dfac692362099271c8da1eb1be38e0b947a560d2c83b62ff33a9fa60",
+  "tests/test_dao_generator_connectivity_v1_1.py": "116a987b47d539ec935d82e4d800f4408f573a6d3a533ff1fd7de4142822eaec",
+  "tests/test_dao_statistical_bounds_v1_1.py": "99778f2b8b6414a5b4d9c422554f42c50ab4b0438fee59448c1d712992b2a424"
+}

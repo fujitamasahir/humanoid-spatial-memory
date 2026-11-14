@@ -1,0 +1,1 @@
+{"digest":"ef41b9b9265e15c2f4fe80ff22b09e3b48bcf852e9986b75b8794fbd9c9ba332","event":{"event":"TEST_generation_intent","parameters":{"category":"moving","discovery":"occluded","family":"rooms","height":25,"persistent":"relocate","revisit":"rare","width":25},"seed":101},"previous":"bf459c1bab44d05e6bd82fd42a27c09b0c88b29238d42c768785cd4ecc74163a","sequence":12}

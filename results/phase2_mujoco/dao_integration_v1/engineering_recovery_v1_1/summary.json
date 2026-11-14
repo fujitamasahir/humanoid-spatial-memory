@@ -1,0 +1,348 @@
+{
+  "combined_fixture_scans": 120,
+  "combined_unique_navigation_episodes": 48,
+  "episodes": [
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 2,
+      "scene": "corridor"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 3,
+      "scene": "corridor"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "corridor"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 3,
+      "scene": "corridor"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 4,
+      "scene": "unknown_obstacle"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 4,
+      "scene": "unknown_obstacle"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 4,
+      "scene": "unknown_obstacle"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 4,
+      "scene": "unknown_obstacle"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 2,
+      "scene": "room"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 3,
+      "scene": "room"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "room"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 3,
+      "scene": "room"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 1,
+      "scene": "turn"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 2,
+      "scene": "turn"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "turn"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 1,
+      "scene": "turn"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_veto",
+      "paid": 5,
+      "scene": "repeat_view"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_trigger",
+      "paid": 5,
+      "scene": "repeat_view"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_route",
+      "paid": 5,
+      "scene": "repeat_view"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_combined",
+      "paid": 5,
+      "scene": "repeat_view"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 2,
+      "scene": "explored"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 3,
+      "scene": "explored"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "explored"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 3,
+      "scene": "explored"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_veto",
+      "paid": 5,
+      "scene": "known_stale"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_trigger",
+      "paid": 5,
+      "scene": "known_stale"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_route",
+      "paid": 5,
+      "scene": "known_stale"
+    },
+    {
+      "contacts": 0,
+      "goals": 0,
+      "mode": "dao_combined",
+      "paid": 5,
+      "scene": "known_stale"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 2,
+      "scene": "addition"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 3,
+      "scene": "addition"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "addition"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 3,
+      "scene": "addition"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 4,
+      "scene": "removal"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 4,
+      "scene": "removal"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 5,
+      "scene": "removal"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 4,
+      "scene": "removal"
+    },
+    {
+      "contacts": 117,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 5,
+      "scene": "pedestrian"
+    },
+    {
+      "contacts": 39,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 8,
+      "scene": "pedestrian"
+    },
+    {
+      "contacts": 39,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 3,
+      "scene": "pedestrian"
+    },
+    {
+      "contacts": 39,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 8,
+      "scene": "pedestrian"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 1,
+      "scene": "off_route"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 2,
+      "scene": "off_route"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 2,
+      "scene": "off_route"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 1,
+      "scene": "off_route"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_veto",
+      "paid": 4,
+      "scene": "low_discovery"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_trigger",
+      "paid": 5,
+      "scene": "low_discovery"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_route",
+      "paid": 4,
+      "scene": "low_discovery"
+    },
+    {
+      "contacts": 0,
+      "goals": 1,
+      "mode": "dao_combined",
+      "paid": 5,
+      "scene": "low_discovery"
+    }
+  ],
+  "full_FIT72_screens": 0,
+  "new_navigation_episodes": 12,
+  "prior_saved_navigation_episodes": 36,
+  "production_population_payloads": 0,
+  "source_freeze_commit": "ecbd56db3b720d0a04966b2480af836d0f764bec",
+  "status": "PASS_ENGINEERING_ACCOUNTING"
+}

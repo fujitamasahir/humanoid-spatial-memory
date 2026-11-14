@@ -194,3 +194,16 @@ SD0.50 the stated approximation needs2181, not200. Size, margins and analysis
 validation require explicit prospective approval. The24 pilot and80 development
 lineages and provisional200 sealed lineages are all ungenerated, unadmitted
 and unopened. No reserve access is authorized by this update.
+
+## DAO integration follow-up and exact pilot proposal (still NOT approved)
+
+The [exact pilot plan](dao_pilot_v1_protocol.md) specifies24 lineages (six/family),
+two schedules and12 Periodic/fixed-age/CAA/DAO controls:576 proposed episodes.
+The [integration report](dao_integration_research_report.md) records actual
+pedestrian contacts, generator connectivity correction and approximate-CI
+undercoverage. These are production-readiness blockers, not independent
+validation. New generator/admission/statistical infrastructure is TEST/SYNTHETIC
+only; no independent custody or complete prior-signature admission exists.
+The80 development and sealed evaluation populations remain ungenerated;
+sealed n is undecided. Approve distributions, safety engineering, admission/
+custody, analysis coverage/margins and scope before ANY production payload.

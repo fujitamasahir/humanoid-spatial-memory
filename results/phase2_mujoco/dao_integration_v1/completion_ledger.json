@@ -1,0 +1,43 @@
+{
+  "DAO_specific_unit_wrapper_invocations": 6,
+  "completed_formal_navigation_episodes": 48,
+  "contact_states_by_arm": {
+    "dao_combined": 1,
+    "dao_route": 1,
+    "dao_trigger": 1,
+    "dao_veto": 3
+  },
+  "corrected_TEST_payloads": 12,
+  "distinct_final_passing_cases": 198,
+  "final_integration_regression_cases_passed": 180,
+  "frozen_DAO_equations_constants_changed": false,
+  "generator_bounds_correction_freeze": "eb02ab0",
+  "incomplete_formal_navigation_attempts": 1,
+  "independently_reconstructed_readings": 287,
+  "initial_freeze": "82f0f2d",
+  "missing_local_inputs": [],
+  "new_full_FIT72_policy_screens": 0,
+  "next_experiment_blockers": [
+    "hand_scene_pedestrian_contacts",
+    "production_admission_scalability_and_missing_authorized_prior_signatures",
+    "independent_custody_not_established",
+    "scientific_margins_and_size_not_approved",
+    "approximate_inference_undercoverage",
+    "generator_distribution_changes_require_approval"
+  ],
+  "original_TEST_payloads_retained": 12,
+  "persisted_policy_paid_scans": 167,
+  "postprocessing_sha256": "8f0de2d274818d2a8da10edd1833d79b0b4438e671e516c254318a66057ca93d",
+  "production_payloads_generated": 0,
+  "production_pilot_executed": false,
+  "real_DAO_winner_selected": false,
+  "report_sha256": "8f97d4f0c91d234105077ca4659e4edf03a4048c629ccbbdd92d0561e9f07823",
+  "reserved_access": false,
+  "route_compatibility_freeze": "ecbd56db3b720d0a04966b2480af836d0f764bec",
+  "separate_authorized_fixture_scans": 120,
+  "separate_bounded_statistics_cases_passed": 5,
+  "separate_generator_cases_passed": 13,
+  "starting_commit": "d04db45472c7c28e91c0753f4271190c87bcc52a",
+  "status": "ENGINEERING_COMPLETE_WITH_REPORTED_SAFETY_AND_VALIDATION_LIMITATIONS",
+  "unit_wrapper_metadata_failure_invocations": 1
+}

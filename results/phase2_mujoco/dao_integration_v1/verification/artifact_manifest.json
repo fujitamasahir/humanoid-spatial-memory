@@ -1,0 +1,12 @@
+[
+  {
+    "bytes": 348,
+    "path": "environment.json",
+    "sha256": "d0edec5c85e9c3be89a24ad6bc9270d64f4be729c8ba520f85e95f35f087bedb"
+  },
+  {
+    "bytes": 1289,
+    "path": "final_integrity.json",
+    "sha256": "d54376498f48214bd52fbc8979f76c64fd4b816ad84cf1bcac911bb06b6a0862"
+  }
+]

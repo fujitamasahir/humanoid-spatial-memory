@@ -1,0 +1,117 @@
+{
+  "conditions": [
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 200,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 200,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 200,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 200,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 2181,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 2181,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 2181,
+      "proposed_NI_probability": 0.001,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 2181,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 10000,
+      "proposed_NI_probability": 0.903,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.05,
+      "n": 10000,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 10000,
+      "proposed_NI_probability": 0.749,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.0
+    },
+    {
+      "coverage": 1.0,
+      "discordance": 0.2,
+      "n": 10000,
+      "proposed_NI_probability": 0.0,
+      "repetitions": 1000,
+      "schedule_correlation": 0.8,
+      "true_loss": 0.03
+    }
+  ],
+  "does_not_validate_joint_compute_or_navigation_efficacy": true,
+  "lineages_are_independent_assumption": true,
+  "method": "finite_sample_Hoeffding",
+  "scientific_margins_not_approved": true,
+  "sealed_n_chosen": null
+}

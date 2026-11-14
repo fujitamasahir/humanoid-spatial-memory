@@ -1,0 +1,1 @@
+Postprocessing only: UnboundLocalError in macro precision conditional expression before any output. Fixed list-denominator guard. No sensor, navigation or statistical simulation rerun.

@@ -1,0 +1,1 @@
+{"digest":"e08ef4297752664fe4437d742e8626d2d474f8807ea463324a9fbac04d2137b5","event":{"decision":{"reason":"no_authorized_prior_opaque_signatures","status":"INCOMPLETE"},"event":"TEST_admission_check","lineage_id":"TEST:v1_1:tree:25x25:101","payload_digest":"3f5398a5643195915a7cee6d8848d64b1d68b2d1327533291f9cffcccfabca62"},"previous":null,"sequence":0}
