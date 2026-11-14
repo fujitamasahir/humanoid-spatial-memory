@@ -42,7 +42,7 @@ Stop the server with Control-C. Challenge settings and results are appended to `
 - Mouse: click to place, right-click to remove; use the on-screen maze and strategy selectors.
 - There is no manual robot control.
 
-The UI reports Xbox connection status and supports keyboard/mouse if the controller disconnects. Difficulty is enforced by the backend: Easy (80 steps, 4 objects, 2 pedestrians), Medium (120 steps, 2 objects, 1 pedestrian), Hard (200 steps, no hazards). Changing difficulty preserves the earliest placed hazards up to the new caps and removes the excess.
+The UI reports Xbox connection status and supports keyboard/mouse if the controller disconnects. Difficulty is enforced by the backend: Easy (80 steps, 20 memory scans, 4 objects, 2 pedestrians), Medium (120 steps, 30 memory scans, 2 objects, 1 pedestrian), Hard (160 steps, 40 memory scans, 1 object, no pedestrians). The initial memory scan counts toward the budget. After exhaustion the robot continues using its existing memory; independent emergency collision safety remains enabled and is not counted as a memory scan. Changing difficulty preserves the earliest placed hazards up to the new caps and removes the excess.
 
 ## Rules and screens
 

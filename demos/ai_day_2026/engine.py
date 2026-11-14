@@ -30,9 +30,9 @@ BINDING_PATH = Path(__file__).resolve().parent / 'data' / 'runtime_binding.json'
 CATALOG_SHA256 = 'fe3c41bf93c6694ddbfe9629e4bb333113ecf57fc9b4f615a9570d1aaafbc2d2'
 BINDING_SHA256 = '451a9d255f714711037a227876b9f264b2203db8fe556ebdb88506189a5aa3f2'
 DIFFICULTIES = {
-    'easy': {'step_limit': 80, 'max_static_objects': 4, 'max_pedestrians': 2},
-    'medium': {'step_limit': 120, 'max_static_objects': 2, 'max_pedestrians': 1},
-    'hard': {'step_limit': 200, 'max_static_objects': 0, 'max_pedestrians': 0},
+    'easy': {'step_limit': 80, 'max_static_objects': 4, 'max_pedestrians': 2, 'max_observations': 20},
+    'medium': {'step_limit': 120, 'max_static_objects': 2, 'max_pedestrians': 1, 'max_observations': 30},
+    'hard': {'step_limit': 160, 'max_static_objects': 1, 'max_pedestrians': 0, 'max_observations': 40},
 }
 MAX_STATIC_OBJECTS = DIFFICULTIES['easy']['max_static_objects']
 MAX_PEDESTRIANS = DIFFICULTIES['easy']['max_pedestrians']
@@ -350,6 +350,7 @@ class GameEngine:
             self.counter += 1
             run_config = {'maze_id': maze_id, 'objects': objects, 'pedestrians': pedestrians,
                           'strategy': strategy, 'difficulty': difficulty, 'step_limit': DIFFICULTIES[difficulty]['step_limit'],
+                          'max_observations': DIFFICULTIES[difficulty]['max_observations'],
                           'render_3d': bool(payload.get('render_3d', False)), 'seed': 42000+self.counter,
                           'pedestrian_paths': validation['pedestrian_paths']}
             self.last_config = run_config
@@ -358,7 +359,7 @@ class GameEngine:
             self.running = True
             self.state = {'status': 'running', 'frame_seq': -1, 'step': 0,
                 'maze_id': maze_id, 'strategy': strategy, 'difficulty': difficulty,
-                'step_limit': run_config['step_limit'],
+                'step_limit': run_config['step_limit'], 'max_observations': run_config['max_observations'],
                 'geometry': self.mazes[maze_id]['wall_rows'],
                 'start': self.mazes[maze_id]['start'], 'goal': self.mazes[maze_id]['goal'],
                 'objects': objects, 'people': pedestrians, 'trajectory': [], 'observations': 1,
@@ -484,7 +485,7 @@ class GameEngine:
                 # Save every evaluator step before WebSocket sampling.
                 self.history[serial['step']] = {
                     k: self.state[k] for k in (
-                        'step','maze_id','strategy','difficulty','step_limit','position',
+                        'step','maze_id','strategy','difficulty','step_limit','max_observations','position',
                         'heading_yaw','memory','people','objects','observed_objects',
                         'observed_people','trajectory','observations','frame_seq')
                 }
@@ -495,9 +496,10 @@ class GameEngine:
 
         try:
             # The saved matched Phase 2 config and controllers are reused verbatim except
-             # for the selected exhibition-only difficulty step cap.
+             # for the exhibition-only step and memory observation caps.
             cfg = json.loads(json.dumps(self.config))
             cfg['max_steps'] = run_config['step_limit']
+            cfg['max_observations'] = run_config['max_observations']
             metrics, frames = run_episode(scenario, cfg, run_config['strategy'], seed=run_config['seed'],
                 _frame_callback=frame_cb, _observation_provider=observe, _g1_planner=planner,
                 _action_checker=checker, _initial_observation_callback=record,

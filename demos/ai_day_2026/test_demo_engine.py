@@ -97,7 +97,8 @@ def test_pedestrian_start_cannot_close_only_passage():
 def test_difficulty_enforces_hazard_caps():
     maze=_small_maze();eng=_light_engine(maze)
     assert eng.validate(maze['id'], [], [], 'hard')['valid']
-    assert not eng.validate(maze['id'], [[1,2]], [], 'hard')['valid']
+    assert eng.validate(maze['id'], [[1,2]], [], 'hard')['valid']
+    assert not eng.validate(maze['id'], [[1,2],[2,1]], [], 'hard')['valid']
     assert not eng.validate(maze['id'], [], [[1,2]], 'hard')['valid']
     assert not eng.validate(maze['id'], [], [[1,2],[4,4]], 'medium')['valid']
     assert not eng.validate(maze['id'], [[1,2],[2,1],[4,4]], [], 'medium')['valid']
@@ -131,3 +132,19 @@ def test_skip_and_review_are_scoped_to_completed_run():
     assert engine.review_frame(2) is None
     assert engine.reset()['ok'] and not engine.history and not engine.skip_playback.is_set()
     assert not engine.skip()['ok']
+
+
+def test_difficulty_memory_budget_includes_initial_scan():
+    import numpy as np
+    from engine import DIFFICULTIES
+    from spatial_memory.scheduling import ObservationController
+    for level, expected in [('easy', (80,20)), ('medium',(120,30)), ('hard',(160,40))]:
+        rules = DIFFICULTIES[level]
+        assert (rules['step_limit'], rules['max_observations']) == expected
+        for method in ('periodic','age','uncertainty'):
+            initial = np.zeros((5,5), dtype=int)
+            agent = ObservationController(initial, method, interval=1, max_observations=expected[1])
+            for step in range(1, expected[1]):
+                agent.refresh(initial, step)
+            assert agent.used == expected[1]
+            assert not agent.decide(expected[1]+100, (2,2))['observation_granted']

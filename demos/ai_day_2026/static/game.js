@@ -68,7 +68,7 @@ $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
 $('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
 function screen(name){stopResultEffects();$('settingsBtn').hidden=name!=='setupScreen';document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
-async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
+async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('obsLimit').textContent='/ '+rules().max_observations;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
 $('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;if(!skipping)drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
 async function skipChallenge(){
  if(skipping||!$('liveScreen').classList.contains('active'))return;
@@ -97,7 +97,7 @@ function showResult(r,finalState){
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
  w.textContent=r.winner;w.classList.toggle('human',human);
  $('winnerCaption').textContent=!human?'The G1 reached the goal safely within '+limit+' steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 experienced unwanted contact.':'The G1 did not safely reach the goal within '+limit+' steps.');
- const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps],['OBSERVATIONS',r.observation_count]];
+ const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
  $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
  showResultReaction(r.strategy,human);
@@ -233,7 +233,7 @@ function renderDifficultyOptions(){
  $('difficultyOptions').replaceChildren(...LEVELS.map(name=>{
   const rule=difficultyRules[name],b=document.createElement('button');b.type='button';b.className='difficulty-option'+(name===pendingDifficulty?' selected':'');
   b.dataset.level=name;b.setAttribute('aria-pressed',String(name===pendingDifficulty));
-  const title=document.createElement('b'),desc=document.createElement('small');title.textContent=name.toUpperCase();desc.textContent=rule.step_limit+' steps · '+rule.max_static_objects+' objects · '+rule.max_pedestrians+' pedestrians';
+  const title=document.createElement('b'),desc=document.createElement('small');title.textContent=name.toUpperCase();desc.textContent=rule.step_limit+' steps · '+rule.max_observations+' scans · '+rule.max_static_objects+' objects · '+rule.max_pedestrians+' pedestrians';
   b.append(title,desc);b.onclick=()=>{pendingDifficulty=name;renderDifficultyOptions()};return b;
  }));
 }
@@ -324,7 +324,7 @@ async function openReview(){
   const r=info.result;
   $('reviewMaze').textContent='MAZE '+(catalog.findIndex(m=>m.id===r.maze_id)+1);
   $('reviewStrategy').textContent=r.strategy.toUpperCase();$('reviewDifficulty').textContent=r.difficulty.toUpperCase();
-  $('reviewLimit').textContent='/ '+r.step_limit;
+  $('reviewLimit').textContent='/ '+r.step_limit;$('reviewObsLimit').textContent='/ '+(r.max_observations??rules().max_observations);
   $('reviewSlider').max=String(reviewSteps.length-1);
   resetReviewHold();screen('reviewScreen');await renderReview(reviewSteps.length-1);
  }catch(error){toast(error.message)}finally{reviewOpening=false}

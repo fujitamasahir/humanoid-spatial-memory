@@ -36,7 +36,7 @@
   <div class="live-grid"><div class="map-card"><div class="panel-heading">HUMANOID IN MOTION</div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY</div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
 
   </div>
-  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="stepValue">0</b><span id="stepLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="obsValue">0</b></div></div><div class="live-actions"><button id="skipBtn" class="secondary-btn"><kbd class="a">A</kbd> SKIP TO RESULTS</button></div><div id="liveStatus" class="live-status" role="status"></div>
+  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="stepValue">0</b><span id="stepLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="obsValue">0</b><span id="obsLimit" class="count-limit">/ 20</span></div></div><div class="live-actions"><button id="skipBtn" class="secondary-btn"><kbd class="a">A</kbd> SKIP TO RESULTS</button></div><div id="liveStatus" class="live-status" role="status"></div>
 </section>
 <section id="resultScreen" class="screen result-screen">
   <div class="result-body"><div class="result-info"><div id="winner" class="winner">AI WINS</div><div class="result-hero" id="resultHero"><img id="resultPortrait" alt="G1 result pose"><canvas id="resultMotion" width="360" height="480" hidden aria-hidden="true"></canvas></div><p id="winnerCaption" class="winner-caption"></p><div class="result-summary" id="resultSummary"></div></div><div class="result-map"><h2>FINAL SPATIAL MEMORY</h2><canvas id="finalMemoryCanvas" width="900" height="700" aria-label="Final spatial memory map"></canvas></div></div>
@@ -46,12 +46,12 @@
   <div class="live-head"><div class="live-badges"><span>REVIEW</span><span id="reviewMaze"></span><span id="reviewStrategy"></span><span id="reviewDifficulty"></span></div></div>
   <div class="live-grid"><div class="map-card"><div class="panel-heading">HUMANOID IN MOTION</div><canvas id="reviewTruth" width="900" height="700"></canvas><img id="review3d" alt="Recorded MuJoCo view" hidden></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY</div><canvas id="reviewMemory" width="900" height="700"></canvas></div></div>
   <div class="review-timeline"><button id="reviewPrev" class="secondary-btn" aria-label="Previous step">◀</button><input id="reviewSlider" type="range" min="0" max="0" value="0" aria-label="Review step"><button id="reviewNext" class="secondary-btn" aria-label="Next step">▶</button></div>
-  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="reviewStep">0</b><span id="reviewLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="reviewScans">0</b></div></div>
+  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="reviewStep">0</b><span id="reviewLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="reviewScans">0</b><span id="reviewObsLimit" class="count-limit">/ 20</span></div></div>
   <div class="review-actions"><span class="review-hint">LEFT STICK / D-PAD · HOLD TO FAST SEEK</span><button id="reviewBack" class="secondary-btn"><kbd class="b">B</kbd> BACK TO RESULTS</button></div>
 </section>
 </main>
 
 <div id="settingsModal" class="settings-modal" hidden><div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><h2 id="settingsTitle">DIFFICULTY</h2><div id="difficultyOptions" class="difficulty-options"></div><div class="settings-actions"><button id="settingsApply" class="start-btn" type="button"><kbd class="a">A</kbd> CONFIRM</button><button id="settingsCancel" class="secondary-btn" type="button"><kbd class="b">B</kbd> BACK</button></div></div></div>
 <canvas id="confetti" hidden aria-hidden="true"></canvas><div id="toast" role="status"></div>
-<script src="/static/game.js?v=13"></script>
+<script src="/static/game.js?v=15"></script>
 </body></html>
