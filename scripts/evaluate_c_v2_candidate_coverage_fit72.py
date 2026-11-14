@@ -15,14 +15,15 @@ from spatial_memory.mujoco_perception import MujocoRayPerception
 
 FIT=ROOT/'results/phase2_mujoco/persistence_evi_fit72_restored_local_v1'
 INTEGRITY=ROOT/'results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/integrity_verification.json'
-ARMS=('c0_audit','c_k','c_route3','c_routek','c_topology3','c_topology3c')
-LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK','c_topology3':'C-Topology3-b-invalid','c_topology3c':'C-Topology3-c'}
+ARMS=('c0_audit','c_k','c_route3','c_routek','c_topology3','c_topology3c','c_topology3d')
+LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK','c_topology3':'C-Topology3-b-invalid','c_topology3c':'C-Topology3-c','c_topology3d':'C-Topology3-d'}
 DEFAULT_ARMS=('c0_audit','c_k','c_route3','c_topology3')
 
 def read_accepted_gate(path):
     """Read a numeric gate and honor any post-run conformance review."""
     document=json.loads(path.read_text())
-    status=document.get('mechanism_gate',{}).get('status')
+    status=(document.get('mechanism_gate',{}).get('status')
+      or document.get('numeric_gate',{}).get('status'))
     review_path=path.parent/'gate_review.json'
     review_required='topology_protocol' in str(document.get('protocol',''))
     if review_required and not review_path.is_file():
@@ -31,6 +32,8 @@ def read_accepted_gate(path):
         review=json.loads(review_path.read_text())
         if review.get('status')!='ACCEPTED_FOR_FIT':
             raise RuntimeError(f"Post-run gate review blocks FIT72: {review.get('status')}")
+        if 'v2d' in str(document.get('protocol','')) and review.get('FIT_authorized') is not True:
+            raise RuntimeError('C v2.0d independent review did not explicitly authorize FIT')
     return status
 
 def run_measured(payload,schedule,arm,config):
@@ -56,6 +59,11 @@ def run_measured(payload,schedule,arm,config):
 def episode_read(n,arm):
     return json.loads(gzip.decompress((FIT/f'episode_{n:03}_{arm}.json.gz').read_bytes()))
 
+def baseline_trace_for_method(saved_traces,age_key,method):
+    """The outer FIT key is anchored on Age; re-key each baseline method."""
+    world,schedule,_age_method,seed=age_key
+    return saved_traces[(world,schedule,method,seed)]
+
 def make_summary(records, arms=ARMS):
     result={}
     for arm in ('periodic','age',*arms):
@@ -80,10 +88,12 @@ def make_summary(records, arms=ARMS):
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--output',type=Path,default=ROOT/'results/phase2_mujoco/c_v2b_topology_v1/fit72_descriptive_screen')
+    ap.add_argument('--max-cases',type=int,help='bounded smoke subset of the sorted FIT72 key list')
     ap.add_argument('--gate',type=Path,default=ROOT/'results/phase2_mujoco/c_v2_candidate_coverage_v1/synthetic_fixture_frozen_v7/synthetic_fixture_results.json')
     ap.add_argument('--protocol',type=Path,default=ROOT/'docs/phase2_c_v2_candidate_coverage_protocol.md')
     ap.add_argument('--arms',nargs='+',choices=ARMS,default=list(DEFAULT_ARMS))
     args=ap.parse_args()
+    if args.max_cases is not None and args.max_cases<1:ap.error('--max-cases must be positive')
     gate_path=args.gate if args.gate.is_absolute() else ROOT/args.gate
     if not gate_path.is_file():raise RuntimeError('Frozen synthetic gate missing; refusing FIT72 access')
     gate_status=read_accepted_gate(gate_path)
@@ -104,6 +114,7 @@ def main():
     keys=sorted((r['world_identity'],int(r['schedule']),r['method'],int(r['seed']))
                 for r in baseline_rows if r['method']=='age')
     if len(keys)!=72 or len(worlds)!=36:raise RuntimeError('FIT72 evidence incomplete')
+    if args.max_cases is not None:keys=keys[:args.max_cases]
     prefix=references.navigation.verify_preserved_prefix()
     protected={str(p.relative_to(ROOT)):references._sha(p) for p in references.PROTECTED}
     args.output.mkdir(parents=True,exist_ok=False)
@@ -121,7 +132,8 @@ def main():
         baseline=base_idx[(world_id,int(schedule),method,int(seed))]
         if references.rdao_evaluator._signature(row)!=references.rdao_evaluator._signature(baseline):
             raise RuntimeError(f'{method} metrics failed frozen reproduction: {key}')
-        references._compare_trace(saved_traces[key],references.base._jsonable_row(trace))
+        references._compare_trace(baseline_trace_for_method(saved_traces,key,method),
+                                  references.base._jsonable_row(trace))
         refs[method]=row
         save_episode(args.output,ix,method,row,trace,{'actual_memory_sensor_calls':diag['actual_memory_sensor_calls']})
         allrows.append(flat(method,row,diag))
@@ -131,7 +143,7 @@ def main():
         if arm=='c0_audit':
             if references.rdao_evaluator._signature(row)!=references.rdao_evaluator._signature(original_c['row']):
                 raise RuntimeError(f'C0 metrics mismatch: {key}')
-            runner.reference.base._compare_trace(original_c['trace'],runner.reference.base._jsonable_row(trace))
+            references._compare_trace(original_c['trace'],references.base._jsonable_row(trace))
         save_episode(args.output,ix,LABEL[arm],row,trace,diag)
         flatrow=flat(arm,row,diag);allrows.append(flatrow)
         for method in ('periodic','age'):
@@ -182,6 +194,8 @@ def save_episode(out,n,arm,row,trace,diag):
 def flat(arm,row,diag):
     decisions=diag.get('decisions',[]);calls=[int(x.get('plan_calls',0)) for x in decisions]
     selected=[c for x in decisions for c in x.get('shortlisted_candidates',[])]
+    graph_counts=[x.get('graph_operation_counts') or {} for x in decisions]
+    stage_rows=[(x.get('stage_accounting') or {}).get('observed',{}) for x in decisions]
     reasons={'D_zero':0,'E_action_agreement':0,'F_below_cost':0,'authorized':0,'budget_exhausted':0}
     for x in decisions:
         v=float(x.get('value') or 0);d=float(x.get('delay_regret') or 0);net=float(x.get('net_value') or 0)
@@ -201,6 +215,17 @@ def flat(arm,row,diag):
       'false_persistent_occupancy_updates':int(row['false_persistent_occupancy_updates']),'missed_persistent_changes':int(row['missed_persistent_changes']),
       'scheduler_ms':float(diag.get('scheduler_total_ms',0.)),'episode_wall_time_seconds':float(row['episode_wall_time_seconds']),
       'mean_plan_calls':sum(calls)/len(calls) if calls else 0,'max_plan_calls':max(calls,default=0),
+      'total_plan_calls':sum(calls),
+      'total_counterfactual_astar_calls':sum(max(0,int(x.get('plan_calls',0))-1) for x in decisions),
+      'total_graph_analysis_ms':sum(float(x.get('graph_analysis_ns') or 0) for x in decisions)/1e6,
+      'total_topk_key_comparisons':sum(int((x.get('selection_counters') or {}).get('total_key_comparisons',0)) for x in decisions),
+      'total_topk_heap_comparisons':sum(int((x.get('selection_counters') or {}).get('heap_comparisons',0)) for x in decisions),
+      'total_candidate_visits':sum(int((x.get('selection_counters') or {}).get('candidate_visits',0)) for x in decisions),
+      'total_grid_cell_reads':sum(int(x.get('grid_cell_scans',0)) for x in graph_counts),
+      'total_graph_edge_inspections':sum(int(x.get('edge_inspections',0)) for x in graph_counts),
+      'total_counterfactual_grid_copy_cell_reads':sum(
+        int(stage.get('route_and_astar',{}).get('counterfactual_grid_copy_cell_reads',0))
+        for stage in stage_rows),
       'candidate_decisions':len(decisions),'selected_route_candidate_count':sum(bool(x.get('on_nominal_route')) for x in selected),
       'shortlist_cells_selected':len(selected),'mean_V':sum(float(x.get('value') or 0) for x in decisions)/len(decisions) if decisions else 0,
       'mean_D':sum(float(x.get('delay_regret') or 0) for x in decisions)/len(decisions) if decisions else 0,

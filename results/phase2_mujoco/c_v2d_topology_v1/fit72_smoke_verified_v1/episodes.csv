@@ -1,0 +1,11 @@
+actual_memory_raycasts,actual_memory_sensor_calls,arm,blocked_attempts,candidate_decisions,combined_rays,elapsed_steps,emergency_safety_interventions,emergency_safety_raycasts,emergency_safety_scans,episode_wall_time_seconds,evi_D_zero,evi_E_action_agreement,evi_F_below_cost,evi_authorized,evi_budget_exhausted,false_persistent_occupancy_updates,goal_step,max_plan_calls,mean_D,mean_V,mean_plan_calls,missed_persistent_changes,paid_memory_scans,scheduler_ms,selected_route_candidate_count,shortlist_cells_selected,success,travel_distance_m,unwanted_contacts
+427,7,periodic,0,0,2074,27,0,1647,27,0.312670459,0,0,0,0,0,0,27,0,0,0,0,36,7,0.0,0,0,True,15.75,0
+488,8,age,0,0,2135,27,0,1647,27,0.153533375,0,0,0,0,0,0,27,0,0,0,0,36,8,0.0,0,0,True,15.75,0
+183,3,c0_audit,2,29,1952,29,0,1769,29,0.175615167,19,0,8,2,0,0,29,7,0.21348162587761363,0.6341029608980816,7.0,40,3,72.543751,70,87,True,15.75,0
+183,3,c_k,2,29,1952,29,0,1769,29,0.19143,17,0,10,2,0,0,29,11,0.2384667903715598,0.7602861033509478,11.0,40,3,81.660959,103,145,True,15.75,0
+183,3,c_topology3d,2,29,1952,29,0,1769,29,0.3264285,13,0,14,2,0,0,29,7,0.3124755441230417,0.9540950665995708,7.0,40,3,204.679542,70,87,True,15.75,0
+427,7,periodic,0,0,2074,27,0,1647,27,0.173744,0,0,0,0,0,0,27,0,0,0,0,44,7,0.0,0,0,True,15.75,0
+488,8,age,0,0,2135,27,0,1647,27,0.110906208,0,0,0,0,0,0,27,0,0,0,0,44,8,0.0,0,0,True,15.75,0
+183,3,c0_audit,2,29,1952,29,0,1769,29,0.1874355,19,0,8,2,0,0,29,7,0.21348162587761363,0.6341029608980816,7.0,48,3,73.266875,70,87,True,15.75,0
+183,3,c_k,2,29,1952,29,0,1769,29,0.184105917,17,0,10,2,0,0,29,11,0.2384667903715598,0.7602861033509478,11.0,48,3,79.192499,103,145,True,15.75,0
+183,3,c_topology3d,2,29,1952,29,0,1769,29,0.2561175,13,0,14,2,0,0,29,7,0.3124755441230417,0.9540950665995708,7.0,48,3,151.444794,70,87,True,15.75,0

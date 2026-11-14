@@ -1,0 +1,72 @@
+[
+  {
+    "bytes": 4666,
+    "path": "episode_001_C-K.json.gz",
+    "sha256": "e9977ac84bb5a02edaeec4a4862cece19e751761e1f48e60e9b14d1bb82e0ad0"
+  },
+  {
+    "bytes": 14914,
+    "path": "episode_001_C-Topology3-d.json.gz",
+    "sha256": "ab2129ddcb82524ebe324e0e5a3d3d48b3fddd32215c9e860f7a77d6147064a9"
+  },
+  {
+    "bytes": 4392,
+    "path": "episode_001_C0.json.gz",
+    "sha256": "9dea5941435cd304fec4f605079e852322347d6d19bf4cd1f924d58c36e6474b"
+  },
+  {
+    "bytes": 2375,
+    "path": "episode_001_age.json.gz",
+    "sha256": "b5ef5e214cf389d1459e521d86b5c995a4b4107175d255e4b5e4ad7f072f2fe6"
+  },
+  {
+    "bytes": 2378,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "eeaa20412a8fea9d5573bf8bad2182c7539b4698dc3887c5bae454cd5907075b"
+  },
+  {
+    "bytes": 4670,
+    "path": "episode_002_C-K.json.gz",
+    "sha256": "960dc122442d9089c5c123ca798a10a17a1363a934aede09b49dab8faf8466e9"
+  },
+  {
+    "bytes": 14895,
+    "path": "episode_002_C-Topology3-d.json.gz",
+    "sha256": "7a37679dac7ef21b577ba31b6db12ca0d1e68bbefb98f5e76d6a3dc92c351f6a"
+  },
+  {
+    "bytes": 4390,
+    "path": "episode_002_C0.json.gz",
+    "sha256": "725f2593d5608d06c8214b026353b4903b4f4bedfdf70ef11ccc5a3ab506abe1"
+  },
+  {
+    "bytes": 2378,
+    "path": "episode_002_age.json.gz",
+    "sha256": "3d59a5ec9015aca8ea315c1748aebf9eb68ab07fd5247a4e9899610cfbd6601b"
+  },
+  {
+    "bytes": 2374,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "d8bfa1357256a011a8da4c2ff85b5a10b89475f3eb6bd8906fde705f46f804ff"
+  },
+  {
+    "bytes": 1806,
+    "path": "episodes.csv",
+    "sha256": "a90a9b066a96370c6ed54faf0e90c9f4ae242c3574d0fa19072cb48fcc2ae2a7"
+  },
+  {
+    "bytes": 3067,
+    "path": "paired.csv",
+    "sha256": "350746006eb70d3547a9c9ea6603ed1f9d8acd60612f047e0cbb9b6f4c4360f5"
+  },
+  {
+    "bytes": 6487,
+    "path": "provenance.json",
+    "sha256": "9fa1d7149e9e3c2e72a52b2889feb675e9ec6b67a5b541a5b6154c1586ca7d91"
+  },
+  {
+    "bytes": 17656,
+    "path": "summary.json",
+    "sha256": "866c1084ac053a264f6fcfb6ccc41915a55c4b21d733ae3030848e302474abaf"
+  }
+]

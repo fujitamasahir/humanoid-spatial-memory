@@ -1,0 +1,13 @@
+{
+  "baseline_method_under_test": "periodic",
+  "cause": "saved_traces[key] used where saved_traces[(world,schedule,method,seed)] is required. No candidate C arm or FIT72 matrix was run in this attempt.",
+  "episode_key": {
+    "schedule": 0,
+    "seed": 42,
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+  },
+  "failure": "The evaluator compared the periodic replay against the outer Age-keyed saved trace instead of the periodic-keyed trace. The trace mismatch is in observation_granted/observation_count at step 25; position, heading, action, movement, contacts, and emergency intervention match.",
+  "protected_stores_modified": false,
+  "protocol_outcome": "smoke failed; corrected deterministic trace lookup is required before any full FIT72 run.",
+  "status": "INVALID_SMOKE_COMPARATOR_KEYING"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "INVALID_SMOKE_VALIDATOR_CALL",
+  "episode_key": {
+    "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000",
+    "schedule": 0,
+    "seed": 42
+  },
+  "candidate_arm": "C0",
+  "failure": "The saved C0 metric signature matched, but the runner called _compare_trace on the baseline simulator module, which does not expose that helper.",
+  "cause": "Comparator call used the wrong module; no mismatch in the C0 metrics was found. Periodic and Age traces passed after the preceding keying correction. No C-K or C-Topology3-d rows and no full FIT72 matrix ran in this attempt.",
+  "protected_stores_modified": false
+}
