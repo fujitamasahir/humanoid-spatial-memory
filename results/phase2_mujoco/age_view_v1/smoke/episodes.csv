@@ -1,0 +1,9 @@
+actual_memory_raycasts,age_requests,age_requests_deferred,arm,blocked_attempts,combined_rays,deadline_requests,directional_requests,elapsed_steps,emergency_safety_interventions,emergency_safety_raycasts,emergency_safety_scans,episode,episode_wall_time_seconds,false_persistent_occupancy_updates,identity,missed_persistent_changes,paid_memory_scans,schedule,scheduler_ms,success,travel_distance_m,unwanted_contacts
+427,0,0,periodic,0,2074,0,0,27,0,1647,27,1,0.261206917,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,7,0,0.0,True,15.75,0
+488,0,0,age,0,2135,0,0,27,0,1647,27,1,0.123936,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,8,0,0.0,True,15.75,0
+305,6,2,age_view_veto,0,1952,0,4,27,0,1647,27,1,0.169033708,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,5,0,58.292873,True,15.75,0
+305,6,2,age_view_clock,0,1952,0,4,27,0,1647,27,1,0.156866959,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,5,0,55.145502,True,15.75,0
+427,0,0,periodic,0,2074,0,0,27,0,1647,27,2,0.100392917,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,7,1,0.0,True,15.75,0
+488,0,0,age,0,2135,0,0,27,0,1647,27,2,0.098626875,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,8,1,0.0,True,15.75,0
+305,6,2,age_view_veto,0,1952,0,4,27,0,1647,27,2,0.154949125,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,5,1,56.506583,True,15.75,0
+305,6,2,age_view_clock,0,1952,0,4,27,0,1647,27,2,0.153469375,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,5,1,55.857916,True,15.75,0
