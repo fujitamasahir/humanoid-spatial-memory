@@ -7,16 +7,16 @@
 </head>
 <body>
 <div class="grain"></div>
-<header><div class="brand"><span class="pulse"></span><span>BYU AI DAY 2026</span></div><div class="game-title">BEAT THE HUMANOID <i>·</i> HUMAN VS AI</div><div id="padStatus" class="pad-status">◉ CONTROLLER CHECKING</div></header>
+<header><div class="game-title">BEAT THE HUMANOID <i>·</i> HUMAN VS AI</div><div id="padStatus" class="pad-status">◉ CONTROLLER CHECKING</div></header>
 <main>
 <section id="setupScreen" class="screen active">
   <div class="setup-left">
-    <div class="eyebrow">01 / BUILD THE CHALLENGE</div>
-    <h1>Can you <em>outsmart</em><br>the humanoid?</h1>
-    <p class="intro">Shape a maze. Drop a few obstacles. Pick how the AI senses. Then see if it can get through in 80 steps.</p>
-    <div class="form-row"><label>MAZE</label><div class="maze-select"><button id="prevMaze" class="icon-btn">‹</button><select id="mazeSelect"></select><button id="nextMaze" class="icon-btn">›</button></div></div>
+    
+    <h1>Can you <em>outsmart</em> the humanoid?</h1>
+    <p class="intro">Stop the robot in 80 steps.</p>
+    <div class="form-row"><label>MAZE</label><div class="maze-select"><button id="prevMaze" class="icon-btn"><kbd>LT</kbd> ‹</button><button id="nextMaze" class="icon-btn">› <kbd>RT</kbd></button></div></div>
     <div class="maze-meta"><span id="mazeIdentity">R / 0</span><span id="mazeDimensions">25 × 25</span></div>
-    <div class="form-row strategy-row"><label>AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -24,29 +24,29 @@
     <div class="form-row"><label>PLACE HAZARDS</label><div class="tool-row"><button id="objectTool" class="tool active"><span class="object-icon">◆</span> STATIC OBJECT <kbd>X</kbd></button><button id="pedTool" class="tool"><span class="ped-icon">●</span> PEDESTRIAN <kbd>Y</kbd></button><button id="removeTool" class="tool"><span>⌫</span> REMOVE <kbd>B</kbd></button></div></div>
     <div class="counts"><span>STATIC OBJECTS <b id="objectCount">0 / 4</b></span><span>PEDESTRIANS <b id="pedCount">0 / 2</b></span></div>
     <div id="validation" class="validation">Layout ready. Place hazards on open cells.</div>
-    <button id="startBtn" class="start-btn">START CHALLENGE <span>↗</span></button>
-    <div class="control-hint">LEFT STICK / ARROWS MOVE CURSOR <span>·</span> A / ENTER PLACE <span>·</span> LB / RB CHANGE MAZE</div>
+    <button id="startBtn" class="start-btn"><kbd class="a">A</kbd> START CHALLENGE</button>
+    
   </div>
   <div class="setup-right">
     <div class="panel-heading"><span>ENVIRONMENT EDITOR</span><span class="key"><i></i> G1 START <i class="gold"></i> GOAL</span></div>
-    <canvas id="editorCanvas" width="900" height="760"></canvas>
-    <div class="editor-footer"><span id="cursorLabel">CURSOR 01, 01</span><span>CLICK TO PLACE · RIGHT CLICK TO REMOVE</span><span id="catalogBadge">36 VERIFIED MAZES</span></div>
+    <div class="carousel"><canvas id="prevPreview" width="300" height="300"></canvas><canvas id="editorCanvas" width="900" height="760"></canvas><canvas id="nextPreview" width="300" height="300"></canvas></div>
+    
   </div>
 </section>
 <section id="liveScreen" class="screen live-screen">
-  <div class="live-head"><div><div class="eyebrow">02 / LIVE CHALLENGE</div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span><span class="step-chip">STEP <b id="stepValue">0</b> / 80</span></div></div>
+  <div class="live-head"><div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span><span class="step-chip">STEP <b id="stepValue">0</b> / 80</span></div></div>
   <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>AI VIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
     <aside class="stats-card"><div class="stat"><small>MEMORY OBSERVATIONS</small><b id="obsValue">1</b></div><div class="stat"><small>TRAVEL DISTANCE</small><b id="distanceValue">0.0 <i>m</i></b></div><div class="stat"><small>ACTUAL UNWANTED CONTACTS</small><b id="contactValue">0</b></div><div class="stat"><small>BLOCKED MOVES <em>≠ contact</em></small><b id="blockedValue">0</b></div><div class="stat"><small>G1 HEADING</small><b id="headingValue">EAST</b></div><div class="stat events"><small>EVENTS</small><div id="events"></div></div></aside>
   </div>
   <div id="liveStatus" class="live-status">Running actual Phase 2 G1 navigation…</div>
 </section>
 <section id="resultScreen" class="screen result-screen">
-  <div class="result-kicker">03 / CHALLENGE COMPLETE</div><div id="winner" class="winner">AI WINS</div><p id="winnerCaption" class="winner-caption"></p>
+  <div id="winner" class="winner">AI WINS</div><p id="winnerCaption" class="winner-caption"></p>
   <div class="result-summary" id="resultSummary"></div>
-  <div class="result-actions"><button id="retryBtn" class="start-btn">RETRY · CHANGE STRATEGY <span>↻</span></button><button id="newBtn" class="secondary-btn">NEW CHALLENGE</button></div>
+  <div class="result-actions"><button id="retryBtn" class="start-btn"><kbd class="a">A</kbd> RETRY · CHANGE STRATEGY</button><button id="newBtn" class="secondary-btn"><kbd class="b">B</kbd> NEW CHALLENGE</button></div>
 </section>
 </main>
-<footer><span>OFFLINE DEMO · ACTUAL UNITREE G1 COLLISION MODEL · KINEMATIC NAVIGATION</span><span>NO PERSONAL DATA COLLECTED</span></footer>
+
 <div id="toast" role="status"></div>
 <script src="/static/game.js"></script>
 </body></html>

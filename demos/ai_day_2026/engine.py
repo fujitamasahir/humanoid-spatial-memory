@@ -239,7 +239,7 @@ def make_pedestrian_paths(maze: dict, starts: list[list[int]], objects: list[lis
 
 class GameEngine:
     def __init__(self, catalog: dict | None = None, reachability: FootprintReachability | None = None,
-                 log_path: Path | None = None, frame_delay_s: float = 0.065):
+                 log_path: Path | None = None, frame_delay_s: float = 0.13):
         self.catalog = catalog or read_catalog()
         self.runtime_binding = verify_runtime_binding()
         self.mazes = {m['id']: m for m in self.catalog['mazes']}
@@ -430,7 +430,7 @@ class GameEngine:
                 self.state['trajectory'] = (self.state.get('trajectory', [])+[
                     list(map(int, frame['position']))])[-400:]
                 self.state['blocked_attempts'] = int(self.state.get('blocked_attempts',0))+int(frame.get('blocked',False))
-                self.state['distance_m'] = max(0, len(self.state['trajectory'])-1)*scene.cell_size
+                self.state['distance_m'] = sum(math.dist(a,b) for a,b in zip(self.state['trajectory'],self.state['trajectory'][1:]))*scene.cell_size
             time.sleep(self.frame_delay_s)
             return extra
 
