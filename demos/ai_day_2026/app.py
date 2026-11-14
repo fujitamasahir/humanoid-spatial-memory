@@ -51,6 +51,21 @@ def challenge(request: ChallengeRequest):
 def state():
     return engine.snapshot()
 
+@app.post('/api/skip')
+def skip():
+    result=engine.skip()
+    return JSONResponse(result,status_code=200 if result['ok'] else 409)
+
+@app.get('/api/review')
+def review():
+    result=engine.review_index()
+    return result if result is not None else JSONResponse({'error':'No completed challenge.'},status_code=409)
+
+@app.get('/api/review/{step}')
+def review_frame(step: int):
+    result=engine.review_frame(step)
+    return result if result is not None else JSONResponse({'error':'Review step unavailable.'},status_code=404)
+
 @app.post('/api/reset')
 def reset():
     result=engine.reset()
@@ -86,7 +101,7 @@ def portrait(strategy: str, motion: bool=False, reaction: str=''):
         return JSONResponse({'error':'Unknown strategy'},status_code=404)
     if reaction not in ('', 'defeat'):
         return JSONResponse({'error':'Unknown portrait reaction'},status_code=400)
-    suffix=('-defeat-motion.png' if motion else '-defeat-pose.png') if reaction else ('-motion.png' if motion else '.png')
+    suffix=('-defeat-motion-v12.png' if motion else '-defeat-pose-v12.png') if reaction else ('-motion.png' if motion else '.png')
     path=_portrait_dir/(strategy+suffix)
     with _portrait_lock:
         if not path.exists():

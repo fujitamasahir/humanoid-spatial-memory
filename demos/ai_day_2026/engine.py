@@ -276,6 +276,8 @@ class GameEngine:
         self.frame_delay_s = frame_delay_s
         self.lock = threading.RLock()
         self.running = False
+        self.skip_playback = threading.Event()
+        self.history = {}
         self.counter = 0
         self.state: dict[str, Any] = {'status': 'idle', 'frame_seq': -1}
         self.last_config = None
@@ -351,6 +353,8 @@ class GameEngine:
                           'render_3d': bool(payload.get('render_3d', False)), 'seed': 42000+self.counter,
                           'pedestrian_paths': validation['pedestrian_paths']}
             self.last_config = run_config
+            self.history.clear()
+            self.skip_playback.clear()
             self.running = True
             self.state = {'status': 'running', 'frame_seq': -1, 'step': 0,
                 'maze_id': maze_id, 'strategy': strategy, 'difficulty': difficulty,
@@ -477,7 +481,16 @@ class GameEngine:
                     list(map(int, frame['position']))])[-400:]
                 self.state['blocked_attempts'] = int(self.state.get('blocked_attempts',0))+int(frame.get('blocked',False))
                 self.state['distance_m'] = sum(math.dist(a,b) for a,b in zip(self.state['trajectory'],self.state['trajectory'][1:]))*scene.cell_size
-            time.sleep(self.frame_delay_s)
+                # Save every evaluator step before WebSocket sampling.
+                self.history[serial['step']] = {
+                    k: self.state[k] for k in (
+                        'step','maze_id','strategy','difficulty','step_limit','position',
+                        'heading_yaw','memory','people','objects','observed_objects',
+                        'observed_people','trajectory','observations','frame_seq')
+                }
+                if serial.get('render_png'):
+                    self.history[serial['step']]['render_png'] = serial['render_png']
+            self.skip_playback.wait(self.frame_delay_s)
             return extra
 
         try:
@@ -529,7 +542,28 @@ class GameEngine:
             if self.running:
                 return {'ok': False, 'error': 'Wait for the current challenge to finish before resetting.'}
             self.state = {'status':'idle','frame_seq':-1}
+            self.history.clear()
+            self.skip_playback.clear()
             return {'ok': True}
+
+    def skip(self):
+        with self.lock:
+            if self.state.get('status') not in ('running','finished'):
+                return {'ok': False, 'error': 'No active challenge.'}
+            self.skip_playback.set()
+            return {'ok': True}
+
+    def review_index(self):
+        with self.lock:
+            if self.state.get('status')!='finished':
+                return None
+            return {'steps': sorted(self.history), 'result': self.state['result']}
+
+    def review_frame(self, step):
+        with self.lock:
+            if self.state.get('status')!='finished' or step not in self.history:
+                return None
+            return json.loads(json.dumps(self.history[step], allow_nan=False))
 
     def snapshot(self):
         with self.lock:

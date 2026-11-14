@@ -111,3 +111,23 @@ def test_wandering_covers_more_than_two_cells_and_never_overlaps():
     for i in range(1,len(paths[0])):
         assert paths[0][i]!=paths[1][i]
         assert not (paths[0][i]==paths[1][i-1] and paths[1][i]==paths[0][i-1])
+
+def test_skip_and_review_are_scoped_to_completed_run():
+    import threading
+    engine=GameEngine.__new__(GameEngine)
+    engine.lock=threading.RLock()
+    engine.skip_playback=threading.Event()
+    engine.history={0:{'step':0},1:{'step':1,'memory':[[0]]}}
+    engine.running=True
+    engine.state={'status':'running'}
+    assert engine.review_index() is None
+    assert engine.skip()['ok'] and engine.skip_playback.is_set()
+    assert engine.review_frame(1) is None
+    engine.state={'status':'finished','result':{'winner':'AI WINS'}}
+    engine.running=False
+    assert engine.review_index()['steps']==[0,1]
+    frame=engine.review_frame(1);frame['memory'][0][0]=1
+    assert engine.review_frame(1)['memory']==[[0]]
+    assert engine.review_frame(2) is None
+    assert engine.reset()['ok'] and not engine.history and not engine.skip_playback.is_set()
+    assert not engine.skip()['ok']

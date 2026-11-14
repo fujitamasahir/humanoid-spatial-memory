@@ -2,6 +2,7 @@
 const $=id=>document.getElementById(id);let catalog=[],mazeIndex=0,objects=[],pedestrians=[],strategy='periodic',tool='object',cursor=[1,1],cellGeom=null,latestFrame=-1,lastResult=null,lastConfig=null,gamepadPrev=new Set(),lastPadAction=0,ws;
 let difficulty='easy',difficultyRules={},pendingDifficulty='easy',settingsOpen=false;
 const LEVELS=['easy','medium','hard'];
+let skipping=false,reviewSteps=[],reviewCursor=0,reviewRequest=0,reviewOpening=false;
 const rules=()=>difficultyRules[difficulty];
 const colors={wall:'#263647',free:'#101a26',unknown:'#5f6978',memoryFree:'#174247',memoryWall:'#60413a',object:'#f19a43',ped:'#f26970',cyan:'#49e0eb',gold:'#ffca63',robot:'#64b4ff'};
 async function api(url,options={}){const r=await fetch(url,{headers:{'Content-Type':'application/json'},...options});let d=await r.json();if(!r.ok)throw Error(d.detail||d.error||`HTTP ${r.status}`);return d}
@@ -66,8 +67,15 @@ $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
 $('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
 function screen(name){stopResultEffects();$('settingsBtn').hidden=name!=='setupScreen';document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
-async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
-$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
+async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
+$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;if(!skipping)drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
+async function skipChallenge(){
+ if(skipping||!$('liveScreen').classList.contains('active'))return;
+ skipping=true;$('skipBtn').disabled=true;$('skipBtn').textContent='FINISHING CHALLENGE…';
+ try{await api('/api/skip',{method:'POST'})}
+ catch(error){skipping=false;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';toast(error.message)}
+}
+$('skipBtn').onclick=skipChallenge;
 function drawMemory(canvas,m,s){
  const robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
  drawMap(canvas,m,{northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[],memory:s.memory||m.wall_rows.map(r=>r.split('').map(()=>-1)),observedObjects:s.observed_objects||[],observedPeople:s.observed_people||[]});
@@ -84,6 +92,7 @@ function drawLive(s){
  $('liveStatus').textContent='';
 }
 function showResult(r,finalState){
+ skipping=false;
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
  w.textContent=r.winner;w.classList.toggle('human',human);
  $('winnerCaption').textContent=!human?'The G1 reached the goal safely within '+limit+' steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 experienced unwanted contact.':'The G1 did not safely reach the goal within '+limit+' steps.');
@@ -101,16 +110,18 @@ if(gp){for(let i=0;i<gp.buttons.length;i++)if(pressed(gp,i))cur.add(i);const edg
 const repeat=(i,fn)=>{if(!cur.has(i)){delete repeats[i];return}if(edge(i)||now>=(repeats[i]??0)){fn();repeats[i]=now+(edge(i)?350:140)}};
 if(settingsOpen){if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings()}
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(6,()=>setMaze(mazeIndex-1));repeat(7,()=>setMaze(mazeIndex+1));if(edge(14)||edge(12))cycleStrategy(-1);if(edge(15)||edge(13))cycleStrategy(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
-else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click()}
+else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
+else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
+else if($('reviewScreen').classList.contains('active')){repeat(14,()=>moveReview(-1));repeat(15,()=>moveReview(1));if(edge(1))closeReview()}
 }else{for(const k of Object.keys(repeats))delete repeats[k]}gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
-window.addEventListener('keydown',e=>{if(!$('setupScreen').classList.contains('active'))return;const k=e.key.toLowerCase();if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
+window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
 const motionCache=new Map();let motionToken=0;
 function motionAsset(name,reaction=''){
  const key=name+'|'+reaction;
  if(!motionCache.has(key)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=11'});
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=12'});
   motionCache.set(key,promise);promise.catch(()=>motionCache.delete(key));
  }
  return motionCache.get(key);
@@ -254,11 +265,11 @@ function resultFrame(elapsed,human){
  const index=Math.max(0,Math.floor(elapsed*RESULT_FPS/1000));
  return human?(index<DEFEAT_DROP_FRAMES?index:DEFEAT_DROP_FRAMES+(index-DEFEAT_DROP_FRAMES)%DEFEAT_LOOP_FRAMES):Math.min(59,index);
 }
-function showResultReaction(name,human){
+function showResultReaction(name,human,celebrate=true){
  const token=++resultEffectToken,img=$('resultPortrait'),canvas=$('resultMotion');
  img.hidden=false;img.src='/api/portrait/'+name+'?v=8';
  $('resultHero').classList.toggle('defeated',human);
- if(human)burstConfetti(token);
+ if(human&&celebrate)burstConfetti(token);
  motionAsset(name,human?'defeat':'').then(atlas=>{
   if(token!==resultEffectToken||!$('resultScreen').classList.contains('active'))return;
   const ctx=canvas.getContext('2d'),start=performance.now();
@@ -280,7 +291,7 @@ function showResultReaction(name,human){
   if(token!==resultEffectToken)return;
   console.warn(error);
   canvas.hidden=true;img.hidden=false;
-  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=11';
+  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=12';
  });
 }
 function burstConfetti(token){
@@ -300,3 +311,48 @@ function burstConfetti(token){
  }
  requestAnimationFrame(tick);
 }
+
+async function openReview(){
+ if(reviewOpening||starting||!$('resultScreen').classList.contains('active'))return;
+ reviewOpening=true;
+ try{
+  const info=await api('/api/review');
+  if(!$('resultScreen').classList.contains('active')||starting)return;
+  reviewSteps=info.steps;
+  if(!reviewSteps.length){toast('No review frames recorded.');return}
+  const r=info.result;
+  $('reviewMaze').textContent='MAZE '+(catalog.findIndex(m=>m.id===r.maze_id)+1);
+  $('reviewStrategy').textContent=r.strategy.toUpperCase();$('reviewDifficulty').textContent=r.difficulty.toUpperCase();
+  $('reviewLimit').textContent='/ '+r.step_limit;
+  $('reviewSlider').max=String(reviewSteps.length-1);
+  screen('reviewScreen');await renderReview(reviewSteps.length-1);
+ }catch(error){toast(error.message)}finally{reviewOpening=false}
+}
+async function renderReview(index){
+ if(!reviewSteps.length)return;
+ reviewCursor=Math.max(0,Math.min(reviewSteps.length-1,index));
+ $('reviewSlider').value=String(reviewCursor);
+ $('reviewPrev').disabled=reviewCursor===0;$('reviewNext').disabled=reviewCursor===reviewSteps.length-1;
+ const request=++reviewRequest,step=reviewSteps[reviewCursor];
+ try{
+  const s=await api('/api/review/'+step);
+  if(request!==reviewRequest||!$('reviewScreen').classList.contains('active'))return;
+  const m=catalog.find(x=>x.id===s.maze_id)||current();
+  const robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
+  drawMap($('reviewTruth'),m,{northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[]});
+  if(s.render_png){$('review3d').src='data:image/png;base64,'+s.render_png;$('review3d').hidden=false;$('reviewTruth').hidden=true}
+  else{$('review3d').hidden=true;$('reviewTruth').hidden=false}
+  drawMemory($('reviewMemory'),m,s);
+  $('reviewStep').textContent=s.step;$('reviewScans').textContent=s.observations;
+ }catch(error){if(request===reviewRequest)toast(error.message)}
+}
+function moveReview(delta){renderReview(reviewCursor+delta)}
+function closeReview(){
+ ++reviewRequest;
+ if(!$('reviewScreen').classList.contains('active'))return;
+ screen('resultScreen');
+ if(lastResult)showResultReaction(lastResult.strategy,lastResult.winner==='HUMAN WINS',false);
+}
+$('reviewBtn').onclick=openReview;$('reviewBack').onclick=closeReview;
+$('reviewPrev').onclick=()=>moveReview(-1);$('reviewNext').onclick=()=>moveReview(1);
+$('reviewSlider').oninput=()=>renderReview(Number($('reviewSlider').value));

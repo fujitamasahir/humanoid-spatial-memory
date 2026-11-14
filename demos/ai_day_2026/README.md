@@ -78,3 +78,7 @@ for strategy in periodic age uncertainty; do
     "$strategy" defeat
 done
 ```
+
+### Skip and review
+
+Press A during the live challenge to remove presentation delays. Navigation, step cap, contact accounting, and optional 3D rendering continue to completion. B on the result screen opens a review of every evaluator step (including step zero); use D-pad left/right or the timeline, and B to go back. 3D frames are preserved when rendering succeeds, otherwise review uses the 2D ground-truth map. Only the latest challenge's review history is held in server memory, cleared on reset. The defeat animation uses palm orientation and position IK; the pose is kinematic, not a physically simulated fall.

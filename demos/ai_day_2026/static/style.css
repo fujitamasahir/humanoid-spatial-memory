@@ -71,3 +71,15 @@ body[data-difficulty=medium]{background:radial-gradient(ellipse at 80% 0%,#34261
 .result-info .result-summary{grid-template-columns:repeat(6,minmax(0,1fr));width:100%;max-width:650px}
 .result-info .result-summary>div{grid-column:span 2;min-width:0;text-align:center;padding:9px 4px}
 .result-info .result-summary>div:nth-child(n+4){grid-column:span 3}
+
+/* v12: review uses the live maps plus a step timeline. */
+.live-actions,.review-actions{display:flex;justify-content:center;flex:none;padding:5px 0}
+.live-actions button,.review-actions button{min-height:38px;padding:5px 18px;font-size:clamp(12px,1.2vw,18px)}
+.live-actions button{opacity:.82}.live-actions button:disabled{opacity:.6}
+.result-actions #reviewBtn{flex:0 1 235px;justify-content:center}
+.review-timeline{display:flex;align-items:center;gap:14px;padding:4px 0;flex:none;width:min(94%,1000px);margin:0 auto}
+.review-timeline input{flex:1;min-width:0;accent-color:#53dcea;cursor:pointer}
+.review-timeline button{min-height:34px;padding:3px 15px;font-size:20px;min-width:44px}
+#review3d{flex:1;min-height:0;width:100%;height:0;object-fit:contain}
+#review3d[hidden],#reviewTruth[hidden]{display:none!important}
+#reviewScreen .live-counters{padding:4px 5px}

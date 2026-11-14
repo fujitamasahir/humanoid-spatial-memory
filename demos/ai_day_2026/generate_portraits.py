@@ -132,6 +132,30 @@ class DefeatChoreography:
             raise ValueError('Pinned G1 defeat contact landmarks were not found')
         self.hand_local=np.array([.075,0,0])
         self.targets=None
+        self.hand_orientation={}
+        self.hand_clearance={}
+        for side,body in zip(('left','right'),self.hand_bodies):
+            gid=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_open_showcase')
+            if gid<0: raise ValueError('Showcase hand mesh missing: '+side)
+            mesh=int(model.geom_dataid[gid])
+            adr,num=int(model.mesh_vertadr[mesh]),int(model.mesh_vertnum[mesh])
+            vertices=model.mesh_vert[adr:adr+num]
+            world=vertices@data.geom_xmat[gid].reshape(3,3).T+data.geom_xpos[gid]
+            local=(world-data.xpos[body])@data.xmat[body].reshape(3,3)
+            lo,hi=np.quantile(local[:,0],[.05,.95])
+            palm=local[(local[:,0]>=lo+.22*(hi-lo))&(local[:,0]<=lo+.61*(hi-lo))]
+            tips=local[local[:,0]>=lo+.76*(hi-lo)]
+            # Infer transverse palm normal from the fixed mesh thickness;
+            # the curved fingertips indicate the palm-facing side.
+            _,vec=np.linalg.eigh(np.cov(palm[:,1:].T))
+            normal=np.array([0.,*vec[:,0]])
+            if np.dot(tips.mean(axis=0)-palm.mean(axis=0),normal)<0: normal=-normal
+            forward=np.array([1.,0.,0.])
+            local_basis=np.column_stack((forward,np.cross(normal,forward),normal))
+            world_basis=np.diag([1.,-1.,-1.])
+            rotation=world_basis@local_basis.T
+            self.hand_orientation[side]=rotation
+            self.hand_clearance[side]=float(-np.min((local-self.hand_local)@rotation[2]))
 
     def lowest(self):
         if not self.meshes: return 0.0
@@ -149,19 +173,29 @@ class DefeatChoreography:
     def hand_pos(self,body):
         return self.data.xpos[body]+self.data.xmat[body].reshape(3,3)@self.hand_local
 
-    def solve_hand(self,side,body,target):
+    def solve_hand(self,side,body,target,bow):
         joint_names=[side+'_'+name+'_joint' for name in
-                     ('shoulder_pitch','shoulder_roll','shoulder_yaw','elbow','wrist_pitch')]
+                     ('shoulder_pitch','shoulder_roll','shoulder_yaw','elbow',
+                      'wrist_roll','wrist_pitch','wrist_yaw')]
         indices=[self.ids[name] for name in joint_names if name in self.ids]
         dofs=[int(self.model.jnt_dofadr[i]) for i in indices]
         jacp=np.zeros((3,self.model.nv));jacr=np.zeros_like(jacp)
-        for _ in range(18):
-            pos=self.hand_pos(body);error=target-pos
-            if np.linalg.norm(error)<.008: break
+        desired=self.hand_orientation[side]
+        weight=.20*bow
+        for _ in range(45):
+            pos=self.hand_pos(body)
+            actual=self.data.xmat[body].reshape(3,3)
+            error=target-pos
+            quat=np.zeros(4);angular=np.zeros(3)
+            mj.mju_mat2Quat(quat,(desired@actual.T).ravel())
+            if quat[0]<0: quat=-quat
+            mj.mju_quat2Vel(angular,quat,1.)
+            if np.linalg.norm(error)<.004 and (bow<.05 or np.linalg.norm(angular)<.06): break
             mj.mj_jac(self.model,self.data,jacp,jacr,pos,body)
-            J=jacp[:,dofs]
-            delta=J.T@np.linalg.solve(J@J.T+.003*np.eye(3),error)
-            for i,dq in zip(indices,np.clip(delta,-.18,.18)):
+            J=np.vstack((jacp[:,dofs],weight*jacr[:,dofs]))
+            residual=np.concatenate((error,weight*angular))
+            delta=J.T@np.linalg.solve(J@J.T+.0015*np.eye(6),residual)
+            for i,dq in zip(indices,np.clip(delta,-.22,.22)):
                 adr=int(self.model.jnt_qposadr[i])
                 name=mj.mj_id2name(self.model,mj.mjtObj.mjOBJ_JOINT,i)
                 self.set_joint(name,self.data.qpos[adr]+dq)
@@ -204,14 +238,14 @@ class DefeatChoreography:
             # planted through the trembling cycle. Solve each arm independently.
             if self.targets is None:
                 self.targets=[]
-                for shoulder,sign in zip(self.shoulders,(1,-1)):
+                for side,shoulder,sign in zip(('left','right'),self.shoulders,(1,-1)):
                     q=d.xpos[shoulder].copy()
-                    q[0]+=.05+.16*(1-bow)
-                    q[1]=sign*.19;q[2]=self.floor+.035
+                    q[0]+=.08
+                    q[1]=sign*.19;q[2]=self.floor+self.hand_clearance[side]
                     self.targets.append(q)
             for side,body,target in zip(('left','right'),self.hand_bodies,self.targets):
                 initial=self.hand_pos(body)
-                self.solve_hand(side,body,initial*(1-bow)+target*bow)
+                self.solve_hand(side,body,initial*(1-bow)+target*bow,bow)
 
 def generate(out, motion=None, reaction=None, still_strategy=None):
     src=ROOT/'third_party/unitree_g1/g1.xml'
@@ -321,9 +355,9 @@ def generate(out, motion=None, reaction=None, still_strategy=None):
                     for i in range(total):
                         y,x=divmod(i,COLS)
                         sheet[y*HEIGHT:(y+1)*HEIGHT,x*WIDTH:(x+1)*WIDTH]=render(i)
-                    save(name+'-defeat-motion.png',sheet)
+                    save(name+'-defeat-motion-v12.png',sheet)
                 else:
-                    save(name+'-defeat-pose.png',render())
+                    save(name+'-defeat-pose-v12.png',render())
             elif not motion:
                 save(name+'.png',render())
             else:
