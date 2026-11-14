@@ -97,3 +97,5 @@ body:is([data-difficulty=medium],[data-difficulty=hard]) :is(#liveDifficulty,#re
 /* Fullscreen toggle stays available on every screen. */
 .fullscreen-btn{position:absolute;right:100px;top:50%;transform:translateY(-50%);width:40px;height:40px;display:grid;place-items:center;padding:8px;border:1px solid #34475d;border-radius:8px;background:#101a27;color:#d1e0ef;cursor:pointer;z-index:3}
 .fullscreen-btn svg{width:22px;height:22px}.fullscreen-btn:hover,.fullscreen-btn:focus-visible{color:#65e0ec;border-color:#65e0ec}.fullscreen-btn .collapse-icon,.fullscreen-btn[aria-pressed=true] .expand-icon{display:none}.fullscreen-btn[aria-pressed=true] .collapse-icon{display:inline}
+
+.maze-type{font-weight:800;letter-spacing:.08em;font-size:14px}.maze-type[data-type=R]{color:#659fe0}.maze-type[data-type=BP]{color:#56c6aa}.maze-type[data-type=M]{color:#a58be7}.maze-type-wrap{min-width:0;display:flex;align-items:center;gap:8px}.validation[hidden]{display:none}.difficulty-trigger-hint{font-size:10px;color:#a8bed4;border:1px solid #44566a;border-radius:4px;padding:3px 4px;white-space:nowrap}

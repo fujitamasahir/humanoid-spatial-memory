@@ -11,7 +11,7 @@ function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setT
 function current(){return catalog[mazeIndex]}
 function setTool(t){tool=t;for(const [id,v] of [['objectTool','object'],['pedTool','ped']])$(id).classList.toggle('active',t===v)}
 function dimensions(canvas,maze){const pad=30,scale=Math.min((canvas.width-pad*2)/maze.width,(canvas.height-pad*2)/maze.height);const w=scale*maze.width,h=scale*maze.height;return {x:(canvas.width-w)/2,y:(canvas.height-h)/2,scale,w,h}}
-function drawMap(canvas,maze,{memory=null,objects:obs=[],peds=[],robot=null,trajectory=[],cursorCell=null,editor=false,northUp=false,observedObjects=[],observedPeople=[]}={}){const ctx=canvas.getContext('2d',{alpha:false});ctx.fillStyle='#0b111a';ctx.fillRect(0,0,canvas.width,canvas.height);const d=dimensions(canvas,maze);cellGeom=d;const displayY=y=>northUp?maze.height-1-y:y;for(let y=0;y<maze.height;y++)for(let x=0;x<maze.width;x++){const bit=maze.wall_rows[y][x],v=memory?memory[y][x]:null;const wallColor=({R:'#355c88',BP:'#76529b',M:'#327d70'}[maze.mechanism]||colors.wall);ctx.fillStyle=memory?(v<0?(bit==='1'?wallColor:colors.free):v===1?wallColor:colors.memoryFree):(bit==='1'?wallColor:colors.free);ctx.globalAlpha=memory&&v<0?.23:1;ctx.fillRect(d.x+x*d.scale,d.y+displayY(y)*d.scale,d.scale-.7,d.scale-.7);ctx.globalAlpha=1;if((!memory||v===1)&&bit==='1'){const X=d.x+x*d.scale,Y=d.y+displayY(y)*d.scale,z=d.scale;ctx.fillStyle='#ffffff25';ctx.fillRect(X,Y,z-.7,z*.16);ctx.fillStyle='#00000055';ctx.fillRect(X,Y+z*.72,z-.7,z*.28);ctx.fillRect(X+z*.78,Y,z*.22,z*.72)}if(!memory&&bit==='0'){ctx.fillStyle='#ffffff08';ctx.fillRect(d.x+x*d.scale+1,d.y+displayY(y)*d.scale+1,d.scale-2,d.scale-2)}}
+function drawMap(canvas,maze,{memory=null,objects:obs=[],peds=[],robot=null,trajectory=[],cursorCell=null,editor=false,northUp=false,observedObjects=[],observedPeople=[]}={}){const ctx=canvas.getContext('2d',{alpha:false});ctx.fillStyle='#0b111a';ctx.fillRect(0,0,canvas.width,canvas.height);const d=dimensions(canvas,maze);cellGeom=d;const displayY=y=>northUp?maze.height-1-y:y;for(let y=0;y<maze.height;y++)for(let x=0;x<maze.width;x++){const bit=maze.wall_rows[y][x],v=memory?memory[y][x]:null;const wallColor=({R:'#355c88',BP:'#327d70',M:'#76529b'}[maze.mechanism]||colors.wall);ctx.fillStyle=memory?(v<0?(bit==='1'?wallColor:colors.free):v===1?wallColor:colors.memoryFree):(bit==='1'?wallColor:colors.free);ctx.globalAlpha=memory&&v<0?.23:1;ctx.fillRect(d.x+x*d.scale,d.y+displayY(y)*d.scale,d.scale-.7,d.scale-.7);ctx.globalAlpha=1;if((!memory||v===1)&&bit==='1'){const X=d.x+x*d.scale,Y=d.y+displayY(y)*d.scale,z=d.scale;ctx.fillStyle='#ffffff25';ctx.fillRect(X,Y,z-.7,z*.16);ctx.fillStyle='#00000055';ctx.fillRect(X,Y+z*.72,z-.7,z*.28);ctx.fillRect(X+z*.78,Y,z*.22,z*.72)}if(!memory&&bit==='0'){ctx.fillStyle='#ffffff08';ctx.fillRect(d.x+x*d.scale+1,d.y+displayY(y)*d.scale+1,d.scale-2,d.scale-2)}}
 const detected=(cells,x,y)=>cells.some(p=>p[0]===x&&p[1]===y);
 for(const [x,y] of obs){ctx.globalAlpha=memory?(detected(observedObjects,x,y)?1:.23):1;ctx.fillStyle=colors.object;ctx.beginPath();ctx.roundRect(d.x+x*d.scale+d.scale*.19,d.y+displayY(y)*d.scale+d.scale*.19,d.scale*.62,d.scale*.62,3);ctx.fill();ctx.globalAlpha=1}
 for(const [x,y] of peds){ctx.globalAlpha=memory?(detected(observedPeople,x,y)?1:.23):1;ctx.fillStyle=colors.ped;ctx.beginPath();ctx.arc(d.x+(x+.5)*d.scale,d.y+(displayY(y)+.5)*d.scale,d.scale*.3,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#ffd5d4';ctx.lineWidth=2;ctx.stroke();ctx.globalAlpha=1}
@@ -30,7 +30,7 @@ function updateMazeStrip(){
    button.setAttribute('aria-label',button.title);button.onclick=()=>setMaze(index);
    const canvas=document.createElement('canvas');canvas.width=m.width;canvas.height=m.height;
    const ctx=canvas.getContext('2d');ctx.fillStyle='#0c1622';ctx.fillRect(0,0,m.width,m.height);
-   ctx.fillStyle=({R:'#659fe0',BP:'#a58be7',M:'#56c6aa'}[m.mechanism]||'#94a6b8');
+   ctx.fillStyle=({R:'#659fe0',BP:'#56c6aa',M:'#a58be7'}[m.mechanism]||'#94a6b8');
    for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)if(m.wall_rows[y][x]==='1')ctx.fillRect(x,m.height-1-y,1,1);
    button.append(canvas);strip.append(button);
   });
@@ -41,8 +41,8 @@ function updateMazeStrip(){
 function inventoryIcon(object){
  return object?'<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 12L20 3L37 12L20 22Z" fill="#ffd18b" stroke="#bc813e"/><path d="M3 12L20 22V38L3 28Z" fill="#bd7632"/><path d="M20 22L37 12V28L20 38Z" fill="#805020"/><path d="M12 7L29 17V32" fill="none" stroke="#fff1bd" stroke-width="3" opacity=".7"/></svg>':'<svg viewBox="0 0 40 48" aria-hidden="true"><ellipse cx="20" cy="45" rx="13" ry="2" fill="#0005"/><circle cx="20" cy="8" r="6" fill="#f0b78d"/><path d="M14 15Q20 12 26 15L29 29H11Z" fill="#e47775"/><path d="M14 18L7 29M26 18L33 29" stroke="#f0b78d" stroke-width="5" stroke-linecap="round"/><path d="M16 28L14 43M24 28L26 43" stroke="#526b8a" stroke-width="7" stroke-linecap="round"/><path d="M11 44H16M24 44H30" stroke="#222e40" stroke-width="4" stroke-linecap="round"/><path d="M16 16L14 26" stroke="#ffaaa0" stroke-width="2"/></svg>';
 }
-function renderEditor(){const m=current();drawMap($('editorCanvas'),m,{northUp:true,objects,peds:pedestrians,editor:true,cursorCell:cursor});$('mazeIdentity').textContent=`MAZE ${String(mazeIndex+1).padStart(2,'0')} / ${catalog.length} · ${m.mechanism}`;updateMazeStrip();for(const [id,used,icon] of [['objectCount',objects.length,'◆'],['pedCount',pedestrians.length,'♟']]){const el=$(id);el.replaceChildren(...Array.from({length:Number(el.dataset.max)},(_,i)=>{const s=document.createElement('i');s.className=i<used?'spent':'';s.innerHTML=inventoryIcon(id==='objectCount');return s}))}}
-async function validate(){const rev=revision;const v=await api('/api/validate',{method:'POST',body:JSON.stringify({maze_id:current().id,objects,pedestrians,difficulty})});if(rev!==revision||editing)return v;const el=$('validation');el.textContent=v.valid?'LAYOUT VALID':v.errors.join(' ');el.classList.toggle('error',!v.valid);$('startBtn').disabled=!v.valid;return v}
+function renderEditor(){const m=current();drawMap($('editorCanvas'),m,{northUp:true,objects,peds:pedestrians,editor:true,cursorCell:cursor});$('mazeIdentity').textContent=`MAZE ${String(mazeIndex+1).padStart(2,'0')} / ${catalog.length}`;$('mazeType').textContent='TYPE '+m.mechanism;$('mazeType').dataset.type=m.mechanism;updateMazeStrip();for(const [id,used,icon] of [['objectCount',objects.length,'◆'],['pedCount',pedestrians.length,'♟']]){const el=$(id);el.replaceChildren(...Array.from({length:Number(el.dataset.max)},(_,i)=>{const s=document.createElement('i');s.className=i<used?'spent':'';s.innerHTML=inventoryIcon(id==='objectCount');return s}))}}
+async function validate(){const rev=revision;const v=await api('/api/validate',{method:'POST',body:JSON.stringify({maze_id:current().id,objects,pedestrians,difficulty})});if(rev!==revision||editing)return v;const el=$('validation');el.textContent=v.valid?'':v.errors.join(' ');el.hidden=v.valid;el.classList.toggle('error',!v.valid);$('startBtn').disabled=!v.valid;return v}
 function clearEdits(){objects=[];pedestrians=[];validate().catch(e=>toast(e.message));renderEditor()}
 let editing=false,starting=false,revision=0;
 async function place(cell,remove=false,kind=tool){
@@ -133,7 +133,8 @@ document.addEventListener('fullscreenchange',syncFullscreen);
 document.addEventListener('webkitfullscreenchange',syncFullscreen);
 syncFullscreen();
 function pressed(pad,i){return !!pad.buttons[i]?.pressed||(pad.buttons[i]?.value||0)>.55}
-const repeats={};let lastMove=0;
+const repeats={};let lastMove=0,heroStickDir=0;
+function stickDirection(x,prev){return Math.abs(x)<.24?0:Math.abs(x)>.38?Math.sign(x):prev}
 let difficultyStick={dir:0,next:0,armed:false};
 function difficultyStickStep(state,x,y,now){
  const axis=Math.abs(y)>=Math.abs(x)?y:x;
@@ -150,11 +151,11 @@ if(gp){for(let i=0;i<gp.buttons.length;i++)if(pressed(gp,i))cur.add(i);const edg
 if(edge(8))toggleFullscreen();
 const repeat=(i,fn)=>{if(!cur.has(i)){delete repeats[i];return}if(edge(i)||now>=(repeats[i]??0)){fn();repeats[i]=now+(edge(i)?350:140)}};
 if(settingsOpen){const s=difficultyStickStep(difficultyStick,gp.axes[0]||0,gp.axes[1]||0,now);difficultyStick=s.state;if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings();else if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(s.delta&&!cur.has(12)&&!cur.has(13)&&!cur.has(14)&&!cur.has(15))moveDifficulty(s.delta)}
-else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(6,()=>setMaze(mazeIndex-1));repeat(7,()=>setMaze(mazeIndex+1));if(edge(14)||edge(12))cycleStrategy(-1);if(edge(15)||edge(13))cycleStrategy(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
+else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(14,()=>setMaze(mazeIndex-1));repeat(15,()=>setMaze(mazeIndex+1));if(edge(12))setMaze(mazeIndex-1);if(edge(13))setMaze(mazeIndex+1);const dir=stickDirection(gp.axes[2]||0,heroStickDir);if(dir&&dir!==heroStickDir)cycleStrategy(dir);heroStickDir=dir;if(edge(6))changeDifficulty(-1);else if(edge(7))changeDifficulty(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
 else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
 else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
 else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else updateReviewSeek(gp,cur,now)}
-}else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold();resetDifficultyStick()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
+}else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold();resetDifficultyStick()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();if(!gp||settingsOpen||!$('setupScreen').classList.contains('active')){heroStickDir=0;delete repeats[14];delete repeats[15]}gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
 window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
@@ -280,18 +281,18 @@ function renderDifficultyOptions(){
 function openSettings(){if(settingsOpen||editing||starting||!rules()||!$('setupScreen').classList.contains('active'))return;pendingDifficulty=difficulty;resetDifficultyStick();settingsOpen=true;renderDifficultyOptions();$('settingsModal').hidden=false}
 function closeSettings(){resetDifficultyStick();settingsOpen=false;$('settingsModal').hidden=true}
 function moveDifficulty(delta){pendingDifficulty=LEVELS[(LEVELS.indexOf(pendingDifficulty)+delta+LEVELS.length)%LEVELS.length];renderDifficultyOptions()}
-function applyDifficulty(){
- if(!settingsOpen)return;
- if(pendingDifficulty!==difficulty){
-  difficulty=pendingDifficulty;revision++;
+function changeDifficulty(delta){if(editing||starting||settingsOpen)return;setDifficulty(LEVELS[(LEVELS.indexOf(difficulty)+delta+LEVELS.length)%LEVELS.length]);}
+function setDifficulty(next){
+ if(next!==difficulty){
+  difficulty=next;revision++;
   const before=objects.length+pedestrians.length,rule=rules();
   objects=objects.slice(0,rule.max_static_objects);pedestrians=pedestrians.slice(0,rule.max_pedestrians);
   syncDifficulty();renderEditor();$('startBtn').disabled=true;
   validate().catch(error=>toast(error.message));
   if(objects.length+pedestrians.length<before)toast('Extra obstacles removed for '+difficulty.toUpperCase()+'.');
  }
- closeSettings();
 }
+function applyDifficulty(){if(!settingsOpen)return;setDifficulty(pendingDifficulty);closeSettings();}
 $('settingsBtn').onclick=openSettings;$('settingsApply').onclick=applyDifficulty;$('settingsCancel').onclick=closeSettings;
 let resultEffectToken=0;
 function stopResultEffects(){
