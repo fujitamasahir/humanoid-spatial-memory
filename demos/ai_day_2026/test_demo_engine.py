@@ -89,3 +89,25 @@ def test_pedestrian_paths_are_seedless_deterministic_and_cardinal():
         assert p[0]==start
         assert all(tuple(c) not in occupied for c in p)
         assert all(abs(x1-x0)+abs(y1-y0)<=1 for (x0,y0),(x1,y1) in zip(p,p[1:]+p[:1]))
+
+def test_pedestrian_start_cannot_close_only_passage():
+    maze=_small_maze();eng=_light_engine(maze)
+    assert not eng.validate(maze['id'], [], [[3,3]])['valid']
+
+def test_difficulty_enforces_hazard_caps():
+    maze=_small_maze();eng=_light_engine(maze)
+    assert eng.validate(maze['id'], [], [], 'hard')['valid']
+    assert not eng.validate(maze['id'], [[1,2]], [], 'hard')['valid']
+    assert not eng.validate(maze['id'], [], [[1,2]], 'hard')['valid']
+    assert not eng.validate(maze['id'], [], [[1,2],[4,4]], 'medium')['valid']
+    assert not eng.validate(maze['id'], [[1,2],[2,1],[4,4]], [], 'medium')['valid']
+    assert not eng.validate(maze['id'], [], [], 'unknown')['valid']
+
+def test_wandering_covers_more_than_two_cells_and_never_overlaps():
+    maze=_small_maze();starts=[[2,2],[4,4]]
+    paths=make_pedestrian_paths(maze,starts,[],120)
+    assert len(paths)==2 and all(len(p)>=121 for p in paths)
+    assert all(len(set(map(tuple,p[:121])))>2 for p in paths)
+    for i in range(1,len(paths[0])):
+        assert paths[0][i]!=paths[1][i]
+        assert not (paths[0][i]==paths[1][i-1] and paths[1][i]==paths[0][i-1])

@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css?v=9">
+<link rel="stylesheet" href="/static/style.css?v=10">
 </head>
 <body>
 <div class="grain"></div>
-<header><div id="gameTitle" class="game-title" aria-label="Beat the Humanoid. Stop the robot in 80 steps!"><span id="titleLetters" aria-hidden="true">BEAT THE HUMANOID</span></div><div id="padStatus" class="pad-status" aria-label="Controller disconnected" role="img"><svg viewBox="0 0 72 48" aria-hidden="true"><path class="pad-body" d="M22 8H50Q60 8 65 21L69 34Q71 44 62 43L49 32H23L10 43Q1 44 3 34L7 21Q12 8 22 8Z" fill="#213246" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V26M14 20H26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><g fill="currentColor"><circle cx="52" cy="14" r="2.5"/><circle cx="58" cy="20" r="2.5"/><circle cx="46" cy="20" r="2.5"/><circle cx="52" cy="26" r="2.5"/></g><g class="pad-stop" stroke="#ff535b" stroke-width="4" fill="none"><circle cx="36" cy="24" r="21"/><path d="M21 9L51 39"/></g></svg></div></header>
+<header><button id="settingsBtn" type="button" aria-label="Settings" class="settings-btn"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8H27M5 16H27M5 24H27" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span id="setupDifficulty">EASY</span></button><div id="gameTitle" class="game-title" aria-label="Beat the Humanoid. Stop the robot in 80 steps!"><span id="titleLetters" aria-hidden="true">BEAT THE HUMANOID</span></div><div id="padStatus" class="pad-status" aria-label="Controller disconnected" role="img"><svg viewBox="0 0 72 48" aria-hidden="true"><path class="pad-body" d="M22 8H50Q60 8 65 21L69 34Q71 44 62 43L49 32H23L10 43Q1 44 3 34L7 21Q12 8 22 8Z" fill="#213246" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V26M14 20H26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><g fill="currentColor"><circle cx="52" cy="14" r="2.5"/><circle cx="58" cy="20" r="2.5"/><circle cx="46" cy="20" r="2.5"/><circle cx="52" cy="26" r="2.5"/></g><g class="pad-stop" stroke="#ff535b" stroke-width="4" fill="none"><circle cx="36" cy="24" r="21"/><path d="M21 9L51 39"/></g></svg></div></header>
 <main>
 <section id="setupScreen" class="screen active">
   <div class="setup-left">
@@ -32,18 +32,19 @@
   <div class="setup-actions"><button id="startBtn" class="start-btn"><kbd class="a">A</kbd> START CHALLENGE</button><label class="toggle"><input id="render3d" type="checkbox" checked> 3D VIEW</label></div>
 </section>
 <section id="liveScreen" class="screen live-screen">
-  <div class="live-head"><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span></div></div>
+  <div class="live-head"><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span><span id="liveDifficulty"></span></div></div>
   <div class="live-grid"><div class="map-card"><div class="panel-heading">HUMANOID IN MOTION</div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY</div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
 
   </div>
-  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="stepValue">0</b><span class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="obsValue">0</b></div></div><div id="liveStatus" class="live-status" role="status"></div>
+  <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="stepValue">0</b><span id="stepLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="obsValue">0</b></div></div><div id="liveStatus" class="live-status" role="status"></div>
 </section>
 <section id="resultScreen" class="screen result-screen">
-  <div class="result-body"><div class="result-info"><div id="winner" class="winner">AI WINS</div><p id="winnerCaption" class="winner-caption"></p><div class="result-summary" id="resultSummary"></div></div><div class="result-map"><h2>FINAL SPATIAL MEMORY</h2><canvas id="finalMemoryCanvas" width="900" height="700" aria-label="Final spatial memory map"></canvas></div></div>
+  <div class="result-body"><div class="result-info"><div id="winner" class="winner">AI WINS</div><div class="result-hero" id="resultHero"><img id="resultPortrait" alt="G1 result pose"><canvas id="resultMotion" width="360" height="480" hidden aria-hidden="true"></canvas></div><p id="winnerCaption" class="winner-caption"></p><div class="result-summary" id="resultSummary"></div></div><div class="result-map"><h2>FINAL SPATIAL MEMORY</h2><canvas id="finalMemoryCanvas" width="900" height="700" aria-label="Final spatial memory map"></canvas></div></div>
   <div class="result-actions"><button id="newBtn" class="start-btn"><kbd class="a">A</kbd> NEW CHALLENGE</button></div>
 </section>
 </main>
 
-<div id="toast" role="status"></div>
-<script src="/static/game.js?v=9"></script>
+<div id="settingsModal" class="settings-modal" hidden><div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><h2 id="settingsTitle">DIFFICULTY</h2><div id="difficultyOptions" class="difficulty-options"></div><div class="settings-actions"><button id="settingsApply" class="start-btn" type="button"><kbd class="a">A</kbd> CONFIRM</button><button id="settingsCancel" class="secondary-btn" type="button"><kbd class="b">B</kbd> BACK</button></div></div></div>
+<canvas id="confetti" hidden aria-hidden="true"></canvas><div id="toast" role="status"></div>
+<script src="/static/game.js?v=10"></script>
 </body></html>

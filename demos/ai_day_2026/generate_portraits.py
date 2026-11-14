@@ -87,7 +87,7 @@ def sample(name,t):
                     {k:a.get(k,0)+(b.get(k,0)-a.get(k,0))*smooth for k in a.keys()|b.keys()})
     return frames[-1][1:]
 
-def generate(out, motion=None):
+def generate(out, motion=None, reaction=None):
     src=ROOT/'third_party/unitree_g1/g1.xml'
     root=ET.parse(src).getroot()
     root.find('compiler').set('meshdir',str(src.parent/'assets'))
@@ -135,8 +135,12 @@ def generate(out, motion=None):
     anchor=data.site_xpos[left_foot,:2].copy() if left_foot>=0 else None
     def pose(name,t=None):
         mj.mj_resetDataKeyframe(model,data,key)
-        if t is not None:
-            z,yaw,pitch,x,joints=sample(name,t)
+        if reaction=='defeat' or t is not None:
+            if reaction=='defeat':
+                z,yaw,pitch,x,joints=(-.15,0,.37,0,{**legs(-.40,-.40,.76,.76,-.30,-.30),
+                    **arms(.10,-.10,-.22,-.22,.32,.32), 'waist_pitch_joint':.48})
+            else:
+                z,yaw,pitch,x,joints=sample(name,t)
             data.qpos[adr]+=x;data.qpos[adr+2]+=z
             cy,sy,cp,sp=math.cos(yaw/2),math.sin(yaw/2),math.cos(pitch/2),math.sin(pitch/2)
             data.qpos[adr+3:adr+7]=(cy*cp,-sy*sp,cy*sp,sy*cp)
@@ -163,8 +167,8 @@ def generate(out, motion=None):
                 opened=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_open_showcase')
                 fist=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_fist_showcase')
                 if opened>=0 and fist>=0:
-                    model.geom_rgba[opened,3]=0 if name=='uncertainty' and motion else 1
-                    model.geom_rgba[fist,3]=1 if name=='uncertainty' and motion else 0
+                    model.geom_rgba[opened,3]=0 if name=='uncertainty' and motion and not reaction else 1
+                    model.geom_rgba[fist,3]=1 if name=='uncertainty' and motion and not reaction else 0
             def render(t=None):
                 pose(name,t)
                 renderer.update_scene(data,camera=camera,scene_option=opt)
@@ -177,7 +181,9 @@ def generate(out, motion=None):
                 finally:
                     renderer.disable_segmentation_rendering()
                 return np.dstack((rgb,alpha))
-            if not motion:
+            if reaction=='defeat':
+                save(name+'-defeat.png',render())
+            elif not motion:
                 save(name+'.png',render())
             else:
                 sheet=np.zeros((HEIGHT*((FRAMES+COLS-1)//COLS),WIDTH*COLS,4),dtype=np.uint8)
@@ -186,4 +192,5 @@ def generate(out, motion=None):
                     sheet[y*HEIGHT:(y+1)*HEIGHT,x*WIDTH:(x+1)*WIDTH]=render(i/(FRAMES-1))
                 save(name+'-motion.png',sheet)
 if __name__=='__main__':
-    generate(Path(sys.argv[1]),sys.argv[2] if len(sys.argv)>2 else None)
+    generate(Path(sys.argv[1]),sys.argv[2] if len(sys.argv)>2 else None,
+             sys.argv[3] if len(sys.argv)>3 else None)

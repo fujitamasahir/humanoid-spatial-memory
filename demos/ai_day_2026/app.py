@@ -10,7 +10,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from engine import GameEngine, read_catalog, MAX_STATIC_OBJECTS, MAX_PEDESTRIANS
+from engine import GameEngine, read_catalog, MAX_STATIC_OBJECTS, MAX_PEDESTRIANS, DIFFICULTIES
 
 BASE = Path(__file__).resolve().parent
 app = FastAPI(title='BEAT THE HUMANOID: Human vs AI', docs_url=None, redoc_url=None)
@@ -19,6 +19,7 @@ app.mount('/static', StaticFiles(directory=BASE/'static'), name='static')
 
 class ValidationRequest(BaseModel):
     maze_id: str
+    difficulty: str = 'easy'
     objects: list[list[int]] = Field(default_factory=list)
     pedestrians: list[list[int]] = Field(default_factory=list)
 
@@ -35,12 +36,12 @@ def catalog():
     return {'mazes': [{k:m[k] for k in ('id','mechanism','candidate_index','width','height','start','goal','wall_rows')}
                       for m in engine.catalog['mazes']],
             'max_static_objects': MAX_STATIC_OBJECTS, 'max_pedestrians': MAX_PEDESTRIANS,
-            'strategies': ['periodic','age','uncertainty'],
+            'strategies': ['periodic','age','uncertainty'], 'difficulties': DIFFICULTIES,
             'catalog_sha256': 'fe3c41bf93c6694ddbfe9629e4bb333113ecf57fc9b4f615a9570d1aaafbc2d2'}
 
 @app.post('/api/validate')
 def validate(request: ValidationRequest):
-    return engine.validate(request.maze_id, request.objects, request.pedestrians)
+    return engine.validate(request.maze_id, request.objects, request.pedestrians, request.difficulty)
 
 @app.post('/api/challenge')
 def challenge(request: ChallengeRequest):
@@ -80,14 +81,16 @@ if __name__ == '__main__':
 _portrait_lock=threading.Lock()
 _portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v8'
 @app.get('/api/portrait/{strategy}')
-def portrait(strategy: str, motion: bool=False):
+def portrait(strategy: str, motion: bool=False, reaction: str=''):
     if strategy not in ('periodic','age','uncertainty'):
         return JSONResponse({'error':'Unknown strategy'},status_code=404)
-    path=_portrait_dir/(strategy+('-motion.png' if motion else '.png'))
+    if reaction not in ('', 'defeat') or (motion and reaction):
+        return JSONResponse({'error':'Unknown portrait reaction'},status_code=400)
+    path=_portrait_dir/(strategy+('-defeat.png' if reaction else '-motion.png' if motion else '.png'))
     with _portrait_lock:
         if not path.exists():
             try:
-                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)]+([strategy] if motion else []),
+                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)]+([strategy, 'defeat'] if reaction else [strategy] if motion else []),
                                check=True,timeout=240,capture_output=True,text=True)
             except subprocess.CalledProcessError as exc:
                 detail=(exc.stderr or exc.stdout or str(exc)).strip()

@@ -12,9 +12,9 @@ This demo is developed on `demo/ai-day-2026`, separate from `phase2/mujoco-proxy
 
 `data/maze_catalog.json` contains all 36 admitted R/BP/M maze geometries, dimensions, start, goal, and row-bit wall raster. Each maze includes its source checkpoint path and SHA-256, payload SHA-256, and canonical geometry SHA-256. Experimental object-change schedules are excluded. The export script rehashed the 836 protected Phase 1.5 files before writing this asset; the frozen JSON file SHA-256 is checked by the app on startup. The app itself also verifies the 64-file G1 model binding.
 
-The visitor editor starts without user objects or pedestrians. Static layouts are checked for forward-first reachability using per-geom bounding spheres derived from the committed G1 collision geometry, including swept turn and translation clearance. This is deliberately conservative. All 36 original layouts pass the check. The live collision shield then uses the actual MuJoCo model for the selected action. Blocked or rejected actions are shown separately and are never counted as actual contacts.
+The visitor editor starts without user objects or pedestrians. Static objects and initial pedestrian positions together are checked for forward-first reachability using per-geom bounding spheres derived from the committed G1 collision geometry, including swept turn and translation clearance. This is deliberately conservative. All 36 original layouts pass the check. The live collision shield then uses the actual MuJoCo model for the selected action. Blocked or rejected actions are shown separately and are never counted as actual contacts.
 
-Pedestrians are visitor-created only. Each starts at the chosen open cell and follows a deterministic, one-cell back-and-forth path generated from that maze identity and start position. The original experimental schedules are never loaded into a challenge. The controllers receive ray observations and their own memory; ground-truth grids are only used by the evaluator, collision geometry, and visitor-facing map.
+Pedestrians are visitor-created only. Each starts at the chosen open cell and follows a reproducible, layout-seeded cardinal random walk for the selected step horizon. Paths favor less-visited cells, avoid immediate reversals where possible, avoid static objects and start/goal, and prevent pedestrian overlaps or exchanges. Later moving pedestrians may temporarily block a route; the editor guarantees a footprint-safe route at placement time only. The original experimental schedules are never loaded into a challenge. The controllers receive ray observations and their own memory; ground-truth grids are only used by the evaluator, collision geometry, and visitor-facing map.
 
 ## Install and launch
 
@@ -33,22 +33,22 @@ Stop the server with Control-C. Challenge settings and results are appended to `
 ## Controls
 
 - Left stick or keyboard arrows: move the placement cursor.
-- D-pad up/down: move cursor; D-pad left/right: choose observation strategy.
-- LB/RB: previous/next maze.
-- A / Enter: place selected static object or pedestrian.
+- D-pad: select observation strategy, or difficulty when Settings is open.
+- LT/RT: previous/next maze.
+- A / Enter: start the challenge (or confirm settings / return from results).
 - B / Backspace: remove the object or pedestrian at the cursor.
-- X: static-object tool; Y: pedestrian tool.
-- Menu / Space: start the challenge.
+- X / Y: directly place, swap or toggle static object / pedestrian.
+- Menu (three lines) / M: open difficulty settings; A confirms, B closes.
 - Mouse: click to place, right-click to remove; use the on-screen maze and strategy selectors.
 - There is no manual robot control.
 
-The UI reports Xbox connection status and supports keyboard/mouse if the controller disconnects. Placement limits default to four static objects and two pedestrian proxies and can be changed with `AI_DAY_MAX_OBJECTS` and `AI_DAY_MAX_PEDESTRIANS` before startup.
+The UI reports Xbox connection status and supports keyboard/mouse if the controller disconnects. Difficulty is enforced by the backend: Easy (80 steps, 4 objects, 2 pedestrians), Medium (120 steps, 2 objects, 1 pedestrian), Hard (200 steps, no hazards). Changing difficulty preserves the earliest placed hazards up to the new caps and removes the excess.
 
 ## Rules and screens
 
 1. **Challenge Setup:** choose a saved maze, add hazards, choose Periodic/Age/Uncertainty, and correct any invalid placement called out by the editor.
-2. **Live Simulation:** side-by-side visitor ground truth and robot spatial memory, with actual G1 pose, step count, observations, distance, safety events, actual contacts, and a separate blocked-move count. The exhibition uses lightweight 2D Canvas rendering; no live 3D viewer is created.
-3. **Results:** the AI wins only when it reaches Goal within 80 steps with zero actual unwanted MuJoCo contacts. A shield-rejected action is a blocked move, **not** a contact. Visitors can retry the same layout with another observation strategy.
+2. **Live Simulation:** side-by-side visitor ground truth and robot spatial memory, with actual G1 pose, step count, observations, distance, safety events, actual contacts, and a separate blocked-move count. The exhibition uses optional MuJoCo 3D rendering and a lightweight 2D Canvas fallback.
+3. **Results:** the AI wins only when it reaches Goal within the chosen difficulty's step limit with zero actual unwanted MuJoCo contacts. A shield-rejected action is a blocked move, **not** a contact. The results retain the final spatial memory, show the selected G1's reaction, and allow visitors to return to the same layout.
 
 An episode is single-threaded and the API rejects overlapping challenges. Reset is available after a challenge finishes. Each run uses a reproducible seed and saves its layout, strategy, pedestrian paths, and results to the local showcase JSONL log.
 
@@ -56,7 +56,7 @@ An episode is single-threaded and the API rejects overlapping challenges. Reset 
 
 A loopback API smoke on the personal Mac ran four actual G1 challenges (Periodic, Age, Uncertainty, and Periodic with one visitor-placed object plus one pedestrian) in 27.1 seconds total. Full challenge wall time, including MuJoCo scene setup and live playback pacing, was 4.5–6.7 seconds. The selected maze reached 80 steps in Periodic and Uncertainty (one rejected move in Uncertainty, zero actual contacts) and reached Goal in 56 steps with Age. The mixed obstacle/pedestrian case also ran to 80 steps with zero actual contacts. This is an early machine-specific benchmark, not a performance guarantee for every visitor layout. The 80-step cap and 0.75 m/cell assumption match the saved Phase 2 configuration.
 
-The robot is kinematically repositioned by the existing evaluator; this is not legged locomotion. The game currently uses a 2D live display rather than a synchronized 3D viewer. Some object arrangements may pass the static reachability check but still be difficult for a partially observed AI. Pedestrian paths are deliberately simple and deterministic. Logs remain local; back up `logs/challenges.jsonl` separately if showcase scores need to be retained.
+The robot is kinematically repositioned by the existing evaluator; this is not legged locomotion. The live display supports optional synchronized 3D rendering with a 2D fallback. Some object arrangements may pass the static reachability check but still be difficult for a partially observed AI. Pedestrian paths are seeded and reproducible; temporary dynamic blockages may still occur. Logs remain local; back up `logs/challenges.jsonl` separately if showcase scores need to be retained.
 
 ## Validation
 

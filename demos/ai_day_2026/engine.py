@@ -29,8 +29,13 @@ CATALOG_PATH = Path(__file__).resolve().parent / 'data' / 'maze_catalog.json'
 BINDING_PATH = Path(__file__).resolve().parent / 'data' / 'runtime_binding.json'
 CATALOG_SHA256 = 'fe3c41bf93c6694ddbfe9629e4bb333113ecf57fc9b4f615a9570d1aaafbc2d2'
 BINDING_SHA256 = '451a9d255f714711037a227876b9f264b2203db8fe556ebdb88506189a5aa3f2'
-MAX_STATIC_OBJECTS = int(os.environ.get('AI_DAY_MAX_OBJECTS', '4'))
-MAX_PEDESTRIANS = int(os.environ.get('AI_DAY_MAX_PEDESTRIANS', '2'))
+DIFFICULTIES = {
+    'easy': {'step_limit': 80, 'max_static_objects': 4, 'max_pedestrians': 2},
+    'medium': {'step_limit': 120, 'max_static_objects': 2, 'max_pedestrians': 1},
+    'hard': {'step_limit': 200, 'max_static_objects': 0, 'max_pedestrians': 0},
+}
+MAX_STATIC_OBJECTS = DIFFICULTIES['easy']['max_static_objects']
+MAX_PEDESTRIANS = DIFFICULTIES['easy']['max_pedestrians']
 ALLOWED_METHODS = {'periodic', 'age', 'uncertainty'}
 
 
@@ -215,26 +220,48 @@ class FootprintReachability:
         return False
 
 
-def make_pedestrian_paths(maze: dict, starts: list[list[int]], objects: list[list[int]]) -> list[list[list[int]]]:
+def make_pedestrian_paths(maze: dict, starts: list[list[int]], objects: list[list[int]],
+                          horizon: int = 80) -> list[list[list[int]]]:
+    """Seeded, collision-free cardinal wandering for the full exhibition horizon.
+
+    Avoid immediate reversals when alternatives exist, prefer less visited
+    cells, exclude the start/goal and objects, and avoid simultaneous
+    pedestrian overlaps or exchanges. Append a reverse trace solely to
+    satisfy Scenario's cyclic adjacency contract (not played in the episode).
+    """
+    if not starts:
+        return []
     free = _free_set(maze) - {tuple(x) for x in objects} - {tuple(maze['start']), tuple(maze['goal'])}
-    used = set()
-    reserved_starts = {tuple(map(int, cell)) for cell in starts}
-    paths = []
-    for index, raw in enumerate(starts):
-        start = tuple(map(int, raw))
-        dirs = [(1,0),(0,1),(-1,0),(0,-1)]
-        # Stable maze-specific order; no ambient random state.
-        offset = sum(maze['id'].encode()) + index
-        dirs = dirs[offset % 4:] + dirs[:offset % 4]
-        neighbor = next(((start[0]+dx,start[1]+dy) for dx,dy in dirs
-                         if (start[0]+dx,start[1]+dy) in free
-                         and (start[0]+dx,start[1]+dy) not in used
-                         and (start[0]+dx,start[1]+dy) not in reserved_starts), None)
-        path = [list(start)] if neighbor is None else [list(start), list(neighbor), list(start)]
-        paths.append(path)
-        used.add(start)
-        if neighbor is not None: used.add(neighbor)
-    return paths
+    seed_data = json.dumps([maze['id'], sorted(map(tuple, objects)), starts],
+                           separators=(',', ':')).encode()
+    rng = random.Random(int.from_bytes(hashlib.sha256(seed_data).digest()[:8], 'big'))
+    positions = [tuple(cell) for cell in starts]
+    paths = [[cell] for cell in positions]
+    visits = [{cell: 1} for cell in positions]
+    previous = [None for _ in positions]
+    for step in range(horizon):
+        old = positions.copy()
+        order = list(range(len(old)))
+        rng.shuffle(order)
+        reserved = set(old)
+        for i in order:
+            x, y = old[i]
+            candidates = [q for q in ((x+1,y),(x-1,y),(x,y+1),(x,y-1))
+                          if q in free and q not in reserved]
+            if any(q != previous[i] for q in candidates):
+                candidates = [q for q in candidates if q != previous[i]]
+            target = (rng.choices(candidates,
+                       weights=[1/(1+visits[i].get(q,0)) for q in candidates], k=1)[0]
+                      if candidates else old[i])
+            # Keep all previous cells reserved until the next tick: no swaps.
+            reserved.add(target)
+            positions[i] = target
+        for i, pos in enumerate(positions):
+            paths[i].append(pos)
+            visits[i][pos] = visits[i].get(pos, 0) + 1
+            if pos != old[i]:
+                previous[i] = old[i]
+    return [[list(q) for q in path + path[-2:0:-1]] for path in paths]
 
 
 class GameEngine:
@@ -259,15 +286,19 @@ class GameEngine:
         self.config = frozen_eval.frozen_config(json.loads(provenance_path.read_text()))
         self.config['max_steps'] = 80
 
-    def validate(self, maze_id: str, objects: list, pedestrian_starts: list) -> dict:
+    def validate(self, maze_id: str, objects: list, pedestrian_starts: list, difficulty: str = 'easy') -> dict:
         maze = self.mazes.get(maze_id)
         if maze is None:
             return {'valid': False, 'errors': ['Unknown admitted maze identity.']}
+        rules = DIFFICULTIES.get(difficulty)
+        if rules is None:
+            return {'valid': False, 'errors': ['Unknown difficulty.']}
         errors = []
-        if len(objects) > MAX_STATIC_OBJECTS:
-            errors.append(f'Limit: at most {MAX_STATIC_OBJECTS} static objects.')
-        if len(pedestrian_starts) > MAX_PEDESTRIANS:
-            errors.append(f'Limit: at most {MAX_PEDESTRIANS} pedestrian proxies.')
+        max_objects, max_people = rules['max_static_objects'], rules['max_pedestrians']
+        if len(objects) > max_objects:
+            errors.append(f'Limit: at most {max_objects} static objects.')
+        if len(pedestrian_starts) > max_people:
+            errors.append(f'Limit: at most {max_people} pedestrian proxies.')
         def check_cells(cells, label):
             seen = set()
             free = _free_set(maze)
@@ -290,9 +321,9 @@ class GameEngine:
             errors.append('A pedestrian cannot start inside a static object.')
         if errors:
             return {'valid': False, 'errors': sorted(set(errors))}
-        if not self.reachability.has_route(maze, objects):
-            return {'valid': False, 'errors': ['This layout removes all footprint-safe forward-first routes; remove an object.']}
-        paths = make_pedestrian_paths(maze, pedestrian_starts, objects)
+        if not self.reachability.has_route(maze, objects + pedestrian_starts):
+            return {'valid': False, 'errors': ['This layout removes all footprint-safe forward-first routes; move or remove an obstacle or pedestrian.']}
+        paths = make_pedestrian_paths(maze, pedestrian_starts, objects, rules['step_limit'])
         for path in paths:
             for a, b in zip(path, path[1:]+path[:1]):
                 if abs(a[0]-b[0])+abs(a[1]-b[1]) > 1:
@@ -307,7 +338,8 @@ class GameEngine:
         strategy = payload.get('strategy')
         if strategy not in ALLOWED_METHODS:
             return {'ok': False, 'error': 'Choose Periodic, Age, or Uncertainty.'}
-        validation = self.validate(maze_id, objects, pedestrians)
+        difficulty = payload.get('difficulty', 'easy')
+        validation = self.validate(maze_id, objects, pedestrians, difficulty)
         if not validation['valid']:
             return {'ok': False, 'error': ' '.join(validation['errors']), 'validation': validation}
         with self.lock:
@@ -315,12 +347,14 @@ class GameEngine:
                 return {'ok': False, 'error': 'A challenge is already running.'}
             self.counter += 1
             run_config = {'maze_id': maze_id, 'objects': objects, 'pedestrians': pedestrians,
-                          'strategy': strategy, 'render_3d': bool(payload.get('render_3d', False)), 'seed': 42000+self.counter,
+                          'strategy': strategy, 'difficulty': difficulty, 'step_limit': DIFFICULTIES[difficulty]['step_limit'],
+                          'render_3d': bool(payload.get('render_3d', False)), 'seed': 42000+self.counter,
                           'pedestrian_paths': validation['pedestrian_paths']}
             self.last_config = run_config
             self.running = True
             self.state = {'status': 'running', 'frame_seq': -1, 'step': 0,
-                'maze_id': maze_id, 'strategy': strategy,
+                'maze_id': maze_id, 'strategy': strategy, 'difficulty': difficulty,
+                'step_limit': run_config['step_limit'],
                 'geometry': self.mazes[maze_id]['wall_rows'],
                 'start': self.mazes[maze_id]['start'], 'goal': self.mazes[maze_id]['goal'],
                 'objects': objects, 'people': pedestrians, 'trajectory': [], 'observations': 1,
@@ -448,8 +482,9 @@ class GameEngine:
 
         try:
             # The saved matched Phase 2 config and controllers are reused verbatim except
-            # that the exhibition always runs its stated 80-step cap.
+             # for the selected exhibition-only difficulty step cap.
             cfg = json.loads(json.dumps(self.config))
+            cfg['max_steps'] = run_config['step_limit']
             metrics, frames = run_episode(scenario, cfg, run_config['strategy'], seed=run_config['seed'],
                 _frame_callback=frame_cb, _observation_provider=observe, _g1_planner=planner,
                 _action_checker=checker, _initial_observation_callback=record,
@@ -468,7 +503,8 @@ class GameEngine:
                            'actual_unwanted_contacts': actual,
                            'blocked_attempts_not_contacts': int(metrics.get('g1_footprint_blocked_attempts',0)),
                            'seed': run_config['seed'], 'maze_id': run_config['maze_id'],
-                           'strategy': run_config['strategy'], 'step_limit': 80})
+                           'strategy': run_config['strategy'], 'difficulty': run_config['difficulty'],
+                           'step_limit': run_config['step_limit']})
             log_record = {'timestamp_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
                           'configuration': run_config, 'result': result}
             with self.log_path.open('a', encoding='utf-8') as f:
