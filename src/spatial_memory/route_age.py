@@ -38,8 +38,11 @@ def route_age_decision(grid,last_observed,step,position,goal,yaw,unknown,sensor,
     # Rescue grants are restricted to original Age requests at the same state.
     rescue=bool(detail['age_request'] and (route_due or no_route))
     # Clock can act ahead of the original Age request, but only at the
-    # unchanged age interval since the latest nonempty observation.
-    proactive=bool(mode=='age_route_clock' and route_due and gap>=parameters.age_steps)
+    # half of the original age interval since the latest nonempty observation.
+    # A full interval would make every known local cell stale, so would
+    # generally make the proactive arm redundant with the rescue arm.
+    minimum_gap=max(1,(parameters.age_steps+1)//2)
+    proactive=bool(mode=='age_route_clock' and route_due and gap>=minimum_gap)
     if step<=0:rescue=proactive=False
     veto_grant=detail['net_value']>0
     granted=bool(veto_grant or rescue or proactive)
@@ -50,7 +53,7 @@ def route_age_decision(grid,last_observed,step,position,goal,yaw,unknown,sensor,
         'route_visible_candidates':candidates,'route_due_cells':due,
         'route_due':route_due,'no_public_point_route':no_route,
         'route_rescue':rescue,'route_proactive':proactive,'view_veto_grant':veto_grant,
-        'steps_since_latest_observed_cell':gap,
+        'steps_since_latest_observed_cell':gap,'proactive_minimum_gap':minimum_gap,
         'route_visibility_computations':2}
 
 class RouteAgeController(PersistenceEVIController):
