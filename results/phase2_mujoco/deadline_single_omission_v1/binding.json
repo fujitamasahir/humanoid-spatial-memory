@@ -1,0 +1,30 @@
+{
+  "archive_manifest_sha256": "ea18cf130ed44eb70ea573985423026ccf517e9da581a221f8c8631f9b787377",
+  "base": "1a8870c1d42da6e7ec9cfc988c3d36e6346d37f9",
+  "interventions": 149,
+  "prepared_manifest_sha256": "ff4f65e13950cae599b8c0754df64c30a2ff66cf46dcc59230b6512e0c0a0246",
+  "source_commit": "425579fb4dcdeca43c834c93fbefd5a8797fa8be",
+  "sources": {
+    "docs/deadline_single_omission_v1_protocol.md": "1b1ea2a44ecc100d673c9cd484491698d5990e5a103cf95186a11b7bc8f1017d",
+    "scripts/report_predictive_safety_v1.py": "ec4915ddaa9bcc917180894782b787e308999d1612d66f3bcd44c39e9aa1ee86",
+    "scripts/run_deadline_single_omission_v1.py": "f914f88d82511416b3afb685a9436e58fcb74516e6f095b95f1e8847680112b8",
+    "scripts/safety_forensics_v1.py": "e2dcca0120a613881090b6f724dbedda843410a311a3bb38f096c51b09de0c82",
+    "scripts/verify_dao_integrity.py": "a673a78368659c3000495452a1f129380e2d45fc1884ea2f87ca1a10afb24de8",
+    "src/spatial_memory/dao_navigation_compat_v1_1.py": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a",
+    "src/spatial_memory/dao_navigation_v1.py": "4f3fdcb23e691723ea5864c1aae2d40581e8177a73a4e1ab59cc2c667230990a",
+    "src/spatial_memory/deadline_single_omission_v1.py": "a189d9e6954120a167bfcd9fa59ff04c9fe034bc5101486c6dbfe6ab19d099f9",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/memory.py": "2976b6c1db5b90798a361cff6993e5d3852254fbf2266d612b7876e1280407c9",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/res_phase_wait_v1.py": "ea2c8daf397e09bedfd14a0a231f29eb8c381cb0f65cdc69b189ccfa3a8a3ea4",
+    "src/spatial_memory/risk_ranked_emergency_v1.py": "9f317ad1f477f984b22cb4a9f113291ccc82258030145e15cbbb0443a1808082",
+    "src/spatial_memory/route_gated_dao_veto_v1.py": "d970be94f10efab66fbccd61508b5900d4336e6e92e474da27ba4cb13f162d7f",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "tests/test_deadline_single_omission_v1.py": "e23881f01043cea8bd23fb4336538144d2c51e542be291220efe5d8b2389050b"
+  },
+  "untreated_replays": 52
+}

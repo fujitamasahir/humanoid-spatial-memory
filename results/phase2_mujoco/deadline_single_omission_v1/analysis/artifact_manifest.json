@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 130573,
+    "path": "paired.json",
+    "sha256": "1b9f6821db8dabdaca6a72a7e57593e4e8ccaf6aef982cac0f340a2d0e310516"
+  },
+  {
+    "bytes": 543,
+    "path": "research_report.md",
+    "sha256": "1b4df9b2cb24a8e65c190f1170d706ada9b2962c14174b7ff2a618ff6c4064a2"
+  },
+  {
+    "bytes": 1031,
+    "path": "summary.json",
+    "sha256": "2071e3ec905096ba0eafd15e27e3d2f2ad3913e456113be84b9e3f3b9f25ffc5"
+  }
+]
