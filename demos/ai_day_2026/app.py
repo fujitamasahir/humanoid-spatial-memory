@@ -101,7 +101,7 @@ def portrait(strategy: str, motion: bool=False, reaction: str=''):
         return JSONResponse({'error':'Unknown strategy'},status_code=404)
     if reaction not in ('', 'defeat'):
         return JSONResponse({'error':'Unknown portrait reaction'},status_code=400)
-    suffix=('-defeat-motion-v13.png' if motion else '-defeat-pose-v13.png') if reaction else ('-motion.png' if motion else '.png')
+    suffix=('-defeat-motion-v14.png' if motion else '-defeat-pose-v14.png') if reaction else ('-motion.png' if motion else '.png')
     path=_portrait_dir/(strategy+suffix)
     with _portrait_lock:
         if not path.exists():

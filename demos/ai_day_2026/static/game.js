@@ -122,7 +122,7 @@ const motionCache=new Map();let motionToken=0;
 function motionAsset(name,reaction=''){
  const key=name+'|'+reaction;
  if(!motionCache.has(key)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=13'});
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=14'});
   motionCache.set(key,promise);promise.catch(()=>motionCache.delete(key));
  }
  return motionCache.get(key);
@@ -292,7 +292,7 @@ function showResultReaction(name,human,celebrate=true){
   if(token!==resultEffectToken)return;
   console.warn(error);
   canvas.hidden=true;img.hidden=false;
-  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=13';
+  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=14';
  });
 }
 function burstConfetti(token){
