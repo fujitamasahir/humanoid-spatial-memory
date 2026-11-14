@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 186330,
+    "path": "episode_metrics.json",
+    "sha256": "cf1238d3af841616d952f24a7af876fb8f230c008556200593dcf4f331c8b5d8"
+  },
+  {
+    "bytes": 33559,
+    "path": "paired.json",
+    "sha256": "16040a1fe1c72be2855a84570eae12a0f8af2a7e70216147fd85b40fdefd625d"
+  },
+  {
+    "bytes": 441,
+    "path": "research_report.md",
+    "sha256": "c803c09c0918041afe73732653aca26c665dc4fc75a71d417e3002693230693f"
+  },
+  {
+    "bytes": 3747,
+    "path": "summary.json",
+    "sha256": "306cf0b371d840461a9a2917b4add0c5eb2e789c0f208952837f43731c387fca"
+  }
+]

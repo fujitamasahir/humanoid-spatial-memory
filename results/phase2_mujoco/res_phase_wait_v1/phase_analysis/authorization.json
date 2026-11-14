@@ -1,0 +1,13 @@
+{
+  "candidate": "res_h1_phase_wait",
+  "checks": {
+    "improve_old_compact_goals_vs_h1": true,
+    "no_contact_free_goal_harm_vs_h1": true,
+    "no_goal_harm_vs_h1": true,
+    "no_new_nonfirst_onsets_vs_h1": true,
+    "original_gate": true,
+    "phase_mechanism_activated": true
+  },
+  "descriptive_engineering_only": true,
+  "expand": true
+}
