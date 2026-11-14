@@ -98,15 +98,6 @@ function contactMessage(event){
  const labels={g1_pedestrian_contact_pairs:'PEDESTRIAN COLLISION',g1_wall_contact_pairs:'WALL COLLISION',g1_persistent_obstacle_contact_pairs:'OBJECT COLLISION',g1_unwanted_floor_contact_pairs:'UNWANTED FLOOR CONTACT',g1_self_contact_pairs:'SELF COLLISION'};
  return 'STEP '+event.step+' · '+Object.keys(labels).filter(k=>event.contacts[k]>0).map(k=>labels[k]).join(' / ');
 }
-function resultCaption(r,limit){
- if(r.winner==='AI WINS')return 'The G1 reached the goal safely within '+limit+' steps.';
- const hits=r.contact_events||[],ped=hits.find(e=>e.contacts.g1_pedestrian_contact_pairs>0);
- if(ped)return 'AI loses: the G1 collided with a pedestrian at step '+ped.step+'.';
- if(hits.length)return 'AI loses: '+contactMessage(hits[0]).toLowerCase()+'.';
- if(r.g1_pedestrian_contact_pairs>0)return 'AI loses: the G1 collided with a pedestrian.';
- if(r.actual_unwanted_contacts>0)return 'AI loses: the G1 experienced unwanted contact.';
- return 'The G1 did not safely reach the goal within '+limit+' steps.';
-}
 function showResult(r,finalState){
  skipping=false;
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
@@ -115,7 +106,8 @@ function showResult(r,finalState){
  const caption=$('winnerCaption');
  caption.classList.toggle('contact-alert',!!hit);
  caption.classList.toggle('result-contact-alert',!!hit);
- caption.textContent=hit?contactMessage(hit):resultCaption(r,limit);
+ caption.hidden=!hit;
+ caption.textContent=hit?contactMessage(hit):'';
  const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps+' / '+limit],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
  $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');box.dataset.stat=key.toLowerCase();label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
