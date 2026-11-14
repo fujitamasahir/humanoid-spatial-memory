@@ -150,3 +150,13 @@ unit tests and a frozen48-public-state mechanism suite are authorized.
 See `dao_protocol.md` and `dao_independent_navigation_protocol.md`. Existing
 FIT evidence is descriptive only. No new FIT72 screen, proposed navigation
 population generation/admission/access or reserved-world read is authorized.
+
+DAO v1 engineering work is complete: 138 focused tests passed; the completed
+48-state/432-rule synthetic suite matches independent scalar geometry/count
+checks, with cap20 contracts and unchanged original-data/CAA/G1 integrity.
+The initial formal artifact serialization failure and harness-only recovery
+are preserved. No DAO navigation efficacy is established: formal geometric
+fixtures did not activate veto suppression; conservative corridor prediction
+can undercount deep discovery. No threshold/fixture tuning or new navigation
+cohort/screen was performed. See [`dao_research_report.md`](dao_research_report.md).
+The independent proposal remains pending owner decisions and power validation.
