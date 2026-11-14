@@ -68,7 +68,7 @@ $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
 $('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
 function screen(name){stopResultEffects();$('settingsBtn').hidden=name!=='setupScreen';document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
-async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('obsLimit').textContent='/ '+rules().max_observations;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
+async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('liveContact').hidden=true;$('liveContact').textContent='';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('obsLimit').textContent='/ '+rules().max_observations;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
 $('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;if(!skipping)drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
 async function skipChallenge(){
  if(skipping||!$('liveScreen').classList.contains('active'))return;
@@ -91,12 +91,27 @@ function drawLive(s){
  drawMap($('truthCanvas'),m,common);
  drawMemory($('memoryCanvas'),m,s);
  $('liveStatus').textContent='';
+ const hits=s.contact_events||[];const last=hits[hits.length-1];
+ $('liveContact').hidden=!last;if(last)$('liveContact').textContent=contactMessage(last);
+}
+function contactMessage(event){
+ const labels={g1_pedestrian_contact_pairs:'PEDESTRIAN COLLISION',g1_wall_contact_pairs:'WALL COLLISION',g1_persistent_obstacle_contact_pairs:'OBJECT COLLISION',g1_unwanted_floor_contact_pairs:'UNWANTED FLOOR CONTACT',g1_self_contact_pairs:'SELF COLLISION'};
+ return 'STEP '+event.step+' · '+Object.keys(labels).filter(k=>event.contacts[k]>0).map(k=>labels[k]).join(' / ');
+}
+function resultCaption(r,limit){
+ if(r.winner==='AI WINS')return 'The G1 reached the goal safely within '+limit+' steps.';
+ const hits=r.contact_events||[],ped=hits.find(e=>e.contacts.g1_pedestrian_contact_pairs>0);
+ if(ped)return 'AI loses: the G1 collided with a pedestrian at step '+ped.step+'.';
+ if(hits.length)return 'AI loses: '+contactMessage(hits[0]).toLowerCase()+'.';
+ if(r.g1_pedestrian_contact_pairs>0)return 'AI loses: the G1 collided with a pedestrian.';
+ if(r.actual_unwanted_contacts>0)return 'AI loses: the G1 experienced unwanted contact.';
+ return 'The G1 did not safely reach the goal within '+limit+' steps.';
 }
 function showResult(r,finalState){
  skipping=false;
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
  w.textContent=r.winner;w.classList.toggle('human',human);
- $('winnerCaption').textContent=!human?'The G1 reached the goal safely within '+limit+' steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 experienced unwanted contact.':'The G1 did not safely reach the goal within '+limit+' steps.');
+ $('winnerCaption').textContent=resultCaption(r,limit);
  const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps+' / '+limit],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
  $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');box.dataset.stat=key.toLowerCase();label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
@@ -154,7 +169,7 @@ if(settingsOpen){const s=difficultyStickStep(difficultyStick,gp.axes[0]||0,gp.ax
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(14,()=>setMaze(mazeIndex-1));repeat(15,()=>setMaze(mazeIndex+1));if(edge(12))setMaze(mazeIndex-1);if(edge(13))setMaze(mazeIndex+1);const dir=stickDirection(gp.axes[2]||0,heroStickDir);if(dir&&dir!==heroStickDir)cycleStrategy(dir);heroStickDir=dir;if(edge(6))changeDifficulty(-1);else if(edge(7))changeDifficulty(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
 else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
 else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
-else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else updateReviewSeek(gp,cur,now)}
+else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else if(edge(6)){resetReviewHold();renderReview(0)}else if(edge(7)){resetReviewHold();renderReview(reviewSteps.length-1)}else updateReviewSeek(gp,cur,now)}
 }else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold();resetDifficultyStick()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();if(!gp||settingsOpen||!$('setupScreen').classList.contains('active')){heroStickDir=0;delete repeats[14];delete repeats[15]}gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
 window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
@@ -365,7 +380,7 @@ async function openReview(){
   const r=info.result;
   $('reviewMaze').textContent='MAZE '+(catalog.findIndex(m=>m.id===r.maze_id)+1);
   $('reviewStrategy').textContent=r.strategy.toUpperCase();$('reviewDifficulty').textContent=r.difficulty.toUpperCase();
-  $('reviewLimit').textContent='/ '+r.step_limit;$('reviewObsLimit').textContent='/ '+(r.max_observations??rules().max_observations);
+  $('reviewLimit').textContent='/ '+(r.success?Math.min(r.elapsed_steps,r.step_limit):r.step_limit);$('reviewObsLimit').textContent='/ '+(r.max_observations??rules().max_observations);
   $('reviewSlider').max=String(reviewSteps.length-1);
   resetReviewHold();screen('reviewScreen');await renderReview(0);
  }catch(error){toast(error.message)}finally{reviewOpening=false}
@@ -386,6 +401,7 @@ async function renderReview(index){
   else{$('review3d').hidden=true;$('reviewTruth').hidden=false}
   drawMemory($('reviewMemory'),m,s);
   $('reviewStep').textContent=s.step;$('reviewScans').textContent=s.observations;
+  const hit=s.contacts&&Object.values(s.contacts).some(v=>v>0);$('reviewContact').hidden=!hit;if(hit)$('reviewContact').textContent=contactMessage({step:s.step,contacts:s.contacts});
  }catch(error){if(request===reviewRequest)toast(error.message)}
 }
 function reviewSeek(state,dir,now){

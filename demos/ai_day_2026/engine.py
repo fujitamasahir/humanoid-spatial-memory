@@ -364,7 +364,7 @@ class GameEngine:
                 'start': self.mazes[maze_id]['start'], 'goal': self.mazes[maze_id]['goal'],
                 'objects': objects, 'people': pedestrians, 'trajectory': [], 'observations': 1,
                 'distance_m': 0.0, 'actual_unwanted_contacts': 0, 'blocked_attempts': 0,
-                'events': []}
+                'events': [], 'contact_events': []}
             self._thread = threading.Thread(target=self._run, args=(run_config,), daemon=True)
             self._thread.start()
             return {'ok': True, 'seed': run_config['seed']}
@@ -472,6 +472,9 @@ class GameEngine:
                 self.state['frame_seq'] = int(self.state.get('frame_seq', -1))+1
                 self.state['observations'] = int(frame['observation_count'])
                 self.state['actual_unwanted_contacts'] = int(self.state.get('actual_unwanted_contacts', 0)) + sum(serial['contacts'].values())
+                if any(serial['contacts'].values()):
+                    self.state['contact_events'] = self.state['contact_events'] + [
+                        {'step': serial['step'], 'contacts': serial['contacts']}]
                 if serial['observation_event'] and frame['step'] > 0:
                     self.state['events'] = (self.state.get('events', [])+[
                         {'step': int(frame['step']), 'type': 'memory_observation'}])[-30:]
@@ -487,7 +490,7 @@ class GameEngine:
                     k: self.state[k] for k in (
                         'step','maze_id','strategy','difficulty','step_limit','max_observations','position',
                         'heading_yaw','memory','people','objects','observed_objects',
-                        'observed_people','trajectory','observations','frame_seq')
+                        'observed_people','trajectory','observations','frame_seq','contacts','contact_events')
                 }
                 if serial.get('render_png'):
                     self.history[serial['step']]['render_png'] = serial['render_png']
@@ -519,7 +522,8 @@ class GameEngine:
                            'blocked_attempts_not_contacts': int(metrics.get('g1_footprint_blocked_attempts',0)),
                            'seed': run_config['seed'], 'maze_id': run_config['maze_id'],
                            'strategy': run_config['strategy'], 'difficulty': run_config['difficulty'],
-                           'step_limit': run_config['step_limit']})
+                           'step_limit': run_config['step_limit'], 'max_observations': run_config['max_observations'],
+                           'contact_events': list(self.state['contact_events'])})
             log_record = {'timestamp_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
                           'configuration': run_config, 'result': result}
             with self.log_path.open('a', encoding='utf-8') as f:
