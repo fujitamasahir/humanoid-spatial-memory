@@ -1,6 +1,10 @@
 """Offline localhost FastAPI application for the BYU AI Day game."""
 from __future__ import annotations
 import asyncio
+import subprocess
+import sys
+import threading
+import tempfile
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse, JSONResponse
@@ -72,3 +76,18 @@ async def websocket_updates(websocket: WebSocket):
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run('app:app', host='127.0.0.1', port=8765, access_log=False)
+
+_portrait_lock=threading.Lock()
+_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v2'
+@app.get('/api/portrait/{strategy}')
+def portrait(strategy: str):
+    if strategy not in ('periodic','age','uncertainty'):
+        return JSONResponse({'error':'Unknown strategy'},status_code=404)
+    path=_portrait_dir/(strategy+'.png')
+    with _portrait_lock:
+        if not path.exists():
+            try:
+                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)],check=True,timeout=90)
+            except (subprocess.SubprocessError,OSError) as exc:
+                return JSONResponse({'error':str(exc)},status_code=503)
+    return FileResponse(path,media_type='image/png')

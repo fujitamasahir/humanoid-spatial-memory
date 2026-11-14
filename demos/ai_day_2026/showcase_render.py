@@ -29,8 +29,15 @@ class ShowcaseRenderer:
                 self.data=mj.MjData(s.model)
                 self.camera=mj.MjvCamera()
                 mj.mjv_defaultCamera(self.camera)
-                self.camera.type=mj.mjtCamera.mjCAMERA_FIXED
-                self.camera.fixedcamid=mj.mj_name2id(s.model,mj.mjtObj.mjOBJ_CAMERA,'overview')
+                self.camera.type=mj.mjtCamera.mjCAMERA_FREE
+                self.camera.lookat[:]=(0,0,0.5)
+                self.camera.azimuth=90
+                self.camera.elevation=-68
+                self.camera.distance=max(s.scenario.width,s.scenario.height)*s.cell_size*1.65
+                self.option=mj.MjvOption()
+                mj.mjv_defaultOption(self.option)
+                self.option.geomgroup[5]=1
+                self.option.sitegroup[:]=0
             self.data.qpos[:]=s.data.qpos
             self.data.mocap_pos[:]=s.data.mocap_pos
             self.data.mocap_quat[:]=s.data.mocap_quat
@@ -43,7 +50,15 @@ class ShowcaseRenderer:
                             adr=int(s.model.jnt_qposadr[idx])
                             self.data.qpos[adr]+=sign*amplitude*math.sin(self.phase*1.7)
             mj.mj_forward(s.model,self.data)
-            self.renderer.update_scene(self.data,camera=self.camera)
+            self.renderer.update_scene(self.data,camera=self.camera,scene_option=self.option)
+            gx,gy=s.grid_to_world(s.scenario.goal)
+            sc=self.renderer.scene
+            if sc.ngeom+2<=sc.maxgeom:
+                for typ,size,pos,rgba in [
+                    (mj.mjtGeom.mjGEOM_CYLINDER,[.28,.28,.035],[gx,gy,.04],[1,.65,.06,1]),
+                    (mj.mjtGeom.mjGEOM_SPHERE,[.19,.19,.19],[gx,gy,1.1],[1,.8,.12,1])]:
+                    mj.mjv_initGeom(sc.geoms[sc.ngeom],typ,np.array(size),np.array(pos),np.eye(3).ravel(),np.array(rgba,dtype=np.float32))
+                    sc.ngeom+=1
             return {'render_png':png(self.renderer.render())}
         except Exception as exc:
             self.error=type(exc).__name__+': '+str(exc)
