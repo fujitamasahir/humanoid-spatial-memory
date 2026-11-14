@@ -23,11 +23,46 @@ METRICS=('paid_memory_scans','actual_memory_raycasts','emergency_safety_scans',
          'episode_wall_time_seconds')
 def fingerprints():return {p:sha(ROOT/p) for p in SOURCES}
 def load(path):return json.loads(path.read_text())
+def audit_prior(target):
+    """Retrospective saved-trace diagnostics, never passed to the new policy."""
+    verify_manifest(VIEWS/'fit72')
+    changes=[]
+    for n in range(1,73):
+        a=episode(VIEWS/'fit72',n,'age')
+        v=episode(VIEWS/'fit72',n,VIEW)
+        if bool(a['row']['success'])==bool(v['row']['success']):continue
+        af={f['step']:f for f in a['trace']['steps']}
+        vf={f['step']:f for f in v['trace']['steps']}
+        decisions={d['step']:d for d in v['diagnostics']['decisions']}
+        both=sorted(af.keys() & vf.keys())
+        first_grant=next((t for t in both if af[t]['observation_granted']!=vf[t]['observation_granted']),None)
+        detail=decisions.get(first_grant,{})
+        prior=first_grant-1 if first_grant is not None else None
+        # Only assert matching previous pose when both saved fields exist.
+        p,q=af.get(prior,{}),vf.get(prior,{})
+        pose_fields=('position','heading_yaw')
+        same_pose=(all(p[k]==q[k] for k in pose_fields)
+                   if all(k in p and k in q for k in pose_fields) else None)
+        changes.append({'episode':n,'identity':a['row']['world_identity'],
+            'schedule':a['row']['schedule'],'age_success':bool(a['row']['success']),
+            'veto_success':bool(v['row']['success']),
+            'age_paid':int(a['row']['observation_count']),
+            'veto_paid':int(v['row']['observation_count']),
+            'first_common_step_grant_difference':first_grant,
+            'previous_saved_pose_equal':same_pose,
+            'age_granted_at_difference':af[first_grant]['observation_granted'] if first_grant is not None else None,
+            'veto_granted_at_difference':vf[first_grant]['observation_granted'] if first_grant is not None else None,
+            'veto_decision_at_difference':{k:detail.get(k) for k in
+                ('age_score','view_score','age_request','view_request','deadline','reason','used_before')}})
+    write(target/'prior_outcome_divergence.json',{'changed_outcomes':changes,
+        'caveat':'Saved-trajectory timing comparison only; not causal replay. Matching previous poses do not certify identical memory or simulator state.'})
+
 def check():
     target=OUT/'correctness';target.mkdir(parents=True,exist_ok=False)
     cmd=[sys.executable,'-m','pytest','-q','tests/test_route_age.py','tests/test_view_age.py','tests/test_c_v21_navigation.py']
     p=subprocess.run(cmd,cwd=ROOT,capture_output=True,text=True)
     (target/'pytest.log').write_text(p.stdout+p.stderr);print(p.stdout+p.stderr,flush=True)
+    if p.returncode==0:audit_prior(target)
     write(target/'gate.json',{'status':'PASS' if p.returncode==0 else 'REJECTED',
         'source_sha256':fingerprints(),'commit':commit(),'command':cmd})
     manifest(target)
