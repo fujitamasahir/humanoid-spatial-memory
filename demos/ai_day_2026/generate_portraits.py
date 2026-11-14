@@ -8,6 +8,7 @@ from showcase_render import png
 
 ROOT=Path(__file__).resolve().parents[2]
 WIDTH,HEIGHT,COLS,FRAMES=360,480,6,60
+DEFEAT_DROP_FRAMES,DEFEAT_LOOP_FRAMES=30,24
 TINTS={'periodic':[.58,.81,1], 'age':[1,.76,.34], 'uncertainty':[.76,.55,1]}
 
 # Authored pose keyframes: time, root height, yaw, pitch, backward/forward
@@ -87,7 +88,132 @@ def sample(name,t):
                     {k:a.get(k,0)+(b.get(k,0)-a.get(k,0))*smooth for k in a.keys()|b.keys()})
     return frames[-1][1:]
 
-def generate(out, motion=None, reaction=None):
+def smoothstep(t):
+    t=float(np.clip(t,0,1))
+    return t*t*(3-2*t)
+
+def defeat_phase(frame):
+    """One collapse followed by a phase-continuous sobbing loop."""
+    if not 0 <= frame < DEFEAT_DROP_FRAMES+DEFEAT_LOOP_FRAMES:
+        raise ValueError('Invalid defeat frame')
+    if frame < DEFEAT_DROP_FRAMES:
+        t=frame/(DEFEAT_DROP_FRAMES-1)
+        return smoothstep(t/.48), smoothstep((t-.48)/.52), 0.0
+    phase=(frame-DEFEAT_DROP_FRAMES)/DEFEAT_LOOP_FRAMES
+    return 1.0,1.0,math.tau*phase
+
+class DefeatChoreography:
+    """Display-model-only kinematic contact choreography, not a physics controller."""
+    def __init__(self,model,data,root_adr,key):
+        self.model,self.data,self.root_adr=model,data,root_adr
+        self.ids={}
+        for i in range(model.njnt):
+            name=mj.mj_id2name(model,mj.mjtObj.mjOBJ_JOINT,i)
+            if name: self.ids[name]=i
+        mj.mj_resetDataKeyframe(model,data,key);mj.mj_forward(model,data)
+        self.stand=data.qpos.copy()
+        self.meshes=[]
+        # Use the actual visible knee/foot mesh lower bounds, not a guessed root height.
+        for gid in range(model.ngeom):
+            if model.geom_group[gid]!=2 or model.geom_type[gid]!=mj.mjtGeom.mjGEOM_MESH:
+                continue
+            mesh=int(model.geom_dataid[gid])
+            name=mj.mj_id2name(model,mj.mjtObj.mjOBJ_MESH,mesh) or ''
+            if not any(part in name for part in ('knee_link','ankle_pitch_link','ankle_roll_link')):
+                continue
+            adr,num=int(model.mesh_vertadr[mesh]),int(model.mesh_vertnum[mesh])
+            self.meshes.append((gid,model.mesh_vert[adr:adr+num].copy()))
+        self.floor=self.lowest()
+        self.hand_bodies=[mj.mj_name2id(model,mj.mjtObj.mjOBJ_BODY,side+'_wrist_yaw_link')
+                          for side in ('left','right')]
+        self.shoulders=[mj.mj_name2id(model,mj.mjtObj.mjOBJ_BODY,side+'_shoulder_pitch_link')
+                        for side in ('left','right')]
+        if min(self.hand_bodies+self.shoulders)<0 or not self.meshes:
+            raise ValueError('Pinned G1 defeat contact landmarks were not found')
+        self.hand_local=np.array([.075,0,0])
+        self.targets=None
+
+    def lowest(self):
+        if not self.meshes: return 0.0
+        return min(float(np.min(vertices @ self.data.geom_xmat[gid].reshape(3,3)[2]
+                                + self.data.geom_xpos[gid,2]))
+                   for gid,vertices in self.meshes)
+
+    def set_joint(self,name,value):
+        idx=self.ids.get(name)
+        if idx is None: return
+        adr=int(self.model.jnt_qposadr[idx])
+        if self.model.jnt_limited[idx]: value=np.clip(value,*self.model.jnt_range[idx])
+        self.data.qpos[adr]=value
+
+    def hand_pos(self,body):
+        return self.data.xpos[body]+self.data.xmat[body].reshape(3,3)@self.hand_local
+
+    def solve_hand(self,side,body,target):
+        joint_names=[side+'_'+name+'_joint' for name in
+                     ('shoulder_pitch','shoulder_roll','shoulder_yaw','elbow','wrist_pitch')]
+        indices=[self.ids[name] for name in joint_names if name in self.ids]
+        dofs=[int(self.model.jnt_dofadr[i]) for i in indices]
+        jacp=np.zeros((3,self.model.nv));jacr=np.zeros_like(jacp)
+        for _ in range(18):
+            pos=self.hand_pos(body);error=target-pos
+            if np.linalg.norm(error)<.008: break
+            mj.mj_jac(self.model,self.data,jacp,jacr,pos,body)
+            J=jacp[:,dofs]
+            delta=J.T@np.linalg.solve(J@J.T+.003*np.eye(3),error)
+            for i,dq in zip(indices,np.clip(delta,-.18,.18)):
+                adr=int(self.model.jnt_qposadr[i])
+                name=mj.mj_id2name(self.model,mj.mjtObj.mjOBJ_JOINT,i)
+                self.set_joint(name,self.data.qpos[adr]+dq)
+            mj.mj_forward(self.model,self.data)
+
+    def pose(self,kneel,bow,phase):
+        m,d=self.model,self.data;d.qpos[:]=self.stand
+        # Stable knees-down stage, followed by folding forward onto the palms.
+        # The root pitch and hip angles counterbalance so the knees stay planted.
+        sob=math.sin(phase*3);sway=math.sin(phase*2)
+        pitch=.82*bow+.012*bow*sob
+        d.qpos[self.root_adr+3:self.root_adr+7]=(math.cos(pitch/2),0,math.sin(pitch/2),0)
+        targets={}
+        for side,sign in (('left',1),('right',-1)):
+            targets.update({
+                side+'_hip_pitch_joint':-.18-pitch,
+                side+'_hip_roll_joint':sign*.07,
+                side+'_hip_yaw_joint':0,
+                side+'_knee_joint':2.14,
+                side+'_ankle_pitch_joint':-.82,
+                side+'_ankle_roll_joint':0,
+                side+'_shoulder_pitch_joint':.18-1.77*bow,
+                side+'_shoulder_roll_joint':sign*(.13+.025*bow),
+                side+'_shoulder_yaw_joint':0,
+                side+'_elbow_joint':1.36+.17*bow,
+                side+'_wrist_pitch_joint':-.22*bow,
+            })
+        targets['waist_pitch_joint']=.49*bow+.014*bow*sob
+        targets['waist_roll_joint']=.012*bow*sway
+        for name,target in targets.items():
+            idx=self.ids.get(name)
+            if idx is not None:
+                orig=self.stand[int(m.jnt_qposadr[idx])]
+                self.set_joint(name,orig+(target-orig)*kneel)
+        mj.mj_forward(m,d)
+        d.qpos[self.root_adr+2]+=self.floor-self.lowest()
+        mj.mj_forward(m,d)
+        if bow>0:
+            # The palm targets settle on the common ground plane and remain
+            # planted through the trembling cycle. Solve each arm independently.
+            if self.targets is None:
+                self.targets=[]
+                for shoulder,sign in zip(self.shoulders,(1,-1)):
+                    q=d.xpos[shoulder].copy()
+                    q[0]+=.05+.16*(1-bow)
+                    q[1]=sign*.19;q[2]=self.floor+.035
+                    self.targets.append(q)
+            for side,body,target in zip(('left','right'),self.hand_bodies,self.targets):
+                initial=self.hand_pos(body)
+                self.solve_hand(side,body,initial*(1-bow)+target*bow)
+
+def generate(out, motion=None, reaction=None, still_strategy=None):
     src=ROOT/'third_party/unitree_g1/g1.xml'
     root=ET.parse(src).getroot()
     root.find('compiler').set('meshdir',str(src.parent/'assets'))
@@ -133,14 +259,21 @@ def generate(out, motion=None, reaction=None):
     left_foot=mj.mj_name2id(model,mj.mjtObj.mjOBJ_SITE,'left_foot')
     mj.mj_resetDataKeyframe(model,data,key);mj.mj_forward(model,data)
     anchor=data.site_xpos[left_foot,:2].copy() if left_foot>=0 else None
+    defeat=DefeatChoreography(model,data,adr,key) if reaction=='defeat' else None
+    if defeat is not None:
+        defeat.pose(1,1,0)  # establish the planted palm targets at the final pose
     def pose(name,t=None):
         mj.mj_resetDataKeyframe(model,data,key)
-        if reaction=='defeat' or t is not None:
-            if reaction=='defeat':
-                z,yaw,pitch,x,joints=(-.15,0,.37,0,{**legs(-.40,-.40,.76,.76,-.30,-.30),
-                    **arms(.10,-.10,-.22,-.22,.32,.32), 'waist_pitch_joint':.48})
-            else:
-                z,yaw,pitch,x,joints=sample(name,t)
+        if defeat is not None:
+            frame=DEFEAT_DROP_FRAMES if t is None else int(t)
+            kneel,bow,phase=defeat_phase(frame)
+            defeat.pose(kneel,bow,phase)
+            camera.lookat[:]=(.12*bow,0,.62-.30*bow)
+            camera.distance=2.25-.40*bow
+            camera.azimuth=145;camera.elevation=-16-3*bow
+            return
+        if t is not None:
+            z,yaw,pitch,x,joints=sample(name,t)
             data.qpos[adr]+=x;data.qpos[adr+2]+=z
             cy,sy,cp,sp=math.cos(yaw/2),math.sin(yaw/2),math.cos(pitch/2),math.sin(pitch/2)
             data.qpos[adr+3:adr+7]=(cy*cp,-sy*sp,cy*sp,sy*cp)
@@ -155,7 +288,7 @@ def generate(out, motion=None, reaction=None):
             data.qpos[adr:adr+2]+=(anchor-data.site_xpos[left_foot,:2])*weight
             mj.mj_forward(model,data)
     with mj.Renderer(model,height=HEIGHT,width=WIDTH) as renderer:
-        for name in ([motion] if motion else TINTS):
+        for name in ([motion or still_strategy] if motion or still_strategy else TINTS):
             tint=np.array(TINTS[name])
             model.geom_rgba[:]=original;model.geom_matid[:]=materials
             for idx in range(model.ngeom):
@@ -182,7 +315,15 @@ def generate(out, motion=None, reaction=None):
                     renderer.disable_segmentation_rendering()
                 return np.dstack((rgb,alpha))
             if reaction=='defeat':
-                save(name+'-defeat.png',render())
+                if motion:
+                    total=DEFEAT_DROP_FRAMES+DEFEAT_LOOP_FRAMES
+                    sheet=np.zeros((HEIGHT*((total+COLS-1)//COLS),WIDTH*COLS,4),dtype=np.uint8)
+                    for i in range(total):
+                        y,x=divmod(i,COLS)
+                        sheet[y*HEIGHT:(y+1)*HEIGHT,x*WIDTH:(x+1)*WIDTH]=render(i)
+                    save(name+'-defeat-motion.png',sheet)
+                else:
+                    save(name+'-defeat-pose.png',render())
             elif not motion:
                 save(name+'.png',render())
             else:
@@ -193,4 +334,5 @@ def generate(out, motion=None, reaction=None):
                 save(name+'-motion.png',sheet)
 if __name__=='__main__':
     generate(Path(sys.argv[1]),sys.argv[2] if len(sys.argv)>2 else None,
-             sys.argv[3] if len(sys.argv)>3 else None)
+             sys.argv[3] if len(sys.argv)>3 else None,
+             sys.argv[4] if len(sys.argv)>4 else None)

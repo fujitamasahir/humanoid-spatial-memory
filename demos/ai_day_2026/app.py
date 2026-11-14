@@ -84,13 +84,19 @@ _portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v8'
 def portrait(strategy: str, motion: bool=False, reaction: str=''):
     if strategy not in ('periodic','age','uncertainty'):
         return JSONResponse({'error':'Unknown strategy'},status_code=404)
-    if reaction not in ('', 'defeat') or (motion and reaction):
+    if reaction not in ('', 'defeat'):
         return JSONResponse({'error':'Unknown portrait reaction'},status_code=400)
-    path=_portrait_dir/(strategy+('-defeat.png' if reaction else '-motion.png' if motion else '.png'))
+    suffix=('-defeat-motion.png' if motion else '-defeat-pose.png') if reaction else ('-motion.png' if motion else '.png')
+    path=_portrait_dir/(strategy+suffix)
     with _portrait_lock:
         if not path.exists():
             try:
-                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)]+([strategy, 'defeat'] if reaction else [strategy] if motion else []),
+                args=[sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)]
+                if reaction:
+                    args += [strategy, 'defeat'] if motion else ['', 'defeat', strategy]
+                elif motion:
+                    args.append(strategy)
+                subprocess.run(args,
                                check=True,timeout=240,capture_output=True,text=True)
             except subprocess.CalledProcessError as exc:
                 detail=(exc.stderr or exc.stdout or str(exc)).strip()

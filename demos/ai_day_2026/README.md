@@ -48,7 +48,7 @@ The UI reports Xbox connection status and supports keyboard/mouse if the control
 
 1. **Challenge Setup:** choose a saved maze, add hazards, choose Periodic/Age/Uncertainty, and correct any invalid placement called out by the editor.
 2. **Live Simulation:** side-by-side visitor ground truth and robot spatial memory, with actual G1 pose, step count, observations, distance, safety events, actual contacts, and a separate blocked-move count. The exhibition uses optional MuJoCo 3D rendering and a lightweight 2D Canvas fallback.
-3. **Results:** the AI wins only when it reaches Goal within the chosen difficulty's step limit with zero actual unwanted MuJoCo contacts. A shield-rejected action is a blocked move, **not** a contact. The results retain the final spatial memory, show the selected G1's reaction, and allow visitors to return to the same layout.
+3. **Results:** the AI wins only when it reaches Goal within the chosen difficulty's step limit with zero actual unwanted MuJoCo contacts. A shield-rejected action is a blocked move, **not** a contact. The results retain the final spatial memory, show the selected G1's reaction, and allow visitors to return to the same layout. On a human win, the rendered G1 kneels, lowers to its hands, and loops a trembling pose until the visitor leaves the result screen. These are presentation-only kinematic poses.
 
 An episode is single-threaded and the API rejects overlapping challenges. Reset is available after a challenge finishes. Each run uses a reproducible seed and saves its layout, strategy, pedestrian paths, and results to the local showcase JSONL log.
 
@@ -66,3 +66,15 @@ PYTHONPATH=.:src:scripts:demos/ai_day_2026 .venv/bin/python demos/ai_day_2026/sm
 ```
 
 The API smoke expects the app to be running at `127.0.0.1:8765` and performs actual, non-generative challenges on one already-admitted maze. `validation/api_smoke_report.json` records the latest verified run. It does not modify Phase 1.5 stores or Phase 2 experiment results.
+
+### Optional defeat animation cache warm-up
+
+Before the exhibition, run the following once from the repository root (with the app stopped). This avoids first-use generation of a new defeat spritesheet at the result screen. Existing selection portraits are preserved.
+
+```sh
+for strategy in periodic age uncertainty; do
+  .venv/bin/python demos/ai_day_2026/generate_portraits.py \
+    "$(.venv/bin/python -c 'import tempfile; print(tempfile.gettempdir())')/ai-day-g1-portraits-v8" \
+    "$strategy" defeat
+done
+```

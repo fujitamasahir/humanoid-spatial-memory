@@ -107,12 +107,13 @@ window.addEventListener('keydown',e=>{if(!$('setupScreen').classList.contains('a
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
 const motionCache=new Map();let motionToken=0;
-function motionAsset(name){
- if(!motionCache.has(name)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=8'});
-  motionCache.set(name,promise);promise.catch(()=>motionCache.delete(name));
+function motionAsset(name,reaction=''){
+ const key=name+'|'+reaction;
+ if(!motionCache.has(key)){
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true'+(reaction?'&reaction='+encodeURIComponent(reaction):'')+'&v=11'});
+  motionCache.set(key,promise);promise.catch(()=>motionCache.delete(key));
  }
- return motionCache.get(name);
+ return motionCache.get(key);
 }
 const HERO_NAMES=['periodic','age','uncertainty'];
 const heroCards=Array.from(document.querySelectorAll('.hero-card'));
@@ -248,28 +249,39 @@ function stopResultEffects(){
  confetti.hidden=true;confetti.getContext('2d').clearRect(0,0,confetti.width,confetti.height);
  $('resultPortrait').hidden=false;
 }
+const DEFEAT_DROP_FRAMES=30,DEFEAT_LOOP_FRAMES=24,RESULT_FPS=20;
+function resultFrame(elapsed,human){
+ const index=Math.max(0,Math.floor(elapsed*RESULT_FPS/1000));
+ return human?(index<DEFEAT_DROP_FRAMES?index:DEFEAT_DROP_FRAMES+(index-DEFEAT_DROP_FRAMES)%DEFEAT_LOOP_FRAMES):Math.min(59,index);
+}
 function showResultReaction(name,human){
  const token=++resultEffectToken,img=$('resultPortrait'),canvas=$('resultMotion');
  img.hidden=false;img.src='/api/portrait/'+name+'?v=8';
- if(human){
-  const pose=new Image();
-  pose.onload=()=>{if(token===resultEffectToken)img.src=pose.src};
-  pose.src='/api/portrait/'+name+'?reaction=defeat';
-  burstConfetti(token);
-  return;
- }
- motionAsset(name).then(atlas=>{
+ $('resultHero').classList.toggle('defeated',human);
+ if(human)burstConfetti(token);
+ motionAsset(name,human?'defeat':'').then(atlas=>{
   if(token!==resultEffectToken||!$('resultScreen').classList.contains('active'))return;
   const ctx=canvas.getContext('2d'),start=performance.now();
   canvas.hidden=false;img.hidden=true;
+  let lastFrame=-1;
   function tick(now){
-   if(token!==resultEffectToken)return;
-   const elapsed=now-start,frame=Math.min(59,Math.floor(elapsed*20/1000));
-   ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(atlas,(frame%6)*360,Math.floor(frame/6)*480,360,480,0,0,360,480);
-   if(elapsed<3000)requestAnimationFrame(tick);else{canvas.hidden=true;img.hidden=false}
+   if(token!==resultEffectToken||!$('resultScreen').classList.contains('active'))return;
+   const elapsed=now-start,frame=resultFrame(elapsed,human);
+   if(frame!==lastFrame){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(atlas,(frame%6)*360,Math.floor(frame/6)*480,360,480,0,0,canvas.width,canvas.height);
+    lastFrame=frame;
+   }
+   if(human||elapsed<3000)requestAnimationFrame(tick);
+   else{canvas.hidden=true;img.hidden=false}
   }
   tick(start);
- }).catch(error=>console.warn(error));
+ }).catch(error=>{
+  if(token!==resultEffectToken)return;
+  console.warn(error);
+  canvas.hidden=true;img.hidden=false;
+  if(human)img.src='/api/portrait/'+name+'?reaction=defeat&v=11';
+ });
 }
 function burstConfetti(token){
  const canvas=$('confetti'),ctx=canvas.getContext('2d'),width=canvas.width=innerWidth,height=canvas.height=innerHeight;
