@@ -50,7 +50,7 @@ async function place(cell,remove=false,kind=tool){
  try{const v=await api('/api/validate',{method:'POST',body:JSON.stringify({maze_id:m.id,objects:o,pedestrians:q})});if(!v.valid){toast(v.errors.join(' '));return}objects=o;pedestrians=q;renderEditor()}catch(e){toast(e.message)}finally{editing=false;$('startBtn').disabled=false}
 }
 function moveCursor(dx,dy){const m=current();cursor=[Math.max(0,Math.min(m.width-1,cursor[0]+dx)),Math.max(0,Math.min(m.height-1,cursor[1]-dy))];renderEditor()}
-function cycleStrategy(delta){const all=['periodic','age','uncertainty'];const i=all.indexOf(strategy);document.querySelector(`[data-strategy="${all[(i+delta+all.length)%all.length]}"]`)?.click()}
+function cycleStrategy(delta){const i=HERO_NAMES.indexOf(strategy);selectHero(HERO_NAMES[(i+delta+3)%3],delta)}
 function setMaze(n){if(editing||starting)return;revision++;mazeIndex=(n+catalog.length)%catalog.length;cursor=[Math.min(cursor[0],current().width-1),Math.min(cursor[1],current().height-1)];clearEdits()}
 function pointerCell(e){
  const canvas=e.currentTarget,r=canvas.getBoundingClientRect(),d=dimensions(canvas,current());
@@ -61,8 +61,8 @@ function pointerCell(e){
 }
 $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);cursor=[Math.max(0,Math.min(current().width-1,x)),Math.max(0,Math.min(current().height-1,y))];renderEditor()});
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
-$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>{strategy=b.dataset.strategy;$('hero').dataset.pose=strategy;$('portraitStatus').hidden=true;$('heroImage').hidden=false;$('heroImage').src='/api/portrait/'+strategy+'?v=7';playHeroMotion(strategy);document.querySelectorAll('.strategy').forEach(x=>x.classList.toggle('active',x===b))});
-function screen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen')playHeroMotion(strategy)}
+$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
+function screen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
 async function startChallenge(cfg=null){if(starting||editing)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
 $('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'){lastResult=s.result;showResult(s.result)}}}
 function drawLive(s){
@@ -90,40 +90,95 @@ else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').c
 window.addEventListener('keydown',e=>{if(!$('setupScreen').classList.contains('active'))return;const k=e.key.toLowerCase();if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;$('objectCount').dataset.max=d.max_static_objects;$('pedCount').dataset.max=d.max_pedestrians;renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
-$('heroImage').onerror=async()=>{const img=$('heroImage'),url=img.src;img.hidden=true;const status=$('portraitStatus');status.hidden=false;status.textContent='G1 portrait unavailable';try{const response=await fetch(url);if(!response.ok){const data=await response.json();if(img.src===url){status.textContent='G1 portrait unavailable: '+String(data.error||response.status).split('\n').filter(Boolean).pop();console.error('G1 portrait:',data.error)}}}catch(error){console.error(error)}};
-
 const motionCache=new Map();let motionToken=0;
 function motionAsset(name){
  if(!motionCache.has(name)){
-  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=7'});
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=8'});
   motionCache.set(name,promise);promise.catch(()=>motionCache.delete(name));
  }
  return motionCache.get(name);
 }
-async function playHeroMotion(name){
- const token=++motionToken,canvas=$('heroMotion'),img=$('heroImage');
+const HERO_NAMES=['periodic','age','uncertainty'];
+const heroCards=Array.from(document.querySelectorAll('.hero-card'));
+let heroAngle=0,heroTarget=0,heroSpin=0;
+function positionHeroRing(angle){
+ heroAngle=angle;
+ heroCards.forEach((card,i)=>{
+  const theta=(i-angle)*2*Math.PI/3,depth=(Math.cos(theta)+1)/2;
+  card.style.left=(50+Math.sin(theta)*31)+'%';
+  card.style.top=(50-(1-depth)*8)+'%';
+  card.style.transform='translate(-50%,-50%) scale('+(0.57+depth*.43)+')';
+  card.style.opacity=String(.34+depth*.66);
+  card.style.zIndex=String(1+Math.round(depth*100));
+ });
+}
+function stopHeroMotion(){
+ ++motionToken;
+ const canvas=$('heroMotion');
  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
- canvas.hidden=true;img.classList.remove('motion-playing');
+ canvas.hidden=true;
+ heroCards.forEach(card=>card.classList.remove('motion-playing'));
+}
+function selectHero(name,direction=0){
+ if(!HERO_NAMES.includes(name)||!$('setupScreen').classList.contains('active'))return;
+ if(name===strategy&&!direction){playHeroMotion(name);return}
+ stopHeroMotion();
+ const previous=HERO_NAMES.indexOf(strategy),next=HERO_NAMES.indexOf(name);
+ const delta=direction||((next-previous+3)%3===1?1:-1);
+ strategy=name;heroTarget+=delta;$('hero').dataset.pose=name;$('portraitStatus').hidden=true;
+ document.querySelectorAll('.strategy').forEach(b=>b.classList.toggle('active',b.dataset.strategy===name));
+ const token=++heroSpin,from=heroAngle,to=heroTarget,start=performance.now();
+ function turn(now){
+  if(token!==heroSpin)return;
+  const t=Math.min(1,(now-start)/480),ease=t*t*(3-2*t);
+  positionHeroRing(from+(to-from)*ease);
+  if(t<1)requestAnimationFrame(turn);
+  else {heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);if($('setupScreen').classList.contains('active'))playHeroMotion(strategy)}
+ }
+ requestAnimationFrame(turn);
+}
+async function playHeroMotion(name){
+ stopHeroMotion();
+ const token=motionToken,canvas=$('heroMotion'),card=heroCards[HERO_NAMES.indexOf(name)];
  try{
   const atlas=await motionAsset(name);
-  if(token!==motionToken||!$('setupScreen').classList.contains('active'))return;
+  if(token!==motionToken||name!==strategy||!$('setupScreen').classList.contains('active'))return;
   const ctx=canvas.getContext('2d'),start=performance.now();
-  canvas.hidden=false;img.classList.add('motion-playing');
+  card.append(canvas);canvas.hidden=false;card.classList.add('motion-playing');
   function tick(now){
    if(token!==motionToken)return;
    const elapsed=now-start;
-   if(elapsed>=3000||!$('setupScreen').classList.contains('active')){
-    ctx.clearRect(0,0,canvas.width,canvas.height);canvas.hidden=true;img.classList.remove('motion-playing');return;
-   }
+   if(elapsed>=3000||!$('setupScreen').classList.contains('active')){stopHeroMotion();return}
    const frame=Math.min(59,Math.floor(elapsed*20/1000));
    ctx.clearRect(0,0,canvas.width,canvas.height);
    ctx.drawImage(atlas,(frame%6)*360,Math.floor(frame/6)*480,360,480,0,0,360,480);
    requestAnimationFrame(tick);
   }
   tick(start);
- }catch(error){console.warn(error)}
+ }catch(error){if(token===motionToken){stopHeroMotion();console.warn(error)}}
 }
-// Prepare the clips sequentially; cached images require no live MuJoCo work.
-(async()=>{for(const name of ['periodic','age','uncertainty']){
- try{await motionAsset(name)}catch(error){console.warn(error)}
-}})();
+$('heroPrev').onclick=()=>cycleStrategy(-1);
+$('heroNext').onclick=()=>cycleStrategy(1);
+heroCards.forEach(card=>{
+ const img=card.querySelector('img');
+ img.addEventListener('error',()=>{if(card.dataset.character===strategy)$('portraitStatus').hidden=false});
+ img.addEventListener('load',()=>{if(card.dataset.character===strategy)$('portraitStatus').hidden=true});
+ card.onclick=()=>selectHero(card.dataset.character);
+});
+positionHeroRing(0);
+// Shared header: each letter follows a short staggered wave as the phrase swaps.
+const titlePhrases=['BEAT THE HUMANOID','Stop the robot in 80 steps!'];
+let titleIndex=0;
+function setTitle(){
+ const el=$('titleLetters');el.replaceChildren(...Array.from(titlePhrases[titleIndex],(ch,i)=>{
+  const span=document.createElement('span');span.textContent=ch===' '?'\u00a0':ch;span.style.setProperty('--letter',i);return span;
+ }));
+ $('gameTitle').classList.toggle('challenge-title',titleIndex===1);
+}
+setTitle();
+setInterval(()=>{
+ const el=$('titleLetters');el.className='wave-out';
+ setTimeout(()=>{titleIndex=1-titleIndex;setTitle();el.className='wave-in'},480);
+},3000);
+// Prepare clips sequentially. The stills and animations are cached locally.
+(async()=>{for(const name of HERO_NAMES){try{await motionAsset(name)}catch(error){console.warn(error)}}})();

@@ -78,7 +78,7 @@ if __name__ == '__main__':
     uvicorn.run('app:app', host='127.0.0.1', port=8765, access_log=False)
 
 _portrait_lock=threading.Lock()
-_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v7'
+_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v8'
 @app.get('/api/portrait/{strategy}')
 def portrait(strategy: str, motion: bool=False):
     if strategy not in ('periodic','age','uncertainty'):

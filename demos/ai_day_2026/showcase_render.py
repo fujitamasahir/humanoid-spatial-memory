@@ -55,17 +55,29 @@ class ShowcaseRenderer:
             # Bright presentation-only lighting: modify the renderer's scene,
             # not MjModel / MjData used for navigation, sensors or collisions.
             sc=self.renderer.scene
-            for light in sc.lights[:sc.nlight]:
-                light.ambient[:]=np.maximum(light.ambient,.48)
-                light.diffuse[:]=np.maximum(light.diffuse,.85)
+            # Replace the concentrated key-light hotspot with a broad,
+            # low-specular directional fill on the presentation scene only.
+            for index,light in enumerate(sc.lights[:sc.nlight]):
+                light.ambient[:]=(.48,.48,.48) if index==0 else (0,0,0)
+                light.diffuse[:]=(.48,.48,.48) if index==0 else (0,0,0)
+                light.specular[:]=0
                 light.castshadow=0
+                if index==0:
+                    if hasattr(light,'directional'):
+                        light.directional=1
+                    elif hasattr(light,'type') and hasattr(mj,'mjtLightType'):
+                        directional=getattr(mj.mjtLightType,'mjLIGHT_DIRECTIONAL',None)
+                        if directional is not None: light.type=directional
+                    light.dir[:]=(.22,.32,-.92)
+                    light.attenuation[:]=(1,0,0)
+                    light.cutoff=180
             for geom in sc.geoms[:sc.ngeom]:
                 if geom.objtype!=mj.mjtObj.mjOBJ_GEOM: continue
                 gid=int(geom.objid)
                 if gid in s._wall_geom_ids:
                     geom.rgba[:3]=(.62,.68,.76)
                 elif gid==s._floor_geom_id:
-                    geom.rgba[:3]=(.84,.87,.90)
+                    geom.rgba[:3]=(.72,.76,.80)
                 elif gid in s._object_geom_ids.values():
                     geom.rgba[:3]=(.95,.52,.18)
                 elif gid in s._ped_geom_ids:
@@ -80,7 +92,7 @@ class ShowcaseRenderer:
                     sc.ngeom+=1
             rgb=self.renderer.render()
             # Lift remaining shadow detail in the presentation image.
-            rgb=np.asarray(255*np.power(rgb.astype(np.float32)/255,.82),dtype=np.uint8)
+            rgb=np.asarray(255*np.power(rgb.astype(np.float32)/255,.92),dtype=np.uint8)
             return {'render_png':png(rgb)}
         except Exception as exc:
             self.error=type(exc).__name__+': '+str(exc)

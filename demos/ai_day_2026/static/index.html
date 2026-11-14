@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css?v=7">
+<link rel="stylesheet" href="/static/style.css?v=8">
 </head>
 <body>
 <div class="grain"></div>
-<header><div class="game-title">BEAT THE HUMANOID</div><div id="padStatus" class="pad-status" aria-label="Controller disconnected" role="img"><svg viewBox="0 0 72 48" aria-hidden="true"><path class="pad-body" d="M22 8H50Q60 8 65 21L69 34Q71 44 62 43L49 32H23L10 43Q1 44 3 34L7 21Q12 8 22 8Z" fill="#213246" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V26M14 20H26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><g fill="currentColor"><circle cx="52" cy="14" r="2.5"/><circle cx="58" cy="20" r="2.5"/><circle cx="46" cy="20" r="2.5"/><circle cx="52" cy="26" r="2.5"/></g><g class="pad-stop" stroke="#ff535b" stroke-width="4" fill="none"><circle cx="36" cy="24" r="21"/><path d="M21 9L51 39"/></g></svg></div></header>
+<header><div id="gameTitle" class="game-title" aria-label="Beat the Humanoid. Stop the robot in 80 steps!"><span id="titleLetters" aria-hidden="true">BEAT THE HUMANOID</span></div><div id="padStatus" class="pad-status" aria-label="Controller disconnected" role="img"><svg viewBox="0 0 72 48" aria-hidden="true"><path class="pad-body" d="M22 8H50Q60 8 65 21L69 34Q71 44 62 43L49 32H23L10 43Q1 44 3 34L7 21Q12 8 22 8Z" fill="#213246" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V26M14 20H26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><g fill="currentColor"><circle cx="52" cy="14" r="2.5"/><circle cx="58" cy="20" r="2.5"/><circle cx="46" cy="20" r="2.5"/><circle cx="52" cy="26" r="2.5"/></g><g class="pad-stop" stroke="#ff535b" stroke-width="4" fill="none"><circle cx="36" cy="24" r="21"/><path d="M21 9L51 39"/></g></svg></div></header>
 <main>
 <section id="setupScreen" class="screen active">
   <div class="setup-left">
     
     
-    <p class="intro">Stop the robot in 80 steps.</p>
+    <h2 class="setup-heading">2. Select the humanoid</h2>
     
     
-    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=7" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div id="hero" class="hero" data-pose="periodic"><div id="heroRing" class="hero-ring"><div class="hero-card" data-character="periodic"><img class="character-portrait" src="/api/portrait/periodic?v=8" alt="periodic G1" draggable="false"></div><div class="hero-card" data-character="age"><img class="character-portrait" src="/api/portrait/age?v=8" alt="age G1" draggable="false"></div><div class="hero-card" data-character="uncertainty"><img class="character-portrait" src="/api/portrait/uncertainty?v=8" alt="uncertainty G1" draggable="false"></div><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas></div><button id="heroPrev" class="hero-arrow left" type="button" aria-label="Previous humanoid"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M15 3H29V15H41V29H29V41H15V29H3V15H15Z" fill="#253a50" stroke="#a8bed4" stroke-width="1.5"/><path d="M5 22L15 13V31Z" fill="#eaf9ff"/><path d="M22 6V14M22 30V38" stroke="#7890a7" stroke-width="1.5"/></svg></button><button id="heroNext" class="hero-arrow right" type="button" aria-label="Next humanoid"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M15 3H29V15H41V29H29V41H15V29H3V15H15Z" fill="#253a50" stroke="#a8bed4" stroke-width="1.5"/><path d="M39 22L29 13V31Z" fill="#eaf9ff"/><path d="M22 6V14M22 30V38" stroke="#7890a7" stroke-width="1.5"/></svg></button><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -26,14 +26,14 @@
     
   </div>
   <div class="setup-right">
-    <div class="panel-heading"><div id="validation" class="validation">Layout ready. Place hazards on open cells.</div><span class="key"><i></i> G1 START <i class="gold"></i> GOAL</span></div>
-    <div class="inventory"><button id="objectTool" class="tool"><kbd>X</kbd><span>OBJECT</span><span id="objectCount"></span></button><button id="pedTool" class="tool"><kbd>Y</kbd><span>PEDESTRIAN</span><span id="pedCount"></span></button><button id="removeTool" class="tool"><kbd>B</kbd> REMOVE</button></div><div class="carousel"><button id="prevMaze" class="trigger" aria-label="LT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">LT</text></svg><span>‹</span></button><canvas id="editorCanvas" width="900" height="760"></canvas><button id="nextMaze" class="trigger" aria-label="RT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">RT</text></svg><span>›</span></button></div><div id="mazeIdentity" class="maze-name"></div><div id="mazeStrip" class="maze-strip" aria-label="Choose from 36 mazes"></div>
+    <h2 class="setup-heading">1. Select a maze and place obstacles</h2>
+    <div class="inventory"><button id="objectTool" class="tool"><kbd>X</kbd><span>OBJECT</span><span id="objectCount"></span></button><button id="pedTool" class="tool"><kbd>Y</kbd><span>PEDESTRIAN</span><span id="pedCount"></span></button><button id="removeTool" class="tool"><kbd>B</kbd> REMOVE</button></div><div class="carousel"><button id="prevMaze" class="trigger" aria-label="LT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">LT</text></svg><span>‹</span></button><canvas id="editorCanvas" width="900" height="760"></canvas><button id="nextMaze" class="trigger" aria-label="RT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">RT</text></svg><span>›</span></button></div><div id="mazeIdentity" class="maze-name"></div><div id="mazeStrip" class="maze-strip" aria-label="Choose from 36 mazes"></div><div class="panel-heading maze-footer"><div id="validation" class="validation">Layout ready. Place hazards on open cells.</div><span class="key"><i></i> G1 START <i class="gold"></i> GOAL</span></div>
     
   </div>
 </section>
 <section id="liveScreen" class="screen live-screen">
-  <div class="live-head"><div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span></div></div>
-  <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>FAINT = VISITOR PREVIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
+  <div class="live-head"><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span></div></div>
+  <div class="live-grid"><div class="map-card"><div class="panel-heading">HUMANOID IN MOTION</div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY</div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
 
   </div>
   <div class="live-counters"><div>STEPS <b id="stepValue">0</b><span> / 80</span></div><div>MEMORY SCANS <b id="obsValue">0</b></div></div><div id="liveStatus" class="live-status" role="status"></div>
@@ -46,5 +46,5 @@
 </main>
 
 <div id="toast" role="status"></div>
-<script src="/static/game.js?v=7"></script>
+<script src="/static/game.js?v=8"></script>
 </body></html>

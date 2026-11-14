@@ -163,8 +163,8 @@ def generate(out, motion=None):
                 opened=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_open_showcase')
                 fist=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_fist_showcase')
                 if opened>=0 and fist>=0:
-                    model.geom_rgba[opened,3]=0 if name=='uncertainty' else 1
-                    model.geom_rgba[fist,3]=1 if name=='uncertainty' else 0
+                    model.geom_rgba[opened,3]=0 if name=='uncertainty' and motion else 1
+                    model.geom_rgba[fist,3]=1 if name=='uncertainty' and motion else 0
             def render(t=None):
                 pose(name,t)
                 renderer.update_scene(data,camera=camera,scene_option=opt)
