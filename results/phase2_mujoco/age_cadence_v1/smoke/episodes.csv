@@ -1,0 +1,15 @@
+actual_memory_raycasts,age_requests,age_requests_deferred,arm,blocked_attempts,combined_rays,deadline_requests,directional_requests,elapsed_steps,emergency_safety_interventions,emergency_safety_raycasts,emergency_safety_scans,episode,episode_wall_time_seconds,false_persistent_occupancy_updates,identity,missed_persistent_changes,paid_memory_scans,route_candidate_cells,route_clock_only_grants,route_rescue_only_grants,schedule,scheduler_ms,success,travel_distance_m,unwanted_contacts
+427,0,0,periodic,0,2074,0,0,27,0,1647,27,1,0.258274084,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,7,0,0,0,0,0.0,True,15.75,0
+488,0,0,age,0,2135,0,0,27,0,1647,27,1,0.124166708,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,8,0,0,0,0,0.0,True,15.75,0
+488,7,0,age_route_rescue,0,2135,0,6,27,0,1647,27,1,0.198482083,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,8,91,0,1,0,90.429666,True,15.75,0
+366,13,8,periodic5,1,2074,0,0,28,0,1708,28,1,0.108397208,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,38,6,0,0,0,0,1.419122,True,15.75,0
+427,11,5,age5,1,2135,0,0,28,0,1708,28,1,0.104679208,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,38,7,0,0,0,0,1.6,True,15.75,0
+427,9,3,age_gap4,0,2074,0,0,27,0,1647,27,1,0.100339917,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,7,0,0,0,0,1.470418,True,15.75,0
+549,11,3,age_motion,0,2440,0,0,31,0,1891,31,1,0.113663583,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,9,0,0,0,0,1.735126,True,17.25,0
+427,0,0,periodic,0,2074,0,0,27,0,1647,27,2,0.099066209,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,7,0,0,0,1,0.0,True,15.75,0
+488,0,0,age,0,2135,0,0,27,0,1647,27,2,0.099793792,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,8,0,0,0,1,0.0,True,15.75,0
+488,7,0,age_route_rescue,0,2135,0,6,27,0,1647,27,2,0.195865167,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,8,91,0,1,1,92.408084,True,15.75,0
+366,13,8,periodic5,1,2074,0,0,28,0,1708,28,2,0.1002945,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,46,6,0,0,0,1,1.416415,True,15.75,0
+427,11,5,age5,1,2135,0,0,28,0,1708,28,2,0.101041666,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,46,7,0,0,0,1,1.549208,True,15.75,0
+427,9,3,age_gap4,0,2074,0,0,27,0,1647,27,2,0.099961042,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,7,0,0,0,1,1.471543,True,15.75,0
+549,11,3,age_motion,0,2440,0,0,31,0,1891,31,2,0.112415791,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,52,9,0,0,0,1,1.657874,True,17.25,0

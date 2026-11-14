@@ -1,0 +1,87 @@
+[
+  {
+    "bytes": 2773,
+    "path": "episode_001_age.json.gz",
+    "sha256": "d8306634ace17135924f9aa3c3f51e9809e3fcc9d6deb934780e5814c8786e5e"
+  },
+  {
+    "bytes": 3891,
+    "path": "episode_001_age5.json.gz",
+    "sha256": "3d33d9b4ad093d61d46f5e5c8094b5e9f3dbfca23ea9491dd332d6146eecc27e"
+  },
+  {
+    "bytes": 3779,
+    "path": "episode_001_age_gap4.json.gz",
+    "sha256": "a05b36458281b5e8434b5059df95eaa2e135e6d2544b1be3a351f590c91bd8bb"
+  },
+  {
+    "bytes": 4159,
+    "path": "episode_001_age_motion.json.gz",
+    "sha256": "a8e64f0d92b59d5ed63d174390bb9ff2c19863af90d5178ad6aa907816d99856"
+  },
+  {
+    "bytes": 4496,
+    "path": "episode_001_age_route_rescue.json.gz",
+    "sha256": "1a8fa4ba9702e0988ab74eed352c46c750c3a42994d6c89c9d6981e3c3824b1c"
+  },
+  {
+    "bytes": 2620,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "d0de1839665d83b5880764406b296745d9b98362410117305d539e2dc4a537a2"
+  },
+  {
+    "bytes": 3802,
+    "path": "episode_001_periodic5.json.gz",
+    "sha256": "ef73c16ca649dc0aa489f100d2a03b120e2c8c0c3cd752c5f2a3628c44d4ab33"
+  },
+  {
+    "bytes": 2768,
+    "path": "episode_002_age.json.gz",
+    "sha256": "fee3e2ac2fcc2477a5bd99d491fb86ce6358ff5c6e0de7ee19b4ba5b991e72e5"
+  },
+  {
+    "bytes": 3880,
+    "path": "episode_002_age5.json.gz",
+    "sha256": "11bcec9f383741fd5d887c51ad1198b700fc3cdb0599df96b5e1fcb6588659c0"
+  },
+  {
+    "bytes": 3777,
+    "path": "episode_002_age_gap4.json.gz",
+    "sha256": "a8342f649f5462f61829d7b575cd471cca67929e6b33e8a940e94d3ab63c86a1"
+  },
+  {
+    "bytes": 4164,
+    "path": "episode_002_age_motion.json.gz",
+    "sha256": "dd4526025e12a31391dcb5f6065bb0308b4ec78ec40eb5f4dcb49fa886753a66"
+  },
+  {
+    "bytes": 4490,
+    "path": "episode_002_age_route_rescue.json.gz",
+    "sha256": "f1b8a82a17a27f77b20e1f94eb2ec5ea34155dac71c9083e7a330341d26708ec"
+  },
+  {
+    "bytes": 2621,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "9b17afcd37b27725095f2138acd7601dad49230efd11db5b69057a8ebf9ee5c6"
+  },
+  {
+    "bytes": 3809,
+    "path": "episode_002_periodic5.json.gz",
+    "sha256": "8eb48eb7178db8635159e6a00d24df6e50e02518b23068f68b77f620e0d4491d"
+  },
+  {
+    "bytes": 2306,
+    "path": "episodes.csv",
+    "sha256": "d902083eeadf6690454d1eeb06cafd84a5ac0a3cdbc03c33afb78b5b91988c67"
+  },
+  {
+    "bytes": 2810,
+    "path": "provenance.json",
+    "sha256": "5a428a550dc564a02d626b0676048176ef83725e80a1a5bed70ce33a1bd747b9"
+  },
+  {
+    "bytes": 4577,
+    "path": "summary.json",
+    "sha256": "ceca4167d927d2de127648cf7850b23f54c39c1a94d0ecc27ce6792d0084bd3a"
+  }
+]
