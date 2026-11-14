@@ -1,8 +1,8 @@
 [
   {
-    "bytes": 1886,
+    "bytes": 2024,
     "path": "correctness.json",
-    "sha256": "45820515880a8be31be35b1672c1fc69bbdcc115ac6e3a6a9c51664133358166"
+    "sha256": "33ca8a59d0e4066fb3b5595824ef106049c10ec41b5342315fff5568f7b479ef"
   },
   {
     "bytes": 290071,
@@ -12,11 +12,11 @@
   {
     "bytes": 300,
     "path": "tests.log",
-    "sha256": "0fbefbb56b56a8dfd643379918560a956bfaa5f1549fa79c7eaa691b0fe61937"
+    "sha256": "2d54bde478d6b4639ffda64ab1a0bdcc9421da0cf811ccae0ec7908ca1b32fd6"
   },
   {
-    "bytes": 18499,
+    "bytes": 18622,
     "path": "tests.xml",
-    "sha256": "58209f784213797b749e07bac1bcd2be836e745df1902dbee5eb6ba49654cdd8"
+    "sha256": "26f551e57e56025f0369292e4f75a69747cd0d85e8cf7a97277b0263daf364d8"
   }
 ]

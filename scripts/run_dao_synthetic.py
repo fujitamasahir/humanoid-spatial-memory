@@ -17,10 +17,15 @@ from spatial_memory.evi import visible_cells
 from dao_fixtures import fixtures
 OUT=ROOT/'results/phase2_mujoco/dao_v1'
 SOURCES=('src/spatial_memory/discovery_observation.py','src/spatial_memory/discovery_reference.py',
-         'scripts/dao_fixtures.py','scripts/run_dao_synthetic.py','tests/test_discovery_observation.py',
+         'scripts/dao_fixtures.py','scripts/run_dao_synthetic.py','tests/test_discovery_observation.py','tests/test_dao_artifacts.py',
          'docs/dao_protocol.md','docs/dao_independent_navigation_protocol.md',
          'src/spatial_memory/evi.py','src/spatial_memory/memory.py','src/spatial_memory/scheduling.py',
          'src/spatial_memory/cadence_age.py','src/spatial_memory/change_aware_age.py')
+
+
+def json_native(value):
+    # Artifact boundary only: do not change arithmetic, counts or requests.
+    return json.loads(json.dumps(value, default=lambda scalar: scalar.item()))
 
 
 def fingerprints():return {p:sha(ROOT/p) for p in SOURCES}
@@ -30,7 +35,7 @@ def prepare():
     target=OUT/'prepared';target.mkdir(parents=True,exist_ok=False)
     write(target/'fixtures.json',fixtures())
     command=[sys.executable,'-m','pytest','-q','tests/test_discovery_observation.py',
-        'tests/test_change_aware_age.py','tests/test_caa_integration.py','tests/test_cadence_age.py',
+        'tests/test_dao_artifacts.py','tests/test_change_aware_age.py','tests/test_caa_integration.py','tests/test_cadence_age.py',
         'tests/test_phase2_mujoco.py','tests/test_phase2_emergency_safety.py',
         'tests/test_persistence_evi_evaluation.py',f'--junitxml={target/"tests.xml"}']
     result=subprocess.run(command,cwd=ROOT,text=True,capture_output=True)
@@ -117,7 +122,7 @@ def formal():
                 counts['occluder_lost_optimistic_cells']+=len(footprints['optimistic']-blocked)
         except Exception as exc:
             failures.append({'id':state['id'],'error':type(exc).__name__+': '+str(exc)})
-    write(target/'decisions.json',rows)
+    write(target/'decisions.json',json_native(rows))
     summary={'status':'PASS' if not failures else 'FAIL','source_freeze_commit':commit(),
         'source_sha256':fingerprints(),'states':len(states),'same_state_decisions':len(rows),
         'controller_contracts':contract_count,'failures':failures,'counts':dict(counts),
