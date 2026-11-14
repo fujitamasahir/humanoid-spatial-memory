@@ -4,7 +4,7 @@ const colors={wall:'#263647',free:'#101a26',unknown:'#5f6978',memoryFree:'#17424
 async function api(url,options={}){const r=await fetch(url,{headers:{'Content-Type':'application/json'},...options});let d=await r.json();if(!r.ok)throw Error(d.detail||d.error||`HTTP ${r.status}`);return d}
 function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2300)}
 function current(){return catalog[mazeIndex]}
-function setTool(t){tool=t;for(const [id,v] of [['objectTool','object'],['pedTool','ped'],['removeTool','remove']])$(id).classList.toggle('active',t===v)}
+function setTool(t){tool=t;for(const [id,v] of [['objectTool','object'],['pedTool','ped']])$(id).classList.toggle('active',t===v)}
 function dimensions(canvas,maze){const pad=30,scale=Math.min((canvas.width-pad*2)/maze.width,(canvas.height-pad*2)/maze.height);const w=scale*maze.width,h=scale*maze.height;return {x:(canvas.width-w)/2,y:(canvas.height-h)/2,scale,w,h}}
 function drawMap(canvas,maze,{memory=null,objects:obs=[],peds=[],robot=null,trajectory=[],cursorCell=null,editor=false,northUp=false,observedObjects=[],observedPeople=[]}={}){const ctx=canvas.getContext('2d',{alpha:false});ctx.fillStyle='#0b111a';ctx.fillRect(0,0,canvas.width,canvas.height);const d=dimensions(canvas,maze);cellGeom=d;const displayY=y=>northUp?maze.height-1-y:y;for(let y=0;y<maze.height;y++)for(let x=0;x<maze.width;x++){const bit=maze.wall_rows[y][x],v=memory?memory[y][x]:null;const wallColor=({R:'#355c88',BP:'#76529b',M:'#327d70'}[maze.mechanism]||colors.wall);ctx.fillStyle=memory?(v<0?(bit==='1'?wallColor:colors.free):v===1?wallColor:colors.memoryFree):(bit==='1'?wallColor:colors.free);ctx.globalAlpha=memory&&v<0?.23:1;ctx.fillRect(d.x+x*d.scale,d.y+displayY(y)*d.scale,d.scale-.7,d.scale-.7);ctx.globalAlpha=1;if((!memory||v===1)&&bit==='1'){const X=d.x+x*d.scale,Y=d.y+displayY(y)*d.scale,z=d.scale;ctx.fillStyle='#ffffff25';ctx.fillRect(X,Y,z-.7,z*.16);ctx.fillStyle='#00000055';ctx.fillRect(X,Y+z*.72,z-.7,z*.28);ctx.fillRect(X+z*.78,Y,z*.22,z*.72)}if(!memory&&bit==='0'){ctx.fillStyle='#ffffff08';ctx.fillRect(d.x+x*d.scale+1,d.y+displayY(y)*d.scale+1,d.scale-2,d.scale-2)}}
 const detected=(cells,x,y)=>cells.some(p=>p[0]===x&&p[1]===y);
@@ -61,10 +61,14 @@ function pointerCell(e){
 }
 $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);cursor=[Math.max(0,Math.min(current().width-1,x)),Math.max(0,Math.min(current().height-1,y))];renderEditor()});
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
-$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
+$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
 function screen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
-async function startChallenge(cfg=null){if(starting||editing)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
-$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'){lastResult=s.result;showResult(s.result)}}}
+async function startChallenge(cfg=null){if(starting||editing)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
+$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
+function drawMemory(canvas,m,s){
+ const robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
+ drawMap(canvas,m,{northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[],memory:s.memory||m.wall_rows.map(r=>r.split('').map(()=>-1)),observedObjects:s.observed_objects||[],observedPeople:s.observed_people||[]});
+}
 function drawLive(s){
  if(s.render_png){$('scene3d').src='data:image/png;base64,'+s.render_png;$('scene3d').hidden=false;$('truthCanvas').hidden=true}
  else{$('scene3d').hidden=true;$('truthCanvas').hidden=false}
@@ -73,10 +77,10 @@ function drawLive(s){
  const m=current(),robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
  const common={northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[]};
  drawMap($('truthCanvas'),m,common);
- drawMap($('memoryCanvas'),m,{...common,memory:s.memory||m.wall_rows.map(r=>r.split('').map(()=>-1)),observedObjects:s.observed_objects||[],observedPeople:s.observed_people||[]});
+ drawMemory($('memoryCanvas'),m,s);
  $('liveStatus').textContent='';
 }
-function showResult(r){screen('resultScreen');const w=$('winner');w.textContent=r.winner;w.classList.toggle('human',r.winner==='HUMAN WINS');$('winnerCaption').textContent=r.winner==='AI WINS'?'The G1 reached the goal safely within 80 steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 reached the goal, but experienced actual unwanted contact.':'The G1 did not safely reach the goal within 80 steps.');const items=[['MAZE',`MAZE ${catalog.findIndex(m=>m.id===r.maze_id)+1}`],['STRATEGY',r.strategy.toUpperCase()],['GOAL',r.success?'REACHED':'NOT REACHED'],['STEPS',r.elapsed_steps],['OBSERVATIONS',r.observation_count],['DISTANCE',`${Number(r.travel_distance_m||0).toFixed(1)} m`],['ACTUAL CONTACTS',r.actual_unwanted_contacts],['BLOCKED ATTEMPTS',''+r.blocked_attempts_not_contacts]];$('resultSummary').innerHTML=items.map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join('')}
+function showResult(r,finalState){screen('resultScreen');const w=$('winner');w.textContent=r.winner;w.classList.toggle('human',r.winner==='HUMAN WINS');$('winnerCaption').textContent=r.winner==='AI WINS'?'The G1 reached the goal safely within 80 steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 reached the goal, but experienced actual unwanted contact.':'The G1 did not safely reach the goal within 80 steps.');const items=[['MAZE',`MAZE ${catalog.findIndex(m=>m.id===r.maze_id)+1}`],['STRATEGY',r.strategy.toUpperCase()],['STEPS',r.elapsed_steps],['OBSERVATIONS',r.observation_count]];$('resultSummary').innerHTML=items.map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join('');const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState)}
 async function backToEditor(keep){if(starting)return;starting=true;try{await api('/api/reset',{method:'POST'});if(ws){ws.onclose=null;ws.close()}screen('setupScreen');if(keep){renderEditor();await validate()}else clearEdits()}catch(e){toast(e.message)}finally{starting=false}}
 $('newBtn').onclick=()=>backToEditor(true);
 function pressed(pad,i){return !!pad.buttons[i]?.pressed||(pad.buttons[i]?.value||0)>.55}
@@ -100,6 +104,7 @@ function motionAsset(name){
 }
 const HERO_NAMES=['periodic','age','uncertainty'];
 const heroCards=Array.from(document.querySelectorAll('.hero-card'));
+const strategyCards=HERO_NAMES.map(name=>document.querySelector('.strategy[data-strategy="'+name+'"]'));
 let heroAngle=0,heroTarget=0,heroSpin=0;
 function positionHeroRing(angle){
  heroAngle=angle;
@@ -110,6 +115,13 @@ function positionHeroRing(angle){
   card.style.transform='translate(-50%,-50%) scale('+(0.57+depth*.43)+')';
   card.style.opacity=String(.34+depth*.66);
   card.style.zIndex=String(1+Math.round(depth*100));
+  const label=strategyCards[i];
+  label.style.left=card.style.left;
+  label.style.opacity=String(.34+depth*.66);
+  label.style.zIndex=card.style.zIndex;
+  label.style.transform='translateX(-50%) scale('+(0.82+depth*.18)+')';
+  label.style.setProperty('--depth',depth);
+  label.setAttribute('aria-pressed',String(card.dataset.character===strategy));
  });
 }
 function stopHeroMotion(){
