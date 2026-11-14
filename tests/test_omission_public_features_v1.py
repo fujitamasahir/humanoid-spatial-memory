@@ -1,4 +1,5 @@
 """Authorized-only reconstruction and prespecified diagnostic rule tests."""
+import json
 import numpy as np
 import pytest
 from spatial_memory.omission_public_features_v1 import AuthorizedHistory,diagnostic_rules
@@ -40,3 +41,24 @@ def test_change_history_and_pose_are_from_previous_scan_only():
     assert f['visible_band_stale_occupied']==1 and f['displacement_cells']==1
     assert not diagnostic_rules(f)['stable_prefix']
     with pytest.raises(ValueError):h.update(b,5,(6,7),0.)
+
+
+@pytest.mark.parametrize('kind',('known','mixed','unavailable'))
+def test_complete_audit_row_is_strict_json_serializable(kind):
+    g=np.zeros((15,15),np.int8)
+    if kind=='mixed':
+        g[6:9,9:]=-1
+        g[6,8]=1
+    elif kind=='unavailable':
+        g[7,7]=1
+    h=AuthorizedHistory(g.shape)
+    h.update(g,0,(7,7),0.)
+    b=g.copy()
+    b[6,8]=0 if g[6,8]==1 else 1
+    h.update(b,5,(7,7),0.)
+    f=h.features(10,(7,7),0.,(12,7))
+    row={'scene_index':1,'scene':'fixture','safety':'original','step':10,
+         **f,**{'mask_'+k:v for k,v in diagnostic_rules(f).items()}}
+    assert all(type(v) in (str,int,float,bool,type(None)) for v in row.values())
+    encoded=json.dumps([row],indent=2,sort_keys=True,allow_nan=False)
+    assert json.loads(encoded)==[row]
