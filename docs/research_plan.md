@@ -76,6 +76,11 @@ seeded randomized public-grid cases, and pre-policy annotation validation are
 required before its 48-case formal mechanism suite. FIT access remains gated
 on both the numeric screen and an independent conformance review.
 
+The frozen v2 mechanism screen completed with a numeric rejection: its
+topology selector violated the preregistered graph-work bound in 29 of 48
+fixtures. The separate review is `INVALID_STOP_BEFORE_FIT`; no causal replay or
+FIT access was performed. See `docs/c_v2c_topology_research_report.md`.
+
 ## Intended portfolio outcome
 
 Reproducible code, clear research question, defensible baselines, ablations, repeated-seed results with uncertainty, failure analysis, and a candid simulation limitations section.
