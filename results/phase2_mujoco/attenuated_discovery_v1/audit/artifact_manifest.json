@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 5914,
+    "path": "depth_counts.csv",
+    "sha256": "29f107992c90f6c562a809865c4c91458ad0eb3ec583178803d6c4ebb270fcf1"
+  },
+  {
+    "bytes": 312835,
+    "path": "paid_scan_predictions.csv",
+    "sha256": "36ecf512aacc606a4c92884d8447a7efc9a188e1627793a2f582b6045517d0bb"
+  },
+  {
+    "bytes": 162,
+    "path": "summary.json",
+    "sha256": "33aeee80239053e463b5ceb19800e5e1b2f9a9b94bb73f42691116a7b41a521b"
+  }
+]

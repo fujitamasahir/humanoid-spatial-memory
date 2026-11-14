@@ -1,0 +1,19 @@
+{
+  "base": "99f004fc6ff2de576479b2756beb57f83ae23a9f",
+  "expected_episodes": 416,
+  "expected_paid_scans": 1861,
+  "fixed_factors": [
+    0.5,
+    0.8
+  ],
+  "prepared_manifest_sha256": "dfa81374165d1d8f04dcb3c888df055ab6f135946ab04867ec4be1fdefc46c1b",
+  "prior_matrix_manifest_sha256": "c2eca8776a7f8401161f253658ab23a88dcdc13bc3f28e74f8c0721a6db9af85",
+  "source_commit": "ea6e6f5fc628e14402e3fb1266e87bd28945a221",
+  "sources": {
+    "docs/attenuated_discovery_v1_protocol.md": "ee631e872b2d084f1a2c09215b6cb5362b8b6d54ff626f8ebf356cd474f9e9da",
+    "scripts/run_attenuated_discovery_v1.py": "244a9ff4ea9f48b125a81a57334e6962e10c44b653d420426d854de594a66de5",
+    "src/spatial_memory/attenuated_discovery_v1.py": "f33d96d63f0ea3955d55fb3073fa161371b8bcb26cb5c049687c09de156527ec",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "tests/test_attenuated_discovery_v1.py": "8cf990b93a19784d239c65d6686d41cc7b5359c6c2cface3fd661bb434359ebb"
+  }
+}

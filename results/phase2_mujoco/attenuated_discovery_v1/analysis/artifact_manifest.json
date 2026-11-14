@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 2000,
+    "path": "metrics.csv",
+    "sha256": "712c1a1d0e23272151d0820d0265850f67d8cc9fb6c5a69a70471b68d0536e01"
+  },
+  {
+    "bytes": 1906,
+    "path": "research_report.md",
+    "sha256": "0349f4a66ec1f2109c14eb19bc025bdc23fa685779684c76dd1b3136793919d6"
+  },
+  {
+    "bytes": 7307,
+    "path": "scene_deltas.csv",
+    "sha256": "504deb08781cd84dbc3e6a97ba4a5c446a25f3b6afe0a7f665b7dd625837e090"
+  },
+  {
+    "bytes": 6032,
+    "path": "summary.json",
+    "sha256": "d2dfcdbd4322d10eee37d623bfffb81c96ad86f173f27009b4f274bf507bfff9"
+  }
+]

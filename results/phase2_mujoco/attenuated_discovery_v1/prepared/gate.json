@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_attenuated_discovery_v1.py",
+    "tests/test_discovery_observation.py"
+  ],
+  "returncode": 0
+}

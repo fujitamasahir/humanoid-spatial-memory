@@ -1,0 +1,227 @@
+{
+  "caveat": "Only selected paid scans on previously visited trajectories; no inference at denied decisions or new worlds.",
+  "controlled_policy_comparison": false,
+  "metrics": [
+    {
+      "estimate": "frontier",
+      "mae": 11.878571428571428,
+      "mean_signed_error": -11.175714285714285,
+      "role": "all",
+      "safety": "original",
+      "scans": 700,
+      "threshold_mismatches": 72
+    },
+    {
+      "estimate": "q50",
+      "mae": 9.125867745535714,
+      "mean_signed_error": -8.160064174107143,
+      "role": "all",
+      "safety": "original",
+      "scans": 700,
+      "threshold_mismatches": 28
+    },
+    {
+      "estimate": "q80",
+      "mae": 5.9642648246857135,
+      "mean_signed_error": -4.537736714971428,
+      "role": "all",
+      "safety": "original",
+      "scans": 700,
+      "threshold_mismatches": 34
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 2.895714285714286,
+      "mean_signed_error": -0.23285714285714285,
+      "role": "all",
+      "safety": "original",
+      "scans": 700,
+      "threshold_mismatches": 39
+    },
+    {
+      "estimate": "frontier",
+      "mae": 11.13191489361702,
+      "mean_signed_error": -9.293617021276596,
+      "role": "original_regression",
+      "safety": "original",
+      "scans": 235,
+      "threshold_mismatches": 33
+    },
+    {
+      "estimate": "q50",
+      "mae": 8.983460771276595,
+      "mean_signed_error": -6.544365026595744,
+      "role": "original_regression",
+      "safety": "original",
+      "scans": 235,
+      "threshold_mismatches": 17
+    },
+    {
+      "estimate": "q80",
+      "mae": 6.381604212125956,
+      "mean_signed_error": -3.062942438508935,
+      "role": "original_regression",
+      "safety": "original",
+      "scans": 235,
+      "threshold_mismatches": 23
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 3.753191489361702,
+      "mean_signed_error": 1.174468085106383,
+      "role": "original_regression",
+      "safety": "original",
+      "scans": 235,
+      "threshold_mismatches": 26
+    },
+    {
+      "estimate": "frontier",
+      "mae": 12.255913978494624,
+      "mean_signed_error": -12.126881720430108,
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scans": 465,
+      "threshold_mismatches": 39
+    },
+    {
+      "estimate": "q50",
+      "mae": 9.19783686155914,
+      "mean_signed_error": -8.976600302419355,
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scans": 465,
+      "threshold_mismatches": 11
+    },
+    {
+      "estimate": "q80",
+      "mae": 5.753351370818064,
+      "mean_signed_error": -5.283062854689031,
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scans": 465,
+      "threshold_mismatches": 11
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 2.4623655913978495,
+      "mean_signed_error": -0.9440860215053763,
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scans": 465,
+      "threshold_mismatches": 13
+    },
+    {
+      "estimate": "frontier",
+      "mae": 10.953020134228188,
+      "mean_signed_error": -10.515436241610738,
+      "role": "all",
+      "safety": "res_h1_phase_wait",
+      "scans": 745,
+      "threshold_mismatches": 55
+    },
+    {
+      "estimate": "q50",
+      "mae": 8.263199979026846,
+      "mean_signed_error": -7.660767093120805,
+      "role": "all",
+      "safety": "res_h1_phase_wait",
+      "scans": 745,
+      "threshold_mismatches": 18
+    },
+    {
+      "estimate": "q80",
+      "mae": 5.211352634416107,
+      "mean_signed_error": -4.259006759516778,
+      "role": "all",
+      "safety": "res_h1_phase_wait",
+      "scans": 745,
+      "threshold_mismatches": 24
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 2.2671140939597314,
+      "mean_signed_error": -0.22416107382550335,
+      "role": "all",
+      "safety": "res_h1_phase_wait",
+      "scans": 745,
+      "threshold_mismatches": 37
+    },
+    {
+      "estimate": "frontier",
+      "mae": 10.8,
+      "mean_signed_error": -9.431111111111111,
+      "role": "original_regression",
+      "safety": "res_h1_phase_wait",
+      "scans": 225,
+      "threshold_mismatches": 21
+    },
+    {
+      "estimate": "q50",
+      "mae": 8.217934027777778,
+      "mean_signed_error": -6.519322916666667,
+      "role": "original_regression",
+      "safety": "res_h1_phase_wait",
+      "scans": 225,
+      "threshold_mismatches": 5
+    },
+    {
+      "estimate": "q80",
+      "mae": 5.218871684664888,
+      "mean_signed_error": -2.9078427211093323,
+      "role": "original_regression",
+      "safety": "res_h1_phase_wait",
+      "scans": 225,
+      "threshold_mismatches": 11
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 2.328888888888889,
+      "mean_signed_error": 1.3955555555555557,
+      "role": "original_regression",
+      "safety": "res_h1_phase_wait",
+      "scans": 225,
+      "threshold_mismatches": 18
+    },
+    {
+      "estimate": "frontier",
+      "mae": 11.01923076923077,
+      "mean_signed_error": -10.984615384615385,
+      "role": "prospective_benchmark",
+      "safety": "res_h1_phase_wait",
+      "scans": 520,
+      "threshold_mismatches": 34
+    },
+    {
+      "estimate": "q50",
+      "mae": 8.282786207932693,
+      "mean_signed_error": -8.154661207932692,
+      "role": "prospective_benchmark",
+      "safety": "res_h1_phase_wait",
+      "scans": 520,
+      "threshold_mismatches": 13
+    },
+    {
+      "estimate": "q80",
+      "mae": 5.208099199212307,
+      "mean_signed_error": -4.843645045366153,
+      "role": "prospective_benchmark",
+      "safety": "res_h1_phase_wait",
+      "scans": 520,
+      "threshold_mismatches": 13
+    },
+    {
+      "estimate": "optimistic",
+      "mae": 2.2403846153846154,
+      "mean_signed_error": -0.925,
+      "role": "prospective_benchmark",
+      "safety": "res_h1_phase_wait",
+      "scans": 520,
+      "threshold_mismatches": 19
+    }
+  ],
+  "new_navigation_runs": 0,
+  "new_sensor_calls": 0,
+  "primary_estimate": "q50",
+  "selection_authorized": false,
+  "sensitivity_estimate": "q80"
+}
