@@ -51,6 +51,24 @@ class ShowcaseRenderer:
                             self.data.qpos[adr]+=sign*amplitude*math.sin(self.phase*1.7)
             mj.mj_forward(s.model,self.data)
             self.renderer.update_scene(self.data,camera=self.camera,scene_option=self.option)
+            # Bright presentation-only lighting: modify the renderer's scene,
+            # not MjModel / MjData used for navigation, sensors or collisions.
+            sc=self.renderer.scene
+            for light in sc.lights[:sc.nlight]:
+                light.ambient[:]=np.maximum(light.ambient,.48)
+                light.diffuse[:]=np.maximum(light.diffuse,.85)
+                light.castshadow=0
+            for geom in sc.geoms[:sc.ngeom]:
+                if geom.objtype!=mj.mjtObj.mjOBJ_GEOM: continue
+                gid=int(geom.objid)
+                if gid in s._wall_geom_ids:
+                    geom.rgba[:3]=(.62,.68,.76)
+                elif gid==s._floor_geom_id:
+                    geom.rgba[:3]=(.84,.87,.90)
+                elif gid in s._object_geom_ids.values():
+                    geom.rgba[:3]=(.95,.52,.18)
+                elif gid in s._ped_geom_ids:
+                    geom.rgba[:3]=(.95,.24,.33)
             gx,gy=s.grid_to_world(s.scenario.goal)
             sc=self.renderer.scene
             if sc.ngeom+2<=sc.maxgeom:
@@ -59,7 +77,10 @@ class ShowcaseRenderer:
                     (mj.mjtGeom.mjGEOM_SPHERE,[.19,.19,.19],[gx,gy,1.1],[1,.8,.12,1])]:
                     mj.mjv_initGeom(sc.geoms[sc.ngeom],typ,np.array(size),np.array(pos),np.eye(3).ravel(),np.array(rgba,dtype=np.float32))
                     sc.ngeom+=1
-            return {'render_png':png(self.renderer.render())}
+            rgb=self.renderer.render()
+            # Lift remaining shadow detail in the presentation image.
+            rgb=np.asarray(255*np.power(rgb.astype(np.float32)/255,.82),dtype=np.uint8)
+            return {'render_png':png(rgb)}
         except Exception as exc:
             self.error=type(exc).__name__+': '+str(exc)
             self.close()

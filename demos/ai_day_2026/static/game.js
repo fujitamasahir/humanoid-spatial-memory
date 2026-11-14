@@ -29,7 +29,7 @@ async function place(cell,remove=false,kind=tool){
 function moveCursor(dx,dy){const m=current();cursor=[Math.max(0,Math.min(m.width-1,cursor[0]+dx)),Math.max(0,Math.min(m.height-1,cursor[1]+dy))];renderEditor()}
 function cycleStrategy(delta){const all=['periodic','age','uncertainty'];const i=all.indexOf(strategy);document.querySelector(`[data-strategy="${all[(i+delta+all.length)%all.length]}"]`)?.click()}
 function setMaze(n){if(editing||starting)return;revision++;mazeIndex=(n+catalog.length)%catalog.length;cursor=[Math.min(cursor[0],current().width-1),Math.min(cursor[1],current().height-1)];clearEdits()}
-$('editorCanvas').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());cursor=[Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale)];cursor[0]=Math.max(0,Math.min(current().width-1,cursor[0]));cursor[1]=Math.max(0,Math.min(current().height-1,cursor[1]));renderEditor()});$('editorCanvas').addEventListener('pointerdown',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());const x=Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),y=Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale);cursor=[x,y];place(cursor,e.button===2)});$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>{strategy=b.dataset.strategy;$('hero').dataset.pose=strategy;$('portraitStatus').hidden=true;$('heroImage').hidden=false;$('heroImage').src='/api/portrait/'+strategy;document.querySelectorAll('.strategy').forEach(x=>x.classList.toggle('active',x===b))});
+$('editorCanvas').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());cursor=[Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale)];cursor[0]=Math.max(0,Math.min(current().width-1,cursor[0]));cursor[1]=Math.max(0,Math.min(current().height-1,cursor[1]));renderEditor()});$('editorCanvas').addEventListener('pointerdown',e=>{const r=e.currentTarget.getBoundingClientRect(),d=dimensions(e.currentTarget,current());const x=Math.floor(((e.clientX-r.left)*e.currentTarget.width/r.width-d.x)/d.scale),y=Math.floor(((e.clientY-r.top)*e.currentTarget.height/r.height-d.y)/d.scale);cursor=[x,y];place(cursor,e.button===2)});$('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');$('removeTool').onclick=()=>setTool('remove');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>{strategy=b.dataset.strategy;$('hero').dataset.pose=strategy;$('portraitStatus').hidden=true;$('heroImage').hidden=false;$('heroImage').src='/api/portrait/'+strategy+'?v=4';playHeroMotion(strategy);document.querySelectorAll('.strategy').forEach(x=>x.classList.toggle('active',x===b))});
 function screen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active')}
 async function startChallenge(cfg=null){if(starting||editing)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
 $('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;drawLive(s)}if(s.status==='finished'){lastResult=s.result;showResult(s.result)}}}
@@ -50,3 +50,37 @@ window.addEventListener('keydown',e=>{if(!$('setupScreen').classList.contains('a
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;$('objectCount').dataset.max=d.max_static_objects;$('pedCount').dataset.max=d.max_pedestrians;renderEditor();validate();gamepadLoop()}catch(e){toast(e.message);console.error(e)}})();
 
 $('heroImage').onerror=async()=>{const img=$('heroImage'),url=img.src;img.hidden=true;const status=$('portraitStatus');status.hidden=false;status.textContent='G1 portrait unavailable';try{const response=await fetch(url);if(!response.ok){const data=await response.json();if(img.src===url){status.textContent='G1 portrait unavailable: '+String(data.error||response.status).split('\n').filter(Boolean).pop();console.error('G1 portrait:',data.error)}}}catch(error){console.error(error)}};
+
+const motionCache=new Map();let motionToken=0;
+function motionAsset(name){
+ if(!motionCache.has(name)){
+  const promise=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Motion image unavailable'));im.src='/api/portrait/'+name+'?motion=true&v=4'});
+  motionCache.set(name,promise);promise.catch(()=>motionCache.delete(name));
+ }
+ return motionCache.get(name);
+}
+async function playHeroMotion(name){
+ const token=++motionToken,canvas=$('heroMotion'),img=$('heroImage');
+ canvas.hidden=true;img.classList.remove('motion-playing');
+ try{
+  const atlas=await motionAsset(name);
+  if(token!==motionToken||!$('setupScreen').classList.contains('active'))return;
+  const ctx=canvas.getContext('2d'),start=performance.now();
+  canvas.hidden=false;img.classList.add('motion-playing');
+  function tick(now){
+   if(token!==motionToken)return;
+   const elapsed=now-start;
+   if(elapsed>=2000||!$('setupScreen').classList.contains('active')){
+    canvas.hidden=true;img.classList.remove('motion-playing');return;
+   }
+   const frame=Math.min(29,Math.floor(elapsed*15/1000));
+   ctx.drawImage(atlas,(frame%6)*360,Math.floor(frame/6)*480,360,480,0,0,360,480);
+   requestAnimationFrame(tick);
+  }
+  tick(start);
+ }catch(error){console.warn(error)}
+}
+// Prepare the clips sequentially; cached images require no live MuJoCo work.
+(async()=>{for(const name of ['periodic','age','uncertainty']){
+ try{await motionAsset(name)}catch(error){console.warn(error)}
+}})();

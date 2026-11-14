@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/style.css?v=4">
 </head>
 <body>
 <div class="grain"></div>
@@ -16,7 +16,7 @@
     <p class="intro">Stop the robot in 80 steps.</p>
     
     
-    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=3" alt="Unitree G1"><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=4" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -46,5 +46,5 @@
 </main>
 
 <div id="toast" role="status"></div>
-<script src="/static/game.js?v=3"></script>
+<script src="/static/game.js?v=4"></script>
 </body></html>
