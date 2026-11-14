@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css?v=20">
+<link rel="stylesheet" href="/static/style.css?v=21">
 </head>
 <body>
 <div class="grain"></div>
@@ -45,13 +45,13 @@
 <section id="reviewScreen" class="screen live-screen">
   <div class="live-head"><div class="live-badges"><span>REVIEW</span><span id="reviewMaze"></span><span id="reviewStrategy"></span><span id="reviewDifficulty"></span></div></div>
   <div class="live-grid"><div class="map-card"><div class="panel-heading">HUMANOID IN MOTION</div><canvas id="reviewTruth" width="900" height="700"></canvas><img id="review3d" alt="Recorded MuJoCo view" hidden></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY</div><canvas id="reviewMemory" width="900" height="700"></canvas></div></div>
-  <div class="review-timeline"><button id="reviewPrev" class="secondary-btn" aria-label="Previous step">◀</button><input id="reviewSlider" type="range" min="0" max="0" value="0" aria-label="Review step"><button id="reviewNext" class="secondary-btn" aria-label="Next step">▶</button></div>
+  <div class="review-timeline"><button id="reviewFirst" class="secondary-btn review-endpoint" aria-label="First step (LT)" title="First step"><kbd>LT</kbd><span aria-hidden="true">|◀</span></button><button id="reviewPrev" class="secondary-btn" aria-label="Previous step">◀</button><input id="reviewSlider" type="range" min="0" max="0" value="0" aria-label="Review step"><button id="reviewNext" class="secondary-btn" aria-label="Next step">▶</button><button id="reviewLast" class="secondary-btn review-endpoint" aria-label="Last step (RT)" title="Last step"><span aria-hidden="true">▶|</span><kbd>RT</kbd></button></div>
   <div class="live-counters"><div class="live-count"><span class="count-label">STEPS</span><b id="reviewStep">0</b><span id="reviewLimit" class="count-limit">/ 80</span></div><div class="live-count"><span class="count-label">MEMORY SCANS</span><b id="reviewScans">0</b><span id="reviewObsLimit" class="count-limit">/ 20</span></div></div>
-  <div id="reviewContact" class="contact-alert" hidden></div><div class="review-actions"><span class="review-hint">LEFT STICK / D-PAD · HOLD TO FAST SEEK · LT FIRST / RT LAST</span><button id="reviewBack" class="secondary-btn"><kbd class="b">B</kbd> BACK TO RESULTS</button></div>
+  <div id="reviewContact" class="contact-alert" hidden></div><div class="review-actions"><button id="reviewBack" class="secondary-btn"><kbd class="b">B</kbd> BACK TO RESULTS</button></div>
 </section>
 </main>
 
 <div id="settingsModal" class="settings-modal" hidden><div class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><h2 id="settingsTitle">DIFFICULTY</h2><div id="difficultyOptions" class="difficulty-options"></div><div class="settings-actions"><button id="settingsApply" class="start-btn" type="button"><kbd class="a">A</kbd> CONFIRM</button><button id="settingsCancel" class="secondary-btn" type="button"><kbd class="b">B</kbd> BACK</button></div></div></div>
 <canvas id="confetti" hidden aria-hidden="true"></canvas><div id="toast" role="status"></div>
-<script src="/static/game.js?v=20"></script>
+<script src="/static/game.js?v=21"></script>
 </body></html>

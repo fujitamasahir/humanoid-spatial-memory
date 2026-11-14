@@ -111,7 +111,11 @@ function showResult(r,finalState){
  skipping=false;
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
  w.textContent=r.winner;w.classList.toggle('human',human);
- $('winnerCaption').textContent=resultCaption(r,limit);
+ const hit=(r.contact_events||[]).find(e=>e.contacts.g1_pedestrian_contact_pairs>0)||(r.contact_events||[])[0];
+ const caption=$('winnerCaption');
+ caption.classList.toggle('contact-alert',!!hit);
+ caption.classList.toggle('result-contact-alert',!!hit);
+ caption.textContent=hit?contactMessage(hit):resultCaption(r,limit);
  const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps+' / '+limit],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
  $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');box.dataset.stat=key.toLowerCase();label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
@@ -389,7 +393,7 @@ async function renderReview(index){
  if(!reviewSteps.length)return;
  reviewCursor=Math.max(0,Math.min(reviewSteps.length-1,index));
  $('reviewSlider').value=String(reviewCursor);
- $('reviewPrev').disabled=reviewCursor===0;$('reviewNext').disabled=reviewCursor===reviewSteps.length-1;
+ $('reviewFirst').disabled=$('reviewPrev').disabled=reviewCursor===0;$('reviewLast').disabled=$('reviewNext').disabled=reviewCursor===reviewSteps.length-1;
  const request=++reviewRequest,step=reviewSteps[reviewCursor];
  try{
   const s=await api('/api/review/'+step);
@@ -434,4 +438,5 @@ function closeReview(){
 }
 $('reviewBtn').onclick=openReview;$('reviewBack').onclick=closeReview;
 $('reviewPrev').onclick=()=>moveReview(-1);$('reviewNext').onclick=()=>moveReview(1);
+$('reviewFirst').onclick=()=>{resetReviewHold();renderReview(0)};$('reviewLast').onclick=()=>{resetReviewHold();renderReview(reviewSteps.length-1)};
 $('reviewSlider').oninput=()=>renderReview(Number($('reviewSlider').value));
