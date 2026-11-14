@@ -57,7 +57,7 @@ class AuthorizedHistory:
         recent=lambda c:self.changed[c[1],c[0]]>=0 and step-self.changed[c[1],c[0]]<=p.fallback_age
         vis=opt&band
         last_overlap=sum(bool(self.last_mask[y,x]) for x,y in opt)
-        return {'prior_paid':self.readings,'gap':step-self.last_step,
+        features={'prior_paid':self.readings,'gap':step-self.last_step,
             'previous_changed_known':self.last_change_count,
             'same_pose':pose==self.last_pose,'same_heading':heading_index(yaw)==heading_index(self.last_yaw),
             'displacement_cells':sum(abs(a-b) for a,b in zip(pose,self.last_pose)),
@@ -74,6 +74,10 @@ class AuthorizedHistory:
             'frontier_stale':sum(stale(c) for c in frontier),
             'optimistic_visible':len(opt),'previous_view_overlap_count':last_overlap,
             'previous_view_overlap_fraction':last_overlap/len(opt) if opt else 0.}
+        # Python sum over NumPy boolean scalars can yield np.int64.
+        # Preserve values while exposing only native JSON-compatible scalars.
+        return {key:value.item() if isinstance(value,np.generic) else value
+                for key,value in features.items()}
 
 def diagnostic_rules(f,p=None):
     """Fixed descriptive masks, not a selected or validated rollout policy."""
