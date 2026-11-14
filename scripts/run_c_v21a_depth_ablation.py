@@ -92,7 +92,7 @@ def flatten(n,arm,row,diag):
     for k in list(flat):
         if k.startswith('evi_') or k in ('mean_D','mean_V','total_counterfactual_grid_copy_cell_reads'):
             flat.pop(k)
-    decisions=diag['decisions']
+    decisions=diag.get('decisions',[])
     scored=[d for d in decisions if 'candidate_evaluations' in d or 'lookahead_horizon' in d]
     flat.update(episode=n,identity=row['world_identity'],schedule=row['schedule'],
         scored_decisions=len(scored),
@@ -181,7 +181,7 @@ def report():
             allrows[(n,arm)]=flatten(n,arm,p['row'],p['diagnostics'])
         for arm in ('periodic','age','c0','c_k','c_topology3d'):
             # C v2.1 uses these names; discover aliases by exact local filenames.
-            aliases={'c0':('c0','c_ternary'),'c_topology3d':('c_topology3d','topology3d')}
+            aliases={'c0':('C0',),'c_k':('C-K',),'c_topology3d':('C-Topology3-d',)}
             candidates=aliases.get(arm,(arm,))
             found=[a for a in candidates if (OLD/'reference_replays'/f'episode_{n:03}_{a}.json.gz').exists()]
             if len(found)!=1:raise RuntimeError(f'Missing/ambiguous archived reference: {arm}, {n}')
