@@ -1,0 +1,3001 @@
+{
+  "additional_revision_triggered": false,
+  "advance_joint_exact_full_trace_matches": 72,
+  "advance_parent_success_harms": [
+    {
+      "action_counts": {
+        "move": 54,
+        "none": 1,
+        "turn": 26
+      },
+      "advance_blocks": 2,
+      "advance_last_scan": 60,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 41,
+      "first_action_difference": 13,
+      "first_budget_exhausted_decision": 61,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.3333333333333333,
+          "6": 0.3333333333333333
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            11,
+            11
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            12,
+            11
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            14,
+            13
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 88,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 88,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            10,
+            11
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            11,
+            11
+          ],
+          [
+            11,
+            12
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            11,
+            14
+          ],
+          [
+            12,
+            11
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            14,
+            13
+          ],
+          [
+            15,
+            13
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            11,
+            12
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            14,
+            13
+          ],
+          [
+            15,
+            13
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 3174125,
+        "step": 9,
+        "sweep_cell_visits": 54,
+        "used_before": 2
+      },
+      "first_heading_difference": 13,
+      "first_pose_difference": 13,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008",
+      "parent_blocks": 1,
+      "parent_last_scan": 47,
+      "parent_paid": 12,
+      "parent_steps": 50,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 9,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 5,
+          "unchanged_known_cells": 0,
+          "visible_cells": 17
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 14,
+          "observed_free": 5,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 9,
+          "unchanged_known_cells": 0,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 11,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 13,
+          "unchanged_known_cells": 6,
+          "visible_cells": 23
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 7,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 16,
+          "unchanged_known_cells": 13,
+          "visible_cells": 18
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 9,
+          "observed_occupied": 8,
+          "only_unchanged_known": true,
+          "repeated_cells": 17,
+          "step": 21,
+          "unchanged_known_cells": 17,
+          "visible_cells": 17
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 12,
+          "observed_free": 8,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 25,
+          "unchanged_known_cells": 8,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 5,
+          "step": 30,
+          "unchanged_known_cells": 5,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 10,
+          "observed_free": 7,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 31,
+          "unchanged_known_cells": 6,
+          "visible_cells": 16
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 4,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 35,
+          "unchanged_known_cells": 3,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 1,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 39,
+          "unchanged_known_cells": 3,
+          "visible_cells": 4
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 5,
+          "step": 40,
+          "unchanged_known_cells": 5,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 4,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 11,
+          "step": 41,
+          "unchanged_known_cells": 11,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 7,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 14,
+          "step": 45,
+          "unchanged_known_cells": 14,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 5,
+          "step": 49,
+          "unchanged_known_cells": 5,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 11,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 22,
+          "step": 50,
+          "unchanged_known_cells": 22,
+          "visible_cells": 23
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 2,
+          "observed_occupied": 5,
+          "only_unchanged_known": false,
+          "repeated_cells": 4,
+          "step": 54,
+          "unchanged_known_cells": 4,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 7,
+          "step": 55,
+          "unchanged_known_cells": 7,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 6,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 13,
+          "step": 56,
+          "unchanged_known_cells": 13,
+          "visible_cells": 13
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 10,
+          "observed_free": 12,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 60,
+          "unchanged_known_cells": 13,
+          "visible_cells": 23
+        }
+      ],
+      "schedule": 0
+    },
+    {
+      "action_counts": {
+        "move": 57,
+        "none": 1,
+        "turn": 23
+      },
+      "advance_blocks": 2,
+      "advance_last_scan": 61,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 43,
+      "first_action_difference": 9,
+      "first_budget_exhausted_decision": 62,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.0,
+          "6": 0.0
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            21,
+            11
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            23,
+            11
+          ],
+          [
+            23,
+            12
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 20,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 27,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            19,
+            12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            21,
+            11
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            21,
+            13
+          ],
+          [
+            22,
+            11
+          ],
+          [
+            22,
+            12
+          ],
+          [
+            22,
+            13
+          ],
+          [
+            22,
+            14
+          ],
+          [
+            23,
+            11
+          ],
+          [
+            23,
+            12
+          ],
+          [
+            23,
+            13
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            22,
+            14
+          ],
+          [
+            22,
+            13
+          ],
+          [
+            22,
+            12
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            19,
+            12
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 1128334,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 9,
+      "first_pose_difference": 9,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      "parent_blocks": 1,
+      "parent_last_scan": 65,
+      "parent_paid": 20,
+      "parent_steps": 76,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 20,
+          "observed_free": 9,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 5,
+          "unchanged_known_cells": 0,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 3,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 9,
+          "unchanged_known_cells": 8,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 11,
+          "observed_free": 14,
+          "observed_occupied": 14,
+          "only_unchanged_known": false,
+          "repeated_cells": 17,
+          "step": 12,
+          "unchanged_known_cells": 17,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 16,
+          "unchanged_known_cells": 3,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 4,
+          "observed_free": 6,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 17,
+          "unchanged_known_cells": 8,
+          "visible_cells": 12
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 21,
+          "observed_free": 13,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 21,
+          "unchanged_known_cells": 3,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 6,
+          "step": 26,
+          "unchanged_known_cells": 6,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 27,
+          "unchanged_known_cells": 6,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 31,
+          "unchanged_known_cells": 3,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 35,
+          "unchanged_known_cells": 5,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 12,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 36,
+          "unchanged_known_cells": 6,
+          "visible_cells": 23
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 10,
+          "observed_free": 5,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 4,
+          "step": 40,
+          "unchanged_known_cells": 4,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 4,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 44,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 6,
+          "observed_occupied": 9,
+          "only_unchanged_known": true,
+          "repeated_cells": 15,
+          "step": 46,
+          "unchanged_known_cells": 15,
+          "visible_cells": 15
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 9,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 14,
+          "step": 51,
+          "unchanged_known_cells": 14,
+          "visible_cells": 21
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 11,
+          "observed_free": 9,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 55,
+          "unchanged_known_cells": 6,
+          "visible_cells": 17
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 4,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 59,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 5,
+          "step": 60,
+          "unchanged_known_cells": 5,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 9,
+          "observed_free": 8,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 9,
+          "step": 61,
+          "unchanged_known_cells": 9,
+          "visible_cells": 18
+        }
+      ],
+      "schedule": 0
+    },
+    {
+      "action_counts": {
+        "move": 57,
+        "none": 1,
+        "turn": 23
+      },
+      "advance_blocks": 2,
+      "advance_last_scan": 61,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 44,
+      "first_action_difference": 9,
+      "first_budget_exhausted_decision": 62,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.0,
+          "6": 0.0
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            21,
+            11
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            23,
+            11
+          ],
+          [
+            23,
+            12
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 20,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 27,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            19,
+            12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            21,
+            11
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            21,
+            13
+          ],
+          [
+            22,
+            11
+          ],
+          [
+            22,
+            12
+          ],
+          [
+            22,
+            13
+          ],
+          [
+            22,
+            14
+          ],
+          [
+            23,
+            11
+          ],
+          [
+            23,
+            12
+          ],
+          [
+            23,
+            13
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            22,
+            14
+          ],
+          [
+            22,
+            13
+          ],
+          [
+            22,
+            12
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            19,
+            12
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 1121625,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 9,
+      "first_pose_difference": 9,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009",
+      "parent_blocks": 1,
+      "parent_last_scan": 65,
+      "parent_paid": 20,
+      "parent_steps": 76,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 20,
+          "observed_free": 9,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 5,
+          "unchanged_known_cells": 0,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 3,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 9,
+          "unchanged_known_cells": 8,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 11,
+          "observed_free": 14,
+          "observed_occupied": 14,
+          "only_unchanged_known": false,
+          "repeated_cells": 17,
+          "step": 12,
+          "unchanged_known_cells": 17,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 16,
+          "unchanged_known_cells": 3,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 4,
+          "observed_free": 6,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 17,
+          "unchanged_known_cells": 8,
+          "visible_cells": 12
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 21,
+          "observed_free": 13,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 21,
+          "unchanged_known_cells": 3,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 6,
+          "step": 26,
+          "unchanged_known_cells": 6,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 27,
+          "unchanged_known_cells": 6,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 31,
+          "unchanged_known_cells": 3,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 5,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 35,
+          "unchanged_known_cells": 5,
+          "visible_cells": 11
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 12,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 36,
+          "unchanged_known_cells": 6,
+          "visible_cells": 23
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 10,
+          "observed_free": 5,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 4,
+          "step": 40,
+          "unchanged_known_cells": 4,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 4,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 44,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 6,
+          "observed_occupied": 9,
+          "only_unchanged_known": true,
+          "repeated_cells": 15,
+          "step": 46,
+          "unchanged_known_cells": 15,
+          "visible_cells": 15
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 9,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 14,
+          "step": 51,
+          "unchanged_known_cells": 14,
+          "visible_cells": 21
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 11,
+          "observed_free": 9,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 55,
+          "unchanged_known_cells": 6,
+          "visible_cells": 17
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 4,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 59,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 2,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 5,
+          "step": 60,
+          "unchanged_known_cells": 5,
+          "visible_cells": 5
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 9,
+          "observed_free": 8,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 9,
+          "step": 61,
+          "unchanged_known_cells": 9,
+          "visible_cells": 18
+        }
+      ],
+      "schedule": 1
+    },
+    {
+      "action_counts": {
+        "move": 62,
+        "none": 1,
+        "turn": 18
+      },
+      "advance_blocks": 1,
+      "advance_last_scan": 80,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 49,
+      "first_action_difference": 22,
+      "first_budget_exhausted_decision": null,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.4,
+          "6": 0.4
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            14
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 88,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 88,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            7,
+            12
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            7,
+            14
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            13
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            14
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            8,
+            13
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 3255875,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 22,
+      "first_pose_difference": 22,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "parent_blocks": 1,
+      "parent_last_scan": 55,
+      "parent_paid": 15,
+      "parent_steps": 57,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 5,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 28,
+          "observed_free": 19,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 9,
+          "unchanged_known_cells": 0,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 48,
+          "observed_free": 37,
+          "observed_occupied": 14,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 13,
+          "unchanged_known_cells": 3,
+          "visible_cells": 51
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 20,
+          "observed_free": 22,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 9,
+          "step": 17,
+          "unchanged_known_cells": 9,
+          "visible_cells": 29
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 14,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 16,
+          "step": 22,
+          "unchanged_known_cells": 16,
+          "visible_cells": 22
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 22,
+          "observed_free": 22,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 26,
+          "unchanged_known_cells": 7,
+          "visible_cells": 29
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 15,
+          "observed_free": 16,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 11,
+          "step": 27,
+          "unchanged_known_cells": 11,
+          "visible_cells": 26
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 32,
+          "observed_free": 27,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 31,
+          "unchanged_known_cells": 7,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 13,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 35,
+          "unchanged_known_cells": 12,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 10,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 39,
+          "unchanged_known_cells": 13,
+          "visible_cells": 18
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 17,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 27,
+          "step": 42,
+          "unchanged_known_cells": 27,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 11,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 18,
+          "step": 47,
+          "unchanged_known_cells": 18,
+          "visible_cells": 19
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 36,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 41,
+          "step": 52,
+          "unchanged_known_cells": 41,
+          "visible_cells": 47
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 28,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 34,
+          "step": 57,
+          "unchanged_known_cells": 34,
+          "visible_cells": 35
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 15,
+          "observed_free": 31,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 24,
+          "step": 62,
+          "unchanged_known_cells": 24,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 14,
+          "observed_free": 23,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 16,
+          "step": 67,
+          "unchanged_known_cells": 16,
+          "visible_cells": 30
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 12,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 72,
+          "unchanged_known_cells": 12,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 8,
+          "observed_occupied": 5,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 76,
+          "unchanged_known_cells": 5,
+          "visible_cells": 13
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 6,
+          "observed_occupied": 4,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 80,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        }
+      ],
+      "schedule": 0
+    },
+    {
+      "action_counts": {
+        "move": 62,
+        "none": 1,
+        "turn": 18
+      },
+      "advance_blocks": 1,
+      "advance_last_scan": 80,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 50,
+      "first_action_difference": 22,
+      "first_budget_exhausted_decision": null,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.4,
+          "6": 0.4
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            14
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 88,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 88,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            7,
+            12
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            7,
+            14
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            13
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            14
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            8,
+            13
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 3257125,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 22,
+      "first_pose_difference": 22,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "parent_blocks": 1,
+      "parent_last_scan": 55,
+      "parent_paid": 15,
+      "parent_steps": 57,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 5,
+          "unchanged_known_cells": 0,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 28,
+          "observed_free": 19,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 9,
+          "unchanged_known_cells": 0,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 49,
+          "observed_free": 38,
+          "observed_occupied": 14,
+          "only_unchanged_known": false,
+          "repeated_cells": 3,
+          "step": 13,
+          "unchanged_known_cells": 3,
+          "visible_cells": 52
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 22,
+          "observed_free": 24,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 9,
+          "step": 17,
+          "unchanged_known_cells": 9,
+          "visible_cells": 31
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 9,
+          "observed_free": 18,
+          "observed_occupied": 9,
+          "only_unchanged_known": false,
+          "repeated_cells": 18,
+          "step": 22,
+          "unchanged_known_cells": 18,
+          "visible_cells": 27
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 22,
+          "observed_free": 22,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 26,
+          "unchanged_known_cells": 7,
+          "visible_cells": 29
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 15,
+          "observed_free": 17,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 27,
+          "unchanged_known_cells": 12,
+          "visible_cells": 27
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 29,
+          "observed_free": 27,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 10,
+          "step": 31,
+          "unchanged_known_cells": 10,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 13,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 35,
+          "unchanged_known_cells": 12,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 10,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 39,
+          "unchanged_known_cells": 13,
+          "visible_cells": 18
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 17,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 27,
+          "step": 42,
+          "unchanged_known_cells": 27,
+          "visible_cells": 28
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 11,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 18,
+          "step": 47,
+          "unchanged_known_cells": 18,
+          "visible_cells": 19
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 6,
+          "observed_free": 36,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 41,
+          "step": 52,
+          "unchanged_known_cells": 41,
+          "visible_cells": 47
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 28,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 34,
+          "step": 57,
+          "unchanged_known_cells": 34,
+          "visible_cells": 35
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 15,
+          "observed_free": 31,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 24,
+          "step": 62,
+          "unchanged_known_cells": 24,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 14,
+          "observed_free": 23,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 16,
+          "step": 67,
+          "unchanged_known_cells": 16,
+          "visible_cells": 30
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 12,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 72,
+          "unchanged_known_cells": 12,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 8,
+          "observed_occupied": 5,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 76,
+          "unchanged_known_cells": 5,
+          "visible_cells": 13
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 3,
+          "observed_free": 6,
+          "observed_occupied": 4,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 80,
+          "unchanged_known_cells": 7,
+          "visible_cells": 10
+        }
+      ],
+      "schedule": 1
+    },
+    {
+      "action_counts": {
+        "move": 59,
+        "none": 1,
+        "turn": 21
+      },
+      "advance_blocks": 2,
+      "advance_last_scan": 70,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 61,
+      "first_action_difference": 11,
+      "first_budget_exhausted_decision": 71,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.29411764705882354,
+          "6": 0.29411764705882354
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            13,
+            8
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            14,
+            9
+          ],
+          [
+            14,
+            10
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 3,
+        "predicted_unknown": 30,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 34,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            11,
+            9
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            12,
+            9
+          ],
+          [
+            12,
+            10
+          ],
+          [
+            13,
+            8
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            13,
+            12
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            14,
+            9
+          ],
+          [
+            14,
+            10
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            11,
+            9
+          ],
+          [
+            12,
+            9
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            13,
+            12
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 1516000,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 11,
+      "first_pose_difference": 11,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      "parent_blocks": 2,
+      "parent_last_scan": 66,
+      "parent_paid": 20,
+      "parent_steps": 69,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 37,
+          "observed_free": 27,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 2,
+          "step": 5,
+          "unchanged_known_cells": 2,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 26,
+          "observed_free": 25,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 9,
+          "unchanged_known_cells": 5,
+          "visible_cells": 31
+        },
+        {
+          "changed_known_cells": 1,
+          "empty": false,
+          "new_cells": 4,
+          "observed_free": 9,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 11,
+          "step": 14,
+          "unchanged_known_cells": 10,
+          "visible_cells": 15
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 19,
+          "observed_free": 16,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 17,
+          "unchanged_known_cells": 5,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 20,
+          "observed_free": 16,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 21,
+          "unchanged_known_cells": 6,
+          "visible_cells": 26
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 19,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 25,
+          "unchanged_known_cells": 6,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 7,
+          "step": 26,
+          "unchanged_known_cells": 7,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 6,
+          "step": 28,
+          "unchanged_known_cells": 6,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 25,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 36,
+          "step": 30,
+          "unchanged_known_cells": 36,
+          "visible_cells": 37
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 14,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 21,
+          "step": 35,
+          "unchanged_known_cells": 21,
+          "visible_cells": 21
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 24,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 30,
+          "step": 39,
+          "unchanged_known_cells": 30,
+          "visible_cells": 31
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 9,
+          "observed_occupied": 5,
+          "only_unchanged_known": true,
+          "repeated_cells": 14,
+          "step": 44,
+          "unchanged_known_cells": 14,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 16,
+          "observed_free": 30,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 22,
+          "step": 45,
+          "unchanged_known_cells": 22,
+          "visible_cells": 38
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 18,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 50,
+          "unchanged_known_cells": 12,
+          "visible_cells": 29
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 16,
+          "observed_free": 16,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 8,
+          "step": 54,
+          "unchanged_known_cells": 8,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 18,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 58,
+          "unchanged_known_cells": 7,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 10,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 62,
+          "unchanged_known_cells": 13,
+          "visible_cells": 18
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 16,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 25,
+          "step": 65,
+          "unchanged_known_cells": 25,
+          "visible_cells": 27
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 15,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 22,
+          "step": 70,
+          "unchanged_known_cells": 22,
+          "visible_cells": 22
+        }
+      ],
+      "schedule": 0
+    },
+    {
+      "action_counts": {
+        "move": 59,
+        "none": 1,
+        "turn": 21
+      },
+      "advance_blocks": 2,
+      "advance_last_scan": 70,
+      "advance_paid": 20,
+      "advance_steps": 80,
+      "episode": 62,
+      "first_action_difference": 11,
+      "first_budget_exhausted_decision": 71,
+      "first_different_scan_decision": {
+        "actual_sensor_calls": 0,
+        "advance": true,
+        "age4_request": true,
+        "age5_anchor": false,
+        "age5_request": false,
+        "age_scores": {
+          "4": 1.0,
+          "5": 0.29411764705882354,
+          "6": 0.29411764705882354
+        },
+        "budget_exhausted": false,
+        "deferred": false,
+        "forced_next": false,
+        "granted": true,
+        "mode": "raa_advance",
+        "observable_near_route_uncertainty": true,
+        "observable_uncertain_cells": [
+          [
+            13,
+            8
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            14,
+            9
+          ],
+          [
+            14,
+            10
+          ]
+        ],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 3,
+        "predicted_unknown": 30,
+        "predicted_view_known_fresh5": false,
+        "predicted_visible": 34,
+        "prefix_free_fresh5": false,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            11,
+            9
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            12,
+            9
+          ],
+          [
+            12,
+            10
+          ],
+          [
+            13,
+            8
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            13,
+            12
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            14,
+            9
+          ],
+          [
+            14,
+            10
+          ]
+        ],
+        "raw_request_before_budget": true,
+        "requested": true,
+        "route_available": true,
+        "route_prefix": [
+          [
+            11,
+            9
+          ],
+          [
+            12,
+            9
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            10
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            13,
+            12
+          ]
+        ],
+        "scan_gap": 4,
+        "scheduler_ns": 1533208,
+        "step": 9,
+        "sweep_cell_visits": 36,
+        "used_before": 2
+      },
+      "first_heading_difference": 11,
+      "first_pose_difference": 11,
+      "first_scan_difference": 9,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017",
+      "parent_blocks": 2,
+      "parent_last_scan": 72,
+      "parent_paid": 19,
+      "parent_steps": 73,
+      "repeated_identical_pose_action_rejections": 0,
+      "scan_content": [
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 7,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": false,
+          "repeated_cells": 0,
+          "step": 0,
+          "unchanged_known_cells": 0,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 37,
+          "observed_free": 27,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 2,
+          "step": 5,
+          "unchanged_known_cells": 2,
+          "visible_cells": 39
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 26,
+          "observed_free": 25,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 9,
+          "unchanged_known_cells": 5,
+          "visible_cells": 31
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 8,
+          "observed_free": 13,
+          "observed_occupied": 7,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 14,
+          "unchanged_known_cells": 12,
+          "visible_cells": 20
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 19,
+          "observed_free": 16,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 5,
+          "step": 17,
+          "unchanged_known_cells": 5,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 20,
+          "observed_free": 16,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 21,
+          "unchanged_known_cells": 6,
+          "visible_cells": 26
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 19,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 6,
+          "step": 25,
+          "unchanged_known_cells": 6,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 4,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 7,
+          "step": 26,
+          "unchanged_known_cells": 7,
+          "visible_cells": 7
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 3,
+          "observed_occupied": 3,
+          "only_unchanged_known": true,
+          "repeated_cells": 6,
+          "step": 28,
+          "unchanged_known_cells": 6,
+          "visible_cells": 6
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 29,
+          "observed_occupied": 12,
+          "only_unchanged_known": false,
+          "repeated_cells": 40,
+          "step": 30,
+          "unchanged_known_cells": 40,
+          "visible_cells": 41
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 18,
+          "observed_occupied": 9,
+          "only_unchanged_known": true,
+          "repeated_cells": 27,
+          "step": 35,
+          "unchanged_known_cells": 27,
+          "visible_cells": 27
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 1,
+          "observed_free": 25,
+          "observed_occupied": 6,
+          "only_unchanged_known": false,
+          "repeated_cells": 30,
+          "step": 39,
+          "unchanged_known_cells": 30,
+          "visible_cells": 31
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 9,
+          "observed_occupied": 5,
+          "only_unchanged_known": true,
+          "repeated_cells": 14,
+          "step": 44,
+          "unchanged_known_cells": 14,
+          "visible_cells": 14
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 16,
+          "observed_free": 30,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 22,
+          "step": 45,
+          "unchanged_known_cells": 22,
+          "visible_cells": 38
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 17,
+          "observed_free": 18,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 12,
+          "step": 50,
+          "unchanged_known_cells": 12,
+          "visible_cells": 29
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 14,
+          "observed_free": 16,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 10,
+          "step": 54,
+          "unchanged_known_cells": 10,
+          "visible_cells": 24
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 18,
+          "observed_free": 15,
+          "observed_occupied": 10,
+          "only_unchanged_known": false,
+          "repeated_cells": 7,
+          "step": 58,
+          "unchanged_known_cells": 7,
+          "visible_cells": 25
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 5,
+          "observed_free": 10,
+          "observed_occupied": 8,
+          "only_unchanged_known": false,
+          "repeated_cells": 13,
+          "step": 62,
+          "unchanged_known_cells": 13,
+          "visible_cells": 18
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 2,
+          "observed_free": 16,
+          "observed_occupied": 11,
+          "only_unchanged_known": false,
+          "repeated_cells": 25,
+          "step": 65,
+          "unchanged_known_cells": 25,
+          "visible_cells": 27
+        },
+        {
+          "changed_known_cells": 0,
+          "empty": false,
+          "new_cells": 0,
+          "observed_free": 15,
+          "observed_occupied": 7,
+          "only_unchanged_known": true,
+          "repeated_cells": 22,
+          "step": 70,
+          "unchanged_known_cells": 22,
+          "visible_cells": 22
+        }
+      ],
+      "schedule": 1
+    }
+  ],
+  "defer_exact_navigation_trace_matches_parent": 72,
+  "defer_feature_counts": {
+    "predicted_view_known_fresh5": 74,
+    "prefix_free_fresh5": 17,
+    "prefix_recent_change": 15,
+    "route_available": 1064
+  },
+  "interpretation": "Defer savings are two terminal scans in one maze lineage/two schedules. Parent readings each discover one new cell despite predicted zero unknowns; not proven useless scans. Advance timing/action/budget associations are not isolated causal interventions.",
+  "reason": "Defer meets predeclared immediate target; further tuning is not authorized by the failure-only revision condition.",
+  "savings": [
+    {
+      "candidate_paid": 12,
+      "deferred_decision": {
+        "actual_sensor_calls": 0,
+        "advance": false,
+        "age4_request": true,
+        "age5_anchor": true,
+        "age5_request": true,
+        "age_scores": {
+          "4": 0.5,
+          "5": 0.5,
+          "6": 0.5
+        },
+        "budget_exhausted": false,
+        "deferred": true,
+        "forced_next": false,
+        "granted": false,
+        "mode": "raa_defer",
+        "observable_near_route_uncertainty": false,
+        "observable_uncertain_cells": [],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 0,
+        "predicted_view_known_fresh5": true,
+        "predicted_visible": 7,
+        "prefix_free_fresh5": true,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            9,
+            20
+          ],
+          [
+            10,
+            20
+          ]
+        ],
+        "raw_request_before_budget": false,
+        "requested": false,
+        "route_available": true,
+        "route_prefix": [
+          [
+            9,
+            20
+          ],
+          [
+            10,
+            20
+          ]
+        ],
+        "scan_gap": 1,
+        "scheduler_ns": 761084,
+        "step": 50,
+        "sweep_cell_visits": 4,
+        "used_before": 12
+      },
+      "episode": 29,
+      "final_action": [
+        "move",
+        [
+          10,
+          20
+        ]
+      ],
+      "goal_reached": true,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      "parent_actual_scan_content": {
+        "changed_known_cells": 0,
+        "empty": false,
+        "new_cells": 1,
+        "observed_free": 4,
+        "observed_occupied": 6,
+        "only_unchanged_known": false,
+        "repeated_cells": 9,
+        "step": 50,
+        "unchanged_known_cells": 9,
+        "visible_cells": 10
+      },
+      "parent_paid": 13,
+      "schedule": 0,
+      "terminal_step": true
+    },
+    {
+      "candidate_paid": 12,
+      "deferred_decision": {
+        "actual_sensor_calls": 0,
+        "advance": false,
+        "age4_request": true,
+        "age5_anchor": true,
+        "age5_request": true,
+        "age_scores": {
+          "4": 0.5,
+          "5": 0.5,
+          "6": 0.5
+        },
+        "budget_exhausted": false,
+        "deferred": true,
+        "forced_next": false,
+        "granted": false,
+        "mode": "raa_defer",
+        "observable_near_route_uncertainty": false,
+        "observable_uncertain_cells": [],
+        "point_plan_calls": 1,
+        "predicted_footprints": 1,
+        "predicted_stale5": 0,
+        "predicted_unknown": 0,
+        "predicted_view_known_fresh5": true,
+        "predicted_visible": 7,
+        "prefix_free_fresh5": true,
+        "prefix_recent_change": false,
+        "prefix_swept_cells": [
+          [
+            9,
+            20
+          ],
+          [
+            10,
+            20
+          ]
+        ],
+        "raw_request_before_budget": false,
+        "requested": false,
+        "route_available": true,
+        "route_prefix": [
+          [
+            9,
+            20
+          ],
+          [
+            10,
+            20
+          ]
+        ],
+        "scan_gap": 1,
+        "scheduler_ns": 787459,
+        "step": 50,
+        "sweep_cell_visits": 4,
+        "used_before": 12
+      },
+      "episode": 30,
+      "final_action": [
+        "move",
+        [
+          10,
+          20
+        ]
+      ],
+      "goal_reached": true,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002",
+      "parent_actual_scan_content": {
+        "changed_known_cells": 0,
+        "empty": false,
+        "new_cells": 1,
+        "observed_free": 4,
+        "observed_occupied": 6,
+        "only_unchanged_known": false,
+        "repeated_cells": 9,
+        "step": 50,
+        "unchanged_known_cells": 9,
+        "visible_cells": 10
+      },
+      "parent_paid": 13,
+      "schedule": 1,
+      "terminal_step": true
+    }
+  ]
+}

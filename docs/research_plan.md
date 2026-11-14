@@ -201,3 +201,17 @@ outcomes are in [`predictive_safety_research_report.md`](predictive_safety_resea
 Production pilot readiness remains false; generator/admission/custody/statistical/
 power blockers persist. No production generation, reserve access, FIT72 screen,
 DAO selection or follow-on iteration occurred.
+
+
+## Route-Adaptive Age v1 — completed on reused FIT72
+
+The separately frozen Age5-parent Advance/Defer/Joint family was implemented
+and evaluated locally:137 passing tests,12 smoke and432 full episodes. Defer
+meets the immediate target with66 goals,768 paid scans and0 contacts, compared
+with Age5's66/770. Its two savings are terminal scans from one maze lineage;
+all72 navigation traces match Age5. Advance and Joint fall to59 goals and are
+rejected. Joint sensing/movement improvement and independent generalization
+are not established. The first family meets the immediate target, so no
+failure-only second revision was run. See [executed report](raa_research_report.md).
+No reserved/sealed access, production generation or safety change occurred.
+Existing independent admission/custody/statistical and safety blockers persist.

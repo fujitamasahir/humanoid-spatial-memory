@@ -1,0 +1,20 @@
+{
+  "full_episodes": 432,
+  "full_matrix_runs": 1,
+  "immediate_target_met": true,
+  "limitation": "Two terminal scans in one reused maze lineage; zero movement improvement versus Age5; Advance/Joint rejected.",
+  "postprocessing_sources": {
+    "scripts/audit_raa_outcomes_v1.py": "9aef9377348c0f81f98162562e3b4d939528b066b8e01ecd4414ef9cb2b8a8a4",
+    "scripts/report_raa_v1.py": "42ba9619e54dfb7525fd742ceb46f9226b6c459a4398678898e572ce44366cf5",
+    "scripts/verify_raa_v1.py": "ba22c8be746f4d4cf3b797a3ba34a8225ea3ea34e9fb6ec7df12a2b3418cb583"
+  },
+  "preexisting_archival_issue_entries": 20,
+  "prospective_freeze_commit": "d91eee267cd5513027e7dd1679508646608b23a9",
+  "reason_no_revision": "First family meets predeclared immediate target; revision was failure-only.",
+  "report_sha256": "83b05a9e6bffe8d3e6f1fb79fe3f014f72851c3acf8ae3c2f6e5f44fff7f6f5e",
+  "second_revision": false,
+  "smoke_episodes": 12,
+  "status": "COMPLETED_IMMEDIATE_TARGET_ONLY",
+  "strong_joint_target_met": false,
+  "tests_passed": 137
+}

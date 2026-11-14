@@ -1,0 +1,54 @@
+{
+  "actual_episodes": 444,
+  "additional_revision_run": false,
+  "immediate_target_met": true,
+  "no_new_archival_issues": true,
+  "preexisting_archival_issue_entries": 20,
+  "prospective_freeze_commit": "d91eee267cd5513027e7dd1679508646608b23a9",
+  "reference_parities": 222,
+  "smoke_full_parities": 12,
+  "status": "CORE_PASS_WITH_UNCHANGED_PREEXISTING_ARCHIVAL_ISSUES",
+  "strong_joint_target_met": false,
+  "tests_passed": 137,
+  "totals": {
+    "age": {
+      "contacts": 0,
+      "goals": 66,
+      "paid": 850
+    },
+    "age5": {
+      "contacts": 0,
+      "goals": 66,
+      "paid": 770
+    },
+    "periodic": {
+      "contacts": 0,
+      "goals": 66,
+      "paid": 800
+    },
+    "raa_advance": {
+      "contacts": 0,
+      "goals": 59,
+      "paid": 800
+    },
+    "raa_defer": {
+      "contacts": 0,
+      "goals": 66,
+      "paid": 768
+    },
+    "raa_joint": {
+      "contacts": 0,
+      "goals": 59,
+      "paid": 800
+    }
+  },
+  "verified_stage_manifests": {
+    "additional_checks": 1,
+    "analysis": 5,
+    "fit72": 434,
+    "mechanisms": 1,
+    "prepared": 3,
+    "prior_audit": 2,
+    "smoke": 14
+  }
+}

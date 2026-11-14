@@ -1,0 +1,72 @@
+[
+  {
+    "bytes": 2934,
+    "path": "episode_001_age.json.gz",
+    "sha256": "92c31d46b0343e03f832282f44797113ec6b15d0a5b847c7797af2620425fab3"
+  },
+  {
+    "bytes": 3437,
+    "path": "episode_001_age5.json.gz",
+    "sha256": "e8c4012085002960370745c7a1da030911a80185c757eb55f45c3892a7c591d3"
+  },
+  {
+    "bytes": 2882,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "60fb19c0b523c44a7787102bbd35095708dc5d98c7e86cba3fbb859a6cd0fc98"
+  },
+  {
+    "bytes": 4127,
+    "path": "episode_001_raa_advance.json.gz",
+    "sha256": "20b5a5906f7612315358b0ce2bb812953c63647441c07eed7f6da37038a5c2c1"
+  },
+  {
+    "bytes": 3893,
+    "path": "episode_001_raa_defer.json.gz",
+    "sha256": "256f37db5f3ec3d7c0b469e6f8b5e3bb72ab89efd0159d3776ca1a252bcb8eef"
+  },
+  {
+    "bytes": 4117,
+    "path": "episode_001_raa_joint.json.gz",
+    "sha256": "d275e0743dd0fa158af5ba51e7b264611d7c39b3f73b5f076aeefc26ce444b9e"
+  },
+  {
+    "bytes": 2950,
+    "path": "episode_002_age.json.gz",
+    "sha256": "08eb2bb5b711df285e91a2a2d951b7898020239fb9a38de0f00057902104f752"
+  },
+  {
+    "bytes": 3430,
+    "path": "episode_002_age5.json.gz",
+    "sha256": "f08a40044b237f8237a27a3a99cb797a6dc20beaf9549d01a2053bb5859943be"
+  },
+  {
+    "bytes": 2889,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "9381f3c36ae12518d83cae85bf68baced273662a86f6ae8f7f6ec5bb1895defe"
+  },
+  {
+    "bytes": 4132,
+    "path": "episode_002_raa_advance.json.gz",
+    "sha256": "fef907a6369cfc29145cd02ff3469c39570a33c4e089e2223ab23d9cfee4fc82"
+  },
+  {
+    "bytes": 3888,
+    "path": "episode_002_raa_defer.json.gz",
+    "sha256": "598ccb38d3009e3418da95c7d4b5a35142973a5d96dfb0b00def9114b0f0eb9b"
+  },
+  {
+    "bytes": 4129,
+    "path": "episode_002_raa_joint.json.gz",
+    "sha256": "b202703e6a3b409610f2475ee33a8ff1ef6182b89983b7e1add2cd9a6cab6e74"
+  },
+  {
+    "bytes": 3714,
+    "path": "provenance.json",
+    "sha256": "b1c9cd1b1df7642293d3eda06aff38e2f36c83cc366a98c060e6e955ee210237"
+  },
+  {
+    "bytes": 144,
+    "path": "summary.json",
+    "sha256": "50a7ea454f39252c86d4d7fcbe9bc9c8f0668b631bf13617ebd643f4cb14106b"
+  }
+]

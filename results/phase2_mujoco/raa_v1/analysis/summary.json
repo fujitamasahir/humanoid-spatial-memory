@@ -1,0 +1,470 @@
+{
+  "cluster_resamples": 2000,
+  "comparisons": [
+    {
+      "candidate": "raa_advance",
+      "combined_ray_delta": 1159,
+      "common_distance_delta_m": -0.8389830508474576,
+      "common_step_delta": -2.1864406779661016,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -1.8282552083333332,
+          0.07258064516129033
+        ],
+        "common_steps": [
+          -4.454585326953747,
+          -0.11859463276836185
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.013888888888888888
+        ],
+        "paid_per_episode": [
+          -0.6805555555555556,
+          0.8059027777777759
+        ]
+      },
+      "harms": 7,
+      "paid_delta": 0,
+      "primary_target_vs_reference": false,
+      "reference": "periodic",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_advance",
+      "combined_ray_delta": 5673,
+      "common_distance_delta_m": -0.1016949152542373,
+      "common_step_delta": -0.3050847457627119,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -0.7222470238095238,
+          0.47520127118643957
+        ],
+        "common_steps": [
+          -1.6508699633699633,
+          0.9333333333333333
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.027777777777777776
+        ],
+        "paid_per_episode": [
+          -1.3194444444444444,
+          0.06944444444444445
+        ]
+      },
+      "harms": 7,
+      "paid_delta": -50,
+      "primary_target_vs_reference": false,
+      "reference": "age",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_advance",
+      "combined_ray_delta": 2684,
+      "common_distance_delta_m": -0.5084745762711864,
+      "common_step_delta": -1.4915254237288136,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -1.8500735294117647,
+          0.7768105158730158
+        ],
+        "common_steps": [
+          -4.254237288135593,
+          1.0774038461538435
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.013888888888888888
+        ],
+        "paid_per_episode": [
+          -0.2920138888888889,
+          1.1111111111111112
+        ]
+      },
+      "harms": 7,
+      "paid_delta": 30,
+      "primary_target_vs_reference": false,
+      "reference": "age5",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_defer",
+      "combined_ray_delta": -1647,
+      "common_distance_delta_m": 0.3046875,
+      "common_step_delta": 0.390625,
+      "common_successes": 64,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -1.6668032786885247,
+          2.400119047619047
+        ],
+        "common_steps": [
+          -3.448233830845771,
+          4.400245901639344
+        ],
+        "goal_difference": [
+          -0.08333333333333333,
+          0.08333333333333333
+        ],
+        "paid_per_episode": [
+          -1.4027777777777777,
+          0.6114583333333314
+        ]
+      },
+      "harms": 2,
+      "paid_delta": -32,
+      "primary_target_vs_reference": true,
+      "reference": "periodic",
+      "rescues": 2,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_defer",
+      "combined_ray_delta": 2867,
+      "common_distance_delta_m": 1.0,
+      "common_step_delta": 2.253968253968254,
+      "common_successes": 63,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -0.8334745762711865,
+          3.067299590755897
+        ],
+        "common_steps": [
+          -1.3503017241379311,
+          6.0
+        ],
+        "goal_difference": [
+          -0.08333333333333333,
+          0.08333333333333333
+        ],
+        "paid_per_episode": [
+          -2.0694444444444446,
+          -0.16666666666666666
+        ]
+      },
+      "harms": 3,
+      "paid_delta": -82,
+      "primary_target_vs_reference": true,
+      "reference": "age",
+      "rescues": 3,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_defer",
+      "combined_ray_delta": -122,
+      "common_distance_delta_m": 0.0,
+      "common_step_delta": 0.0,
+      "common_successes": 66,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          0.0,
+          0.0
+        ],
+        "common_steps": [
+          0.0,
+          0.0
+        ],
+        "goal_difference": [
+          0.0,
+          0.0
+        ],
+        "paid_per_episode": [
+          -0.08333333333333333,
+          0.0
+        ]
+      },
+      "harms": 0,
+      "paid_delta": -2,
+      "primary_target_vs_reference": true,
+      "reference": "age5",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_joint",
+      "combined_ray_delta": 1159,
+      "common_distance_delta_m": -0.8389830508474576,
+      "common_step_delta": -2.1864406779661016,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -1.8282552083333332,
+          0.07258064516129033
+        ],
+        "common_steps": [
+          -4.454585326953747,
+          -0.11859463276836185
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.013888888888888888
+        ],
+        "paid_per_episode": [
+          -0.6805555555555556,
+          0.8059027777777759
+        ]
+      },
+      "harms": 7,
+      "paid_delta": 0,
+      "primary_target_vs_reference": false,
+      "reference": "periodic",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_joint",
+      "combined_ray_delta": 5673,
+      "common_distance_delta_m": -0.1016949152542373,
+      "common_step_delta": -0.3050847457627119,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -0.7222470238095238,
+          0.47520127118643957
+        ],
+        "common_steps": [
+          -1.6508699633699633,
+          0.9333333333333333
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.027777777777777776
+        ],
+        "paid_per_episode": [
+          -1.3194444444444444,
+          0.06944444444444445
+        ]
+      },
+      "harms": 7,
+      "paid_delta": -50,
+      "primary_target_vs_reference": false,
+      "reference": "age",
+      "rescues": 0,
+      "strong_joint_gain": false
+    },
+    {
+      "candidate": "raa_joint",
+      "combined_ray_delta": 2684,
+      "common_distance_delta_m": -0.5084745762711864,
+      "common_step_delta": -1.4915254237288136,
+      "common_successes": 59,
+      "exploratory_whole_maze_bootstrap95": {
+        "common_distance": [
+          -1.8500735294117647,
+          0.7768105158730158
+        ],
+        "common_steps": [
+          -4.254237288135593,
+          1.0774038461538435
+        ],
+        "goal_difference": [
+          -0.19444444444444445,
+          -0.013888888888888888
+        ],
+        "paid_per_episode": [
+          -0.2920138888888889,
+          1.1111111111111112
+        ]
+      },
+      "harms": 7,
+      "paid_delta": 30,
+      "primary_target_vs_reference": false,
+      "reference": "age5",
+      "rescues": 0,
+      "strong_joint_gain": false
+    }
+  ],
+  "independent_generalization_established": false,
+  "seed": 2026111602,
+  "targets": {
+    "raa_advance": {
+      "also_beats_age5": false,
+      "beats_periodic_and_age": false,
+      "immediate_task_target": false,
+      "strong_joint_all_three": false
+    },
+    "raa_defer": {
+      "also_beats_age5": true,
+      "beats_periodic_and_age": true,
+      "immediate_task_target": true,
+      "strong_joint_all_three": false
+    },
+    "raa_joint": {
+      "also_beats_age5": false,
+      "beats_periodic_and_age": false,
+      "immediate_task_target": false,
+      "strong_joint_all_three": false
+    }
+  },
+  "totals": {
+    "age": {
+      "advances": 0,
+      "blocked": 36,
+      "combined_rays": 229665,
+      "contact_free_goal": 66,
+      "contacts": 0,
+      "deferrals": 0,
+      "diagnostic_ms": 18.440878,
+      "distance_m": 1612.5,
+      "emergency_interventions": 5,
+      "emergency_rays": 177815,
+      "emergency_scans": 2915,
+      "episodes": 72,
+      "false_persistent": 62,
+      "footprints": 0,
+      "forced_next": 0,
+      "goal": 66,
+      "h80_steps": 2915,
+      "missed_changes": 5611,
+      "paid": 850,
+      "paid_rays": 51850,
+      "plans": 0,
+      "rejected_selected": 36,
+      "scheduler_ms": 69.474364,
+      "update_ms": 37.115175,
+      "wall_seconds": 10.967639832
+    },
+    "age5": {
+      "advances": 0,
+      "blocked": 63,
+      "combined_rays": 232654,
+      "contact_free_goal": 66,
+      "contacts": 0,
+      "deferrals": 0,
+      "diagnostic_ms": 17.151869,
+      "distance_m": 1666.5,
+      "emergency_interventions": 21,
+      "emergency_rays": 185684,
+      "emergency_scans": 3044,
+      "episodes": 72,
+      "false_persistent": 70,
+      "footprints": 0,
+      "forced_next": 0,
+      "goal": 66,
+      "h80_steps": 3044,
+      "missed_changes": 5588,
+      "paid": 770,
+      "paid_rays": 46970,
+      "plans": 0,
+      "rejected_selected": 63,
+      "scheduler_ms": 171.844968,
+      "update_ms": 69.896623,
+      "wall_seconds": 11.303418003
+    },
+    "periodic": {
+      "advances": 0,
+      "blocked": 47,
+      "combined_rays": 234179,
+      "contact_free_goal": 66,
+      "contacts": 0,
+      "deferrals": 0,
+      "diagnostic_ms": 18.284282,
+      "distance_m": 1659.0,
+      "emergency_interventions": 7,
+      "emergency_rays": 185379,
+      "emergency_scans": 3039,
+      "episodes": 72,
+      "false_persistent": 64,
+      "footprints": 0,
+      "forced_next": 0,
+      "goal": 66,
+      "h80_steps": 3039,
+      "missed_changes": 5850,
+      "paid": 800,
+      "paid_rays": 48800,
+      "plans": 0,
+      "rejected_selected": 47,
+      "scheduler_ms": 3.775333,
+      "update_ms": 15.924004,
+      "wall_seconds": 11.394477834
+    },
+    "raa_advance": {
+      "advances": 336,
+      "blocked": 42,
+      "combined_rays": 235338,
+      "contact_free_goal": 59,
+      "contacts": 0,
+      "deferrals": 0,
+      "diagnostic_ms": 17.734952,
+      "distance_m": 1684.5,
+      "emergency_interventions": 15,
+      "emergency_rays": 186538,
+      "emergency_scans": 3058,
+      "episodes": 72,
+      "false_persistent": 65,
+      "footprints": 813,
+      "forced_next": 0,
+      "goal": 59,
+      "h80_steps": 3058,
+      "missed_changes": 5719,
+      "paid": 800,
+      "paid_rays": 48800,
+      "plans": 813,
+      "rejected_selected": 42,
+      "scheduler_ms": 1485.966266,
+      "update_ms": 32.966673,
+      "wall_seconds": 13.271468458
+    },
+    "raa_defer": {
+      "advances": 0,
+      "blocked": 63,
+      "combined_rays": 232532,
+      "contact_free_goal": 66,
+      "contacts": 0,
+      "deferrals": 2,
+      "diagnostic_ms": 17.017134,
+      "distance_m": 1666.5,
+      "emergency_interventions": 21,
+      "emergency_rays": 185684,
+      "emergency_scans": 3044,
+      "episodes": 72,
+      "false_persistent": 70,
+      "footprints": 1064,
+      "forced_next": 0,
+      "goal": 66,
+      "h80_steps": 3044,
+      "missed_changes": 5588,
+      "paid": 768,
+      "paid_rays": 46848,
+      "plans": 1064,
+      "rejected_selected": 63,
+      "scheduler_ms": 2058.489088,
+      "update_ms": 31.189329,
+      "wall_seconds": 13.129024923
+    },
+    "raa_joint": {
+      "advances": 336,
+      "blocked": 42,
+      "combined_rays": 235338,
+      "contact_free_goal": 59,
+      "contacts": 0,
+      "deferrals": 0,
+      "diagnostic_ms": 17.57998,
+      "distance_m": 1684.5,
+      "emergency_interventions": 15,
+      "emergency_rays": 186538,
+      "emergency_scans": 3058,
+      "episodes": 72,
+      "false_persistent": 65,
+      "footprints": 813,
+      "forced_next": 0,
+      "goal": 59,
+      "h80_steps": 3058,
+      "missed_changes": 5719,
+      "paid": 800,
+      "paid_rays": 48800,
+      "plans": 813,
+      "rejected_selected": 42,
+      "scheduler_ms": 1485.8899,
+      "update_ms": 32.901451,
+      "wall_seconds": 13.233983624
+    }
+  }
+}
