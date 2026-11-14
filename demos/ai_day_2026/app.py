@@ -78,7 +78,7 @@ if __name__ == '__main__':
     uvicorn.run('app:app', host='127.0.0.1', port=8765, access_log=False)
 
 _portrait_lock=threading.Lock()
-_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v2'
+_portrait_dir=Path(tempfile.gettempdir())/'ai-day-g1-portraits-v3'
 @app.get('/api/portrait/{strategy}')
 def portrait(strategy: str):
     if strategy not in ('periodic','age','uncertainty'):
@@ -87,7 +87,14 @@ def portrait(strategy: str):
     with _portrait_lock:
         if not path.exists():
             try:
-                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)],check=True,timeout=90)
+                subprocess.run([sys.executable,str(BASE/'generate_portraits.py'),str(_portrait_dir)],
+                               check=True,timeout=90,capture_output=True,text=True)
+            except subprocess.CalledProcessError as exc:
+                detail=(exc.stderr or exc.stdout or str(exc)).strip()
+                print('G1 portrait generation failed:',detail,flush=True)
+                return JSONResponse({'error':detail},status_code=503)
             except (subprocess.SubprocessError,OSError) as exc:
-                return JSONResponse({'error':str(exc)},status_code=503)
+                return JSONResponse({'error':f'{type(exc).__name__}: {exc}'},status_code=503)
+        if not path.is_file():
+            return JSONResponse({'error':'Portrait generation produced no image'},status_code=503)
     return FileResponse(path,media_type='image/png')

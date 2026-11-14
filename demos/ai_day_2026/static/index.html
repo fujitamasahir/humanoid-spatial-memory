@@ -16,7 +16,7 @@
     <p class="intro">Stop the robot in 80 steps.</p>
     
     
-    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic" alt="Unitree G1"><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=3" alt="Unitree G1"><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -46,5 +46,5 @@
 </main>
 
 <div id="toast" role="status"></div>
-<script src="/static/game.js"></script>
+<script src="/static/game.js?v=3"></script>
 </body></html>

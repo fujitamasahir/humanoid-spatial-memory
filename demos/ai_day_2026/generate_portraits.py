@@ -10,6 +10,15 @@ def generate(out):
     src=ROOT/'third_party/unitree_g1/g1.xml'
     root=ET.parse(src).getroot()
     root.find('compiler').set('meshdir',str(src.parent/'assets'))
+    # MuJoCo's default offscreen height is 480. The portrait needs 640.
+    visual=root.find('visual')
+    if visual is None:
+        visual=ET.SubElement(root,'visual')
+    global_=visual.find('global')
+    if global_ is None:
+        global_=ET.SubElement(visual,'global')
+    global_.set('offwidth','480')
+    global_.set('offheight','640')
     wb=root.find('worldbody')
     for x in list(wb):
         if x.tag in ('light','camera'): wb.remove(x)
@@ -19,19 +28,26 @@ def generate(out):
     data=mj.MjData(model)
     key=mj.mj_name2id(model,mj.mjtObj.mjOBJ_KEY,'stand')
     original=model.geom_rgba.copy()
+    original_materials=model.geom_matid.copy()
     camera=mj.MjvCamera();mj.mjv_defaultCamera(camera)
     camera.type=mj.mjtCamera.mjCAMERA_FREE
     camera.lookat[:]=(0,0,.65);camera.distance=2.6;camera.azimuth=150;camera.elevation=-8
     opt=mj.MjvOption();mj.mjv_defaultOption(opt);opt.sitegroup[:]=0
     opt.geomgroup[2]=1
+    opt.geomgroup[3]=0
     out.mkdir(parents=True,exist_ok=True)
     with mj.Renderer(model,height=640,width=480) as renderer:
         for name,tint,pose in [('periodic',[.65,.84,1],{}),('age',[1,.69,.25],{'right_shoulder_roll_joint':-.48,'right_elbow_joint':.55}),('uncertainty',[.73,.48,1],{'left_shoulder_roll_joint':.42,'right_shoulder_roll_joint':-.42,'left_elbow_joint':.55,'right_elbow_joint':.55})]:
             mj.mj_resetDataKeyframe(model,data,key)
             model.geom_rgba[:]=original
+            model.geom_matid[:]=original_materials
             for idx in range(model.ngeom):
-                if model.geom_type[idx]==mj.mjtGeom.mjGEOM_MESH:
-                    model.geom_rgba[idx,:3]=np.clip(original[idx,:3]*.4+np.array(tint)*.6,0,1)
+                if model.geom_group[idx]==2 and model.geom_type[idx]==mj.mjtGeom.mjGEOM_MESH:
+                    material=int(model.geom_matid[idx])
+                    base=model.mat_rgba[material,:3] if material>=0 else original[idx,:3]
+                    # Preserve dark joints, hands and face; tint the metal shell.
+                    model.geom_rgba[idx,:3]=base if np.mean(base)<.35 else np.clip(base*.35+np.array(tint)*.65,0,1)
+                    model.geom_rgba[idx,3]=1
                     model.geom_matid[idx]=-1
             for joint,delta in pose.items():
                 i=mj.mj_name2id(model,mj.mjtObj.mjOBJ_JOINT,joint)
@@ -40,6 +56,9 @@ def generate(out):
                     data.qpos[adr]=np.clip(data.qpos[adr]+delta,*model.jnt_range[i]) if model.jnt_limited[i] else data.qpos[adr]+delta
             mj.mj_forward(model,data)
             renderer.update_scene(data,camera=camera,scene_option=opt)
-            (out/(name+'.png')).write_bytes(base64.b64decode(png(renderer.render())))
+            path=out/(name+'.png')
+            temporary=out/(name+'.png.tmp')
+            temporary.write_bytes(base64.b64decode(png(renderer.render())))
+            temporary.replace(path)
 if __name__=='__main__':
     generate(Path(sys.argv[1]))
