@@ -1,0 +1,137 @@
+{
+  "branch": "demo/ai-day-2026",
+  "challenge_cases": [
+    {
+      "actual_unwanted_contacts": 0,
+      "blocked_attempts_not_contacts": 0,
+      "distance_m": 46.5,
+      "elapsed_steps": 80,
+      "emergency_raycasts": 4880,
+      "emergency_scans": 80,
+      "episode_wall_time_seconds": 6.692209375003586,
+      "maze_id": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "objects": [],
+      "observations": 20,
+      "pedestrian_starts": [],
+      "seed": 42001,
+      "spatial_memory_rays": 1220,
+      "strategy": "periodic",
+      "success": false,
+      "winner": "HUMAN WINS"
+    },
+    {
+      "actual_unwanted_contacts": 0,
+      "blocked_attempts_not_contacts": 0,
+      "distance_m": 33.75,
+      "elapsed_steps": 56,
+      "emergency_raycasts": 3416,
+      "emergency_scans": 56,
+      "episode_wall_time_seconds": 4.492438292014413,
+      "maze_id": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "objects": [],
+      "observations": 17,
+      "pedestrian_starts": [],
+      "seed": 42002,
+      "spatial_memory_rays": 1037,
+      "strategy": "age",
+      "success": true,
+      "winner": "AI WINS"
+    },
+    {
+      "actual_unwanted_contacts": 0,
+      "blocked_attempts_not_contacts": 1,
+      "distance_m": 48.0,
+      "elapsed_steps": 80,
+      "emergency_raycasts": 4880,
+      "emergency_scans": 80,
+      "episode_wall_time_seconds": 6.6035405000147875,
+      "maze_id": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "objects": [],
+      "observations": 14,
+      "pedestrian_starts": [],
+      "seed": 42003,
+      "spatial_memory_rays": 854,
+      "strategy": "uncertainty",
+      "success": false,
+      "winner": "HUMAN WINS"
+    },
+    {
+      "actual_unwanted_contacts": 0,
+      "blocked_attempts_not_contacts": 0,
+      "distance_m": 46.5,
+      "elapsed_steps": 80,
+      "emergency_raycasts": 4880,
+      "emergency_scans": 80,
+      "episode_wall_time_seconds": 6.522289667016594,
+      "maze_id": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "objects": [
+        [
+          4,
+          1
+        ]
+      ],
+      "observations": 20,
+      "pedestrian_starts": [
+        [
+          1,
+          1
+        ]
+      ],
+      "seed": 42004,
+      "spatial_memory_rays": 1220,
+      "strategy": "periodic",
+      "success": false,
+      "winner": "HUMAN WINS"
+    }
+  ],
+  "endpoint": "localhost only",
+  "interpretation": "Actual existing Phase 2 G1 kinematic navigation stack. No 3D renderer is used; canvas playback is 2D.",
+  "layout_checks": [
+    {
+      "objects": [],
+      "pedestrians": [],
+      "valid": true
+    },
+    {
+      "objects": [],
+      "pedestrians": [],
+      "valid": true
+    },
+    {
+      "objects": [],
+      "pedestrians": [],
+      "valid": true
+    },
+    {
+      "objects": [
+        [
+          4,
+          1
+        ]
+      ],
+      "pedestrians": [
+        [
+          1,
+          1
+        ]
+      ],
+      "valid": true
+    }
+  ],
+  "layout_validation": "PASS",
+  "maze_catalog_count": 36,
+  "maze_catalog_sha256": "fe3c41bf93c6694ddbfe9629e4bb333113ecf57fc9b4f615a9570d1aaafbc2d2",
+  "maze_id": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "reset_recovery": "PASS",
+  "runtime_binding_sha256": "451a9d255f714711037a227876b9f264b2203db8fe556ebdb88506189a5aa3f2",
+  "source_commit": "8d27cd1d2d3ca8c7b22a1f3c5f604214e3c24b54",
+  "status": "PASS",
+  "total_wall_seconds": 27.067403833993012,
+  "ui_assets_served_bytes": {
+    "/": 4960,
+    "/static/game.js": 12695,
+    "/static/style.css": 7962
+  }
+}
