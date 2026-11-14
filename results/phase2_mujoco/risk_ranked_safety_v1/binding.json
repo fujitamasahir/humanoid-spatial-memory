@@ -1,0 +1,38 @@
+{
+  "base": "fe087b6e5f1283447c25a439b4a9cee920c3f02b",
+  "compact_arms": [
+    "periodic4",
+    "age5",
+    "dao_veto"
+  ],
+  "compact_cases": 12,
+  "implementation_commit": "3a7feccdee2ef80358383a92f28a5f167aded193",
+  "prepared_manifest_sha256": "f25479b9f1c40d4554084f843e8a675acc03b7b696e643491645761a65b2f1f6",
+  "sources": {
+    "docs/risk_ranked_safety_v1_protocol.md": "17b21a0ed021a4b92cfc566d936714513365806f0b81d6680b77a348fda4b697",
+    "scripts/dao_engineering_scenes_v1.py": "554bc4558a07d7d73a9d011d3115ce36c0877658f9b3a7a442cba29cbcae8192",
+    "scripts/predictive_safety_benchmark_v1.py": "2ad295d270da135fa17d8354798aeb0ceab2d5a19d4d76cf20f764907f1f54d9",
+    "scripts/run_risk_ranked_safety_v1.py": "78ae62637737c15250635a67dc87098fa95d8335c8165dd9096eb941eeb08944",
+    "scripts/safety_forensics_v1.py": "e2dcca0120a613881090b6f724dbedda843410a311a3bb38f096c51b09de0c82",
+    "src/spatial_memory/cadence_age.py": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+    "src/spatial_memory/change_aware_age.py": "33be6b42aa5b63a3bb974afa7ab241fbcdc91ab75d02af23e8ad8843ddd43666",
+    "src/spatial_memory/dao_navigation_compat_v1_1.py": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/predictive_emergency_v1.py": "0faace747af5cd855a8a41465d71710aac9252a193df8f331850042aadd3f2a5",
+    "src/spatial_memory/risk_ranked_emergency_v1.py": "9f317ad1f477f984b22cb4a9f113291ccc82258030145e15cbbb0443a1808082",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "tests/test_risk_ranked_emergency_v1.py": "40bbe645d12c2e165249bf9975213f194347b2028309aefe30750adb33c166cf"
+  },
+  "versions": [
+    "original",
+    "predictive_v1",
+    "res_h1",
+    "res_risk",
+    "res_full"
+  ]
+}
