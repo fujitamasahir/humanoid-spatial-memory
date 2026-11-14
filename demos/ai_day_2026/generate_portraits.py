@@ -31,23 +31,23 @@ VICTORY={**legs(-.15,.37,.25,.48,-.11,-.35,.05,-.09),
 BALLET={**legs(0,-.95,.07,2.10,-.12,.12,0,-.64),
         **arms(.10,-.10,-.66,-.66,-2.75,-2.75),
         'right_hip_yaw_joint':-.95,'left_shoulder_yaw_joint':-.16,'right_shoulder_yaw_joint':.16}
-BOW={**legs(-.42,-.48,.78,1.05,-.30,-.35,.12,-.46),
-     **arms(1.05,-1.05,-.28,-.28,-.18,-.18),'right_hip_yaw_joint':-.68,'waist_pitch_joint':.34}
+BOW={**legs(-.72,-.79,1.30,1.55,-.46,-.52,.12,-.46),
+     **arms(1.05,-1.05,-.28,-.28,-.18,-.18),'right_hip_yaw_joint':-.68,'waist_pitch_joint':.52}
 STANCE={**legs(-.28,.28,.35,.45,-.14,-.22,.13,-.10),
         **arms(-.10,.10,-1.75,-1.75,-.68,-.70),
-        'left_shoulder_yaw_joint':-.10,'right_shoulder_yaw_joint':.10,'waist_yaw_joint':.12}
+        'left_shoulder_yaw_joint':-.10,'right_shoulder_yaw_joint':.10,'waist_yaw_joint':.12,'waist_pitch_joint':.28}
 def punch(left):
     p=STANCE.copy()
     if left:
         p.update(arms(-.08,.10,.22,-1.75,-1.65,-.70))
-        p.update(waist_yaw_joint=.28,waist_pitch_joint=.12)
+        p.update(waist_yaw_joint=.28,waist_pitch_joint=.32)
     else:
         p.update(arms(-.10,.08,-1.75,.22,-.68,-1.72))
-        p.update(waist_yaw_joint=-.40,waist_pitch_joint=.16,
+        p.update(waist_yaw_joint=-.40,waist_pitch_joint=.36,
                  right_hip_yaw_joint=-.22,right_ankle_pitch_joint=-.38)
     return p
-WINDUP={**STANCE,**arms(-.10,.18,-1.75,-1.36,-.68,.30),
-        'waist_yaw_joint':.48,'right_shoulder_yaw_joint':.28}
+WINDUP={**STANCE,**arms(-.10,.18,-1.75,-1.36,-.68,.83),
+        'waist_yaw_joint':.65,'right_shoulder_yaw_joint':.28}
 MOTIONS={
  'periodic':[
     K(0),K(.10,-.13,0,.14,0,{**crouch(.6),**arms(.1,-.1,-.45,-.45,.65,.65)}),
@@ -57,14 +57,15 @@ MOTIONS={
     K(.52,.38,0,-5.0,-.17,TUCK),
     K(.59,.04,0,-math.tau,-.21,{**crouch(.50),**arms(.35,-.35,-.3,-.3,-.55,-.55)}),
     K(.65,-.25,0,-math.tau,-.21,{**crouch(.90),**arms(.40,-.40,-.20,-.20,-.6,-.6)}),
-    K(.75,-.04,0,-math.tau,-.16,VICTORY),K(.87,-.04,0,-math.tau,-.16,VICTORY),
+    K(.74,-.04,0,-math.tau,-.16,{**VICTORY, **arms(.18,-.12,-.35,.10,-2.55,.15)}),
+    K(.84,-.04,0,-math.tau,-.16,VICTORY),K(.93,-.04,0,-math.tau,-.16,VICTORY),
     K(1,0,0,-math.tau,0,{})],
  'age':[
     K(0),K(.13,-.08,-.27,0,0,{**crouch(.36),**arms(.85,-.85,-.60,-.60,-.5,-.5)}),
     K(.23,.02,0,0,0,BALLET),K(.37,.02,math.tau,0,0,BALLET),
     K(.53,.02,2*math.tau,0,0,BALLET),
     K(.65,-.10,2*math.tau,0,0,{**crouch(.40),**arms(1.0,-1.0,-.75,-.75,-.18,-.18)}),
-    K(.77,-.15,2*math.tau,.16,0,BOW),K(.89,-.15,2*math.tau,.16,0,BOW),
+    K(.77,-.26,2*math.tau,.23,0,BOW),K(.89,-.26,2*math.tau,.23,0,BOW),
     K(1,0,2*math.tau,0,0,{})],
  'uncertainty':[
     K(0),K(.15,-.045,.20,0,.02,STANCE),
@@ -99,6 +100,17 @@ def generate(out, motion=None):
     if head is None: head=ET.SubElement(visual,'headlight')
     head.attrib.update(ambient='.26 .26 .26',diffuse='.45 .45 .45',specular='.18 .18 .18')
     wb=root.find('worldbody')
+    # Fixed rubber-hand meshes cannot articulate. Provide a presentation-only
+    # glove alternative; toggle opacity per strategy below.
+    for body in wb.iter('body'):
+        for geom in list(body.findall('geom')):
+            mesh=geom.get('mesh')
+            if mesh in ('left_rubber_hand','right_rubber_hand'):
+                side=mesh.split('_')[0]
+                geom.set('name',side+'_open_showcase')
+                ET.SubElement(body,'geom',name=side+'_fist_showcase',type='ellipsoid',
+                    size='.052 .040 .043',pos='.073 0 0',rgba='.20 .21 .24 0',
+                    group='2',contype='0',conaffinity='0',mass='0')
     for node in list(wb):
         if node.tag in ('light','camera'): wb.remove(node)
     for pos,direction,power in [('3 -4 5','-3 4 -4','.48 .48 .48'),('3 4 3','-3 -4 -2','.26 .26 .26'),('-3 0 4','3 0 -3','.32 .32 .32')]:
@@ -147,6 +159,12 @@ def generate(out, motion=None):
                 mat=int(materials[idx]);base=model.mat_rgba[mat,:3] if mat>=0 else original[idx,:3]
                 model.geom_rgba[idx,:3]=np.maximum(base,.20) if np.mean(base)<.35 else np.clip(base*.30+tint*.70,0,1)
                 model.geom_rgba[idx,3]=1;model.geom_matid[idx]=-1
+            for side in ('left','right'):
+                opened=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_open_showcase')
+                fist=mj.mj_name2id(model,mj.mjtObj.mjOBJ_GEOM,side+'_fist_showcase')
+                if opened>=0 and fist>=0:
+                    model.geom_rgba[opened,3]=0 if name=='uncertainty' else 1
+                    model.geom_rgba[fist,3]=1 if name=='uncertainty' else 0
             def render(t=None):
                 pose(name,t)
                 renderer.update_scene(data,camera=camera,scene_option=opt)
