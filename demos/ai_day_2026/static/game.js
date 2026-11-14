@@ -97,7 +97,7 @@ function showResult(r,finalState){
  screen('resultScreen');const w=$('winner'),human=r.winner==='HUMAN WINS',limit=r.step_limit??rules().step_limit;
  w.textContent=r.winner;w.classList.toggle('human',human);
  $('winnerCaption').textContent=!human?'The G1 reached the goal safely within '+limit+' steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 experienced unwanted contact.':'The G1 did not safely reach the goal within '+limit+' steps.');
- const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
+ const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps+' / '+limit],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
  $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
  showResultReaction(r.strategy,human);
@@ -326,7 +326,7 @@ async function openReview(){
   $('reviewStrategy').textContent=r.strategy.toUpperCase();$('reviewDifficulty').textContent=r.difficulty.toUpperCase();
   $('reviewLimit').textContent='/ '+r.step_limit;$('reviewObsLimit').textContent='/ '+(r.max_observations??rules().max_observations);
   $('reviewSlider').max=String(reviewSteps.length-1);
-  resetReviewHold();screen('reviewScreen');await renderReview(reviewSteps.length-1);
+  resetReviewHold();screen('reviewScreen');await renderReview(0);
  }catch(error){toast(error.message)}finally{reviewOpening=false}
 }
 async function renderReview(index){
