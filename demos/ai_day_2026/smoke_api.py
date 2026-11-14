@@ -36,16 +36,19 @@ def main():
               abs(x-maze['goal'][0])+abs(y-maze['goal'][1])>3),None)
     validation=request(base+'/api/validate',{'maze_id':maze['id'],'objects':[],'pedestrians':[]})
     assert validation['valid'],validation
-    challenges=[]
-    for method,pedestrians in [('periodic',[]),('age',[]),('uncertainty',[]),('periodic',[ped])]:
-        config={'maze_id':maze['id'],'objects':[],'pedestrians':pedestrians,'strategy':method}
+    challenges=[];layout_checks=[]
+    cases=[('periodic',[],[]),('age',[],[]),('uncertainty',[],[]),('periodic',[[4,1]],[ped])]
+    for method,objects,pedestrians in cases:
+        config={'maze_id':maze['id'],'objects':objects,'pedestrians':pedestrians,'strategy':method}
+        checked=request(base+'/api/validate',config);layout_checks.append({'objects':objects,'pedestrians':pedestrians,'valid':checked['valid']})
+        assert checked['valid'],checked
         accepted=request(base+'/api/challenge',config)
         assert accepted['ok'],accepted
         state=wait_result(base)
         if state.get('status')=='error':raise RuntimeError(state.get('error'))
         result=state['result']
         challenges.append({'maze_id':maze['id'],'strategy':method,'seed':accepted['seed'],
-          'objects':[],'pedestrian_starts':pedestrians,
+          'objects':objects,'pedestrian_starts':pedestrians,
           'winner':result['winner'],'success':result['success'],'elapsed_steps':result['elapsed_steps'],
           'observations':result['observation_count'],'distance_m':result['travel_distance_m'],
           'actual_unwanted_contacts':result['actual_unwanted_contacts'],
@@ -61,7 +64,7 @@ def main():
       'maze_catalog_sha256':hashlib.sha256(catalog_file.read_bytes()).hexdigest(),
       'runtime_binding_sha256':hashlib.sha256(binding.read_bytes()).hexdigest(),
       'maze_catalog_count':len(catalog['mazes']),
-      'maze_id':maze['id'],'layout_validation':'PASS','challenge_cases':challenges,
+      'maze_id':maze['id'],'layout_validation':'PASS','layout_checks':layout_checks,'challenge_cases':challenges,
       'total_wall_seconds':time.monotonic()-started,
       'interpretation':'Actual existing Phase 2 G1 kinematic navigation stack. No 3D renderer is used; canvas playback is 2D.'}
     out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
