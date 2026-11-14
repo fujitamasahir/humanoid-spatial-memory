@@ -1,0 +1,92 @@
+{
+  "episodes": 7,
+  "replays": [
+    {
+      "arm": "dao_veto",
+      "contact_pairs": 117,
+      "environment_reference_contact_steps": [
+        5,
+        7,
+        9
+      ],
+      "exact_archived_parity": true,
+      "post_action_contact_steps": [
+        5,
+        7,
+        9
+      ]
+    },
+    {
+      "arm": "dao_trigger",
+      "contact_pairs": 39,
+      "environment_reference_contact_steps": [
+        11
+      ],
+      "exact_archived_parity": true,
+      "post_action_contact_steps": [
+        11
+      ]
+    },
+    {
+      "arm": "dao_route",
+      "contact_pairs": 39,
+      "environment_reference_contact_steps": [
+        5
+      ],
+      "exact_archived_parity": true,
+      "post_action_contact_steps": [
+        5
+      ]
+    },
+    {
+      "arm": "dao_combined",
+      "contact_pairs": 39,
+      "environment_reference_contact_steps": [
+        11
+      ],
+      "exact_archived_parity": true,
+      "post_action_contact_steps": [
+        11
+      ]
+    },
+    {
+      "arm": "periodic4",
+      "contact_pairs": 78,
+      "environment_reference_contact_steps": [
+        5,
+        7
+      ],
+      "exact_archived_parity": false,
+      "post_action_contact_steps": [
+        5,
+        7
+      ]
+    },
+    {
+      "arm": "age4",
+      "contact_pairs": 78,
+      "environment_reference_contact_steps": [
+        5,
+        7
+      ],
+      "exact_archived_parity": false,
+      "post_action_contact_steps": [
+        5,
+        7
+      ]
+    },
+    {
+      "arm": "age5",
+      "contact_pairs": 39,
+      "environment_reference_contact_steps": [
+        5
+      ],
+      "exact_archived_parity": false,
+      "post_action_contact_steps": [
+        5
+      ]
+    }
+  ],
+  "source_commit": "1671e26f9b1360a4f061c5a04934a1374c789f83",
+  "status": "PARITY_VERIFIED"
+}

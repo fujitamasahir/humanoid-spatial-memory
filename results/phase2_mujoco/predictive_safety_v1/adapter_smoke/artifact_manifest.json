@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 3080,
+    "path": "0.json.gz",
+    "sha256": "088a5f27fab53043699d4683647027637d064ab0340f304cef07d53d4b111b7e"
+  },
+  {
+    "bytes": 5558,
+    "path": "1.json.gz",
+    "sha256": "e6859be3462569fbd27ee4cf68cdee04f1a1fa3242ab48e2a40fb3ed69785111"
+  },
+  {
+    "bytes": 95,
+    "path": "summary.json",
+    "sha256": "4436720c84a764ea65dfba2f08e6c697f0f751efb7c26e33d96bc59501a7f738"
+  }
+]

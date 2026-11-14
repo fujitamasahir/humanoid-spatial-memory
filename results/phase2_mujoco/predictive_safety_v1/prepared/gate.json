@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_predictive_emergency_v1.py",
+    "tests/test_phase2_safety_outcome_analysis.py",
+    "tests/test_dao_navigation_infrastructure_v1.py",
+    "tests/test_dao_navigation_compat_v1_1.py",
+    "tests/test_dao_generator_connectivity_v1_1.py",
+    "tests/test_dao_statistical_bounds_v1_1.py",
+    "tests/test_discovery_observation.py",
+    "tests/test_dao_artifacts.py",
+    "tests/test_change_aware_age.py",
+    "tests/test_caa_integration.py",
+    "tests/test_cadence_age.py",
+    "tests/test_phase2_mujoco.py",
+    "tests/test_phase2_emergency_safety.py",
+    "tests/test_persistence_evi_evaluation.py",
+    "--junitxml=/Users/masahir0/Desktop/humanoid-spatial-memory/results/phase2_mujoco/predictive_safety_v1/prepared/tests.xml"
+  ],
+  "returncode": 0
+}
