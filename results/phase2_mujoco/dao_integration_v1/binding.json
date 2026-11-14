@@ -1,0 +1,26 @@
+{
+  "fixture_scans": 120,
+  "navigation_episodes": 48,
+  "prepared_manifest_sha256": "f5015c23847c3da1d80749f4342b51ef5ab28053317565e1c3529e7311ff07d4",
+  "scenes_sha256": "84a0c5c245e97849d8412d79a0089a6ce57289f9fd999351094d54baf8d33520",
+  "sources": {
+    "docs/dao_generator_admission_v1.md": "3120725f606ab363a7361006bd19ffe5594813e4582aecf68f545529a9351e74",
+    "docs/dao_integration_v1_protocol.md": "5b3c77e26b72b563523c0ea501a6dbb286c4d2d76ed15ed47e5d2196a17f75ce",
+    "docs/dao_pilot_v1_protocol.md": "a9ab178079e0efb9c8a4fb612cec836c1cd0283c0ee30c602a8d5d7c8293d12b",
+    "scripts/check_dao_infrastructure_v1.py": "04a0e23b86d6d78581ec008ab6aa3aa09fa749aa19d0495c92353a4e9f8351ce",
+    "scripts/dao_engineering_scenes_v1.py": "554bc4558a07d7d73a9d011d3115ce36c0877658f9b3a7a442cba29cbcae8192",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/run_dao_integration_v1.py": "708c67f7911e8b4efc5535af4a2c3e133d4b1227114537d88b34cc93b3175ae5",
+    "src/spatial_memory/dao_admission_v1.py": "57ad28853a3d1efd538bcde4a83a4beece8e9bfa2645fc59118f54e29be019b4",
+    "src/spatial_memory/dao_generator_v1.py": "93fd6ad0d1021f2a3974faf3acd90ce54d4e3c1dc93dba130faeab200830e068",
+    "src/spatial_memory/dao_navigation_v1.py": "4f3fdcb23e691723ea5864c1aae2d40581e8177a73a4e1ab59cc2c667230990a",
+    "src/spatial_memory/dao_statistics_v1.py": "cc6430091bf8eee89560827ac674ec03284e7183e6463633ecd56d6603e74d43",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "tests/test_dao_navigation_infrastructure_v1.py": "1e6ca396f62df1063347eb4ba94267ace4985ba1b180f6dd868f0041e2852508"
+  }
+}

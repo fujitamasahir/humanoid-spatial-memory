@@ -1,0 +1,65 @@
+{
+  "starting_commit": "d04db45472c7c28e91c0753f4271190c87bcc52a",
+  "reviewed": [
+    {
+      "path": "docs/research_plan.md",
+      "sha256": "719f9a525b12779dd023708824e6d8c909254ec57ac392c9e4238ebedb42c32d"
+    },
+    {
+      "path": "docs/dao_research_report.md",
+      "sha256": "6c1e398c5ddf091a3733967eb3dd0f1656686a3742951319bbe1e50cfe2a419d"
+    },
+    {
+      "path": "docs/dao_protocol.md",
+      "sha256": "9445731f13f6f1104fd3108753b1d5277c4637196fe5c1a4a8c7bb6718dc4019"
+    },
+    {
+      "path": "docs/dao_independent_navigation_protocol.md",
+      "sha256": "1fd0be2a1534091785a70db33fde381a43c6c00a114bce4a685608c77096d1b0"
+    },
+    {
+      "path": "docs/dao_discovery_retrospective.md",
+      "sha256": "994154f6f2ac19754abec63328a7262889156f2a8cf97e9b7b9d05bb8f95b7d0"
+    },
+    {
+      "path": "docs/independent_cohort_proposal.md",
+      "sha256": "ee479e8367e72ae67a2812748fcbf21ce35fc9a6d1b7a503f40561572ba636ac"
+    },
+    {
+      "path": "docs/caa_research_report.md",
+      "sha256": "0c2c7bb5c9122c736d3720c925ddec24052473c0db5eab1bcf41d025effc4960"
+    },
+    {
+      "path": "src/spatial_memory/discovery_observation.py",
+      "sha256": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805"
+    },
+    {
+      "path": "src/spatial_memory/discovery_reference.py",
+      "sha256": "6eb91b892089c1a8c40862c36aeba7e34a1202bfa00588ced6f17189f245ca60"
+    },
+    {
+      "path": "src/spatial_memory/evaluation.py",
+      "sha256": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e"
+    },
+    {
+      "path": "src/spatial_memory/mujoco_navigation.py",
+      "sha256": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7"
+    },
+    {
+      "path": "src/spatial_memory/mujoco_perception.py",
+      "sha256": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f"
+    },
+    {
+      "path": "src/spatial_memory/emergency_safety.py",
+      "sha256": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f"
+    }
+  ],
+  "frozen_findings_preserved": [
+    "frontier underprediction",
+    "optimistic overprediction",
+    "no veto activation in prior48 states",
+    "Trigger=Combined in prior fixtures",
+    "repeated fallback risk",
+    "previously no integrated episodes"
+  ]
+}
