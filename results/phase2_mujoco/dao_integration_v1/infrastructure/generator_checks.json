@@ -1,0 +1,145 @@
+{
+  "authorized_prior_signatures_available": false,
+  "custodian_or_access_control_established": false,
+  "explicit_seed": 101,
+  "inventory_commitment": "c68d0909e60f40b49c5a6a994bf74573c8c351e9ee43fc10880928f509b96147",
+  "namespace": "TEST",
+  "payload_count": 12,
+  "production_admission_complete": false,
+  "production_population_generated": false,
+  "records": [
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 6,
+      "certificate_steps": 14,
+      "family": "tree",
+      "lineage_id": "TEST:tree:25x25:101",
+      "size": 25
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 26,
+      "family": "tree",
+      "lineage_id": "TEST:tree:33x33:101",
+      "size": 33
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 16,
+      "certificate_steps": 25,
+      "family": "tree",
+      "lineage_id": "TEST:tree:41x41:101",
+      "size": 41
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 8,
+      "certificate_steps": 14,
+      "family": "loop",
+      "lineage_id": "TEST:loop:25x25:101",
+      "size": 25
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 6,
+      "certificate_steps": 37,
+      "family": "loop",
+      "lineage_id": "TEST:loop:33x33:101",
+      "size": 33
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 2,
+      "certificate_steps": 44,
+      "family": "loop",
+      "lineage_id": "TEST:loop:41x41:101",
+      "size": 41
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 21,
+      "family": "rooms",
+      "lineage_id": "TEST:rooms:25x25:101",
+      "size": 25
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 20,
+      "family": "rooms",
+      "lineage_id": "TEST:rooms:33x33:101",
+      "size": 33
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 4,
+      "certificate_steps": 38,
+      "family": "rooms",
+      "lineage_id": "TEST:rooms:41x41:101",
+      "size": 41
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 14,
+      "family": "mixed",
+      "lineage_id": "TEST:mixed:25x25:101",
+      "size": 25
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 29,
+      "family": "mixed",
+      "lineage_id": "TEST:mixed:33x33:101",
+      "size": 33
+    },
+    {
+      "admission": {
+        "reason": "no_authorized_prior_opaque_signatures",
+        "status": "INCOMPLETE"
+      },
+      "attempts": 1,
+      "certificate_steps": 41,
+      "family": "mixed",
+      "lineage_id": "TEST:mixed:41x41:101",
+      "size": 41
+    }
+  ],
+  "test_salt_not_a_secret_or_access_control": true
+}

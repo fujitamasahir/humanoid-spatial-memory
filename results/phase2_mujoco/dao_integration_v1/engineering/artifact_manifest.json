@@ -1,0 +1,232 @@
+[
+  {
+    "bytes": 3596,
+    "path": "addition_dao_combined.json.gz",
+    "sha256": "963d1a6af5dd99f8581dd45dbc049ad6e254ef21cb90880938d2ea7ba356e569"
+  },
+  {
+    "bytes": 3360,
+    "path": "addition_dao_route.json.gz",
+    "sha256": "7779da3919531efd300a3b7c89c80a31330dd8627530cf296f642b87f081d1c8"
+  },
+  {
+    "bytes": 3603,
+    "path": "addition_dao_trigger.json.gz",
+    "sha256": "8b6809d23790a62e8950a47adeb8d4515c3bf7fa08e32781b22a5654b87007e8"
+  },
+  {
+    "bytes": 3439,
+    "path": "addition_dao_veto.json.gz",
+    "sha256": "0dccbaf1fbd6cb8ea9791b7fb6ab20ee995a891ba784d42471634307a6480d12"
+  },
+  {
+    "bytes": 172544,
+    "path": "addition_fixture.json",
+    "sha256": "ac2ee7c502c219a874007fe49740065a00752aee3d74791de71575b2d74b4d10"
+  },
+  {
+    "bytes": 3139,
+    "path": "corridor_dao_combined.json.gz",
+    "sha256": "45e9699d12e806ed718d7a986a9d7a3bfbdcd43cc2c448c1a55b036af20cf48e"
+  },
+  {
+    "bytes": 3035,
+    "path": "corridor_dao_route.json.gz",
+    "sha256": "5ac59d32d52593ac326a19a7188901ea428be7b8e479fa214353bcb38e1e90ef"
+  },
+  {
+    "bytes": 3136,
+    "path": "corridor_dao_trigger.json.gz",
+    "sha256": "3eb7040c942febf855c888c830d03f46f7e326fb64aa18b03e45031db0613923"
+  },
+  {
+    "bytes": 3072,
+    "path": "corridor_dao_veto.json.gz",
+    "sha256": "808428c80b96b321550e21b32e408d4d64ad019bdf76e342c69a2c3bb1eb54ac"
+  },
+  {
+    "bytes": 104215,
+    "path": "corridor_fixture.json",
+    "sha256": "a8e049229233376f2e2ff2603c999ed918c2584f16198a275783626a33565714"
+  },
+  {
+    "bytes": 3569,
+    "path": "explored_dao_combined.json.gz",
+    "sha256": "6b21e3f22eee987893fe7ad3b095e6ac4b238cb5f16b1c6e83b999cec8dcbc64"
+  },
+  {
+    "bytes": 3332,
+    "path": "explored_dao_route.json.gz",
+    "sha256": "bc160255c30c0d0378dfd40ec14f92f829289441656a2a12d4d22ec2b970fc04"
+  },
+  {
+    "bytes": 3572,
+    "path": "explored_dao_trigger.json.gz",
+    "sha256": "2949a8d21998385c70351b61d4973cbbe6e4790736a4ff6524556fc65695bd1a"
+  },
+  {
+    "bytes": 3414,
+    "path": "explored_dao_veto.json.gz",
+    "sha256": "b17c3f1e5b35f61516a8e8a2fd9ca1dbb82f5f786a5bc24724743556d0f277fb"
+  },
+  {
+    "bytes": 176722,
+    "path": "explored_fixture.json",
+    "sha256": "de83507965c4ca9d2ee1a540007331557525b15f2f0955dcfc4ff1ab4ddad3c2"
+  },
+  {
+    "bytes": 2470,
+    "path": "failure.txt",
+    "sha256": "fa4e6b8c80b27d220d083d54502cbab0ed8f336c958ca93e8b4d8548b339642c"
+  },
+  {
+    "bytes": 3246,
+    "path": "known_stale_dao_combined.json.gz",
+    "sha256": "773e9e4cfa64ee4ca0616cf4550c03d8b7334297051ea8d0740856a10872bcad"
+  },
+  {
+    "bytes": 3261,
+    "path": "known_stale_dao_route.json.gz",
+    "sha256": "c5d3d97672fd6b49010a644c2aad6e673591db21115781c1038dc1712df554ef"
+  },
+  {
+    "bytes": 3259,
+    "path": "known_stale_dao_trigger.json.gz",
+    "sha256": "7144e0203629e9b036cdacb1e4561c981a36f2b7a2bbbc9dff8e06f9811f426b"
+  },
+  {
+    "bytes": 3255,
+    "path": "known_stale_dao_veto.json.gz",
+    "sha256": "ad2702e96708fd1132327e2b84ea0ea2e1b576425ea0796052fbb2a050afbcfa"
+  },
+  {
+    "bytes": 137623,
+    "path": "known_stale_fixture.json",
+    "sha256": "4db727b4203cb49aaaee2ff3c857b39b773c8596e11629e78e92bc2118a18e4d"
+  },
+  {
+    "bytes": 4380,
+    "path": "removal_dao_combined.json.gz",
+    "sha256": "58d1f6dd57416b4fd2f3b582f19e827c61d782dfaccff5cf3780769551ea7b2a"
+  },
+  {
+    "bytes": 4540,
+    "path": "removal_dao_route.json.gz",
+    "sha256": "ab4b58ab5561f588d3140da8910a47439ea90addcb6a5820019fec0d2aafacd4"
+  },
+  {
+    "bytes": 4393,
+    "path": "removal_dao_trigger.json.gz",
+    "sha256": "cd32f927a24dfdafdc56db2161724bdde9ebb7d42355e1d41bc166f2f0a715f4"
+  },
+  {
+    "bytes": 4384,
+    "path": "removal_dao_veto.json.gz",
+    "sha256": "abc20eeb643d29742630c7449bb335d1eec09b4e92746d36c13c8880a5846ba4"
+  },
+  {
+    "bytes": 172953,
+    "path": "removal_fixture.json",
+    "sha256": "644e1f0f48310b7aeda04d2b57e681d76b46e9dbad1d528d9da56c54c65bc6b4"
+  },
+  {
+    "bytes": 3247,
+    "path": "repeat_view_dao_combined.json.gz",
+    "sha256": "bd0c9afb1dfd2c8ccd2d0321280816aafb535206ff2f9d8cddd168476ea2c18a"
+  },
+  {
+    "bytes": 3259,
+    "path": "repeat_view_dao_route.json.gz",
+    "sha256": "480c4e8e9399a88c6678239d80d127630bc6d45ee74b559f504ac5f2bb1e370e"
+  },
+  {
+    "bytes": 3261,
+    "path": "repeat_view_dao_trigger.json.gz",
+    "sha256": "751ad6484a3cc62e412dfabde224e5b91a602785ff57678b55ce68f1017aa70e"
+  },
+  {
+    "bytes": 3262,
+    "path": "repeat_view_dao_veto.json.gz",
+    "sha256": "8a94b11c0c3fb78dc669b366fa926799c81a0a5b441d445e6ab9f5643e000fbd"
+  },
+  {
+    "bytes": 137623,
+    "path": "repeat_view_fixture.json",
+    "sha256": "6fac4e4f930f104cd4268c32f2d972362af39e0dc65363de2737cad54e975915"
+  },
+  {
+    "bytes": 3609,
+    "path": "room_dao_combined.json.gz",
+    "sha256": "78d7563d6c41c805cbf83b722da4c27f9ba6069d01faa4a12de4d498fa803b88"
+  },
+  {
+    "bytes": 3343,
+    "path": "room_dao_route.json.gz",
+    "sha256": "d851bc4361032c9aa5fe11222b1f2c72c78c224ef70e1926cf413b312b3ca257"
+  },
+  {
+    "bytes": 3618,
+    "path": "room_dao_trigger.json.gz",
+    "sha256": "b04e17f5dfb43558640260d12d988586bed8d1f2fe4dfe9fb4674072d22720d9"
+  },
+  {
+    "bytes": 3394,
+    "path": "room_dao_veto.json.gz",
+    "sha256": "ba2bc3573ba0b0fc4b6938e4a712a94dc8ace3699a2ac80b6435414cad383008"
+  },
+  {
+    "bytes": 137858,
+    "path": "room_fixture.json",
+    "sha256": "f4b734dfb619e47bc19dd3198aed16e30553cb9e650863f604579ce56b028a97"
+  },
+  {
+    "bytes": 2847,
+    "path": "turn_dao_combined.json.gz",
+    "sha256": "8ef1c400c227149ded615cab3ac2c89dd73f1bedc3541815d888994b179db91d"
+  },
+  {
+    "bytes": 3433,
+    "path": "turn_dao_route.json.gz",
+    "sha256": "ccb8934c50fbb72151a228d116b5421d4ae0cb3e51f1d978cfddc401ad167a55"
+  },
+  {
+    "bytes": 3413,
+    "path": "turn_dao_trigger.json.gz",
+    "sha256": "d3e74706447952cd457ac2b52cef31813704be4c357bdd78f36a9234a2a08c46"
+  },
+  {
+    "bytes": 2849,
+    "path": "turn_dao_veto.json.gz",
+    "sha256": "f26ec7192691606a210afb3f9764b158218ef6a5a28d716051152a890688435f"
+  },
+  {
+    "bytes": 148805,
+    "path": "turn_fixture.json",
+    "sha256": "2ae2aa7379c2c8bf4354375bbd35cb88a16547c1140c6242ba9acc9b5314d4e4"
+  },
+  {
+    "bytes": 4399,
+    "path": "unknown_obstacle_dao_combined.json.gz",
+    "sha256": "10e8badc2569f0e338bc1bc483fc12270a547a0a75eb58b3fd99dc59ab506f59"
+  },
+  {
+    "bytes": 4421,
+    "path": "unknown_obstacle_dao_route.json.gz",
+    "sha256": "4a4391ea50413b8abab81ae9b46f811be8c398ed9c30887534e203238cd2ab62"
+  },
+  {
+    "bytes": 4406,
+    "path": "unknown_obstacle_dao_trigger.json.gz",
+    "sha256": "cec21433011f29f6185c9f49501d018a427106e5f8b94356b9282dae80e4e51b"
+  },
+  {
+    "bytes": 4410,
+    "path": "unknown_obstacle_dao_veto.json.gz",
+    "sha256": "f72dec8eeef76f6f3a99d15f66f0f13f4d3425055c42abd4083ae03e8f1557f1"
+  },
+  {
+    "bytes": 172132,
+    "path": "unknown_obstacle_fixture.json",
+    "sha256": "496d9fcc02c3f3ec859b631afe184b49f511f751cddc175e6681791e5aceb7a4"
+  }
+]

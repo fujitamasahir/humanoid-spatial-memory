@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_dao_integration_v1.py", line 152, in formal
+    result=run_navigation(d,mode);p=target/f'{d["family"]}_{mode}.json.gz'
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_dao_integration_v1.py", line 90, in run_navigation
+    try:row,trace=legacy.run_case({'mechanism':'ENGINEERING_HAND_SCENE','identity':definition['name']},0,'age',config,with_safety=True)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/evaluate_phase2_61ray_emergency_safety_full_288.py", line 211, in run_case
+    metrics, frames = run_episode(scenario, config, method, seed=SEED,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_dao_integration_v1.py", line 84, in injected
+    return original_run(s,config,method,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/src/spatial_memory/evaluation.py", line 127, in run_episode
+    observation = observe()
+                  ^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/src/spatial_memory/evaluation.py", line 42, in observe
+    result = _observation_provider(world, position, heading_yaw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_dao_integration_v1.py", line 75, in measured
+    pred=prediction(g,last,int(world.step),position,yaw,s.goal,c.last_route if c and c.mode=='dao_route' else None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_dao_integration_v1.py", line 38, in prediction
+    f=predicted_footprints(grid,position,yaw);detail=assess(grid,last,step,position,yaw,route=route)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/src/spatial_memory/discovery_observation.py", line 118, in assess
+    raise ValueError('Nominal route cannot cross remembered occupancy')
+ValueError: Nominal route cannot cross remembered occupancy
