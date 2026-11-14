@@ -14,28 +14,26 @@
     
     <h1>Can you <em>outsmart</em> the humanoid?</h1>
     <p class="intro">Stop the robot in 80 steps.</p>
-    <div class="form-row"><label>MAZE</label><div class="maze-select"><button id="prevMaze" class="icon-btn"><kbd>LT</kbd> ‹</button><button id="nextMaze" class="icon-btn">› <kbd>RT</kbd></button></div></div>
-    <div class="maze-meta"><span id="mazeIdentity">R / 0</span><span id="mazeDimensions">25 × 25</span></div>
-    <div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    
+    
+    <div id="hero" class="hero" data-pose="periodic"><svg viewBox="0 0 320 390" class="g1" role="img" aria-label="Stylized G1 robot"><defs><linearGradient id="metal" x2="1" y2=".8"><stop stop-color="#e9f3ff"/><stop offset=".45" stop-color="var(--accent)"/><stop offset="1" stop-color="#253344"/></linearGradient></defs><ellipse cx="160" cy="372" rx="95" ry="12" fill="var(--accent)" opacity=".25"/><g class="body"><g fill="url(#metal)" stroke="#15202c" stroke-width="4"><rect x="126" y="22" width="68" height="65" rx="28"/><rect x="133" y="38" width="54" height="31" rx="14" fill="#111b29"/><path d="M135 52H185" stroke="var(--accent)" stroke-width="5"/><rect x="151" y="85" width="18" height="18" rx="6"/><path d="M111 104Q160 88 209 104L197 180 178 202H142L123 180Z"/><rect x="132" y="202" width="56" height="35" rx="12"/><g class="arm left"><circle cx="106" cy="118" r="18"/><rect x="87" y="133" width="30" height="61" rx="13"/><circle cx="102" cy="198" r="13"/><rect x="88" y="209" width="28" height="55" rx="11"/><rect x="88" y="259" width="28" height="25" rx="9"/></g><g class="arm right"><circle cx="214" cy="118" r="18"/><rect x="203" y="133" width="30" height="61" rx="13"/><circle cx="218" cy="198" r="13"/><rect x="204" y="209" width="28" height="55" rx="11"/><rect x="204" y="259" width="28" height="25" rx="9"/></g><g><rect x="122" y="232" width="33" height="65" rx="13"/><circle cx="139" cy="301" r="14"/><rect x="124" y="310" width="29" height="48" rx="10"/><rect x="112" y="352" width="47" height="16" rx="6"/><rect x="166" y="232" width="33" height="65" rx="13"/><circle cx="182" cy="301" r="14"/><rect x="168" y="310" width="29" height="48" rx="10"/><rect x="162" y="352" width="47" height="16" rx="6"/></g></g><text x="160" y="145" text-anchor="middle" fill="#f2f6ff" font-size="16" font-weight="bold">G1</text></g></svg></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
     </div></div>
-    <div class="form-row"><label>PLACE HAZARDS</label><div class="tool-row"><button id="objectTool" class="tool active"><span class="object-icon">◆</span> STATIC OBJECT <kbd>X</kbd></button><button id="pedTool" class="tool"><span class="ped-icon">●</span> PEDESTRIAN <kbd>Y</kbd></button><button id="removeTool" class="tool"><span>⌫</span> REMOVE <kbd>B</kbd></button></div></div>
-    <div class="counts"><span>STATIC OBJECTS <b id="objectCount">0 / 4</b></span><span>PEDESTRIANS <b id="pedCount">0 / 2</b></span></div>
-    <div id="validation" class="validation">Layout ready. Place hazards on open cells.</div>
+    <label class="toggle"><input id="render3d" type="checkbox" checked> 3D VIEW</label><div id="validation" class="validation">Layout ready. Place hazards on open cells.</div>
     <button id="startBtn" class="start-btn"><kbd class="a">A</kbd> START CHALLENGE</button>
     
   </div>
   <div class="setup-right">
     <div class="panel-heading"><span>ENVIRONMENT EDITOR</span><span class="key"><i></i> G1 START <i class="gold"></i> GOAL</span></div>
-    <div class="carousel"><canvas id="prevPreview" width="300" height="300"></canvas><canvas id="editorCanvas" width="900" height="760"></canvas><canvas id="nextPreview" width="300" height="300"></canvas></div>
+    <div class="inventory"><button id="objectTool" class="tool"><kbd>X</kbd><span>OBJECT</span><span id="objectCount"></span></button><button id="pedTool" class="tool"><kbd>Y</kbd><span>PEDESTRIAN</span><span id="pedCount"></span></button><button id="removeTool" class="tool"><kbd>B</kbd> REMOVE</button></div><div class="carousel"><button id="prevMaze" class="trigger" aria-label="LT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">LT</text></svg><span>‹</span></button><canvas id="prevPreview" width="300" height="300"></canvas><canvas id="editorCanvas" width="900" height="760"></canvas><canvas id="nextPreview" width="300" height="300"></canvas><button id="nextMaze" class="trigger" aria-label="RT"><svg viewBox="0 0 72 52"><path d="M8 8Q36 0 64 8L57 39Q36 50 15 39Z" fill="#293849" stroke="#b8cce0" stroke-width="2"/><text x="36" y="31" text-anchor="middle" fill="white" font-size="19" font-weight="bold">RT</text></svg><span>›</span></button></div><div id="mazeIdentity" class="maze-name"></div>
     
   </div>
 </section>
 <section id="liveScreen" class="screen live-screen">
   <div class="live-head"><div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span><span class="step-chip">STEP <b id="stepValue">0</b> / 80</span></div></div>
-  <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>AI VIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
+  <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>AI VIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
     <aside class="stats-card"><div class="stat"><small>MEMORY OBSERVATIONS</small><b id="obsValue">1</b></div><div class="stat"><small>TRAVEL DISTANCE</small><b id="distanceValue">0.0 <i>m</i></b></div><div class="stat"><small>ACTUAL UNWANTED CONTACTS</small><b id="contactValue">0</b></div><div class="stat"><small>BLOCKED MOVES <em>≠ contact</em></small><b id="blockedValue">0</b></div><div class="stat"><small>G1 HEADING</small><b id="headingValue">EAST</b></div><div class="stat events"><small>EVENTS</small><div id="events"></div></div></aside>
   </div>
   <div id="liveStatus" class="live-status">Running actual Phase 2 G1 navigation…</div>
@@ -43,7 +41,7 @@
 <section id="resultScreen" class="screen result-screen">
   <div id="winner" class="winner">AI WINS</div><p id="winnerCaption" class="winner-caption"></p>
   <div class="result-summary" id="resultSummary"></div>
-  <div class="result-actions"><button id="retryBtn" class="start-btn"><kbd class="a">A</kbd> RETRY · CHANGE STRATEGY</button><button id="newBtn" class="secondary-btn"><kbd class="b">B</kbd> NEW CHALLENGE</button></div>
+  <div class="result-actions"><button id="retryBtn" class="start-btn"><kbd class="a">A</kbd> RETRY</button><button id="newBtn" class="secondary-btn"><kbd class="b">B</kbd> NEW CHALLENGE</button></div>
 </section>
 </main>
 

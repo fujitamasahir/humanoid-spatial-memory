@@ -20,6 +20,7 @@ class ValidationRequest(BaseModel):
 
 class ChallengeRequest(ValidationRequest):
     strategy: str
+    render_3d: bool = False
 
 @app.get('/')
 def home():

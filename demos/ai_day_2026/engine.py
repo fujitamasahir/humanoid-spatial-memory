@@ -315,7 +315,7 @@ class GameEngine:
                 return {'ok': False, 'error': 'A challenge is already running.'}
             self.counter += 1
             run_config = {'maze_id': maze_id, 'objects': objects, 'pedestrians': pedestrians,
-                          'strategy': strategy, 'seed': 42000+self.counter,
+                          'strategy': strategy, 'render_3d': bool(payload.get('render_3d', False)), 'seed': 42000+self.counter,
                           'pedestrian_paths': validation['pedestrian_paths']}
             self.last_config = run_config
             self.running = True
@@ -396,6 +396,8 @@ class GameEngine:
             if kind in {'move','sidestep','retreat'}:
                 return scene.check_move(world, position, tuple(value), yaw, target_yaw=yaw)
             return scene.check_turn(world, position, yaw, HEADINGS[int(value)])
+        from showcase_render import ShowcaseRenderer
+        visual = ShowcaseRenderer(scene, run_config['strategy']) if run_config.get('render_3d') else None
         def frame_cb(world, frame):
             extra = scene.update(world, frame)
             serial = {
@@ -416,6 +418,8 @@ class GameEngine:
                     'g1_unwanted_floor_contact_pairs','g1_self_contact_pairs')},
                 'emergency_intervention': frame.get('emergency_safety_intervention'),
             }
+            if visual is not None:
+                serial.update(visual.frame(frame))
             with self.lock:
                 self.state.update(serial)
                 self.state['frame_seq'] = int(self.state.get('frame_seq', -1))+1
@@ -472,6 +476,8 @@ class GameEngine:
             with self.lock:
                 self.state.update({'status':'error','error':f'{type(exc).__name__}: {exc}'})
         finally:
+            if visual is not None:
+                visual.close()
             with self.lock: self.running = False
 
     def reset(self):
