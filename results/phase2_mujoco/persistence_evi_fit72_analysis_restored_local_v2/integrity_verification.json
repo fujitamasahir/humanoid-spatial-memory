@@ -1,0 +1,46 @@
+{
+  "admitted_fit_worlds": 36,
+  "baseline_metrics_and_traces_reproduced": true,
+  "episodes_per_arm": 72,
+  "fit72_arms": 5,
+  "fit72_artifact_files_verified": 363,
+  "phase15_preserved_prefix": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "status": "PASS_READ_ONLY_FIT72_INTEGRITY",
+  "store_access": "read-only; no store writer/generator invoked",
+  "stores": [
+    {
+      "bytes_in_inventory": 896352,
+      "files_in_inventory": 627,
+      "inventory_sha256": "281f13f08218e977074b2d965c463d6f99a646e22031bfac838190a3b7fb6d2e",
+      "path": "results/raw/phase15_macos_development/fit",
+      "receipts": 313,
+      "records": 313,
+      "run_id": "e6dc13518f0cb32516f9827a3a2536659c583a6ecacc165a0011a396dabb8690",
+      "staging_empty": true
+    },
+    {
+      "bytes_in_inventory": 170663,
+      "files_in_inventory": 211,
+      "inventory_sha256": "8679a89a59c42ffe17086791138481f347b1742172e387e0bc99e4214f122546",
+      "path": "results/raw/phase15_bprime_fit_recovery_1/store",
+      "receipts": 105,
+      "records": 105,
+      "run_id": "738cdc18739bafc2bb7daf1aab6924fed76b79d52bb36f030a9fe83696f8aba4",
+      "staging_empty": true
+    },
+    {
+      "bytes_in_inventory": 4050078,
+      "files_in_inventory": 4979,
+      "inventory_sha256": "19dbc693a40f13b6225d1cfacbcff6669fc514605c6f0406d6dab1a985472416",
+      "path": "results/raw/phase15_bprime_fit_recovery_2/store",
+      "receipts": 2489,
+      "records": 2489,
+      "run_id": "756a9c7c554b581df49311b62b885b00633224b1abcc7d6ea41983069c151246",
+      "staging_empty": true
+    }
+  ],
+  "total_checkpoint_payloads": 2907
+}

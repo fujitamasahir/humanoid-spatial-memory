@@ -1,0 +1,25 @@
+{
+  "analysis": "descriptive FIT72 B/C versus Periodic/Age and historical RDAO",
+  "bootstrap": "20,000 stratified cluster draws, seed 42; no multiplicity correction",
+  "episode_keys_per_policy": 72,
+  "fit_artifact_files_verified": 363,
+  "fit_result_dir": "results/phase2_mujoco/persistence_evi_fit72_restored_local_v1",
+  "fit_store_integrity_sha256": "eb34920bf84d76d1b0c41ca7d32ffacada68ff97dcb234b22cb38f7db4a1f947",
+  "fit_summary_sha256": "1c121f93b3cc29d1f6d7dc998bb78ea37aa0b10985ac8c43483695c795fa01c1",
+  "historical_memory_error_metrics": "Unavailable in most historical RDAO pair files; not inferred.",
+  "input_sha256": {
+    "results/phase2_mujoco/persistence_evi_fit72_restored_local_v1/artifact_manifest.json": "f0fa450c8b84416a35ff67228c12c7bf8a732e9c44112d4c7cd4f21af18f77d1",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/paired_visibility_online.csv": "aae8f667f32a04ef7ad666cb4db921e408fa4ea94059f5bee6390f8b5e3fbebb",
+    "results/phase2_mujoco/rdao_v1_footprint_visibility_online_fit72_v1/summary.json": "ad8a7554af649a907f618d8457bc7945d75254036a06552c4382f186634eecf1",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_episodes.csv": "fd813aab9d2c02b80c16b6614d927e0efe4a864e11dc9e9696dacfadcd3db44b",
+    "results/phase2_mujoco/rdao_v1_phase2_evaluation/summary.json": "74beba912c77114f3952b0d5245dbd9094e2f0dcb2285422ad21cc6425dbdab9",
+    "results/phase2_mujoco/rdao_v21_current_view_quality_fit72_v1/paired_v21_vs_v1.csv": "a8bedeefe1c880e43560e98a624936f32278d00c6d717ec1fa2706869c05a6bd",
+    "results/phase2_mujoco/rdao_v21_current_view_quality_fit72_v1/summary.json": "3412324dc3dbffaa307e0b0bc39d6b7f5582154c77a4cab32e16f450c7eb2825",
+    "results/phase2_mujoco/rdao_v22_decision_protected_fit72_v1/paired_v22_vs_v1.csv": "cc85919492828ffc0094124d1da5aacdbbea73b6b54200c205ee9a4c1c281bfc",
+    "results/phase2_mujoco/rdao_v22_decision_protected_fit72_v1/summary.json": "9fa7098042736e50011995772bfb283bb3fd2f96daa15f43db0d7e4da86ff77f",
+    "results/phase2_mujoco/rdao_v2_viewpoint_fit72_v1/paired_rdao_v2_viewpoint.csv": "d4d89e49bcec08b2d1794a594cdd1bb654aae07e422b454009ec3c36a013d337",
+    "results/phase2_mujoco/rdao_v2_viewpoint_fit72_v1/summary.json": "4cd5c9f73a5f08d084494883ea4d85ad0381e3f8ae3d77a29566b6714873b27c"
+  },
+  "maze_clusters": 36,
+  "policy_or_hyperparameter_changes": false
+}

@@ -1,0 +1,2085 @@
+{
+  "baseline_metrics_and_traces_reproduced": true,
+  "correlation": "Two schedules of each maze are correlated; no independent-test inference.",
+  "episodes_per_arm": 72,
+  "maze_layouts": 36,
+  "memory_error_definition": "Original evaluator-only cell-time sums, including initial frame; not online labels.",
+  "paired_comparisons": {
+    "b_age_vs_age": {
+      "baseline_mean_censored_steps": 40.486111111111114,
+      "baseline_mean_distance_m": 22.395833333333332,
+      "baseline_mean_emergency_rays": 2469.652777777778,
+      "baseline_mean_emergency_scans": 40.486111111111114,
+      "baseline_mean_memory_rays": 720.1388888888889,
+      "baseline_mean_observations": 11.805555555555555,
+      "baseline_mean_wall_time_seconds": 0.14502256886111112,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 36,
+      "candidate_blocked_feedback": 36,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 62,
+      "candidate_mean_censored_steps": 40.486111111111114,
+      "candidate_mean_distance_m": 22.395833333333332,
+      "candidate_mean_emergency_rays": 2469.652777777778,
+      "candidate_mean_emergency_scans": 40.486111111111114,
+      "candidate_mean_memory_rays": 720.1388888888889,
+      "candidate_mean_observations": 11.805555555555555,
+      "candidate_mean_scheduler_ms": 2.2197607083333333,
+      "candidate_mean_wall_time_seconds": 0.14535499304166666,
+      "candidate_missed_persistent_changes": 5604,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 66,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 0,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 0,
+        "distance_equal": 66,
+        "distance_worse": 0,
+        "episodes": 66,
+        "steps_better": 0,
+        "steps_equal": 66,
+        "steps_worse": 0,
+        "total_delta_distance_m": 0.0,
+        "total_delta_steps": 0
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 20.772727272727273,
+        "candidate_steps_h80": 36.89393939393939,
+        "reference_distance_m": 20.772727272727273,
+        "reference_steps_h80": 36.89393939393939
+      },
+      "reference_blocked_attempts": 36,
+      "reference_false_persistent_occupancy_updates": 62,
+      "reference_missed_persistent_changes": 5611,
+      "rescued_failures": 0,
+      "total_delta_censored_steps": 0.0,
+      "total_delta_distance_m": 0.0,
+      "total_delta_memory_rays": 0.0,
+      "total_delta_observations": 0.0
+    },
+    "b_age_vs_periodic": {
+      "baseline_mean_censored_steps": 42.208333333333336,
+      "baseline_mean_distance_m": 23.041666666666668,
+      "baseline_mean_emergency_rays": 2574.7083333333335,
+      "baseline_mean_emergency_scans": 42.208333333333336,
+      "baseline_mean_memory_rays": 677.7777777777778,
+      "baseline_mean_observations": 11.11111111111111,
+      "baseline_mean_wall_time_seconds": 0.15437913943055556,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 36,
+      "candidate_blocked_feedback": 36,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 62,
+      "candidate_mean_censored_steps": 40.486111111111114,
+      "candidate_mean_distance_m": 22.395833333333332,
+      "candidate_mean_emergency_rays": 2469.652777777778,
+      "candidate_mean_emergency_scans": 40.486111111111114,
+      "candidate_mean_memory_rays": 720.1388888888889,
+      "candidate_mean_observations": 11.805555555555555,
+      "candidate_mean_scheduler_ms": 2.2197607083333333,
+      "candidate_mean_wall_time_seconds": 0.14535499304166666,
+      "candidate_missed_persistent_changes": 5604,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 66,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 2,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.0,
+          "observations": -1.0,
+          "steps_h80": -10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -6.0,
+          "observations": -2.0,
+          "steps_h80": -14.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": 2.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": -4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": 3.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 5.625,
+          "observations": 0.0,
+          "steps_h80": -2.0,
+          "success": 0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": 0.0,
+          "steps_h80": -10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.75,
+          "observations": 3.0,
+          "steps_h80": -3.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": -2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": -2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.5,
+          "observations": 1.0,
+          "steps_h80": -0.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -0.375,
+          "observations": -0.5,
+          "steps_h80": -3.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -0.75,
+          "observations": 1.0,
+          "steps_h80": 5.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -7.5,
+          "observations": -1.5,
+          "steps_h80": -12.0,
+          "success": 0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.0,
+          "observations": -1.0,
+          "steps_h80": -7.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.5,
+          "steps_h80": -0.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.0,
+          "observations": 1.0,
+          "steps_h80": -4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": -2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": -0.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 0.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 12,
+        "distance_equal": 48,
+        "distance_worse": 4,
+        "episodes": 64,
+        "steps_better": 24,
+        "steps_equal": 36,
+        "steps_worse": 4,
+        "total_delta_distance_m": -37.5,
+        "total_delta_steps": -106
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 20.2265625,
+        "candidate_steps_h80": 35.984375,
+        "reference_distance_m": 20.8125,
+        "reference_steps_h80": 37.640625
+      },
+      "reference_blocked_attempts": 47,
+      "reference_false_persistent_occupancy_updates": 64,
+      "reference_missed_persistent_changes": 5850,
+      "rescued_failures": 2,
+      "total_delta_censored_steps": -124.0,
+      "total_delta_distance_m": -46.5,
+      "total_delta_memory_rays": 3050.0,
+      "total_delta_observations": 50.0
+    },
+    "bc_vs_age": {
+      "baseline_mean_censored_steps": 40.486111111111114,
+      "baseline_mean_distance_m": 22.395833333333332,
+      "baseline_mean_emergency_rays": 2469.652777777778,
+      "baseline_mean_emergency_scans": 40.486111111111114,
+      "baseline_mean_memory_rays": 720.1388888888889,
+      "baseline_mean_observations": 11.805555555555555,
+      "baseline_mean_wall_time_seconds": 0.14502256886111112,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 513,
+      "candidate_blocked_feedback": 513,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 20,
+      "candidate_mean_censored_steps": 53.69444444444444,
+      "candidate_mean_distance_m": 21.260416666666668,
+      "candidate_mean_emergency_rays": 3275.3611111111113,
+      "candidate_mean_emergency_scans": 53.69444444444444,
+      "candidate_mean_memory_rays": 221.97222222222223,
+      "candidate_mean_observations": 3.638888888888889,
+      "candidate_mean_scheduler_ms": 127.86167915277778,
+      "candidate_mean_wall_time_seconds": 0.29898080079166667,
+      "candidate_missed_persistent_changes": 8215,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 46,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 20,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -5.0,
+          "steps_h80": 2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -15.75,
+          "observations": -18.0,
+          "steps_h80": 11.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -9.0,
+          "steps_h80": 1.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -1.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -5.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 6.0,
+          "observations": -9.0,
+          "steps_h80": 28.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -5.0,
+          "steps_h80": 11.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -4.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -21.0,
+          "observations": -18.0,
+          "steps_h80": 7.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -19.0,
+          "steps_h80": 2.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 4.5,
+          "observations": -3.0,
+          "steps_h80": 22.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -11.0,
+          "steps_h80": 39.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": -16.0,
+          "steps_h80": 26.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -6.0,
+          "steps_h80": 5.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -0.375,
+          "observations": -8.0,
+          "steps_h80": 11.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.25,
+          "observations": -15.0,
+          "steps_h80": 15.5,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -11.25,
+          "observations": -19.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -8.0,
+          "steps_h80": 52.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -10.5,
+          "observations": -16.5,
+          "steps_h80": 12.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 9.0,
+          "observations": -5.0,
+          "steps_h80": 42.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -8.5,
+          "steps_h80": 4.5,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.5,
+          "observations": -7.0,
+          "steps_h80": -9.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -6.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 11.25,
+          "observations": -5.0,
+          "steps_h80": 59.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 5.25,
+          "observations": -9.0,
+          "steps_h80": 44.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -12.0,
+          "steps_h80": 36.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -7.0,
+          "steps_h80": 12.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.75,
+          "observations": -6.5,
+          "steps_h80": -3.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -8.0,
+          "steps_h80": 8.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -3.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 4,
+        "distance_equal": 21,
+        "distance_worse": 21,
+        "episodes": 46,
+        "steps_better": 3,
+        "steps_equal": 14,
+        "steps_worse": 29,
+        "total_delta_distance_m": 58.5,
+        "total_delta_steps": 335
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 19.222826086956523,
+        "candidate_steps_h80": 38.82608695652174,
+        "reference_distance_m": 17.95108695652174,
+        "reference_steps_h80": 31.543478260869566
+      },
+      "reference_blocked_attempts": 36,
+      "reference_false_persistent_occupancy_updates": 62,
+      "reference_missed_persistent_changes": 5611,
+      "rescued_failures": 0,
+      "total_delta_censored_steps": 951.0,
+      "total_delta_distance_m": -81.75,
+      "total_delta_memory_rays": -35868.0,
+      "total_delta_observations": -588.0
+    },
+    "bc_vs_periodic": {
+      "baseline_mean_censored_steps": 42.208333333333336,
+      "baseline_mean_distance_m": 23.041666666666668,
+      "baseline_mean_emergency_rays": 2574.7083333333335,
+      "baseline_mean_emergency_scans": 42.208333333333336,
+      "baseline_mean_memory_rays": 677.7777777777778,
+      "baseline_mean_observations": 11.11111111111111,
+      "baseline_mean_wall_time_seconds": 0.15437913943055556,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 513,
+      "candidate_blocked_feedback": 513,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 20,
+      "candidate_mean_censored_steps": 53.69444444444444,
+      "candidate_mean_distance_m": 21.260416666666668,
+      "candidate_mean_emergency_rays": 3275.3611111111113,
+      "candidate_mean_emergency_scans": 53.69444444444444,
+      "candidate_mean_memory_rays": 221.97222222222223,
+      "candidate_mean_observations": 3.638888888888889,
+      "candidate_mean_scheduler_ms": 127.86167915277778,
+      "candidate_mean_wall_time_seconds": 0.29898080079166667,
+      "candidate_missed_persistent_changes": 8215,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 46,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 20,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -4.0,
+          "steps_h80": 2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.75,
+          "observations": -19.0,
+          "steps_h80": 1.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -9.0,
+          "steps_h80": 1.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": -3.0,
+          "steps_h80": -10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -4.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -6.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -7.0,
+          "steps_h80": 32.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -6.0,
+          "steps_h80": 7.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -2.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -15.0,
+          "steps_h80": 13.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -12.375,
+          "observations": -19.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 4.5,
+          "observations": -1.0,
+          "steps_h80": 22.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.5,
+          "observations": -11.0,
+          "steps_h80": 29.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.25,
+          "observations": -13.0,
+          "steps_h80": 23.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -4.0,
+          "steps_h80": 3.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -7.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.875,
+          "observations": -7.0,
+          "steps_h80": 10.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.625,
+          "observations": -15.5,
+          "steps_h80": 12.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -12.0,
+          "observations": -18.0,
+          "steps_h80": 5.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -7.0,
+          "steps_h80": 52.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -18.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 6.0,
+          "observations": -6.0,
+          "steps_h80": 35.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -8.0,
+          "steps_h80": 4.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": -6.0,
+          "steps_h80": -13.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -5.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 11.25,
+          "observations": -4.0,
+          "steps_h80": 59.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 5.25,
+          "observations": -8.0,
+          "steps_h80": 44.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -11.0,
+          "steps_h80": 36.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -5.0,
+          "steps_h80": 10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.75,
+          "observations": -4.5,
+          "steps_h80": -4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -8.0,
+          "steps_h80": 8.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 6,
+        "distance_equal": 21,
+        "distance_worse": 19,
+        "episodes": 46,
+        "steps_better": 6,
+        "steps_equal": 13,
+        "steps_worse": 27,
+        "total_delta_distance_m": 37.5,
+        "total_delta_steps": 271
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 19.222826086956523,
+        "candidate_steps_h80": 38.82608695652174,
+        "reference_distance_m": 18.407608695652176,
+        "reference_steps_h80": 32.93478260869565
+      },
+      "reference_blocked_attempts": 47,
+      "reference_false_persistent_occupancy_updates": 64,
+      "reference_missed_persistent_changes": 5850,
+      "rescued_failures": 0,
+      "total_delta_censored_steps": 827.0,
+      "total_delta_distance_m": -128.25,
+      "total_delta_memory_rays": -32818.0,
+      "total_delta_observations": -538.0
+    },
+    "c_ternary_vs_age": {
+      "baseline_mean_censored_steps": 40.486111111111114,
+      "baseline_mean_distance_m": 22.395833333333332,
+      "baseline_mean_emergency_rays": 2469.652777777778,
+      "baseline_mean_emergency_scans": 40.486111111111114,
+      "baseline_mean_memory_rays": 720.1388888888889,
+      "baseline_mean_observations": 11.805555555555555,
+      "baseline_mean_wall_time_seconds": 0.14502256886111112,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 511,
+      "candidate_blocked_feedback": 511,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 19,
+      "candidate_mean_censored_steps": 53.30555555555556,
+      "candidate_mean_distance_m": 21.041666666666668,
+      "candidate_mean_emergency_rays": 3251.6388888888887,
+      "candidate_mean_emergency_scans": 53.30555555555556,
+      "candidate_mean_memory_rays": 327.875,
+      "candidate_mean_observations": 5.375,
+      "candidate_mean_scheduler_ms": 123.45954286111112,
+      "candidate_mean_wall_time_seconds": 0.2906967171388889,
+      "candidate_missed_persistent_changes": 8072,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 46,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 20,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -5.0,
+          "steps_h80": 2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -15.75,
+          "observations": -18.0,
+          "steps_h80": 11.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -9.0,
+          "steps_h80": 1.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": 4.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -3.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 6.0,
+          "observations": -9.0,
+          "steps_h80": 28.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 11.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -3.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -21.0,
+          "observations": -18.0,
+          "steps_h80": 7.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -19.0,
+          "steps_h80": 2.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": 2.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -11.0,
+          "steps_h80": 39.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": -16.0,
+          "steps_h80": 26.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -1.0,
+          "steps_h80": 5.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -0.375,
+          "observations": -1.0,
+          "steps_h80": 11.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.25,
+          "observations": -15.0,
+          "steps_h80": 15.5,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -11.25,
+          "observations": -19.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -8.0,
+          "steps_h80": 52.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 6.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -10.5,
+          "observations": -16.5,
+          "steps_h80": 12.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 9.0,
+          "observations": -3.0,
+          "steps_h80": 42.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -4.5,
+          "steps_h80": 4.5,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -6.0,
+          "observations": 1.0,
+          "steps_h80": -17.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -5.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 10.875,
+          "observations": -5.0,
+          "steps_h80": 59.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 5.25,
+          "observations": -9.0,
+          "steps_h80": 44.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -12.0,
+          "steps_h80": 36.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 12.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.75,
+          "observations": -3.5,
+          "steps_h80": -3.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -2.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 4,
+        "distance_equal": 21,
+        "distance_worse": 21,
+        "episodes": 46,
+        "steps_better": 3,
+        "steps_equal": 14,
+        "steps_worse": 29,
+        "total_delta_distance_m": 43.5,
+        "total_delta_steps": 307
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 18.89673913043478,
+        "candidate_steps_h80": 38.21739130434783,
+        "reference_distance_m": 17.95108695652174,
+        "reference_steps_h80": 31.543478260869566
+      },
+      "reference_blocked_attempts": 36,
+      "reference_false_persistent_occupancy_updates": 62,
+      "reference_missed_persistent_changes": 5611,
+      "rescued_failures": 0,
+      "total_delta_censored_steps": 923.0,
+      "total_delta_distance_m": -97.5,
+      "total_delta_memory_rays": -28243.0,
+      "total_delta_observations": -463.0
+    },
+    "c_ternary_vs_periodic": {
+      "baseline_mean_censored_steps": 42.208333333333336,
+      "baseline_mean_distance_m": 23.041666666666668,
+      "baseline_mean_emergency_rays": 2574.7083333333335,
+      "baseline_mean_emergency_scans": 42.208333333333336,
+      "baseline_mean_memory_rays": 677.7777777777778,
+      "baseline_mean_observations": 11.11111111111111,
+      "baseline_mean_wall_time_seconds": 0.15437913943055556,
+      "baseline_successes": 66,
+      "baseline_unwanted_contact_pairs": 0,
+      "candidate_blocked_attempts": 511,
+      "candidate_blocked_feedback": 511,
+      "candidate_event_triggered_scans": 0,
+      "candidate_false_persistent_occupancy_updates": 19,
+      "candidate_mean_censored_steps": 53.30555555555556,
+      "candidate_mean_distance_m": 21.041666666666668,
+      "candidate_mean_emergency_rays": 3251.6388888888887,
+      "candidate_mean_emergency_scans": 53.30555555555556,
+      "candidate_mean_memory_rays": 327.875,
+      "candidate_mean_observations": 5.375,
+      "candidate_mean_scheduler_ms": 123.45954286111112,
+      "candidate_mean_wall_time_seconds": 0.2906967171388889,
+      "candidate_missed_persistent_changes": 8072,
+      "candidate_no_route_feedback": 0,
+      "candidate_successes": 46,
+      "candidate_unwanted_contact_pairs": 0,
+      "episodes": 72,
+      "harmed_successes": 20,
+      "independent_maze_layouts": 36,
+      "maze_level_deltas": [
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -4.0,
+          "steps_h80": 2.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.75,
+          "observations": -19.0,
+          "steps_h80": 1.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -9.0,
+          "steps_h80": 1.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -4.5,
+          "observations": 2.0,
+          "steps_h80": -10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -6.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -7.0,
+          "steps_h80": 32.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -4.0,
+          "steps_h80": 7.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -15.0,
+          "steps_h80": 13.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -3.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -12.375,
+          "observations": -19.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 2.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": 4.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.5,
+          "observations": -11.0,
+          "steps_h80": 29.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.25,
+          "observations": -13.0,
+          "steps_h80": 23.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 1.0,
+          "steps_h80": 3.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -7.0,
+          "steps_h80": 4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -1.875,
+          "observations": 0.0,
+          "steps_h80": 10.5,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -8.625,
+          "observations": -15.5,
+          "steps_h80": 12.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -12.0,
+          "observations": -18.0,
+          "steps_h80": 5.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 7.5,
+          "observations": -7.0,
+          "steps_h80": 52.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": 6.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -18.0,
+          "observations": -18.0,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 6.0,
+          "observations": -4.0,
+          "steps_h80": 35.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -4.0,
+          "steps_h80": 4.0,
+          "success": -0.5,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -9.0,
+          "observations": 2.0,
+          "steps_h80": -21.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 3.0,
+          "observations": -4.0,
+          "steps_h80": 18.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 10.875,
+          "observations": -4.0,
+          "steps_h80": 59.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 5.25,
+          "observations": -8.0,
+          "steps_h80": 44.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -2.25,
+          "observations": -11.0,
+          "steps_h80": 36.0,
+          "success": -1.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -1.0,
+          "steps_h80": 10.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": -3.75,
+          "observations": -1.5,
+          "steps_h80": -4.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 1.5,
+          "observations": -7.0,
+          "steps_h80": 6.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+        },
+        {
+          "correlated_schedules": 2,
+          "distance_m": 0.0,
+          "observations": -0.5,
+          "steps_h80": 0.0,
+          "success": 0.0,
+          "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+        }
+      ],
+      "paired_common_success": {
+        "distance_better": 6,
+        "distance_equal": 21,
+        "distance_worse": 19,
+        "episodes": 46,
+        "steps_better": 6,
+        "steps_equal": 13,
+        "steps_worse": 27,
+        "total_delta_distance_m": 22.5,
+        "total_delta_steps": 243
+      },
+      "paired_common_success_means": {
+        "candidate_distance_m": 18.89673913043478,
+        "candidate_steps_h80": 38.21739130434783,
+        "reference_distance_m": 18.407608695652176,
+        "reference_steps_h80": 32.93478260869565
+      },
+      "reference_blocked_attempts": 47,
+      "reference_false_persistent_occupancy_updates": 64,
+      "reference_missed_persistent_changes": 5850,
+      "rescued_failures": 0,
+      "total_delta_censored_steps": 799.0,
+      "total_delta_distance_m": -144.0,
+      "total_delta_memory_rays": -25193.0,
+      "total_delta_observations": -413.0
+    }
+  },
+  "protected_evidence_unchanged": true,
+  "status": "COMPLETED_DESCRIPTIVE_FIT_NOT_VALIDATION",
+  "unavailable_metrics": [
+    "full-world occupancy probability calibration",
+    "causal realized EVI"
+  ]
+}

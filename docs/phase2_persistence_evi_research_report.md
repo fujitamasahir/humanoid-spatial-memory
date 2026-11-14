@@ -185,52 +185,68 @@ argument selection; v2 failed serializing an ndarray after the first episode;
 v3 completed before connecting evaluator-only memory error columns. v4 is the
 final complete run. Do not treat incomplete attempts as completed studies.
 
-## FIT72 and independent evaluation blockers
+## Restored FIT72 evaluation and independent-evaluation limit
 
-The FIT72 two-case command was actually attempted and failed in preflight,
-before a policy episode. The three existing stores are absent in this checkout:
+The earlier smoke failure was a checkout-path issue, not FIT data loss. The
+failed log came from `/Users/masahiro/Desktop/humanoid-spatial-memory`, a
+different checkout that did not contain the ignored `results/raw` stores. The
+current execution root is
+`/Users/masahiro/Desktop/^/31_humanoid/humanoid-spatial-memory`; all three
+original stores are present there. The local evaluator resolves them relative
+to its repository root, so no absolute path or loader bypass was needed.
 
-- `results/raw/phase15_macos_development/fit`
-- `results/raw/phase15_bprime_fit_recovery_1/store`
-- `results/raw/phase15_bprime_fit_recovery_2/store`
+Read-only integrity checks passed for 313 original FIT records, 105 first
+continuation records, and 2,489 later store records: **2,907 payloads and their
+2,907 receipts** matched identities, canonical payload digests, run IDs,
+sequence numbers and empty staging directories. The Phase 1.5 protection
+manifest rehashed all 836 protected checkpoint/receipt files to its committed
+digest. Admission recovered exactly 36 FIT worlds (12 each R/BP/M). Frozen
+Phase 2 baseline artifacts and all 288 episode rows loaded and verified.
 
-The committed initial `fit_checkpoints.tgz` cannot restore the entire later
-recovery population/preservation prefix. The documented durable evidence path
-is also absent here. No partial restoration, synthetic admitted record, altered
-loader or population regeneration was used. Frozen FIT Periodic/Age baseline
-reproduction and B/C paired comparisons therefore remain **uncompleted**.
-The original 66/72 Periodic/Age results are historical context, not reproduced
-results of this change. Existing frozen artifacts were not overwritten.
+The two-case smoke passed after a separate evaluator output bug was fixed. The
+first local smoke attempt completed both cases but failed while trying to
+create the exclusive `pairs.csv` a second time; that incomplete output is kept
+and marked in `persistence_evi_fit_smoke_restored_local_v1/`. The runner now
+publishes the pair table once after completion. The successful smoke is in
+`persistence_evi_fit_smoke_restored_local_v2/`; both Periodic/Age metrics and
+semantic traces reproduced for its two keys.
 
-Separately, an authorized independent cohort is unavailable. Restoring FIT data
-would unblock descriptive regression only; FIT72 remains repeatedly inspected
-and cannot validate hypotheses or choose parameters. No reserved cohorts were
-opened. Valid independent tests require owner-approved generation/admission,
-lineage-separated development/evaluation maze identities and sealed evaluation
-access after policy/source freeze. Two schedules of each maze are correlated;
-the runner saves paired differences and maze-cluster means, not iid-schedule
-confidence intervals. A subsequent independent study should bootstrap whole
-maze clusters and report all primary outcomes together.
+The full paired FIT72 completed all 72 keys × five arms. It reproduced frozen
+Periodic/Age metrics and semantic traces for every key before running B, C or
+B+C. Results are in
+`results/phase2_mujoco/persistence_evi_fit72_restored_local_v1/`; paired
+historical comparisons and the descriptive report are in
+`results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/`.
+The historical RDAO v1, v1 footprint-only follow-up, v2, v2.1 and v2.2 records
+were joined on the same 72 maze/schedule/seed keys. No historical run was
+rerun. No B/C algorithm or hyperparameter changed.
+
+This remains a descriptive development result, not independent confirmation.
+The saved report gives episode-paired rescue/harm counts and exploratory
+cluster-bootstrap intervals that average both correlated schedules within
+each maze. No reserved cohort was opened. Independent tests still require
+owner-approved generation/admission, lineage-separated development/evaluation
+mazes, and sealed evaluation access after policy/source freeze.
 
 ## Reproduction and next experiment
 
-This checkout uses `.venv312/bin/python` (Python3.12.16) with the exact direct
-requirements, including NumPy2.2.6 and MuJoCo3.17.0. The system Python3.9.6 cannot
-install these pins. See provenance for transitive versions. Use fresh output
-paths; scripts refuse to overwrite any existing result directory.
+This checkout used `.venv/bin/python` (Python 3.12.10), NumPy 2.2.6,
+MuJoCo 3.17.0 and pytest 8.3.5. `.venv312` is not present in this checkout.
+The direct dependency versions match `requirements.txt`; the FIT run also
+passed exact saved baseline metric and trace reproduction. See the result
+provenance for source hashes and environment details. Use fresh output paths;
+the evaluation refuses to overwrite existing result directories.
 
 ```sh
-.venv312/bin/python -m pytest tests/test_persistence_evi.py \
+.venv/bin/python -m pytest tests/test_persistence_evi.py \
   tests/test_persistence_evi_evaluation.py -q
 
-.venv312/bin/python scripts/smoke_persistence_evi_mujoco.py \
-  --output results/phase2_mujoco/persistence_evi_synthetic_smoke_new
+.venv/bin/python scripts/evaluate_persistence_evi_fit72.py --max-cases 2 \
+  --output results/phase2_mujoco/persistence_evi_fit_smoke_restored_local_v2
 
-# Only after restoring original store bytes and passing preserved-prefix checks:
-.venv312/bin/python scripts/evaluate_persistence_evi_fit72.py --max-cases 2 \
-  --output results/phase2_mujoco/persistence_evi_fit_smoke_new
-.venv312/bin/python scripts/evaluate_persistence_evi_fit72.py \
-  --output results/phase2_mujoco/persistence_evi_fit72_new
+.venv/bin/python scripts/evaluate_persistence_evi_fit72.py \
+  --output results/phase2_mujoco/persistence_evi_fit72_restored_local_v1
+.venv/bin/python scripts/analyze_persistence_evi_fit72_restored.py
 ```
 
 The FIT runner reproduces frozen Periodic/Age metrics and semantic traces for

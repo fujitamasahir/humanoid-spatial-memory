@@ -1,0 +1,27 @@
+[
+  {
+    "bytes": 2375,
+    "path": "analysis_manifest.json",
+    "sha256": "33cf9c7036e1f2b2b686735c526cc48133be36eb36178c98a1135cc7ae12eea2"
+  },
+  {
+    "bytes": 1679,
+    "path": "integrity_verification.json",
+    "sha256": "eb34920bf84d76d1b0c41ca7d32ffacada68ff97dcb234b22cb38f7db4a1f947"
+  },
+  {
+    "bytes": 29691,
+    "path": "paired_cluster_comparisons.csv",
+    "sha256": "f498169e51c984bf4d586572d18c883890e74d456a3382f0c0721b0cd554031a"
+  },
+  {
+    "bytes": 3089,
+    "path": "policy_summary.csv",
+    "sha256": "5e4dfb5160e19d6993be8feff0fd3abb2a9e65b4ced094cf8baf0a6fd4db4ae4"
+  },
+  {
+    "bytes": 8907,
+    "path": "research_report.md",
+    "sha256": "4563029c0b9254e365e777cffe34b72c93ee5007854ebbfbc475f5c861fad792"
+  }
+]
