@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 2375,
+    "path": "diagnostic.json",
+    "sha256": "32052692ac26af2a61d48150a9bde88a143a8be5e83cd54814b7e636fc0662a7"
+  },
+  {
+    "bytes": 28781,
+    "path": "no_scan_episode.json.gz",
+    "sha256": "02f6f6289d01f93b3220eb881c23182aa0068d7b27951e474f081e519870f962"
+  },
+  {
+    "bytes": 1467,
+    "path": "selection_pre_outcome.json",
+    "sha256": "3450955efacc54a472d29bede4b83045de8a6cf7a8e2f3c16cc14b844862353b"
+  },
+  {
+    "bytes": 27548,
+    "path": "with_scan_episode.json.gz",
+    "sha256": "f9867f3f2caaecc039239182f62325342248e7b8b917d9d01825d70c901c470d"
+  }
+]

@@ -1,0 +1,2174 @@
+{
+  "C0_exact_saved_replay_passed": true,
+  "age": {
+    "blocked_attempts": 36,
+    "combined_rays": 229665,
+    "emergency_interventions": 5,
+    "emergency_rays": 177815,
+    "emergency_scans": 2915,
+    "episode_wall_seconds_mean": 0.14818063943055554,
+    "episodes": 72,
+    "false_persistent_occupancy_updates": 62,
+    "goals": 66,
+    "h80_censored_steps": 2915,
+    "label": "age",
+    "missed_persistent_changes": 5611,
+    "paid_memory_rays": 51850,
+    "paid_memory_scans": 850,
+    "scheduler_ms_mean": 0.0,
+    "unwanted_contact_episodes": 0
+  },
+  "baseline_reproduction_passed": true,
+  "c0_audit": {
+    "blocked_attempts": 511,
+    "combined_rays": 257725,
+    "emergency_interventions": 40,
+    "emergency_rays": 234118,
+    "emergency_scans": 3838,
+    "episode_wall_seconds_mean": 0.29789428130555556,
+    "episodes": 72,
+    "false_persistent_occupancy_updates": 19,
+    "goals": 46,
+    "h80_censored_steps": 3838,
+    "label": "C0",
+    "missed_persistent_changes": 8072,
+    "paid_memory_rays": 23607,
+    "paid_memory_scans": 387,
+    "scheduler_ms_mean": 125.76883388888889,
+    "unwanted_contact_episodes": 0
+  },
+  "c_k": {
+    "blocked_attempts": 434,
+    "combined_rays": 252235,
+    "emergency_interventions": 40,
+    "emergency_rays": 224602,
+    "emergency_scans": 3682,
+    "episode_wall_seconds_mean": 0.2963104196111111,
+    "episodes": 72,
+    "false_persistent_occupancy_updates": 19,
+    "goals": 54,
+    "h80_censored_steps": 3682,
+    "label": "C-K",
+    "missed_persistent_changes": 7626,
+    "paid_memory_rays": 27633,
+    "paid_memory_scans": 453,
+    "scheduler_ms_mean": 125.4010556111111,
+    "unwanted_contact_episodes": 0
+  },
+  "c_topology3d": {
+    "blocked_attempts": 331,
+    "combined_rays": 255163,
+    "emergency_interventions": 17,
+    "emergency_rays": 218197,
+    "emergency_scans": 3577,
+    "episode_wall_seconds_mean": 0.42221081080555556,
+    "episodes": 72,
+    "false_persistent_occupancy_updates": 23,
+    "goals": 52,
+    "h80_censored_steps": 3577,
+    "label": "C-Topology3-d",
+    "missed_persistent_changes": 7102,
+    "paid_memory_rays": 36966,
+    "paid_memory_scans": 606,
+    "scheduler_ms_mean": 246.15237231944445,
+    "unwanted_contact_episodes": 0
+  },
+  "correlated_schedule_policy": "maze identity is paired cluster; two schedules are not independent",
+  "paired_by_method": {
+    "c0_audit": {
+      "age": {
+        "baseline_mean_censored_steps": 40.486111111111114,
+        "baseline_mean_distance_m": 22.395833333333332,
+        "baseline_mean_emergency_rays": 2469.652777777778,
+        "baseline_mean_emergency_scans": 40.486111111111114,
+        "baseline_mean_memory_rays": 720.1388888888889,
+        "baseline_mean_observations": 11.805555555555555,
+        "baseline_mean_wall_time_seconds": 0.14818063943055557,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 511,
+        "candidate_blocked_feedback": 511,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 19,
+        "candidate_mean_censored_steps": 53.30555555555556,
+        "candidate_mean_distance_m": 21.041666666666668,
+        "candidate_mean_emergency_rays": 3251.6388888888887,
+        "candidate_mean_emergency_scans": 53.30555555555556,
+        "candidate_mean_memory_rays": 327.875,
+        "candidate_mean_observations": 5.375,
+        "candidate_mean_scheduler_ms": 125.76883388888889,
+        "candidate_mean_wall_time_seconds": 0.29789428130555556,
+        "candidate_missed_persistent_changes": 8072,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 46,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 20,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -5.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -15.75,
+            "observations": -18.0,
+            "steps_h80": 11.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 4.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -7.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -9.0,
+            "steps_h80": 28.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -21.0,
+            "observations": -18.0,
+            "steps_h80": 7.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.0,
+            "observations": -19.0,
+            "steps_h80": 2.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 2.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -11.0,
+            "steps_h80": 39.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -4.5,
+            "observations": -16.0,
+            "steps_h80": 26.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -1.0,
+            "steps_h80": 5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -7.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -0.375,
+            "observations": -1.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -8.25,
+            "observations": -15.0,
+            "steps_h80": 15.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -11.25,
+            "observations": -19.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -8.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 6.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -10.5,
+            "observations": -16.5,
+            "steps_h80": 12.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 9.0,
+            "observations": -3.0,
+            "steps_h80": 42.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -4.5,
+            "steps_h80": 4.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -6.0,
+            "observations": 1.0,
+            "steps_h80": -17.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -5.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 10.875,
+            "observations": -5.0,
+            "steps_h80": 59.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 5.25,
+            "observations": -9.0,
+            "steps_h80": 44.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -12.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 12.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -3.5,
+            "steps_h80": -3.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -7.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 4,
+          "distance_equal": 21,
+          "distance_worse": 21,
+          "episodes": 46,
+          "steps_better": 3,
+          "steps_equal": 14,
+          "steps_worse": 29,
+          "total_delta_distance_m": 43.5,
+          "total_delta_steps": 307
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 18.89673913043478,
+          "candidate_steps_h80": 38.21739130434783,
+          "reference_distance_m": 17.95108695652174,
+          "reference_steps_h80": 31.543478260869566
+        },
+        "reference_blocked_attempts": 36,
+        "reference_false_persistent_occupancy_updates": 62,
+        "reference_missed_persistent_changes": 5611,
+        "rescued_failures": 0,
+        "total_delta_censored_steps": 923.0,
+        "total_delta_distance_m": -97.5,
+        "total_delta_memory_rays": -28243.0,
+        "total_delta_observations": -463.0
+      },
+      "periodic": {
+        "baseline_mean_censored_steps": 42.208333333333336,
+        "baseline_mean_distance_m": 23.041666666666668,
+        "baseline_mean_emergency_rays": 2574.7083333333335,
+        "baseline_mean_emergency_scans": 42.208333333333336,
+        "baseline_mean_memory_rays": 677.7777777777778,
+        "baseline_mean_observations": 11.11111111111111,
+        "baseline_mean_wall_time_seconds": 0.15944301558333332,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 511,
+        "candidate_blocked_feedback": 511,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 19,
+        "candidate_mean_censored_steps": 53.30555555555556,
+        "candidate_mean_distance_m": 21.041666666666668,
+        "candidate_mean_emergency_rays": 3251.6388888888887,
+        "candidate_mean_emergency_scans": 53.30555555555556,
+        "candidate_mean_memory_rays": 327.875,
+        "candidate_mean_observations": 5.375,
+        "candidate_mean_scheduler_ms": 125.76883388888889,
+        "candidate_mean_wall_time_seconds": 0.29789428130555556,
+        "candidate_missed_persistent_changes": 8072,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 46,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 20,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.75,
+            "observations": -19.0,
+            "steps_h80": 1.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -4.5,
+            "observations": 2.0,
+            "steps_h80": -10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -6.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -7.0,
+            "steps_h80": 32.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -4.0,
+            "steps_h80": 7.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.0,
+            "observations": -15.0,
+            "steps_h80": 13.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -12.375,
+            "observations": -19.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 4.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.5,
+            "observations": -11.0,
+            "steps_h80": 29.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -8.25,
+            "observations": -13.0,
+            "steps_h80": 23.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -7.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.875,
+            "observations": 0.0,
+            "steps_h80": 10.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -8.625,
+            "observations": -15.5,
+            "steps_h80": 12.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -12.0,
+            "observations": -18.0,
+            "steps_h80": 5.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -7.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 6.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.0,
+            "observations": -18.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -4.0,
+            "steps_h80": 35.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -4.0,
+            "steps_h80": 4.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -9.0,
+            "observations": 2.0,
+            "steps_h80": -21.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -4.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 10.875,
+            "observations": -4.0,
+            "steps_h80": 59.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 5.25,
+            "observations": -8.0,
+            "steps_h80": 44.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -11.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -1.0,
+            "steps_h80": 10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -1.5,
+            "steps_h80": -4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -7.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -0.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 6,
+          "distance_equal": 21,
+          "distance_worse": 19,
+          "episodes": 46,
+          "steps_better": 6,
+          "steps_equal": 13,
+          "steps_worse": 27,
+          "total_delta_distance_m": 22.5,
+          "total_delta_steps": 243
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 18.89673913043478,
+          "candidate_steps_h80": 38.21739130434783,
+          "reference_distance_m": 18.407608695652176,
+          "reference_steps_h80": 32.93478260869565
+        },
+        "reference_blocked_attempts": 47,
+        "reference_false_persistent_occupancy_updates": 64,
+        "reference_missed_persistent_changes": 5850,
+        "rescued_failures": 0,
+        "total_delta_censored_steps": 799.0,
+        "total_delta_distance_m": -144.0,
+        "total_delta_memory_rays": -25193.0,
+        "total_delta_observations": -413.0
+      }
+    },
+    "c_k": {
+      "age": {
+        "baseline_mean_censored_steps": 40.486111111111114,
+        "baseline_mean_distance_m": 22.395833333333332,
+        "baseline_mean_emergency_rays": 2469.652777777778,
+        "baseline_mean_emergency_scans": 40.486111111111114,
+        "baseline_mean_memory_rays": 720.1388888888889,
+        "baseline_mean_observations": 11.805555555555555,
+        "baseline_mean_wall_time_seconds": 0.14818063943055557,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 434,
+        "candidate_blocked_feedback": 434,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 19,
+        "candidate_mean_censored_steps": 51.138888888888886,
+        "candidate_mean_distance_m": 21.21875,
+        "candidate_mean_emergency_rays": 3119.472222222222,
+        "candidate_mean_emergency_scans": 51.138888888888886,
+        "candidate_mean_memory_rays": 383.7916666666667,
+        "candidate_mean_observations": 6.291666666666667,
+        "candidate_mean_scheduler_ms": 125.40105561111112,
+        "candidate_mean_wall_time_seconds": 0.2963104196111111,
+        "candidate_missed_persistent_changes": 7626,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 54,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 13,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -5.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -15.75,
+            "observations": -18.0,
+            "steps_h80": 11.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 3.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -6.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -8.0,
+            "steps_h80": 28.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -2.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -21.0,
+            "observations": -18.0,
+            "steps_h80": 7.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -16.875,
+            "observations": -18.0,
+            "steps_h80": 2.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 3.0,
+            "steps_h80": 9.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 13.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -15.0,
+            "steps_h80": 26.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 2.0,
+            "steps_h80": 5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -0.375,
+            "observations": -1.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -6.75,
+            "observations": -14.0,
+            "steps_h80": 15.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -11.25,
+            "observations": -19.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -8.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -11.25,
+            "observations": -10.5,
+            "steps_h80": -11.0,
+            "success": 0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 9.0,
+            "observations": -2.5,
+            "steps_h80": 41.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.5,
+            "observations": -4.5,
+            "steps_h80": 4.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -6.0,
+            "observations": 1.0,
+            "steps_h80": -17.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -5.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 11.625,
+            "observations": -1.5,
+            "steps_h80": 53.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 12.0,
+            "observations": -1.0,
+            "steps_h80": 38.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -12.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -4.0,
+            "steps_h80": 12.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -4.5,
+            "steps_h80": -4.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -6.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -1.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 6,
+          "distance_equal": 25,
+          "distance_worse": 22,
+          "episodes": 53,
+          "steps_better": 4,
+          "steps_equal": 15,
+          "steps_worse": 34,
+          "total_delta_distance_m": 70.5,
+          "total_delta_steps": 432
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 20.037735849056602,
+          "candidate_steps_h80": 41.22641509433962,
+          "reference_distance_m": 18.70754716981132,
+          "reference_steps_h80": 33.075471698113205
+        },
+        "reference_blocked_attempts": 36,
+        "reference_false_persistent_occupancy_updates": 62,
+        "reference_missed_persistent_changes": 5611,
+        "rescued_failures": 1,
+        "total_delta_censored_steps": 767.0,
+        "total_delta_distance_m": -84.75,
+        "total_delta_memory_rays": -24217.0,
+        "total_delta_observations": -397.0
+      },
+      "periodic": {
+        "baseline_mean_censored_steps": 42.208333333333336,
+        "baseline_mean_distance_m": 23.041666666666668,
+        "baseline_mean_emergency_rays": 2574.7083333333335,
+        "baseline_mean_emergency_scans": 42.208333333333336,
+        "baseline_mean_memory_rays": 677.7777777777778,
+        "baseline_mean_observations": 11.11111111111111,
+        "baseline_mean_wall_time_seconds": 0.15944301558333332,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 434,
+        "candidate_blocked_feedback": 434,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 19,
+        "candidate_mean_censored_steps": 51.138888888888886,
+        "candidate_mean_distance_m": 21.21875,
+        "candidate_mean_emergency_rays": 3119.472222222222,
+        "candidate_mean_emergency_scans": 51.138888888888886,
+        "candidate_mean_memory_rays": 383.7916666666667,
+        "candidate_mean_observations": 6.291666666666667,
+        "candidate_mean_scheduler_ms": 125.40105561111112,
+        "candidate_mean_wall_time_seconds": 0.2963104196111111,
+        "candidate_missed_persistent_changes": 7626,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 54,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 14,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.75,
+            "observations": -19.0,
+            "steps_h80": 1.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -4.5,
+            "observations": 1.0,
+            "steps_h80": -10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -5.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -6.0,
+            "steps_h80": 32.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 7.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.0,
+            "observations": -15.0,
+            "steps_h80": 13.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -11.25,
+            "observations": -18.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 5.0,
+            "steps_h80": 9.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.0,
+            "observations": -3.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -7.5,
+            "observations": -12.0,
+            "steps_h80": 23.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 4.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.875,
+            "observations": 0.0,
+            "steps_h80": 10.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -7.125,
+            "observations": -14.5,
+            "steps_h80": 12.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -12.0,
+            "observations": -18.0,
+            "steps_h80": 5.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -7.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.75,
+            "observations": -12.0,
+            "steps_h80": -23.0,
+            "success": 1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -3.5,
+            "steps_h80": 34.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.5,
+            "observations": -4.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -9.0,
+            "observations": 2.0,
+            "steps_h80": -21.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -4.0,
+            "steps_h80": 18.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 11.625,
+            "observations": -0.5,
+            "steps_h80": 53.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 12.0,
+            "observations": 0.0,
+            "steps_h80": 38.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -11.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -2.0,
+            "steps_h80": 10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -2.5,
+            "steps_h80": -5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -6.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 9,
+          "distance_equal": 25,
+          "distance_worse": 18,
+          "episodes": 52,
+          "steps_better": 6,
+          "steps_equal": 15,
+          "steps_worse": 31,
+          "total_delta_distance_m": 46.5,
+          "total_delta_steps": 346
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 19.889423076923077,
+          "candidate_steps_h80": 40.92307692307692,
+          "reference_distance_m": 18.995192307692307,
+          "reference_steps_h80": 34.26923076923077
+        },
+        "reference_blocked_attempts": 47,
+        "reference_false_persistent_occupancy_updates": 64,
+        "reference_missed_persistent_changes": 5850,
+        "rescued_failures": 2,
+        "total_delta_censored_steps": 643.0,
+        "total_delta_distance_m": -131.25,
+        "total_delta_memory_rays": -21167.0,
+        "total_delta_observations": -347.0
+      }
+    },
+    "c_topology3d": {
+      "age": {
+        "baseline_mean_censored_steps": 40.486111111111114,
+        "baseline_mean_distance_m": 22.395833333333332,
+        "baseline_mean_emergency_rays": 2469.652777777778,
+        "baseline_mean_emergency_scans": 40.486111111111114,
+        "baseline_mean_memory_rays": 720.1388888888889,
+        "baseline_mean_observations": 11.805555555555555,
+        "baseline_mean_wall_time_seconds": 0.14818063943055557,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 331,
+        "candidate_blocked_feedback": 331,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 23,
+        "candidate_mean_censored_steps": 49.68055555555556,
+        "candidate_mean_distance_m": 22.40625,
+        "candidate_mean_emergency_rays": 3030.5138888888887,
+        "candidate_mean_emergency_scans": 49.68055555555556,
+        "candidate_mean_memory_rays": 513.4166666666666,
+        "candidate_mean_observations": 8.416666666666666,
+        "candidate_mean_scheduler_ms": 246.15237231944445,
+        "candidate_mean_wall_time_seconds": 0.42221081080555556,
+        "candidate_missed_persistent_changes": 7102,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 52,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 14,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -5.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -15.75,
+            "observations": -18.0,
+            "steps_h80": 11.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 4.0,
+            "steps_h80": 4.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -6.0,
+            "steps_h80": 28.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -4.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -5.25,
+            "observations": -8.0,
+            "steps_h80": 7.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.0,
+            "steps_h80": -1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -12.375,
+            "observations": -8.5,
+            "steps_h80": 2.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 4.5,
+            "observations": 4.0,
+            "steps_h80": 22.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": 1.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.75,
+            "observations": -5.0,
+            "steps_h80": 26.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.0,
+            "steps_h80": 5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -1.0,
+            "steps_h80": 11.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.875,
+            "observations": 3.0,
+            "steps_h80": 15.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -11.25,
+            "observations": -19.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -5.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 6.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -0.375,
+            "observations": -3.5,
+            "steps_h80": 12.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 9.0,
+            "observations": -1.5,
+            "steps_h80": 41.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -5.5,
+            "steps_h80": 4.5,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -6.0,
+            "observations": -1.0,
+            "steps_h80": -17.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -4.0,
+            "steps_h80": 17.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": 2.0,
+            "steps_h80": 19.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -12.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -3.0,
+            "steps_h80": 12.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -3.5,
+            "steps_h80": -4.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -5.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 4,
+          "distance_equal": 27,
+          "distance_worse": 21,
+          "episodes": 52,
+          "steps_better": 6,
+          "steps_equal": 17,
+          "steps_worse": 29,
+          "total_delta_distance_m": 61.5,
+          "total_delta_steps": 330
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 19.08173076923077,
+          "candidate_steps_h80": 38.01923076923077,
+          "reference_distance_m": 17.89903846153846,
+          "reference_steps_h80": 31.673076923076923
+        },
+        "reference_blocked_attempts": 36,
+        "reference_false_persistent_occupancy_updates": 62,
+        "reference_missed_persistent_changes": 5611,
+        "rescued_failures": 0,
+        "total_delta_censored_steps": 662.0,
+        "total_delta_distance_m": 0.75,
+        "total_delta_memory_rays": -14884.0,
+        "total_delta_observations": -244.0
+      },
+      "periodic": {
+        "baseline_mean_censored_steps": 42.208333333333336,
+        "baseline_mean_distance_m": 23.041666666666668,
+        "baseline_mean_emergency_rays": 2574.7083333333335,
+        "baseline_mean_emergency_scans": 42.208333333333336,
+        "baseline_mean_memory_rays": 677.7777777777778,
+        "baseline_mean_observations": 11.11111111111111,
+        "baseline_mean_wall_time_seconds": 0.15944301558333332,
+        "baseline_successes": 66,
+        "baseline_unwanted_contact_pairs": 0,
+        "candidate_blocked_attempts": 331,
+        "candidate_blocked_feedback": 331,
+        "candidate_event_triggered_scans": 0,
+        "candidate_false_persistent_occupancy_updates": 23,
+        "candidate_mean_censored_steps": 49.68055555555556,
+        "candidate_mean_distance_m": 22.40625,
+        "candidate_mean_emergency_rays": 3030.5138888888887,
+        "candidate_mean_emergency_scans": 49.68055555555556,
+        "candidate_mean_memory_rays": 513.4166666666666,
+        "candidate_mean_observations": 8.416666666666666,
+        "candidate_mean_scheduler_ms": 246.15237231944445,
+        "candidate_mean_wall_time_seconds": 0.42221081080555556,
+        "candidate_missed_persistent_changes": 7102,
+        "candidate_no_route_feedback": 0,
+        "candidate_successes": 52,
+        "candidate_unwanted_contact_pairs": 0,
+        "episodes": 72,
+        "harmed_successes": 14,
+        "independent_maze_layouts": 36,
+        "maze_level_deltas": [
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -4.0,
+            "steps_h80": 2.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -18.75,
+            "observations": -19.0,
+            "steps_h80": 1.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -9.0,
+            "steps_h80": 1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -4.5,
+            "observations": 2.0,
+            "steps_h80": -10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -3.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -4.0,
+            "steps_h80": 32.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -5.0,
+            "steps_h80": 7.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -5.0,
+            "steps_h80": 13.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 0.0,
+            "steps_h80": -1.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010013"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -6.75,
+            "observations": -8.5,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 4.5,
+            "observations": 6.0,
+            "steps_h80": 22.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030002"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.0,
+            "observations": 1.0,
+            "steps_h80": -7.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -2.0,
+            "steps_h80": 23.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 2.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030005"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 3.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -1.5,
+            "observations": 0.0,
+            "steps_h80": 10.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": 2.5,
+            "steps_h80": 12.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030008"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -12.0,
+            "observations": -18.0,
+            "steps_h80": 5.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": -4.0,
+            "steps_h80": 52.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030010"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 6.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030011"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -7.875,
+            "observations": -5.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 6.0,
+            "observations": -2.5,
+            "steps_h80": 34.5,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000001"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -5.0,
+            "steps_h80": 4.0,
+            "success": -0.5,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000003"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -9.0,
+            "observations": 0.0,
+            "steps_h80": -21.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000007"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 3.0,
+            "observations": -3.0,
+            "steps_h80": 17.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000012"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": -2.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000014"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 7.5,
+            "observations": 3.0,
+            "steps_h80": 19.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -2.25,
+            "observations": -11.0,
+            "steps_h80": 36.0,
+            "success": -1.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -1.0,
+            "steps_h80": 10.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000019"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": -3.75,
+            "observations": -1.5,
+            "steps_h80": -5.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000021"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 1.5,
+            "observations": -5.0,
+            "steps_h80": 6.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000022"
+          },
+          {
+            "correlated_schedules": 2,
+            "distance_m": 0.0,
+            "observations": 1.0,
+            "steps_h80": 0.0,
+            "success": 0.0,
+            "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000023"
+          }
+        ],
+        "paired_common_success": {
+          "distance_better": 8,
+          "distance_equal": 27,
+          "distance_worse": 17,
+          "episodes": 52,
+          "steps_better": 10,
+          "steps_equal": 17,
+          "steps_worse": 25,
+          "total_delta_distance_m": 31.5,
+          "total_delta_steps": 246
+        },
+        "paired_common_success_means": {
+          "candidate_distance_m": 19.08173076923077,
+          "candidate_steps_h80": 38.01923076923077,
+          "reference_distance_m": 18.47596153846154,
+          "reference_steps_h80": 33.28846153846154
+        },
+        "reference_blocked_attempts": 47,
+        "reference_false_persistent_occupancy_updates": 64,
+        "reference_missed_persistent_changes": 5850,
+        "rescued_failures": 0,
+        "total_delta_censored_steps": 538.0,
+        "total_delta_distance_m": -45.75,
+        "total_delta_memory_rays": -11834.0,
+        "total_delta_observations": -194.0
+      }
+    }
+  },
+  "periodic": {
+    "blocked_attempts": 47,
+    "combined_rays": 234179,
+    "emergency_interventions": 7,
+    "emergency_rays": 185379,
+    "emergency_scans": 3039,
+    "episode_wall_seconds_mean": 0.15944301558333335,
+    "episodes": 72,
+    "false_persistent_occupancy_updates": 64,
+    "goals": 66,
+    "h80_censored_steps": 3039,
+    "label": "periodic",
+    "missed_persistent_changes": 5850,
+    "paid_memory_rays": 48800,
+    "paid_memory_scans": 800,
+    "scheduler_ms_mean": 0.0,
+    "unwanted_contact_episodes": 0
+  },
+  "status": "COMPLETED_DESCRIPTIVE_ENGINEERING_SCREEN_NOT_VALIDATION"
+}
