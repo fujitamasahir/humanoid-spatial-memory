@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "deadline_first_noninitial_window": 10,
+    "deadline_harms": 14,
+    "deadline_stable_first_noninitial_window": 10,
+    "deadline_stable_harms": 15,
+    "deadline_stable_quiet_first_noninitial_window": 10,
+    "deadline_stable_quiet_harms": 15
+  },
+  "harm_pairs": 44,
+  "interpretation": "Denied Age5 requests, subsequent changed actions and repeated blocks are associations. Single-omission hand-fixture masks do not compose into a robust rollout. No causal rescue is inferred.",
+  "missing_evidence": [
+    "Per-cell before/after maps and omitted scan readings were not saved in these traces.",
+    "Nominal point route does not establish actual G1 clearance."
+  ],
+  "new_navigation_episodes": 0
+}
