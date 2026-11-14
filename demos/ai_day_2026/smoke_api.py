@@ -57,6 +57,8 @@ def main():
           'emergency_scans':result.get('emergency_safety_scans',0),
           'emergency_raycasts':result.get('emergency_safety_raycasts',0),
           'spatial_memory_rays':result.get('mujoco_sensor_rays',0)})
+    reset=request(base+'/api/reset',{})
+    assert reset['ok'] and request(base+'/api/state').get('status')=='idle'
     binding=BASE_DIR/'data'/'runtime_binding.json';catalog_file=BASE_DIR/'data'/'maze_catalog.json'
     commit=subprocess.run(['git','rev-parse','HEAD'],cwd=BASE_DIR.parents[1],capture_output=True,text=True,check=True).stdout.strip()
     report={'status':'PASS','endpoint':'localhost only','ui_assets_served_bytes':served,
@@ -64,7 +66,8 @@ def main():
       'maze_catalog_sha256':hashlib.sha256(catalog_file.read_bytes()).hexdigest(),
       'runtime_binding_sha256':hashlib.sha256(binding.read_bytes()).hexdigest(),
       'maze_catalog_count':len(catalog['mazes']),
-      'maze_id':maze['id'],'layout_validation':'PASS','layout_checks':layout_checks,'challenge_cases':challenges,
+      'maze_id':maze['id'],'layout_validation':'PASS','layout_checks':layout_checks,
+      'reset_recovery':'PASS','challenge_cases':challenges,
       'total_wall_seconds':time.monotonic()-started,
       'interpretation':'Actual existing Phase 2 G1 kinematic navigation stack. No 3D renderer is used; canvas playback is 2D.'}
     out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
