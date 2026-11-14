@@ -1,0 +1,29 @@
+{
+  "b_probability_replays_semantically_identical": true,
+  "counterfactual_untreated_replay_mismatches": [
+    {
+      "action": "Excluded this arm/case from causal contrasts because its untreated replay did not match saved semantic trace.",
+      "arm": "bc",
+      "episode": 63,
+      "first_difference": {
+        "different_fields": [
+          "action",
+          "action_reason",
+          "blocked",
+          "heading_yaw"
+        ],
+        "step": 66
+      },
+      "schedule": 0,
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+    }
+  ],
+  "counterfactuals": 68,
+  "evi_shadow_decisions": 3520,
+  "evi_shadow_replays_semantically_identical": true,
+  "failure_chronology_rows": 3564,
+  "first_divergence_rows": 44,
+  "memory_state_replays_semantically_identical": true,
+  "paired_episode_rows": 144,
+  "status": "COMPLETED_DESCRIPTIVE_FAILURE_ANALYSIS"
+}

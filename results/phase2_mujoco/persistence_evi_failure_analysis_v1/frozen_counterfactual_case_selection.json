@@ -1,0 +1,101 @@
+{
+  "interventions_to_run": [
+    "original exact replay",
+    "one extra real observation at first repeated blocked action / control midpoint",
+    "same scan with next naturally requested scan suppressed",
+    "delayed real observation four steps later"
+  ],
+  "selected_before_interventions": [
+    {
+      "arm": "c_ternary",
+      "episode": 3,
+      "mechanism": "BP",
+      "role": "failure",
+      "schedule": 0,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 21,
+      "mechanism": "BP",
+      "role": "failure",
+      "schedule": 0,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010012"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 26,
+      "mechanism": "M",
+      "role": "failure",
+      "schedule": 1,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030000"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 33,
+      "mechanism": "M",
+      "role": "failure",
+      "schedule": 0,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 63,
+      "mechanism": "R",
+      "role": "failure",
+      "schedule": 0,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 61,
+      "mechanism": "R",
+      "role": "failure",
+      "schedule": 0,
+      "selection_rule": "descending saved C blocked attempts, then repeated signature count; one per maze identity",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000017"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 43,
+      "mechanism": "M",
+      "role": "periodic_only_baseline_failure",
+      "schedule": 0,
+      "selection_rule": "include every key where Periodic succeeds, Age fails, and C fails; paired baseline set correction",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 44,
+      "mechanism": "M",
+      "role": "periodic_only_baseline_failure",
+      "schedule": 1,
+      "selection_rule": "include every key where Periodic succeeds, Age fails, and C fails; paired baseline set correction",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030009"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 19,
+      "mechanism": "BP",
+      "role": "successful_low_observation_control",
+      "schedule": 0,
+      "selection_rule": "fewest actual paid scans (<=3), then steps; one per mechanism",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010011"
+    },
+    {
+      "arm": "c_ternary",
+      "episode": 37,
+      "mechanism": "M",
+      "role": "successful_low_observation_control",
+      "schedule": 0,
+      "selection_rule": "fewest actual paid scans (<=3), then steps; one per mechanism",
+      "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+    }
+  ],
+  "selection_timestamp": "pre-counterfactual; derived solely from already saved FIT72 traces/metrics"
+}

@@ -1,0 +1,44 @@
+{
+  "analysis_code_and_report_sha256": {
+    "docs/persistence_evi_fit72_failure_analysis.md": "b5b893c3f437a21210dd5c03751b90470cc85d3defde31b64453b19187f2a106",
+    "scripts/analyze_persistence_evi_failure_analysis.py": "a54300a300df161506525a6c38ce0168a279d9e807c5eac0fffaac1aba5afc74",
+    "scripts/export_persistence_evi_failure_gifs.py": "86c19e2de5359418b6c600e4f57e5ff92a4fe98cfb5ee63aace63a6ac82bf49e",
+    "scripts/finalize_persistence_evi_failure_analysis.py": "7b072d0c6e4e964b2cfabbbc5969f6df5b5d361420cb7d9760ffdbc379d3909b",
+    "scripts/instrument_b_probability_timeseries.py": "4e6f901f94f011c5a97041a53cd52820bce0389de639008be0ab1ba7e14b9e2f",
+    "scripts/instrument_fit72_memory_scan_counts.py": "0c16e618d5eea2e62b981ffac228fa3e27cf00bcc3d92a5c52796d445a957012",
+    "scripts/instrument_persistence_evi_failure_decisions.py": "3e8561e51d10f0e04a7cdf331f2b79df88eaffc4810559bee31ae45991502fab",
+    "scripts/instrument_persistence_memory_states.py": "21ae234674b346d940730e3c3c4864d36743085b5932d0fdef5a388d51bbafe2",
+    "scripts/run_persistence_evi_counterfactuals.py": "290d96692259bc6e01b4fbe8dd8c03c99cc162a6ec56da3c64901b71bd638777"
+  },
+  "analysis_type": "descriptive forensic analysis; no controller changes",
+  "heldout_accessed": false,
+  "note": "Counterfactual interventions used only actual authorized 61-ray observations in admitted FIT worlds; one replay mismatch excluded from causal contrasts.",
+  "protected_phase15_data_modified": false,
+  "source_fit72_artifact_manifest_sha256": "f0fa450c8b84416a35ff67228c12c7bf8a732e9c44112d4c7cd4f21af18f77d1",
+  "source_fit72_code_hashes": {
+    "docs/phase2_persistence_evi_protocol.md": "143c9c88fb70a1add7619c418c9833c0ecb80d2e163042122fdd763093305fb0",
+    "scripts/evaluate_persistence_evi_fit72.py": "9ae9830d8710629ed1f0bdcffe0afb6648c5cdbdc6769dda5eea9eb2386b0499",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/phase2_mujoco_navigation.py": "6273e52e8095e31211e240e207ac07c899033eeba74060b66b0da034860b7390",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/evi.py": "a8931aa150c174edf4c285d52904c09b994784c43aa8ac45182dbea94d79ca86",
+    "src/spatial_memory/memory.py": "2976b6c1db5b90798a361cff6993e5d3852254fbf2266d612b7876e1280407c9",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/persistence.py": "e6795f0b06c04452adae0ec5781b538fbfb3c5409228742ce22aa115ed168b20",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79"
+  },
+  "source_fit72_commit": "3d66e54fd19c0f5ccc6261ec08eb9dd91efd8fdb",
+  "source_fit72_dependencies": {
+    "mujoco": "3.17.0",
+    "numpy": "2.2.6",
+    "pytest": "8.3.5"
+  },
+  "source_fit72_dirty_status": "",
+  "source_fit72_python": "3.12.10",
+  "worlds_regenerated": false
+}

@@ -1,0 +1,20 @@
+{
+  "BC_failure_keys_where_periodic_or_age_succeeded": 22,
+  "C_and_BC_failure_key_sets_identical": true,
+  "C_failure_keys_where_periodic_or_age_succeeded": 22,
+  "counterfactual_case_selection_frozen": 10,
+  "counterfactual_intervention_outputs": 68,
+  "counterfactual_untreated_replay_mismatch_excluded": 1,
+  "evi_failure_decisions_per_arm": 1760,
+  "evi_shadow_decisions": 3520,
+  "overlap_of_age_and_periodic_success_candidate_failure_keys": 18,
+  "paired_keys": 72,
+  "paired_policy_rows": 144,
+  "status": "COMPLETED_DESCRIPTIVE_FAILURE_ANALYSIS",
+  "unsupported_as_causal": [
+    "candidate shortlist exclusion",
+    "actual visibility mismatch",
+    "occupancy probability underestimate",
+    "point planner versus G1 consequences"
+  ]
+}

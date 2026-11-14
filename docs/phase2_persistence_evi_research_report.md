@@ -1,9 +1,11 @@
 # Persistence memory B and approximate EVI C: implementation and engineering report
 
 2026-11-13. Branch `phase2/mujoco-proxy-pilot`.
-**Status: implemented; synthetic G1 integration executed; FIT72 replay blocked
-by missing existing data stores; independent hypothesis evaluation not performed.**
-No superiority, calibration, novelty or generalization claim is supported.
+**Historical status note:** The original report below was written before restored
+FIT72 access and records the then-current blocker. The FIT72 was subsequently
+completed from the original local stores; descriptive failure analysis is now
+documented in [`persistence_evi_fit72_failure_analysis.md`](persistence_evi_fit72_failure_analysis.md).
+No superiority, novelty, or generalization claim is supported.
 
 ## Delivered implementation and safety boundary
 
@@ -186,6 +188,11 @@ v3 completed before connecting evaluator-only memory error columns. v4 is the
 final complete run. Do not treat incomplete attempts as completed studies.
 
 ## Restored FIT72 evaluation and independent-evaluation limit
+
+This section preserves the contemporaneous record of restoring and running
+FIT72. The later failure analysis and direct scan instrumentation are reported
+in `persistence_evi_fit72_failure_analysis.md` and do not change these frozen
+evaluation results.
 
 The earlier smoke failure was a checkout-path issue, not FIT data loss. The
 failed log came from `/Users/masahiro/Desktop/humanoid-spatial-memory`, a

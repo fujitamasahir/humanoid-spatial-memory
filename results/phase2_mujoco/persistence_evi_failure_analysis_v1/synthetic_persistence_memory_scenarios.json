@@ -1,0 +1,195 @@
+[
+  {
+    "events": [
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.050000000000000044,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 0,
+        "step": 0
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.056794137748504364,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 0,
+        "step": 1
+      },
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.830959977326838,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 1,
+        "step": 4
+      },
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.14196466329213087,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 0,
+        "step": 8
+      }
+    ],
+    "scenario": "transient_pedestrian_enters_then_vacates"
+  },
+  {
+    "events": [
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.050000000000000044,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 0,
+        "step": 0
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.056794137748504364,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 0,
+        "step": 1
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.830959977326838,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 4
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.8478658132396162,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 8
+      }
+    ],
+    "scenario": "persistent_obstacle_introduced"
+  },
+  {
+    "events": [
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.95,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 0
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.9043822179743282,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 1
+      },
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.8384362297906386,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 1,
+        "step": 4
+      },
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.0591883772032397,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 0,
+        "step": 8
+      }
+    ],
+    "scenario": "persistent_obstacle_removed"
+  },
+  {
+    "events": [
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.95,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 0
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.9043822179743282,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 1
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.8384362297906386,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 4
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.8465006522763479,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 8
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.8095398712401629,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 1,
+        "step": 16
+      }
+    ],
+    "scenario": "long_term_static_wall"
+  },
+  {
+    "events": [
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.050000000000000044,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 0,
+        "step": 0
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.09001120435491008,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 0,
+        "step": 7
+      },
+      {
+        "observed_state": 0,
+        "probability_after_observation": 0.050000000000000044,
+        "probability_before_observation": 0.6061327147093888,
+        "public_projection_after_observation": 0,
+        "public_projection_before_observation": 1,
+        "step": 19
+      },
+      {
+        "observed_state": 1,
+        "probability_after_observation": 0.95,
+        "probability_before_observation": 0.2775091229928335,
+        "public_projection_after_observation": 1,
+        "public_projection_before_observation": 0,
+        "step": 35
+      }
+    ],
+    "scenario": "intermittent_sparse_observations"
+  }
+]

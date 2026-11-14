@@ -1,0 +1,2417 @@
+{
+  "arm": "c_ternary",
+  "blocked_attempts": 6,
+  "condition": "original_exact_replay",
+  "emergency_interventions": 0,
+  "episode": 37,
+  "first_full_trace_difference": null,
+  "forced_scan_executed": false,
+  "full_saved_trace_match": true,
+  "goal_step": 36,
+  "instrumentation": "controller grant override only at predetermined step; sensor/planner/shield/safety implementations unchanged",
+  "memory_update_events": [
+    {
+      "action_changed": false,
+      "causal_utility_observed": false,
+      "changed_cells": 19,
+      "executed_action_after_scan": [
+        "move",
+        [
+          18,
+          22
+        ]
+      ],
+      "observed_candidate_outcome": 0,
+      "predicted_cell": [
+        20,
+        22
+      ],
+      "predicted_delay_regret": 0.75,
+      "predicted_value": 1.5,
+      "previous_executed_action": [
+        "move",
+        [
+          17,
+          22
+        ]
+      ],
+      "realized_route": [
+        [
+          17,
+          22
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          19,
+          22
+        ],
+        [
+          20,
+          22
+        ]
+      ],
+      "route_changed": false,
+      "route_length_delta": 0,
+      "step": 34,
+      "temporal_executed_action_changed": true
+    }
+  ],
+  "natural_scan_already_at_target": false,
+  "next_natural_scan_suppressed": false,
+  "observation_steps": [
+    0,
+    34
+  ],
+  "paid_observations": 2,
+  "role": "successful_low_observation_control",
+  "scan_measurements": [
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 11,
+      "position": [
+        8,
+        12
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 0,
+      "visible_cells": 11
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 7,
+      "position": [
+        8,
+        12
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 1,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 58
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        8,
+        12
+      ],
+      "ray_hits": 58,
+      "rays": 61,
+      "step": 2,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 4,
+      "position": [
+        8,
+        13
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 3,
+      "visible_cells": 17
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 8,
+      "position": [
+        8,
+        14
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 4,
+      "visible_cells": 25
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 56
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        8,
+        15
+      ],
+      "ray_hits": 56,
+      "rays": 61,
+      "step": 5,
+      "visible_cells": 17
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 3,
+      "position": [
+        8,
+        16
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 6,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        8,
+        16
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 7,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        8,
+        16
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 8,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 60
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        9,
+        16
+      ],
+      "ray_hits": 60,
+      "rays": 61,
+      "step": 9,
+      "visible_cells": 15
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 4,
+      "position": [
+        10,
+        16
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 10,
+      "visible_cells": 19
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        10,
+        16
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 11,
+      "visible_cells": 19
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        10,
+        16
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 12,
+      "visible_cells": 19
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 60
+      },
+      "newly_observed_cells": 4,
+      "position": [
+        10,
+        17
+      ],
+      "ray_hits": 60,
+      "rays": 61,
+      "step": 13,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 5,
+      "position": [
+        10,
+        18
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 14,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        10,
+        18
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 15,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        10,
+        18
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 16,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 55
+      },
+      "newly_observed_cells": 4,
+      "position": [
+        11,
+        18
+      ],
+      "ray_hits": 55,
+      "rays": 61,
+      "step": 17,
+      "visible_cells": 20
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 53
+      },
+      "newly_observed_cells": 6,
+      "position": [
+        12,
+        18
+      ],
+      "ray_hits": 53,
+      "rays": 61,
+      "step": 18,
+      "visible_cells": 25
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 53
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        12,
+        18
+      ],
+      "ray_hits": 53,
+      "rays": 61,
+      "step": 19,
+      "visible_cells": 25
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 53
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        12,
+        18
+      ],
+      "ray_hits": 53,
+      "rays": 61,
+      "step": 20,
+      "visible_cells": 25
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 56
+      },
+      "newly_observed_cells": 4,
+      "position": [
+        12,
+        19
+      ],
+      "ray_hits": 56,
+      "rays": 61,
+      "step": 21,
+      "visible_cells": 20
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 49
+      },
+      "newly_observed_cells": 5,
+      "position": [
+        12,
+        20
+      ],
+      "ray_hits": 49,
+      "rays": 61,
+      "step": 22,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 49
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        12,
+        20
+      ],
+      "ray_hits": 49,
+      "rays": 61,
+      "step": 23,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 50
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        12,
+        20
+      ],
+      "ray_hits": 50,
+      "rays": 61,
+      "step": 24,
+      "visible_cells": 24
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 52
+      },
+      "newly_observed_cells": 5,
+      "position": [
+        13,
+        20
+      ],
+      "ray_hits": 52,
+      "rays": 61,
+      "step": 25,
+      "visible_cells": 21
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 10,
+      "position": [
+        14,
+        20
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 26,
+      "visible_cells": 30
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 56
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        15,
+        20
+      ],
+      "ray_hits": 56,
+      "rays": 61,
+      "step": 27,
+      "visible_cells": 17
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        16,
+        20
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 28,
+      "visible_cells": 20
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        16,
+        20
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 29,
+      "visible_cells": 20
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 57
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        16,
+        20
+      ],
+      "ray_hits": 57,
+      "rays": 61,
+      "step": 30,
+      "visible_cells": 20
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        16,
+        21
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 31,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 53
+      },
+      "newly_observed_cells": 2,
+      "position": [
+        16,
+        22
+      ],
+      "ray_hits": 53,
+      "rays": 61,
+      "step": 32,
+      "visible_cells": 23
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 54
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        16,
+        22
+      ],
+      "ray_hits": 54,
+      "rays": 61,
+      "step": 33,
+      "visible_cells": 23
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 54
+      },
+      "newly_observed_cells": 3,
+      "position": [
+        17,
+        22
+      ],
+      "ray_hits": 54,
+      "rays": 61,
+      "step": 34,
+      "visible_cells": 17
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 61
+      },
+      "newly_observed_cells": 9,
+      "position": [
+        17,
+        22
+      ],
+      "ray_hits": 61,
+      "rays": 61,
+      "step": 34,
+      "visible_cells": 19
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 54
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        18,
+        22
+      ],
+      "ray_hits": 54,
+      "rays": 61,
+      "step": 35,
+      "visible_cells": 18
+    },
+    {
+      "hits_by_type": {
+        "pedestrians": 0,
+        "persistent_obstacles": 0,
+        "walls": 54
+      },
+      "newly_observed_cells": 0,
+      "position": [
+        19,
+        22
+      ],
+      "ray_hits": 54,
+      "rays": 61,
+      "step": 36,
+      "visible_cells": 17
+    }
+  ],
+  "schedule": 0,
+  "selected_step_rule": "floor(saved goal step / 2)",
+  "semantic_saved_trace_match": true,
+  "sensor_rule": "actual authorized MuJoCo memory observation; no occupancy injection or hidden query",
+  "steps": 36,
+  "success": true,
+  "target_step": 18,
+  "trace": [
+    {
+      "action": null,
+      "action_reason": null,
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": true,
+      "position": [
+        8,
+        12
+      ],
+      "step": 0
+    },
+    {
+      "action": [
+        "turn",
+        1
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          12
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 1,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        12
+      ],
+      "step": 1
+    },
+    {
+      "action": [
+        "move",
+        [
+          8,
+          13
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 58
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          12
+        ],
+        "ray_count": 61,
+        "ray_hits": 58,
+        "step": 2,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        13
+      ],
+      "step": 2
+    },
+    {
+      "action": [
+        "move",
+        [
+          8,
+          14
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          13
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 3,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        14
+      ],
+      "step": 3
+    },
+    {
+      "action": [
+        "move",
+        [
+          8,
+          15
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          14
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 4,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        15
+      ],
+      "step": 4
+    },
+    {
+      "action": [
+        "move",
+        [
+          8,
+          16
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 56
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          15
+        ],
+        "ray_count": 61,
+        "ray_hits": 56,
+        "step": 5,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        16
+      ],
+      "step": 5
+    },
+    {
+      "action": [
+        "move",
+        [
+          8,
+          17
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 6,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        16
+      ],
+      "step": 6
+    },
+    {
+      "action": [
+        "turn",
+        0
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 7,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        8,
+        16
+      ],
+      "step": 7
+    },
+    {
+      "action": [
+        "move",
+        [
+          9,
+          16
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          8,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 8,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        9,
+        16
+      ],
+      "step": 8
+    },
+    {
+      "action": [
+        "move",
+        [
+          10,
+          16
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 60
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          9,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 60,
+        "step": 9,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        16
+      ],
+      "step": 9
+    },
+    {
+      "action": [
+        "move",
+        [
+          11,
+          16
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 61
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 61,
+        "step": 10,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        16
+      ],
+      "step": 10
+    },
+    {
+      "action": [
+        "turn",
+        1
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 61
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 61,
+        "step": 11,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        16
+      ],
+      "step": 11
+    },
+    {
+      "action": [
+        "move",
+        [
+          10,
+          17
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 61
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          16
+        ],
+        "ray_count": 61,
+        "ray_hits": 61,
+        "step": 12,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        17
+      ],
+      "step": 12
+    },
+    {
+      "action": [
+        "move",
+        [
+          10,
+          18
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 60
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          17
+        ],
+        "ray_count": 61,
+        "ray_hits": 60,
+        "step": 13,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        18
+      ],
+      "step": 13
+    },
+    {
+      "action": [
+        "move",
+        [
+          10,
+          19
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 14,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        18
+      ],
+      "step": 14
+    },
+    {
+      "action": [
+        "turn",
+        0
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 15,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        10,
+        18
+      ],
+      "step": 15
+    },
+    {
+      "action": [
+        "move",
+        [
+          11,
+          18
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          10,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 16,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        11,
+        18
+      ],
+      "step": 16
+    },
+    {
+      "action": [
+        "move",
+        [
+          12,
+          18
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 55
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          11,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 55,
+        "step": 17,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        18
+      ],
+      "step": 17
+    },
+    {
+      "action": [
+        "move",
+        [
+          13,
+          18
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 53
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 53,
+        "step": 18,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        18
+      ],
+      "step": 18
+    },
+    {
+      "action": [
+        "turn",
+        1
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 53
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 53,
+        "step": 19,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        18
+      ],
+      "step": 19
+    },
+    {
+      "action": [
+        "move",
+        [
+          12,
+          19
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 53
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          18
+        ],
+        "ray_count": 61,
+        "ray_hits": 53,
+        "step": 20,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        19
+      ],
+      "step": 20
+    },
+    {
+      "action": [
+        "move",
+        [
+          12,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 56
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          19
+        ],
+        "ray_count": 61,
+        "ray_hits": 56,
+        "step": 21,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        20
+      ],
+      "step": 21
+    },
+    {
+      "action": [
+        "move",
+        [
+          12,
+          21
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 49
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 49,
+        "step": 22,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        20
+      ],
+      "step": 22
+    },
+    {
+      "action": [
+        "turn",
+        0
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 49
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 49,
+        "step": 23,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        12,
+        20
+      ],
+      "step": 23
+    },
+    {
+      "action": [
+        "move",
+        [
+          13,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 50
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          12,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 50,
+        "step": 24,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        13,
+        20
+      ],
+      "step": 24
+    },
+    {
+      "action": [
+        "move",
+        [
+          14,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 52
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          13,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 52,
+        "step": 25,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        14,
+        20
+      ],
+      "step": 25
+    },
+    {
+      "action": [
+        "move",
+        [
+          15,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          14,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 26,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        15,
+        20
+      ],
+      "step": 26
+    },
+    {
+      "action": [
+        "move",
+        [
+          16,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 56
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          15,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 56,
+        "step": 27,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        20
+      ],
+      "step": 27
+    },
+    {
+      "action": [
+        "move",
+        [
+          17,
+          20
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": true,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 28,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        20
+      ],
+      "step": 28
+    },
+    {
+      "action": [
+        "turn",
+        1
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 29,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        20
+      ],
+      "step": 29
+    },
+    {
+      "action": [
+        "move",
+        [
+          16,
+          21
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 57
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          20
+        ],
+        "ray_count": 61,
+        "ray_hits": 57,
+        "step": 30,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        21
+      ],
+      "step": 30
+    },
+    {
+      "action": [
+        "move",
+        [
+          16,
+          22
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 61
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          21
+        ],
+        "ray_count": 61,
+        "ray_hits": 61,
+        "step": 31,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 1.5707963267948966,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        22
+      ],
+      "step": 31
+    },
+    {
+      "action": [
+        "turn",
+        0
+      ],
+      "action_reason": "route_direction_change",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 1.5707963267948966,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 53
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          22
+        ],
+        "ray_count": 61,
+        "ray_hits": 53,
+        "step": 32,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": false,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        16,
+        22
+      ],
+      "step": 32
+    },
+    {
+      "action": [
+        "move",
+        [
+          17,
+          22
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 54
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          16,
+          22
+        ],
+        "ray_count": 61,
+        "ray_hits": 54,
+        "step": 33,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 1,
+      "observation_granted": false,
+      "position": [
+        17,
+        22
+      ],
+      "step": 33
+    },
+    {
+      "action": [
+        "move",
+        [
+          18,
+          22
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 54
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          17,
+          22
+        ],
+        "ray_count": 61,
+        "ray_hits": 54,
+        "step": 34,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 2,
+      "observation_granted": true,
+      "position": [
+        18,
+        22
+      ],
+      "step": 34
+    },
+    {
+      "action": [
+        "move",
+        [
+          19,
+          22
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 54
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          18,
+          22
+        ],
+        "ray_count": 61,
+        "ray_hits": 54,
+        "step": 35,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 2,
+      "observation_granted": false,
+      "position": [
+        19,
+        22
+      ],
+      "step": 35
+    },
+    {
+      "action": [
+        "move",
+        [
+          20,
+          22
+        ]
+      ],
+      "action_reason": "forward_route_segment",
+      "blocked": false,
+      "contacts": {
+        "g1_pedestrian_contact_pairs": 0,
+        "g1_persistent_obstacle_contact_pairs": 0,
+        "g1_self_contact_pairs": 0,
+        "g1_unwanted_floor_contact_pairs": 0,
+        "g1_wall_contact_pairs": 0
+      },
+      "emergency_scan": {
+        "heading_yaw_before_action": 0.0,
+        "hits_by_type": {
+          "pedestrians": 0,
+          "persistent_obstacles": 0,
+          "walls": 54
+        },
+        "motion_estimate": {
+          "state": "unknown",
+          "velocity_cells_per_step": null
+        },
+        "position_before_action": [
+          19,
+          22
+        ],
+        "ray_count": 61,
+        "ray_hits": 54,
+        "step": 36,
+        "visible_pedestrian_cells": [],
+        "visible_persistent_obstacle_cells": []
+      },
+      "heading_yaw": 0.0,
+      "moved": true,
+      "observation_count": 2,
+      "observation_granted": false,
+      "position": [
+        20,
+        22
+      ],
+      "step": 36
+    }
+  ],
+  "travel_distance_m": 16.5,
+  "unwanted_contacts": 0,
+  "world_identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030006"
+}
