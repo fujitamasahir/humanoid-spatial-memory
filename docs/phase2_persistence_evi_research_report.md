@@ -7,6 +7,12 @@ completed from the original local stores; descriptive failure analysis is now
 documented in [`persistence_evi_fit72_failure_analysis.md`](persistence_evi_fit72_failure_analysis.md).
 No superiority, novelty, or generalization claim is supported.
 
+**2026-11-14 follow-up:** Candidate-coverage audit, isolated C-K/C-Route3/
+C-RouteK implementation, and a frozen synthetic mechanism screen are recorded
+in [`c_v2_candidate_coverage_research_report.md`](c_v2_candidate_coverage_research_report.md).
+Route3 failed its pre-FIT72 gate, so the candidate FIT72 evaluator refused to
+run; no candidate navigation result is claimed.
+
 ## Delivered implementation and safety boundary
 
 - `src/spatial_memory/persistence.py`: asymmetric observation-history occupancy

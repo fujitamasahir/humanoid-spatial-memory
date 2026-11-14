@@ -1,0 +1,21 @@
+{
+  "controller_policy_changed_for_navigation": false,
+  "fit72_candidate_evaluator_gate_refusal": "PASS",
+  "fit72_candidate_evaluator_help": "PASS",
+  "fit72_candidate_rollout": "NOT RUN: pre-FIT72 mechanism gate rejected Route3",
+  "fit72_result_files_rechecked": 363,
+  "fit_store_payloads_rechecked": 2907,
+  "fit_store_receipts_rechecked": 2907,
+  "focused_test_command": ".venv/bin/python -m pytest tests/test_candidate_coverage.py tests/test_persistence_evi.py tests/test_persistence_evi_evaluation.py -q",
+  "focused_tests_failed": 0,
+  "focused_tests_passed": 37,
+  "original_c_default_function": "unchanged; default injection points to original information_value",
+  "phase15_population_generated": false,
+  "phase15_protected_files_rechecked": 836,
+  "read_only_integrity": "PASS_READ_ONLY_FIT72_INTEGRITY",
+  "reserved_or_heldout_accessed": false,
+  "status": "COMPLETED_WITH_PRE_FIT_HYPOTHESIS_REJECTION",
+  "synthetic_fixtures": 7,
+  "synthetic_gate": "REJECTED_BEFORE_FIT72",
+  "synthetic_variant_runs": 28
+}

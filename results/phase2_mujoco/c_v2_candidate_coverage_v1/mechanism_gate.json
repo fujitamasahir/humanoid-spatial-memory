@@ -1,0 +1,13 @@
+{
+  "C0_critical_selected_count": 0,
+  "all_plan_caps_respected": true,
+  "no_benefit_fixture_scan_authorized": {
+    "C-K": false,
+    "C-Route3": false,
+    "C-RouteK": false,
+    "C0": false
+  },
+  "route3_critical_selected_count": 0,
+  "route3_critical_selection_exceeds_C0": false,
+  "status": "REJECTED_BEFORE_FIT72"
+}

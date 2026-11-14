@@ -23,14 +23,19 @@ import evaluate_event_observation_fit72 as reference
 from spatial_memory.evi import PersistenceEVIController, EVIParameters
 from spatial_memory.persistence import calibration_summary, PersistenceParameters
 from spatial_memory.scheduling import ObservationController
+from spatial_memory.candidate_coverage import (ExpandedEVIParameters,
+    information_value_route, information_value_uncertainty_k,
+    information_value_original_audit)
 
 ARMS = {'b_age': (True, False), 'c_ternary': (False, True), 'bc': (True, True)}
+COVERAGE_ARMS = {'c0_audit', 'c_k', 'c_route3', 'c_routek'}
 
 
 def source_metadata():
     names = sorted(set(reference.base.SOURCE_FILES) | {
         'scripts/evaluate_persistence_evi_fit72.py',
         'src/spatial_memory/evi.py', 'src/spatial_memory/persistence.py',
+        'src/spatial_memory/candidate_coverage.py',
         'src/spatial_memory/scheduling.py', 'src/spatial_memory/memory.py',
         'docs/phase2_persistence_evi_protocol.md'})
     return {
@@ -55,13 +60,24 @@ def run_arm(payload, schedule, arm, config):
 
     def injected(scenario, run_config, method, **kwargs):
         def factory(initial, mode, **options):
-            if arm in ARMS:
-                b, c = ARMS[arm]
+            if arm in ARMS or arm in COVERAGE_ARMS:
+                b, c = ARMS.get(arm, (False, True))
                 sensor = {k: config['mujoco_ray_sensor'][k] for k in
                           ('range_m', 'horizontal_fov_deg', 'ray_count')}
                 sensor['cell_size'] = config['mujoco_cell_size_m']
+                extra={}
+                if arm == 'c0_audit':
+                    extra['evi_function']=information_value_original_audit
+                elif arm == 'c_k':
+                    extra.update(evi_parameters=ExpandedEVIParameters(max_candidates=5),
+                                 evi_function=information_value_uncertainty_k)
+                elif arm == 'c_route3':
+                    extra['evi_function']=information_value_route
+                elif arm == 'c_routek':
+                    extra.update(evi_parameters=ExpandedEVIParameters(max_candidates=5),
+                                 evi_function=information_value_route)
                 agent = PersistenceEVIController(initial, mode, **options,
-                    persistence=b, evi=c, sensor=sensor)
+                    persistence=b, evi=c, sensor=sensor, **extra)
             else:
                 agent = ObservationController(initial, mode, **options)
             context['controller'] = agent
@@ -69,7 +85,7 @@ def run_arm(payload, schedule, arm, config):
         previous_callback = kwargs.get('_observation_callback')
         def record(observation, step, position):
             agent = context['controller']
-            history = agent.base.agent if arm in ARMS else agent.agent
+            history = agent.base.agent if arm in ARMS or arm in COVERAGE_ARMS else agent.agent
             grid = history.memory.grid
             known = grid >= 0
             visible = observation >= 0
@@ -98,7 +114,7 @@ def run_arm(payload, schedule, arm, config):
     agent = context['controller']
     diagnostics = {'calibration_comparators_same_scan_cells': {
         k: calibration_summary(v) for k, v in records.items()}}
-    if arm in ARMS:
+    if arm in ARMS or arm in COVERAGE_ARMS:
         diagnostics.update(decisions=agent.decisions, observation_log=agent.observation_log,
             scheduler_total_ms=agent.scheduler_decision_total_ns/1e6,
             inference_log=agent.belief.inference_log if agent.belief is not None else [],

@@ -1,0 +1,42 @@
+{
+  "all_replays_match": true,
+  "decision_step_context": {
+    "bc": {
+      "comparative_failure_decisions": 1760,
+      "original_policy_already_granted_at_those_steps": 8,
+      "selected_shortlist_positive_D_at_those_steps": 36,
+      "selected_shortlist_positive_V_at_those_steps": 58,
+      "steps_with_excluded_route_candidate_changing_first_action": 650
+    },
+    "c_ternary": {
+      "comparative_failure_decisions": 1760,
+      "original_policy_already_granted_at_those_steps": 8,
+      "selected_shortlist_positive_D_at_those_steps": 38,
+      "selected_shortlist_positive_V_at_those_steps": 62,
+      "steps_with_excluded_route_candidate_changing_first_action": 643
+    }
+  },
+  "excluded_nominal_route_candidate_instances": {
+    "bc": {
+      "D_exceeds_frozen_K3_cost": 225,
+      "candidate_D_exceeds_selected_D_and_cost": 225,
+      "candidates_evaluated": 3925,
+      "change_point_plan_first_action": 977,
+      "positive_D": 312,
+      "positive_V": 572,
+      "steps_where_candidate_would_flip_no_scan_to_scan": 224,
+      "steps_with_any_candidate_that_can_become_best_and_clear_cost": 225
+    },
+    "c_ternary": {
+      "D_exceeds_frozen_K3_cost": 241,
+      "candidate_D_exceeds_selected_D_and_cost": 237,
+      "candidates_evaluated": 3890,
+      "change_point_plan_first_action": 952,
+      "positive_D": 301,
+      "positive_V": 552,
+      "steps_where_candidate_would_flip_no_scan_to_scan": 233,
+      "steps_with_any_candidate_that_can_become_best_and_clear_cost": 233
+    }
+  },
+  "scope": "22 comparative failure keys, C-only/B+C, 44 semantically exact replays"
+}

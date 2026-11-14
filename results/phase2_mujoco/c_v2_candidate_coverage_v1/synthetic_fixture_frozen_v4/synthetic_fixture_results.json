@@ -1,0 +1,951 @@
+{
+  "admitted_worlds_loaded": false,
+  "descriptive_fit72_permitted_by_frozen_gate": false,
+  "fixtures": [
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": false,
+      "fixture": "critical_uncertain_cell_outside_original_top3",
+      "net_value": 1.88,
+      "plan_calls": 7,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "critical_uncertain_cell_outside_original_top3",
+      "net_value": 1.8599999999999999,
+      "plan_calls": 9,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": false,
+      "fixture": "critical_uncertain_cell_outside_original_top3",
+      "net_value": 1.88,
+      "plan_calls": 7,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "critical_uncertain_cell_outside_original_top3",
+      "net_value": 1.8599999999999999,
+      "plan_calls": 9,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": false,
+      "fixture": "narrow_route_bottleneck",
+      "net_value": 1.88,
+      "plan_calls": 7,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "narrow_route_bottleneck",
+      "net_value": 1.8599999999999999,
+      "plan_calls": 9,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": false,
+      "fixture": "narrow_route_bottleneck",
+      "net_value": 1.88,
+      "plan_calls": 7,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 2.5,
+      "V": 5.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "narrow_route_bottleneck",
+      "net_value": 1.8599999999999999,
+      "plan_calls": 9,
+      "scan_authorized": true,
+      "selected_candidates": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_alternative_routes",
+      "net_value": -0.6200000000000001,
+      "plan_calls": 7,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_alternative_routes",
+      "net_value": -0.64,
+      "plan_calls": 9,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 4,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_alternative_routes",
+      "net_value": -0.6200000000000001,
+      "plan_calls": 7,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 4,
+      "cost": 0.64,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_alternative_routes",
+      "net_value": -0.64,
+      "plan_calls": 9,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 0.0,
+      "V": 3.5999999999999996,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "irrelevant_high_uncertainty_cells",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 0.0,
+      "V": 3.5999999999999996,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "irrelevant_high_uncertainty_cells",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 0.0,
+      "V": 3.5999999999999996,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "irrelevant_high_uncertainty_cells",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 0.0,
+      "V": 3.5999999999999996,
+      "best_value_cell": [
+        6,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        6,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "irrelevant_high_uncertainty_cells",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0999999999999996,
+      "best_value_cell": [
+        8,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 5,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        8,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "uncertain_obstacle_near_future_route_branch",
+      "net_value": -0.6200000000000001,
+      "plan_calls": 7,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          8,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          8,
+          6
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0999999999999996,
+      "best_value_cell": [
+        8,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 5,
+      "cost": 0.66,
+      "critical_fixture_cell": [
+        8,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "uncertain_obstacle_near_future_route_branch",
+      "net_value": -0.66,
+      "plan_calls": 11,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          8,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0999999999999996,
+      "best_value_cell": [
+        8,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 5,
+      "cost": 0.6200000000000001,
+      "critical_fixture_cell": [
+        8,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "uncertain_obstacle_near_future_route_branch",
+      "net_value": -0.6200000000000001,
+      "plan_calls": 7,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          8,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          8,
+          6
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 0.0,
+      "V": 1.0999999999999996,
+      "best_value_cell": [
+        8,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 5,
+      "cost": 0.66,
+      "critical_fixture_cell": [
+        8,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "uncertain_obstacle_near_future_route_branch",
+      "net_value": -0.66,
+      "plan_calls": 11,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          8,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 0.0,
+      "V": 0.0,
+      "best_value_cell": null,
+      "call_cap": 7,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        4,
+        6
+      ],
+      "critical_selected": true,
+      "fixture": "no_observation_benefit",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          4,
+          6
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 0.0,
+      "V": 0.0,
+      "best_value_cell": null,
+      "call_cap": 11,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        4,
+        6
+      ],
+      "critical_selected": true,
+      "fixture": "no_observation_benefit",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          4,
+          6
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 0.0,
+      "V": 0.0,
+      "best_value_cell": null,
+      "call_cap": 7,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        4,
+        6
+      ],
+      "critical_selected": true,
+      "fixture": "no_observation_benefit",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          4,
+          6
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 0.0,
+      "V": 0.0,
+      "best_value_cell": null,
+      "call_cap": 11,
+      "candidate_count": 1,
+      "cost": 0.5800000000000001,
+      "critical_fixture_cell": [
+        4,
+        6
+      ],
+      "critical_selected": true,
+      "fixture": "no_observation_benefit",
+      "net_value": -0.5800000000000001,
+      "plan_calls": 3,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          4,
+          6
+        ]
+      ],
+      "variant": "C-RouteK"
+    },
+    {
+      "D": 0.0,
+      "V": 2.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 2,
+      "cost": 0.6000000000000001,
+      "critical_fixture_cell": [
+        5,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_correlated_uncertain_cells",
+      "net_value": -0.6000000000000001,
+      "plan_calls": 5,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C0"
+    },
+    {
+      "D": 0.0,
+      "V": 2.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 2,
+      "cost": 0.6000000000000001,
+      "critical_fixture_cell": [
+        5,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_correlated_uncertain_cells",
+      "net_value": -0.6000000000000001,
+      "plan_calls": 5,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-K"
+    },
+    {
+      "D": 0.0,
+      "V": 2.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 7,
+      "candidate_count": 2,
+      "cost": 0.6000000000000001,
+      "critical_fixture_cell": [
+        5,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_correlated_uncertain_cells",
+      "net_value": -0.6000000000000001,
+      "plan_calls": 5,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-Route3"
+    },
+    {
+      "D": 0.0,
+      "V": 2.0,
+      "best_value_cell": [
+        5,
+        7
+      ],
+      "call_cap": 11,
+      "candidate_count": 2,
+      "cost": 0.6000000000000001,
+      "critical_fixture_cell": [
+        5,
+        7
+      ],
+      "critical_selected": true,
+      "fixture": "multiple_correlated_uncertain_cells",
+      "net_value": -0.6000000000000001,
+      "plan_calls": 5,
+      "scan_authorized": false,
+      "selected_candidates": [
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "variant": "C-RouteK"
+    }
+  ],
+  "mechanism_gate": {
+    "C0_critical_selected_count": 0,
+    "all_plan_caps_respected": true,
+    "no_benefit_fixture_scan_authorized": {
+      "C-K": false,
+      "C-Route3": false,
+      "C-RouteK": false,
+      "C0": false
+    },
+    "route3_critical_selected_count": 0,
+    "route3_critical_selection_exceeds_C0": false,
+    "status": "REJECTED_BEFORE_FIT72"
+  },
+  "phase15_generator_called": false,
+  "policy_source_sha256": "1487c2ad2df4ad35ea44e5a53befea6b4ec5cf6c6cab16ad0fb981bdf5441775",
+  "source_sha256": "f9c6682900ea5e67d8fb931d894130114f94ef2a02469c800642ec275383417e",
+  "status": "COMPLETED_SYNTHETIC_MECHANISM_FIXTURES"
+}

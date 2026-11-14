@@ -92,7 +92,8 @@ class PersistenceEVIController:
     """B+Age, C+ternary or B+C. Only explicit public context enters decisions."""
     def __init__(self, initial, method, *, interval=2, radius=3, parameters=None,
                  max_observations=20, persistence=True, evi=True, sensor=None,
-                 persistence_parameters=None, evi_parameters=None):
+                 persistence_parameters=None, evi_parameters=None,
+                 evi_function=None):
         if method != 'age' or not (persistence or evi):
             raise ValueError('Use Age base and at least one B/C component')
         if max_observations is None or not 1 <= max_observations <= 20:
@@ -104,6 +105,9 @@ class PersistenceEVIController:
         self.evi = evi
         self.sensor = dict(sensor or {})
         self.evi_parameters = evi_parameters or EVIParameters()
+        # Optional function injection is used only by isolated candidate
+        # coverage ablations. The default remains the frozen original C path.
+        self.evi_function = evi_function or information_value
         self.context = None
         self.decisions = []
         self.observation_log = []
@@ -144,7 +148,7 @@ class PersistenceEVIController:
                 raise RuntimeError('Public navigation context required')
             goal, yaw, unknown = self.context
             if self.used < self.cap and step > 0:
-                detail = information_value(self.memory.grid, self.probabilities(step),
+                detail = self.evi_function(self.memory.grid, self.probabilities(step),
                     position, goal, yaw, unknown, self.sensor, self.cap-self.used,
                     self.evi_parameters)
                 request = detail['net_value'] > 0

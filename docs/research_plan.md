@@ -50,6 +50,19 @@ Keep a bibliography with verified paper metadata, method assumptions, and reprod
 3. Are the failures meaningful and attributable to memory, rather than to planner or sensor bugs?
 4. Only then implement a task-aware verification method.
 
+## Phase 2 observation-policy status (2026-11-14)
+
+The FIT72 B/C failure analysis is descriptive and complete. A separately frozen
+C v2.0 route-candidate ranking proposal was implemented as isolated C-K,
+C-Route3, and C-RouteK ablations. Its final public-memory synthetic gate found
+that Route3 did not select the unique uncertain chokepoint more often than C0;
+the predeclared rule rejected the candidate-ranking mechanism before any new
+FIT72 candidate rollout. The FIT72 candidate evaluator is guarded and was not
+run. See `docs/c_v2_candidate_coverage_research_report.md`. Do not proceed to
+C v2.1/v2.2 without a separately frozen development iteration and, for
+independent claims, the lineage-separated cohort approvals in
+`docs/independent_cohort_proposal.md`.
+
 ## Intended portfolio outcome
 
 Reproducible code, clear research question, defensible baselines, ablations, repeated-seed results with uncertainty, failure analysis, and a candid simulation limitations section.
