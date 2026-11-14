@@ -1,0 +1,23 @@
+{
+  "FIT72_evaluation": "NOT RUN",
+  "FIT_fixed_state_replay": "NOT RUN",
+  "allowed_conclusion": "The saved numeric metrics are descriptive of this run only; protocol conformance is insufficient to accept the mechanism gate.",
+  "formal_result_repeated": false,
+  "next_step": "Create a new protocol and result version with corrected component classification, fixture topology, and pre-run annotation assertions; do not edit or rerun this formal version.",
+  "nominal_synthetic_numeric_gate": "PASS",
+  "reasons": [
+    {
+      "finding": "The start and goal were already connected through a detour, but an occupied candidate was labeled a connectivity shortcut without requiring distinct terminal components.",
+      "fixture": "occupied_cell_clearing_shortcut"
+    },
+    {
+      "finding": "The annotated cell belongs to a cyclic region with alternate routes, not a start-goal articulation as specified.",
+      "fixture": "multiple_correlated_uncertain_cells"
+    },
+    {
+      "finding": "The narrow throat contains three consecutive start-goal-separating vertices, so it does not represent one unique articulation point. The critical-cell-outside-top-three fixture repeats this geometry.",
+      "fixture": "unique_start_goal_articulation"
+    }
+  ],
+  "status": "INVALID_STOP_BEFORE_FIT"
+}

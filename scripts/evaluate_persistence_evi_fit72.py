@@ -26,9 +26,10 @@ from spatial_memory.scheduling import ObservationController
 from spatial_memory.candidate_coverage import (ExpandedEVIParameters,
     information_value_route, information_value_uncertainty_k,
     information_value_original_audit)
+from spatial_memory.topology_evi import TopologyEVIParameters, information_value_topology
 
 ARMS = {'b_age': (True, False), 'c_ternary': (False, True), 'bc': (True, True)}
-COVERAGE_ARMS = {'c0_audit', 'c_k', 'c_route3', 'c_routek'}
+COVERAGE_ARMS = {'c0_audit', 'c_k', 'c_route3', 'c_routek', 'c_topology3'}
 
 
 def source_metadata():
@@ -36,6 +37,7 @@ def source_metadata():
         'scripts/evaluate_persistence_evi_fit72.py',
         'src/spatial_memory/evi.py', 'src/spatial_memory/persistence.py',
         'src/spatial_memory/candidate_coverage.py',
+        'src/spatial_memory/topology_evi.py',
         'src/spatial_memory/scheduling.py', 'src/spatial_memory/memory.py',
         'docs/phase2_persistence_evi_protocol.md'})
     return {
@@ -76,6 +78,9 @@ def run_arm(payload, schedule, arm, config):
                 elif arm == 'c_routek':
                     extra.update(evi_parameters=ExpandedEVIParameters(max_candidates=5),
                                  evi_function=information_value_route)
+                elif arm == 'c_topology3':
+                    extra.update(evi_parameters=TopologyEVIParameters(),
+                                 evi_function=information_value_topology)
                 agent = PersistenceEVIController(initial, mode, **options,
                     persistence=b, evi=c, sensor=sensor, **extra)
             else:

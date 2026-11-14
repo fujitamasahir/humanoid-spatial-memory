@@ -13,6 +13,12 @@ in [`c_v2_candidate_coverage_research_report.md`](c_v2_candidate_coverage_resear
 Route3 failed its pre-FIT72 gate, so the candidate FIT72 evaluator refused to
 run; no candidate navigation result is claimed.
 
+**2026-11-14 topology follow-up:** C v2.0b Tarjan screening and its nominal
+numeric gate are archived in `docs/c_v2b_topology_research_report.md`. Review
+found protocol-conformance defects in one occupied-cell classifier and fixture
+construction/labels; the nominal pass is invalidated. No causal replay or
+FIT72 candidate evaluation was run.
+
 ## Delivered implementation and safety boundary
 
 - `src/spatial_memory/persistence.py`: asymmetric observation-history occupancy

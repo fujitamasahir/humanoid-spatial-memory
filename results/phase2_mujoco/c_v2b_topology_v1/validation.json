@@ -1,0 +1,19 @@
+{
+  "FIT72_candidate_episodes_run": false,
+  "FIT_trajectories_replayed": false,
+  "Phase1_5_generator_called": false,
+  "existing_result_files_modified": false,
+  "final_focused_tests_failed": 0,
+  "final_focused_tests_passed": 45,
+  "final_test_command": ".venv/bin/python -m pytest -q tests/test_topology_evi.py tests/test_c_v2_gate_review_guard.py tests/test_candidate_coverage.py tests/test_persistence_evi.py tests/test_persistence_evi_evaluation.py",
+  "fit72_runner_fail_closed_refusal": "PASS_BEFORE_STORE_PREFLIGHT",
+  "formal_fixtures": 11,
+  "formal_focused_tests_before_screen": 41,
+  "formal_policy_fixture_runs": 44,
+  "git_diff_check": "PASS",
+  "historical_Age_runtime_fields_read_for_pilot_estimate": 72,
+  "nominal_gate": "PASS",
+  "python_compilation": "PASS",
+  "review_status": "INVALID_STOP_BEFORE_FIT",
+  "status": "COMPLETED_SYNTHETIC_SCREEN_INVALIDATED_BY_REVIEW"
+}

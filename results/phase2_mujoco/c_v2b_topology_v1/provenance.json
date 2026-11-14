@@ -1,0 +1,11 @@
+{
+  "base_commit": "13c6caaf5cd9bdd3704a6e35b0f3b4caf861577b",
+  "fit_runner_guard_sha256": "d9d2d5159b28eb273b5f01186b84fc8dcb4c50d64247dc6af4a99fb3e00c839d",
+  "gate_guard_test_sha256": "3efa3b165959bd083ad3f9f3887bf87ca82755e87e4462269972774f12a3c059",
+  "policy_sha256": "f0da5a7c0b31cebbdb1c077c88e30426e2464c7ef9733e9864cd609256e61414",
+  "protocol_sha256": "84e4d36d4902130008a570a5e9946bc214403061c2e07329a177dca96ebb77ab",
+  "raw_result_sha256": "5dc53fddf8eda0d0ad806e2ff7edfd9c5cd815cb2f6d0d98d8c2900db5778730",
+  "read_boundary": "No protected environment generation or candidate navigation execution; read-only historical Age runtime fields only for pilot budget.",
+  "runner_sha256": "787ec8863ab839c043716f32e12158f24099a63ba8493dec5ce125ce128ce2f5",
+  "status": "SYNTHETIC_PUBLIC_GRID_SCREEN_ONLY"
+}

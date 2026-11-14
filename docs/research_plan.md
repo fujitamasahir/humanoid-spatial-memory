@@ -63,6 +63,13 @@ C v2.1/v2.2 without a separately frozen development iteration and, for
 independent claims, the lineage-separated cohort approvals in
 `docs/independent_cohort_proposal.md`.
 
+The subsequent C v2.0b topology hypothesis produced a nominal synthetic metric
+gate pass, but a post-run conformance review found an occupied-cell component
+classification defect and structural fixture-label/construction defects. The
+formal result is archived as invalid; no causal replay or FIT72 screen was
+run. See `docs/c_v2b_topology_research_report.md`; do not treat its numeric
+screen as evidence for further FIT work.
+
 ## Intended portfolio outcome
 
 Reproducible code, clear research question, defensible baselines, ablations, repeated-seed results with uncertainty, failure analysis, and a candid simulation limitations section.

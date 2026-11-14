@@ -1,0 +1,47 @@
+[
+  {
+    "bytes": 793,
+    "path": "README.md",
+    "sha256": "ac891d443a3318bb176878eab1a2288edc485c342cebca66f7578ce44fe6a474"
+  },
+  {
+    "bytes": 1299,
+    "path": "gate_review.json",
+    "sha256": "81cc9f6e9e7c891767d7dd21c7990f1516f7339070dc8abbf93ed291dda7b820"
+  },
+  {
+    "bytes": 7496,
+    "path": "independent_cohort_proposal.md",
+    "sha256": "b7ec5470b615058d6df6af4e558b6ad0d25b2699bc43824c8e5e23f931c8d9cc"
+  },
+  {
+    "bytes": 7461,
+    "path": "protocol.md",
+    "sha256": "84e4d36d4902130008a570a5e9946bc214403061c2e07329a177dca96ebb77ab"
+  },
+  {
+    "bytes": 816,
+    "path": "provenance.json",
+    "sha256": "3f525338efff34b1a90dcae032f26575538172c6287ae0ef4f18b3b7fe96a87c"
+  },
+  {
+    "bytes": 4780,
+    "path": "research_report.md",
+    "sha256": "c6d0cb49705ddc58c2c63e3324bcdd61a1ef02c87929a0caa4765246f81423c8"
+  },
+  {
+    "bytes": 74784,
+    "path": "synthetic_mechanism_results.json",
+    "sha256": "5dc53fddf8eda0d0ad806e2ff7edfd9c5cd815cb2f6d0d98d8c2900db5778730"
+  },
+  {
+    "bytes": 21850,
+    "path": "topology_fixture_maps.png",
+    "sha256": "af5ce50f1288d48374f2372db5c2fe42f5d78d3b6f46bbb687be31a1ef166049"
+  },
+  {
+    "bytes": 892,
+    "path": "validation.json",
+    "sha256": "4521d3e7fce7f8561702332df4dfe37e6783f724f58773cf3e05fc2684f4c180"
+  }
+]

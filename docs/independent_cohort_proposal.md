@@ -31,6 +31,34 @@ the protocol calls for a paired comparison. The generator may use a fixed set
 of public, preregistered distributions; it must not copy FIT72 topology or
 change frequencies.
 
+### Smaller mechanism-development pilot (proposal only)
+
+Before the larger development cohort, a **24-lineage pilot** could check the
+generator and topology instrumentation without serving as an efficacy test.
+Allocate six lineages to each of four preregistered families: tree-like
+corridors, loop-rich layouts, rooms with narrow connectors, and mixed
+open/narrow regions. Pair two schedules per lineage (48 map-schedule cases).
+The suggested four arms are Periodic, Age, frozen C0, and the then-frozen
+candidate, for 192 policy-episodes. Do not select weights or claim efficacy
+from pilot navigation outcomes; any algorithm change requires a new protocol
+and untouched evaluation partition.
+
+Pilot parent seeds and lineage IDs must occupy a separate namespace from the
+80-lineage development and 200-lineage sealed-evaluation partitions. Use the
+same exact-map, rotation/reflection/translation, graph-isomorphism,
+corridor-profile, and near-topology duplicate checks. Quarantine duplicates;
+do not replace them according to outcomes. Admission records source payload
+hashes, seed derivations, family labels, duplicate signatures, generator
+commit, and custodian approval before controller access. The protected Phase
+1.5 population is never an input or fallback source.
+
+For a rough runtime budget only, the local historical FIT72 store has 72 Age
+episode records with median wall time 0.123 s (mean 0.145 s, maximum 0.403 s).
+At the median, 192 pilot episodes imply about 23 seconds of episode runtime,
+before generator startup, logging, integrity checks, and analysis. Budget at
+least 10 minutes locally and report measured elapsed time. This estimate is
+machine/configuration dependent and is not a performance guarantee.
+
 ## Lineage partition and duplicate checks
 
 Create disjoint generator parent-seed namespaces and lineage IDs for development
@@ -84,18 +112,19 @@ time, and wall time.
 
 Predeclare a joint improvement rule: no increase in unwanted contacts; completion
 not inferior by more than 3 percentage points; and a paired reduction of at
-least 10% in total sensing rays or common-success navigation cost, with a
-maze-cluster 95% interval excluding zero for the designated primary benefit.
+least 10% in **both** total sensing rays and common-success navigation cost,
+with maze-cluster 95% intervals excluding zero for both designated benefits.
 Report each component even if the joint rule fails. Reject the policy if safety
-is worse, completion crosses the non-inferiority margin, the primary benefit is
-not supported, or results depend on a small subset of lineages. Exact margins
+is worse, completion crosses the non-inferiority margin, either cost reduction
+is unsupported, or results depend on a small subset of lineages. Exact margins
 and multiplicity handling require approval before generation.
 
 ## Required owner approvals
 
 Before any cohort work, the repository owner must approve: (1) the new generator
 schema and version; (2) distribution ranges and environment families; (3) the
-80/200 allocation or a justified alternative; (4) the seed/lineage partition
+24-lineage pilot scope, if desired, and 80/200 allocation or a justified
+alternative; (4) the seed/lineage partition
 and duplicate-admission rules; (5) the primary benefit, safety/non-inferiority
 margins, and multiplicity plan; (6) the independent custodian/access mechanism;
 and (7) the frozen policy/source commit and exact evaluation matrix. This

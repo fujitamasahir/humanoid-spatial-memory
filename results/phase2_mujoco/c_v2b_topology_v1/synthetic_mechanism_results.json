@@ -1,0 +1,3776 @@
+{
+  "FIT_data_accessed": false,
+  "admitted_worlds_loaded": false,
+  "environment": {
+    "machine": "arm64",
+    "pid": 67165,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "fixtures": [
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "start_goal_separator",
+        "observed": "start_goal_separator"
+      },
+      "arms": {
+        "C-K": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.64,
+          "actual_scan": true,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 9,
+          "scheduler_ns": 2095541,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.5,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            3,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": false,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 2173833,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "selected_D": 0.5,
+          "selected_best_D_regret": 2.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 573833,
+          "graph_operations": 1904,
+          "graph_work_bound": 8660,
+          "plan_calls": 7,
+          "scheduler_ns": 2602625,
+          "selected": [
+            [
+              7,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            "start_goal_separator",
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle"
+          ]
+        },
+        "C0": {
+          "D": 0.5,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            3,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": false,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 1931750,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "selected_D": 0.5,
+          "selected_best_D_regret": 2.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          3,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "eligible_count": 4,
+      "exhaustive_best_D": 2.5,
+      "exhaustive_best_cells": [
+        [
+          7,
+          7
+        ]
+      ],
+      "exhaustive_calls": 9,
+      "exhaustive_candidates": [
+        {
+          "D": 0.5,
+          "V": 1.0,
+          "cell": [
+            3,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            4,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "unique_start_goal_articulation",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 3,
+        "biconnected_block_count": 4,
+        "bridge_count": 2,
+        "edges": 276,
+        "relevant_bridge_count": 2,
+        "separating_count": 3,
+        "vertices": 157
+      },
+      "useful_cells": [
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "cell": [
+          4,
+          5
+        ],
+        "expected": "irrelevant_articulation",
+        "observed": "irrelevant_articulation"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 786500,
+          "selected": [
+            [
+              4,
+              6
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 798666,
+          "selected": [
+            [
+              4,
+              6
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 133791,
+          "graph_operations": 144,
+          "graph_work_bound": 660,
+          "plan_calls": 3,
+          "scheduler_ns": 955417,
+          "selected": [
+            [
+              4,
+              6
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "irrelevant_articulation"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 848042,
+          "selected": [
+            [
+              4,
+              6
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          4,
+          6
+        ]
+      ],
+      "eligible_count": 1,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 3,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 0.0,
+          "cell": [
+            4,
+            6
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "irrelevant_dead_end_articulation",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 13,
+        "biconnected_block_count": 16,
+        "bridge_count": 16,
+        "edges": 16,
+        "relevant_bridge_count": 10,
+        "separating_count": 9,
+        "vertices": 17
+      },
+      "useful_cells": []
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "route_cell_with_alternative_cycle",
+        "observed": "route_cell_with_alternative_cycle"
+      },
+      "arms": {
+        "C-K": {
+          "D": 1.5,
+          "V": 3.0,
+          "actual_cost": 0.66,
+          "actual_scan": true,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 11,
+          "scheduler_ns": 888375,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              7
+            ]
+          ],
+          "selected_D": 1.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 1.5,
+          "V": 3.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 996041,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "selected_D": 1.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 1.5,
+          "V": 3.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 551584,
+          "graph_operations": 1788,
+          "graph_work_bound": 7940,
+          "plan_calls": 7,
+          "scheduler_ns": 1360208,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "selected_D": 1.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle"
+          ]
+        },
+        "C0": {
+          "D": 1.5,
+          "V": 3.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 835834,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "selected_D": 1.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          10,
+          7
+        ]
+      ],
+      "eligible_count": 7,
+      "exhaustive_best_D": 1.5,
+      "exhaustive_best_cells": [
+        [
+          4,
+          7
+        ]
+      ],
+      "exhaustive_calls": 15,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            9,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            6,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 1.5,
+          "V": 3.0,
+          "cell": [
+            4,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            8,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 3.0,
+          "cell": [
+            10,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "narrow_corridor_with_alternative_loop",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 0,
+        "biconnected_block_count": 1,
+        "bridge_count": 0,
+        "edges": 248,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 149
+      },
+      "useful_cells": [
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "cell": [
+          5,
+          7
+        ],
+        "expected": "start_goal_separator",
+        "observed": "start_goal_separator"
+      },
+      "arms": {
+        "C-K": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1367958,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 2,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1387291,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 2,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 493833,
+          "graph_operations": 1636,
+          "graph_work_bound": 7700,
+          "plan_calls": 5,
+          "scheduler_ns": 1869250,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 2,
+          "topology_classes": [
+            "start_goal_separator",
+            "start_goal_separator"
+          ]
+        },
+        "C0": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1502041,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 2,
+          "topology_classes": [
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          5,
+          7
+        ],
+        [
+          9,
+          7
+        ]
+      ],
+      "eligible_count": 2,
+      "exhaustive_best_D": 2.5,
+      "exhaustive_best_cells": [
+        [
+          5,
+          7
+        ],
+        [
+          9,
+          7
+        ]
+      ],
+      "exhaustive_calls": 5,
+      "exhaustive_candidates": [
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            9,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "multiple_serial_bottlenecks",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 6,
+        "biconnected_block_count": 7,
+        "bridge_count": 4,
+        "edges": 240,
+        "relevant_bridge_count": 4,
+        "separating_count": 6,
+        "vertices": 145
+      },
+      "useful_cells": [
+        [
+          5,
+          7
+        ],
+        [
+          9,
+          7
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "route_cell_with_alternative_cycle",
+        "observed": "route_cell_with_alternative_cycle"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 1.0,
+          "actual_cost": 0.66,
+          "actual_scan": false,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 11,
+          "scheduler_ns": 2697291,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 2528416,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 537291,
+          "graph_operations": 2192,
+          "graph_work_bound": 9620,
+          "plan_calls": 7,
+          "scheduler_ns": 3009167,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            4,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 2475917,
+          "selected": [
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "eligible_count": 7,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 15,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            9,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            10,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            6,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            4,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            8,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "loop_rich_no_articulation",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 0,
+        "biconnected_block_count": 1,
+        "bridge_count": 0,
+        "edges": 312,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 169
+      },
+      "useful_cells": []
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "occupied_distance_shortcut",
+        "observed": "occupied_connectivity_shortcut"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 2.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 690958,
+          "selected": [
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 2.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 721417,
+          "selected": [
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 2.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 670500,
+          "graph_operations": 1659,
+          "graph_work_bound": 7880,
+          "plan_calls": 3,
+          "scheduler_ns": 1344833,
+          "selected": [
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "occupied_connectivity_shortcut"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 2.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 685416,
+          "selected": [
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          7,
+          7
+        ]
+      ],
+      "eligible_count": 1,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 3,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 2.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "occupied_cell_clearing_shortcut",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 4,
+        "biconnected_block_count": 5,
+        "bridge_count": 4,
+        "edges": 246,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 148
+      },
+      "useful_cells": []
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "start_goal_separator",
+        "observed": "start_goal_separator"
+      },
+      "arms": {
+        "C-K": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.64,
+          "actual_scan": true,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 9,
+          "scheduler_ns": 1898875,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.5,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            3,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": false,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 1899333,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "selected_D": 0.5,
+          "selected_best_D_regret": 2.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            7,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 452417,
+          "graph_operations": 1904,
+          "graph_work_bound": 8660,
+          "plan_calls": 7,
+          "scheduler_ns": 2333125,
+          "selected": [
+            [
+              7,
+              7
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            "start_goal_separator",
+            "route_cell_with_alternative_cycle",
+            "route_cell_with_alternative_cycle"
+          ]
+        },
+        "C0": {
+          "D": 0.5,
+          "V": 1.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            3,
+            7
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": false,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 1850291,
+          "selected": [
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "selected_D": 0.5,
+          "selected_best_D_regret": 2.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          3,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "eligible_count": 4,
+      "exhaustive_best_D": 2.5,
+      "exhaustive_best_cells": [
+        [
+          7,
+          7
+        ]
+      ],
+      "exhaustive_calls": 9,
+      "exhaustive_candidates": [
+        {
+          "D": 0.5,
+          "V": 1.0,
+          "cell": [
+            3,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            4,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "critical_cell_outside_C0_top3",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 3,
+        "biconnected_block_count": 4,
+        "bridge_count": 2,
+        "edges": 276,
+        "relevant_bridge_count": 2,
+        "separating_count": 3,
+        "vertices": 157
+      },
+      "useful_cells": [
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          7
+        ],
+        "expected": "start_goal_separator",
+        "observed": "route_cell_with_alternative_cycle"
+      },
+      "arms": {
+        "C-K": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.66,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 11,
+          "scheduler_ns": 1541458,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 3,
+          "topology_classes": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            6,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 1447875,
+          "selected": [
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 1,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 428958,
+          "graph_operations": 1716,
+          "graph_work_bound": 7700,
+          "plan_calls": 7,
+          "scheduler_ns": 1966000,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 3,
+          "topology_classes": [
+            "start_goal_separator",
+            "start_goal_separator",
+            "start_goal_separator"
+          ]
+        },
+        "C0": {
+          "D": 2.5,
+          "V": 5.0,
+          "actual_cost": 0.6200000000000001,
+          "actual_scan": true,
+          "best_cell": [
+            5,
+            7
+          ],
+          "common_scan": true,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 7,
+          "scheduler_ns": 1472916,
+          "selected": [
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ]
+          ],
+          "selected_D": 2.5,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 2,
+          "topology_classes": [
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          5,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          10,
+          7
+        ]
+      ],
+      "eligible_count": 6,
+      "exhaustive_best_D": 2.5,
+      "exhaustive_best_cells": [
+        [
+          5,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          10,
+          7
+        ]
+      ],
+      "exhaustive_calls": 13,
+      "exhaustive_candidates": [
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            5,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            7,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            9,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            6,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 1.0,
+          "cell": [
+            8,
+            7
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 2.5,
+          "V": 5.0,
+          "cell": [
+            10,
+            7
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "multiple_correlated_uncertain_cells",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 6,
+        "biconnected_block_count": 7,
+        "bridge_count": 4,
+        "edges": 240,
+        "relevant_bridge_count": 4,
+        "separating_count": 6,
+        "vertices": 145
+      },
+      "useful_cells": [
+        [
+          5,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "annotation": {
+        "cell": [
+          4,
+          5
+        ],
+        "expected": "other_traversable",
+        "observed": "other_traversable"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 2267834,
+          "selected": [
+            [
+              4,
+              5
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 2382500,
+          "selected": [
+            [
+              4,
+              5
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 553167,
+          "graph_operations": 2072,
+          "graph_work_bound": 9620,
+          "plan_calls": 3,
+          "scheduler_ns": 2896916,
+          "selected": [
+            [
+              4,
+              5
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "other_traversable"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 0.0,
+          "actual_cost": 0.5800000000000001,
+          "actual_scan": false,
+          "best_cell": null,
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 3,
+          "scheduler_ns": 2263375,
+          "selected": [
+            [
+              4,
+              5
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          4,
+          5
+        ]
+      ],
+      "eligible_count": 1,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 3,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 0.0,
+          "cell": [
+            4,
+            5
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "no_beneficial_scan",
+      "goal": [
+        12,
+        7
+      ],
+      "start": [
+        2,
+        7
+      ],
+      "topology": {
+        "articulation_count": 0,
+        "biconnected_block_count": 1,
+        "bridge_count": 0,
+        "edges": 312,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 169
+      },
+      "useful_cells": []
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          4
+        ],
+        "expected": "route_cell_with_alternative_cycle",
+        "observed": "route_cell_with_alternative_cycle"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            4
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1808916,
+          "selected": [
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              10
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            4
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1825542,
+          "selected": [
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              10
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            4
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 498542,
+          "graph_operations": 1877,
+          "graph_work_bound": 8720,
+          "plan_calls": 5,
+          "scheduler_ns": 2275625,
+          "selected": [
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              10
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "route_cell_with_alternative_cycle",
+            "other_traversable"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            4
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1842208,
+          "selected": [
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              10
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          10
+        ]
+      ],
+      "eligible_count": 2,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 5,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 6.0,
+          "cell": [
+            7,
+            4
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 0.0,
+          "cell": [
+            7,
+            10
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "same_graph_pair_upper",
+      "goal": [
+        12,
+        4
+      ],
+      "start": [
+        2,
+        4
+      ],
+      "topology": {
+        "articulation_count": 0,
+        "biconnected_block_count": 1,
+        "bridge_count": 0,
+        "edges": 278,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 158
+      },
+      "useful_cells": []
+    },
+    {
+      "annotation": {
+        "cell": [
+          7,
+          10
+        ],
+        "expected": "route_cell_with_alternative_cycle",
+        "observed": "route_cell_with_alternative_cycle"
+      },
+      "arms": {
+        "C-K": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            10
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1827917,
+          "selected": [
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              4
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Route3": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            10
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1811041,
+          "selected": [
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              4
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        },
+        "C-Topology3": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            10
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 497417,
+          "graph_operations": 1877,
+          "graph_work_bound": 8720,
+          "plan_calls": 5,
+          "scheduler_ns": 2386250,
+          "selected": [
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              4
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            "route_cell_with_alternative_cycle",
+            "other_traversable"
+          ]
+        },
+        "C0": {
+          "D": 0.0,
+          "V": 6.0,
+          "actual_cost": 0.6000000000000001,
+          "actual_scan": false,
+          "best_cell": [
+            7,
+            10
+          ],
+          "common_scan": false,
+          "exhaustive_common_scan_agreement": true,
+          "graph_analysis_ns": 0,
+          "graph_operations": 0,
+          "graph_work_bound": 0,
+          "plan_calls": 5,
+          "scheduler_ns": 1816375,
+          "selected": [
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              4
+            ]
+          ],
+          "selected_D": 0.0,
+          "selected_best_D_regret": 0.0,
+          "selected_useful": 0,
+          "topology_classes": [
+            null,
+            null
+          ]
+        }
+      },
+      "common_cost": 0.6200000000000001,
+      "eligible": [
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          10
+        ]
+      ],
+      "eligible_count": 2,
+      "exhaustive_best_D": 0.0,
+      "exhaustive_best_cells": [],
+      "exhaustive_calls": 5,
+      "exhaustive_candidates": [
+        {
+          "D": 0.0,
+          "V": 0.0,
+          "cell": [
+            7,
+            4
+          ],
+          "q": 0.5
+        },
+        {
+          "D": 0.0,
+          "V": 6.0,
+          "cell": [
+            7,
+            10
+          ],
+          "q": 0.5
+        }
+      ],
+      "fixture": "same_graph_pair_lower",
+      "goal": [
+        12,
+        10
+      ],
+      "start": [
+        2,
+        10
+      ],
+      "topology": {
+        "articulation_count": 0,
+        "biconnected_block_count": 1,
+        "bridge_count": 0,
+        "edges": 278,
+        "relevant_bridge_count": 0,
+        "separating_count": 0,
+        "vertices": 158
+      },
+      "useful_cells": []
+    }
+  ],
+  "graph_runtime_samples": [
+    {
+      "fixture": "unique_start_goal_articulation",
+      "p95_ns": 697074,
+      "samples_ns": [
+        470958,
+        609209,
+        469042,
+        557084,
+        466459,
+        536208,
+        480334,
+        491167,
+        466250,
+        696708,
+        452166,
+        552250,
+        455708,
+        559333,
+        443834,
+        505333,
+        469125,
+        486583,
+        488167,
+        712625,
+        461166,
+        546208,
+        455625,
+        538625,
+        433083,
+        503958,
+        427042,
+        525959,
+        514042,
+        503792,
+        737958,
+        425000,
+        512000,
+        424292,
+        534625,
+        454667,
+        542792,
+        455042,
+        538209,
+        482292,
+        479458,
+        687834,
+        429042,
+        547542,
+        456125,
+        548500,
+        525708,
+        538625,
+        434583,
+        516208,
+        490708,
+        477916,
+        704041,
+        430209,
+        2483416,
+        432750,
+        509375,
+        469750,
+        467583,
+        475500,
+        467625,
+        472541,
+        652708,
+        429917,
+        542917,
+        429167,
+        508334,
+        427541,
+        503541,
+        473291,
+        467458,
+        508375,
+        689083,
+        432084,
+        547792,
+        582333,
+        526208,
+        842125,
+        515500,
+        501208,
+        476291,
+        466250,
+        687875,
+        429750,
+        514500,
+        424166,
+        503958,
+        424458,
+        504459,
+        471916,
+        465750,
+        461958,
+        676458,
+        428209,
+        547208,
+        425458,
+        547292,
+        454500,
+        545208,
+        457000
+      ]
+    },
+    {
+      "fixture": "irrelevant_dead_end_articulation",
+      "p95_ns": 195510,
+      "samples_ns": [
+        180667,
+        96583,
+        93334,
+        93625,
+        88459,
+        88709,
+        91250,
+        87917,
+        86333,
+        163084,
+        90916,
+        88833,
+        86375,
+        94334,
+        124416,
+        112000,
+        102541,
+        100000,
+        100750,
+        101166,
+        96542,
+        199291,
+        90125,
+        88417,
+        86792,
+        86417,
+        85792,
+        85875,
+        88458,
+        86500,
+        85666,
+        86208,
+        86333,
+        86000,
+        198875,
+        89542,
+        89375,
+        87917,
+        87500,
+        85375,
+        85625,
+        85334,
+        85292,
+        85083,
+        85584,
+        84750,
+        195333,
+        88250,
+        86792,
+        86167,
+        86000,
+        85250,
+        86125,
+        85667,
+        84875,
+        84917,
+        84958,
+        85917,
+        91000,
+        195000,
+        87708,
+        86292,
+        86500,
+        84542,
+        85959,
+        85334,
+        85000,
+        84834,
+        83958,
+        85292,
+        85000,
+        379708,
+        90917,
+        87375,
+        87917,
+        87917,
+        85500,
+        85417,
+        86667,
+        85833,
+        85291,
+        85875,
+        87208,
+        99750,
+        199166,
+        86709,
+        86666,
+        85292,
+        85250,
+        85291,
+        84750,
+        85792,
+        85208,
+        85375,
+        84834,
+        84750,
+        85417,
+        199000,
+        86000,
+        86083
+      ]
+    },
+    {
+      "fixture": "narrow_corridor_with_alternative_loop",
+      "p95_ns": 701622,
+      "samples_ns": [
+        412959,
+        508917,
+        390750,
+        470750,
+        440125,
+        461459,
+        433625,
+        457333,
+        663958,
+        387042,
+        477834,
+        380583,
+        451916,
+        441625,
+        456375,
+        424584,
+        477083,
+        455459,
+        713500,
+        382292,
+        464167,
+        381375,
+        444417,
+        451750,
+        455750,
+        427667,
+        460042,
+        453458,
+        660958,
+        381750,
+        468000,
+        384000,
+        479708,
+        460625,
+        453250,
+        426834,
+        452375,
+        442042,
+        663292,
+        382875,
+        480583,
+        410250,
+        478875,
+        454583,
+        430875,
+        397750,
+        420750,
+        451667,
+        712458,
+        411750,
+        521541,
+        392750,
+        485417,
+        481959,
+        495250,
+        424000,
+        426667,
+        435500,
+        713333,
+        415500,
+        504042,
+        404583,
+        447750,
+        429042,
+        427833,
+        420708,
+        455000,
+        459750,
+        706333,
+        389083,
+        468666,
+        381792,
+        457167,
+        457958,
+        455750,
+        436250,
+        452042,
+        458458,
+        712041,
+        382958,
+        466959,
+        383750,
+        471333,
+        462292,
+        460334,
+        424333,
+        442334,
+        471083,
+        701375,
+        400916,
+        486208,
+        394875,
+        458333,
+        433834,
+        430708,
+        407042,
+        423792,
+        425125,
+        668375,
+        383750
+      ]
+    },
+    {
+      "fixture": "multiple_serial_bottlenecks",
+      "p95_ns": 678286,
+      "samples_ns": [
+        511959,
+        405500,
+        474333,
+        457500,
+        416417,
+        439166,
+        442834,
+        432416,
+        472917,
+        713833,
+        390625,
+        500792,
+        393375,
+        489833,
+        474000,
+        435834,
+        459833,
+        430125,
+        402292,
+        440042,
+        731334,
+        422292,
+        2848000,
+        398708,
+        465708,
+        386833,
+        458041,
+        386083,
+        477917,
+        415333,
+        491209,
+        458125,
+        434708,
+        657167,
+        387625,
+        471083,
+        388625,
+        482416,
+        461625,
+        488042,
+        437167,
+        461209,
+        439500,
+        400916,
+        675291,
+        401750,
+        528500,
+        414583,
+        505084,
+        413666,
+        487875,
+        446583,
+        497625,
+        404333,
+        475209,
+        392625,
+        464625,
+        650084,
+        390750,
+        475125,
+        390917,
+        456417,
+        447166,
+        412791,
+        434417,
+        428333,
+        408583,
+        429250,
+        676416,
+        385167,
+        515208,
+        416250,
+        485958,
+        474542,
+        402042,
+        432208,
+        429083,
+        401083,
+        445459,
+        737000,
+        414125,
+        533958,
+        414708,
+        466167,
+        466542,
+        406083,
+        443125,
+        439042,
+        433541,
+        457917,
+        725125,
+        386000,
+        498750,
+        387000,
+        495042,
+        477541,
+        434000,
+        458791,
+        456875,
+        430958
+      ]
+    },
+    {
+      "fixture": "loop_rich_no_articulation",
+      "p95_ns": 776533,
+      "samples_ns": [
+        807083,
+        488375,
+        595458,
+        488083,
+        598667,
+        591125,
+        659917,
+        564834,
+        820791,
+        1700750,
+        468166,
+        565583,
+        512333,
+        547292,
+        513042,
+        486875,
+        488084,
+        483375,
+        728333,
+        449375,
+        555375,
+        459958,
+        572875,
+        549625,
+        516708,
+        517917,
+        518000,
+        762834,
+        448166,
+        557791,
+        454333,
+        584584,
+        552416,
+        516083,
+        520333,
+        519542,
+        773750,
+        447333,
+        546750,
+        450333,
+        573917,
+        544625,
+        518125,
+        598500,
+        536291,
+        777958,
+        465375,
+        579125,
+        463791,
+        558208,
+        528708,
+        494166,
+        501541,
+        499959,
+        760458,
+        454083,
+        569583,
+        454250,
+        552167,
+        523584,
+        500875,
+        495375,
+        491000,
+        754167,
+        456792,
+        565958,
+        450458,
+        544917,
+        521958,
+        486417,
+        488125,
+        492625,
+        755166,
+        451083,
+        2613417,
+        519042,
+        487667,
+        488792,
+        484292,
+        488500,
+        481875,
+        706666,
+        458416,
+        587041,
+        500666,
+        499333,
+        522584,
+        519875,
+        519542,
+        776458,
+        460625,
+        585041,
+        457208,
+        606750,
+        488709,
+        588166,
+        540417,
+        493750,
+        491875,
+        722958
+      ]
+    },
+    {
+      "fixture": "occupied_cell_clearing_shortcut",
+      "p95_ns": 740762,
+      "samples_ns": [
+        461791,
+        549334,
+        416291,
+        475542,
+        477375,
+        489375,
+        450042,
+        468791,
+        473584,
+        759542,
+        398292,
+        493000,
+        394875,
+        468750,
+        466042,
+        481167,
+        441541,
+        479375,
+        468334,
+        757833,
+        397917,
+        491584,
+        396500,
+        466542,
+        457875,
+        469541,
+        442125,
+        470166,
+        465208,
+        727750,
+        395292,
+        486459,
+        396125,
+        463125,
+        490459,
+        472208,
+        441459,
+        470250,
+        461333,
+        740667,
+        397417,
+        490000,
+        393167,
+        489917,
+        483333,
+        474875,
+        445416,
+        480750,
+        463042,
+        750416,
+        399416,
+        490791,
+        397250,
+        467750,
+        456500,
+        471667,
+        445125,
+        471292,
+        461375,
+        742584,
+        395750,
+        489625,
+        400084,
+        504667,
+        475125,
+        473750,
+        440708,
+        471542,
+        493625,
+        754292,
+        411083,
+        494084,
+        395500,
+        465292,
+        443167,
+        441625,
+        413667,
+        438083,
+        432125,
+        680917,
+        397791,
+        486666,
+        394791,
+        461708,
+        436125,
+        436167,
+        411792,
+        441167,
+        431917,
+        681250,
+        393708,
+        476459,
+        389041,
+        458291,
+        438542,
+        434792,
+        410917,
+        438750,
+        432375,
+        673708
+      ]
+    },
+    {
+      "fixture": "critical_cell_outside_C0_top3",
+      "p95_ns": 697235,
+      "samples_ns": [
+        476583,
+        564625,
+        433583,
+        515709,
+        444416,
+        550667,
+        462667,
+        533500,
+        486083,
+        468208,
+        696625,
+        425625,
+        2476416,
+        433792,
+        510416,
+        473166,
+        467291,
+        460125,
+        466500,
+        493959,
+        682250,
+        426083,
+        558500,
+        457250,
+        542584,
+        457791,
+        542875,
+        484750,
+        469292,
+        457292,
+        811834,
+        455500,
+        537959,
+        436250,
+        520041,
+        430125,
+        509666,
+        482583,
+        474709,
+        471250,
+        698542,
+        432875,
+        525833,
+        428292,
+        508959,
+        426917,
+        513500,
+        487792,
+        478709,
+        469667,
+        702833,
+        431750,
+        525125,
+        429166,
+        511083,
+        445958,
+        555333,
+        457042,
+        546000,
+        524208,
+        483750,
+        697167,
+        466625,
+        516333,
+        423917,
+        504834,
+        425333,
+        505500,
+        422625,
+        502083,
+        478750,
+        466291,
+        681125,
+        424708,
+        511834,
+        423250,
+        509459,
+        425834,
+        503541,
+        422500,
+        507042,
+        489750,
+        463709,
+        689042,
+        426791,
+        537875,
+        453667,
+        539167,
+        438041,
+        511208,
+        426250,
+        506583,
+        502750,
+        500125,
+        732875,
+        429625,
+        555708,
+        425750,
+        505000,
+        444667
+      ]
+    },
+    {
+      "fixture": "multiple_correlated_uncertain_cells",
+      "p95_ns": 706805,
+      "samples_ns": [
+        510250,
+        401750,
+        489542,
+        393709,
+        506166,
+        420750,
+        509583,
+        425625,
+        709708,
+        385500,
+        498584,
+        385292,
+        488708,
+        483334,
+        434042,
+        464625,
+        458459,
+        461625,
+        436792,
+        690917,
+        383500,
+        518125,
+        412583,
+        482958,
+        478625,
+        433334,
+        461125,
+        460750,
+        443000,
+        441333,
+        687250,
+        385333,
+        530250,
+        412542,
+        487833,
+        471375,
+        446333,
+        465625,
+        448792,
+        402417,
+        427625,
+        742166,
+        430083,
+        540208,
+        413167,
+        484875,
+        440083,
+        403708,
+        453000,
+        456250,
+        432916,
+        458541,
+        706791,
+        384042,
+        520167,
+        413500,
+        484292,
+        474375,
+        431625,
+        469459,
+        454875,
+        429042,
+        459041,
+        758916,
+        387833,
+        498500,
+        384958,
+        487625,
+        484458,
+        432708,
+        458541,
+        454875,
+        430500,
+        465083,
+        707084,
+        387708,
+        530292,
+        416875,
+        490791,
+        473041,
+        429250,
+        465833,
+        454333,
+        445791,
+        431750,
+        697417,
+        387208,
+        2400458,
+        390541,
+        462333,
+        390459,
+        480875,
+        415500,
+        492459,
+        412792,
+        505417,
+        461250,
+        439125,
+        680250,
+        389417
+      ]
+    },
+    {
+      "fixture": "no_beneficial_scan",
+      "p95_ns": 757629,
+      "samples_ns": [
+        613042,
+        492166,
+        604000,
+        483500,
+        559542,
+        533625,
+        524542,
+        510416,
+        712416,
+        443584,
+        589042,
+        475166,
+        581291,
+        476250,
+        552041,
+        525417,
+        522000,
+        519458,
+        745750,
+        450625,
+        577583,
+        476208,
+        698250,
+        544000,
+        522583,
+        519584,
+        520833,
+        755792,
+        447833,
+        578000,
+        474291,
+        566708,
+        541792,
+        517500,
+        518416,
+        513584,
+        776541,
+        476625,
+        597875,
+        489458,
+        571292,
+        540417,
+        514459,
+        512041,
+        519375,
+        757708,
+        446292,
+        567000,
+        484084,
+        568583,
+        544458,
+        525334,
+        578125,
+        504875,
+        751042,
+        459083,
+        569875,
+        447416,
+        542750,
+        519000,
+        483250,
+        492708,
+        485917,
+        757625,
+        448667,
+        560042,
+        447625,
+        540791,
+        511833,
+        485084,
+        480375,
+        487875,
+        743375,
+        451958,
+        562750,
+        446916,
+        534750,
+        515417,
+        478333,
+        495750,
+        527083,
+        770625,
+        448750,
+        612833,
+        482084,
+        583750,
+        555833,
+        484583,
+        481709,
+        493750,
+        759875,
+        466000,
+        600750,
+        480917,
+        591208,
+        562917,
+        481083,
+        481416,
+        489084,
+        802166
+      ]
+    },
+    {
+      "fixture": "same_graph_pair_upper",
+      "p95_ns": 744052,
+      "samples_ns": [
+        444292,
+        594083,
+        455833,
+        546292,
+        455792,
+        554750,
+        451666,
+        544750,
+        478125,
+        460666,
+        764875,
+        469542,
+        560083,
+        432542,
+        523208,
+        421959,
+        525333,
+        424167,
+        515084,
+        503500,
+        466416,
+        719584,
+        419458,
+        2794125,
+        425667,
+        498542,
+        483042,
+        452917,
+        453375,
+        476584,
+        491291,
+        703959,
+        450541,
+        578292,
+        426084,
+        521667,
+        420000,
+        534209,
+        504708,
+        509666,
+        498834,
+        734625,
+        423042,
+        530833,
+        451125,
+        536959,
+        461375,
+        536375,
+        500917,
+        499833,
+        486417,
+        743542,
+        450666,
+        550084,
+        449542,
+        545625,
+        465167,
+        548166,
+        514750,
+        489875,
+        493333,
+        739750,
+        425375,
+        524375,
+        448667,
+        547333,
+        449459,
+        545708,
+        450041,
+        540208,
+        517958,
+        531125,
+        757583,
+        457250,
+        597584,
+        476958,
+        574958,
+        497125,
+        509500,
+        421250,
+        506084,
+        511375,
+        496292,
+        766125,
+        450666,
+        554166,
+        448416,
+        538083,
+        451625,
+        548166,
+        457583,
+        544250,
+        521667,
+        496208,
+        753750,
+        456416,
+        556750,
+        452583,
+        539833,
+        456834
+      ]
+    },
+    {
+      "fixture": "same_graph_pair_lower",
+      "p95_ns": 711388,
+      "samples_ns": [
+        598792,
+        437000,
+        516667,
+        490708,
+        468500,
+        710209,
+        423875,
+        523042,
+        420042,
+        508708,
+        420000,
+        509667,
+        441542,
+        513584,
+        511958,
+        496542,
+        756209,
+        458292,
+        563250,
+        457375,
+        539667,
+        451583,
+        545500,
+        450041,
+        547250,
+        522459,
+        496500,
+        755958,
+        430875,
+        517458,
+        422833,
+        529167,
+        465916,
+        555917,
+        463958,
+        626708,
+        577208,
+        535083,
+        818125,
+        440875,
+        521666,
+        420500,
+        508416,
+        426709,
+        515792,
+        419708,
+        502000,
+        477583,
+        456667,
+        684584,
+        424042,
+        511708,
+        421208,
+        497958,
+        418917,
+        519625,
+        428167,
+        499042,
+        479958,
+        465166,
+        686583,
+        424125,
+        507209,
+        419416,
+        499708,
+        463958,
+        555459,
+        456042,
+        510000,
+        480375,
+        457958,
+        733792,
+        452125,
+        2774041,
+        424375,
+        499208,
+        469625,
+        457084,
+        455583,
+        455375,
+        463583,
+        700000,
+        463458,
+        570250,
+        429167,
+        492959,
+        438042,
+        531833,
+        499667,
+        495209,
+        475292,
+        676167,
+        425500,
+        585208,
+        507125,
+        598084,
+        436666,
+        508917,
+        477667,
+        474917
+      ]
+    }
+  ],
+  "mechanism_gate": {
+    "all_A_star_caps_respected": true,
+    "common_scan_agreement_improved_on_2": true,
+    "common_scan_agreement_wins_vs_C0": 2,
+    "graph_p95_ms": 0.776533,
+    "graph_p95_under_5ms": true,
+    "graph_work_bound_respected": true,
+    "max_D_candidate_recall_not_worse": true,
+    "no_benefit_actual_false_positives": [],
+    "no_benefit_case_pass": true,
+    "status": "PASS",
+    "useful_candidate_recall_gain": 0.44999999999999996,
+    "useful_recall_at_least_10pp": true
+  },
+  "protected_phase15_generator_called": false,
+  "protocol": "docs/phase2_c_v2b_topology_protocol.md",
+  "remaining_budget": 10,
+  "sensor": {
+    "cell_size": 0.75,
+    "horizontal_fov_deg": 120.0,
+    "range_m": 6.0,
+    "ray_count": 61
+  },
+  "source_sha256": {
+    "protocol": "84e4d36d4902130008a570a5e9946bc214403061c2e07329a177dca96ebb77ab",
+    "runner": "787ec8863ab839c043716f32e12158f24099a63ba8493dec5ce125ce128ce2f5",
+    "topology_module": "f0da5a7c0b31cebbdb1c077c88e30426e2464c7ef9733e9864cd609256e61414"
+  },
+  "status": "COMPLETED_C_V2B_SYNTHETIC_MECHANISM_SCREEN",
+  "summary": {
+    "C0_max_D_recall": 0.5,
+    "C0_useful_recall": 0.5,
+    "fixture_arm_runs": 44,
+    "fixtures": 11,
+    "graph_runtime_samples_per_fixture": 100,
+    "topology_annotation_correct": 9,
+    "topology_annotation_total": 11,
+    "topology_max_D_recall": 0.95,
+    "topology_useful_recall": 0.95
+  }
+}

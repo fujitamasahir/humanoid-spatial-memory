@@ -1,4 +1,4 @@
-"""One-shot descriptive C candidate-coverage screen on existing FIT72 only.
+"""One-shot descriptive candidate-selection screen on existing FIT72 only.
 
 The protocol's synthetic rejection gate must pass before execution. This script
 never generates worlds and refuses output overwrite. It is intentionally not
@@ -15,8 +15,23 @@ from spatial_memory.mujoco_perception import MujocoRayPerception
 
 FIT=ROOT/'results/phase2_mujoco/persistence_evi_fit72_restored_local_v1'
 INTEGRITY=ROOT/'results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/integrity_verification.json'
-ARMS=('c0_audit','c_k','c_route3','c_routek')
-LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK'}
+ARMS=('c0_audit','c_k','c_route3','c_routek','c_topology3')
+LABEL={'c0_audit':'C0','c_k':'C-K','c_route3':'C-Route3','c_routek':'C-RouteK','c_topology3':'C-Topology3'}
+DEFAULT_ARMS=('c0_audit','c_k','c_route3','c_topology3')
+
+def read_accepted_gate(path):
+    """Read a numeric gate and honor any post-run conformance review."""
+    document=json.loads(path.read_text())
+    status=document.get('mechanism_gate',{}).get('status')
+    review_path=path.parent/'gate_review.json'
+    review_required='c_v2b_topology_protocol' in str(document.get('protocol',''))
+    if review_required and not review_path.is_file():
+        raise RuntimeError('C v2b FIT evaluation requires a passing gate_review.json')
+    if review_path.is_file():
+        review=json.loads(review_path.read_text())
+        if review.get('status')!='ACCEPTED_FOR_FIT':
+            raise RuntimeError(f"Post-run gate review blocks FIT72: {review.get('status')}")
+    return status
 
 def run_measured(payload,schedule,arm,config):
     original=MujocoRayPerception.observe;calls=[]
@@ -41,9 +56,9 @@ def run_measured(payload,schedule,arm,config):
 def episode_read(n,arm):
     return json.loads(gzip.decompress((FIT/f'episode_{n:03}_{arm}.json.gz').read_bytes()))
 
-def make_summary(records):
+def make_summary(records, arms=ARMS):
     result={}
-    for arm in ('periodic','age',*ARMS):
+    for arm in ('periodic','age',*arms):
         a=[x for x in records if x['arm']==arm]
         result[arm]={'label':LABEL.get(arm,arm),'episodes':len(a),
           'goals':sum(bool(x['success']) for x in a),
@@ -64,13 +79,16 @@ def make_summary(records):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--output',type=Path,default=ROOT/'results/phase2_mujoco/c_v2_candidate_coverage_v1/fit72_descriptive_screen')
+    ap.add_argument('--output',type=Path,default=ROOT/'results/phase2_mujoco/c_v2b_topology_v1/fit72_descriptive_screen')
+    ap.add_argument('--gate',type=Path,default=ROOT/'results/phase2_mujoco/c_v2_candidate_coverage_v1/synthetic_fixture_frozen_v7/synthetic_fixture_results.json')
+    ap.add_argument('--protocol',type=Path,default=ROOT/'docs/phase2_c_v2_candidate_coverage_protocol.md')
+    ap.add_argument('--arms',nargs='+',choices=ARMS,default=list(DEFAULT_ARMS))
     args=ap.parse_args()
-    gate_path=ROOT/'results/phase2_mujoco/c_v2_candidate_coverage_v1/synthetic_fixture_frozen_v7/synthetic_fixture_results.json'
+    gate_path=args.gate if args.gate.is_absolute() else ROOT/args.gate
     if not gate_path.is_file():raise RuntimeError('Frozen synthetic gate missing; refusing FIT72 access')
-    gate=json.loads(gate_path.read_text())['mechanism_gate']
-    if gate.get('status')!='PASS':
-        raise RuntimeError(f"Pre-FIT synthetic mechanism gate is {gate.get('status')}; FIT72 evaluation is blocked")
+    gate_status=read_accepted_gate(gate_path)
+    if gate_status!='PASS':
+        raise RuntimeError(f"Pre-FIT synthetic mechanism gate is {gate_status}; FIT72 evaluation is blocked")
     if not args.output.is_absolute():args.output=ROOT/args.output
     verify_original_data_integrity()
     if args.output.exists():raise FileExistsError(f'Refusing to overwrite: {args.output}')
@@ -90,7 +108,7 @@ def main():
     protected={str(p.relative_to(ROOT)):references._sha(p) for p in references.PROTECTED}
     args.output.mkdir(parents=True,exist_ok=False)
     (args.output/'provenance.json').write_text(json.dumps({'status':'DESCRIPTIVE_FIT_NOT_VALIDATION',
-      'protocol':'docs/phase2_c_v2_candidate_coverage_protocol.md','source':meta,
+      'protocol':str(args.protocol),'gate':str(gate_path.relative_to(ROOT)),'source':meta,
       'config':config,'fit_store':'read-only existing admitted FIT72','preserved_prefix':prefix,
       'protected_sha256':protected,'independent_validation':False},indent=2,sort_keys=True)+'\n')
     allrows=[];pairs=[];source_num={tuple(json.loads(gzip.decompress((FIT/f'episode_{n:03}_age.json.gz').read_bytes()))['trace']['key']):n for n in range(1,73)}
@@ -108,7 +126,7 @@ def main():
         save_episode(args.output,ix,method,row,trace,{'actual_memory_sensor_calls':diag['actual_memory_sensor_calls']})
         allrows.append(flat(method,row,diag))
       original_c=episode_read(n,'c_ternary')
-      for arm in ARMS:
+      for arm in args.arms:
         row,trace,diag=run_measured(payload,int(schedule),arm,config)
         if arm=='c0_audit':
             if references.rdao_evaluator._signature(row)!=references.rdao_evaluator._signature(original_c['row']):
@@ -120,9 +138,9 @@ def main():
             pairs.append(runner.pair_row(key,method,LABEL[arm],refs[method],row,diag))
       print(f'Completed {ix}/72 keys: {world_id} schedule={schedule}',flush=True)
     csv_write(args.output/'episodes.csv',allrows);csv_write(args.output/'paired.csv',pairs)
-    summary=make_summary(allrows)
+    summary=make_summary(allrows,args.arms)
     summary['baseline_reproduction_passed']=True;summary['C0_exact_saved_replay_passed']=True
-    summary['paired_by_method']={a:{m:runner.summarize_pairs([r for r in pairs if r['candidate_method']==LABEL[a] and r['reference_method']==m]) for m in ('periodic','age')} for a in ARMS}
+    summary['paired_by_method']={a:{m:runner.summarize_pairs([r for r in pairs if r['candidate_method']==LABEL[a] and r['reference_method']==m]) for m in ('periodic','age')} for a in args.arms}
     summary['correlated_schedule_policy']='maze identity is paired cluster; two schedules are not independent'
     summary['status']='COMPLETED_DESCRIPTIVE_ENGINEERING_SCREEN_NOT_VALIDATION'
     (args.output/'summary.json').write_text(json.dumps(summary,indent=2,sort_keys=True,allow_nan=False)+'\n')
