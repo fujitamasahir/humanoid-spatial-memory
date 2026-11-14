@@ -98,7 +98,7 @@ function showResult(r,finalState){
  w.textContent=r.winner;w.classList.toggle('human',human);
  $('winnerCaption').textContent=!human?'The G1 reached the goal safely within '+limit+' steps.':(r.success&&r.actual_unwanted_contacts>0?'The G1 experienced unwanted contact.':'The G1 did not safely reach the goal within '+limit+' steps.');
  const items=[['MAZE',String(catalog.findIndex(m=>m.id===r.maze_id)+1)],['STRATEGY',r.strategy.toUpperCase()],['DIFFICULTY',(r.difficulty||difficulty).toUpperCase()],['STEPS',r.elapsed_steps+' / '+limit],['OBSERVATIONS',r.observation_count+' / '+(r.max_observations??rules().max_observations)]];
- $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');label.textContent=key;num.textContent=value;box.append(label,num);return box}));
+ $('resultSummary').replaceChildren(...items.map(([key,value])=>{const box=document.createElement('div'),label=document.createElement('small'),num=document.createElement('b');box.dataset.stat=key.toLowerCase();label.textContent=key;num.textContent=value;box.append(label,num);return box}));
  const m=catalog.find(x=>x.id===r.maze_id)||current();drawMemory($('finalMemoryCanvas'),m,finalState);
  showResultReaction(r.strategy,human);
 }
@@ -106,15 +106,26 @@ async function backToEditor(keep){if(starting)return;starting=true;try{await api
 $('newBtn').onclick=()=>backToEditor(true);
 function pressed(pad,i){return !!pad.buttons[i]?.pressed||(pad.buttons[i]?.value||0)>.55}
 const repeats={};let lastMove=0;
+let difficultyStick={dir:0,next:0,armed:false};
+function difficultyStickStep(state,x,y,now){
+ const axis=Math.abs(y)>=Math.abs(x)?y:x;
+ if(Math.max(Math.abs(x),Math.abs(y))<.24)return {state:{dir:0,next:0,armed:true},delta:0};
+ if(!state.armed||Math.abs(axis)<.38)return {state,delta:0};
+ const dir=Math.sign(axis);
+ if(dir!==state.dir)return {state:{dir,next:now+350,armed:true},delta:dir};
+ if(now>=state.next)return {state:{dir,next:now+180,armed:true},delta:dir};
+ return {state,delta:0};
+}
+function resetDifficultyStick(){difficultyStick={dir:0,next:0,armed:false}}
 function gamepadLoop(){const gp=[...(navigator.getGamepads?.()||[])].find(Boolean);const padStatus=$('padStatus');padStatus.classList.toggle('connected',!!gp);padStatus.setAttribute('aria-label',gp?'Controller connected':'Controller disconnected');const now=performance.now(),cur=new Set();
 if(gp){for(let i=0;i<gp.buttons.length;i++)if(pressed(gp,i))cur.add(i);const edge=i=>cur.has(i)&&!gamepadPrev.has(i);
 const repeat=(i,fn)=>{if(!cur.has(i)){delete repeats[i];return}if(edge(i)||now>=(repeats[i]??0)){fn();repeats[i]=now+(edge(i)?350:140)}};
-if(settingsOpen){if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings()}
+if(settingsOpen){const s=difficultyStickStep(difficultyStick,gp.axes[0]||0,gp.axes[1]||0,now);difficultyStick=s.state;if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings();else if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(s.delta&&!cur.has(12)&&!cur.has(13)&&!cur.has(14)&&!cur.has(15))moveDifficulty(s.delta)}
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(6,()=>setMaze(mazeIndex-1));repeat(7,()=>setMaze(mazeIndex+1));if(edge(14)||edge(12))cycleStrategy(-1);if(edge(15)||edge(13))cycleStrategy(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
 else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
 else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
 else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else updateReviewSeek(gp,cur,now)}
-}else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
+}else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold();resetDifficultyStick()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
 window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
@@ -237,8 +248,8 @@ function renderDifficultyOptions(){
   b.append(title,desc);b.onclick=()=>{pendingDifficulty=name;renderDifficultyOptions()};return b;
  }));
 }
-function openSettings(){if(settingsOpen||editing||starting||!rules()||!$('setupScreen').classList.contains('active'))return;pendingDifficulty=difficulty;settingsOpen=true;renderDifficultyOptions();$('settingsModal').hidden=false}
-function closeSettings(){settingsOpen=false;$('settingsModal').hidden=true}
+function openSettings(){if(settingsOpen||editing||starting||!rules()||!$('setupScreen').classList.contains('active'))return;pendingDifficulty=difficulty;resetDifficultyStick();settingsOpen=true;renderDifficultyOptions();$('settingsModal').hidden=false}
+function closeSettings(){resetDifficultyStick();settingsOpen=false;$('settingsModal').hidden=true}
 function moveDifficulty(delta){pendingDifficulty=LEVELS[(LEVELS.indexOf(pendingDifficulty)+delta+LEVELS.length)%LEVELS.length];renderDifficultyOptions()}
 function applyDifficulty(){
  if(!settingsOpen)return;
