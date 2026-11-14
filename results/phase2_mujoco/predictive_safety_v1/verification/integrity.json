@@ -1,0 +1,45 @@
+{
+  "actual_formal_sensor_and_shield_calls": {
+    "emergency": 5919,
+    "memory": 2054,
+    "shield": 4568
+  },
+  "adapter_plumbing_episodes": 2,
+  "caa_artifacts_unchanged": 928,
+  "caa_source_binding_unchanged": 25,
+  "candidate_acceptance": "REJECT",
+  "checkpoint_receipt_pairs": 2907,
+  "completed_formal_episodes": 416,
+  "distinct_contact_onset_timelines": 165,
+  "evaluator_geometry_probes_are_not_online_observations": true,
+  "exact_untreated_DAO_regression_parities": 48,
+  "extra_actual_diagnostic_sensor_calls": 0,
+  "frozen_sources_and_scenarios_unchanged": true,
+  "full_FIT72_screen": false,
+  "g1_assets_unchanged": 58,
+  "independent_pilot_ready": false,
+  "missing_inputs": [],
+  "new_navigation_runs": 425,
+  "preserved_prior_artifact_files": {
+    "results/phase2_mujoco/dao_integration_v1": 201,
+    "results/phase2_mujoco/dao_v1": 37
+  },
+  "production_population_generation": false,
+  "protected": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "report_sha256": "a394e70b2f665d9b560926e79e48fc4a3c4aeadd2eaaa669af9ed8df911fe07f",
+  "reserved_access": false,
+  "reserved_or_new_navigation_populations_accessed": false,
+  "stage_manifest_files": {
+    "adapter_smoke": 3,
+    "analysis": 11,
+    "contact_cases": 60,
+    "forensics": 8,
+    "matrix": 417,
+    "prepared": 4
+  },
+  "status": "PASS",
+  "untreated_forensic_episodes": 7
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "bytes": 93677,
+    "path": "benchmark_contacts_liveness.png",
+    "sha256": "31616692212d2c3e24f40042c8d029fef03680db5cf7eb8e9142a78142c157ed"
+  },
+  {
+    "bytes": 531325,
+    "path": "episode_metrics.json",
+    "sha256": "ba230b3a989b2b6385b8a5715e95d47cddd420af606f2af4c44ee83486f8839f"
+  },
+  {
+    "bytes": 90222,
+    "path": "forensic_age4.png",
+    "sha256": "7c2630f00336a649e98c3de48f7c3a5ef80b6a20bc93b3895d1ee723e7323eae"
+  },
+  {
+    "bytes": 76644,
+    "path": "forensic_age5.png",
+    "sha256": "8dea0f537188b6dd4456f4dc3a3fb3c6867516b507e8af8b9db3fdd7ec719a13"
+  },
+  {
+    "bytes": 78284,
+    "path": "forensic_dao_combined.png",
+    "sha256": "7cb4235538ea79515b88315c6d92a83583ad00feecc0d1dd8edd1ba7b68d4a55"
+  },
+  {
+    "bytes": 77485,
+    "path": "forensic_dao_route.png",
+    "sha256": "8be8dba4e079f5617ed334e11772712a857ba48d56c61b5ad620d049751ed876"
+  },
+  {
+    "bytes": 78084,
+    "path": "forensic_dao_trigger.png",
+    "sha256": "8f78f75bbb7a8536aa26c6c62bbc914d505e8a2a79198331063fa750910fd461"
+  },
+  {
+    "bytes": 102721,
+    "path": "forensic_dao_veto.png",
+    "sha256": "0aa522f092d4bd40869d38ffe513706df425bdc7a9ffa930ede67e67495495f8"
+  },
+  {
+    "bytes": 91144,
+    "path": "forensic_periodic4.png",
+    "sha256": "43a824b49fa29d15134683ad82205f9f993d0ed5bef83f13f1a10640c0a35d50"
+  },
+  {
+    "bytes": 84512,
+    "path": "paired.json",
+    "sha256": "68f1e68b5d00d7d89e786b24b113695526891a8f91d79b8795c18e75a9610f2b"
+  },
+  {
+    "bytes": 131202,
+    "path": "summary.json",
+    "sha256": "76ca91d695e64ffcba55061641836240390324840d8efad43914c507beefb6b7"
+  }
+]

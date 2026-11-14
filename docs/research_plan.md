@@ -181,3 +181,23 @@ statistical/distribution choices remain prerequisites. See
 [`dao_integration_research_report.md`](dao_integration_research_report.md) and
 [`dao_pilot_v1_protocol.md`](dao_pilot_v1_protocol.md). No production population,
 reserved access, full FIT72 screen, DAO retuning or pilot execution occurred.
+
+## Common predictive emergency safety v1 — completed, candidate rejected
+
+The archived DAO pedestrian contacts and Periodic4/Age4/Age5 baselines were
+reproduced with exact untreated DAO semantic/metric parity. Stage diagnostics
+show contact begins when the discrete pedestrian update is synchronized by
+the emergency sensor, before any robot action; directional motion extrapolation
+misses reversal. A separately frozen common reachable-set/swept-footprint
+candidate was evaluated on416 hand-scene episodes across eight schedulers.
+All48 original-safety DAO regression parities pass;216 tests pass.
+
+Reject the candidate: regression contacts12→0 but goals80→72; prospective
+contact states25→128 and goals104→80. It creates head-on/narrow contacts and
+repeats uncertified waiting; only the first pre-action timing contacts are
+proven unavoidable, not later repeated onsets. No thresholds, original planner,
+trajectory or update timing changed. Full timelines/figures and all negative
+outcomes are in [`predictive_safety_research_report.md`](predictive_safety_research_report.md).
+Production pilot readiness remains false; generator/admission/custody/statistical/
+power blockers persist. No production generation, reserve access, FIT72 screen,
+DAO selection or follow-on iteration occurred.

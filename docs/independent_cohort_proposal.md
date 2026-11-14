@@ -207,3 +207,13 @@ only; no independent custody or complete prior-signature admission exists.
 The80 development and sealed evaluation populations remain ungenerated;
 sealed n is undecided. Approve distributions, safety engineering, admission/
 custody, analysis coverage/margins and scope before ANY production payload.
+
+## Safety readiness update after prospective common-safety benchmark
+
+The common predictive safety v1 candidate is rejected after416 hand-defined
+engineering episodes: it removes archived regression contacts but loses goals
+and introduces new contacts elsewhere. See
+[`predictive_safety_pilot_readiness.md`](predictive_safety_pilot_readiness.md).
+This does not approve the24-lineage pilot or any production generation. All
+previous distribution/admission/opaque-signature/custodian/statistical/margin/
+sample-size approvals remain pending. No DAO winner or new population was created.

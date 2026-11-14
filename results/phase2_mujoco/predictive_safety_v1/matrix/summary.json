@@ -1,0 +1,2921 @@
+{
+  "elapsed_seconds": 42.15856341700419,
+  "episodes": 416,
+  "records": [
+    {
+      "arm": "periodic4",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "periodic4",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "age4",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "age4",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "age5",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "age5",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "caa_full",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "caa_full",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_veto",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_veto",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_route",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_route",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_combined",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 1
+    },
+    {
+      "arm": "dao_combined",
+      "family": "corridor",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 1
+    },
+    {
+      "arm": "periodic4",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "periodic4",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "age4",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "age4",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "age5",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "age5",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "caa_full",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "caa_full",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_veto",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_veto",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_route",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_route",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_combined",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 2
+    },
+    {
+      "arm": "dao_combined",
+      "family": "unknown_obstacle",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 2
+    },
+    {
+      "arm": "periodic4",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "periodic4",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "age4",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "age4",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "age5",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "age5",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "caa_full",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "caa_full",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_veto",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_veto",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_route",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_route",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_combined",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 3
+    },
+    {
+      "arm": "dao_combined",
+      "family": "room",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 3
+    },
+    {
+      "arm": "periodic4",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "periodic4",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "age4",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "age4",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "age5",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "age5",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "caa_full",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "caa_full",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_veto",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_veto",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_route",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_route",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_combined",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 4
+    },
+    {
+      "arm": "dao_combined",
+      "family": "turn",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 4
+    },
+    {
+      "arm": "periodic4",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "periodic4",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "age4",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "age4",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "age5",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "age5",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "caa_full",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "caa_full",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_veto",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_veto",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_route",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_route",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_combined",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 5
+    },
+    {
+      "arm": "dao_combined",
+      "family": "repeat_view",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 5
+    },
+    {
+      "arm": "periodic4",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "periodic4",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "age4",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "age4",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "age5",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "age5",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "caa_full",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "caa_full",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_veto",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_veto",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_route",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_route",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_combined",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 6
+    },
+    {
+      "arm": "dao_combined",
+      "family": "explored",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 6
+    },
+    {
+      "arm": "periodic4",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "periodic4",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "age4",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "age4",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "age5",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "age5",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "caa_full",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "caa_full",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_veto",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_veto",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_route",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_route",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_combined",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 7
+    },
+    {
+      "arm": "dao_combined",
+      "family": "known_stale",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 7
+    },
+    {
+      "arm": "periodic4",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "periodic4",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "age4",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "age4",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "age5",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "age5",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "caa_full",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "caa_full",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_veto",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_veto",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_route",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_route",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_combined",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 8
+    },
+    {
+      "arm": "dao_combined",
+      "family": "addition",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 8
+    },
+    {
+      "arm": "periodic4",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "periodic4",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "age4",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "age4",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "age5",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "age5",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "caa_full",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "caa_full",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_veto",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_veto",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_route",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_route",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_combined",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 9
+    },
+    {
+      "arm": "dao_combined",
+      "family": "removal",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 9
+    },
+    {
+      "arm": "periodic4",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "periodic4",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "age4",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "age4",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "age5",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "age5",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "caa_full",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "caa_full",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_veto",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_veto",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_route",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_route",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_combined",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 10
+    },
+    {
+      "arm": "dao_combined",
+      "family": "pedestrian",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 10
+    },
+    {
+      "arm": "periodic4",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "periodic4",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "age4",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "age4",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "age5",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "age5",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "caa_full",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "caa_full",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_veto",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_veto",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_route",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_route",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_combined",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 11
+    },
+    {
+      "arm": "dao_combined",
+      "family": "off_route",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 11
+    },
+    {
+      "arm": "periodic4",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "periodic4",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "age4",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "age4",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "age5",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "age5",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "caa_full",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "caa_full",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_veto",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_veto",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_route",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_route",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_combined",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "original",
+      "scene_index": 12
+    },
+    {
+      "arm": "dao_combined",
+      "family": "low_discovery",
+      "role": "original_regression",
+      "safety": "predictive_v1",
+      "scene_index": 12
+    },
+    {
+      "arm": "periodic4",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "periodic4",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "age4",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "age4",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "age5",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "age5",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "caa_full",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "caa_full",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_veto",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_veto",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_route",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_route",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_combined",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 13
+    },
+    {
+      "arm": "dao_combined",
+      "family": "crossing",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 13
+    },
+    {
+      "arm": "periodic4",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "periodic4",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "age4",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "age4",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "age5",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "age5",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "caa_full",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "caa_full",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_veto",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_veto",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_route",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_route",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_combined",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 14
+    },
+    {
+      "arm": "dao_combined",
+      "family": "head_on",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 14
+    },
+    {
+      "arm": "periodic4",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "periodic4",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "age4",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "age4",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "age5",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "age5",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "caa_full",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "caa_full",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_veto",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_veto",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_route",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_route",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_combined",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 15
+    },
+    {
+      "arm": "dao_combined",
+      "family": "overtaking",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 15
+    },
+    {
+      "arm": "periodic4",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "periodic4",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "age4",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "age4",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "age5",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "age5",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "caa_full",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "caa_full",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_veto",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_veto",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_route",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_route",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_combined",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 16
+    },
+    {
+      "arm": "dao_combined",
+      "family": "sudden_stop",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 16
+    },
+    {
+      "arm": "periodic4",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "periodic4",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "age4",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "age4",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "age5",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "age5",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "caa_full",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "caa_full",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_veto",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_veto",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_route",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_route",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_combined",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 17
+    },
+    {
+      "arm": "dao_combined",
+      "family": "reversal",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 17
+    },
+    {
+      "arm": "periodic4",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "periodic4",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "age4",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "age4",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "age5",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "age5",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "caa_full",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "caa_full",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_veto",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_veto",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_route",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_route",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_combined",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 18
+    },
+    {
+      "arm": "dao_combined",
+      "family": "alternating",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 18
+    },
+    {
+      "arm": "periodic4",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "periodic4",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "age4",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "age4",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "age5",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "age5",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "caa_full",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "caa_full",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_veto",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_veto",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_route",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_route",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_combined",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 19
+    },
+    {
+      "arm": "dao_combined",
+      "family": "occluded",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 19
+    },
+    {
+      "arm": "periodic4",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "periodic4",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "age4",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "age4",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "age5",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "age5",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "caa_full",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "caa_full",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_veto",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_veto",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_route",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_route",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_combined",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 20
+    },
+    {
+      "arm": "dao_combined",
+      "family": "multiple",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 20
+    },
+    {
+      "arm": "periodic4",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "periodic4",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "age4",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "age4",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "age5",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "age5",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "caa_full",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "caa_full",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_veto",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_veto",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_route",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_route",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_combined",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 21
+    },
+    {
+      "arm": "dao_combined",
+      "family": "narrow",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 21
+    },
+    {
+      "arm": "periodic4",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "periodic4",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "age4",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "age4",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "age5",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "age5",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "caa_full",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "caa_full",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_veto",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_veto",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_route",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_route",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_combined",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 22
+    },
+    {
+      "arm": "dao_combined",
+      "family": "rotation",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 22
+    },
+    {
+      "arm": "periodic4",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "periodic4",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "age4",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "age4",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "age5",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "age5",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "caa_full",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "caa_full",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_veto",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_veto",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_route",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_route",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_combined",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 23
+    },
+    {
+      "arm": "dao_combined",
+      "family": "stationary",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 23
+    },
+    {
+      "arm": "periodic4",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "periodic4",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "age4",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "age4",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "age5",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "age5",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "caa_full",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "caa_full",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_veto",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_veto",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_route",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_route",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_combined",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 24
+    },
+    {
+      "arm": "dao_combined",
+      "family": "no_pedestrian",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 24
+    },
+    {
+      "arm": "periodic4",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "periodic4",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "age4",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "age4",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "age5",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "age5",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "caa_full",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "caa_full",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_veto",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_veto",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_route",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_route",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_combined",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 25
+    },
+    {
+      "arm": "dao_combined",
+      "family": "unavoidable_first",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 25
+    },
+    {
+      "arm": "periodic4",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "periodic4",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "age4",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "age4",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "age5",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "age5",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "caa_full",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "caa_full",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_veto",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_veto",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_trigger",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_route",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_route",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_combined",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "original",
+      "scene_index": 26
+    },
+    {
+      "arm": "dao_combined",
+      "family": "no_pedestrian_turn",
+      "role": "prospective_benchmark",
+      "safety": "predictive_v1",
+      "scene_index": 26
+    }
+  ],
+  "regression_original_DAO_exact_parities": 48,
+  "source_freeze": "6aab1e14ce7df42501c0b4e6bbba44816a529ffe",
+  "status": "COMPLETE_ACCOUNTING_NOT_SAFETY_ACCEPTANCE"
+}
