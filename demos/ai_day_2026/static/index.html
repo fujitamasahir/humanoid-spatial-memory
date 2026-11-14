@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEAT THE HUMANOID | BYU AI Day 2026</title>
-<link rel="stylesheet" href="/static/style.css?v=5">
+<link rel="stylesheet" href="/static/style.css?v=6">
 </head>
 <body>
 <div class="grain"></div>
@@ -16,7 +16,7 @@
     <p class="intro">Stop the robot in 80 steps.</p>
     
     
-    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=5" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
+    <div id="hero" class="hero" data-pose="periodic"><img id="heroImage" class="portrait" src="/api/portrait/periodic?v=6" alt="Unitree G1"><canvas id="heroMotion" width="360" height="480" hidden aria-hidden="true"></canvas><span id="portraitStatus" hidden>G1 portrait unavailable</span></div><div class="form-row strategy-row"><label><span class="dpad">✚</span> AI SENSING STRATEGY</label><div class="strategies" id="strategyGroup">
       <button data-strategy="periodic" class="strategy active"><b>PERIODIC</b><small>Scan every few steps</small></button>
       <button data-strategy="age" class="strategy"><b>AGE</b><small>Refresh stale areas</small></button>
       <button data-strategy="uncertainty" class="strategy"><b>UNCERTAINTY</b><small>Refresh uncertain areas</small></button>
@@ -32,11 +32,11 @@
   </div>
 </section>
 <section id="liveScreen" class="screen live-screen">
-  <div class="live-head"><div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span><span class="step-chip">STEP <b id="stepValue">0</b> / 80</span></div></div>
-  <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>AI VIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
-    <aside class="stats-card"><div class="stat"><small>MEMORY OBSERVATIONS</small><b id="obsValue">1</b></div><div class="stat"><small>TRAVEL DISTANCE</small><b id="distanceValue">0.0 <i>m</i></b></div><div class="stat"><small>ACTUAL UNWANTED CONTACTS</small><b id="contactValue">0</b></div><div class="stat"><small>BLOCKED MOVES <em>≠ contact</em></small><b id="blockedValue">0</b></div><div class="stat"><small>G1 HEADING</small><b id="headingValue">EAST</b></div><div class="stat events"><small>EVENTS</small><div id="events"></div></div></aside>
+  <div class="live-head"><div><h2>Humanoid in motion</h2></div><div class="live-badges"><span id="liveMaze"></span><span id="liveStrategy"></span></div></div>
+  <div class="live-grid"><div class="map-card"><div class="panel-heading">GROUND TRUTH <span>VISITOR VIEW</span></div><canvas id="truthCanvas" width="900" height="700"></canvas><img id="scene3d" alt="MuJoCo fixed-camera view" hidden><span id="renderStatus"></span></div><div class="map-card"><div class="panel-heading">SPATIAL MEMORY <span>FAINT = VISITOR PREVIEW</span></div><canvas id="memoryCanvas" width="900" height="700"></canvas></div>
+
   </div>
-  <div id="liveStatus" class="live-status">Running actual Phase 2 G1 navigation…</div>
+  <div class="live-counters"><div>STEPS <b id="stepValue">0</b><span> / 80</span></div><div>MEMORY SCANS <b id="obsValue">0</b></div></div><div id="liveStatus" class="live-status" role="status"></div>
 </section>
 <section id="resultScreen" class="screen result-screen">
   <div id="winner" class="winner">AI WINS</div><p id="winnerCaption" class="winner-caption"></p>
@@ -46,5 +46,5 @@
 </main>
 
 <div id="toast" role="status"></div>
-<script src="/static/game.js?v=5"></script>
+<script src="/static/game.js?v=6"></script>
 </body></html>

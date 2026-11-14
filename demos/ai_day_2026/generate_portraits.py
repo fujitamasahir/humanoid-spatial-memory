@@ -27,23 +27,27 @@ def K(t,z=0,yaw=0,pitch=0,x=0,j=None):
     return (t,z,yaw,pitch,x,j or {})
 TUCK={**legs(-1.15,-1.15,1.85,1.85,-.45,-.45),**arms(.15,-.15,.35,.35,-.65,-.65)}
 VICTORY={**legs(-.15,.37,.25,.48,-.11,-.35,.05,-.09),
-         **arms(.35,-.20,.45,-.30,-1.9,.18),'waist_roll_joint':-.10}
-BALLET={**legs(0,-.6,.07,1.10,-.12,-.35,0,-.12),
-        **arms(.3,-.3,.05,.05,-1.25,-1.25)}
-BOW={**legs(-.42,-.48,.78,.90,-.30,-.35,.12,-.15),
-     **arms(1.05,-1.05,-.75,-.75,-.18,-.18),'waist_pitch_joint':.34}
+         **arms(-.13,-.12,-1.50,.10,-.78,.15),'left_shoulder_yaw_joint':-.18,'waist_roll_joint':-.10}
+BALLET={**legs(0,-.95,.07,2.10,-.12,.12,0,-.64),
+        **arms(.10,-.10,-.66,-.66,-2.75,-2.75),
+        'right_hip_yaw_joint':-.95,'left_shoulder_yaw_joint':-.16,'right_shoulder_yaw_joint':.16}
+BOW={**legs(-.42,-.48,.78,1.05,-.30,-.35,.12,-.46),
+     **arms(1.05,-1.05,-.28,-.28,-.18,-.18),'right_hip_yaw_joint':-.68,'waist_pitch_joint':.34}
 STANCE={**legs(-.28,.28,.35,.45,-.14,-.22,.13,-.10),
-        **arms(.12,-.15,.35,.35,-.62,-.66),'waist_yaw_joint':.12}
+        **arms(-.10,.10,-1.75,-1.75,-.68,-.70),
+        'left_shoulder_yaw_joint':-.10,'right_shoulder_yaw_joint':.10,'waist_yaw_joint':.12}
 def punch(left):
     p=STANCE.copy()
     if left:
-        p.update(arms(.03,-.15,-1.16,.35,-1.70,-.66))
+        p.update(arms(-.08,.10,.22,-1.75,-1.65,-.70))
         p.update(waist_yaw_joint=.28,waist_pitch_joint=.12)
     else:
-        p.update(arms(.12,-.03,.35,-1.16,-.62,-1.80))
+        p.update(arms(-.10,.08,-1.75,.22,-.68,-1.72))
         p.update(waist_yaw_joint=-.40,waist_pitch_joint=.16,
                  right_hip_yaw_joint=-.22,right_ankle_pitch_joint=-.38)
     return p
+WINDUP={**STANCE,**arms(-.10,.18,-1.75,-1.36,-.68,.30),
+        'waist_yaw_joint':.48,'right_shoulder_yaw_joint':.28}
 MOTIONS={
  'periodic':[
     K(0),K(.10,-.13,0,.14,0,{**crouch(.6),**arms(.1,-.1,-.45,-.45,.65,.65)}),
@@ -65,8 +69,8 @@ MOTIONS={
  'uncertainty':[
     K(0),K(.15,-.045,.20,0,.02,STANCE),
     K(.23,-.04,.30,0,.065,punch(True)),K(.30,-.045,.20,0,.02,STANCE),
-    K(.38,-.04,.30,0,.065,punch(True)),K(.47,-.045,.20,0,.02,STANCE),
-    K(.58,-.04,-.36,0,.10,punch(False)),K(.70,-.045,.20,0,.02,STANCE),
+    K(.38,-.04,.30,0,.065,punch(True)),K(.44,-.045,.20,0,.02,STANCE),
+    K(.50,-.055,.45,0,-.015,WINDUP),K(.60,-.04,-.36,0,.10,punch(False)),K(.70,-.045,.20,0,.02,STANCE),
     K(.86,-.045,.20,0,.02,STANCE),K(1)]
 }
 def sample(name,t):

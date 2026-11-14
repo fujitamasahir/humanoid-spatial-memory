@@ -381,11 +381,17 @@ class GameEngine:
             runtime_counts['memory_rays'] += int(memory_sensor.last_stats.get('ray_count', 0))
             runtime_counts['memory_calls'] += 1
             return result
+        # Presentation-only: keep actual detections separate from ground truth.
+        seen_objects = set()
+        seen_people = set()
         def record(_obs, step, _position):
             stats = memory_sensor.last_stats
             tracker.observe(step, stats.get('visible_pedestrian_cells', ()))
             state['static_obstacle_cells'] = {tuple(c) for c in stats.get('visible_persistent_obstacle_cells', ())}
             state['static_obstacle_step'] = int(step)
+            seen_objects.update(state['static_obstacle_cells'])
+            seen_people.clear()
+            seen_people.update(tuple(c) for c in stats.get('visible_pedestrian_cells', ()))
         def safety_scan(world, position, yaw):
             return safety_sensor.scan(world, position, yaw)
         def safety_choose(memory, position, goal, yaw, action, measurement, step, blocked):
@@ -407,6 +413,8 @@ class GameEngine:
                 'memory': frame['memory'].astype(int).tolist(),
                 'people': [list(map(int, p)) for p in sorted(world.people())],
                 'objects': [list(map(int, p)) for p in sorted(world.objects)],
+                'observed_objects': [list(p) for p in sorted(seen_objects)],
+                'observed_people': [list(p) for p in sorted(seen_people)],
                 'observation_count': int(frame['observation_count']),
                 'observation_event': bool(frame.get('observation_granted', False)),
                 'observation_score': frame.get('observation_score'),
