@@ -13,9 +13,9 @@ import evaluate_c_v2_candidate_coverage_fit72 as shared
 
 
 def main():
-    defaults=['--gate','results/phase2_mujoco/c_v2c_topology_v1/synthetic_mechanism_results.json',
-        '--protocol','docs/phase2_c_v2c_topology_protocol.md',
-        '--output','results/phase2_mujoco/c_v2c_topology_v1/fit72_descriptive_screen',
+    defaults=['--gate','results/phase2_mujoco/c_v2c_topology_v2/synthetic_mechanism_results.json',
+        '--protocol','docs/phase2_c_v2c_topology_protocol_v2.md',
+        '--output','results/phase2_mujoco/c_v2c_topology_v2/fit72_descriptive_screen',
         '--arms','c0_audit','c_k','c_topology3c']
     sys.argv=[sys.argv[0],*defaults,*sys.argv[1:]]
     shared.main()

@@ -1,0 +1,11 @@
+{
+  "status": "INVALID_STOP_BEFORE_FIT",
+  "attempt": "pre-screen runner initialization",
+  "command": ".venv/bin/python scripts/run_c_v2c_topology_fixtures.py",
+  "failure": "ImportError: cannot import name 'TopologyEVIParameters' from spatial_memory.topology_evi_c",
+  "candidate_fixture_generation_started": false,
+  "candidate_arms_executed": false,
+  "FIT_data_accessed": false,
+  "protected_data_accessed": false,
+  "corrective_action": "Preserved this failed attempt and created a new frozen protocol/result version; no formal outcome or threshold was observed."
+}

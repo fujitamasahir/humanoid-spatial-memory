@@ -15,11 +15,11 @@ from spatial_memory.candidate_coverage import (
     ExpandedEVIParameters,information_value_original_audit,
     information_value_uncertainty_k,information_value_route)
 from spatial_memory.topology_evi_c import (
-    TopologyEVIParameters,information_value_topology_c,
+    information_value_topology_c,
     analyze_public_topology_c,eligible_topology_candidates_c,
     rank_topology_candidates_c)
 
-OUT=ROOT/'results/phase2_mujoco/c_v2c_topology_v1'
+OUT=ROOT/'results/phase2_mujoco/c_v2c_topology_v2'
 REMAINING=10
 
 
@@ -254,7 +254,7 @@ def run():
         'graph_analysis_p95_le_5ms':graph_p95<=5_000_000}
     numeric['status']='PASS' if all((numeric['macro_useful_recall_gain_ge_0_10'],numeric['micro_useful_recall_non_decrease'],numeric['macro_max_D_recall_non_decrease'],numeric['scan_agreement_gain_ge_0_05'],numeric['no_benefit_cases_pass'],plan_caps,work_bounds,graph_p95<=5_000_000)) else 'REJECTED'
     # Numeric status is intentionally separate from the post-run review file.
-    source_paths=['docs/phase2_c_v2c_topology_protocol.md','docs/phase2_c_v2c_fit_intervention_protocol.md','scripts/c_v2c_fixtures.py','scripts/validate_c_v2c_fixture_annotations.py','scripts/run_c_v2c_topology_fixtures.py','scripts/review_c_v2c_mechanism.py','src/spatial_memory/topology_evi_c.py','src/spatial_memory/topology_reference.py','src/spatial_memory/evi.py','src/spatial_memory/candidate_coverage.py']
+    source_paths=['docs/phase2_c_v2c_topology_protocol.md','docs/phase2_c_v2c_topology_protocol_v2.md','docs/phase2_c_v2c_fit_intervention_protocol.md','scripts/c_v2c_fixtures.py','scripts/validate_c_v2c_fixture_annotations.py','scripts/run_c_v2c_topology_fixtures.py','scripts/review_c_v2c_mechanism.py','src/spatial_memory/topology_evi_c.py','src/spatial_memory/topology_reference.py','src/spatial_memory/evi.py','src/spatial_memory/candidate_coverage.py']
     data={'status':'COMPLETED_C_V2C_SYNTHETIC_SCREEN','protocol':'docs/phase2_c_v2c_topology_protocol.md','mechanism_gate':numeric,
         'correctness_validation':correctness,
         'annotation_validation':annotations,'policy_preflight':preflight,

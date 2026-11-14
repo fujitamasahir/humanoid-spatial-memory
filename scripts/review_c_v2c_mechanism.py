@@ -5,11 +5,12 @@ from pathlib import Path
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
-RESULT=ROOT/'results/phase2_mujoco/c_v2c_topology_v1/synthetic_mechanism_results.json'
+RESULT=ROOT/'results/phase2_mujoco/c_v2c_topology_v2/synthetic_mechanism_results.json'
 OUT=RESULT.parent/'gate_review.json'
 sys.path[:0]=[str(ROOT/'src'),str(ROOT/'scripts')]
 
-SOURCE_PATHS=['docs/phase2_c_v2c_topology_protocol.md','docs/phase2_c_v2c_fit_intervention_protocol.md',
+SOURCE_PATHS=['docs/phase2_c_v2c_topology_protocol.md','docs/phase2_c_v2c_topology_protocol_v2.md',
+ 'docs/phase2_c_v2c_fit_intervention_protocol.md',
  'scripts/c_v2c_fixtures.py',
  'scripts/validate_c_v2c_fixture_annotations.py','scripts/run_c_v2c_topology_fixtures.py',
  'scripts/review_c_v2c_mechanism.py',
@@ -88,7 +89,7 @@ def review():
     checks['numeric_gate_consistency']=gate.get('status')=='PASS' and all(gate.get(k) is True for k in ('macro_useful_recall_gain_ge_0_10','micro_useful_recall_non_decrease','macro_max_D_recall_non_decrease','scan_agreement_gain_ge_0_05','no_benefit_cases_pass','all_A_star_limits_respected','graph_work_bound_respected','graph_analysis_p95_le_5ms'))
     errors.extend([x for x,v in checks.items() if not v])
     result={'status':'ACCEPTED_FOR_FIT' if not errors else 'INVALID_STOP_BEFORE_FIT',
-      'protocol':'docs/phase2_c_v2c_topology_protocol.md','intervention_protocol':'docs/phase2_c_v2c_fit_intervention_protocol.md',
+      'protocol':'docs/phase2_c_v2c_topology_protocol_v2.md','intervention_protocol':'docs/phase2_c_v2c_fit_intervention_protocol.md',
       'checked_at_utc':subprocess.run(['date','-u','+%Y-%m-%dT%H:%M:%SZ'],capture_output=True,text=True).stdout.strip(),
       'checks':checks,'errors':errors,'recomputed_overall':recomputed,'runtime_p95_ns_independent':measured_p95,
       'test_command':cmd,'test_returncode':test.returncode,'test_stdout':test.stdout,'test_stderr':test.stderr,
