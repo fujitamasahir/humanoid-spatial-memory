@@ -105,3 +105,8 @@ body:is([data-difficulty=medium],[data-difficulty=hard]) :is(#liveDifficulty,#re
 .winner-caption.result-contact-alert{position:static;transform:none;align-self:center;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;margin:0 auto 8px;font-size:clamp(14px,1.5vw,22px);line-height:1.3}
 .review-timeline .review-endpoint{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:3px 10px}.review-endpoint kbd{font-size:12px;font-weight:700;border:1px solid #7890a7;border-radius:4px;padding:3px 5px;color:#d5e5f4;background:#293849}.review-endpoint span{font-size:18px}
 @media(max-width:800px){.review-timeline{gap:6px}.review-timeline .review-endpoint{padding:3px 6px;gap:4px}}
+
+/* Xbox face-button badges and the winner's idle portrait motion. */
+.inventory .tool kbd.x,.inventory .tool kbd.y{display:inline-grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;padding:0;font:bold 23px system-ui;line-height:1}
+.inventory .tool kbd.x{background:#2168bb;color:#fff}.inventory .tool kbd.y{background:#e7b83e;color:#202020}
+#resultHero:not(.defeated) #resultPortrait:not([hidden]){animation:heroBob 3.4s ease-in-out infinite}
