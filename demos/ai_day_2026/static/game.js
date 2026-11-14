@@ -104,6 +104,34 @@ function showResult(r,finalState){
 }
 async function backToEditor(keep){if(starting)return;starting=true;try{await api('/api/reset',{method:'POST'});if(ws){ws.onclose=null;ws.close()}screen('setupScreen');if(keep){renderEditor();await validate()}else clearEdits()}catch(e){toast(e.message)}finally{starting=false}}
 $('newBtn').onclick=()=>backToEditor(true);
+let fullscreenPending=false;
+function fullscreenElement(){return document.fullscreenElement||document.webkitFullscreenElement||null}
+function syncFullscreen(){
+ const active=!!fullscreenElement(),b=$('fullscreenBtn');
+ b.setAttribute('aria-pressed',String(active));
+ b.setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');
+ b.title=(active?'Exit fullscreen':'Fullscreen')+' (Xbox View button)';
+}
+async function toggleFullscreen(){
+ if(fullscreenPending)return;
+ fullscreenPending=true;
+ try{
+  if(fullscreenElement()){
+   const exit=document.exitFullscreen||document.webkitExitFullscreen;
+   if(!exit)throw Error('Fullscreen exit unavailable');
+   await exit.call(document);
+  }else{
+   const root=document.documentElement,enter=root.requestFullscreen||root.webkitRequestFullscreen;
+   if(!enter)throw Error('Fullscreen unavailable');
+   await enter.call(root);
+  }
+ }catch(error){toast('Fullscreen was blocked. Click the fullscreen icon in the top right.')}
+ finally{fullscreenPending=false;syncFullscreen()}
+}
+$('fullscreenBtn').addEventListener('click',toggleFullscreen);
+document.addEventListener('fullscreenchange',syncFullscreen);
+document.addEventListener('webkitfullscreenchange',syncFullscreen);
+syncFullscreen();
 function pressed(pad,i){return !!pad.buttons[i]?.pressed||(pad.buttons[i]?.value||0)>.55}
 const repeats={};let lastMove=0;
 let difficultyStick={dir:0,next:0,armed:false};
@@ -119,6 +147,7 @@ function difficultyStickStep(state,x,y,now){
 function resetDifficultyStick(){difficultyStick={dir:0,next:0,armed:false}}
 function gamepadLoop(){const gp=[...(navigator.getGamepads?.()||[])].find(Boolean);const padStatus=$('padStatus');padStatus.classList.toggle('connected',!!gp);padStatus.setAttribute('aria-label',gp?'Controller connected':'Controller disconnected');const now=performance.now(),cur=new Set();
 if(gp){for(let i=0;i<gp.buttons.length;i++)if(pressed(gp,i))cur.add(i);const edge=i=>cur.has(i)&&!gamepadPrev.has(i);
+if(edge(8))toggleFullscreen();
 const repeat=(i,fn)=>{if(!cur.has(i)){delete repeats[i];return}if(edge(i)||now>=(repeats[i]??0)){fn();repeats[i]=now+(edge(i)?350:140)}};
 if(settingsOpen){const s=difficultyStickStep(difficultyStick,gp.axes[0]||0,gp.axes[1]||0,now);difficultyStick=s.state;if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings();else if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(s.delta&&!cur.has(12)&&!cur.has(13)&&!cur.has(14)&&!cur.has(15))moveDifficulty(s.delta)}
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(6,()=>setMaze(mazeIndex-1));repeat(7,()=>setMaze(mazeIndex+1));if(edge(14)||edge(12))cycleStrategy(-1);if(edge(15)||edge(13))cycleStrategy(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}

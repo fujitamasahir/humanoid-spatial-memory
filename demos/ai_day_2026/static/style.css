@@ -93,3 +93,7 @@ body:is([data-difficulty=medium],[data-difficulty=hard]) :is(#setupDifficulty,#l
 body:is([data-difficulty=medium],[data-difficulty=hard]) :is(#liveDifficulty,#reviewDifficulty,.result-summary [data-stat=difficulty]){border-color:var(--difficulty-accent);background:var(--difficulty-tint)}
 .difficulty-option[data-level=medium].selected{border-color:#ffda66;box-shadow:0 0 0 1px #ffda66;background:#3d3015}
 .difficulty-option[data-level=hard].selected{border-color:#ff7771;box-shadow:0 0 0 1px #ff7771;background:#401c20}
+
+/* Fullscreen toggle stays available on every screen. */
+.fullscreen-btn{position:absolute;right:100px;top:50%;transform:translateY(-50%);width:40px;height:40px;display:grid;place-items:center;padding:8px;border:1px solid #34475d;border-radius:8px;background:#101a27;color:#d1e0ef;cursor:pointer;z-index:3}
+.fullscreen-btn svg{width:22px;height:22px}.fullscreen-btn:hover,.fullscreen-btn:focus-visible{color:#65e0ec;border-color:#65e0ec}.fullscreen-btn .collapse-icon,.fullscreen-btn[aria-pressed=true] .expand-icon{display:none}.fullscreen-btn[aria-pressed=true] .collapse-icon{display:inline}
