@@ -95,3 +95,15 @@ Noise-free seeds repeat the same trajectory and are not independent evidence.
 Review `docs/experimental_protocol.md` and the validation record before expanding
 the scenario suite or implementing additional algorithms. The simulator uses a
 point robot and does not model bipedal traversability or physical walking.
+
+## C v2.1 multi-step observation timing (2026-11-14)
+
+Candidate-ranking development through C v2.0d is frozen. The next separately
+scoped hypothesis compares scan-now, bounded delayed-scan and no-information
+costs, with and without predicted future sensing opportunity, on matched
+C-K and Topology3-d shortlists. See `phase2_c_v21_multistep_protocol.md`,
+`c_v21_environment_migration.md` and `c_v21_one_step_delay_audit.md`.
+The formal synthetic gate and isolated conformance review must both pass
+before any new-policy navigation screen. The original Phase1.5 population and
+unapproved independent cohorts remain unchanged. No automatic G1-aware EVI
+follow-on is authorized by this task.

@@ -1,0 +1,1812 @@
+[
+  {
+    "bytes": 4668,
+    "path": "episode_001_C-K.json.gz",
+    "sha256": "5317f552a71bac99cce243d6fec0f09f0b17e6d8ec89d6b4b29e815134ad8768"
+  },
+  {
+    "bytes": 14922,
+    "path": "episode_001_C-Topology3-d.json.gz",
+    "sha256": "d22ca097c6c7dff8a4b3b913afd7d4915dba78f8420686a9b23adc8880b3d8f2"
+  },
+  {
+    "bytes": 4401,
+    "path": "episode_001_C0.json.gz",
+    "sha256": "b6356919cc786e09d428c0b992f67f07b5efc41e0a1ec81f64c37f87f9dc3496"
+  },
+  {
+    "bytes": 2782,
+    "path": "episode_001_age.json.gz",
+    "sha256": "30a2417d250e8ca593bf9200e6ab98727cfdf59274155c74bf8bbacc369c8988"
+  },
+  {
+    "bytes": 2633,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "37151de4d661f78bdc870e4b661bc4a621a4ab1feca9a7d319a2e1cd932e31ec"
+  },
+  {
+    "bytes": 4665,
+    "path": "episode_002_C-K.json.gz",
+    "sha256": "c29da9f642790748f0e784010a6ec4462d2de2ace85d2a51ebb72678498cac7d"
+  },
+  {
+    "bytes": 14922,
+    "path": "episode_002_C-Topology3-d.json.gz",
+    "sha256": "f2315621dbe31f50c27d86feb069eba3348dfa30c8d800dbea3433ade99285bc"
+  },
+  {
+    "bytes": 4399,
+    "path": "episode_002_C0.json.gz",
+    "sha256": "bf15d02d6fc79c69c38a06b4072b67a040f5fcc4d0d6c2899c366fd45b58033c"
+  },
+  {
+    "bytes": 2781,
+    "path": "episode_002_age.json.gz",
+    "sha256": "f2d263c2cc4b81981431fd909439b69aa03f5ecf470872ed5517c417eccaaf7c"
+  },
+  {
+    "bytes": 2625,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "ccaea14246bbd6bf6c327a29ea1894d968ac3b524a2c61020c25ce4376c0ea29"
+  },
+  {
+    "bytes": 7250,
+    "path": "episode_003_C-K.json.gz",
+    "sha256": "bb3633b4b1f20dfdbf2a2e0235b393ae5c22ed90523ddf49813d108c66dea735"
+  },
+  {
+    "bytes": 26254,
+    "path": "episode_003_C-Topology3-d.json.gz",
+    "sha256": "fa016fd86a6bcda2a273e49a771e5d3198a7534538e7e8fd36de0893ee5d6640"
+  },
+  {
+    "bytes": 6820,
+    "path": "episode_003_C0.json.gz",
+    "sha256": "c3dddef9b524bf671dd20340490d71eea1d66cf3a8c89ef63d26b5a1d11ca65c"
+  },
+  {
+    "bytes": 3914,
+    "path": "episode_003_age.json.gz",
+    "sha256": "9c3ab53ec1acc3abd2327ba8e717e8c8bb754ba68ce93772b8f959f1402f10af"
+  },
+  {
+    "bytes": 4051,
+    "path": "episode_003_periodic.json.gz",
+    "sha256": "84d1d2043ac2b12337f5b8713b790a706a957f348ebc89ee1ffed68c07f61348"
+  },
+  {
+    "bytes": 7258,
+    "path": "episode_004_C-K.json.gz",
+    "sha256": "c66d0e63abf367ae018ff93b3dfcb638ef4abb7edb5beb23e73fcf41b7a32d29"
+  },
+  {
+    "bytes": 26248,
+    "path": "episode_004_C-Topology3-d.json.gz",
+    "sha256": "fc0f1785154e795376a69906c0a829412115da89cce7ef004c07e8f5fd939d75"
+  },
+  {
+    "bytes": 6802,
+    "path": "episode_004_C0.json.gz",
+    "sha256": "89b4fbc4f601432223c4608d8f4d74ceff5d128d2d39a541fc85166c65485a86"
+  },
+  {
+    "bytes": 3907,
+    "path": "episode_004_age.json.gz",
+    "sha256": "106a0dbca9bc5b77e29bfbe0aaeff5f32226148ea1a578bc8d2bddac901a82ab"
+  },
+  {
+    "bytes": 4051,
+    "path": "episode_004_periodic.json.gz",
+    "sha256": "6790b04a31a09ba8ab92c6fd37c1bc9309cce79d74fec46ab46669ac6875c9af"
+  },
+  {
+    "bytes": 5964,
+    "path": "episode_005_C-K.json.gz",
+    "sha256": "190b2c64c4105560a5dd799e449ca63635c78bcc7954f5ff6c165672d8285b7c"
+  },
+  {
+    "bytes": 17831,
+    "path": "episode_005_C-Topology3-d.json.gz",
+    "sha256": "1aa005a27eeaca95a768edf053e2f80dd93e17d2f5e142cceacc941509ca9a78"
+  },
+  {
+    "bytes": 5501,
+    "path": "episode_005_C0.json.gz",
+    "sha256": "5d99cda3431a4ceebed40cd34668409d3428e960c39fd48badf1149b17690a1b"
+  },
+  {
+    "bytes": 3079,
+    "path": "episode_005_age.json.gz",
+    "sha256": "16549cf4b33e4c0c74116f70522380e00a84b5d61dae169ce30a231a99a9ae14"
+  },
+  {
+    "bytes": 3015,
+    "path": "episode_005_periodic.json.gz",
+    "sha256": "a252732a623e4c19f8c426636d3ed93e5ee8bc4b41f66906117bd0a2c6ef3159"
+  },
+  {
+    "bytes": 5978,
+    "path": "episode_006_C-K.json.gz",
+    "sha256": "7ad4e8c3e47ebc6af700d5443d598b3cc06cbdf74bc63f7e5d34734023852a17"
+  },
+  {
+    "bytes": 17851,
+    "path": "episode_006_C-Topology3-d.json.gz",
+    "sha256": "1d2f51a131307d9646efafec3d463fdb9409eac567ea3cef6a286ffa5ad4737b"
+  },
+  {
+    "bytes": 5486,
+    "path": "episode_006_C0.json.gz",
+    "sha256": "91b51770178aa9adf054163260cfa91b327cdc046ab2945a23c86e3e212486fd"
+  },
+  {
+    "bytes": 3085,
+    "path": "episode_006_age.json.gz",
+    "sha256": "0fc68ff90569e0bacd9cfc0f0490b106f876cc1ea3a078b5b40d5fbc25611e7a"
+  },
+  {
+    "bytes": 3014,
+    "path": "episode_006_periodic.json.gz",
+    "sha256": "441d43f0c989475c53d945aac8876f9202897a6a89e911915cb9a62d5a36fbb1"
+  },
+  {
+    "bytes": 6070,
+    "path": "episode_007_C-K.json.gz",
+    "sha256": "a75d04da68cba2a635db7fe097e372cfe80804a37f08c7d69ab603294661eeb9"
+  },
+  {
+    "bytes": 18498,
+    "path": "episode_007_C-Topology3-d.json.gz",
+    "sha256": "9c02766fdc50434f115280729ebde7f0abfa255cc50c628fc8a6e584126e5f2d"
+  },
+  {
+    "bytes": 5832,
+    "path": "episode_007_C0.json.gz",
+    "sha256": "ea0a7cc7642c5c4a8808fef3dbec7ed68494b007f2dc65846d0803c00b9657fe"
+  },
+  {
+    "bytes": 2760,
+    "path": "episode_007_age.json.gz",
+    "sha256": "f03a963c17a396ae1d7be0f4aec26fbe4744656435e8e55448881c35fb3819ea"
+  },
+  {
+    "bytes": 2923,
+    "path": "episode_007_periodic.json.gz",
+    "sha256": "023e684a2443aa2ce664d08f695ee871a8c8a8bacec77b76e1c3e117f62e095d"
+  },
+  {
+    "bytes": 6042,
+    "path": "episode_008_C-K.json.gz",
+    "sha256": "d6da7332145908e2fdeb36e9333a4fadc34040c68427fd07a675bb0c79cc842b"
+  },
+  {
+    "bytes": 18452,
+    "path": "episode_008_C-Topology3-d.json.gz",
+    "sha256": "68b60f57b12ca53c914f95cd25f027b9dec19abaddb1277c1293f577e82740dc"
+  },
+  {
+    "bytes": 5800,
+    "path": "episode_008_C0.json.gz",
+    "sha256": "eef45a3055ea9dc73c2956fbaa6564c073a9bddbbb52193efc669c29a490f146"
+  },
+  {
+    "bytes": 2752,
+    "path": "episode_008_age.json.gz",
+    "sha256": "6ea1b2dee6f94eeffbcaf3e41595b629f263fce7f47cdbb7ec8d90c8716f7110"
+  },
+  {
+    "bytes": 2929,
+    "path": "episode_008_periodic.json.gz",
+    "sha256": "762ab4ecf83f6e8bc0056c620dc83ddbd50f0862ab8105a763fb752583be2a3b"
+  },
+  {
+    "bytes": 5117,
+    "path": "episode_009_C-K.json.gz",
+    "sha256": "e8d0d32833d876cd5872181c6c2755ad7963454986af6f46d276ca3476f11e8e"
+  },
+  {
+    "bytes": 14485,
+    "path": "episode_009_C-Topology3-d.json.gz",
+    "sha256": "2b98f8f0b984c895d960b0df0922dd683cd32e0d13236bd6ee95edf09e4c303f"
+  },
+  {
+    "bytes": 5015,
+    "path": "episode_009_C0.json.gz",
+    "sha256": "2bdee16796a97292c13dac0b2cdbe4144f6777c4b3f69e8eb6975b7eb879089d"
+  },
+  {
+    "bytes": 2779,
+    "path": "episode_009_age.json.gz",
+    "sha256": "a986c04047546c83d25a42b08b7caa22dae19cbfb8574d759322fcf3c70ddf66"
+  },
+  {
+    "bytes": 2609,
+    "path": "episode_009_periodic.json.gz",
+    "sha256": "0efb2d42fc5cc217ec131b6fc6e6d5409eafe5c3f2f53804b39275facc56f040"
+  },
+  {
+    "bytes": 5125,
+    "path": "episode_010_C-K.json.gz",
+    "sha256": "92fcdb12e1884d17f85ebde16bb89fb54ed3df1af6a20874af61ccaf5f0338ce"
+  },
+  {
+    "bytes": 14509,
+    "path": "episode_010_C-Topology3-d.json.gz",
+    "sha256": "5ef87e71b6ae046cc103f5dafc527d01b9b1f16801301dc5b1134ef5580f9625"
+  },
+  {
+    "bytes": 5040,
+    "path": "episode_010_C0.json.gz",
+    "sha256": "4d854b04943a472a1dfc1473302dd9b9777c188143a64365bfc3dff7f763eded"
+  },
+  {
+    "bytes": 2794,
+    "path": "episode_010_age.json.gz",
+    "sha256": "b07dde9c056806fc96d1cd70c8cbd09cbeceba1cccca6be8251385ccfba5aef7"
+  },
+  {
+    "bytes": 2632,
+    "path": "episode_010_periodic.json.gz",
+    "sha256": "0d926352aeddbf6d6aac52effaf9ecf3a6ab69c40f02dcd2217b26c02af7f614"
+  },
+  {
+    "bytes": 4718,
+    "path": "episode_011_C-K.json.gz",
+    "sha256": "02b9d4bab9b72412f4e89948f9e5efbb74274bcfb470a9cb8d754a44bb075d8b"
+  },
+  {
+    "bytes": 15747,
+    "path": "episode_011_C-Topology3-d.json.gz",
+    "sha256": "3945acfcca9333f3503af8763b7885f238aa9831fa1910ad97b23977e4bbd9a4"
+  },
+  {
+    "bytes": 4345,
+    "path": "episode_011_C0.json.gz",
+    "sha256": "ea50c9a1f498820c03476ca954ec40b5d5dd3f6e1fe5ef0c44376f0b7b09475c"
+  },
+  {
+    "bytes": 2842,
+    "path": "episode_011_age.json.gz",
+    "sha256": "e4e06d92d4ad965c5afc6fcfd7917d11ebaae4adf062d65bf98e2e74b7d95868"
+  },
+  {
+    "bytes": 2662,
+    "path": "episode_011_periodic.json.gz",
+    "sha256": "899e00c9e1dd4e07a59c182e009cbd7de112caf366f6879d2ba81d32165141cf"
+  },
+  {
+    "bytes": 4700,
+    "path": "episode_012_C-K.json.gz",
+    "sha256": "e14f98f656d1f46512320e143867e8ed413ca6336042316761f40c94c98f69b9"
+  },
+  {
+    "bytes": 15717,
+    "path": "episode_012_C-Topology3-d.json.gz",
+    "sha256": "14163a09a9a60ec7fc2ecd7365c302eee4116b43825cfbd476120bb7cc884463"
+  },
+  {
+    "bytes": 4325,
+    "path": "episode_012_C0.json.gz",
+    "sha256": "f2c64237e2c179e2bc9a5ed4876ff692f6f7673bc6a4e5c754c7fa188600e2e1"
+  },
+  {
+    "bytes": 2842,
+    "path": "episode_012_age.json.gz",
+    "sha256": "21d0cda8ecc98db93b49505e926aef67723c5201bc8898c3e6c09330e4989b3d"
+  },
+  {
+    "bytes": 2657,
+    "path": "episode_012_periodic.json.gz",
+    "sha256": "50d1d5bec8ad3a682acfa49d81ce9689bb09d3a7140a4a3558550d75cc118757"
+  },
+  {
+    "bytes": 6200,
+    "path": "episode_013_C-K.json.gz",
+    "sha256": "d6300384dc9920345b3c40189ffbf418c81484c278fa4997bbd15a6ba2586c1b"
+  },
+  {
+    "bytes": 24118,
+    "path": "episode_013_C-Topology3-d.json.gz",
+    "sha256": "9b9151b66bf893471b72db808337a5339cc4285925b3d7600d502f3b74cca5c0"
+  },
+  {
+    "bytes": 5633,
+    "path": "episode_013_C0.json.gz",
+    "sha256": "155b9a29286b0da59d6a69270ec12f74ba5df78df022ebe2a7fb1c8396103241"
+  },
+  {
+    "bytes": 3029,
+    "path": "episode_013_age.json.gz",
+    "sha256": "ce1f92e10e020434315d211b7fd8ed37281a5a89d5a0d36eddbeda7e5f47c501"
+  },
+  {
+    "bytes": 2777,
+    "path": "episode_013_periodic.json.gz",
+    "sha256": "e5b9efed8aece7ccc1b56f846f10017b567768315a3f8fa5cc94c600654ce719"
+  },
+  {
+    "bytes": 6205,
+    "path": "episode_014_C-K.json.gz",
+    "sha256": "530168f3b8b1fb81fcf415d90a2a0a20e3d1c49ca2f936dc1a6e3183a0d891bb"
+  },
+  {
+    "bytes": 24134,
+    "path": "episode_014_C-Topology3-d.json.gz",
+    "sha256": "3473940cf71da1455e73ea37eabb603610408fd65059bbd40c9045857ec4a18f"
+  },
+  {
+    "bytes": 5636,
+    "path": "episode_014_C0.json.gz",
+    "sha256": "e5e5d71c269cef7a12aa561a9efba5f0427a9b1770cdb41c09135e08d0419d32"
+  },
+  {
+    "bytes": 3041,
+    "path": "episode_014_age.json.gz",
+    "sha256": "666eeab0dcecf3dd815f011ed93d0fc2e04e66dd6e3ff1481e52584b46aae5ac"
+  },
+  {
+    "bytes": 2791,
+    "path": "episode_014_periodic.json.gz",
+    "sha256": "5cba304d7bec13c6a778da05b9115e096b09b4acb224c2702ff423282ac73f71"
+  },
+  {
+    "bytes": 5943,
+    "path": "episode_015_C-K.json.gz",
+    "sha256": "1e7fde540b40bdb519ec5326458e38f8299754d396bddb1ec41a84b9584274e9"
+  },
+  {
+    "bytes": 18284,
+    "path": "episode_015_C-Topology3-d.json.gz",
+    "sha256": "10b95fc45728d07b4880c5c2bccb41bf528ae3b357f046c6f70edacbc545636b"
+  },
+  {
+    "bytes": 5695,
+    "path": "episode_015_C0.json.gz",
+    "sha256": "3e98fabc689d1adc872bba5d23604077cb79c519c32ad32d0fd3f13ab1b80d24"
+  },
+  {
+    "bytes": 2877,
+    "path": "episode_015_age.json.gz",
+    "sha256": "50014559c3f0724fc88fc12c83500923657f8ad9f0d8ec68eb3503f7d0015ece"
+  },
+  {
+    "bytes": 2839,
+    "path": "episode_015_periodic.json.gz",
+    "sha256": "e06f73f10cf86c7fe8d3a80a5b21992433458056e1a73473e88604d92a8d2099"
+  },
+  {
+    "bytes": 5907,
+    "path": "episode_016_C-K.json.gz",
+    "sha256": "bccca64062c55f811281aaf5f99ae4e45f3c2f4b725163240193b1a0e011f7cb"
+  },
+  {
+    "bytes": 18250,
+    "path": "episode_016_C-Topology3-d.json.gz",
+    "sha256": "fe18ece44d9860d0d88878ba4301debd4d8dd9a4457e79f1b3f49b0b62aba83c"
+  },
+  {
+    "bytes": 5649,
+    "path": "episode_016_C0.json.gz",
+    "sha256": "696168476be1d95ba9623ccbb1feb77aaef370e213ac2372c0abceadacc9308a"
+  },
+  {
+    "bytes": 2842,
+    "path": "episode_016_age.json.gz",
+    "sha256": "b76ac4a681208bc7a9951721a23856b5a7589f6af3ec1027cc59dfa8929e5b1b"
+  },
+  {
+    "bytes": 2797,
+    "path": "episode_016_periodic.json.gz",
+    "sha256": "73379b7ff9a99f8048f2fb83ee9e420860b8e4d7b69bd2643b9a0ce3bdd96ab7"
+  },
+  {
+    "bytes": 5156,
+    "path": "episode_017_C-K.json.gz",
+    "sha256": "3f4134d154babe2d4c9bccbb15ea837f555d315c162d2e2bad0adcb1a32237d2"
+  },
+  {
+    "bytes": 14324,
+    "path": "episode_017_C-Topology3-d.json.gz",
+    "sha256": "14cd70685d50b4cf5ffbb666a1a114f868b252d38b030ad33c4b886f8691cf58"
+  },
+  {
+    "bytes": 4945,
+    "path": "episode_017_C0.json.gz",
+    "sha256": "ae0ff98e96933438d39da03b8ab91d36ef5b224f2e75915f9fe655dc7ceb6839"
+  },
+  {
+    "bytes": 2755,
+    "path": "episode_017_age.json.gz",
+    "sha256": "bb60eef19ffe3e0c00656705aaf9d0506d26f4fc444f83c2aac295ac31c15ac4"
+  },
+  {
+    "bytes": 2556,
+    "path": "episode_017_periodic.json.gz",
+    "sha256": "50143e142c270fadc56ed96ceaf1605d56f22d1fcf8c39f1f5150bd1eed29e9f"
+  },
+  {
+    "bytes": 5014,
+    "path": "episode_018_C-K.json.gz",
+    "sha256": "7793679d9b177ebb09cdee3cbe65d42bfdac10dc451e1b80035f5e918133a6b2"
+  },
+  {
+    "bytes": 14014,
+    "path": "episode_018_C-Topology3-d.json.gz",
+    "sha256": "3388f305c089c7571d693369799f47d544addd6cd2103aeee85ee3168d9af325"
+  },
+  {
+    "bytes": 4787,
+    "path": "episode_018_C0.json.gz",
+    "sha256": "a78c549cc8da9ae4eff8f25f34ba1a0a61d131cf34ba91e7bae561d53cc0e467"
+  },
+  {
+    "bytes": 2611,
+    "path": "episode_018_age.json.gz",
+    "sha256": "a1a86f7e191edc8aac06e665fc4e671b1199c04bb9f73dc28f35908fd1aef004"
+  },
+  {
+    "bytes": 2449,
+    "path": "episode_018_periodic.json.gz",
+    "sha256": "29a852c7e1483d77aceee35f3dd5ecf2591957e5b09ead1c202b8f8acb5d8e5b"
+  },
+  {
+    "bytes": 3721,
+    "path": "episode_019_C-K.json.gz",
+    "sha256": "2b18a33263bdb2dcacc5e46e70664642c3de0564c2dcfafbf501dd370e8e193b"
+  },
+  {
+    "bytes": 8707,
+    "path": "episode_019_C-Topology3-d.json.gz",
+    "sha256": "0d740248276511bb15592ed53a043c9ca8aad39b007563067ac8aedbba20508c"
+  },
+  {
+    "bytes": 3575,
+    "path": "episode_019_C0.json.gz",
+    "sha256": "c193d9cc3e29da144d1f3bab3c633fd104361c59aabe5f8e83ffb1a477518e93"
+  },
+  {
+    "bytes": 2217,
+    "path": "episode_019_age.json.gz",
+    "sha256": "4197d50a9dab68bab724aff8d3dec95555820ad3ecc808d84844b993a32fb07b"
+  },
+  {
+    "bytes": 2107,
+    "path": "episode_019_periodic.json.gz",
+    "sha256": "ea4e9997e1cf22dc7e32252c016529b50ae0ee903ea09e1ea39353087de8467e"
+  },
+  {
+    "bytes": 4792,
+    "path": "episode_020_C-K.json.gz",
+    "sha256": "515fc6d5d123df8005d74b9bc329d72ba4a4bf700bdffc2c7ca6ce2f6afebd7e"
+  },
+  {
+    "bytes": 12834,
+    "path": "episode_020_C-Topology3-d.json.gz",
+    "sha256": "33295a72b05d366a35cdf2fc4764d713cfe1b8ff6612a2eb40b787da708da55b"
+  },
+  {
+    "bytes": 4401,
+    "path": "episode_020_C0.json.gz",
+    "sha256": "3cb62c52d383c307acc5531991af0b9bb00764620862f1b6abf051c864d0359a"
+  },
+  {
+    "bytes": 2696,
+    "path": "episode_020_age.json.gz",
+    "sha256": "b46bd3ecfc36a341d28cab303789a998feb45c7ec69b502b3e78202ebd975b5b"
+  },
+  {
+    "bytes": 2474,
+    "path": "episode_020_periodic.json.gz",
+    "sha256": "15e3acbfa62847bfc5d2c97dd802a8a48d5387bb641cc3702f8e5561e320dbbd"
+  },
+  {
+    "bytes": 6568,
+    "path": "episode_021_C-K.json.gz",
+    "sha256": "b63e76137e1e38e6d4e7792fb2b9ef7a00c3c499f1c6ab98d26f84d5ee2eea5f"
+  },
+  {
+    "bytes": 35717,
+    "path": "episode_021_C-Topology3-d.json.gz",
+    "sha256": "0f327dd7bea19defa52307aa49c9ee50dc211be0df85069d141f8f315a33bafe"
+  },
+  {
+    "bytes": 6291,
+    "path": "episode_021_C0.json.gz",
+    "sha256": "b7ec5d7a2803fa68d8e58081cfb689d3948ba8fb48b8c0e5c2805d34c6eb567b"
+  },
+  {
+    "bytes": 3973,
+    "path": "episode_021_age.json.gz",
+    "sha256": "6989b9a48e929d4d33e9485aec41a75c6a84f6a000b497f06f076c8c32f3c9e6"
+  },
+  {
+    "bytes": 3601,
+    "path": "episode_021_periodic.json.gz",
+    "sha256": "c4f6bcc47348077cc6542408cb818a63faf5cff0aa77a8b18d6585c33ab33b74"
+  },
+  {
+    "bytes": 6578,
+    "path": "episode_022_C-K.json.gz",
+    "sha256": "a8707521ff127cb8fd3604038b0c710ee6427bf68be8c628524e722609147897"
+  },
+  {
+    "bytes": 35716,
+    "path": "episode_022_C-Topology3-d.json.gz",
+    "sha256": "749b2a196900299b6b08afbc33285983c0e0f400117a763b64981259884cecd7"
+  },
+  {
+    "bytes": 6296,
+    "path": "episode_022_C0.json.gz",
+    "sha256": "daaaf06cfb5e2fd1891c0f53e27d91693d8e8901bf0c54888b73d3f199fc31bc"
+  },
+  {
+    "bytes": 3985,
+    "path": "episode_022_age.json.gz",
+    "sha256": "004baed5dc88dc474a3404cd17b00deb146d6b0038342ab5fc8b69fb891597f7"
+  },
+  {
+    "bytes": 3607,
+    "path": "episode_022_periodic.json.gz",
+    "sha256": "d3e2851cd5498ef3fddb418dbef4bc408f01f2c68dc68659baad5a125d3638ab"
+  },
+  {
+    "bytes": 4368,
+    "path": "episode_023_C-K.json.gz",
+    "sha256": "d6eb7c38529c67f0463721a8f1edfe98fce70b1114f3a18d350272e62798e2b8"
+  },
+  {
+    "bytes": 13470,
+    "path": "episode_023_C-Topology3-d.json.gz",
+    "sha256": "b7f74f274167003c36f0865be713e93bf39b600f4dc7472c7d9b9f617183161f"
+  },
+  {
+    "bytes": 4101,
+    "path": "episode_023_C0.json.gz",
+    "sha256": "ea45921ed841b14a6ff5761064bf0099cf55e73d78b8069e727152f0060dd77a"
+  },
+  {
+    "bytes": 2566,
+    "path": "episode_023_age.json.gz",
+    "sha256": "96d9b3ea14452452ccb11bee7113c6f1ea51151c287fbdedb46809286382acde"
+  },
+  {
+    "bytes": 2426,
+    "path": "episode_023_periodic.json.gz",
+    "sha256": "5c93c4853738613945d6e80ee03af42552bc309c1631dad154beb9d3380663de"
+  },
+  {
+    "bytes": 4412,
+    "path": "episode_024_C-K.json.gz",
+    "sha256": "64ffaab4a23a2b4a62248ad1b7444eeb68722dd0d9060dd90787e1851e0ab1df"
+  },
+  {
+    "bytes": 13461,
+    "path": "episode_024_C-Topology3-d.json.gz",
+    "sha256": "ab9cbb4a83c4433d303df1fa7f37f4fa02473438de4d2e6c8ea201140061a015"
+  },
+  {
+    "bytes": 4148,
+    "path": "episode_024_C0.json.gz",
+    "sha256": "e44947aa0b7992c2dcbc71e24a83891e4f9ef352b9d9a3929121ee9d68b53c37"
+  },
+  {
+    "bytes": 2604,
+    "path": "episode_024_age.json.gz",
+    "sha256": "a7d7cc8f4610c560b330d24be716a7c5e8d390dc5f7a1d786f9b326a0445fa23"
+  },
+  {
+    "bytes": 2477,
+    "path": "episode_024_periodic.json.gz",
+    "sha256": "e72191ac0ae7b64654e296dced13dc845f1d8bfdc5721bc573d3aa236362ab51"
+  },
+  {
+    "bytes": 6394,
+    "path": "episode_025_C-K.json.gz",
+    "sha256": "541fcfebf132683d038d5cc96be8bc138c23b6a890e11a072c6769a7b8d7ae3f"
+  },
+  {
+    "bytes": 27516,
+    "path": "episode_025_C-Topology3-d.json.gz",
+    "sha256": "b5b8600f26abc6672cd91f458d5b934227752d2f06c8f7da17d158284083f860"
+  },
+  {
+    "bytes": 6147,
+    "path": "episode_025_C0.json.gz",
+    "sha256": "7a1e31db6f2b75f5b302756f680de5ca451ce7d8f8d459e349d03b83522621c1"
+  },
+  {
+    "bytes": 4200,
+    "path": "episode_025_age.json.gz",
+    "sha256": "734931910d862cb8fdfa6a6dc8697c0e24267cbf224de815fa7198fad1cd724a"
+  },
+  {
+    "bytes": 4099,
+    "path": "episode_025_periodic.json.gz",
+    "sha256": "65c24cf6faa6331e0316b4538a50e5cc82a1342fe9072a8fed7fd6f6cfab075f"
+  },
+  {
+    "bytes": 6571,
+    "path": "episode_026_C-K.json.gz",
+    "sha256": "fe79196023ba0b5993ff3d5fbf052fac6b61f0f9aa7869783cf9f84738bbfa07"
+  },
+  {
+    "bytes": 32260,
+    "path": "episode_026_C-Topology3-d.json.gz",
+    "sha256": "1eade243fbe7b4b6c91e939a85e7e4d50e4708be6e6de3aacbbfadd5deef621a"
+  },
+  {
+    "bytes": 5810,
+    "path": "episode_026_C0.json.gz",
+    "sha256": "360dba7d425e9e325534d3ae018e3acfe6ea9370476a0322e697156651350975"
+  },
+  {
+    "bytes": 3919,
+    "path": "episode_026_age.json.gz",
+    "sha256": "b4d8df1375e17c74a79c98783235f285c8be12b8cdc7e6ae46d6ac413bdc5f56"
+  },
+  {
+    "bytes": 3914,
+    "path": "episode_026_periodic.json.gz",
+    "sha256": "ccd48d079dbd8aaae65eccf79221216e3c0c1954d114b1f83cf8f03e34404f7f"
+  },
+  {
+    "bytes": 4922,
+    "path": "episode_027_C-K.json.gz",
+    "sha256": "b7f4d0031cb2245e23dfe36a3efd97e6e696a99ad2bccf1fe05ecf8ab1350e89"
+  },
+  {
+    "bytes": 14516,
+    "path": "episode_027_C-Topology3-d.json.gz",
+    "sha256": "d7dd388f1f144a03070eae9154d760596c85133efd5050dedc23c69ad50e206b"
+  },
+  {
+    "bytes": 4635,
+    "path": "episode_027_C0.json.gz",
+    "sha256": "7dca810716c499f966661ac01a785e85e3ef6162b47026308ad81f88097febd1"
+  },
+  {
+    "bytes": 2580,
+    "path": "episode_027_age.json.gz",
+    "sha256": "bd4e49ddb7ab308af6a58b4fbfc508ccad1dcb6ef3db56371d18b5258fbc514b"
+  },
+  {
+    "bytes": 2440,
+    "path": "episode_027_periodic.json.gz",
+    "sha256": "3173d2f29681409c1496270cf4b57f030e0a00ae782e865ab07763677715df6c"
+  },
+  {
+    "bytes": 4914,
+    "path": "episode_028_C-K.json.gz",
+    "sha256": "a6d13b1eb3025b5a526738c0b33df21456a584ac1a7ade298b57578f31d7c64c"
+  },
+  {
+    "bytes": 14531,
+    "path": "episode_028_C-Topology3-d.json.gz",
+    "sha256": "f03eb09a89c4df7e55df5ff4f4ac0b4b133146abf4073f019c3ef52effe76b6a"
+  },
+  {
+    "bytes": 4633,
+    "path": "episode_028_C0.json.gz",
+    "sha256": "71313c74349f2fa60603a6ade4a4e93ba327dc2a6f9ad4c6114e22140014ea0d"
+  },
+  {
+    "bytes": 2582,
+    "path": "episode_028_age.json.gz",
+    "sha256": "5f7b63a3ec0bd356f98f97654277c9a579781efac627b4facb892985ff3f8682"
+  },
+  {
+    "bytes": 2444,
+    "path": "episode_028_periodic.json.gz",
+    "sha256": "d9cd871ea8fcc630686835753f8162906c8331942f0620c64cdbfa0171c64a74"
+  },
+  {
+    "bytes": 8225,
+    "path": "episode_029_C-K.json.gz",
+    "sha256": "91a75c81448783b9c0a0a9ed991d8bb204d1063fb5d13822178c3637b463ca9a"
+  },
+  {
+    "bytes": 34201,
+    "path": "episode_029_C-Topology3-d.json.gz",
+    "sha256": "6331c85bfffcfe6a9f548f06a06fe3db6ac12397864b7b7c5790ae282285081e"
+  },
+  {
+    "bytes": 8060,
+    "path": "episode_029_C0.json.gz",
+    "sha256": "8bd391de383f2f1d42e85a835faa961e60362ae770636dae63792a0579222ced"
+  },
+  {
+    "bytes": 3309,
+    "path": "episode_029_age.json.gz",
+    "sha256": "a5c6c59f8f73ab91dd64d47d11910960bcda68b15817dbea7c73ac76c4eb8f84"
+  },
+  {
+    "bytes": 3110,
+    "path": "episode_029_periodic.json.gz",
+    "sha256": "55a28fd758a9b0f7e9cd3b46017295c75dfb535b128ab7309a4a975cb9d39c09"
+  },
+  {
+    "bytes": 8221,
+    "path": "episode_030_C-K.json.gz",
+    "sha256": "de8ecc43db0747b218be72afd2b10aecfe4f2e0447c36670f245388bcc8422c5"
+  },
+  {
+    "bytes": 34167,
+    "path": "episode_030_C-Topology3-d.json.gz",
+    "sha256": "c89d57ae891d085d6d2e39dc7a7ecf9733bee7459485310107e74285da8c87b9"
+  },
+  {
+    "bytes": 8069,
+    "path": "episode_030_C0.json.gz",
+    "sha256": "d75ca312f70760e8b185e03a4e82721e9fde9a4a7002acec8f024858ea963f7b"
+  },
+  {
+    "bytes": 3321,
+    "path": "episode_030_age.json.gz",
+    "sha256": "c60db0ddab99750e94f921fcb17140e915de5fc01bd7459e58dc021bd5676697"
+  },
+  {
+    "bytes": 3117,
+    "path": "episode_030_periodic.json.gz",
+    "sha256": "7fef5fe7dc3f11b6741efcd05b5328ac0d829f8a14297b3abf12032b0465cf6e"
+  },
+  {
+    "bytes": 7168,
+    "path": "episode_031_C-K.json.gz",
+    "sha256": "166a71035b845035a3984ae7f0239b3c2ceeb7810c988d19d10696c2ce133c66"
+  },
+  {
+    "bytes": 23912,
+    "path": "episode_031_C-Topology3-d.json.gz",
+    "sha256": "a2416f50fc53cfb45e25310df8637d2efa8ef49bb066c7adce6edb4e0fb3c61d"
+  },
+  {
+    "bytes": 5992,
+    "path": "episode_031_C0.json.gz",
+    "sha256": "32b04c98ab98a4acc72a20926f3d8f972d7e46f86c076f73006d6925fe80fde2"
+  },
+  {
+    "bytes": 3055,
+    "path": "episode_031_age.json.gz",
+    "sha256": "1a76537ab8ef87a39d31bbba8601e3d25cd7025ecc2701e20cf4af59898bd1bf"
+  },
+  {
+    "bytes": 3143,
+    "path": "episode_031_periodic.json.gz",
+    "sha256": "2790acc25623dc36458763c12e6b4b25e6f0b80ea000fc301d8775741b3037fa"
+  },
+  {
+    "bytes": 7245,
+    "path": "episode_032_C-K.json.gz",
+    "sha256": "6aafd21ac6f2a52a63a0597f96cd99ef00e6df21a4eb84c9e9dc4a5669f8d6ae"
+  },
+  {
+    "bytes": 23981,
+    "path": "episode_032_C-Topology3-d.json.gz",
+    "sha256": "27d8b9711bac5814b10c9f30e7656d79188edb8585d99eca968810f092bc573f"
+  },
+  {
+    "bytes": 6107,
+    "path": "episode_032_C0.json.gz",
+    "sha256": "92d2ae98b2f7fd50e0b5113cd75c16357d6671befc58d094c8314056133537b2"
+  },
+  {
+    "bytes": 3130,
+    "path": "episode_032_age.json.gz",
+    "sha256": "cc7f44aa080a8dffacc5ae459715ef94e4c522e8d705d5c7d38db34845e574c6"
+  },
+  {
+    "bytes": 3236,
+    "path": "episode_032_periodic.json.gz",
+    "sha256": "a598fdeba2c1db7b31c1dc330a08736429bb0b29ad29ffa811c2d441a9602f02"
+  },
+  {
+    "bytes": 6993,
+    "path": "episode_033_C-K.json.gz",
+    "sha256": "88dc1f62e52993b31b3aa84a1512edb0789b57c3ad2a33ccc23f5cb5550823d7"
+  },
+  {
+    "bytes": 33172,
+    "path": "episode_033_C-Topology3-d.json.gz",
+    "sha256": "543ee2c66379b51ff8558ff1f9e89ae9c504e7fac9a3f7e25488033412263751"
+  },
+  {
+    "bytes": 6406,
+    "path": "episode_033_C0.json.gz",
+    "sha256": "a8c70d513f922b4b9a0cfca21fd4b08f58967e35b648cfb10e6a8a7e78743520"
+  },
+  {
+    "bytes": 3558,
+    "path": "episode_033_age.json.gz",
+    "sha256": "b8a7ad0f9459d7624b79a17716164104ed967fa21fdeb717ec63376e9f8352be"
+  },
+  {
+    "bytes": 3393,
+    "path": "episode_033_periodic.json.gz",
+    "sha256": "5fda8532a6ba5a602b325315441814f71137b86146373e6451dec48ece5eab28"
+  },
+  {
+    "bytes": 6967,
+    "path": "episode_034_C-K.json.gz",
+    "sha256": "f584e7d6ce0bf118b4739b998fe0c0fc48544bf1c2c1f8980a6779cdb3c90433"
+  },
+  {
+    "bytes": 33277,
+    "path": "episode_034_C-Topology3-d.json.gz",
+    "sha256": "8c0b64511262e803ec91e3289f3faed6f54626ac44e334f833d06b3501e19059"
+  },
+  {
+    "bytes": 6343,
+    "path": "episode_034_C0.json.gz",
+    "sha256": "7cd71cbae24ba2e667aaa498671759298086e82cfecb4a5dbc7e013a9a25097a"
+  },
+  {
+    "bytes": 3470,
+    "path": "episode_034_age.json.gz",
+    "sha256": "ae847782cf8c16d6af79638fd7bd93fe76c8f6ec89a0ed4dc3f48f482ac9ec6b"
+  },
+  {
+    "bytes": 3375,
+    "path": "episode_034_periodic.json.gz",
+    "sha256": "efd3ce68630737791f212f709c5b74387bf0da89a9222946497fbf8d19cb3ba8"
+  },
+  {
+    "bytes": 6737,
+    "path": "episode_035_C-K.json.gz",
+    "sha256": "816de44687d46967884279cf2764e916d937345668c86a5ba32a91256fc9b9f1"
+  },
+  {
+    "bytes": 22850,
+    "path": "episode_035_C-Topology3-d.json.gz",
+    "sha256": "0e4c28d2d41d60a06d68b60cecceccd4c1f12877ac84b109442b7c9516d05ed7"
+  },
+  {
+    "bytes": 6511,
+    "path": "episode_035_C0.json.gz",
+    "sha256": "a93ffc6b1e96d3722ab873ed27daf3686ca16aaa309fc7df86d2303aafd53b45"
+  },
+  {
+    "bytes": 3150,
+    "path": "episode_035_age.json.gz",
+    "sha256": "c9f572dbf9b2a528dccc522d362755b3cad437cbdad601fdc9b6098679ae49ad"
+  },
+  {
+    "bytes": 3045,
+    "path": "episode_035_periodic.json.gz",
+    "sha256": "61e1e3f2365cff7ee93dfc0fb4a7576c05568dbd253d2bf2f49396d26dffbe92"
+  },
+  {
+    "bytes": 6746,
+    "path": "episode_036_C-K.json.gz",
+    "sha256": "ec4b42500caee488ec0830a3dd28159fc1af532001d7f3470d6467eeea331bb2"
+  },
+  {
+    "bytes": 22810,
+    "path": "episode_036_C-Topology3-d.json.gz",
+    "sha256": "ceebf28c57223124bad7ec37ad300220ade93c9a98dc610f35322487bff99a76"
+  },
+  {
+    "bytes": 6521,
+    "path": "episode_036_C0.json.gz",
+    "sha256": "b53b5c5146244601d01c8162e1abf69ce0e0ab625944b3f2143476dd3933ec75"
+  },
+  {
+    "bytes": 3160,
+    "path": "episode_036_age.json.gz",
+    "sha256": "31626c9f5cb0ebed3ec76a759b6978f14a83500da72a2ce566f02c9c1b440db3"
+  },
+  {
+    "bytes": 3053,
+    "path": "episode_036_periodic.json.gz",
+    "sha256": "a396d0387ae9875bca377544f6b46eeba24d7662f394d8fccdec464b34a0f978"
+  },
+  {
+    "bytes": 4883,
+    "path": "episode_037_C-K.json.gz",
+    "sha256": "7557416946c060a9bee05593d4281d0864e57cb7a6cdebc67d1d9fdad792c03c"
+  },
+  {
+    "bytes": 17032,
+    "path": "episode_037_C-Topology3-d.json.gz",
+    "sha256": "8699ddc0f5ba2ac8310c26903d97e762595b4f0e4b89f8073233d298c41a1589"
+  },
+  {
+    "bytes": 4367,
+    "path": "episode_037_C0.json.gz",
+    "sha256": "cbbd32012755e63799c6c43a85a5e2cd172904cfcab0f76b97063000889b6269"
+  },
+  {
+    "bytes": 2772,
+    "path": "episode_037_age.json.gz",
+    "sha256": "7c5cfdcd1c8f23bc9f638e00f6c2ea7b3898b45d2f469db3470f1d45cc005e98"
+  },
+  {
+    "bytes": 2732,
+    "path": "episode_037_periodic.json.gz",
+    "sha256": "e3dc4642ca512711488995dd4c42357bf8371d28c3549330e566c456fd5981b7"
+  },
+  {
+    "bytes": 4861,
+    "path": "episode_038_C-K.json.gz",
+    "sha256": "727bc7e96330c0e93a428923e380dc143b0ae1f14a4576ddaef27c287b680717"
+  },
+  {
+    "bytes": 17024,
+    "path": "episode_038_C-Topology3-d.json.gz",
+    "sha256": "d3d249d89c396d42baf16b4580a7e7657222d98513ee9b0b2bcfce5b3f801791"
+  },
+  {
+    "bytes": 4361,
+    "path": "episode_038_C0.json.gz",
+    "sha256": "29df7c8ee21708b780887b0b0079324000a84d5c1666c492cd6cb54f0c429bf6"
+  },
+  {
+    "bytes": 2763,
+    "path": "episode_038_age.json.gz",
+    "sha256": "18725075ccc9d09d6d389e42b85af5ecd54845140b452092abc976a2ae302568"
+  },
+  {
+    "bytes": 2726,
+    "path": "episode_038_periodic.json.gz",
+    "sha256": "57cae10c976734ce3c1c185e5c9d41827f4b0e5abacb00b19d9e97f52d54ba2d"
+  },
+  {
+    "bytes": 8003,
+    "path": "episode_039_C-K.json.gz",
+    "sha256": "4f08aa86d8c3b0f55a86804c3d4ce187fb22d0b79b274d6499b64429b1b7044a"
+  },
+  {
+    "bytes": 27979,
+    "path": "episode_039_C-Topology3-d.json.gz",
+    "sha256": "0ba6d387483ac0084c7e5922a4c7d942c025819184d798824686d6cbfc7b2741"
+  },
+  {
+    "bytes": 7611,
+    "path": "episode_039_C0.json.gz",
+    "sha256": "35b5f66b5eef468f9be599af56abcc3c2475eacb21de44d929d88708db35ef13"
+  },
+  {
+    "bytes": 3267,
+    "path": "episode_039_age.json.gz",
+    "sha256": "993d005565cc19dcf9ce4251ff61374e83dc8d4deb3e7feae1f9fab2d022a7eb"
+  },
+  {
+    "bytes": 3181,
+    "path": "episode_039_periodic.json.gz",
+    "sha256": "da4edb8b0fa60120de850e56df0acf191ca4ccf725c86d710eb4da70cbb258b8"
+  },
+  {
+    "bytes": 10688,
+    "path": "episode_040_C-K.json.gz",
+    "sha256": "e8f54462695cb256875ab5dd3aca0847c68270e2d8aab927f9c88d0402d25fda"
+  },
+  {
+    "bytes": 32613,
+    "path": "episode_040_C-Topology3-d.json.gz",
+    "sha256": "1ce1b842d71f6ca6b1a89d0c1cbb331acfb8478b457d566438c68ec6b7afca9e"
+  },
+  {
+    "bytes": 10113,
+    "path": "episode_040_C0.json.gz",
+    "sha256": "90b15b37267bed5b01220f3405b563312b431f7003660c93054c9f91dc211497"
+  },
+  {
+    "bytes": 4524,
+    "path": "episode_040_age.json.gz",
+    "sha256": "fab87a092b2fe56466863e1830447eff5954ef8fd12ffb6e8b604672f27b652a"
+  },
+  {
+    "bytes": 4395,
+    "path": "episode_040_periodic.json.gz",
+    "sha256": "af2643ef78aa51352e731304e4bc84d5b62629b85d7b6a4de93b8755d740de3c"
+  },
+  {
+    "bytes": 6413,
+    "path": "episode_041_C-K.json.gz",
+    "sha256": "6efd7becc9eb58b9da0dff6db9c82827d5d808916e82aa7ae0a5381b48ad3ddb"
+  },
+  {
+    "bytes": 34872,
+    "path": "episode_041_C-Topology3-d.json.gz",
+    "sha256": "1ff8bc89a3d850310d7b59636278b6f48d6aeefe045acb77780d417fc0817abb"
+  },
+  {
+    "bytes": 5760,
+    "path": "episode_041_C0.json.gz",
+    "sha256": "e4126b9c6f4ca5093441984035fb66edb808845f46a37d16f0c14b9dc658efa9"
+  },
+  {
+    "bytes": 3313,
+    "path": "episode_041_age.json.gz",
+    "sha256": "82f23e0f80590fc6f0a219086ae5015292430967f060d0bc9dd17e8d70d94558"
+  },
+  {
+    "bytes": 3393,
+    "path": "episode_041_periodic.json.gz",
+    "sha256": "4446939a17a86cdfc17524844bd2d82cb2097af21e2bd3404590ba0ccb6008a4"
+  },
+  {
+    "bytes": 6404,
+    "path": "episode_042_C-K.json.gz",
+    "sha256": "e65ba3886fec6eac2ddc36184862aab0b2593aaf19cc1893b11bb4211fd22ca5"
+  },
+  {
+    "bytes": 35053,
+    "path": "episode_042_C-Topology3-d.json.gz",
+    "sha256": "7f9ae8dadef6671e50b09f4fdbf700f428369e0567e3232c3bc1bb4435b28531"
+  },
+  {
+    "bytes": 5772,
+    "path": "episode_042_C0.json.gz",
+    "sha256": "9a64f606e217c7bd2a133b670048ab50d31d2d0193cbc9bb5c739e447501e355"
+  },
+  {
+    "bytes": 4067,
+    "path": "episode_042_age.json.gz",
+    "sha256": "7d44711a2f7e09d0eb05567fb4f40e4577430dd99a4f10accac9651bf66447ff"
+  },
+  {
+    "bytes": 3991,
+    "path": "episode_042_periodic.json.gz",
+    "sha256": "eca68a513d5f42c19bf4b80861e8e9dd4bb5958a258d3afae73b8899fcd95989"
+  },
+  {
+    "bytes": 6336,
+    "path": "episode_043_C-K.json.gz",
+    "sha256": "94d95201c5c3498965bf3f4a5ba2d2fc59bcb128af6ba70a4b08dbf46b9d4173"
+  },
+  {
+    "bytes": 22745,
+    "path": "episode_043_C-Topology3-d.json.gz",
+    "sha256": "2909734e03d12ddfc360cb0da8953793cec4de3ea5ecd75d8b0f7d6b6517a927"
+  },
+  {
+    "bytes": 5998,
+    "path": "episode_043_C0.json.gz",
+    "sha256": "f5033a01eac397a7264387b4c4f585e0f89c331788c423678e3ebe7b25c75635"
+  },
+  {
+    "bytes": 4123,
+    "path": "episode_043_age.json.gz",
+    "sha256": "ad914d2ecdbe9254b3d636d99a127f226b05bbf36b1f15b454fae69fcd3952e1"
+  },
+  {
+    "bytes": 3852,
+    "path": "episode_043_periodic.json.gz",
+    "sha256": "5afba0c5f0da1d268e7179c6041be28b167bce7c11f6ab4dad4a6717b32792de"
+  },
+  {
+    "bytes": 6310,
+    "path": "episode_044_C-K.json.gz",
+    "sha256": "53e407e40e0c45a10cccc8e61e75745c89ef96a230df4ad20a77fba18aa1089f"
+  },
+  {
+    "bytes": 22702,
+    "path": "episode_044_C-Topology3-d.json.gz",
+    "sha256": "e392f8d329ea38a81451b9334678ee66fcfa53601b69567dce52aa849f06ef16"
+  },
+  {
+    "bytes": 5996,
+    "path": "episode_044_C0.json.gz",
+    "sha256": "bb436206a5c0ac2ee63d2bf1f8280712a3f94caa254506b7f61699ea7fbcf421"
+  },
+  {
+    "bytes": 4125,
+    "path": "episode_044_age.json.gz",
+    "sha256": "03414f596b59f6e86d53f5676074786c70c7475548e9307bd860d946b628cb05"
+  },
+  {
+    "bytes": 3853,
+    "path": "episode_044_periodic.json.gz",
+    "sha256": "d0e015c14d3d33aedf3f943e552e5d51a266b18a27b312386ecc6bbaae663759"
+  },
+  {
+    "bytes": 6242,
+    "path": "episode_045_C-K.json.gz",
+    "sha256": "7929d7a76090b4a946791c6e55103f6b55fb2f120b3ee5368f5f4e505d2f6a8f"
+  },
+  {
+    "bytes": 28626,
+    "path": "episode_045_C-Topology3-d.json.gz",
+    "sha256": "123da444d177a2864dd80695f7f285576fcf5df712e81bd3f6689e6eaa366a2f"
+  },
+  {
+    "bytes": 5900,
+    "path": "episode_045_C0.json.gz",
+    "sha256": "5a38d8016afda9290b95f57ce34c18ae68e4531a406262c4375deb8700562153"
+  },
+  {
+    "bytes": 2712,
+    "path": "episode_045_age.json.gz",
+    "sha256": "078ad68f646bbcd2777f2d84d6a56e0e0b9b2fb1407a09a648f1c5c2def1f021"
+  },
+  {
+    "bytes": 2591,
+    "path": "episode_045_periodic.json.gz",
+    "sha256": "3e897e0195933699ecbecd05f50907b21156cba41fa343e8adfe47274b30519c"
+  },
+  {
+    "bytes": 6209,
+    "path": "episode_046_C-K.json.gz",
+    "sha256": "c972b43c5149ccf0783be4ab04ca8ce92604072049afa47ac22d4a39f158521d"
+  },
+  {
+    "bytes": 28619,
+    "path": "episode_046_C-Topology3-d.json.gz",
+    "sha256": "763ea49261fde86827c6f475721cb7a02cc73b005389cd08b86885b2282ef9c3"
+  },
+  {
+    "bytes": 5892,
+    "path": "episode_046_C0.json.gz",
+    "sha256": "9805aaa49e5e6b6d11d61f193ae679f045373e7805e3504294eef5d095956da4"
+  },
+  {
+    "bytes": 2705,
+    "path": "episode_046_age.json.gz",
+    "sha256": "02d8cdfe8eb054dd482e9c1a3372acafd199a92582c84c5039bd3ffe68e0ad19"
+  },
+  {
+    "bytes": 2582,
+    "path": "episode_046_periodic.json.gz",
+    "sha256": "9f1907bb6bb5a26e1453994000e6f96850fe981db9784bcca8d20211d4803e90"
+  },
+  {
+    "bytes": 4692,
+    "path": "episode_047_C-K.json.gz",
+    "sha256": "f862b5a63b8ee88f9fc2dc5ae7ab1ec3e20a23e5c857987d7e192a416390c44e"
+  },
+  {
+    "bytes": 13444,
+    "path": "episode_047_C-Topology3-d.json.gz",
+    "sha256": "34cdd2622b8285a2125c63728e42209e2b92b45c73c39a3a7210a2daafd3d278"
+  },
+  {
+    "bytes": 4610,
+    "path": "episode_047_C0.json.gz",
+    "sha256": "e91fab3cc7a7474e6ba2fdf23760d645bcc782b6a67d9c0dbfa10fb54384f135"
+  },
+  {
+    "bytes": 2419,
+    "path": "episode_047_age.json.gz",
+    "sha256": "0bcb28054d7b74b1e91b6793af8578b8db7f8e3a2ed14d8b2f54207f1b8568b3"
+  },
+  {
+    "bytes": 2323,
+    "path": "episode_047_periodic.json.gz",
+    "sha256": "3bcfa7bdce10d44f83171e98294499a0ee083fb3433d1e5feb79da28bf83d37a"
+  },
+  {
+    "bytes": 4708,
+    "path": "episode_048_C-K.json.gz",
+    "sha256": "ff2b328912074f1162406dd31cfc25126442e98e0c62e5b818d14c352734b7c4"
+  },
+  {
+    "bytes": 13444,
+    "path": "episode_048_C-Topology3-d.json.gz",
+    "sha256": "416fe64956b6cad5eb7af487d3be073a57b864c781f2b6ab997b8bb3b01a9c89"
+  },
+  {
+    "bytes": 4603,
+    "path": "episode_048_C0.json.gz",
+    "sha256": "f9ed506af49a89a90e49f3d8cf32742bef1c204dc958e796d2b98f1a6ef6c5c4"
+  },
+  {
+    "bytes": 2421,
+    "path": "episode_048_age.json.gz",
+    "sha256": "635a1e09f869c3d6d3da2ed98a04790a921d44f6388c8c43e7efd704158c921d"
+  },
+  {
+    "bytes": 2322,
+    "path": "episode_048_periodic.json.gz",
+    "sha256": "4046f22d41568a7c2919d4d88aeca9936aa751c6224d1926c03d02d9b48d94e0"
+  },
+  {
+    "bytes": 7143,
+    "path": "episode_049_C-K.json.gz",
+    "sha256": "6ffef4cbd38f1cf95a7ee05796f359b1822d8d9ec9e5778a59a555e889cc1ad2"
+  },
+  {
+    "bytes": 35069,
+    "path": "episode_049_C-Topology3-d.json.gz",
+    "sha256": "04f9f8112a3ac2364e06299a004d9de22fa23e3130cbca2f74dd9d8c18a9b7e4"
+  },
+  {
+    "bytes": 6331,
+    "path": "episode_049_C0.json.gz",
+    "sha256": "488069e3ef18c93e75ed30bae119eb881be09eae60e3ee60b5e323b37e414f1f"
+  },
+  {
+    "bytes": 4320,
+    "path": "episode_049_age.json.gz",
+    "sha256": "91caf2952669f74b258ea290ec5176767c9b89e95c24fa21a937b2f4b9fc8a21"
+  },
+  {
+    "bytes": 4055,
+    "path": "episode_049_periodic.json.gz",
+    "sha256": "8910075d7c0e02efede0f0cdabc43e6f76ba11d63c28e8897b02724e23be8b63"
+  },
+  {
+    "bytes": 7213,
+    "path": "episode_050_C-K.json.gz",
+    "sha256": "fa4434ebdf0c2a4b24090e6d502ee5f0be2afb4b5f4ff81a9e2ded9b2944923d"
+  },
+  {
+    "bytes": 34579,
+    "path": "episode_050_C-Topology3-d.json.gz",
+    "sha256": "52d1aca96e38e916856dce8129aa048a47e154fdd0975bcf198be86290da3d66"
+  },
+  {
+    "bytes": 6421,
+    "path": "episode_050_C0.json.gz",
+    "sha256": "838c38d0890f55ac0619f44db53171061e3950660d067dd45d988259f20cc47b"
+  },
+  {
+    "bytes": 3609,
+    "path": "episode_050_age.json.gz",
+    "sha256": "f070984314cb53161eef8f1754167a51aa197b07e75f9664267777303d0a93f7"
+  },
+  {
+    "bytes": 3991,
+    "path": "episode_050_periodic.json.gz",
+    "sha256": "27b9ee66614256fc329ed00a0d3124fc552a162319dba6eab66c67246a056442"
+  },
+  {
+    "bytes": 7178,
+    "path": "episode_051_C-K.json.gz",
+    "sha256": "3de5b076930135e5a1a5d949db6515f71d4f9cf67236f393384c57799e8a1ccd"
+  },
+  {
+    "bytes": 25496,
+    "path": "episode_051_C-Topology3-d.json.gz",
+    "sha256": "7520d9d7da1efd48cf2b30942704167b21dd873c7e194e800f9af0d1eb4c558d"
+  },
+  {
+    "bytes": 6668,
+    "path": "episode_051_C0.json.gz",
+    "sha256": "5a906ddb868565f0a6c271ca8368f3fcdb5dc221634e4e5655f0d1cc876e885b"
+  },
+  {
+    "bytes": 2801,
+    "path": "episode_051_age.json.gz",
+    "sha256": "06cebfb0c69aaa4ea3ff0468b5f67c29551d56df69f46b8614f79d4d6557fd00"
+  },
+  {
+    "bytes": 2852,
+    "path": "episode_051_periodic.json.gz",
+    "sha256": "74c1c98e4af348e506d9976bd2968ee55a9bc99deb7640b6a489884edf03c019"
+  },
+  {
+    "bytes": 7765,
+    "path": "episode_052_C-K.json.gz",
+    "sha256": "71a030fea165f1e692ebddec7c7336a2873e75c08a8317b940eb0fd2a8d4917f"
+  },
+  {
+    "bytes": 26982,
+    "path": "episode_052_C-Topology3-d.json.gz",
+    "sha256": "56455e0c7ae9d6d50beb267b41e495aa744a4c834108a0b2e89047910bfe09c9"
+  },
+  {
+    "bytes": 7385,
+    "path": "episode_052_C0.json.gz",
+    "sha256": "40d8ad490d8712667831a99f65c139f51e3e2475a9fbb1860a16f61619d65645"
+  },
+  {
+    "bytes": 2847,
+    "path": "episode_052_age.json.gz",
+    "sha256": "3e0b5ba16db9ed866889fddbe8c167b4aa2ce779951b2c75f69bf4a07a3b8803"
+  },
+  {
+    "bytes": 2902,
+    "path": "episode_052_periodic.json.gz",
+    "sha256": "3d362594548fd759190d78ddcc8461a16247cdeec4610823b2a5e2f347e51c38"
+  },
+  {
+    "bytes": 4945,
+    "path": "episode_053_C-K.json.gz",
+    "sha256": "af7b95d4033fce0b2b1f7891bada03dd0261e43f35227f418ac7226b6d8d71a5"
+  },
+  {
+    "bytes": 14602,
+    "path": "episode_053_C-Topology3-d.json.gz",
+    "sha256": "c73d4c8573d8842481308f3925a0efdb0d0dbd0d0e4994f105255596ea630629"
+  },
+  {
+    "bytes": 4647,
+    "path": "episode_053_C0.json.gz",
+    "sha256": "612e86b5191a7df0b946b58edbbcac72a32f997bc432aadb63ce36555a2efb1f"
+  },
+  {
+    "bytes": 2590,
+    "path": "episode_053_age.json.gz",
+    "sha256": "2225024babf6032584eb36ec1075d6a9f270404c848d9763cde0aa5c47312e9d"
+  },
+  {
+    "bytes": 2449,
+    "path": "episode_053_periodic.json.gz",
+    "sha256": "5e2e37aca9e2a93c7094c13e36db7790ad5d7febab8cdf4e4f33e2622546a339"
+  },
+  {
+    "bytes": 10093,
+    "path": "episode_054_C-K.json.gz",
+    "sha256": "0c1c37b4bcb30c3024e797d63ec91aa28834c3fcb5f3ef8b7e7af7282d67f9ca"
+  },
+  {
+    "bytes": 35565,
+    "path": "episode_054_C-Topology3-d.json.gz",
+    "sha256": "034e5d621ac1584ef95733eea5989508914eb98bb62730cde9d33f617d40843d"
+  },
+  {
+    "bytes": 8913,
+    "path": "episode_054_C0.json.gz",
+    "sha256": "8235cc19c50e4c963505eeed2a9cfb99093dff6aef68082661f674918060fd86"
+  },
+  {
+    "bytes": 4061,
+    "path": "episode_054_age.json.gz",
+    "sha256": "bfd39d7b5597b642f1b0f825cf63dd069ac3d9b33a31ec5cdf9da45c097f5331"
+  },
+  {
+    "bytes": 3931,
+    "path": "episode_054_periodic.json.gz",
+    "sha256": "7ebc4d4ee5c3ccbd37d1c8ea27e90e9d10bcbf2789eeef300e0111202ff5d80f"
+  },
+  {
+    "bytes": 8433,
+    "path": "episode_055_C-K.json.gz",
+    "sha256": "76fe032b6e1c3796e209af03e7e2342d05b077d75f2fecc85ae7d55ba623050c"
+  },
+  {
+    "bytes": 28971,
+    "path": "episode_055_C-Topology3-d.json.gz",
+    "sha256": "2343d1fe90ed9e75f73bedd38bead7ef31ad68fece4c1d3b309918968a311682"
+  },
+  {
+    "bytes": 7918,
+    "path": "episode_055_C0.json.gz",
+    "sha256": "e544d8aea32598a9ba711a1e6cfd132c9524490877e0e1283ea94bc025a47140"
+  },
+  {
+    "bytes": 3878,
+    "path": "episode_055_age.json.gz",
+    "sha256": "e89a70343e0e741723fe1a3cad2d3e57e6a7c005ba120f2615a4e142e9e99627"
+  },
+  {
+    "bytes": 3756,
+    "path": "episode_055_periodic.json.gz",
+    "sha256": "b0a355489bcb0642f69a3d551257b6eaf6ab6e10ca8189935918a4c0af5d7feb"
+  },
+  {
+    "bytes": 8434,
+    "path": "episode_056_C-K.json.gz",
+    "sha256": "1136457f41dcec38544c9d249c4c3f516ded65eaa45dc255707e228fd27e010c"
+  },
+  {
+    "bytes": 28992,
+    "path": "episode_056_C-Topology3-d.json.gz",
+    "sha256": "d6dc8ee0b94fd2b02c40c999038064195175f04ca1e581d6858fdeb40d112062"
+  },
+  {
+    "bytes": 7926,
+    "path": "episode_056_C0.json.gz",
+    "sha256": "8a0c4bf69a1da43fca798c4fd60de44f352b6e54021c0ba039f6ccdd39799967"
+  },
+  {
+    "bytes": 3876,
+    "path": "episode_056_age.json.gz",
+    "sha256": "dc23faf98826b80fe16bed5f4fa45b87cce40215c5eb43146ddfa1210add7a2b"
+  },
+  {
+    "bytes": 3759,
+    "path": "episode_056_periodic.json.gz",
+    "sha256": "0afbd0cff0beed67aa5d227bb83e459c5d82c39e04ad758eb546b22d49ca35a6"
+  },
+  {
+    "bytes": 6630,
+    "path": "episode_057_C-K.json.gz",
+    "sha256": "e5ce7bd6ef65186ef0d0ac807587ae7c6e46116fd08621d232261a9081f0497c"
+  },
+  {
+    "bytes": 23640,
+    "path": "episode_057_C-Topology3-d.json.gz",
+    "sha256": "e2189a65a679b90d366c136572bf11ceddc48bf0db6879f84689af231d0f8887"
+  },
+  {
+    "bytes": 6141,
+    "path": "episode_057_C0.json.gz",
+    "sha256": "90a2c9ec1868151a8e6e1dca96659af246304dee3dcfa650083db950331f6b43"
+  },
+  {
+    "bytes": 3052,
+    "path": "episode_057_age.json.gz",
+    "sha256": "d51043cad4253fbf72bb31571f14094e5e362dc72d8d7c8af39190b1cba9d80d"
+  },
+  {
+    "bytes": 2850,
+    "path": "episode_057_periodic.json.gz",
+    "sha256": "9b8ed2e8100755892143717e1d51afa794f67ed8a7f01ade4e770ed3340b03ab"
+  },
+  {
+    "bytes": 6657,
+    "path": "episode_058_C-K.json.gz",
+    "sha256": "d23d8ab9077e80f3f960a691452da0532fac497fb3c75059bb0c057d3fd61871"
+  },
+  {
+    "bytes": 23661,
+    "path": "episode_058_C-Topology3-d.json.gz",
+    "sha256": "a16ddec51ddcb49202ba6ed077142e8b2fac413cade28c7614be07f69b96a0eb"
+  },
+  {
+    "bytes": 6148,
+    "path": "episode_058_C0.json.gz",
+    "sha256": "64d755e1a6d48fdef2f06f35a29db595fc94d740f5ad51e6a3df3106c9ee6f21"
+  },
+  {
+    "bytes": 3065,
+    "path": "episode_058_age.json.gz",
+    "sha256": "7ec45171970ae79742792982f0ba10ceeb60bfd0d9d9194b818d357b3a6bf3d8"
+  },
+  {
+    "bytes": 2870,
+    "path": "episode_058_periodic.json.gz",
+    "sha256": "0a1c9c11caf43e58f6caaa6795261f1c6efb3533431c7987585ac083b7d549a9"
+  },
+  {
+    "bytes": 7796,
+    "path": "episode_059_C-K.json.gz",
+    "sha256": "1bf1bc41e0bebf03dc4962c73382198f9cdf515d666d16ec44c007d821b6f85e"
+  },
+  {
+    "bytes": 13663,
+    "path": "episode_059_C-Topology3-d.json.gz",
+    "sha256": "6a88aae56ea797440f5a201b3c525090aa304e6d1a013c6f5d1145987fc9002c"
+  },
+  {
+    "bytes": 6313,
+    "path": "episode_059_C0.json.gz",
+    "sha256": "bb608f24d8bdd7a36821e7b115c2851020adf1a2240625ffa586c7908772a0e3"
+  },
+  {
+    "bytes": 2602,
+    "path": "episode_059_age.json.gz",
+    "sha256": "5e44110fb93dea3780c7809b8270446f76dffdd98b605e253539d2879b06acbf"
+  },
+  {
+    "bytes": 2420,
+    "path": "episode_059_periodic.json.gz",
+    "sha256": "6fbc3688b57252e83d68ec7a43f5faab220d54e85b86c7cd15ce250b7c653927"
+  },
+  {
+    "bytes": 7807,
+    "path": "episode_060_C-K.json.gz",
+    "sha256": "48d847488044afa0027fcaa7df19e4f2aa3db10d4c94aaf791186a0deca60f39"
+  },
+  {
+    "bytes": 13681,
+    "path": "episode_060_C-Topology3-d.json.gz",
+    "sha256": "f26974eacbd8b6e3e666c9d3abe2e2cfc495b614755d6a8e541a1f232e4d4dab"
+  },
+  {
+    "bytes": 7268,
+    "path": "episode_060_C0.json.gz",
+    "sha256": "8776b238ce7ec0009be197e0771680d6fc9efd426d81275614810570aaaa41e2"
+  },
+  {
+    "bytes": 2638,
+    "path": "episode_060_age.json.gz",
+    "sha256": "999068a6202ad051354a7e7649e2b662117bd4939dfb3a77fd0e49ef8a6fcae5"
+  },
+  {
+    "bytes": 2453,
+    "path": "episode_060_periodic.json.gz",
+    "sha256": "4928ae45497bbc18e52bad74c4ca0a1e77b364b68dd5d844521fc548b2a16dff"
+  },
+  {
+    "bytes": 8504,
+    "path": "episode_061_C-K.json.gz",
+    "sha256": "589679ad2d250fef8f308c7ea18b92313a8d64a59470200e2e7d180f57eb63e9"
+  },
+  {
+    "bytes": 26190,
+    "path": "episode_061_C-Topology3-d.json.gz",
+    "sha256": "86de6659d1541a649698766a2c14c438cffeb7cf28a0f199d71c0adb60998fcc"
+  },
+  {
+    "bytes": 6134,
+    "path": "episode_061_C0.json.gz",
+    "sha256": "e570ec98aef089ae96ce1a6dd514b966c6ef46226630c1ae507bd0992240115d"
+  },
+  {
+    "bytes": 3053,
+    "path": "episode_061_age.json.gz",
+    "sha256": "2ee86a520870eea4df7b035662cb7720e45c0a15d7e6e51e562ca0fc145d6c16"
+  },
+  {
+    "bytes": 2873,
+    "path": "episode_061_periodic.json.gz",
+    "sha256": "2226b5ffc7d23e88273a482278156cfc9e2ad43e817950a8a09d73c1950ddc7e"
+  },
+  {
+    "bytes": 8470,
+    "path": "episode_062_C-K.json.gz",
+    "sha256": "24e2b8e491ddaded3d5eab29fd85b4d6f44d84c578ec659393c466667133afb4"
+  },
+  {
+    "bytes": 26191,
+    "path": "episode_062_C-Topology3-d.json.gz",
+    "sha256": "d3b6f7dd50468621dc353a186e2c13fbb45a648e35326f59ceda46200e7dccfc"
+  },
+  {
+    "bytes": 6132,
+    "path": "episode_062_C0.json.gz",
+    "sha256": "95658a03eaf76fdf097cd17dcc1f9c11c13baa36060bad4b559c2d814c206ede"
+  },
+  {
+    "bytes": 3047,
+    "path": "episode_062_age.json.gz",
+    "sha256": "ed7c9d70c29b4733d2dc85f3974cf15e75866dfc3dabbb3a0501ec8fce6bc967"
+  },
+  {
+    "bytes": 2865,
+    "path": "episode_062_periodic.json.gz",
+    "sha256": "72cc142dbfd30665cc1847e8ae7e937046400594176e1882fa7cf7105d1d22ca"
+  },
+  {
+    "bytes": 6430,
+    "path": "episode_063_C-K.json.gz",
+    "sha256": "a29b1d07f8b3adcc3b0e62a1970807e1f5f1c3b4dcdd6467cd859f552ae7aafb"
+  },
+  {
+    "bytes": 23896,
+    "path": "episode_063_C-Topology3-d.json.gz",
+    "sha256": "0cc75e5820ca9ce7a391d12fb36ab69c78f75c6aaf6ed00aab87135f8ea00527"
+  },
+  {
+    "bytes": 6095,
+    "path": "episode_063_C0.json.gz",
+    "sha256": "d0305ecf54f4313b686a07212cb97088a6c2c9bb87b6db5fd4e1ea237db32c7e"
+  },
+  {
+    "bytes": 3246,
+    "path": "episode_063_age.json.gz",
+    "sha256": "ae6490eb5f0483421c6986e2c444cc2eb74484a0b1aa43e61d0ec3a6d378d54d"
+  },
+  {
+    "bytes": 3050,
+    "path": "episode_063_periodic.json.gz",
+    "sha256": "cd989106a25f14cebe3ecd52260aebcf9dd3fa838050748204b540abdef19b9d"
+  },
+  {
+    "bytes": 6420,
+    "path": "episode_064_C-K.json.gz",
+    "sha256": "e6afa2023c8360497dc083d7bfe92665e775bdbac62ecfd4306eb4541af668f8"
+  },
+  {
+    "bytes": 23848,
+    "path": "episode_064_C-Topology3-d.json.gz",
+    "sha256": "a3ef103ff8e1461d2200a2963cda51a921a6c81b2dea9c922c3ea33286a09f4c"
+  },
+  {
+    "bytes": 6114,
+    "path": "episode_064_C0.json.gz",
+    "sha256": "60d6c4d5ba6e0708ad98992b9f35f3364cd658d01dc499117ccc65b8a2fa554d"
+  },
+  {
+    "bytes": 3242,
+    "path": "episode_064_age.json.gz",
+    "sha256": "5fc2bddd563f94d50b628c7b9a520cf4df025ca56f326cc2ac9ee6f26c31c9a0"
+  },
+  {
+    "bytes": 3052,
+    "path": "episode_064_periodic.json.gz",
+    "sha256": "2c83f9fdd2b45b592871796593c8afa6f4fddecbf0271127fa55a9539316ed71"
+  },
+  {
+    "bytes": 5412,
+    "path": "episode_065_C-K.json.gz",
+    "sha256": "717b2475527673aa3cb599a78aa7435201c2d1b69685685c09b4339790c1b88b"
+  },
+  {
+    "bytes": 16614,
+    "path": "episode_065_C-Topology3-d.json.gz",
+    "sha256": "733aebb9d9a92896c6e2c9ef726f2298b60a2fb195b19b0ee49edb695a14d84c"
+  },
+  {
+    "bytes": 5114,
+    "path": "episode_065_C0.json.gz",
+    "sha256": "fce39846abe9d78cbfb58427a647c3a6e2c065b6135f4b4b4ff87f79e1225e55"
+  },
+  {
+    "bytes": 2647,
+    "path": "episode_065_age.json.gz",
+    "sha256": "a9a5df090e45f9a6c86a06df58b4b7ee0c5f59637813da710c525024554dee1a"
+  },
+  {
+    "bytes": 2518,
+    "path": "episode_065_periodic.json.gz",
+    "sha256": "e3684bdadc68ef11e8ef22852124b979e53db137ace506499ce5cc65a3fffeae"
+  },
+  {
+    "bytes": 5430,
+    "path": "episode_066_C-K.json.gz",
+    "sha256": "3768c867e9acac71ba9b886ba7124335256acf073cd44a0f125be3c71263644d"
+  },
+  {
+    "bytes": 16615,
+    "path": "episode_066_C-Topology3-d.json.gz",
+    "sha256": "28a822e22c59563c60bd5d3d35e685ec0005c75f6e7cf9cabb0fa03dc076f2a1"
+  },
+  {
+    "bytes": 5113,
+    "path": "episode_066_C0.json.gz",
+    "sha256": "75bf08e3ad438af0b840c21e165468478be2e337ace881be0902cf9e4ce328b1"
+  },
+  {
+    "bytes": 2648,
+    "path": "episode_066_age.json.gz",
+    "sha256": "e02af2ba81b2d332761599aa232827764fe1ed69d8188425edb489eaad185122"
+  },
+  {
+    "bytes": 2520,
+    "path": "episode_066_periodic.json.gz",
+    "sha256": "6edb1075728f163501fe7a17734ea5c56af016b821e639cc29ba5f6e2f18bb28"
+  },
+  {
+    "bytes": 5671,
+    "path": "episode_067_C-K.json.gz",
+    "sha256": "14b3debfbcca7e70893a74ef52660029150c0a2f87b8018c6ae567da7c48debe"
+  },
+  {
+    "bytes": 17065,
+    "path": "episode_067_C-Topology3-d.json.gz",
+    "sha256": "a3b418a7f40b7b9fb8a19ea43cc251d382e3a386f677ecd63597da709b8d43e8"
+  },
+  {
+    "bytes": 5023,
+    "path": "episode_067_C0.json.gz",
+    "sha256": "d0f9606eb871e60efaf71eaa65a7528e166c93b14f2adaa4e53f4ec88dd21dc3"
+  },
+  {
+    "bytes": 3034,
+    "path": "episode_067_age.json.gz",
+    "sha256": "25f095a7a089d60c2790fd9a3b3510468e6ce69cbd97a777ddc629fb24f289dd"
+  },
+  {
+    "bytes": 2821,
+    "path": "episode_067_periodic.json.gz",
+    "sha256": "ced9381fa1c1fffceafcf001aa090e08e5c2e7747e5c8cc2e96ad65d48c53dc7"
+  },
+  {
+    "bytes": 6205,
+    "path": "episode_068_C-K.json.gz",
+    "sha256": "ddeb9c27136a5a9ef4c891b2d902704c60d2196cacc51fa6795e244136b460b0"
+  },
+  {
+    "bytes": 18151,
+    "path": "episode_068_C-Topology3-d.json.gz",
+    "sha256": "d941ccfee74b52ca04344cbea1a6c5315e44ac63bb03c35d848e1ef73aaf0459"
+  },
+  {
+    "bytes": 5561,
+    "path": "episode_068_C0.json.gz",
+    "sha256": "75bff2de807bd6cc3ce457aa743a5828abfcefa27582cd95308a5280a848d99a"
+  },
+  {
+    "bytes": 3430,
+    "path": "episode_068_age.json.gz",
+    "sha256": "62e67ba59d95c321f222d051d870fe4ce56287de690af88a9135cd033f229a2c"
+  },
+  {
+    "bytes": 3270,
+    "path": "episode_068_periodic.json.gz",
+    "sha256": "13161e7e830f0a6ddb9e3b44d1c5c6b954ed63a13c3d81f0fee7df4a99050087"
+  },
+  {
+    "bytes": 6745,
+    "path": "episode_069_C-K.json.gz",
+    "sha256": "b47dd30e3fa50f8c146ac7210d13368ec9534122e1803d87a90013165eccca67"
+  },
+  {
+    "bytes": 20632,
+    "path": "episode_069_C-Topology3-d.json.gz",
+    "sha256": "65bb7726d2c15da5b4560dad7196b1513c196d4c1d417adb04dd197e4cae9784"
+  },
+  {
+    "bytes": 6408,
+    "path": "episode_069_C0.json.gz",
+    "sha256": "93f48f70022864b1800f8a9bddbeea73aa5ac562400424559460891fc433ba5a"
+  },
+  {
+    "bytes": 3253,
+    "path": "episode_069_age.json.gz",
+    "sha256": "7bbb95cbb571ce9c007f4d35b996abf7f4f5d6853033fc7474b5197f99907195"
+  },
+  {
+    "bytes": 3158,
+    "path": "episode_069_periodic.json.gz",
+    "sha256": "c2070db46f56396c6eef4d94d77fbb089e13229d48f1f7df6298d591eeac8c8f"
+  },
+  {
+    "bytes": 6679,
+    "path": "episode_070_C-K.json.gz",
+    "sha256": "e071eff5f7a768c3f0cd9ddb712c453bfcc1b37621f3c668a24dd59fcf7c7ed5"
+  },
+  {
+    "bytes": 20570,
+    "path": "episode_070_C-Topology3-d.json.gz",
+    "sha256": "6892044955a63a9367b239189947ec2de315cc02448de626ed22bfbddd0b89be"
+  },
+  {
+    "bytes": 6326,
+    "path": "episode_070_C0.json.gz",
+    "sha256": "bdc999ce2b4ef8e18d5557a0cf09dc711228ee3d6dd277cb7f843b9c462b670c"
+  },
+  {
+    "bytes": 3173,
+    "path": "episode_070_age.json.gz",
+    "sha256": "3eeaa7449e8db1144f26f1388793b65be3b90285a576c3113951104a9edaa9bd"
+  },
+  {
+    "bytes": 3082,
+    "path": "episode_070_periodic.json.gz",
+    "sha256": "a6b1af11ce07ece2ca0d61707a799fe9a3af01e566539056cd7e2bad28ff91df"
+  },
+  {
+    "bytes": 4433,
+    "path": "episode_071_C-K.json.gz",
+    "sha256": "1a95f87a054014ef7073838b8b07916d0e75fe0ea51176917af77814e23f87a9"
+  },
+  {
+    "bytes": 12358,
+    "path": "episode_071_C-Topology3-d.json.gz",
+    "sha256": "bd49b28af697ae4d1d5416ebf7fff2ec1e7dfaec79eca01667432403640c8c38"
+  },
+  {
+    "bytes": 4224,
+    "path": "episode_071_C0.json.gz",
+    "sha256": "c53640fcad6a9d362266b3acca520bd92ca2e56500a285432a1a5613d6bc9a1f"
+  },
+  {
+    "bytes": 2520,
+    "path": "episode_071_age.json.gz",
+    "sha256": "eefdfb1923f164f985a42bef7f1054f385f6a3bbbfb8695ec9f484802a64675d"
+  },
+  {
+    "bytes": 2353,
+    "path": "episode_071_periodic.json.gz",
+    "sha256": "fc08038d88dc9bf3852fc00a4fec7b9090123dd7e969c3fc42952ce049d61ae7"
+  },
+  {
+    "bytes": 4953,
+    "path": "episode_072_C-K.json.gz",
+    "sha256": "dd86d7e07bd465057d37e282c53fa500163d969a0b0d86e78cbfe33abf962ef6"
+  },
+  {
+    "bytes": 15309,
+    "path": "episode_072_C-Topology3-d.json.gz",
+    "sha256": "920f65fd0d25506a958fa2592884535fe582e8780d37ad59ce9f826aaaba8140"
+  },
+  {
+    "bytes": 4780,
+    "path": "episode_072_C0.json.gz",
+    "sha256": "09362ce527ebdbf59780881f4d58521c415f2f5805363664c0fac0b189fff012"
+  },
+  {
+    "bytes": 2723,
+    "path": "episode_072_age.json.gz",
+    "sha256": "d8a0a640eb8abbffe8364efe8d4e709328127116a12fa3f8ffbc208db1754328"
+  },
+  {
+    "bytes": 2573,
+    "path": "episode_072_periodic.json.gz",
+    "sha256": "31009998467e0ea7b40ac0e767bae3622cdbe45eec55cde848496c06d833e3c5"
+  },
+  {
+    "bytes": 74133,
+    "path": "episodes.csv",
+    "sha256": "493b955859b982b0edd1d53f28cf1e53b939c0c2ffdd6f11c9ee02b94dc9d4e5"
+  },
+  {
+    "bytes": 4884,
+    "path": "summary.json",
+    "sha256": "c74691cfac0dfdcdf941df40b403b4a25f76382edfb5564724ff377bf7db9aaf"
+  }
+]

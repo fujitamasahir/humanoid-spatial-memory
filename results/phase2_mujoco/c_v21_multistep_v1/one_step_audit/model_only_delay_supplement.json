@@ -1,0 +1,2804 @@
+{
+  "not_a_causal_outcome": true,
+  "positive_minimum_delay_regret_states": 4,
+  "price_zero_to_isolate_movement": true,
+  "rows": [
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 3,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        2
+      ],
+      "episode": 4,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 13
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 5,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        3
+      ],
+      "episode": 6,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 20
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 1.0,
+      "predicted_future_scan_net_before_price": 1.0,
+      "step": 10
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        11
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        8
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.5262846444596327,
+      "cell": [
+        14,
+        8
+      ],
+      "episode": 7,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 1.0,
+      "predicted_future_scan_net_before_price": 1.0,
+      "step": 10
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        13,
+        11
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        12,
+        7
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        8
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.5262846444596327,
+      "cell": [
+        14,
+        8
+      ],
+      "episode": 8,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 9,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 11
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        9,
+        5
+      ],
+      "episode": 10,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 12
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.1856463237676369,
+      "cell": [
+        11,
+        2
+      ],
+      "episode": 11,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.39471348334472545,
+      "cell": [
+        11,
+        2
+      ],
+      "episode": 11,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.1856463237676369,
+      "cell": [
+        11,
+        2
+      ],
+      "episode": 12,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.39471348334472545,
+      "cell": [
+        11,
+        2
+      ],
+      "episode": 12,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 15,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        20,
+        9
+      ],
+      "episode": 16,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        12
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        16
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        12
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 17,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        12
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        16
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        10,
+        12
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        12
+      ],
+      "episode": 18,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.371292647535272,
+      "cell": [
+        16,
+        10
+      ],
+      "episode": 20,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 7
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.5262846444596327,
+      "cell": [
+        16,
+        10
+      ],
+      "episode": 20,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.5,
+      "cell": [
+        15,
+        13
+      ],
+      "episode": 21,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        15,
+        13
+      ],
+      "episode": 21,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 21,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 17
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.6497919876641376,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 21,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.5,
+      "cell": [
+        15,
+        13
+      ],
+      "episode": 22,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 8
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        15,
+        13
+      ],
+      "episode": 22,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 22,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 17
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.6497919876641376,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 22,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 25,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 25,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 25,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 26,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 26,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        14,
+        8
+      ],
+      "episode": 26,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 50
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        10,
+        6
+      ],
+      "episode": 26,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 29,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        14,
+        20
+      ],
+      "episode": 30,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.3712926475352738,
+      "cell": [
+        14,
+        5
+      ],
+      "episode": 31,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 26
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.3712926475352738,
+      "cell": [
+        14,
+        5
+      ],
+      "episode": 32,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 26
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 33,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        6,
+        14
+      ],
+      "episode": 34,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 35,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        12,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 36,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 5
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 37,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 37,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        16,
+        22
+      ],
+      "episode": 37,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 29
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 37,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 38,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 38,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        16,
+        22
+      ],
+      "episode": 38,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 29
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        8,
+        14
+      ],
+      "episode": 38,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 39,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        7,
+        8
+      ],
+      "episode": 40,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.371292647535272,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 41,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 22
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        15,
+        12
+      ],
+      "episode": 41,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 43
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.371292647535272,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 42,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 22
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        15,
+        12
+      ],
+      "episode": 42,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 43
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        2
+      ],
+      "episode": 49,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 44
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        19,
+        3
+      ],
+      "episode": 49,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 57
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        2
+      ],
+      "episode": 50,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 44
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        19,
+        6
+      ],
+      "episode": 50,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 54
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 53,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 3.628707352464728,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 1
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        20
+      ],
+      "episode": 54,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        13
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        13
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 2.0,
+      "cell": [
+        13,
+        15
+      ],
+      "episode": 55,
+      "minimum_future_scan_movement_regret": 1.0,
+      "predicted_future_scan_net_before_price": 1.0,
+      "step": 7
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        13
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        13
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 4
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.2530347637576895,
+      "cell": [
+        11,
+        15
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 2.0,
+      "cell": [
+        13,
+        15
+      ],
+      "episode": 56,
+      "minimum_future_scan_movement_regret": 1.0,
+      "predicted_future_scan_net_before_price": 1.0,
+      "step": 7
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        11
+      ],
+      "episode": 57,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 34
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        18
+      ],
+      "episode": 57,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        9,
+        11
+      ],
+      "episode": 58,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 34
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        8,
+        18
+      ],
+      "episode": 58,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 39
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.3712926475352738,
+      "cell": [
+        19,
+        12
+      ],
+      "episode": 59,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.3712926475352738,
+      "cell": [
+        19,
+        12
+      ],
+      "episode": 60,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 6
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        19
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 27
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.012139055030751,
+      "cell": [
+        11,
+        14
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 30
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        15,
+        16
+      ],
+      "episode": 61,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        19
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 27
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 1.012139055030751,
+      "cell": [
+        11,
+        14
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 30
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        11,
+        12
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 1.0,
+      "cell": [
+        15,
+        16
+      ],
+      "episode": 62,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 40
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 65,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 9
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        21,
+        11
+      ],
+      "episode": 66,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 10
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 3.4737153555403673,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 67,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 67,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 3.4737153555403673,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 67,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 18
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 67,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 19
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 3.4737153555403673,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 68,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 23
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 68,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 24
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 3.4737153555403673,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 68,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 23
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        11,
+        6
+      ],
+      "episode": 68,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 24
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 71,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c0_audit",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_k",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        15
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 2
+    },
+    {
+      "arm": "c_topology3d",
+      "blind_three_move_regret": 0.0,
+      "cell": [
+        16,
+        14
+      ],
+      "episode": 72,
+      "minimum_future_scan_movement_regret": 0.0,
+      "predicted_future_scan_net_before_price": 0.0,
+      "step": 3
+    }
+  ],
+  "status": "OFFLINE_PUBLIC_MODEL_ONLY"
+}

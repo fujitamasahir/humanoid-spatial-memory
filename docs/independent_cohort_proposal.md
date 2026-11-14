@@ -129,3 +129,28 @@ and duplicate-admission rules; (5) the primary benefit, safety/non-inferiority
 margins, and multiplicity plan; (6) the independent custodian/access mechanism;
 and (7) the frozen policy/source commit and exact evaluation matrix. This
 proposal itself performs none of these actions.
+
+## Multi-step sensing extension (C v2.1; proposal only)
+
+The same unapproved 24-lineage pilot and 80/200-lineage partitions could also
+measure whether a sensing opportunity disappears before a later navigation
+choice. This addition grants no generation, admission or access permission.
+Predeclare coverage of shared route prefixes, delayed branch decisions,
+revisitable versus one-time viewpoints, turns/FOV loss, long/short sight lines,
+persistent occluders and pedestrian-induced temporary occlusion. Cross these
+mechanisms with unchanged controls and persistent additions/removals/relocations;
+keep layout, persistent-change and pedestrian RNG streams lineage-separated.
+A future generator must sample these conditions independently of FIT examples,
+not copy the hand-built C v2.1 public-memory fixtures.
+
+The candidate matrix should freeze selector (C-K versus Topology3-d), one-step
+versus bounded multi-step value and explicit future visibility separately.
+Track predicted and realized later observability only from authorized actual
+scans, along with missed opportunities, computation, total ray workload and
+common-success navigation cost. Missing subsequent observations are missing
+evidence, not confirmed visibility predictions. A custodian may retain hidden
+labels for retrospective evaluation, never online inputs. Update pilot sample
+allocation and runtime budget before approval to account for the additional
+arms and future-footprint computation; historical Mac timings must not be used
+as same-machine benchmarks. All existing lineage, sealing, duplicate and
+owner-approval requirements above remain in effect.
