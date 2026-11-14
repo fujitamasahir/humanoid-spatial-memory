@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 3307,
+    "path": "gate.json",
+    "sha256": "18b751cb1f21bb593e4dfae290c9321a8448b519773d600edfebd0c4b1501d49"
+  },
+  {
+    "bytes": 303,
+    "path": "tests.log",
+    "sha256": "fe4ddc46d4f9b52c1d6cd9155caf611b7680049381b0b175bcb330d96aad64f1"
+  },
+  {
+    "bytes": 14643,
+    "path": "tests.xml",
+    "sha256": "838b2a3e37ece8b96f2ad68e925b18ab22222b20a62cd0f3a149c60ba53155f9"
+  }
+]

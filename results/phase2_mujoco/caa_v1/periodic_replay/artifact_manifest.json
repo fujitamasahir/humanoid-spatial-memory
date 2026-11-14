@@ -1,0 +1,367 @@
+[
+  {
+    "bytes": 2889,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "3c17ff888c43c58122e86bfff49c300bb983d23bfc0677c66101346dc2cd4840"
+  },
+  {
+    "bytes": 2890,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "1080b70f9ff313dd68a0f1df8851dcb1605ded7cea70e8c26df61141cd61ba73"
+  },
+  {
+    "bytes": 4927,
+    "path": "episode_003_periodic.json.gz",
+    "sha256": "38c4b7c18c44506fb13161b3ddec344abb0a2bf33a4e58b8c6b6bc707d1c8556"
+  },
+  {
+    "bytes": 4888,
+    "path": "episode_004_periodic.json.gz",
+    "sha256": "ac500e5bdb8d231b52a16c65798224dbac3cbf1f896805d2c9a90e5b1357ac4c"
+  },
+  {
+    "bytes": 3446,
+    "path": "episode_005_periodic.json.gz",
+    "sha256": "be89a4407ce42ae654e54685f6aba08928ad4f50924aeffb8505bd8168c34217"
+  },
+  {
+    "bytes": 3437,
+    "path": "episode_006_periodic.json.gz",
+    "sha256": "bc5bcd1a5b200522b8e59c1fbcf6033b74e681d742c6d4f45b1feb9dfb9b3758"
+  },
+  {
+    "bytes": 3302,
+    "path": "episode_007_periodic.json.gz",
+    "sha256": "7e4db96fee9f8a3995b6514f466d22d41c6a7e4176c2b32f1f0065105a8cff76"
+  },
+  {
+    "bytes": 3312,
+    "path": "episode_008_periodic.json.gz",
+    "sha256": "b29528e2c2111b31b6b3bc5dbaee890253492a827ef58ad0f7c0dfb0c59c1d5c"
+  },
+  {
+    "bytes": 2866,
+    "path": "episode_009_periodic.json.gz",
+    "sha256": "4a178c2649cc53b2dc7be2e5bcbd4af66365a1f6e7949775d79a141ff99ec16b"
+  },
+  {
+    "bytes": 2906,
+    "path": "episode_010_periodic.json.gz",
+    "sha256": "5827ff325962047c7a6510183b3348c9ca9414c754068e00f9a2bb823ce7a336"
+  },
+  {
+    "bytes": 2976,
+    "path": "episode_011_periodic.json.gz",
+    "sha256": "f0822aef969a918611b8352e38c8da51727f69cdff3d6bd9d83f4862636d4d2e"
+  },
+  {
+    "bytes": 2965,
+    "path": "episode_012_periodic.json.gz",
+    "sha256": "57984cf334d54e7dc0518c2c9e6f37659d4a1dd28ed4b134ff471f93b4737b3f"
+  },
+  {
+    "bytes": 3121,
+    "path": "episode_013_periodic.json.gz",
+    "sha256": "b3f78cc98d6134971ababb40c8834884715ecd85806f5518af539cffd7938127"
+  },
+  {
+    "bytes": 3124,
+    "path": "episode_014_periodic.json.gz",
+    "sha256": "f884c54a145a8877d80899469c4072feddce8605f2943a771ea45fb697acf746"
+  },
+  {
+    "bytes": 3146,
+    "path": "episode_015_periodic.json.gz",
+    "sha256": "65989c0f4ee4130a2c6ff7c0f2263caa280aeaf35b442033df205a24d405dbef"
+  },
+  {
+    "bytes": 3093,
+    "path": "episode_016_periodic.json.gz",
+    "sha256": "b1dc919c80b32c87ba56c38b80f78c3bf8ecccfd37b8b115a7aefa2bcf492af8"
+  },
+  {
+    "bytes": 2741,
+    "path": "episode_017_periodic.json.gz",
+    "sha256": "59e892804db6706d19fed3250dcfaaa0d9a629651c6ffacaa0b43053579d00aa"
+  },
+  {
+    "bytes": 2666,
+    "path": "episode_018_periodic.json.gz",
+    "sha256": "02475ef90cd25b716620867d32065581aa82e4051050379cec60845f6ec602eb"
+  },
+  {
+    "bytes": 2213,
+    "path": "episode_019_periodic.json.gz",
+    "sha256": "99e002f191fab62e35b988cf7072d356726b968db88b66f4d291c5ce6ee25837"
+  },
+  {
+    "bytes": 2665,
+    "path": "episode_020_periodic.json.gz",
+    "sha256": "9a86d281fd011460caead009f117ab2aedc670467a1db770b4b39b0cda7333ce"
+  },
+  {
+    "bytes": 4269,
+    "path": "episode_021_periodic.json.gz",
+    "sha256": "fc7e64beac8f39601a94e3d09cdb8671386b2362a70aa8ba325cf5077753848b"
+  },
+  {
+    "bytes": 4286,
+    "path": "episode_022_periodic.json.gz",
+    "sha256": "86636f75c87a222ef4ebdacbb09036fd366189a007cd8fb9745798ca3d412271"
+  },
+  {
+    "bytes": 2628,
+    "path": "episode_023_periodic.json.gz",
+    "sha256": "e76794789d8bc8d86c1620fb4f844b39f4147f26ddf82bba2f6831f93c2e3094"
+  },
+  {
+    "bytes": 2670,
+    "path": "episode_024_periodic.json.gz",
+    "sha256": "00f7e7eff9b65d1a0a4d1b0bd8f8d694adfddc6ec61b7f905188bb9e058e1f6b"
+  },
+  {
+    "bytes": 4854,
+    "path": "episode_025_periodic.json.gz",
+    "sha256": "68d0b3cee628ad73c8ca28751fad2a581f37ee7d8f568187f796f837083ed5c2"
+  },
+  {
+    "bytes": 4679,
+    "path": "episode_026_periodic.json.gz",
+    "sha256": "678eeb113b5326945f60c4a02e533aa5fcd96eeb21d133563a099f8d0976a303"
+  },
+  {
+    "bytes": 2631,
+    "path": "episode_027_periodic.json.gz",
+    "sha256": "b8a446563486fbe849a34f8342f5b14f7d01830228fe327e2a1bb532cc9a3428"
+  },
+  {
+    "bytes": 2644,
+    "path": "episode_028_periodic.json.gz",
+    "sha256": "36dacc0a89b54dd56472033e37fa353c7b5c4997a46c47aded59ce37c52bc7d4"
+  },
+  {
+    "bytes": 3599,
+    "path": "episode_029_periodic.json.gz",
+    "sha256": "83efd14bbe97cb95ee2fd751e927a26816712f3aa8b47d425efe52f60a9d8d8f"
+  },
+  {
+    "bytes": 3619,
+    "path": "episode_030_periodic.json.gz",
+    "sha256": "cfa7c57193c083206f4c419af694a6056ba81782ef999652397fdcb5943ce9e0"
+  },
+  {
+    "bytes": 3658,
+    "path": "episode_031_periodic.json.gz",
+    "sha256": "acec514ebc618cfaa89cb9cf78837e4dbf991a7333ce413c7e4ced36356a23b4"
+  },
+  {
+    "bytes": 3751,
+    "path": "episode_032_periodic.json.gz",
+    "sha256": "695f66965e0395eb58953eaf27d0494f374ebd4729a359413cf22a909c507802"
+  },
+  {
+    "bytes": 3983,
+    "path": "episode_033_periodic.json.gz",
+    "sha256": "22a037a8943c6f156b1ce8b5ded374aa21b6800a1eaa9df4c75df56e3ac98bb8"
+  },
+  {
+    "bytes": 3955,
+    "path": "episode_034_periodic.json.gz",
+    "sha256": "9ed253be62669e875f2fd926f185bdc04417fe4b0f7d0ceda5587dc9d87390a6"
+  },
+  {
+    "bytes": 3455,
+    "path": "episode_035_periodic.json.gz",
+    "sha256": "8a201fe7b2c7478bd8ab3e1383d39cfc882c6609225e5b8dea4c30bc3b7e5f36"
+  },
+  {
+    "bytes": 3470,
+    "path": "episode_036_periodic.json.gz",
+    "sha256": "02d1da293f70122ff0f1430e40ef2241f80473570f717ed9954f343839d8b5b2"
+  },
+  {
+    "bytes": 3005,
+    "path": "episode_037_periodic.json.gz",
+    "sha256": "912f20bd2ceddf4887f7936fdaa5da0456dcd0ef1d3009f02a8a3e0b7a42be69"
+  },
+  {
+    "bytes": 2992,
+    "path": "episode_038_periodic.json.gz",
+    "sha256": "38ab2a1fb002785ddaf592c4ea78366568107f5eb3103b5832dc55006985f0a2"
+  },
+  {
+    "bytes": 3650,
+    "path": "episode_039_periodic.json.gz",
+    "sha256": "317431d8a0d0567637013b0add089fb98d4e6546daa1a22e5d7e69caf1abd304"
+  },
+  {
+    "bytes": 5195,
+    "path": "episode_040_periodic.json.gz",
+    "sha256": "d99f1a2eb47e475dbfe48f41be571b03c3e7c2a19ec39f0d183f4225a86514fb"
+  },
+  {
+    "bytes": 3942,
+    "path": "episode_041_periodic.json.gz",
+    "sha256": "49fc46a22b4d48b4727480b63bb8c813be24589272d6086d6d6e29ad197f9492"
+  },
+  {
+    "bytes": 4780,
+    "path": "episode_042_periodic.json.gz",
+    "sha256": "fbc6d29a6a6cdc9561ca491539c026f3542d21af6f4f5654b21b84645badcefd"
+  },
+  {
+    "bytes": 4607,
+    "path": "episode_043_periodic.json.gz",
+    "sha256": "57b079699f48b10b93c7b1284830a7434e9a1a2fc427d332b3ac8f9a70c76224"
+  },
+  {
+    "bytes": 4592,
+    "path": "episode_044_periodic.json.gz",
+    "sha256": "5380b9504ded2acf6a13ab9e8ff654b82bff174b755c68b9bb7ff4c3605a59f5"
+  },
+  {
+    "bytes": 2830,
+    "path": "episode_045_periodic.json.gz",
+    "sha256": "b53f3f2338b2d3274b4983fb97944052a3d824f36bf516761c8c2f221555045f"
+  },
+  {
+    "bytes": 2845,
+    "path": "episode_046_periodic.json.gz",
+    "sha256": "79ec795a2469316d46665d10fa4a8cbe78b0f24585face2b914eb93ad1666ed7"
+  },
+  {
+    "bytes": 2474,
+    "path": "episode_047_periodic.json.gz",
+    "sha256": "6f81fdbbf93cb1e526371e5da200e135bf3a090481751a7015d80e8e59489f5c"
+  },
+  {
+    "bytes": 2473,
+    "path": "episode_048_periodic.json.gz",
+    "sha256": "dbda5a25a3a3567cb5b519327dc56bd3a865cd2c875e8ead99e152553d98f597"
+  },
+  {
+    "bytes": 4886,
+    "path": "episode_049_periodic.json.gz",
+    "sha256": "963a9629da7842a61531aeb1c21168497c077185c30201bedfac65fbb1b6617c"
+  },
+  {
+    "bytes": 4828,
+    "path": "episode_050_periodic.json.gz",
+    "sha256": "fab85f117d122a25e7c07734fa8df273fbda952306ea59a70f5a38cbcdcfc579"
+  },
+  {
+    "bytes": 3216,
+    "path": "episode_051_periodic.json.gz",
+    "sha256": "6ff8fa1d6b323d5ab39d869bd96f6a30ff459afe1555f1f303964124fd939b4f"
+  },
+  {
+    "bytes": 3257,
+    "path": "episode_052_periodic.json.gz",
+    "sha256": "2e27d1d7667b70ff3c421777d0f389ffe6ee09d265b87440dc03e042db912a13"
+  },
+  {
+    "bytes": 2648,
+    "path": "episode_053_periodic.json.gz",
+    "sha256": "aa408d44bf2e665878f580d5136f9a9d5444ddd954e7698fcfb4a0ad4516de48"
+  },
+  {
+    "bytes": 4693,
+    "path": "episode_054_periodic.json.gz",
+    "sha256": "7be5c41b9b3af29a2554ed3410f8d0f44f8fd087da4ea07ac56259f1d9cf523c"
+  },
+  {
+    "bytes": 4464,
+    "path": "episode_055_periodic.json.gz",
+    "sha256": "9a3f10d432d30313649c846d86c9d435abefc7945de40eaff59e1d5aab2d5053"
+  },
+  {
+    "bytes": 4493,
+    "path": "episode_056_periodic.json.gz",
+    "sha256": "86678af58c12ef3fd53e3d26170b1e1bfa3d6ff7b27376af2247a3f300cc8e0d"
+  },
+  {
+    "bytes": 3269,
+    "path": "episode_057_periodic.json.gz",
+    "sha256": "f9205979cc269a4b6a89372b79c0fd77ee98b5094a01a00bb13c6ee24690241b"
+  },
+  {
+    "bytes": 3282,
+    "path": "episode_058_periodic.json.gz",
+    "sha256": "a7867fd46bb811c4af4e73b429fab23057f9eff024ea2166aa719c2ebe2f4e7f"
+  },
+  {
+    "bytes": 2623,
+    "path": "episode_059_periodic.json.gz",
+    "sha256": "63349b8ff5f0f315d6090b6a222c6aaafc45f8498458b3c9b33296180b79c321"
+  },
+  {
+    "bytes": 2660,
+    "path": "episode_060_periodic.json.gz",
+    "sha256": "c69c3e6d2cea017621fc49a48a667e501232ff9c04cd08cd25f147abb993a8b8"
+  },
+  {
+    "bytes": 3258,
+    "path": "episode_061_periodic.json.gz",
+    "sha256": "53b03789f9a92ffcf6f50df3c89a0292b39be94c22279e3e5fd4f036fa6b6d89"
+  },
+  {
+    "bytes": 3250,
+    "path": "episode_062_periodic.json.gz",
+    "sha256": "94854f513982aee69202f3e502b353a8c56371332b7cf63cb704e639c5129bb5"
+  },
+  {
+    "bytes": 3534,
+    "path": "episode_063_periodic.json.gz",
+    "sha256": "e5e6ea3016a936b4327dbd07b47cb7cc93391602f6afc8b2f40a98a146d669bc"
+  },
+  {
+    "bytes": 3540,
+    "path": "episode_064_periodic.json.gz",
+    "sha256": "bce32cdb0de013b1a354be13b084e512390e74849ea2a477ec3598f53527e920"
+  },
+  {
+    "bytes": 2756,
+    "path": "episode_065_periodic.json.gz",
+    "sha256": "cfa48acc277d80f1e246427bf1d566e3ade14ee96c4b884cda4bac2324a5e974"
+  },
+  {
+    "bytes": 2761,
+    "path": "episode_066_periodic.json.gz",
+    "sha256": "b859f5d6bc7409411264d63c0c684cd3759c00909f7c54a599268016676d98f9"
+  },
+  {
+    "bytes": 3211,
+    "path": "episode_067_periodic.json.gz",
+    "sha256": "2b5feeb1f63a2d53f2dc318638df8a4b22c64d41123e58ef78cd44b6753c6887"
+  },
+  {
+    "bytes": 3618,
+    "path": "episode_068_periodic.json.gz",
+    "sha256": "f0a4bb1ca71af700085d607ab1e63459c7b5497bfe96a8214aeec56a946965d1"
+  },
+  {
+    "bytes": 3652,
+    "path": "episode_069_periodic.json.gz",
+    "sha256": "77568cd2c4bfd313dba52437b90aa4a022eb02f3e204da63fa88d054a520d580"
+  },
+  {
+    "bytes": 3583,
+    "path": "episode_070_periodic.json.gz",
+    "sha256": "53dc4da3e4d88de373e9c2d58c69fa366ced97b4fa59ee32846aaf8476a1383e"
+  },
+  {
+    "bytes": 2518,
+    "path": "episode_071_periodic.json.gz",
+    "sha256": "84ff26edf8469b36a881537b0b37a972b0c47c086de711dd9883e565ca8168e8"
+  },
+  {
+    "bytes": 2783,
+    "path": "episode_072_periodic.json.gz",
+    "sha256": "b9f9b7ed04185758faf5d8ae4648f900c280502d6a8df6680a067c28c07ca72c"
+  },
+  {
+    "bytes": 49,
+    "path": "summary.json",
+    "sha256": "799dec6ef909b9fec38f7347248fc852d67bad5b64907c706d63efbdda566a38"
+  }
+]

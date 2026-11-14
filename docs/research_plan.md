@@ -115,3 +115,14 @@ two actual-scan schedule contrasts in one maze. All four new policies reached
 The joint sensing/navigation objective failed; no independent cohort or
 automatic G1-aware follow-on was executed. See
 [`c_v21_multistep_research_report.md`](c_v21_multistep_research_report.md).
+
+## Change-aware Adaptive Age (CAA) scope
+
+Age-5 is retained as a frozen simple baseline after the cadence screen:66/72
+with770 paid scans. The separately versioned CAA hypothesis adapts only
+cell-specific observation deadlines4/5/6 from actual observed transitions and
+unchanged-history exposure. It does not change remembered occupancy or use
+EVI, topology, future visibility or event triggers. See `caa_protocol.md`,
+`age5_frozen_baseline.md` and the pre-implementation audit
+`caa_retrospective_analysis.md`. All results remain development-only; new
+independent cohorts require approval. No automatic subsequent iteration.

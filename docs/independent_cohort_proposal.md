@@ -154,3 +154,29 @@ allocation and runtime budget before approval to account for the additional
 arms and future-footprint computation; historical Mac timings must not be used
 as same-machine benchmarks. All existing lineage, sealing, duplicate and
 owner-approval requirements above remain in effect.
+
+## Fixed-age and CAA scheduling extension (proposal only)
+
+Age-5 is an additional mandatory frozen strong baseline, alongside unchanged
+Periodic and Age-4. Include fixed Age-6 and CAA-Fast/Slow/Full to distinguish
+history-dependent acceleration, stable-region delay, their combination and a
+uniformly longer deadline. The CAA hypothesis concerns scheduling only; keep
+ternary last-write memory and the original G1/sensing/safety pipeline fixed.
+No EVI/topology/visibility or persistence inference is required for this test.
+
+Before any new cohort generation, predeclare distributions with independently
+varying stable/dynamic region exposure, authorized revisit frequency, long
+unobserved gaps, transient occlusion and persistent additions/removals. Changes
+must be exogenous to policy decisions. Include no-change and sparse-revisit
+controls: a method cannot infer stability merely because a cell was not seen.
+Sample new lineages rather than copying FIT examples or the six retrospective
+Age/Age-5 flips. Keep both schedules paired and analyze by maze cluster.
+
+Choose primary independent criteria and the comparison with Age-5 before
+opening outcomes; do not transfer an absolute66/72 FIT goal threshold to a
+differently sized cohort. A gain over Age-4 alone is insufficient if it does
+not improve on Age-5. Report paired safety/completion, paid and total sensing,
+common-success navigation cost and computation together. Freeze exact CAA
+source/history semantics before sealed evaluation; no FIT-derived tuning.
+The24-lineage pilot and80/200-lineage cohorts remain unapproved, ungenerated
+and unopened; all owner/custodian/admission requirements above remain.
