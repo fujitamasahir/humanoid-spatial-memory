@@ -308,6 +308,11 @@ def active_binding_path() -> Path:
     return target
 
 
+def active_amendment_number() -> int:
+    path=active_binding_path()
+    return int(path.stem.rsplit('_',1)[1]) if path.name.startswith('binding_amendment_') else 0
+
+
 def amend_binding_for_timing_scope():
     """Append-only correction for the pre-run parity field filter."""
     parent = OUT/'binding.json'
@@ -431,6 +436,24 @@ def amend_binding_pointer_policy():
     write_exclusive(OUT/'active_binding_amendment_3.json',{'path':target.name,
         'sha256':sha(target),'parent_binding_sha256':sha(parent)})
     print('Appended binding amendment 3; no model or measurement condition changed.',flush=True)
+
+
+def amend_binding_smoke_stage_selection():
+    parent=OUT/'binding_amendment_3.json';target=OUT/'binding_amendment_4.json'
+    if not parent.is_file() or target.exists():
+        raise RuntimeError('Expected immutable binding amendment 3')
+    updated=json.loads(parent.read_text())
+    updated['parent_binding_sha256']=sha(parent)
+    updated['source_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['source_sha256']['scripts/run_h2_controlled_compute_benchmark.py']=sha(SCRIPT)
+    updated['amendment_4']={'description':'select smoke/warmup storage epoch by latest amendment number rather than exact filename suffix',
+        'preserved_prior_attempt':'warmup/journal.jsonl and warmup_amendment_1/journal.jsonl remain unchanged',
+        'no_episode_or_model_change':True}
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    write_exclusive(target,updated)
+    write_exclusive(OUT/'active_binding_amendment_4.json',{'path':target.name,
+        'sha256':sha(target),'parent_binding_sha256':sha(parent)})
+    print('Appended binding amendment 4; smoke/warm-up now uses a fresh epoch.',flush=True)
 
 
 def semantic_projection(row: dict, replay: dict) -> dict:
@@ -567,9 +590,8 @@ def _smoke_cases(cases):
 
 
 def _warm_up(cases, models, prior):
-    amendment = active_binding_path().name.endswith('amendment_2.json')
-    stage = 'warmup_amendment_2' if amendment else (
-        'warmup_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'warmup')
+    version=active_amendment_number()
+    stage = f'warmup_amendment_{version}' if version >= 2 else ('warmup_amendment_1' if version == 1 else 'warmup')
     path = OUT/stage/'journal.jsonl'
     completed = _load_journal(path, lambda r: r['model_id'])
     payload = cases[0][1]
@@ -603,9 +625,8 @@ def run_smoke():
     maps, all_cases = maps_and_cases()
     cases = _smoke_cases(all_cases)
     models = model_ids(); prior = historical_index()
-    active_name = active_binding_path().name
-    stage = ('smoke_amendment_2' if active_name.endswith('amendment_2.json') else
-             'smoke_amendment_1' if active_name.endswith('amendment_1.json') else 'smoke')
+    version=active_amendment_number()
+    stage = f'smoke_amendment_{version}' if version >= 2 else ('smoke_amendment_1' if version == 1 else 'smoke')
     root = OUT/stage; root.mkdir(parents=True, exist_ok=True)
     journal = root/'journal.jsonl'
     completed = _load_journal(journal,
@@ -1239,6 +1260,7 @@ def main():
     sub.add_parser('amend-binding-1')
     sub.add_parser('amend-binding-2')
     sub.add_parser('amend-binding-3')
+    sub.add_parser('amend-binding-4')
     sub.add_parser('smoke')
     run=sub.add_parser('run');run.add_argument('--resume',action='store_true')
     sub.add_parser('analyze')
@@ -1248,6 +1270,7 @@ def main():
     elif args.command=='amend-binding-1': amend_binding_for_timing_scope()
     elif args.command=='amend-binding-2': amend_binding_for_corrected_b_age()
     elif args.command=='amend-binding-3': amend_binding_pointer_policy()
+    elif args.command=='amend-binding-4': amend_binding_smoke_stage_selection()
     elif args.command=='smoke': run_smoke()
     elif args.command=='run': run_repetitions(args.resume)
     elif args.command=='analyze': analyze()
