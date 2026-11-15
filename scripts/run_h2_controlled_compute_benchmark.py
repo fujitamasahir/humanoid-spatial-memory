@@ -287,6 +287,17 @@ def validate_binding():
 
 
 def active_binding_path() -> Path:
+    amendments = sorted(OUT.glob('binding_amendment_*.json'),
+        key=lambda p: int(p.stem.rsplit('_',1)[1]))
+    if amendments:
+        target=amendments[-1]
+        version=target.stem.rsplit('_',1)[1]
+        amendment_pointer=OUT/f'active_binding_amendment_{version}.json'
+        if amendment_pointer.is_file():
+            pointer_data=json.loads(amendment_pointer.read_text())
+            if pointer_data.get('path')!=target.name or pointer_data.get('sha256')!=sha(target):
+                raise RuntimeError('Append-only active binding amendment pointer mismatch')
+        return target
     pointer = OUT/'active_binding.json'
     if not pointer.is_file():
         return OUT/'binding.json'
@@ -336,7 +347,7 @@ def amend_binding_for_timing_scope():
 def amend_binding_for_corrected_b_age():
     parent = OUT/'binding_amendment_1.json'
     target = OUT/'binding_amendment_2.json'
-    pointer = OUT/'active_binding.json'
+    pointer = OUT/'active_binding_amendment_2.json'
     if not parent.is_file() or target.exists():
         raise RuntimeError('Timing-scope amendment 1 is required')
     warmup_path = OUT/'warmup_amendment_1/journal.jsonl'
@@ -402,6 +413,24 @@ def amend_binding_for_corrected_b_age():
     write_exclusive(pointer,{'path':target.name,'sha256':sha(target),
         'parent_binding_sha256':sha(parent)})
     print('Appended binding amendment 2; b_age is explicitly classified as an expected historical mismatch.',flush=True)
+
+
+def amend_binding_pointer_policy():
+    parent=OUT/'binding_amendment_2.json';target=OUT/'binding_amendment_3.json'
+    if not parent.is_file() or target.exists():
+        raise RuntimeError('Expected immutable B+Age binding amendment 2')
+    updated=json.loads(parent.read_text())
+    updated['parent_binding_sha256']=sha(parent)
+    updated['source_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['source_sha256']['scripts/run_h2_controlled_compute_benchmark.py']=sha(SCRIPT)
+    updated['amendment_3']={'description':'append-only active-binding selection; latest immutable binding amendment takes precedence over prior pointer',
+        'parent_pointer_sha256':sha(OUT/'active_binding.json'),
+        'no_model_or_experiment_change':True}
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    write_exclusive(target,updated)
+    write_exclusive(OUT/'active_binding_amendment_3.json',{'path':target.name,
+        'sha256':sha(target),'parent_binding_sha256':sha(parent)})
+    print('Appended binding amendment 3; no model or measurement condition changed.',flush=True)
 
 
 def semantic_projection(row: dict, replay: dict) -> dict:
@@ -1209,6 +1238,7 @@ def main():
     sub.add_parser('prepare')
     sub.add_parser('amend-binding-1')
     sub.add_parser('amend-binding-2')
+    sub.add_parser('amend-binding-3')
     sub.add_parser('smoke')
     run=sub.add_parser('run');run.add_argument('--resume',action='store_true')
     sub.add_parser('analyze')
@@ -1217,6 +1247,7 @@ def main():
     if args.command=='prepare': prepare()
     elif args.command=='amend-binding-1': amend_binding_for_timing_scope()
     elif args.command=='amend-binding-2': amend_binding_for_corrected_b_age()
+    elif args.command=='amend-binding-3': amend_binding_pointer_policy()
     elif args.command=='smoke': run_smoke()
     elif args.command=='run': run_repetitions(args.resume)
     elif args.command=='analyze': analyze()
