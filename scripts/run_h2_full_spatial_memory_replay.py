@@ -164,13 +164,33 @@ def audit():
     print(json.dumps(report,indent=2));return report
 
 def load_binding():
-    p=OUT/'binding.json'
+    pointer=OUT/'active_binding.json'
+    if pointer.is_file():
+        active=json.loads(pointer.read_text());p=OUT/active['path']
+        if sha(p)!=active['sha256']:raise RuntimeError('Active binding pointer hash mismatch')
+    else:p=OUT/'binding.json'
     if not p.is_file(): raise FileNotFoundError('Prepare a binding after source/map audit first')
     b=json.loads(p.read_text())
     if b['status'] not in ('READY','RUNNING','PARTIAL'): raise RuntimeError('Binding not runnable')
     for rel,digest in b['source_sha256'].items():
         if sha(ROOT/rel)!=digest: raise RuntimeError(f'Source commitment changed: {rel}')
     return b
+
+def amend_binding():
+    parent=OUT/'binding.json';target=OUT/'binding_amendment_1.json';pointer=OUT/'active_binding.json'
+    if not parent.is_file() or target.exists() or pointer.exists():
+        raise FileExistsError('Parent binding is missing or amendment already exists')
+    old=json.loads(parent.read_text())
+    src=set(old['source_sha256'])
+    head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    if subprocess.run(['git','merge-base','--is-ancestor',old['bound_at_commit'],head],cwd=ROOT).returncode:
+        raise RuntimeError('Current source commit does not descend from binding commit')
+    updated=dict(old);updated['parent_binding_sha256']=sha(parent);updated['bound_at_commit']=head
+    updated['status']='PARTIAL';updated['amendment_reason']='Corrected source-trace capture and before/after pose/action semantics after first bounded smoke exposed a replay-enrichment hook defect.'
+    updated['source_sha256']={name:sha(ROOT/name) for name in sorted(src)}
+    updated['amended_utc']=datetime.now(timezone.utc).isoformat()
+    jwrite(target,updated);jwrite(pointer,{'path':target.name,'sha256':sha(target),'parent_binding_sha256':sha(parent)})
+    print('Created append-only binding amendment; parent binding preserved.')
 
 def bind():
     if (OUT/'binding.json').exists(): raise FileExistsError('Binding already exists')
@@ -222,7 +242,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
     import h2_final_common as frozen
     from spatial_memory import evaluation as ev
     ctx={'steps':{},'observations':{},'initial':None,'agent':None}
-    old_eval=ev.run_episode;old_run_original=engine.run_original_case
+    old_eval=ev.run_episode;old_run_original=engine.run_original_case;old_frozen_run=frozen.run_case
     def monitored_eval(scenario,config,method,**kwargs):
         original_factory=kwargs.get('_controller_factory')
         if original_factory is None: raise RuntimeError('Missing frozen controller factory')
@@ -265,9 +285,12 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
         if arr is None: raise RuntimeError('Controller does not expose its current memory grid')
         return np.asarray(arr,dtype=np.int8).copy()
     def enrich(payload0,schedule0,arm0,row,trace):
-        frames=ctx
+        source_trace=ctx.get('source_trace') or {}
+        original_by_step={int(x['step']):x for x in source_trace.get('steps',[])}
         for frame in trace.get('steps',[]):
             t=int(frame['step']);state=ctx['steps'].get(t,{})
+            old_frame=original_by_step.get(t,{})
+            prior_frame=original_by_step.get(t-1,old_frame)
             observed=ctx['observations'].get(t)
             if t==0:
                 frame['spatial_memory_before_observation_decision_packed_2bit_base64']=None
@@ -289,15 +312,29 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
                 frame['controller_state_after_observation_update']=state.get('state_after_update',state.get('state_after_decision'))
                 frame['pre_observation_memory_status']='captured'
             frame['observed_grid_ternary_packed_2bit_base64']=None if observed is None else pack_grid(observed)
-            frame['selected_action']=frame.get('executed_action')
-            frame['executed_action_applied']=bool(frame.get('moved') or frame.get('heading_changed'))
-            if not frame['executed_action_applied']: frame['executed_action']=None
+            frame['selected_action']=old_frame.get('action',frame.get('executed_action'))
+            frame['selected_action_reason']=old_frame.get('action_reason')
+            frame['robot_position_after_action_xy']=old_frame.get('position',frame.get('robot_position_after_action_xy'))
+            frame['robot_position_before_action_xy']=prior_frame.get('position',frame.get('robot_position_before_action_xy'))
+            frame['robot_heading_after_action_rad']=old_frame.get('heading_yaw',frame.get('robot_heading_after_action_rad'))
+            frame['robot_heading_before_action_rad']=prior_frame.get('heading_yaw',frame.get('robot_heading_before_action_rad'))
+            yaw_changed=(frame['robot_heading_after_action_rad'] != frame['robot_heading_before_action_rad'])
+            frame['executed_action_applied']=bool(old_frame.get('moved') or yaw_changed or
+                                                   (frame['selected_action'] and frame['selected_action'][0]=='wait'))
+            frame['execution_status']=('rejected_by_safety_or_collision_check' if old_frame.get('blocked') else
+                                       'applied' if frame['executed_action_applied'] else 'no_transition')
+            frame['executed_action']=frame['selected_action'] if frame['executed_action_applied'] else None
             frame['spatial_memory_end_of_step_packed_2bit_base64']=frame.get('spatial_memory_ternary_packed_2bit_base64')
         return trace
     def monitored_original(p,s,a):
         row,replay,diagnostics=old_run_original(p,s,a)
         return row,enrich(p,s,a,row,replay),diagnostics
+    def capture_trace(*args,**kwargs):
+        row,trace,diagnostics=old_frozen_run(*args,**kwargs)
+        ctx['source_trace']=trace
+        return row,trace,diagnostics
     engine.run_original_case=monitored_original
+    frozen.run_case=capture_trace
     ev.run_episode=monitored_eval
     engine._extend_frozen_arms()
     try:
@@ -306,7 +343,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
         else:
             result=engine.run_original_case(payload,schedule,arm)
     finally:
-        ev.run_episode=old_eval;engine.run_original_case=old_run_original
+        ev.run_episode=old_eval;engine.run_original_case=old_run_original;frozen.run_case=old_frozen_run
     row,replay,diagnostics=result
     if len(replay['steps'])!=int(row['elapsed_steps'])+1:raise RuntimeError('Replay step count mismatch')
     if any(not s.get('spatial_memory_end_of_step_packed_2bit_base64') for s in replay['steps']):raise RuntimeError('Missing end-of-step memory')
@@ -314,7 +351,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
     replay['replay_recovery']={'source_binding_sha256':sha(OUT/'binding.json'),
         'memory_capture':'live controller snapshots, evaluator-side and not passed to policy',
         'classification':'replay_recovery'}
-    return row,replay,diagnostics
+    return row,replay,diagnostics,ctx.get('source_trace')
 
 def _atomic_episode(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
@@ -364,15 +401,33 @@ def run(task,resume=False,limit=None):
         if path.exists():
             if rel not in committed or sha(path)!=committed[rel]:raise RuntimeError(f'Existing record failed journal: {rel}')
             done+=1;continue
-        row,replay,diag=recover_case(payload,schedule,arm,dataset)
+        row,replay,diag,source_trace=recover_case(payload,schedule,arm,dataset)
+        parity_status='NO_COMPATIBLE_HISTORICAL_RESULT'
+        parity_detail=None
+        case_number=(mi-1)*2+schedule+1
+        try:
+            from run_h2_final import compare_saved
+            saved=None
+            if task=='a':
+                old=ROOT/f'results/phase2_mujoco/h2_final_generalization_v1/primary/episode_{case_number:03d}_{arm}.json.gz'
+                if old.is_file():
+                    with gzip.open(old,'rt',encoding='utf-8') as f:saved=json.load(f)
+            elif arm in frozen.SAVED or arm in ('rdao_v2','rdao_v21'):
+                saved=frozen.saved_episode(case_number,arm)
+            if saved is not None and source_trace is not None:
+                compare_saved(saved,row,source_trace);parity_status='PASS_EXACT_TRACE_AND_METRIC_SIGNATURE'
+        except Exception as exc:
+            parity_status='MISMATCH';parity_detail=f'{type(exc).__name__}: {exc}'
+        replay['replay_recovery']['parity_status']=parity_status
         record={'dataset':dataset,'condition':'original','arm':arm,'map_identity':payload['identity'],
             'map_index':mi,'schedule':schedule,'seed':42,'schema':'h2_full_spatial_memory_replay_v1',
-            'row':row,'replay':replay,'diagnostics':diag}
+            'row':row,'replay':replay,'diagnostics':diag,'source_trace_for_exact_parity':source_trace,
+            'parity':{'status':parity_status,'detail':parity_detail}}
         size,digest=_atomic_episode(path,record)
         event={'event':'episode_committed','path':rel,'bytes':size,'sha256':digest,
             'dataset':dataset,'model_id':arm,'map_identity':payload['identity'],'schedule':schedule,
             'frames':len(replay['steps']),'observations':int(row.get('observation_count',-1)),
-            'success':bool(row.get('success')),'parity_status':'pending_historical_audit'}
+            'success':bool(row.get('success')),'parity_status':parity_status,'parity_detail':parity_detail}
         with journal.open('a',encoding='utf-8') as f:f.write(json.dumps(event,sort_keys=True)+'\n');f.flush();os.fsync(f.fileno())
         done+=1
         now=time.monotonic()
@@ -383,10 +438,11 @@ def run(task,resume=False,limit=None):
     print(f'task_{task}: processed {done} cases; output={target.relative_to(ROOT)}',flush=True)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('command',choices=('audit','bind','run-a','run-b'))
+    ap=argparse.ArgumentParser();ap.add_argument('command',choices=('audit','bind','amend','run-a','run-b'))
     ap.add_argument('--resume',action='store_true');ap.add_argument('--limit',type=int)
     a=ap.parse_args()
     if a.command=='audit':audit()
     elif a.command=='bind':bind()
+    elif a.command=='amend':amend_binding()
     else:run('a' if a.command=='run-a' else 'b',a.resume,a.limit)
 if __name__=='__main__':main()
