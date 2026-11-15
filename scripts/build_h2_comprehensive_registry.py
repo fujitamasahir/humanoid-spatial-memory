@@ -68,8 +68,8 @@ SPECS = [
 ('dao_veto_joint','DAO-Joint','DAO','src/spatial_memory/route_gated_dao_veto_v1.py','RouteGatedDAOVeto','scripts/run_history_gated_deadline_fit72_v1.py','dao_veto_joint','gate_mode=joint','eligible'),
 ('deadline_stable','DAO-Deadline-Stable','DAO','src/spatial_memory/history_gated_deadline_v1.py','HistoryGatedDeadline','scripts/run_history_gated_deadline_fit72_v1.py','deadline_stable','history_mode=stable_prefix_later','eligible'),
 ('deadline_stable_quiet','DAO-Deadline-Stable-Quiet','DAO','src/spatial_memory/history_gated_deadline_v1.py','HistoryGatedDeadline','scripts/run_history_gated_deadline_fit72_v1.py','deadline_stable_quiet','history_mode=stable_prefix_later_previous_no_change','eligible'),
-('raa_advance','RAA-Advance','RAA','src/spatial_memory/route_adaptive_age_v1.py','RouteAdaptiveAgeV1','scripts/run_route_adaptive_age_v1.py','raa_advance','frozen RAA v1 parameters','eligible'),
-('raa_joint','RAA-Joint','RAA','src/spatial_memory/route_adaptive_age_v1.py','RouteAdaptiveAgeV1','scripts/run_route_adaptive_age_v1.py','raa_joint','frozen RAA v1 parameters','eligible'),
+('raa_advance','RAA-Advance','RAA','src/spatial_memory/route_adaptive_age_v1.py','RouteAdaptiveAgeV1','scripts/run_raa_fit72_v1.py','raa_advance','frozen RAA v1 parameters','eligible'),
+('raa_joint','RAA-Joint','RAA','src/spatial_memory/route_adaptive_age_v1.py','RouteAdaptiveAgeV1','scripts/run_raa_fit72_v1.py','raa_joint','frozen RAA v1 parameters','eligible'),
 ]
 
 def _sha(path: Path) -> str:
