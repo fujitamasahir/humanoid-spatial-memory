@@ -456,6 +456,36 @@ def amend_binding_smoke_stage_selection():
     print('Appended binding amendment 4; smoke/warm-up now uses a fresh epoch.',flush=True)
 
 
+def amend_binding_smoke_schedule_key():
+    parent=OUT/'binding_amendment_4.json';target=OUT/'binding_amendment_5.json'
+    if not parent.is_file() or target.exists():
+        raise RuntimeError('Expected immutable binding amendment 4')
+    failed_journal=OUT/'smoke_amendment_4/journal.jsonl'
+    partial=_load_journal(failed_journal,lambda r:(r['case_index'],r['model_id']))
+    if len(partial)!=162 or {r['schedule'] for r in partial.values()}!={0}:
+        raise RuntimeError('Unexpected initial smoke schedule-key failure checkpoint')
+    attempt=OUT/'validation/initial_smoke_attempt_002.json'
+    write_exclusive(attempt,{'status':'INCOMPLETE_SMOKE_SCHEDULE_KEY_COLLISION',
+        'completed_records':len(partial),'expected_records':324,
+        'executed_schedules':[0],'missing_schedule':[1],
+        'cause':'Smoke checkpoint uniqueness key used map index and model but omitted schedule index, so schedule 0 caused schedule 1 to be skipped.',
+        'partial_journal_sha256':sha(failed_journal),
+        'partial_records_preserved':True,'primary_repetition_runs':0,
+        'recorded_at_utc':datetime.now(timezone.utc).isoformat()})
+    updated=json.loads(parent.read_text())
+    updated['parent_binding_sha256']=sha(parent)
+    updated['source_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['source_sha256']['scripts/run_h2_controlled_compute_benchmark.py']=sha(SCRIPT)
+    updated['amendment_5']={'description':'include schedule index in smoke uniqueness keys and duplicate-run keys',
+        'preserved_incomplete_smoke_attempt_sha256':sha(attempt),
+        'no_policy_or_measured_model_change':True}
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    write_exclusive(target,updated)
+    write_exclusive(OUT/'active_binding_amendment_5.json',{'path':target.name,
+        'sha256':sha(target),'parent_binding_sha256':sha(parent)})
+    print('Appended binding amendment 5; smoke keys now distinguish schedule indices.',flush=True)
+
+
 def semantic_projection(row: dict, replay: dict) -> dict:
     ignored_fragments = ('timing', '_ns', '_ms', 'wall', 'duration', 'computation',
                          '_seconds', 'runtime', 'elapsed_time', 'cpu_time')
@@ -589,6 +619,10 @@ def _smoke_cases(cases):
     return selected
 
 
+def _smoke_key(record):
+    return (int(record['case_index']), int(record['schedule']), record['model_id'])
+
+
 def _warm_up(cases, models, prior):
     version=active_amendment_number()
     stage = f'warmup_amendment_{version}' if version >= 2 else ('warmup_amendment_1' if version == 1 else 'warmup')
@@ -629,15 +663,14 @@ def run_smoke():
     stage = f'smoke_amendment_{version}' if version >= 2 else ('smoke_amendment_1' if version == 1 else 'smoke')
     root = OUT/stage; root.mkdir(parents=True, exist_ok=True)
     journal = root/'journal.jsonl'
-    completed = _load_journal(journal,
-        lambda r: (r['case_index'], r['model_id']))
+    completed = _load_journal(journal, _smoke_key)
     tasks = [(ci, payload, schedule, model) for ci, payload, schedule in cases
              for model in models]
     random.Random(ORDER_SEED).shuffle(tasks)
     started = time.monotonic()
     _warm_up(all_cases, models, prior)
     for order, (case_index, payload, schedule, model) in enumerate(tasks, 1):
-        key = (case_index, model)
+        key = (case_index, schedule, model)
         if key in completed:
             continue
         baseline, _ = historical_semantic(model, payload['identity'], schedule, prior)
@@ -655,16 +688,18 @@ def run_smoke():
                   f'elapsed {elapsed/60:.1f} min; ETA {eta/60:.1f} min', flush=True)
     # Duplicate a fixed eight task subset to check same-process repeatability.
     repeat_path = root/'repeatability.jsonl'
-    repeated = _load_journal(repeat_path, lambda r: (r['case_index'], r['model_id']))
+    if active_amendment_number() >= 5:
+        repeat_path = root/f'repeatability_amendment_{active_amendment_number()}.jsonl'
+    repeated = _load_journal(repeat_path, _smoke_key)
     repeat_tasks = tasks[:8]
     for order, (case_index, payload, schedule, model) in enumerate(repeat_tasks, 1):
-        key = (case_index, model)
+        key = (case_index, schedule, model)
         if key in repeated:
             continue
         row, replay, diag = run_one(payload, schedule, model)
         digest = semantic_sha(row, replay)
         reference = completed[key]['parity_sha256']
-        record = {'case_index': case_index, 'model_id': model,
+        record = {'case_index': case_index, 'schedule': schedule, 'model_id': model,
             'first_semantic_sha256': reference, 'repeat_semantic_sha256': digest,
             'repeat_matches': digest == reference}
         _append_journal(repeat_path, record); repeated[key] = record
@@ -1261,6 +1296,7 @@ def main():
     sub.add_parser('amend-binding-2')
     sub.add_parser('amend-binding-3')
     sub.add_parser('amend-binding-4')
+    sub.add_parser('amend-binding-5')
     sub.add_parser('smoke')
     run=sub.add_parser('run');run.add_argument('--resume',action='store_true')
     sub.add_parser('analyze')
@@ -1271,6 +1307,7 @@ def main():
     elif args.command=='amend-binding-2': amend_binding_for_corrected_b_age()
     elif args.command=='amend-binding-3': amend_binding_pointer_policy()
     elif args.command=='amend-binding-4': amend_binding_smoke_stage_selection()
+    elif args.command=='amend-binding-5': amend_binding_smoke_schedule_key()
     elif args.command=='smoke': run_smoke()
     elif args.command=='run': run_repetitions(args.resume)
     elif args.command=='analyze': analyze()

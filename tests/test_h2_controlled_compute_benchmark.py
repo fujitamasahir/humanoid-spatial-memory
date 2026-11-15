@@ -64,3 +64,9 @@ def test_historical_b_age_nonparity_is_explicitly_classified():
     periodic = MODULE._timing_row(1, 1, 1, payload, 0, 'periodic4', row, diag,
                                   'new', 'historical', 100)
     assert periodic['parity_classification'] == 'UNEXPECTED_SEMANTIC_MISMATCH'
+
+
+def test_smoke_checkpoint_key_distinguishes_schedule_indices():
+    schedule0 = {'case_index': 7, 'schedule': 0, 'model_id': 'periodic4'}
+    schedule1 = {'case_index': 7, 'schedule': 1, 'model_id': 'periodic4'}
+    assert MODULE._smoke_key(schedule0) != MODULE._smoke_key(schedule1)
