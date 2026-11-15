@@ -39,12 +39,22 @@ def _episode_records():
     corrected = {}
     corrected_root = OUT / "task_b_b_age_corrected_v2/episodes/b_age"
     if corrected_root.exists():
+        journal_path = OUT / "task_b_b_age_corrected_v2/journal.jsonl"
+        journal = {e["path"]: e for e in
+                   (json.loads(x) for x in journal_path.read_text().splitlines())
+                   if e.get("event") == "episode_committed"}
         for path in sorted(corrected_root.rglob("*.json.gz")):
+            rel = path.relative_to(OUT).as_posix()
+            event = journal.get(rel)
+            if event is None or event["sha256"] != sha(path) or event["bytes"] != path.stat().st_size:
+                raise RuntimeError(f"Corrected B+Age journal/hash mismatch: {rel}")
             with gzip.open(path, "rt", encoding="utf-8") as f:
                 record = json.load(f)
             key = ("b_age", record["map_identity"], int(record["schedule"]))
             result[key] = record
-            corrected[key] = path.relative_to(OUT).as_posix()
+            corrected[key] = rel
+        if len(corrected) != 72 or len(journal) != 72:
+            raise RuntimeError(f"Expected 72 journaled corrected B+Age cases; files={len(corrected)} journal={len(journal)}")
     return rows, result, corrected
 
 
@@ -92,7 +102,10 @@ def _first_trace_difference(old, new):
 
 def reconcile():
     from run_h2_final import compare_saved
+    from run_h2_full_spatial_memory_replay import active_binding_path, load_binding
 
+    load_binding()
+    correction_binding_sha = sha(active_binding_path())
     index_rows, episodes, corrected_paths = _episode_records()
     history = _rdao_primary()
     bage_history = _bage_history()
@@ -125,6 +138,8 @@ def reconcile():
             if old_ref is None:
                 raise RuntimeError(f"No identity-matched B+Age primary record for {key}")
             current = episodes[key]
+            if current["replay"]["replay_recovery"]["source_binding_sha256"] != correction_binding_sha:
+                raise RuntimeError(f"Corrected B+Age record binding mismatch: {key}")
             compare_saved(old_ref["record"], current["row"], current["source_trace_for_exact_parity"])
             status = "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE"
             source = json.dumps([{"source": old_ref["path"].relative_to(ROOT).as_posix(),
@@ -223,13 +238,14 @@ def reconcile():
     final_report = OUT / "final_report.md"
     report_text = final_report.read_text()
     marker = "## Parity reconciliation addendum"
-    if marker not in report_text:
-        final_report.write_text(report_text + "\n" + marker + "\n\n"
-            "Task A is exact for 864/864. After identity-matched FIT72 reconciliation, Task B has "
-            "2,592 exact historical matches and 1,296 first-time cases. The first Task B pass "
-            "misconfigured B+Age as B+C; those 72 source records remain preserved and are superseded "
-            "by the separately bound corrected B+Age epoch. See `H2_RECOVERY_ADDENDUM.md`, "
-            "`parity_reconciliation.csv`, and `fit72_b_age_correction_validation.csv`.\n")
+    if marker in report_text:
+        report_text = report_text.split(marker, 1)[0].rstrip()
+    final_report.write_text(report_text + "\n\n" + marker + "\n\n"
+        "Task A is exact for 864/864. After identity-matched FIT72 reconciliation, Task B has "
+        "2,592 exact historical matches and 1,296 first-time cases. The first Task B pass "
+        "misconfigured B+Age as B+C; those 72 source records remain preserved and are superseded "
+        "by the separately bound corrected B+Age epoch. See `H2_RECOVERY_ADDENDUM.md`, "
+        "`parity_reconciliation.csv`, and `fit72_b_age_correction_validation.csv`.\n")
     completion_path = OUT / "completion_record.json"
     completion = json.loads(completion_path.read_text())
     completion["reconciliation_sha256"] = sha(OUT / "parity_reconciliation_summary.json")
