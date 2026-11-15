@@ -1,0 +1,272 @@
+{
+  "periodic4": {
+    "description": "Scans the environment every four navigation steps after the initial scan, subject to the paid observation budget. Between scans, the robot navigates using its stored spatial memory.",
+    "source": "src/spatial_memory/scheduling.py",
+    "family": "Periodic"
+  },
+  "periodic5": {
+    "description": "Uses a fixed five-step scan cadence rather than four, reducing observation frequency without changing the navigation or safety system.",
+    "source": "src/spatial_memory/cadence_age.py",
+    "family": "Periodic"
+  },
+  "age4": {
+    "description": "Requests a scan when enough previously observed nearby cells have become stale, using a four-step age threshold and the frozen Age scheduler.",
+    "source": "src/spatial_memory/scheduling.py",
+    "family": "Age"
+  },
+  "age5": {
+    "description": "Uses the Age scheduler with a five-step staleness threshold, allowing remembered cells to remain unobserved longer before requesting a scan.",
+    "source": "src/spatial_memory/cadence_age.py",
+    "family": "Age"
+  },
+  "age6": {
+    "description": "Uses a six-step staleness threshold in the Age scheduler to reduce the frequency of paid observations.",
+    "source": "src/spatial_memory/scheduling.py",
+    "family": "Age"
+  },
+  "age_route_rescue": {
+    "description": "Extends view-aware Age scheduling with a route-aware rescue rule. Public memory and the nominal route help determine whether a scan should be requested despite the directional veto.",
+    "source": "src/spatial_memory/route_age.py",
+    "family": "Age-based"
+  },
+  "age_route_clock": {
+    "description": "A route-aware Age variant that uses directional staleness and route information to decide when the observation clock should request a scan.",
+    "source": "src/spatial_memory/route_age.py",
+    "family": "Age-based"
+  },
+  "rdao_v2": {
+    "description": "Compares current and next nominal viewpoints using public spatial memory. It may defer a scan when the next safe planned pose is predicted to provide materially better visibility of decision-relevant cells.",
+    "source": "src/spatial_memory/rdao_v2.py",
+    "family": "RDAO"
+  },
+  "rdao_v21": {
+    "description": "Extends RDAO v2 by weighting current-view visibility with angular cell coverage, reducing the score of partially visible cells near the field-of-view edge.",
+    "source": "src/spatial_memory/rdao_v21_quality.py",
+    "family": "RDAO"
+  },
+  "caa_fast": {
+    "description": "Change-Aware Age shortens the observation deadline for cells classified as changing using authorized past observations. Other cells retain the baseline deadline.",
+    "source": "src/spatial_memory/change_aware_age.py",
+    "family": "CAA"
+  },
+  "caa_full": {
+    "description": "Change-Aware Age uses both shorter deadlines for changing cells and longer deadlines for stable cells. Classification uses observation history without altering occupancy memory.",
+    "source": "src/spatial_memory/change_aware_age.py",
+    "family": "CAA"
+  },
+  "raa_defer": {
+    "description": "Route-Adaptive Age starts from Age-5 and permits a bounded one-decision deferral using public route and viewpoint information.",
+    "source": "src/spatial_memory/route_adaptive_age_v1.py",
+    "family": "RAA"
+  },
+  "uncertainty": {
+    "description": "Schedules observations using uncertainty estimated from observation history rather than a fixed interval. It uses the frozen uncertainty parameters and the same navigation safety system.",
+    "source": "src/spatial_memory/scheduling.py",
+    "family": "Uncertainty"
+  },
+  "static": {
+    "description": "Takes only the initial paid observation and then navigates using the retained spatial memory. The independent emergency safety system remains active.",
+    "source": "src/spatial_memory/scheduling.py",
+    "family": "Baseline"
+  },
+  "age_gap4": {
+    "description": "Adds a minimum four-step gap between paid scans to the frozen Age-4 scheduler.",
+    "source": "src/spatial_memory/cadence_age.py",
+    "family": "Age"
+  },
+  "age_motion": {
+    "description": "Combines Age-4 with motion and viewpoint history. A scan may be deferred based on movement or heading changes, subject to a deadline.",
+    "source": "src/spatial_memory/cadence_age.py",
+    "family": "Age"
+  },
+  "age_view_veto": {
+    "description": "Retains the original Age trigger but vetoes some requests when too little visible memory is stale. The original Age request is retained after the bounded fallback interval.",
+    "source": "src/spatial_memory/view_age.py",
+    "family": "Age"
+  },
+  "age_view_clock": {
+    "description": "Replaces the omnidirectional Age staleness fraction with a directional visible-cell fraction, while retaining the bounded fallback interval.",
+    "source": "src/spatial_memory/view_age.py",
+    "family": "Age"
+  },
+  "periodic_event": {
+    "description": "Combines periodic observation with event-triggered scan requests, requiring at least two steps since any scan and three since an event scan.",
+    "source": "src/spatial_memory/event_observation.py",
+    "family": "Event-triggered"
+  },
+  "age_event": {
+    "description": "Combines Age observation with event-triggered scan requests, using the same two-step general and three-step event cooldowns.",
+    "source": "src/spatial_memory/event_observation.py",
+    "family": "Event-triggered"
+  },
+  "rdao_v1": {
+    "description": "Route-Decision-Aware Observation estimates how uncertain regions could affect navigation using free/occupied route counterfactuals in the public spatial-memory map.",
+    "source": "src/spatial_memory/rdao.py",
+    "family": "RDAO"
+  },
+  "rdao_v1_footprint": {
+    "description": "Uses RDAO v1 with a footprint-based visibility predictor rather than the original visibility approximation, preserving the frozen route-decision scoring and scan budget.",
+    "source": "src/spatial_memory/rdao.py",
+    "family": "RDAO"
+  },
+  "rdao_v1_gate_first": {
+    "description": "Adds the frozen online observation gate to RDAO v1, allowing at most one override of its scan decision per episode.",
+    "source": "src/spatial_memory/rdao.py",
+    "family": "RDAO"
+  },
+  "rdao_v1_gate_every": {
+    "description": "Applies the RDAO v1 online gate whenever eligible during the episode rather than limiting it to the first override.",
+    "source": "src/spatial_memory/rdao.py",
+    "family": "RDAO"
+  },
+  "rdao_v22": {
+    "description": "Discounts partially visible current-view candidates only when observing them cannot change the immediate action or reachability. It preserves the full RDAO v2 score for decision-critical candidates.",
+    "source": "src/spatial_memory/rdao_v22_decision_protected.py",
+    "family": "RDAO"
+  },
+  "b_age": {
+    "description": "Combines persistence-aware spatial memory with Age observation scheduling. Expected information value is disabled; this is the corrected B+Age configuration.",
+    "source": "src/spatial_memory/evi.py",
+    "family": "Persistence/EVI"
+  },
+  "c_ternary": {
+    "description": "Uses expected information value to decide when to observe, while retaining ternary spatial memory rather than persistence-aware occupancy belief.",
+    "source": "src/spatial_memory/evi.py",
+    "family": "Persistence/EVI"
+  },
+  "bc": {
+    "description": "Combines persistence-aware spatial memory (B) with expected-information-value observation scheduling (C).",
+    "source": "src/spatial_memory/evi.py",
+    "family": "Persistence/EVI"
+  },
+  "c0_audit": {
+    "description": "The original information-value observation policy used as an audit baseline for candidate-selection extensions.",
+    "source": "src/spatial_memory/candidate_coverage.py",
+    "family": "Candidate coverage"
+  },
+  "c_k": {
+    "description": "Evaluates expected information value using an uncertainty-ranked set of five observation candidates.",
+    "source": "src/spatial_memory/candidate_coverage.py",
+    "family": "Candidate coverage"
+  },
+  "c_topology3d": {
+    "description": "The authorized topology-aware expected-information-value variant, using three selected candidates in the C-v2d configuration.",
+    "source": "src/spatial_memory/topology_evi_d.py",
+    "family": "Topology EVI"
+  },
+  "ms_k": {
+    "description": "Multi-step expected information value considers a three-step horizon and five uncertainty-ranked candidates.",
+    "source": "src/spatial_memory/multistep_evi.py",
+    "family": "Multi-step EVI"
+  },
+  "ms_k_visibility": {
+    "description": "Uses three-step expected information value and a five-candidate visibility-based selector.",
+    "source": "src/spatial_memory/multistep_evi.py",
+    "family": "Multi-step EVI"
+  },
+  "ms_topology": {
+    "description": "Uses multi-step expected information value with a three-step horizon and a topology-based candidate selector.",
+    "source": "src/spatial_memory/multistep_evi.py",
+    "family": "Multi-step EVI"
+  },
+  "ms_topology_visibility": {
+    "description": "Combines a three-step expected-information-value horizon with topology and visibility-based candidate selection.",
+    "source": "src/spatial_memory/multistep_evi.py",
+    "family": "Multi-step EVI"
+  },
+  "h1_k": {
+    "description": "One-step expected-information-value depth control with five candidates, used to isolate the effect of prediction horizon.",
+    "source": "src/spatial_memory/multistep_depth_ablation.py",
+    "family": "Multi-step depth"
+  },
+  "h3_k": {
+    "description": "Three-step expected-information-value depth control with five candidates, matched against H1-K.",
+    "source": "src/spatial_memory/multistep_depth_ablation.py",
+    "family": "Multi-step depth"
+  },
+  "h1_topology": {
+    "description": "One-step expected-information-value depth control using a topology-based candidate selector.",
+    "source": "src/spatial_memory/multistep_depth_ablation.py",
+    "family": "Multi-step depth"
+  },
+  "h3_topology": {
+    "description": "Three-step expected-information-value depth control using a topology-based candidate selector.",
+    "source": "src/spatial_memory/multistep_depth_ablation.py",
+    "family": "Multi-step depth"
+  },
+  "caa_slow": {
+    "description": "Change-Aware Age extends observation deadlines for stable cells while retaining the baseline deadline for other cells.",
+    "source": "src/spatial_memory/change_aware_age.py",
+    "family": "CAA"
+  },
+  "dao_veto": {
+    "description": "Discovery-aware observation uses estimated discoverable cells to veto some Age scan requests, while preserving its frozen verification and fallback rules.",
+    "source": "src/spatial_memory/dao_navigation_compat_v1_1.py",
+    "family": "DAO"
+  },
+  "dao_trigger": {
+    "description": "Discovery-aware observation uses the frozen trigger mode to request scans based on estimated discovery opportunities.",
+    "source": "src/spatial_memory/dao_navigation_compat_v1_1.py",
+    "family": "DAO"
+  },
+  "dao_route": {
+    "description": "Discovery-aware observation uses the public nominal route in its observation decision, without access to hidden environment geometry.",
+    "source": "src/spatial_memory/dao_navigation_compat_v1_1.py",
+    "family": "DAO"
+  },
+  "dao_combined": {
+    "description": "Combines the frozen discovery-aware trigger, veto and route-related observation logic in the DAO combined mode.",
+    "source": "src/spatial_memory/dao_navigation_compat_v1_1.py",
+    "family": "DAO"
+  },
+  "dao_veto_q50": {
+    "description": "A DAO-Veto estimator variant that attenuates predicted discovery beyond uncertain cells using a discovery factor of 0.5.",
+    "source": "src/spatial_memory/attenuated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "dao_veto_q80": {
+    "description": "A DAO-Veto estimator variant that attenuates predicted discovery using a discovery factor of 0.8.",
+    "source": "src/spatial_memory/attenuated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "dao_veto_optimistic": {
+    "description": "A DAO-Veto estimator control with discovery factor 1.0, preserving the optimistic estimate without attenuation.",
+    "source": "src/spatial_memory/attenuated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "dao_veto_route_gate": {
+    "description": "Applies a public-route gate to the DAO-Veto discovery logic when a nominal route is available.",
+    "source": "src/spatial_memory/route_gated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "dao_veto_deadline": {
+    "description": "Uses the DAO-Veto deadline variant with a bounded fallback conditioned on the public route.",
+    "source": "src/spatial_memory/route_gated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "dao_veto_joint": {
+    "description": "Combines the route gate and deadline variants of DAO-Veto.",
+    "source": "src/spatial_memory/route_gated_dao_veto_v1.py",
+    "family": "DAO"
+  },
+  "deadline_stable": {
+    "description": "A history-gated DAO-Deadline variant that uses a stable public route prefix to permit later observation.",
+    "source": "src/spatial_memory/history_gated_deadline_v1.py",
+    "family": "DAO"
+  },
+  "deadline_stable_quiet": {
+    "description": "Adds a previous-no-change condition to the stable-prefix history gate of DAO-Deadline.",
+    "source": "src/spatial_memory/history_gated_deadline_v1.py",
+    "family": "DAO"
+  },
+  "raa_advance": {
+    "description": "Route-Adaptive Age starts from Age-5 and permits a bounded advance toward the Age-4 observation decision using public route information.",
+    "source": "src/spatial_memory/route_adaptive_age_v1.py",
+    "family": "RAA"
+  },
+  "raa_joint": {
+    "description": "Combines Route-Adaptive Age's bounded Age-4 advance and one-decision deferral around the Age-5 parent policy.",
+    "source": "src/spatial_memory/route_adaptive_age_v1.py",
+    "family": "RAA"
+  }
+}

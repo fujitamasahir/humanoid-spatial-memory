@@ -7,7 +7,8 @@ import threading
 import tempfile
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
+from replay_archive import allowed_path, read_archive
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from engine import GameEngine, read_catalog, MAX_STATIC_OBJECTS, MAX_PEDESTRIANS, DIFFICULTIES
@@ -16,6 +17,8 @@ BASE = Path(__file__).resolve().parent
 app = FastAPI(title='BEAT THE HUMANOID: Human vs AI', docs_url=None, redoc_url=None)
 engine = GameEngine()
 app.mount('/static', StaticFiles(directory=BASE/'static'), name='static')
+# The shared viewer uses relative ./h2/ URLs at the root review route.
+app.mount('/h2', StaticFiles(directory=BASE/'static'/'h2'), name='experiment-review-assets')
 
 class ValidationRequest(BaseModel):
     maze_id: str
@@ -35,6 +38,26 @@ class ChallengeRequest(ValidationRequest):
 @app.get('/')
 def home():
     return FileResponse(BASE/'static'/'index.html')
+
+@app.get('/h2-review.html')
+def experiment_review():
+    return FileResponse(BASE/'static'/'h2-review.html')
+
+
+@app.get('/api/experiment-archive/{path:path}')
+def experiment_archive(path: str):
+    if not allowed_path(path):
+        return JSONResponse({'error': 'Unknown experiment archive path'}, status_code=404)
+    try:
+        raw = read_archive(path)
+    except (subprocess.SubprocessError, OSError):
+        return JSONResponse({'error': 'Local research archive unavailable; run the README archive preflight.'}, status_code=503)
+    # .json.gz is the original compressed blob, NOT an HTTP Content-Encoding.
+    # The viewer verifies the compressed SHA-256 before decompressing.
+    media_type = ('application/octet-stream' if path.endswith('.gz') else
+                  'text/csv' if path.endswith('.csv') else 'application/json')
+    return Response(raw, media_type=media_type, headers={'Cache-Control': 'public, max-age=3600'})
+
 
 @app.get('/api/catalog')
 def catalog():

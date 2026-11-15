@@ -28,6 +28,21 @@ PYTHONPATH=src:scripts:demos/ai_day_2026 .venv/bin/uvicorn app:app \
 
 Open `http://127.0.0.1:8765` in Safari or Chrome. The server binds only to localhost. No Node.js, cloud service, external CDN, or internet connection is used by the running game. FastAPI/Uvicorn and their dependencies are pinned in `requirements-demo.txt`.
 
+## Experiment Review (offline preparation)
+
+The setup screen's **B EXPERIMENT REVIEW** button opens the same recorded-research viewer as the portfolio. It includes 54 models, 36 known FIT72 mazes and 36 unseen H2 mazes, six schedule columns, and 11,664 unique replay cases including recovered spatial memory and corrected B+Age records. This is read-only playback, not a new simulation. The live visitor game and its frozen runtime binding are unchanged.
+
+The demo branch intentionally does not merge the research branch's engine or large result files. Instead, its localhost server reads exact immutable Git blobs from research commit `3b208befeb268cb2ae789add7deaaf859abcfc5a`. Before the event, from the research repository root while on `demo/ai-day-2026`, run:
+
+```sh
+git fetch origin phase2/mujoco-proxy-pilot
+.venv/bin/python demos/ai_day_2026/replay_archive.py
+```
+
+The preflight must report `H2 archive preflight PASS: 11,664 replay blobs and 6 metadata files available locally`. No checkout or merge of the research branch is required. Do this before disconnecting from the internet; a shallow/sparse/partial clone may require a full fetch with all blobs. The running viewer uses only localhost (including the Original episode link), and verifies each selected compressed episode's SHA-256 before playback. If the archive is missing, the viewer displays an error without preventing normal challenge play.
+
+Launch the demo as above and open Experiment Review via B. Test Known, Low-frequency and High-frequency cases, then disconnect the network and check again. Use the View button or the fullscreen icon for fullscreen; the controller icon reports connection state. The right stick selects maze/schedule, left stick/D-pad selects model or step, Menu jumps to the next failed case, A plays/pauses, B returns to setup.
+
 Stop the server with Control-C. Challenge settings and results are appended to `logs/challenges.jsonl` separately from research data. That file is ignored by Git and contains no visitor identity information.
 
 ## Controls
@@ -36,7 +51,8 @@ Stop the server with Control-C. Challenge settings and results are appended to `
 - D-pad: select observation strategy, or difficulty when Settings is open.
 - LT/RT: previous/next maze.
 - A / Enter: start the challenge (or confirm settings / return from results).
-- B / Backspace: remove the object or pedestrian at the cursor.
+- B / keyboard B: open Experiment Review from setup; B returns from the review.
+- Backspace: remove the object or pedestrian at the cursor (X/Y also toggle their hazard types).
 - X / Y: directly place, swap or toggle static object / pedestrian.
 - Menu (three lines) / M: open difficulty settings; A confirms, B closes.
 - Mouse: click to place, right-click to remove; use the on-screen maze and strategy selectors.
