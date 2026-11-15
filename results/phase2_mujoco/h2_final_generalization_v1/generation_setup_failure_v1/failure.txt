@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/h2_generate_maps.py", line 131, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/h2_generate_maps.py", line 79, in main
+    backend=MonitoredBackend();accepted=[];counts=Counter();serial=0
+            ^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/src/spatial_memory/phase15_macos_monitored.py", line 46, in __init__
+    self._verify()
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/src/spatial_memory/phase15_macos_monitored.py", line 52, in _verify
+    if not path.is_relative_to(ROOT) or hashlib.sha256(path.read_bytes()).hexdigest()!=h:
+                                                       ^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/masahir0/Desktop/humanoid-spatial-memory/results/runs/phase15_macos_build/native-build/lib.macosx-11.0-arm64-cpython-312/pynauty/__init__.py'
