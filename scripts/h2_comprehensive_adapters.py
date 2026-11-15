@@ -117,7 +117,7 @@ def _factory(arm, config, gate_state):
                 evi_params = DepthParams(3 if selector == 'topology' else 5)
                 persistence = False
             return PersistenceEVIController(initial, mode, **options,
-                persistence=persistence, evi=True, sensor=sensor,
+                persistence=persistence, evi=arm != 'b_age', sensor=sensor,
                 persistence_parameters=PersistenceParameters(),
                 evi_parameters=evi_params, evi_function=evi_function)
         if arm == 'caa_slow':

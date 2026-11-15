@@ -3,6 +3,8 @@ import numpy as np
 import pytest
 
 from run_h2_full_spatial_memory_replay import _safe_state, pack_grid
+from h2_comprehensive_adapters import _factory
+import h2_final_common as h2_frozen
 from h2_high_frequency_dynamics import unpack_2bit_grid
 
 
@@ -34,3 +36,12 @@ def test_controller_snapshot_has_no_reference_to_input_arrays():
     saved = _safe_state({'grid': grid})
     grid[0, 0] = 1
     assert unpack_2bit_grid(saved['grid']['data'])[0, 0] == 0
+
+
+def test_h2_b_age_adapter_freezes_persistence_without_evi():
+    create = _factory('b_age', h2_frozen.config(), {'goal': (9, 14)})
+    controller = create(np.full((25, 25), -1, dtype=np.int8), 'age',
+                        interval=4, radius=3, parameters=None,
+                        max_observations=20)
+    assert controller.belief is not None
+    assert controller.evi is False
