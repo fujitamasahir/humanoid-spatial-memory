@@ -237,15 +237,17 @@ def reconcile():
                       and int(x["schedule"]) == int(row["schedule"])), None)
         if match is None:
             raise RuntimeError(f"Missing reconciled replay index row: {row}")
+        repo_path = "results/phase2_mujoco/h2_full_spatial_memory_replay_v1/" + match["path"]
+        with gzip.open(ROOT / repo_path, "rt", encoding="utf-8") as f:
+            payload = json.load(f)
+        binding_sha = payload["replay"]["replay_recovery"]["source_binding_sha256"]
+        row.update({"path": repo_path, "sha256": match["sha256"],
+                    "source_artifact_reference": repo_path,
+                    "protocol_binding_sha256": binding_sha,
+                    "payload_type": "replay"})
         if dataset == "fit72_known":
-            match = next(x for x in authoritative_rows if x["dataset"] == dataset
-                         and x["model_id"] == row["model_id"]
-                         and x["map_identity"] == row["world_identity"]
-                         and int(x["schedule"]) == int(row["schedule"]))
             fixed = reconciliation[(match["model_id"], match["map_identity"], int(match["schedule"]))]
-            row.update({"path": match["path"], "sha256": match["sha256"],
-                        "historical_reproduction_status": fixed["status"],
-                        "source_artifact_reference": match["path"]})
+            row["historical_reproduction_status"] = fixed["status"]
         updated_additions.append(row)
     union_v3 = {"schema_version": "phase2_combined_replay_index_v3",
         "legacy_index_path": prior_path.relative_to(ROOT).as_posix(),
