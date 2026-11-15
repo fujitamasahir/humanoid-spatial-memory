@@ -48,6 +48,9 @@ def atomic_episode(path,value):
 def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False)
 def load_registry():return json.loads(REGISTRY.read_text())
 def active_binding_path():
+    amendments=sorted(OUT.glob('binding_amendment_*.json'),
+        key=lambda p:int(p.stem.rsplit('_',1)[1]))
+    if amendments:return amendments[-1]
     pointer=OUT/'active_binding.json'
     if pointer.is_file():
         entry=json.loads(pointer.read_text());path=OUT/entry['path']
@@ -169,6 +172,45 @@ def amend_binding():
         'reusable_schedule_index':1,'committed_at_utc':datetime.now(timezone.utc).isoformat()})
     print('Binding amendment created; preserved 82 records will be reused.',flush=True)
 
+def amend_binding_2():
+    parent=OUT/'binding_amendment_1.json'
+    target=OUT/'binding_amendment_2.json'
+    if not parent.is_file():raise FileNotFoundError('Schedule amendment is required first')
+    if target.exists():raise FileExistsError(target)
+    previous=json.loads(parent.read_text())
+    old_files=sorted((OUT/'original_environment/episodes').rglob('*.json.gz'))
+    if len(old_files)!=545 or (OUT/'original_environment/summary.json').exists():
+        raise RuntimeError('Expected 545 incomplete but committed original episodes')
+    journal=OUT/'original_environment/journal.jsonl'
+    ledger={}
+    for line in journal.read_text().splitlines():
+        e=json.loads(line)
+        if e.get('event')=='episode_committed':ledger[e['path']]=e['sha256']
+    for p in old_files:
+        rel=p.relative_to(OUT).as_posix()
+        if rel not in ledger or sha(p)!=ledger[rel]:raise RuntimeError(f'Partial checkpoint hash mismatch: {rel}')
+    if len(ledger)!=len(old_files):raise RuntimeError('Original journal/checkpoint count differs')
+    updated=dict(previous)
+    updated['parent_binding_sha256']=sha(parent)
+    updated['commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['protocol_amendment_2_sha256']=sha(ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_2.md')
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    updated['runner_correction_2']='Persistence-EVI log consistency checks compare observation history to base last-write memory while retaining projected belief memory for planning.'
+    for name in ('scripts/run_h2_comprehensive_benchmark.py','scripts/h2_final_common.py',
+                 'docs/h2_comprehensive_benchmark_protocol_v1_amendment_2.md'):
+        updated['source_sha256'][name]=sha(ROOT/name)
+    updated['preserved_partial_primary']={'condition':'original','episode_files':len(old_files),
+        'journal_sha256':sha(journal),'checkpoint_sha256_verified':True,
+        'failed_uncommitted_episode':'b_age; no checkpoint file written'}
+    write_exclusive(target,updated)
+    failure=OUT/'original_environment/failure_attempt_001.json'
+    write_exclusive(failure,{'status':'STOPPED_WITH_VALID_PARTIAL_CHECKPOINTS',
+        'committed_episode_files_preserved':len(old_files),
+        'failed_arm':'b_age','cause':'observation logger compared projected persistence map to last-write observation log',
+        'amendment_sha256':sha(ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_2.md'),
+        'checkpoint_journal_hash_verified':True})
+    print('Second binding amendment created; all 545 verified files will be reused.',flush=True)
+
 def validate_binding():
     path=active_binding_path()
     b=json.loads(path.read_text())
@@ -187,6 +229,10 @@ def validate_binding():
         amendment=ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_1.md'
         if b['protocol_amendment_sha256']!=sha(amendment):raise RuntimeError('Protocol amendment drift')
         if b['matrix']['schedules']!=[0,1]:raise RuntimeError('Amended schedule index set drift')
+    if path.name=='binding_amendment_2.json':
+        amendment=ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_2.md'
+        if b['protocol_amendment_2_sha256']!=sha(amendment):raise RuntimeError('Persistence instrumentation amendment drift')
+        if b['matrix']['schedules']!=[0,1]:raise RuntimeError('Amended schedule index set drift')
     return b
 
 def _episode_path(stage,condition,arm,payload,schedule):
@@ -199,6 +245,16 @@ def _run_cases(stage,condition,case_list,resume=False):
     journal=root/'journal.jsonl'
     existing=list((root/'episodes').rglob('*.json.gz')) if (root/'episodes').exists() else []
     if existing and not resume:raise RuntimeError(f'{stage} already has checkpoints; pass --resume')
+    if resume and existing:
+        committed={}
+        if not journal.is_file():raise RuntimeError('Cannot resume without episode journal')
+        for line in journal.read_text().splitlines():
+            event=json.loads(line)
+            if event.get('event')=='episode_committed':committed[event['path']]=event['sha256']
+        for path in existing:
+            rel=path.relative_to(OUT).as_posix()
+            if rel not in committed or sha(path)!=committed[rel]:
+                raise RuntimeError(f'Resumed checkpoint lacks matching journal hash: {rel}')
     maps=load_maps();arms=ADDITIONAL
     done=0;started=time.monotonic();last_progress=started
     conditions=('original','high_frequency') if condition=='both' else (condition,)
@@ -257,11 +313,12 @@ def _make_primary_cases():
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=('bind','amend-binding','smoke','primary-original','primary-high-frequency','verify'))
+    parser.add_argument('stage',choices=('bind','amend-binding','amend-binding-2','smoke','primary-original','primary-high-frequency','verify'))
     parser.add_argument('--resume',action='store_true')
     args=parser.parse_args()
     if args.stage=='bind':bind();return
     if args.stage=='amend-binding':amend_binding();return
+    if args.stage=='amend-binding-2':amend_binding_2();return
     if args.stage=='verify':verify_outputs();return
     if args.stage=='smoke':
         cases=_make_smoke_cases()

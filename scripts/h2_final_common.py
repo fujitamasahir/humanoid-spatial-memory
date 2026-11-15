@@ -65,7 +65,15 @@ def run_case(payload,schedule,arm,cfg=None):
             def record(self,o,step):
                 v=o>=0;known=self.last>=0
                 observations.append({'step':int(step),'new_cells':int((v&~known).sum()),'changed_known_cells':int((v&known&(o!=self.last)).sum()),'unchanged_known_cells':int((v&known&(o==self.last)).sum())})
-                self.last[v]=o[v];assert np.array_equal(self.last,self.memory.grid)
+                self.last[v]=o[v]
+                # Persistence-EVI keeps a projected navigation grid in
+                # core.memory and an exact last-write grid in core.base.memory.
+                # Validate the logged observation history against the latter
+                # without changing the controller's navigation input.
+                logged_memory=(self.core.base.memory.grid
+                    if getattr(self.core,'belief',None) is not None
+                    else self.memory.grid)
+                assert np.array_equal(self.last,logged_memory)
             def set_navigation_context(self,**kw):
                 self.yaw=kw['yaw']
                 if hasattr(self.core,'set_navigation_context'):self.core.set_navigation_context(**kw)
