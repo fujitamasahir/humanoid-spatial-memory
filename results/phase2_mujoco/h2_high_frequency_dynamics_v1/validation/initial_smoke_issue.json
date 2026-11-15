@@ -1,0 +1,133 @@
+{
+  "artifact_manifests": {
+    "environment_event_index_sha256": "45dd5a5054f9065547d41c3d06f83c2b0f73a10f8bf558e0145b9ae0bf456e05",
+    "replays": {
+      "path": "replays/smoke/artifact_manifest.json",
+      "sha256": "15e51f21da570c9e1b8f43f914f20c1aa69928987a13ab4e35432d69e8b7d3e2"
+    },
+    "smoke": {
+      "path": "smoke/artifact_manifest.json",
+      "sha256": "2f3aaf61ae05c84e7651892de1798992b9da703abb025e70c1f9048f33f30d22"
+    }
+  },
+  "cause": "Frozen evaluator common-horizon metric loop calls World.advance after goal termination; the first runner version continued mutating and counting the environment during this evaluator-only tail.",
+  "correction": "Keep pedestrian/truth accounting intact but suppress high-frequency environment transitions once the navigation episode has reached the goal. No controller, route, sensor, or shield behavior changes.",
+  "episode_files": 52,
+  "episodes_with_post_terminal_event_accounting": 22,
+  "mismatches": [
+    {
+      "elapsed_navigation_steps": 75,
+      "file": "replays/smoke/episode_001_age6.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 77,
+      "file": "replays/smoke/episode_001_periodic5.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_003_age4.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 74,
+      "file": "replays/smoke/episode_003_age5.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 73,
+      "file": "replays/smoke/episode_003_age_route_clock.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_003_age_route_rescue.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 74,
+      "file": "replays/smoke/episode_003_caa_fast.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 74,
+      "file": "replays/smoke/episode_003_caa_full.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_003_periodic4.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 75,
+      "file": "replays/smoke/episode_003_periodic5.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 74,
+      "file": "replays/smoke/episode_003_raa_defer.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_003_rdao_v2.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_003_rdao_v21.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_004_age4.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 75,
+      "file": "replays/smoke/episode_004_age5.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 73,
+      "file": "replays/smoke/episode_004_age_route_clock.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_004_age_route_rescue.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_004_periodic4.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 75,
+      "file": "replays/smoke/episode_004_periodic5.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 75,
+      "file": "replays/smoke/episode_004_raa_defer.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_004_rdao_v2.json.gz",
+      "recorded_dynamic_steps": 80
+    },
+    {
+      "elapsed_navigation_steps": 69,
+      "file": "replays/smoke/episode_004_rdao_v21.json.gz",
+      "recorded_dynamic_steps": 80
+    }
+  ],
+  "original_binding_sha256": "3e6d897f4ea023a2c436a86801d41a0e3f876d2b1778ebada7f737dc1ee0e002",
+  "original_runner_sha256": "2aaaf9aa018011e36b2b3982b1775bc96b2e3af514f101271867798520c67069",
+  "stage": "smoke",
+  "status": "INVALIDATED_FOR_DYNAMIC_EVENT_ACCOUNTING"
+}
