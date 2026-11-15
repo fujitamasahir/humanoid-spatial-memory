@@ -2,6 +2,7 @@
 const $=id=>document.getElementById(id);let catalog=[],mazeIndex=0,objects=[],pedestrians=[],strategy='periodic',tool='object',cursor=[1,1],cellGeom=null,latestFrame=-1,lastResult=null,lastConfig=null,gamepadPrev=new Set(),lastPadAction=0,ws;
 let difficulty='easy',difficultyRules={},pendingDifficulty='easy',settingsOpen=false;
 const LEVELS=['easy','medium','hard'];
+let liveState=null,pausedDraft=null,pauseBusy=false,pauseTool='object',pauseCursor=[1,1];
 let skipping=false,reviewSteps=[],reviewCursor=0,reviewRequest=0,reviewOpening=false;
 let reviewHold={dir:0,since:0,next:0};
 const rules=()=>difficultyRules[difficulty];
@@ -68,29 +69,73 @@ $('editorCanvas').addEventListener('pointermove',e=>{const [x,y]=pointerCell(e);
 $('editorCanvas').addEventListener('pointerdown',e=>{const [x,y]=pointerCell(e);if(x<0||y<0||x>=current().width||y>=current().height)return;cursor=[x,y];place(cursor,e.button===2)});
 $('editorCanvas').addEventListener('contextmenu',e=>e.preventDefault());$('prevMaze').onclick=()=>setMaze(mazeIndex-1);$('nextMaze').onclick=()=>setMaze(mazeIndex+1);$('objectTool').onclick=()=>setTool('object');$('pedTool').onclick=()=>setTool('ped');document.querySelectorAll('.strategy').forEach(b=>b.onclick=()=>selectHero(b.dataset.strategy));
 function screen(name){stopResultEffects();$('settingsBtn').hidden=name!=='setupScreen';document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(name).classList.add('active');if(name==='setupScreen'){positionHeroRing(heroAngle);playHeroMotion(strategy)}else {++heroSpin;heroTarget=HERO_NAMES.indexOf(strategy);positionHeroRing(heroTarget);stopHeroMotion()}}
-async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('liveContact').hidden=true;$('liveContact').textContent='';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('obsLimit').textContent='/ '+rules().max_observations;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
-$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;if(s.frame_seq!==latestFrame){latestFrame=s.frame_seq;if(!skipping)drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
+async function startChallenge(cfg=null){if(starting||editing||settingsOpen||$('startBtn').disabled)return;starting=true;try{const payload=cfg||{maze_id:current().id,objects,pedestrians,strategy,difficulty,render_3d:$('render3d').checked};const v=await api('/api/challenge',{method:'POST',body:JSON.stringify(payload)});if(!v.ok)throw Error(v.error);lastConfig=payload;latestFrame=-1;skipping=false;liveState=null;pausedDraft=null;pauseBusy=false;syncPauseControls();reviewSteps=[];reviewRequest++;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';$('liveContact').hidden=true;$('liveContact').textContent='';$('stepValue').textContent='0';$('obsValue').textContent='0';$('liveMaze').textContent=`MAZE ${mazeIndex+1}`;$('liveStrategy').textContent=payload.strategy.toUpperCase();$('liveDifficulty').textContent=(payload.difficulty||difficulty).toUpperCase();$('stepLimit').textContent='/ '+rules().step_limit;$('obsLimit').textContent='/ '+rules().max_observations;$('scene3d').hidden=true;$('truthCanvas').hidden=false;$('renderStatus').textContent='';screen('liveScreen');connectWS()}finally{starting=false}}
+$('startBtn').onclick=()=>startChallenge().catch(e=>toast(e.message));function connectWS(){if(ws)ws.close();ws=new WebSocket(`ws://${location.host}/ws`);ws.onclose=()=>{if($('liveScreen').classList.contains('active'))setTimeout(connectWS,900)};ws.onmessage=e=>{const s=JSON.parse(e.data);if(s.status==='error'){$('liveStatus').textContent=s.error;return}if(s.status==='idle')return;const changed=s.frame_seq!==latestFrame||s.status!==liveState?.status;liveState=s;if(changed){latestFrame=s.frame_seq;if(!skipping)drawLive(s)}if(s.status==='finished'&&$('liveScreen').classList.contains('active')){lastResult=s.result;showResult(s.result,s)}}}
 async function skipChallenge(){
- if(skipping||!$('liveScreen').classList.contains('active'))return;
+ if(skipping||pauseBusy||liveState?.status!=='running'||!$('liveScreen').classList.contains('active'))return;
  skipping=true;$('skipBtn').disabled=true;$('skipBtn').textContent='FINISHING CHALLENGE…';
  try{await api('/api/skip',{method:'POST'})}
  catch(error){skipping=false;$('skipBtn').disabled=false;$('skipBtn').innerHTML='<kbd class="a">A</kbd> SKIP TO RESULTS';toast(error.message)}
 }
 $('skipBtn').onclick=skipChallenge;
+const sameCell=(a,b)=>!!a&&!!b&&a[0]===b[0]&&a[1]===b[1];
+const paused=()=>liveState?.status==='paused'&&!!pausedDraft;
+function setPauseTool(kind){pauseTool=kind;$('pauseObject').classList.toggle('active',kind==='object');$('pausePed').classList.toggle('active',kind==='ped')}
+function syncPauseControls(){
+ const status=liveState?.status||'running',isPaused=status==='paused',pending=pauseBusy||status==='pausing'||status==='resuming';
+ $('pauseBtn').innerHTML='<kbd class="b">B</kbd> '+(status==='pausing'?'PAUSING…':status==='resuming'?'RESUMING…':isPaused?'RESUME':'PAUSE');
+ $('pauseBtn').disabled=pending||skipping||!['running','paused'].includes(status);
+ $('skipBtn').disabled=pending||isPaused||skipping;
+ $('pauseTools').hidden=!isPaused;
+ $('livePanelTitle').textContent=isPaused?'TIME STOPPED · EDIT ENVIRONMENT':'HUMANOID IN MOTION';
+ $('liveScreen').classList.toggle('paused',isPaused);
+ if(isPaused&&pausedDraft){const rule=difficultyRules[liveState.difficulty];$('pauseObjectCount').textContent=pausedDraft.objects.length+' / '+rule.max_static_objects;$('pausePedCount').textContent=pausedDraft.pedestrians.length+' / '+rule.max_pedestrians;$('pausePed').disabled=rule.max_pedestrians===0;}
+}
+function drawPauseEditor(){if(!paused())return;const s=liveState;drawMap($('truthCanvas'),current(),{northUp:true,objects:pausedDraft.objects,peds:pausedDraft.pedestrians,robot:{position:s.position,heading_yaw:s.heading_yaw||0},trajectory:s.trajectory||[],editor:true,cursorCell:pauseCursor});syncPauseControls()}
+function movePauseCursor(dx,dy){if(!paused()||pauseBusy)return;const m=current();pauseCursor=[Math.max(0,Math.min(m.width-1,pauseCursor[0]+dx)),Math.max(0,Math.min(m.height-1,pauseCursor[1]-dy))];drawPauseEditor()}
+function editPaused(cell,kind=pauseTool,removeOnly=false){
+ if(!paused()||pauseBusy)return;
+ const m=current(),[x,y]=cell,rule=difficultyRules[liveState.difficulty],items=kind==='object'?pausedDraft.objects:pausedDraft.pedestrians,other=kind==='object'?pausedDraft.pedestrians:pausedDraft.objects,cap=kind==='object'?rule.max_static_objects:rule.max_pedestrians;
+ const index=items.findIndex(p=>sameCell(p,cell));
+ if(index>=0){items.splice(index,1);drawPauseEditor();return}
+ if(removeOnly)return;
+ if(x<0||y<0||x>=m.width||y>=m.height||m.wall_rows[y][x]!=='0'||sameCell(cell,m.start)||sameCell(cell,m.goal)||sameCell(cell,liveState.position)){toast('Choose an open cell away from Start, Goal and the humanoid.');return}
+ if(other.some(p=>sameCell(p,cell))){toast('Remove the other hazard first.');return}
+ if(items.length>=cap){toast('Placement limit reached. Remove an existing '+(kind==='object'?'object':'pedestrian')+' first.');return}
+ items.push([...cell]);drawPauseEditor();
+}
+async function togglePause(){
+ if(pauseBusy||skipping||!$('liveScreen').classList.contains('active')||!['running','paused'].includes(liveState?.status))return;
+ const wasPaused=paused();pauseBusy=true;syncPauseControls();
+ try{
+  const options={method:'POST'};
+  if(wasPaused)options.body=JSON.stringify({step:pausedDraft.step,objects:pausedDraft.objects,pedestrians:pausedDraft.pedestrians});
+  await api(wasPaused?'/api/resume':'/api/pause',options);
+  // WebSocket owns authoritative paused state; do not discard the draft on validation failure.
+ }catch(error){toast(error.message)}finally{pauseBusy=false;syncPauseControls()}
+}
+$('pauseBtn').onclick=togglePause;$('pauseObject').onclick=()=>setPauseTool('object');$('pausePed').onclick=()=>setPauseTool('ped');
+$('truthCanvas').addEventListener('pointermove',e=>{if(!paused()||pauseBusy)return;const [x,y]=pointerCell(e),m=current();if(x>=0&&y>=0&&x<m.width&&y<m.height){pauseCursor=[x,y];drawPauseEditor()}});
+$('truthCanvas').addEventListener('pointerdown',e=>{if(!paused()||pauseBusy)return;const [x,y]=pointerCell(e),m=current();if(x<0||y<0||x>=m.width||y>=m.height)return;pauseCursor=[x,y];if(e.button===2){const kind=pausedDraft.objects.some(p=>sameCell(p,pauseCursor))?'object':'ped';editPaused(pauseCursor,kind,true)}else if(e.button===0)editPaused(pauseCursor)});
+$('truthCanvas').addEventListener('contextmenu',e=>{if(paused())e.preventDefault()});
 function drawMemory(canvas,m,s){
  const robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
  drawMap(canvas,m,{northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[],memory:s.memory||m.wall_rows.map(r=>r.split('').map(()=>-1)),observedObjects:s.observed_objects||[],observedPeople:s.observed_people||[]});
 }
 function drawLive(s){
- if(s.render_png){$('scene3d').src='data:image/png;base64,'+s.render_png;$('scene3d').hidden=false;$('truthCanvas').hidden=true}
+ if(s.status==='paused'&&(!pausedDraft||pausedDraft.step!==s.step)){pausedDraft={step:s.step,objects:(s.objects||[]).map(p=>[...p]),pedestrians:(s.people||[]).map(p=>[...p])};pauseCursor=[...(s.position||[1,1])];setPauseTool('object')}
+ if(s.status==='running')pausedDraft=null;
+ syncPauseControls();
+ if(s.status==='paused'){$('scene3d').hidden=true;$('truthCanvas').hidden=false}
+ else if(s.render_png){$('scene3d').src='data:image/png;base64,'+s.render_png;$('scene3d').hidden=false;$('truthCanvas').hidden=true}
  else{$('scene3d').hidden=true;$('truthCanvas').hidden=false}
  $('renderStatus').textContent=s.render_error?'3D unavailable · 2D fallback':'';
  $('stepValue').textContent=s.step??0;$('obsValue').textContent=s.observations??0;
  const m=current(),robot=s.position?{position:s.position,heading_yaw:s.heading_yaw||0}:null;
  const common={northUp:true,objects:s.objects||[],peds:s.people||[],robot,trajectory:s.trajectory||[]};
- drawMap($('truthCanvas'),m,common);
+ if(s.status==='paused')drawPauseEditor();else drawMap($('truthCanvas'),m,common);
  drawMemory($('memoryCanvas'),m,s);
- $('liveStatus').textContent='';
+ $('liveStatus').textContent=s.status==='pausing'?'Stopping at the next completed step…':s.status==='resuming'?'Resuming simulation…':'';
  const hits=s.contact_events||[];const last=hits[hits.length-1];
  $('liveContact').hidden=!last;if(last)$('liveContact').textContent=contactMessage(last);
 }
@@ -163,11 +208,11 @@ if(edge(8))toggleFullscreen();
 const repeat=(i,fn)=>{if(!cur.has(i)){delete repeats[i];return}if(edge(i)||now>=(repeats[i]??0)){fn();repeats[i]=now+(edge(i)?350:140)}};
 if(settingsOpen){const s=difficultyStickStep(difficultyStick,gp.axes[0]||0,gp.axes[1]||0,now);difficultyStick=s.state;if(edge(0))applyDifficulty();else if(edge(1)||edge(9))closeSettings();else if(edge(12)||edge(14))moveDifficulty(-1);else if(edge(13)||edge(15))moveDifficulty(1);else if(s.delta&&!cur.has(12)&&!cur.has(13)&&!cur.has(14)&&!cur.has(15))moveDifficulty(s.delta)}
 else if($('setupScreen').classList.contains('active')){if(edge(9)){openSettings()}else {let dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):0,dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):0;if((dx||dy)&&now-lastMove>125){moveCursor(dx,dy);lastMove=now}repeat(14,()=>setMaze(mazeIndex-1));repeat(15,()=>setMaze(mazeIndex+1));if(edge(12))setMaze(mazeIndex-1);if(edge(13))setMaze(mazeIndex+1);const dir=stickDirection(gp.axes[2]||0,heroStickDir);if(dir&&dir!==heroStickDir)cycleStrategy(dir);heroStickDir=dir;if(edge(6))changeDifficulty(-1);else if(edge(7))changeDifficulty(1);if(edge(2))place([...cursor],false,'object');else if(edge(3))place([...cursor],false,'ped');else if(edge(1))place([...cursor],true);else if(edge(0))$('startBtn').click()}}
-else if($('liveScreen').classList.contains('active')){if(edge(0))skipChallenge()}
+else if($('liveScreen').classList.contains('active')){if(edge(1))togglePause();else if(paused()&&!pauseBusy){const dx=Math.abs(gp.axes[0]||0)>.24?Math.sign(gp.axes[0]):(cur.has(15)?1:cur.has(14)?-1:0),dy=Math.abs(gp.axes[1]||0)>.24?Math.sign(gp.axes[1]):(cur.has(13)?1:cur.has(12)?-1:0);if((dx||dy)&&now-lastMove>125){movePauseCursor(dx,dy);lastMove=now}if(edge(2)){setPauseTool('object');editPaused([...pauseCursor],'object')}else if(edge(3)){setPauseTool('ped');editPaused([...pauseCursor],'ped')}}else if(edge(0))skipChallenge()}
 else if($('resultScreen').classList.contains('active')){if(edge(0))$('newBtn').click();else if(edge(1))openReview()}
 else if($('reviewScreen').classList.contains('active')){if(edge(1))closeReview();else if(edge(6)){resetReviewHold();renderReview(0)}else if(edge(7)){resetReviewHold();renderReview(reviewSteps.length-1)}else updateReviewSeek(gp,cur,now)}
 }else{for(const k of Object.keys(repeats))delete repeats[k];resetReviewHold();resetDifficultyStick()}if(!$('reviewScreen').classList.contains('active'))resetReviewHold();if(!gp||settingsOpen||!$('setupScreen').classList.contains('active')){heroStickDir=0;delete repeats[14];delete repeats[15]}gamepadPrev=cur;requestAnimationFrame(gamepadLoop)}
-window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')&&(k==='enter'||k==='a')){e.preventDefault();if(!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
+window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if($('liveScreen').classList.contains('active')){if(['b','x','y','arrowleft','arrowright','arrowup','arrowdown','enter','a'].includes(k))e.preventDefault();if(k==='b'&&!e.repeat)togglePause();else if(paused()&&!pauseBusy){if(k==='arrowleft')movePauseCursor(-1,0);else if(k==='arrowright')movePauseCursor(1,0);else if(k==='arrowup')movePauseCursor(0,-1);else if(k==='arrowdown')movePauseCursor(0,1);else if(k==='x'&&!e.repeat){setPauseTool('object');editPaused([...pauseCursor],'object')}else if(k==='y'&&!e.repeat){setPauseTool('ped');editPaused([...pauseCursor],'ped')}}else if((k==='enter'||k==='a')&&!e.repeat)skipChallenge();return}if($('resultScreen').classList.contains('active')){if(k==='b'){e.preventDefault();if(!e.repeat)openReview()}else if(k==='enter'||k==='a'){e.preventDefault();if(!e.repeat)$('newBtn').click()}return}if($('reviewScreen').classList.contains('active')){if(k==='arrowleft'||k==='arrowright'){e.preventDefault();moveReview(k==='arrowleft'?-1:1)}else if(k==='escape'||k==='b'){e.preventDefault();if(!e.repeat)closeReview()}return}if(!$('setupScreen').classList.contains('active'))return;if(settingsOpen){if(['arrowup','arrowleft','arrowdown','arrowright','enter','escape','b','m'].includes(k)){e.preventDefault();if(k==='arrowup'||k==='arrowleft')moveDifficulty(-1);else if(k==='arrowdown'||k==='arrowright')moveDifficulty(1);else if(k==='enter')applyDifficulty();else closeSettings()}return}if(k==='m'||k==='escape'){e.preventDefault();openSettings();return}if(k==='arrowleft')moveCursor(-1,0);else if(k==='arrowright')moveCursor(1,0);else if(k==='arrowup')moveCursor(0,-1);else if(k==='arrowdown')moveCursor(0,1);else if(k==='[')setMaze(mazeIndex-1);else if(k===']')setMaze(mazeIndex+1);else if(k==='x')place([...cursor],false,'object');else if(k==='y')place([...cursor],false,'ped');else if(k==='b'||k==='backspace')place(cursor,true);else if(k==='enter')$('startBtn').click();else if(k===' '){e.preventDefault();startChallenge().catch(e=>toast(e.message))}else if('123'.includes(k)){document.querySelector(`[data-strategy="${['','periodic','age','uncertainty'][+k]}"]`)?.click()}});
 (async()=>{try{const d=await api('/api/catalog');catalog=d.mazes;difficultyRules=d.difficulties;syncDifficulty();renderEditor();validate();gamepadLoop();playHeroMotion(strategy)}catch(e){toast(e.message);console.error(e)}})();
 
 const motionCache=new Map();let motionToken=0;

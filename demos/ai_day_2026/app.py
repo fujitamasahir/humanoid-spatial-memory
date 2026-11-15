@@ -23,6 +23,11 @@ class ValidationRequest(BaseModel):
     objects: list[list[int]] = Field(default_factory=list)
     pedestrians: list[list[int]] = Field(default_factory=list)
 
+class ResumeRequest(BaseModel):
+    step: int
+    objects: list[list[int]] = Field(default_factory=list)
+    pedestrians: list[list[int]] = Field(default_factory=list)
+
 class ChallengeRequest(ValidationRequest):
     strategy: str
     render_3d: bool = False
@@ -50,6 +55,16 @@ def challenge(request: ChallengeRequest):
 @app.get('/api/state')
 def state():
     return engine.snapshot()
+
+@app.post('/api/pause')
+def pause():
+    result=engine.pause()
+    return JSONResponse(result,status_code=200 if result['ok'] else 409)
+
+@app.post('/api/resume')
+def resume(request: ResumeRequest):
+    result=engine.resume(request.step,request.objects,request.pedestrians)
+    return JSONResponse(result,status_code=200 if result['ok'] else 409)
 
 @app.post('/api/skip')
 def skip():

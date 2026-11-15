@@ -117,6 +117,7 @@ def test_skip_and_review_are_scoped_to_completed_run():
     import threading
     engine=GameEngine.__new__(GameEngine)
     engine.lock=threading.RLock()
+    engine.condition=threading.Condition(engine.lock)
     engine.skip_playback=threading.Event()
     engine.history={0:{'step':0},1:{'step':1,'memory':[[0]]}}
     engine.running=True
@@ -148,3 +149,98 @@ def test_difficulty_memory_budget_includes_initial_scan():
                 agent.refresh(initial, step)
             assert agent.used == expected[1]
             assert not agent.decide(expected[1]+100, (2,2))['observation_granted']
+
+
+def _paused_test_engine(level='easy'):
+    import threading
+    eng=_light_engine(_small_maze())
+    eng.lock=threading.RLock()
+    eng.condition=threading.Condition(eng.lock)
+    eng.skip_playback=threading.Event()
+    eng.running=True
+    eng.pause_requested=False
+    eng.resume_layout=None
+    eng.frame_delay_s=.5
+    eng.state=dict(status='running',frame_seq=12,step=12,maze_id='test-maze',
+                   difficulty=level,position=[2,2],heading_yaw=0.,objects=[],people=[],
+                   observations=4,memory=[[0,-1]],trajectory=[[1,1],[2,2]],edit_events=[])
+    return eng
+
+
+def _enter_pause(eng):
+    import threading
+    import time
+    result=[]
+    assert eng.pause()['ok']
+    assert eng.state['status']=='pausing'
+    thread=threading.Thread(target=lambda: result.append(eng._wait_at_frame()),daemon=True)
+    thread.start()
+    deadline=time.monotonic()+2
+    while time.monotonic()<deadline:
+        if eng.snapshot()['status']=='paused':
+            return thread,result
+        time.sleep(.005)
+    raise AssertionError('Worker failed to enter pause')
+
+
+def test_live_pause_preserves_evaluator_frame_and_rejects_skip():
+    import time
+    eng=_paused_test_engine()
+    thread,result=_enter_pause(eng)
+    before=eng.snapshot()
+    time.sleep(.04)
+    assert thread.is_alive() and not result
+    assert eng.snapshot()==before
+    assert not eng.skip()['ok']
+    assert not eng.resume(11,[],[])['ok']
+    assert eng.resume(12,[],[])['ok']
+    thread.join(2)
+    assert not thread.is_alive() and result==[None]
+    assert eng.state['observations']==4 and eng.state['memory']==[[0,-1]]
+    assert eng.state['trajectory']==[[1,1],[2,2]] and not eng.state['edit_events']
+
+
+def test_live_resume_enforces_limits_and_preserves_draft_on_rejection():
+    eng=_paused_test_engine('hard')
+    thread,result=_enter_pause(eng)
+    try:
+        assert not eng.resume(12,[],[[4,4]])['ok']
+        assert not eng.resume(12,[[4,4],[5,4]],[])['ok']
+        assert not eng.resume(12,[[2,2]],[])['ok']
+        assert not eng.resume(12,[[0,0]],[])['ok']
+        assert not eng.resume(12,[[3,3]],[])['ok']  # only passage
+        assert eng.state['status']=='paused' and thread.is_alive()
+        assert eng.resume(12,[[4,4]],[])['ok']
+        thread.join(2)
+        assert not thread.is_alive() and result==[([[4,4]],[])]
+        assert eng.state['edit_events'][0]['paused_step']==12
+        assert eng.state['edit_events'][0]['effective_step']==13
+        assert eng.state['observations']==4
+    finally:
+        if thread.is_alive():
+            with eng.condition:
+                eng.pause_requested=False
+                eng.condition.notify_all()
+            thread.join(2)
+
+
+def test_terminal_frame_never_waits_for_resume():
+    eng=_paused_test_engine()
+    assert eng.pause()['ok']
+    eng.frame_delay_s=0
+    assert eng._wait_at_frame(terminal=True) is None
+    assert not eng.pause_requested
+    assert eng.state['status']!='paused'
+
+
+def test_absolute_step_pedestrian_paths_after_live_edit():
+    from engine import make_scenario
+    maze=_small_maze()
+    step=12
+    starts=[[4,4]]
+    paths=make_pedestrian_paths(maze,starts,[[1,2]],20)
+    absolute=[[path[0]]*step+path for path in paths]
+    scenario=make_scenario(maze,[[1,2]],absolute)
+    assert scenario.pedestrians[0][step]==tuple(starts[0])
+    assert all(abs(a[0]-b[0])+abs(a[1]-b[1])<=1 for a,b in
+               zip(scenario.pedestrians[0],scenario.pedestrians[0][1:]+scenario.pedestrians[0][:1]))

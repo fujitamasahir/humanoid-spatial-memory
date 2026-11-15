@@ -171,7 +171,7 @@ class FootprintReachability:
         return all(self._clear(cell, start+delta*i/samples, occupied, width, height)
                    for i in range(1, samples+1))
 
-    def has_route(self, maze: dict, objects: list[list[int]]) -> bool:
+    def has_route(self, maze: dict, objects: list[list[int]], *, start_heading: int = 0) -> bool:
         width, height = maze['width'], maze['height']
         occupied = {(x, y) for y, row in enumerate(maze['wall_rows'])
                     for x, bit in enumerate(row) if bit == '1'} | {tuple(x) for x in objects}
@@ -192,7 +192,7 @@ class FootprintReachability:
                 turn_cache[key] = all(clear(cell, start_yaw+delta*i/samples)
                                       for i in range(1, samples+1))
             return turn_cache[key]
-        queue = [(start[0], start[1], heading_index(0.0))]
+        queue = [(start[0], start[1], start_heading)]
         seen = set(queue)
         cursor = 0
         while cursor < len(queue):
@@ -275,6 +275,9 @@ class GameEngine:
         self.log_path.parent.mkdir(parents=True, exist_ok=True)
         self.frame_delay_s = frame_delay_s
         self.lock = threading.RLock()
+        self.condition = threading.Condition(self.lock)
+        self.pause_requested = False
+        self.resume_layout = None
         self.running = False
         self.skip_playback = threading.Event()
         self.history = {}
@@ -356,6 +359,8 @@ class GameEngine:
             self.last_config = run_config
             self.history.clear()
             self.skip_playback.clear()
+            self.pause_requested = False
+            self.resume_layout = None
             self.running = True
             self.state = {'status': 'running', 'frame_seq': -1, 'step': 0,
                 'maze_id': maze_id, 'strategy': strategy, 'difficulty': difficulty,
@@ -364,7 +369,7 @@ class GameEngine:
                 'start': self.mazes[maze_id]['start'], 'goal': self.mazes[maze_id]['goal'],
                 'objects': objects, 'people': pedestrians, 'trajectory': [], 'observations': 1,
                 'distance_m': 0.0, 'actual_unwanted_contacts': 0, 'blocked_attempts': 0,
-                'events': [], 'contact_events': []}
+                'events': [], 'contact_events': [], 'edit_events': []}
             self._thread = threading.Thread(target=self._run, args=(run_config,), daemon=True)
             self._thread.start()
             return {'ok': True, 'seed': run_config['seed']}
@@ -444,6 +449,7 @@ class GameEngine:
         from showcase_render import ShowcaseRenderer
         visual = ShowcaseRenderer(scene, run_config['strategy']) if run_config.get('render_3d') else None
         def frame_cb(world, frame):
+            nonlocal scene, visual
             extra = scene.update(world, frame)
             serial = {
                 'step': int(world.step), 'position': list(map(int, frame['position'])),
@@ -469,6 +475,8 @@ class GameEngine:
                 serial.update(visual.frame(frame))
             with self.lock:
                 self.state.update(serial)
+                if self.state.get('status') == 'resuming':
+                    self.state['status'] = 'running'
                 self.state['frame_seq'] = int(self.state.get('frame_seq', -1))+1
                 self.state['observations'] = int(frame['observation_count'])
                 self.state['actual_unwanted_contacts'] = int(self.state.get('actual_unwanted_contacts', 0)) + sum(serial['contacts'].values())
@@ -494,7 +502,40 @@ class GameEngine:
                 }
                 if serial.get('render_png'):
                     self.history[serial['step']]['render_png'] = serial['render_png']
-            self.skip_playback.wait(self.frame_delay_s)
+            terminal = tuple(frame['position']) == scenario.goal or world.step >= run_config['step_limit']
+            edited = self._wait_at_frame(terminal)
+            if edited is not None:
+                # Keep the *same* evaluator invocation, controller, memory, RNG
+                # time stream, blocked-action evidence and observation counter.
+                # Only the evaluator-owned environment changes at the next tick.
+                new_objects, new_people = edited
+                paused_step = int(world.step)
+                paths = make_pedestrian_paths(maze, new_people, new_objects,
+                    run_config['step_limit']-paused_step)
+                # The immutable research Scenario indexes paths by absolute step.
+                # Prefix the current location so each new path begins at pause.
+                paths = [[path[0]]*paused_step + path for path in paths]
+                next_scenario = make_scenario(maze, new_objects, paths)
+                replacement = MujocoNavigationScene(next_scenario, cell_size=scene.cell_size,
+                    timestep=scene.timestep)
+                if visual is not None:
+                    phase = visual.phase
+                    visual.close()
+                    visual = ShowcaseRenderer(replacement, run_config['strategy'])
+                    visual.phase = phase
+                scene = replacement
+                memory_sensor.scene = replacement
+                safety_sensor.scene = replacement
+                # Apply before the next sensing/action. The frozen evaluator
+                # captures old geometry immediately before advance(), so its
+                # persistent-change attribution still sees the transition.
+                advance = world.advance
+                def apply_edit_and_advance():
+                    world.advance = advance
+                    world.scenario = next_scenario
+                    world.objects = set(next_scenario.obstacles)
+                    advance()
+                world.advance = apply_edit_and_advance
             return extra
 
         try:
@@ -523,7 +564,9 @@ class GameEngine:
                            'seed': run_config['seed'], 'maze_id': run_config['maze_id'],
                            'strategy': run_config['strategy'], 'difficulty': run_config['difficulty'],
                            'step_limit': run_config['step_limit'], 'max_observations': run_config['max_observations'],
-                           'contact_events': list(self.state['contact_events'])})
+                           'contact_events': list(self.state['contact_events']),
+                           'edit_events': list(self.state['edit_events']),
+                           'exhibition_layout_edits': len(self.state['edit_events'])})
             log_record = {'timestamp_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
                           'configuration': run_config, 'result': result}
             with self.log_path.open('a', encoding='utf-8') as f:
@@ -543,6 +586,86 @@ class GameEngine:
                 visual.close()
             with self.lock: self.running = False
 
+    def _wait_at_frame(self, terminal=False):
+        """Wait on the evaluation worker at a completed-step boundary."""
+        deadline = time.monotonic() + self.frame_delay_s
+        with self.condition:
+            while True:
+                if terminal:
+                    self.pause_requested = False
+                    if self.state.get('status') == 'pausing':
+                        self.state['status'] = 'running'
+                if self.pause_requested:
+                    self.state['status'] = 'paused'
+                    self.state['frame_seq'] += 1
+                    while self.pause_requested:
+                        self.condition.wait()
+                    layout = self.resume_layout
+                    self.resume_layout = None
+                    return layout
+                remaining = deadline - time.monotonic()
+                if self.skip_playback.is_set() or remaining <= 0:
+                    return None
+                self.condition.wait(remaining)
+
+    def pause(self):
+        with self.condition:
+            if not self.running or self.state.get('status') != 'running' or self.skip_playback.is_set():
+                return {'ok': False, 'error': 'Challenge is not available to pause.'}
+            self.pause_requested = True
+            self.state['status'] = 'pausing'
+            self.condition.notify_all()
+            return {'ok': True}
+
+    def resume(self, step, objects, pedestrians):
+        with self.condition:
+            if self.state.get('status') != 'paused' or not self.pause_requested or step != self.state.get('step'):
+                return {'ok': False, 'error': 'The paused step changed. Wait for the current frame.'}
+            old_objects = {tuple(p) for p in self.state['objects']}
+            old_people = {tuple(p) for p in self.state['people']}
+            maze = self.mazes[self.state['maze_id']]
+            rules = DIFFICULTIES[self.state['difficulty']]
+            free = _free_set(maze)
+            pos = tuple(self.state['position'])
+            yaw = self.state['heading_yaw']
+            def fail(message):
+                return {'ok': False, 'error': message}
+            if len(objects) > rules['max_static_objects'] or len(pedestrians) > rules['max_pedestrians']:
+                return fail('Placement limit exceeded. Remove an existing hazard first.')
+            if any(not isinstance(c, (list, tuple)) or len(c) != 2 or any(type(v) is not int for v in c)
+                   for c in objects + pedestrians):
+                return fail('Placement must be a grid cell.')
+            o, q = set(map(tuple, objects)), set(map(tuple, pedestrians))
+            if len(o) != len(objects) or len(q) != len(pedestrians) or o & q:
+                return fail('Hazards cannot overlap.')
+            if not (o | q) <= free or (o | q) & {tuple(maze['start']), tuple(maze['goal'])}:
+                return fail('Use open cells outside Start and Goal.')
+            changed = o != old_objects or q != old_people
+            if changed:
+                added = (o-old_objects) | (q-old_people)
+                if pos in added or (added and not self.reachability._clear(pos, yaw, added, maze['width'], maze['height'])):
+                    return fail('Keep new hazards clear of the humanoid.')
+                # Pedestrians move again on resume. Do not let static edits
+                # permanently seal every footprint-safe route from this pose.
+                if o != old_objects:
+                    from_pose = dict(maze, start=list(pos))
+                    if not self.reachability.has_route(from_pose, sorted(o), start_heading=heading_index(yaw)):
+                        return fail('This layout blocks every footprint-safe route from the humanoid.')
+                self.resume_layout = ([list(c) for c in sorted(o)], [list(c) for c in sorted(q)])
+                self.state['edit_events'] = self.state['edit_events'] + [{
+                    'paused_step': step, 'effective_step': step+1,
+                    'objects_before': [list(c) for c in sorted(old_objects)],
+                    'objects_after': self.resume_layout[0],
+                    'pedestrians_before': [list(c) for c in sorted(old_people)],
+                    'pedestrians_after': self.resume_layout[1],
+                }]
+            else:
+                self.resume_layout = None
+            self.pause_requested = False
+            self.state['status'] = 'resuming'
+            self.condition.notify_all()
+            return {'ok': True}
+
     def reset(self):
         with self.lock:
             if self.running:
@@ -557,6 +680,7 @@ class GameEngine:
             if self.state.get('status') not in ('running','finished'):
                 return {'ok': False, 'error': 'No active challenge.'}
             self.skip_playback.set()
+            self.condition.notify_all()
             return {'ok': True}
 
     def review_index(self):
