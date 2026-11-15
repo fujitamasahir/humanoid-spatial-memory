@@ -726,6 +726,7 @@ def make_binding():
         'required_h2_base_commit': SOURCE_COMMIT,
         'h2_final_binding_sha256': sha(prior/'binding.json'),
         'frozen_h2_source_bindings': prior_binding.get('sources', {}),
+        'frozen_h2_config':prior_binding.get('config'),
         'sources': {p.relative_to(ROOT).as_posix(): sha(p) for p in sources},
         'maps': [{'identity': p['identity'], 'sha256': h} for p,h in maps],
         'arms': list(ARM_IDS), 'max_steps': MAX_STEPS,
@@ -776,8 +777,33 @@ def make_amendment_binding(version=2):
             'reason':'Additional original-condition full replay and final analysis code was added after this binding was drafted; its script source hash no longer matched.',
             'navigation_runs_under_binding':0,
             'preserved_original_smoke_binding':'binding.json'})
+    status2=validation/'binding_amendment_2_status.json'
+    if version >= 3 and not status2.exists():
+        write_exclusive(status2,{'binding':'binding_amendment_2.json',
+            'status':'VALID_FOR_AMENDED_SMOKE_AND_ORIGINAL_UNCERTAINTY_ONLY',
+            'reason':'A direct twin-run transition equality test was added to strengthen the CRN validation before the primary matrix.',
+            'completed_stages':['smoke_amendment1','original_uncertainty'],
+            'primary_runs_under_binding':0,
+            'binding_sha256':sha(OUT/'binding_amendment_2.json'),
+            'smoke_summary_sha256':sha(OUT/'smoke_amendment1/summary.json'),
+            'original_uncertainty_summary_sha256':sha(OUT/'original_uncertainty/summary.json'),
+            'primary_binding':'binding_amendment_3.json'})
+    stage_binding=validation/'stage_bindings.json'
+    if version >= 3 and not stage_binding.exists():
+        stage_binding.write_text(json.dumps({'completed_stages':{
+            'smoke_amendment1':{'binding':'binding_amendment_2.json',
+                'binding_sha256':sha(OUT/'binding_amendment_2.json'),
+                'source_commit':json.loads((OUT/'binding_amendment_2.json').read_text())['source_commit'],
+                'summary_sha256':sha(OUT/'smoke_amendment1/summary.json'),'episodes':52},
+            'original_uncertainty':{'binding':'binding_amendment_2.json',
+                'binding_sha256':sha(OUT/'binding_amendment_2.json'),
+                'source_commit':json.loads((OUT/'binding_amendment_2.json').read_text())['source_commit'],
+                'summary_sha256':sha(OUT/'original_uncertainty/summary.json'),'episodes':72}},
+            'primary_stage_binding':'binding_amendment_3.json'},indent=2,sort_keys=True)+'\n')
     sources=[PROTOCOL,SCHEMA,Path(__file__),ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_1.md',
         ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_2.md',
+        ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_3.md',
+        stage_binding,validation/'test_results_amendment_3.json',
         ROOT/'tests/test_h2_high_frequency_dynamics.py',ROOT/'scripts/h2_final_common.py',
         ROOT/'scripts/run_h2_final.py',ROOT/'scripts/evaluate_phase2_61ray_emergency_safety_full_288.py',
         ROOT/'src/spatial_memory/evaluation.py',ROOT/'src/spatial_memory/simulation.py',
@@ -791,11 +817,15 @@ def make_amendment_binding(version=2):
         'original_binding_sha256':sha(old_binding_path),
         'original_smoke_issue_sha256':sha(issue_path),
         'superseded_binding_1_status_sha256':sha(status1),
+        'prior_binding_2_stage_scope_status_sha256':sha(status2),
         'sources':{p.relative_to(ROOT).as_posix():sha(p) for p in sources},
         'maps':old_binding['maps'],'arms':list(ARM_IDS),'seed':SEED,
         'max_steps':MAX_STEPS,'object_count_limits':[0,MAX_OBJECTS],
         'preserved_prior_results':'binding.json and smoke/ remain immutable; valid reruns use smoke_amendment1 and primary.',
         'runtime':old_binding['runtime'],
+        'frozen_h2_source_bindings':json.loads(old_binding_path.read_text()).get('sources',{}),
+        'frozen_h2_config':json.loads(old_binding_path.read_text()).get('config'),
+        'dependency_freeze':subprocess.check_output([sys.executable,'-m','pip','freeze'],text=True).splitlines(),
     })
 
 
@@ -818,6 +848,14 @@ def _verify_existing(path, expected_key):
     if any(s['step'] != i for i,s in enumerate(item['replay']['steps'])):
         raise ValueError(f'Replay has missing or reordered step: {path}')
     return item
+
+
+def active_binding_path():
+    for name in ('binding_amendment_3.json','binding_amendment_2.json',
+                 'binding_amendment_1.json','binding.json'):
+        path=OUT/name
+        if path.exists():return path
+    raise FileNotFoundError('No H2 high-frequency source binding is prepared')
 
 
 def _save_episode(stage, case_index, arm, row, replay, diagnostics):
@@ -886,7 +924,9 @@ def _run_stage(stage, cases, arms, dynamic):
         rows.append(item['row'])
     _write_metrics_csv(stage_dir/'episodes.csv', rows)
     summary = {'stage': stage, 'status': 'COMPLETE', 'episodes': len(rows),
-        'arms': list(arms), 'source_commit': json.loads((OUT/'binding.json').read_text())['source_commit'],
+        'arms': list(arms), 'source_commit': json.loads(active_binding_path().read_text())['source_commit'],
+        'source_binding':active_binding_path().name,
+        'source_binding_sha256':sha(active_binding_path()),
         'total_goal_completions': sum(bool(r['success']) for r in rows),
         'total_unwanted_contacts': sum(int(r.get('g1_unwanted_contact_pairs', 0)) for r in rows),
         'replay_count': len(rows), 'wall_seconds': time.monotonic()-started}
@@ -1535,18 +1575,16 @@ def verify_replays():
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('stage',choices=('prepare','prepare-amendment','prepare-amendment2','smoke','smoke_amendment1','original_uncertainty','primary','analysis','verify','all'))
+    parser.add_argument('stage',choices=('prepare','prepare-amendment','prepare-amendment2','prepare-amendment3','smoke','smoke_amendment1','original_uncertainty','primary','analysis','verify','all'))
     args=parser.parse_args()
     if args.stage=='prepare':
         _extend_frozen_arms();make_binding();print(f'Prepared immutable binding at {OUT}',flush=True)
         return
-    if args.stage in ('prepare-amendment','prepare-amendment2'):
-        version=1 if args.stage=='prepare-amendment' else 2
+    if args.stage in ('prepare-amendment','prepare-amendment2','prepare-amendment3'):
+        version={'prepare-amendment':1,'prepare-amendment2':2,'prepare-amendment3':3}[args.stage]
         _extend_frozen_arms();make_amendment_binding(version);print(f'Prepared amendment {version} binding; commit it before rerunning validation.',flush=True)
         return
-    binding_path=(OUT/'binding_amendment_2.json' if (OUT/'binding_amendment_2.json').exists()
-        else OUT/'binding_amendment_1.json' if (OUT/'binding_amendment_1.json').exists()
-        else OUT/'binding.json')
+    binding_path=active_binding_path()
     if not binding_path.is_file():
         raise SystemExit('Missing prepared binding. Run the `prepare` stage, commit its source binding, then continue.')
     binding=json.loads(binding_path.read_text())

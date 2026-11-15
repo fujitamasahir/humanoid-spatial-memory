@@ -42,6 +42,22 @@ def test_framed_philox_stream_is_deterministic_and_model_independent():
     assert ENGINE_NAMESPACE == 'h2-high-frequency-dynamics-v1'
 
 
+def test_equal_public_states_under_two_model_runs_emit_equal_events():
+    scenario = _scenario()
+    first = HighFrequencyEngine(scenario, 'same-map', 1, 42, [(2, 2)])
+    second = HighFrequencyEngine(scenario, 'same-map', 1, 42, [(2, 2)])
+    first.scene = second.scene = FakeScene()
+    a, b = FakeWorld(scenario, [(2, 2)]), FakeWorld(scenario, [(2, 2)])
+    # Model labels are intentionally absent from the transition API and CRN key.
+    for step in range(1, 8):
+        a.step = b.step = step
+        ea, eb = first.transition(a), second.transition(b)
+        ea.pop('duration_ns'); eb.pop('duration_ns')
+        assert ea == eb
+        assert a.objects == b.objects
+        assert first.object_ids == second.object_ids
+
+
 def test_cut_vertex_filter_preserves_start_goal_connectivity():
     critical, connected = _critical_cut_cells(set(), set(), (0, 0), (4, 0), 5, 1)
     assert connected
