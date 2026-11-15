@@ -275,6 +275,10 @@ def validate_binding():
             raise RuntimeError(f'Source commitment changed after bind: {name}')
     if sha(PROTOCOL) != binding['protocol_sha256']:
         raise RuntimeError('Protocol hash mismatch')
+    if ('amendment_2' in binding and
+        sha(ROOT/'docs/h2_controlled_compute_benchmark_protocol_v1_amendment_1.md') !=
+            binding['amendment_2']['protocol_sha256']):
+        raise RuntimeError('B+Age protocol amendment hash mismatch')
     maps, _ = maps_and_cases()
     if binding['maps'] != [{'identity': p['identity'], 'sha256': h} for p, h in maps]:
         raise RuntimeError('Saved map identity/hash mismatch')
@@ -327,6 +331,77 @@ def amend_binding_for_timing_scope():
     write_exclusive(pointer, {'path': target.name, 'sha256': sha(target),
         'parent_binding_sha256': sha(parent)})
     print('Appended binding amendment 1; the initial classifier failure is preserved.',flush=True)
+
+
+def amend_binding_for_corrected_b_age():
+    parent = OUT/'binding_amendment_1.json'
+    target = OUT/'binding_amendment_2.json'
+    pointer = OUT/'active_binding.json'
+    if not parent.is_file() or target.exists():
+        raise RuntimeError('Timing-scope amendment 1 is required')
+    warmup_path = OUT/'warmup_amendment_1/journal.jsonl'
+    records = _load_journal(warmup_path, lambda r: r['model_id'])
+    if len(records) != 54:
+        raise RuntimeError('Expected 54 corrected-filter warm-up records')
+    mismatches = [r['model_id'] for r in records.values() if not r['parity_match']]
+    if set(mismatches) != {'b_age'}:
+        raise RuntimeError(f'Unexpected preflight semantic mismatch set: {mismatches}')
+    # Re-execute one case with the exact H2 Comprehensive adapter blob to prove
+    # that the historical trace follows the old EVI-enabled B+Age adapter.
+    old_adapter_commit='a767f3ee9de984e67d7d50529d0572d871a9a701'
+    old_source=subprocess.check_output(['git','show',
+        f'{old_adapter_commit}:scripts/h2_comprehensive_adapters.py'],cwd=ROOT,text=True)
+    import types
+    old_adapter=types.ModuleType('h2_comprehensive_adapters_historical')
+    old_adapter.__file__=str(ROOT/'scripts/h2_comprehensive_adapters.py')
+    exec(compile(old_source,old_adapter.__file__,'exec'),old_adapter.__dict__)
+    _maps,cases=maps_and_cases();_case_index,payload,schedule=cases[0]
+    old_row,old_replay,_old_diag=old_adapter.run_case(payload,schedule,'b_age','high_frequency')
+    historical_digest,_=historical_semantic('b_age',payload['identity'],schedule,historical_index())
+    old_adapter_digest=semantic_sha(old_row,old_replay)
+    corrected_record=records['b_age']
+    if old_adapter_digest != historical_digest or corrected_record['semantic_sha256']==historical_digest:
+        raise RuntimeError('Could not reproduce and distinguish the historical B+Age adapter discrepancy')
+    recovery = ROOT/'results/phase2_mujoco/h2_full_spatial_memory_replay_v1'
+    addendum = recovery/'H2_RECOVERY_ADDENDUM.md'
+    correction_binding = recovery/'binding_amendment_5.json'
+    corrected_journal = recovery/'task_b_b_age_corrected_v2/journal.jsonl'
+    evidence_path = OUT/'validation/b_age_historical_implementation_discrepancy.json'
+    evidence = {'recovery_addendum_sha256': sha(addendum),
+        'corrected_binding_sha256': sha(correction_binding),
+        'corrected_b_age_journal_sha256': sha(corrected_journal),
+        'corrected_fit72_validation_sha256': sha(recovery/'fit72_b_age_correction_validation.csv')}
+    write_exclusive(evidence_path, {'status':'EXPECTED_HISTORICAL_IMPLEMENTATION_NONPARITY',
+        'model_id':'b_age', 'historical_records':'H2 Comprehensive High-Frequency b_age used Persistence + EVI',
+        'registered_definition':'B + Age uses Persistence with EVI disabled',
+        'authoritative_correction':'H2 full spatial-memory replay recovery Task B corrected B+Age epoch',
+        'preflight_models_matching':53, 'preflight_models_not_matching':['b_age'],
+        'preflight_source_journal_sha256':sha(warmup_path),
+        'historical_adapter_source_commit':old_adapter_commit,
+        'old_adapter_reproduces_historical_semantics':True,
+        'historical_adapter_semantic_sha256':old_adapter_digest,
+        'corrected_b_age_semantic_sha256':corrected_record['semantic_sha256'],
+        'historical_b_age_semantic_sha256':historical_digest,
+        'preserved_historical_b_age_outputs_modified':False,
+        'H2_recovery_evidence':evidence,
+        'recorded_at_utc':datetime.now(timezone.utc).isoformat()})
+    updated=json.loads(parent.read_text())
+    updated['parent_binding_sha256']=sha(parent)
+    updated['source_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['source_sha256']['scripts/run_h2_controlled_compute_benchmark.py']=sha(SCRIPT)
+    amendment_path='docs/h2_controlled_compute_benchmark_protocol_v1_amendment_1.md'
+    updated['source_sha256'][amendment_path]=sha(ROOT/amendment_path)
+    for path in (addendum, correction_binding, corrected_journal):
+        updated['source_sha256'][path.relative_to(ROOT).as_posix()]=sha(path)
+    updated['amendment_2']={'description':'declare known historical b_age implementation mismatch; run corrected registered B+Age arm; require exact parity for all other 53 models',
+        'protocol_sha256':sha(ROOT/amendment_path),
+        'known_nonparity_model':'b_age', 'evidence_sha256':sha(evidence_path),
+        'historical_outputs_preserved':True}
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    write_exclusive(target,updated)
+    write_exclusive(pointer,{'path':target.name,'sha256':sha(target),
+        'parent_binding_sha256':sha(parent)})
+    print('Appended binding amendment 2; b_age is explicitly classified as an expected historical mismatch.',flush=True)
 
 
 def semantic_projection(row: dict, replay: dict) -> dict:
@@ -387,6 +462,10 @@ def _timing_row(rep: int, order: int, case_index: int, payload: dict,
         raise RuntimeError(f'Missing model initialization timing: {model}')
     total_ns = init_ns + decision_ns + update_ns
     decisions = values['decision']
+    matches = parity_digest == baseline_digest
+    classification = ('EXACT_SEMANTIC_PARITY' if matches else
+        'EXPECTED_B_AGE_HISTORICAL_IMPLEMENTATION_NONPARITY' if model == 'b_age' else
+        'UNEXPECTED_SEMANTIC_MISMATCH')
     return {
         'repetition': rep, 'order_index': order, 'case_index': case_index,
         'map_identity': payload['identity'], 'map_family': payload['mechanism'],
@@ -407,7 +486,7 @@ def _timing_row(rep: int, order: int, case_index: int, payload: dict,
         'decision_p99_ns_per_call': _quantile(decisions, .99) if decisions else 0,
         'case_wall_ns': case_wall_ns,
         'parity_sha256': parity_digest, 'baseline_semantic_sha256': baseline_digest,
-        'parity_match': parity_digest == baseline_digest,
+        'parity_match': matches, 'parity_classification': classification,
         '_init_calls_ns': values['initialization'],
         '_decision_calls_ns': decisions,
         '_update_calls_ns': values['update'],
@@ -459,7 +538,9 @@ def _smoke_cases(cases):
 
 
 def _warm_up(cases, models, prior):
-    stage = 'warmup_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'warmup'
+    amendment = active_binding_path().name.endswith('amendment_2.json')
+    stage = 'warmup_amendment_2' if amendment else (
+        'warmup_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'warmup')
     path = OUT/stage/'journal.jsonl'
     completed = _load_journal(path, lambda r: r['model_id'])
     payload = cases[0][1]
@@ -473,13 +554,18 @@ def _warm_up(cases, models, prior):
         record = {'model_id': model, 'map_identity': payload['identity'],
                   'schedule': schedule, 'semantic_sha256': digest,
                   'baseline_semantic_sha256': baseline, 'parity_match': digest == baseline,
+                  'parity_classification': ('EXACT_SEMANTIC_PARITY' if digest == baseline else
+                      'EXPECTED_B_AGE_HISTORICAL_IMPLEMENTATION_NONPARITY' if model == 'b_age' else
+                      'UNEXPECTED_SEMANTIC_MISMATCH'),
                   'timing_ns': {k: diag.get('timing_ns', {}).get(k, [])
                                 for k in ('initialization', 'decision', 'update')}}
         _append_journal(path, record)
         if n % 6 == 0 or n == len(models):
             print(f'warm-up: {n}/{len(models)} models', flush=True)
     results = _load_journal(path, lambda r: r['model_id'])
-    if len(results) != len(models) or not all(r['parity_match'] for r in results.values()):
+    unexpected = [r['model_id'] for r in results.values()
+                  if not r['parity_match'] and r['model_id'] != 'b_age']
+    if len(results) != len(models) or unexpected:
         raise RuntimeError('Warm-up parity gate failed')
 
 
@@ -488,7 +574,9 @@ def run_smoke():
     maps, all_cases = maps_and_cases()
     cases = _smoke_cases(all_cases)
     models = model_ids(); prior = historical_index()
-    stage = 'smoke_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'smoke'
+    active_name = active_binding_path().name
+    stage = ('smoke_amendment_2' if active_name.endswith('amendment_2.json') else
+             'smoke_amendment_1' if active_name.endswith('amendment_1.json') else 'smoke')
     root = OUT/stage; root.mkdir(parents=True, exist_ok=True)
     journal = root/'journal.jsonl'
     completed = _load_journal(journal,
@@ -530,12 +618,17 @@ def run_smoke():
             'first_semantic_sha256': reference, 'repeat_semantic_sha256': digest,
             'repeat_matches': digest == reference}
         _append_journal(repeat_path, record); repeated[key] = record
-    if len(completed) != len(tasks) or any(not r['parity_match'] for r in completed.values()):
+    unexpected = [r['model_id'] for r in completed.values()
+                  if not r['parity_match'] and r['model_id'] != 'b_age']
+    if len(completed) != len(tasks) or unexpected:
         raise RuntimeError('Smoke episode semantic parity failed')
     if len(repeated) != len(repeat_tasks) or any(not r['repeat_matches'] for r in repeated.values()):
         raise RuntimeError('Smoke duplicate execution was not reproducible')
-    gate = {'status': 'PASS_SMOKE', 'model_count': len(models),
+    b_age_mismatches = sum(not r['parity_match'] and r['model_id']=='b_age' for r in completed.values())
+    gate = {'status': 'PASS_SMOKE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY', 'model_count': len(models),
         'selected_map_schedules': len(cases), 'episodes': len(completed),
+        'exact_parity_models': 53, 'expected_b_age_historical_nonparity_cases': b_age_mismatches,
+        'unexpected_parity_failures': len(unexpected),
         'duplicate_replay_checks': len(repeated), 'parity': 'all semantic traces match historical',
         'timer_probe': binding['timer_probe'],
         'wall_seconds': time.monotonic()-started,
@@ -565,7 +658,8 @@ def _emit_csv(path: Path, records):
 def run_repetitions(resume: bool):
     binding = validate_binding()
     gate_path = OUT/'smoke_gate.json'
-    if not gate_path.is_file() or json.loads(gate_path.read_text())['status'] != 'PASS_SMOKE':
+    if (not gate_path.is_file() or
+        json.loads(gate_path.read_text())['status'] != 'PASS_SMOKE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY'):
         raise RuntimeError('Passing smoke gate is required before full benchmark')
     maps, cases = maps_and_cases(); models = model_ids(); prior = historical_index()
     expected = REPETITIONS * len(cases) * len(models)
@@ -608,9 +702,11 @@ def run_repetitions(resume: bool):
                     'model_id': model, 'identity': payload['identity'], 'schedule': schedule,
                     'baseline_semantic_sha256': baseline_digest,
                     'new_semantic_sha256': digest,
-                    'status': 'FAIL_SEMANTIC_PARITY'}
+                    'status': ('EXPECTED_B_AGE_HISTORICAL_IMPLEMENTATION_NONPARITY'
+                               if model == 'b_age' else 'FAIL_SEMANTIC_PARITY')}
                 _save_progress(OUT/'parity_mismatches.jsonl', mismatch)
-                raise RuntimeError(f'Semantic parity mismatch: {mismatch}')
+                if model != 'b_age':
+                    raise RuntimeError(f'Unexpected semantic parity mismatch: {mismatch}')
             now = time.monotonic()
             if len(completed) % 54 == 0 or now-last_emit >= 60 or len(completed) == expected:
                 elapsed = now-started
@@ -850,15 +946,16 @@ def analyze():
     expected = 54*72*REPETITIONS
     if len(rows) != expected:
         raise RuntimeError(f'Cannot analyze incomplete matrix: {len(rows)}/{expected}')
-    if not all(x['parity_match'] for x in rows):
-        raise RuntimeError('Cannot analyze failed semantic parity')
+    unexpected = [x for x in rows if not x['parity_match'] and x['model_id'] != 'b_age']
+    if unexpected:
+        raise RuntimeError('Cannot analyze unexpected semantic parity failures')
     model_list = model_ids()
     all_timing_arrays = _load_journal(OUT/'episode_journal.jsonl',
         lambda r: (r['repetition'], r['case_index'], r['model_id']))
     call_records = list(all_timing_arrays.values())
     _emit_csv(OUT/'episode_timings.csv', call_records)
     parity = [{k: r[k] for k in ('repetition','case_index','map_identity','schedule',
-        'model_id','parity_sha256','baseline_semantic_sha256','parity_match')}
+        'model_id','parity_sha256','baseline_semantic_sha256','parity_match','parity_classification')}
         for r in call_records]
     _emit_csv(OUT/'parity_validation.csv', parity)
     summaries = []
@@ -887,6 +984,8 @@ def analyze():
             'p99_total_model_computation_ms': _quantile(all_total_ms,.99),
             'mean_decision_ns_per_call': statistics.mean(all_decision_calls),
             'historical_mean_compute_ms': float(baseline['mean_compute_ms']),
+            'historical_reference_status': ('INVALID_B_AGE_USED_PERSISTENCE_PLUS_EVI'
+                if model == 'b_age' else 'COMPARABLE_HISTORICAL_IMPLEMENTATION'),
             'historical_mean_decision_call_ms': float(baseline['mean_decision_call_ms']),
             'semantic_parity_failures': sum(not r['parity_match'] for r in group)}
         summaries.append(summary)
@@ -908,8 +1007,12 @@ def analyze():
     for s in summaries:
         old = s['historical_mean_compute_ms']; new = s['mean_total_model_computation_ms']
         prior_cmp.append({'model_id': s['model_id'], 'historical_mean_compute_ms': old,
-            'new_mean_compute_ms': new, 'difference_ms': new-old,
-            'ratio_new_over_historical': new/old if old else None,
+            'new_mean_compute_ms': new,
+            'difference_ms': new-old if s['model_id']!='b_age' else None,
+            'ratio_new_over_historical': new/old if old and s['model_id']!='b_age' else None,
+            'historical_method_comparable': s['model_id']!='b_age',
+            'historical_method_note': ('Old labeled b_age had EVI enabled; current benchmark uses registered B+Age with EVI disabled.'
+                                       if s['model_id']=='b_age' else 'same model definition'),
             'historical_decision_call_ms': s['historical_mean_decision_call_ms'],
             'new_decision_call_ms': s['mean_decision_ns_per_call']/1e6,
             'paired_case_repetitions': 360, 'same_machine_python_dependencies': True,
@@ -960,11 +1063,13 @@ def analyze():
         _microbench()
     _write_report(summaries, prior_cmp, pareto, break_even, binding)
     validate_preservation_post()
-    write_exclusive(OUT/'validation_status.json', {'status':'PASS_COMPLETE',
+    b_age_nonparity = sum(not r['parity_match'] and r['model_id']=='b_age' for r in parity)
+    write_exclusive(OUT/'validation_status.json', {'status':'COMPLETE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY',
         'episodes': len(rows), 'semantic_parity_records': len(parity),
-        'parity_failures': sum(not r['parity_match'] for r in parity),
+        'exact_parity_failures_outside_b_age': sum(not r['parity_match'] and r['model_id']!='b_age' for r in parity),
+        'expected_b_age_historical_nonparity': b_age_nonparity,
         'models': len(model_list), 'repetitions': REPETITIONS,
-        'source_binding_sha256': sha(OUT/'binding.json'),
+        'source_binding_sha256': sha(active_binding_path()),
         'post_run_preservation': verify_preservation(),
         'validated_at_utc': datetime.now(timezone.utc).isoformat()})
     print('Analysis, figures, microbenchmark, parity, and preservation checks complete.',flush=True)
@@ -1023,7 +1128,7 @@ def _make_figures(summaries, breakdown, comparison, poster, pareto):
     ax.bar([v+w/2 for v in x],[max(1e-6,r['new_mean_compute_ms']) for r in comp],w,label='Controlled rerun')
     ax.set_yscale('log');ax.set_xticks(x,[r['model_id'] for r in comp],rotation=80,fontsize=7)
     ax.set_ylabel('Total model computation (ms / episode, log)');ax.legend()
-    ax.set_title('Historical vs controlled timing');save(fig,'historical_vs_new_computation')
+    ax.set_title('Historical vs controlled timing; b_age historical bar was B+C, not B+Age');save(fig,'historical_vs_new_computation')
     fig, ax=plt.subplots(figsize=(9,7))
     sc=ax.scatter([x['mean_paid_observations'] for x in summaries],
         [x['mean_total_model_computation_ms'] for x in summaries],
@@ -1043,7 +1148,7 @@ def _write_report(summaries, comparison, pareto, break_even, binding):
            ('periodic5','rdao_v1_footprint'),('rdao_v1','rdao_v1_footprint'),
            ('rdao_v1_footprint','rdao_v1_gate_every'))
     lines=['# H2 Controlled Computational Cost Benchmark','',
-        '**Status:** Complete only if `validation_status.json` reports `PASS_COMPLETE`.','',
+        '**Status:** Complete only if `validation_status.json` reports `COMPLETE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY`; this status explicitly records a historical mismatch in the corrected B + Age arm.','',
         'Descriptive development timing rerun on the same 36 saved maps and two saved high-frequency schedules. Each of five repetitions contains the same 3,888 model×map×schedule episodes; repeats are not additional independent environments. No experiment policy, parameter, observation budget, safety, map, or schedule was changed.','',
         '## Existing anomaly diagnosis','',
         'Periodic-4 calls the frozen baseline `ObservationController` periodic interval test. Periodic-5 calls `CadenceController` through `PersistenceEVIController`; its `_score` runs `cadence_decision`, which allocates a full grid index and computes known-cell age fractions before checking the periodic5 mode. The score is not used by the fixed-period grant decision. This unnecessary per-call scoring is confirmed in source at `src/spatial_memory/cadence_age.py`; it explains the larger decision workload. Age-4 uses the age observer and is a separate code path. The timing gap is therefore not explained by observation interval alone. No controller was edited for this benchmark.','',
@@ -1053,7 +1158,7 @@ def _write_report(summaries, comparison, pareto, break_even, binding):
         '- One fixed warm-up episode per model; measured model×case tasks shuffled with a seeded PRNG independently for each repetition.',
         '- Timer: `time.perf_counter_ns()`; timer-pair overhead probe is in `binding.json`. Raw measured time is retained, not corrected.',
         '- Per-model compute = initialization + observation decision + spatial-memory update. The three components are reported separately.',
-        '- Every measured run is compared by semantic SHA-256 against its existing episode trace, excluding only timing/runtime fields. All five repetitions must pass.',
+        '- Every measured run is compared by semantic SHA-256 against its existing episode trace, excluding only timing/runtime fields. The 53 unchanged model definitions must pass every repetition. Corrected B + Age is separately classified against its historically mislabeled B + C traces; every mismatch remains in the parity ledger.',
         '- Full hidden occupancy is evaluator/replay data only. Controller inputs are supplied by the frozen runner; the separate microbenchmark captures controller-owned state before a legitimate decision and never passes ground truth.',
         '- Checkpoint journal records are fsynced per episode and hash-checked for safe `--resume`.','',
         '## Timing comparisons','',
@@ -1070,6 +1175,7 @@ def _write_report(summaries, comparison, pareto, break_even, binding):
         f"- Repeated episodes: {54*72*REPETITIONS:,}; semantic parity records: {54*72*REPETITIONS:,}.",
         '- Detailed model/episode/repetition values and plots are in this directory; poster subset is `poster_10_model_costs.csv` plus its PNG/SVG chart.',
         '- Smoke: six saved map×schedule cases across 54 models, plus eight duplicate executions; see `smoke_gate.json`.',
+        '- H2 recovery documented that the old `b_age` episodes enabled EVI and measured B + C; current B + Age disables EVI. This known historical non-parity is recorded, and its old timing is not a valid paired comparison. Other models require exact parity.',
         '- No new maps or schedules were generated. Existing evidence remains unchanged.','',
         '## Machine-readable files','',
         '- `episode_timings.csv`, `decision_microbenchmark.csv`, `model_summary.csv`, `timing_breakdown.csv`',
@@ -1085,10 +1191,14 @@ def verify():
     rows=_load_journal(journal,lambda r:(r['repetition'],r['case_index'],r['model_id']))
     expected=54*72*REPETITIONS
     mismatches=[r for r in rows.values() if not r['parity_match']]
+    unexpected=[r for r in mismatches if r['model_id']!='b_age']
     result={'episodes_committed':len(rows),'expected':expected,'models':len(models),
-        'repetitions':REPETITIONS,'semantic_parity_failures':len(mismatches),
-        'binding_sha256':sha(OUT/'binding.json'),
-        'status':'PASS' if len(rows)==expected and not mismatches else 'INCOMPLETE_OR_FAIL'}
+        'repetitions':REPETITIONS,
+        'expected_b_age_historical_nonparity':len(mismatches)-len(unexpected),
+        'unexpected_semantic_parity_failures':len(unexpected),
+        'binding_sha256':sha(active_binding_path()),
+        'status':'COMPLETE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY'
+            if len(rows)==expected and not unexpected else 'INCOMPLETE_OR_FAIL'}
     print(json.dumps(result,indent=2))
     if result['status']!='PASS':raise SystemExit(1)
 
@@ -1098,6 +1208,7 @@ def main():
     sub=parser.add_subparsers(dest='command',required=True)
     sub.add_parser('prepare')
     sub.add_parser('amend-binding-1')
+    sub.add_parser('amend-binding-2')
     sub.add_parser('smoke')
     run=sub.add_parser('run');run.add_argument('--resume',action='store_true')
     sub.add_parser('analyze')
@@ -1105,6 +1216,7 @@ def main():
     args=parser.parse_args()
     if args.command=='prepare': prepare()
     elif args.command=='amend-binding-1': amend_binding_for_timing_scope()
+    elif args.command=='amend-binding-2': amend_binding_for_corrected_b_age()
     elif args.command=='smoke': run_smoke()
     elif args.command=='run': run_repetitions(args.resume)
     elif args.command=='analyze': analyze()

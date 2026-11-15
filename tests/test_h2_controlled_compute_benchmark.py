@@ -50,3 +50,17 @@ def test_timer_scope_is_frozen_model_components_only():
     assert "times['decision'].append" in source
     assert "times['update'].append" in source
     assert 'time.perf_counter_ns()' in source
+
+
+def test_historical_b_age_nonparity_is_explicitly_classified():
+    payload = {'identity': 'fixture', 'mechanism': 'R'}
+    row = {'success': True, 'observation_count': 1, 'elapsed_steps': 1,
+           'g1_unwanted_contact_pairs': 0}
+    diag = {'timing_ns': {'initialization':[10], 'decision':[20], 'update':[30]}}
+    result = MODULE._timing_row(1, 1, 1, payload, 0, 'b_age', row, diag,
+                                'new', 'historical', 100)
+    assert result['parity_match'] is False
+    assert result['parity_classification'] == 'EXPECTED_B_AGE_HISTORICAL_IMPLEMENTATION_NONPARITY'
+    periodic = MODULE._timing_row(1, 1, 1, payload, 0, 'periodic4', row, diag,
+                                  'new', 'historical', 100)
+    assert periodic['parity_classification'] == 'UNEXPECTED_SEMANTIC_MISMATCH'
