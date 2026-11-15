@@ -192,9 +192,9 @@ def amend_binding():
     if subprocess.run(['git','merge-base','--is-ancestor',old['bound_at_commit'],head],cwd=ROOT).returncode:
         raise RuntimeError('Current source commit does not descend from binding commit')
     updated=dict(old);updated['parent_binding_sha256']=sha(parent);updated['bound_at_commit']=head
-    updated['status']='PARTIAL';updated['amendment_reason']=('Append-only correction: H2 b_age adapter now uses persistence=True, evi=False, '
-        'matching the frozen FIT72 B+Age arm. Only the 72 B+Age cases are rerun into a new epoch; '
-        'the original task_b records remain byte-for-byte preserved.')
+    updated['status']='PARTIAL';updated['amendment_reason']=('Append-only correction: H2 b_age adapter uses persistence=True, evi=False, '
+        'and the corrected 72-case epoch compares only identity-matched FIT72 historical records. '
+        'Earlier recovery records remain byte-for-byte preserved.')
     updated['source_sha256']={name:sha(ROOT/name) for name in sorted(src)}
     updated['amended_utc']=datetime.now(timezone.utc).isoformat()
     jwrite(target,updated)
@@ -456,10 +456,10 @@ def run(task,resume=False,limit=None):
         all_arms=[x['model_id'] for x in json.loads((ROOT/'results/phase2_mujoco/h2_comprehensive_benchmark_v1/protocol/model_registry.json').read_text()) if x['authorization_status'] in ('historical','eligible') and x['model_id'] not in BLOCKED]
         if len(all_arms)!=54:raise RuntimeError('Expected exactly 54 non-blocked registry arms')
         if task=='b_age_corrected':
-            arms=['b_age'];dataset='fit72_known_b_age_corrected';target=OUT/'task_b_b_age_corrected'
+            arms=['b_age'];dataset='fit72_known_b_age_corrected_v2';target=OUT/'task_b_b_age_corrected_v2'
         else:
             arms=all_arms;dataset='fit72_known';target=OUT/'task_b'
-    fit_ids={p['identity'] for p in maps} if task=='b' else set()
+    fit_ids={p['identity'] for p in maps} if task in ('b','b_age_corrected') else set()
     hist_index,hist_stats=historical_fit_index(set(arms),fit_ids) if task in ('b','b_age_corrected') else ({},{})
     if task=='b':
         histpath=OUT/'task_b_historical_index_summary.json'
