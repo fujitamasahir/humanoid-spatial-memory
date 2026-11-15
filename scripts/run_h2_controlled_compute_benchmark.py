@@ -462,13 +462,14 @@ def amend_binding_smoke_schedule_key():
         raise RuntimeError('Expected immutable binding amendment 4')
     failed_journal=OUT/'smoke_amendment_4/journal.jsonl'
     partial=_load_journal(failed_journal,lambda r:(r['case_index'],r['model_id']))
-    if len(partial)!=162 or {r['schedule'] for r in partial.values()}!={0}:
+    schedule_counts={s:sum(int(r['schedule'])==s for r in partial.values()) for s in (0,1)}
+    if len(partial)!=162 or sum(schedule_counts.values())!=162:
         raise RuntimeError('Unexpected initial smoke schedule-key failure checkpoint')
     attempt=OUT/'validation/initial_smoke_attempt_002.json'
     write_exclusive(attempt,{'status':'INCOMPLETE_SMOKE_SCHEDULE_KEY_COLLISION',
         'completed_records':len(partial),'expected_records':324,
-        'executed_schedules':[0],'missing_schedule':[1],
-        'cause':'Smoke checkpoint uniqueness key used map index and model but omitted schedule index, so schedule 0 caused schedule 1 to be skipped.',
+        'schedule_record_counts':schedule_counts,'missing_schedule_record_count':162,
+        'cause':'Smoke checkpoint uniqueness key used map index and model but omitted schedule index, so for each map/model only the first randomly ordered schedule was executed and its paired schedule was skipped.',
         'partial_journal_sha256':sha(failed_journal),
         'partial_records_preserved':True,'primary_repetition_runs':0,
         'recorded_at_utc':datetime.now(timezone.utc).isoformat()})
