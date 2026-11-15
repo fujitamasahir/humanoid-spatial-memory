@@ -218,6 +218,43 @@ def reconcile():
                         "distance_m": episode["row"].get("travel_distance_m", episode["row"].get("travel_distance")),
                         "unwanted_contact_pairs": episode["row"].get("g1_unwanted_contact_pairs", 0)})
             writer.writerow(row_copy)
+    # Version the union index rather than modifying the first recovery index.
+    prior_path = ROOT / "results/phase2_mujoco/h2_comprehensive_benchmark_v1/combined_dataset/replay_index.json"
+    prior = json.loads(prior_path.read_text())
+    previous_v2_path = OUT / "combined_replay_index/replay_index_v2.json"
+    previous_v2 = json.loads(previous_v2_path.read_text())
+    with (OUT / "replay_index_reconciled.csv").open(encoding="utf-8", newline="") as f:
+        authoritative_rows = list(csv.DictReader(f))
+    legacy_count = int(previous_v2["legacy_entry_count"])
+    if len(prior["entries"]) != 7776 or previous_v2["entries"][:legacy_count] != prior["entries"]:
+        raise RuntimeError("Prior 7,776 replay entries changed")
+    updated_additions = []
+    for row in previous_v2["entries"][legacy_count:]:
+        dataset = "fit72_known" if row["dataset_id"] == "fit72_known_original" else "h2_unseen"
+        match = next((x for x in authoritative_rows if x["dataset"] == dataset
+                      and x["model_id"] == row["model_id"]
+                      and x["map_identity"] == row["world_identity"]
+                      and int(x["schedule"]) == int(row["schedule"])), None)
+        if match is None:
+            raise RuntimeError(f"Missing reconciled replay index row: {row}")
+        if dataset == "fit72_known":
+            match = next(x for x in authoritative_rows if x["dataset"] == dataset
+                         and x["model_id"] == row["model_id"]
+                         and x["map_identity"] == row["world_identity"]
+                         and int(x["schedule"]) == int(row["schedule"]))
+            fixed = reconciliation[(match["model_id"], match["map_identity"], int(match["schedule"]))]
+            row.update({"path": match["path"], "sha256": match["sha256"],
+                        "historical_reproduction_status": fixed["status"],
+                        "source_artifact_reference": match["path"]})
+        updated_additions.append(row)
+    union_v3 = {"schema_version": "phase2_combined_replay_index_v3",
+        "legacy_index_path": prior_path.relative_to(ROOT).as_posix(),
+        "legacy_index_sha256": sha(prior_path), "legacy_entry_count": 7776,
+        "new_entry_count": len(updated_additions),
+        "correction_note": "Supersedes v2 misconfigured B+Age paths with corrected B+Age-only epoch; legacy 7,776 entries preserved exactly.",
+        "entries": prior["entries"] + updated_additions}
+    (OUT / "combined_replay_index/replay_index_v3.json").write_text(
+        json.dumps(union_v3, sort_keys=True, indent=2) + "\n")
     summary = {"status": "COMPLETE_WITH_FIRST_TIME_FIT72_CASES", "task_b_episodes": 3888,
         "task_b_parity": dict(counts), "rdao_v1_identity_matched_exact_records": 72,
         "b_age_corrected_exact_records": 72, "superseded_misconfigured_b_age_records": 72,
@@ -234,22 +271,42 @@ def reconcile():
     full_summary["task_b"]["parity"] = dict(counts)
     full_summary["task_b"]["exact_reproduction_status"] = "ALL_COMPARABLE_HISTORICAL_CASES_EXACT"
     full_summary["parity_reconciliation"] = "parity_reconciliation.csv supersedes initial indexer labels for FIT72 records"
+    def record_binding(row):
+        with gzip.open(OUT / row["path"], "rt", encoding="utf-8") as f:
+            record = json.load(f)
+        return record["replay"]["replay_recovery"]["source_binding_sha256"]
+    source_bindings = {}
+    for dataset, label in (("h2_unseen", "task_a"), ("fit72_known", "task_b_initial")):
+        row = next(x for x in index_rows if x["dataset"] == dataset)
+        source_bindings[label] = record_binding(row)
+    source_bindings["corrected_b_age"] = correction_binding_sha
+    binding_paths = {sha(p): p.name for p in [OUT / "binding.json", *sorted(OUT.glob("binding_amendment_*.json"))]}
+    full_summary["binding_epochs"] = {name: {"path": binding_paths.get(digest), "sha256": digest}
+                                      for name, digest in source_bindings.items()}
     summary_path.write_text(json.dumps(full_summary, sort_keys=True, indent=2) + "\n")
     final_report = OUT / "final_report.md"
     report_text = final_report.read_text()
     marker = "## Parity reconciliation addendum"
     if marker in report_text:
         report_text = report_text.split(marker, 1)[0].rstrip()
+    report_text = report_text.replace(
+        "- Active source binding: `binding_amendment_3.json` (SHA-256 `3940d8dcbc3721914efca54368bf81c6006e01ce0ae492c78d301e6a72226bb3`).",
+        "- Source bindings are epoch-specific; exact paths and SHA-256 values are listed in `summary.json` under `binding_epochs`. The corrected B+Age epoch uses append-only amendment 5.")
     final_report.write_text(report_text + "\n\n" + marker + "\n\n"
         "Task A is exact for 864/864. After identity-matched FIT72 reconciliation, Task B has "
         "2,592 exact historical matches and 1,296 first-time cases. The first Task B pass "
         "misconfigured B+Age as B+C; those 72 source records remain preserved and are superseded "
-        "by the separately bound corrected B+Age epoch. See `H2_RECOVERY_ADDENDUM.md`, "
-        "`parity_reconciliation.csv`, and `fit72_b_age_correction_validation.csv`.\n")
+        "by the separately bound corrected B+Age epoch. Combined index v3 preserves the previous "
+        "7,776 entries exactly and points to the 4,752 authoritative recovery records. See "
+        "`H2_RECOVERY_ADDENDUM.md`, `game_schema_compatibility.md`, `parity_reconciliation.csv`, "
+        "and `fit72_b_age_correction_validation.csv`. The current website reader still requires "
+        "its original index schema and is not directly compatible with v3.\n")
     completion_path = OUT / "completion_record.json"
     completion = json.loads(completion_path.read_text())
     completion["reconciliation_sha256"] = sha(OUT / "parity_reconciliation_summary.json")
     completion["exact_reproduction_status"] = "ALL_COMPARABLE_HISTORICAL_CASES_EXACT"
+    completion["binding_epochs"] = full_summary["binding_epochs"]
+    completion["binding_sha256"] = correction_binding_sha
     completion["summary_sha256"] = sha(summary_path)
     completion_path.write_text(json.dumps(completion, sort_keys=True, indent=2) + "\n")
     manifest_entries = []
