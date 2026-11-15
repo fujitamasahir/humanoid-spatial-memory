@@ -1,0 +1,8 @@
+{
+  "amendment_sha256": "4a649d6656bb77ea930c157b65c650564c7017ffb6e9edf7fd339e84fff54b25",
+  "cause": "observation logger compared projected persistence map to last-write observation log",
+  "checkpoint_journal_hash_verified": true,
+  "committed_episode_files_preserved": 545,
+  "failed_arm": "b_age",
+  "status": "STOPPED_WITH_VALID_PARTIAL_CHECKPOINTS"
+}

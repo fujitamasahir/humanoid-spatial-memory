@@ -1,0 +1,63 @@
+{
+  "blocked_models": [
+    {
+      "additional_action_selection_logic": "Only for source models whose frozen policy includes it; common selected-action shield and emergency safety retained",
+      "authorization_status": "blocked: no FIT authorization",
+      "display_name": "C-Route3",
+      "family": "Candidate coverage",
+      "fixed_arm_or_mode": "c_route3",
+      "fixed_parameters": "K=3 route-ranked; shared mechanism gate rejected",
+      "historical_evaluation_script": "scripts/evaluate_c_v2_candidate_coverage_fit72.py",
+      "implementation": "information_value_route",
+      "memory_representation": "Original spatial memory API; model-specific state is disclosed by source",
+      "model_id": "c_route3",
+      "observation_decision": "information_value_route; see exact mode and source commitment",
+      "previously_evaluated": false,
+      "source_commit": "13c6caaf5cd9bdd3704a6e35b0f3b4caf861577b",
+      "source_file": "src/spatial_memory/candidate_coverage.py",
+      "source_sha256": "4e3da23fa49b348d3a8b6e320e63e170ba283131d09271a5dc9793f33cffe067"
+    },
+    {
+      "additional_action_selection_logic": "Only for source models whose frozen policy includes it; common selected-action shield and emergency safety retained",
+      "authorization_status": "blocked: no FIT authorization",
+      "display_name": "C-RouteK",
+      "family": "Candidate coverage",
+      "fixed_arm_or_mode": "c_routek",
+      "fixed_parameters": "K=5 route-ranked; shared mechanism gate rejected",
+      "historical_evaluation_script": "scripts/evaluate_c_v2_candidate_coverage_fit72.py",
+      "implementation": "information_value_route",
+      "memory_representation": "Original spatial memory API; model-specific state is disclosed by source",
+      "model_id": "c_routek",
+      "observation_decision": "information_value_route; see exact mode and source commitment",
+      "previously_evaluated": false,
+      "source_commit": "13c6caaf5cd9bdd3704a6e35b0f3b4caf861577b",
+      "source_file": "src/spatial_memory/candidate_coverage.py",
+      "source_sha256": "4e3da23fa49b348d3a8b6e320e63e170ba283131d09271a5dc9793f33cffe067"
+    },
+    {
+      "additional_action_selection_logic": "Only for source models whose frozen policy includes it; common selected-action shield and emergency safety retained",
+      "authorization_status": "blocked: invalid gate",
+      "display_name": "C-Topology3-c",
+      "family": "Topology EVI",
+      "fixed_arm_or_mode": "c_topology3c",
+      "fixed_parameters": "K=3; c-v2c review INVALID_STOP_BEFORE_FIT",
+      "historical_evaluation_script": "scripts/evaluate_c_v2c_topology_fit72.py",
+      "implementation": "information_value_topology_c",
+      "memory_representation": "Original spatial memory API; model-specific state is disclosed by source",
+      "model_id": "c_topology3c",
+      "observation_decision": "information_value_topology_c; see exact mode and source commitment",
+      "previously_evaluated": false,
+      "source_commit": "368583da54d319acaa956c39373dacc5aa50814f",
+      "source_file": "src/spatial_memory/topology_evi_c.py",
+      "source_sha256": "2c44d90de038a1b0d8a5a7856911f585fd289e807947748aa9d01548e94799d1"
+    }
+  ],
+  "case_count": 4,
+  "condition": "both",
+  "elapsed_seconds": 90.17479820799781,
+  "eligible_models": 41,
+  "episodes": 328,
+  "protocol_binding_sha256": "fbcd5a1d40b8dc8c59f3ffb7750e892730f51897c59868b69420d31e9a8efbb2",
+  "requested_models": 44,
+  "status": "COMPLETE"
+}

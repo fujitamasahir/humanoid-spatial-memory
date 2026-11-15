@@ -1,0 +1,8 @@
+{
+  "committed_at_utc": "2026-11-15T12:01:36.783176+00:00",
+  "parent_binding_sha256": "a90239d8fcb09b61c247316b5d8d18096bd53e7ea34b09ef913bef068d43b7c5",
+  "preserved_reusable_episode_records": 82,
+  "reason": "schedule index 2 is outside the frozen API range 0..1",
+  "reusable_schedule_index": 1,
+  "status": "STOPPED_BEFORE_PRIMARY"
+}

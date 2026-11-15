@@ -1,0 +1,17 @@
+{
+  "analysis_sha256": "b932b0458567f0bca2559508ff989135db2f2197de5373a79d56f082159f83ca",
+  "available_models": 54,
+  "blocked_models": 3,
+  "bootstrap": {
+    "clusters": 36,
+    "draws": 5000,
+    "paired_schedules": 2,
+    "seed": 20261115
+  },
+  "expected_rows": 7776,
+  "historical_high_frequency_rows": 936,
+  "historical_original_rows": 936,
+  "independent_validation": false,
+  "rows": 7776,
+  "status": "PASS"
+}
