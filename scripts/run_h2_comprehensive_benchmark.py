@@ -47,6 +47,13 @@ def atomic_episode(path,value):
     return sha_bytes(packed)
 def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False)
 def load_registry():return json.loads(REGISTRY.read_text())
+def active_binding_path():
+    pointer=OUT/'active_binding.json'
+    if pointer.is_file():
+        entry=json.loads(pointer.read_text());path=OUT/entry['path']
+        if sha(path)!=entry['sha256']:raise RuntimeError('Active binding pointer hash mismatch')
+        return path
+    return OUT/'binding.json'
 def load_maps():
     maps=h2.source_maps()
     if len(maps)!=36:raise RuntimeError('Expected 36 saved H2 maps')
@@ -121,8 +128,50 @@ def bind():
     write_exclusive(OUT/'binding.json',binding)
     print('Binding created; no episode run. Eligible additional arms:',len(ADDITIONAL),flush=True)
 
+def amend_binding():
+    parent=OUT/'binding.json'
+    if not parent.is_file():raise FileNotFoundError('Original pre-run binding is missing')
+    amendment=OUT/'binding_amendment_1.json'
+    pointer=OUT/'active_binding.json'
+    if amendment.exists() or pointer.exists():raise FileExistsError('Binding amendment already exists')
+    original=json.loads(parent.read_text())
+    if original['commit']!='a767f3ee9de984e67d7d50529d0572d871a9a701':
+        raise RuntimeError('Unexpected parent binding commit')
+    smoke_root=OUT/'smoke/episodes'
+    files=sorted(smoke_root.rglob('*.json.gz')) if smoke_root.exists() else []
+    if len(files)!=82:raise RuntimeError('Expected exactly 82 preserved partial smoke records')
+    for p in files:
+        with gzip.open(p,'rt') as f:item=json.load(f)
+        if (item['schedule']!=1 or item['condition'] not in ('original','high_frequency')
+                or item['arm'] not in ADDITIONAL):
+            raise RuntimeError(f'Partial smoke record is not reusable: {p}')
+    updated=dict(original)
+    updated['parent_binding_sha256']=sha(parent)
+    updated['commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['matrix']=dict(original['matrix'],schedules=[0,1])
+    updated['schedule_indexing']='frozen zero-based API indices 0 and 1; exact saved schedule payloads'
+    updated['protocol_amendment_sha256']=sha(ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_1.md')
+    updated['amended_at_utc']=datetime.now(timezone.utc).isoformat()
+    updated['runner_correction']='Initial smoke requested unsupported schedule index 2; first 82 valid schedule-1 records retained and reused.'
+    changed={
+        'scripts/run_h2_comprehensive_benchmark.py',
+        'docs/h2_comprehensive_benchmark_protocol_v1_amendment_1.md',
+        'tests/test_h2_comprehensive_adapters.py',
+        'tests/test_h2_comprehensive_registry.py',
+    }
+    for name in changed:updated['source_sha256'][name]=sha(ROOT/name)
+    write_exclusive(amendment,updated)
+    write_exclusive(pointer,{'path':amendment.name,'sha256':sha(amendment),
+                             'parent_binding_sha256':sha(parent)})
+    failed=OUT/'smoke/failure_attempt_001.json'
+    write_exclusive(failed,{'status':'STOPPED_BEFORE_PRIMARY','reason':'schedule index 2 is outside the frozen API range 0..1',
+        'parent_binding_sha256':sha(parent),'preserved_reusable_episode_records':len(files),
+        'reusable_schedule_index':1,'committed_at_utc':datetime.now(timezone.utc).isoformat()})
+    print('Binding amendment created; preserved 82 records will be reused.',flush=True)
+
 def validate_binding():
-    b=json.loads((OUT/'binding.json').read_text())
+    path=active_binding_path()
+    b=json.loads(path.read_text())
     if b['status'] not in ('PREREGISTERED_READY_FOR_VALIDATION','VALIDATION_PASSED','PRIMARY_IN_PROGRESS','PARTIAL'):
         raise RuntimeError('Binding not eligible to run')
     if b['commit']!=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip():
@@ -134,6 +183,10 @@ def validate_binding():
     maps=load_maps()
     if b['maps']!=[{'identity':p['identity'],'sha256':h} for p,h in maps]:
         raise RuntimeError('Saved map identity/hash mismatch')
+    if path.name=='binding_amendment_1.json':
+        amendment=ROOT/'docs/h2_comprehensive_benchmark_protocol_v1_amendment_1.md'
+        if b['protocol_amendment_sha256']!=sha(amendment):raise RuntimeError('Protocol amendment drift')
+        if b['matrix']['schedules']!=[0,1]:raise RuntimeError('Amended schedule index set drift')
     return b
 
 def _episode_path(stage,condition,arm,payload,schedule):
@@ -187,7 +240,7 @@ def _run_cases(stage,condition,case_list,resume=False):
     write_exclusive(root/'summary.json',{'status':'COMPLETE','condition':condition,
         'episodes':actual,'requested_models':44,'eligible_models':len(arms),
         'blocked_models':binding['blocked_models'],'case_count':len(case_list),
-        'protocol_binding_sha256':sha(OUT/'binding.json'),'elapsed_seconds':time.monotonic()-started})
+        'protocol_binding_sha256':sha(active_binding_path()),'elapsed_seconds':time.monotonic()-started})
 
 def _make_smoke_cases():
     maps=load_maps()
@@ -197,17 +250,18 @@ def _make_smoke_cases():
         candidates=[(i,p) for i,(p,_h) in enumerate(maps,1) if p['mechanism']==family]
         if not candidates:raise RuntimeError(f'Missing saved family {family}')
         chosen.append(candidates[0])
-    return [(i,s,p) for i,p in chosen for s in (1,2)]
+    return [(i,s,p) for i,p in chosen for s in (0,1)]
 
 def _make_primary_cases():
-    return [(i,s,p) for i,(p,_h) in enumerate(load_maps(),1) for s in (1,2)]
+    return [(i,s,p) for i,(p,_h) in enumerate(load_maps(),1) for s in (0,1)]
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=('bind','smoke','primary-original','primary-high-frequency','verify'))
+    parser.add_argument('stage',choices=('bind','amend-binding','smoke','primary-original','primary-high-frequency','verify'))
     parser.add_argument('--resume',action='store_true')
     args=parser.parse_args()
     if args.stage=='bind':bind();return
+    if args.stage=='amend-binding':amend_binding();return
     if args.stage=='verify':verify_outputs();return
     if args.stage=='smoke':
         cases=_make_smoke_cases()
@@ -232,12 +286,12 @@ def smoke_gate():
         seen.add((item['condition'],item['arm'],item['map_identity'],int(item['schedule'])))
         if item['condition'] not in conditions:raise RuntimeError('Invalid smoke condition')
     expected={(c,a,i,s) for c in conditions for a in ADDITIONAL
-              for i in identities for s in (1,2)}
+              for i in identities for s in (0,1)}
     if seen!=expected:raise RuntimeError('Smoke matrix has missing or duplicate cells')
     gate={'status':'PASS_SMOKE','models':len(ADDITIONAL),'episodes':len(files),
-        'maps':sorted(identities),'schedules':[1,2],'conditions':['original','high_frequency'],
+        'maps':sorted(identities),'schedules':[0,1],'conditions':['original','high_frequency'],
         'observation_cap_and_selected_shield':'PASS','replay_frame_count':'PASS',
-        'source_binding_sha256':sha(OUT/'binding.json')}
+        'source_binding_sha256':sha(active_binding_path())}
     target=OUT/'validation';target.mkdir(exist_ok=True)
     write_exclusive(target/'smoke_gate.json',gate)
     print('Smoke gate PASS',json.dumps(gate,sort_keys=True),flush=True)
