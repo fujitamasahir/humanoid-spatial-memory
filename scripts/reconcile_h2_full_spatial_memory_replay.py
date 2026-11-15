@@ -36,7 +36,16 @@ def _episode_records():
             key = (row["model_id"], row["map_identity"], int(row["schedule"]))
             with gzip.open(OUT / row["path"], "rt", encoding="utf-8") as f:
                 result[key] = json.load(f)
-    return rows, result
+    corrected = {}
+    corrected_root = OUT / "task_b_b_age_corrected_v2/episodes/b_age"
+    if corrected_root.exists():
+        for path in sorted(corrected_root.rglob("*.json.gz")):
+            with gzip.open(path, "rt", encoding="utf-8") as f:
+                record = json.load(f)
+            key = ("b_age", record["map_identity"], int(record["schedule"]))
+            result[key] = record
+            corrected[key] = path.relative_to(OUT).as_posix()
+    return rows, result, corrected
 
 
 def _rdao_primary():
@@ -84,7 +93,7 @@ def _first_trace_difference(old, new):
 def reconcile():
     from run_h2_final import compare_saved
 
-    index_rows, episodes = _episode_records()
+    index_rows, episodes, corrected_paths = _episode_records()
     history = _rdao_primary()
     bage_history = _bage_history()
     if len(history) != 72:
@@ -111,54 +120,60 @@ def reconcile():
             source = json.dumps([{"source": "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_records.jsonl",
                                   "line": old_ref["line"], "sha256": old_ref["sha256"]}], sort_keys=True)
             detail = "Direct comparison to identity-matched RDAO v1 primary record; alternate variants excluded."
+        elif key[0] == "b_age" and key in corrected_paths:
+            old_ref = bage_history.get((key[1], key[2]))
+            if old_ref is None:
+                raise RuntimeError(f"No identity-matched B+Age primary record for {key}")
+            current = episodes[key]
+            compare_saved(old_ref["record"], current["row"], current["source_trace_for_exact_parity"])
+            status = "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE"
+            source = json.dumps([{"source": old_ref["path"].relative_to(ROOT).as_posix(),
+                                  "sha256": old_ref["sha256"]}], sort_keys=True)
+            detail = "Corrected B+Age-only recovery under binding_amendment_5; initial misconfigured records retained but excluded."
+        replay_path = corrected_paths.get(key, row["path"])
+        replay_sha = sha(OUT / replay_path) if key in corrected_paths else row["sha256"]
         reconciled.append({"model_id": key[0], "map_identity": key[1], "schedule": key[2],
                            "initial_status": row["parity_status"], "status": status,
                            "historical_sources": source, "detail": detail,
-                           "replay_path": row["path"], "replay_sha256": row["sha256"]})
+                           "replay_path": replay_path, "replay_sha256": replay_sha})
 
     b_age = []
-    mismatches = [r for r in reconciled if r["model_id"] == "b_age"]
-    if len(mismatches) != 72:
-        raise RuntimeError(f"Expected 72 B+Age cases; found {len(mismatches)}")
-    for row in mismatches:
+    corrected_bage_rows = [r for r in reconciled if r["model_id"] == "b_age"]
+    if len(corrected_bage_rows) != 72 or len(corrected_paths) != 72:
+        raise RuntimeError(f"Expected 72 corrected B+Age cases; found {len(corrected_paths)}")
+    for row in corrected_bage_rows:
         key = (row["model_id"], row["map_identity"], int(row["schedule"]))
         current = episodes[key]
         old_ref = bage_history.get((key[1], key[2]))
         if old_ref is None:
             raise RuntimeError(f"No identity-matched B+Age historical record for {key}")
         hist_path, hist_sha, old = old_ref["path"], old_ref["sha256"], old_ref["record"]
-        step, fields, before, after = _first_trace_difference(
-            old.get("trace", {}), current["source_trace_for_exact_parity"] or {})
-        if step is None:
-            raise RuntimeError(f"Metric mismatch without a trace difference: {key}")
+        step, _, _, _ = _first_trace_difference(old.get("trace", {}),
+                                                 current["source_trace_for_exact_parity"] or {})
+        if step is not None:
+            raise RuntimeError(f"Corrected B+Age trace still differs from history at {key}: step {step}")
+        corrected_path = corrected_paths[key]
+        corrected_sha = sha(OUT / corrected_path)
         b_age.append({"model_id": "b_age", "map_identity": row["map_identity"],
             "schedule": row["schedule"], "historical_source": hist_path.relative_to(ROOT).as_posix(),
-            "historical_sha256": hist_sha, "recovery_source": row["replay_path"],
-            "recovery_sha256": row["replay_sha256"], "first_divergent_step": step,
-            "first_divergent_fields": fields,
-            "historical_position": json.dumps(before.get("position") if before else None),
-            "recovery_position": json.dumps(after.get("position") if after else None),
-            "historical_heading": before.get("heading_yaw") if before else None,
-            "recovery_heading": after.get("heading_yaw") if after else None,
-            "historical_action": json.dumps(before.get("action") if before else None),
-            "recovery_action": json.dumps(after.get("action") if after else None),
-            "historical_observation_granted": before.get("observation_granted") if before else None,
-            "recovery_observation_granted": after.get("observation_granted") if after else None,
+            "historical_sha256": hist_sha, "recovery_path": corrected_path,
+            "recovery_sha256": corrected_sha, "parity_status": row["status"],
             "historical_success": old["row"].get("success"),
             "recovery_success": current["row"].get("success"),
             "historical_steps": old["row"].get("elapsed_steps"),
             "recovery_steps": current["row"].get("elapsed_steps"),
             "historical_observations": old["row"].get("observation_count"),
-            "recovery_observations": current["row"].get("observation_count")})
+            "recovery_observations": current["row"].get("observation_count"),
+            "superseded_misconfigured_path": original[key]["path"],
+            "superseded_misconfigured_sha256": original[key]["sha256"]})
 
     counts = Counter(x["status"] for x in reconciled)
-    if counts != Counter({"PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2520,
-                          "FIRST_TIME_FIT72_EVALUATION": 1296,
-                          "MISMATCH": 72}):
+    if counts != Counter({"PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2592,
+                          "FIRST_TIME_FIT72_EVALUATION": 1296}):
         raise RuntimeError(f"Unexpected reconciled FIT72 status counts: {counts}")
     with (OUT / "parity_reconciliation.csv").open("x", newline="", encoding="utf-8") as f:
         fields = list(reconciled[0]); w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(reconciled)
-    with (OUT / "fit72_b_age_mismatch_analysis.csv").open("x", newline="", encoding="utf-8") as f:
+    with (OUT / "fit72_b_age_correction_validation.csv").open("x", newline="", encoding="utf-8") as f:
         fields = list(b_age[0]); w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(b_age)
     reconciliation = {(r["model_id"], r["map_identity"], int(r["schedule"])): r
                       for r in reconciled}
@@ -175,23 +190,34 @@ def reconcile():
                 row_copy["parity_status"] = fixed["status"]
                 row_copy["parity_detail"] = fixed["detail"]
                 row_copy["historical_records"] = fixed["historical_sources"]
+                if key in corrected_paths:
+                    path = OUT / corrected_paths[key]
+                    episode = episodes[key]
+                    row_copy.update({"path": corrected_paths[key],
+                        "sha256": sha(path), "bytes": path.stat().st_size,
+                        "frames": len(episode["replay"]["steps"]),
+                        "steps": int(episode["row"]["elapsed_steps"]),
+                        "goal_step": episode["row"].get("goal_step"),
+                        "paid_observations": episode["row"]["observation_count"],
+                        "success": episode["row"]["success"],
+                        "distance_m": episode["row"].get("travel_distance_m", episode["row"].get("travel_distance")),
+                        "unwanted_contact_pairs": episode["row"].get("g1_unwanted_contact_pairs", 0)})
             writer.writerow(row_copy)
-    summary = {"status": "RECONCILED_WITH_MISMATCHES", "task_b_episodes": 3888,
+    summary = {"status": "COMPLETE_WITH_FIRST_TIME_FIT72_CASES", "task_b_episodes": 3888,
         "task_b_parity": dict(counts), "rdao_v1_identity_matched_exact_records": 72,
-        "b_age_actual_trace_and_metric_mismatches": 72,
-        "first_divergence_step_counts": dict(sorted(Counter(str(r["first_divergent_step"]) for r in b_age).items())),
+        "b_age_corrected_exact_records": 72, "superseded_misconfigured_b_age_records": 72,
         "rdao_source": RDAO.relative_to(ROOT).as_posix(),
         "rdao_source_file_sha256": hashlib.sha256(RDAO.read_bytes()).hexdigest(),
         "bage_historical_commit": "3d66e54fd19c0f5ccc6261ec08eb9dd91efd8fdb",
-        "interpretation": "RDAO v1 now compares against the exact identity-matched primary records. B+Age remains non-identical and is reported as such; this recovery used the active H2 binding, not a silent historical-code substitution."}
+        "interpretation": "Every comparable historical FIT72 record matches after correction. The 1,296 cases with no prior keyed result remain first-time descriptive evaluations."}
     (OUT / "parity_reconciliation_summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
-    note = """# H2 Replay Recovery Addendum — Parity Reconciliation\n\nThe original Task B indexer did not include plain `.jsonl` historical records and also admitted generic RDAO method labels as model identity. A read-only reconciliation pass compared all 72 RDAO v1 episodes directly with `rdao_v1_phase2_evaluation/primary_records.jsonl`, keyed by exact world identity and schedule; all 72 matched both step traces and metric signatures. Alternative RDAO variants were excluded. The raw replay episodes and the initial parity fields inside them remain unchanged.\n\nThe 72 B+Age FIT72 replays remain genuine mismatches against the saved `persistence_evi_fit72_restored_local_v1` episodes. The saved FIT72 provenance pins commit `3d66e54`; this recovery used the active H2 recovery binding. The mismatch is not called a successful reproduction. `fit72_b_age_mismatch_analysis.csv` reports first divergent step, actions, poses, observations, outcomes, and both source hashes. In the first inspected episode, divergence begins at step 4: the historical run turns while the recovery run selects a forward move that the current footprint/safety path rejects. This is a diagnosed source/behavior discrepancy, not evidence that every mismatch has the same cause.\n\n## Current FIT72 reconciliation counts\n\n- Exact historical parity: 2,520 / 3,888\n- First-time FIT72 evaluations: 1,296 / 3,888\n- Actual mismatch: 72 / 3,888 (all B+Age)\n- Uncomparable: 0 / 3,888\n\nTask A remains 864 / 864 exact. The combined archive remains descriptive; this report does not claim complete exact reproduction for Task B.\n"""
+    note = """# H2 Replay Recovery Addendum — Parity Reconciliation\n\nThe first Task B pass had two audit defects. Its historical scanner omitted plain `.jsonl` records and admitted generic RDAO method labels as model identity. RDAO v1 was compared directly to its primary records by exact world identity and schedule; all 72 matched.\n\nThe H2 adapter also mistakenly enabled EVI for `b_age`, so the initial 72 records labeled B+Age actually used B+C. Those original files remain byte-for-byte preserved and are excluded from the authoritative index. The adapter was corrected to `persistence=True, evi=False`; 72 B+Age episodes were recorded in the separate `task_b_b_age_corrected_v2` epoch under append-only `binding_amendment_5.json`. All 72 now match the identity-matched FIT72 traces and metric signatures. The first incomplete correction smoke attempt is retained under `task_b_b_age_corrected/` and excluded.\n\n## Authoritative FIT72 reconciliation counts\n\n- Exact historical parity: 2,592 / 3,888\n- First-time FIT72 evaluations with no prior keyed result: 1,296 / 3,888\n- Mismatches: 0 / 3,888\n- Uncomparable: 0 / 3,888\n\nTask A remains 864 / 864 exact. All comparable historical cases reproduce exactly; the 1,296 cases without historical keyed results are labeled descriptive first-time evaluations. See `replay_index_reconciled.csv`, `parity_reconciliation.csv`, and `fit72_b_age_correction_validation.csv`.\n"""
     (OUT / "H2_RECOVERY_ADDENDUM.md").write_text(note)
     summary_path = OUT / "summary.json"
     full_summary = json.loads(summary_path.read_text())
     full_summary["task_b"]["initial_indexer_parity"] = full_summary["task_b"]["parity"]
     full_summary["task_b"]["parity"] = dict(counts)
-    full_summary["task_b"]["exact_reproduction_status"] = "PARTIAL_WITH_72_B_AGE_MISMATCHES"
+    full_summary["task_b"]["exact_reproduction_status"] = "ALL_COMPARABLE_HISTORICAL_CASES_EXACT"
     full_summary["parity_reconciliation"] = "parity_reconciliation.csv supersedes initial indexer labels for FIT72 records"
     summary_path.write_text(json.dumps(full_summary, sort_keys=True, indent=2) + "\n")
     final_report = OUT / "final_report.md"
@@ -200,14 +226,14 @@ def reconcile():
     if marker not in report_text:
         final_report.write_text(report_text + "\n" + marker + "\n\n"
             "Task A is exact for 864/864. After identity-matched FIT72 reconciliation, Task B has "
-            "2,520 exact historical matches, 1,296 first-time cases, and 72 B+Age mismatches. "
-            "See `H2_RECOVERY_ADDENDUM.md`, `parity_reconciliation.csv`, and "
-            "`fit72_b_age_mismatch_analysis.csv`. The archive is complete; Task B is not a fully "
-            "exact reproduction.\n")
+            "2,592 exact historical matches and 1,296 first-time cases. The first Task B pass "
+            "misconfigured B+Age as B+C; those 72 source records remain preserved and are superseded "
+            "by the separately bound corrected B+Age epoch. See `H2_RECOVERY_ADDENDUM.md`, "
+            "`parity_reconciliation.csv`, and `fit72_b_age_correction_validation.csv`.\n")
     completion_path = OUT / "completion_record.json"
     completion = json.loads(completion_path.read_text())
     completion["reconciliation_sha256"] = sha(OUT / "parity_reconciliation_summary.json")
-    completion["exact_reproduction_status"] = "PARTIAL_WITH_72_B_AGE_MISMATCHES"
+    completion["exact_reproduction_status"] = "ALL_COMPARABLE_HISTORICAL_CASES_EXACT"
     completion["summary_sha256"] = sha(summary_path)
     completion_path.write_text(json.dumps(completion, sort_keys=True, indent=2) + "\n")
     manifest_entries = []
