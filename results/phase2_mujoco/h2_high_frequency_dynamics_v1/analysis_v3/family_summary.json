@@ -1,0 +1,359 @@
+{
+  "BP": {
+    "age4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 16.9375,
+      "mean_paid": 8,
+      "mean_steps": 28.333333333333332,
+      "success_rate": 0.9583333333333334
+    },
+    "age5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 18.1875,
+      "mean_paid": 7.416666666666667,
+      "mean_steps": 31.125,
+      "success_rate": 0.9583333333333334
+    },
+    "age6": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 22,
+      "mean_distance_m": 17.34375,
+      "mean_paid": 5.666666666666667,
+      "mean_steps": 30.75,
+      "success_rate": 0.9166666666666666
+    },
+    "age_route_clock": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 24,
+      "mean_distance_m": 17.625,
+      "mean_paid": 9.583333333333334,
+      "mean_steps": 29.583333333333332,
+      "success_rate": 1.0
+    },
+    "age_route_rescue": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 17.0,
+      "mean_paid": 7.916666666666667,
+      "mean_steps": 28.333333333333332,
+      "success_rate": 0.9583333333333334
+    },
+    "caa_fast": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 18.15625,
+      "mean_paid": 7.375,
+      "mean_steps": 31.125,
+      "success_rate": 0.9583333333333334
+    },
+    "caa_full": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 18.15625,
+      "mean_paid": 7.375,
+      "mean_steps": 31.125,
+      "success_rate": 0.9583333333333334
+    },
+    "periodic4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 17.3125,
+      "mean_paid": 7.958333333333333,
+      "mean_steps": 29.083333333333332,
+      "success_rate": 0.9583333333333334
+    },
+    "periodic5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 21,
+      "mean_distance_m": 18.90625,
+      "mean_paid": 7.458333333333333,
+      "mean_steps": 33.5,
+      "success_rate": 0.875
+    },
+    "raa_defer": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 18.1875,
+      "mean_paid": 7.416666666666667,
+      "mean_steps": 31.125,
+      "success_rate": 0.9583333333333334
+    },
+    "rdao_v2": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 17.5625,
+      "mean_paid": 5.166666666666667,
+      "mean_steps": 29.458333333333332,
+      "success_rate": 0.9583333333333334
+    },
+    "rdao_v21": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 22,
+      "mean_distance_m": 17.21875,
+      "mean_paid": 4.458333333333333,
+      "mean_steps": 29.833333333333332,
+      "success_rate": 0.9166666666666666
+    },
+    "uncertainty": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 23,
+      "mean_distance_m": 18.15625,
+      "mean_paid": 6.416666666666667,
+      "mean_steps": 32.208333333333336,
+      "success_rate": 0.9583333333333334
+    }
+  },
+  "M": {
+    "age4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 22.1875,
+      "mean_paid": 13.333333333333334,
+      "mean_steps": 46.666666666666664,
+      "success_rate": 0.6666666666666666
+    },
+    "age5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 23.03125,
+      "mean_paid": 12.5,
+      "mean_steps": 47.625,
+      "success_rate": 0.6666666666666666
+    },
+    "age6": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 24.6875,
+      "mean_paid": 12.375,
+      "mean_steps": 52.625,
+      "success_rate": 0.6666666666666666
+    },
+    "age_route_clock": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 20.8125,
+      "mean_paid": 13.875,
+      "mean_steps": 44.416666666666664,
+      "success_rate": 0.7083333333333334
+    },
+    "age_route_rescue": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 22.15625,
+      "mean_paid": 13.083333333333334,
+      "mean_steps": 46.666666666666664,
+      "success_rate": 0.6666666666666666
+    },
+    "caa_fast": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 23.03125,
+      "mean_paid": 12.5,
+      "mean_steps": 47.625,
+      "success_rate": 0.6666666666666666
+    },
+    "caa_full": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 23.03125,
+      "mean_paid": 12.5,
+      "mean_steps": 47.625,
+      "success_rate": 0.6666666666666666
+    },
+    "periodic4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 14,
+      "mean_distance_m": 26.21875,
+      "mean_paid": 13.75,
+      "mean_steps": 53.583333333333336,
+      "success_rate": 0.5833333333333334
+    },
+    "periodic5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 18,
+      "mean_distance_m": 21.90625,
+      "mean_paid": 10.083333333333334,
+      "mean_steps": 47,
+      "success_rate": 0.75
+    },
+    "raa_defer": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 23.03125,
+      "mean_paid": 12.5,
+      "mean_steps": 47.625,
+      "success_rate": 0.6666666666666666
+    },
+    "rdao_v2": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.4375,
+      "mean_paid": 12.166666666666666,
+      "mean_steps": 50.375,
+      "success_rate": 0.7083333333333334
+    },
+    "rdao_v21": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 22.21875,
+      "mean_paid": 10.25,
+      "mean_steps": 47.083333333333336,
+      "success_rate": 0.7083333333333334
+    },
+    "uncertainty": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.3125,
+      "mean_paid": 11.583333333333334,
+      "mean_steps": 50.208333333333336,
+      "success_rate": 0.7083333333333334
+    }
+  },
+  "R": {
+    "age4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 18,
+      "mean_distance_m": 25.3125,
+      "mean_paid": 12.458333333333334,
+      "mean_steps": 44.416666666666664,
+      "success_rate": 0.75
+    },
+    "age5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.9375,
+      "mean_paid": 11.958333333333334,
+      "mean_steps": 48.125,
+      "success_rate": 0.7083333333333334
+    },
+    "age6": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 15,
+      "mean_distance_m": 27.25,
+      "mean_paid": 10.5,
+      "mean_steps": 52.791666666666664,
+      "success_rate": 0.625
+    },
+    "age_route_clock": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 15,
+      "mean_distance_m": 24.3125,
+      "mean_paid": 14.083333333333334,
+      "mean_steps": 50.541666666666664,
+      "success_rate": 0.625
+    },
+    "age_route_rescue": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 18,
+      "mean_distance_m": 25.3125,
+      "mean_paid": 12.333333333333334,
+      "mean_steps": 44.416666666666664,
+      "success_rate": 0.75
+    },
+    "caa_fast": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 24.25,
+      "mean_paid": 11.958333333333334,
+      "mean_steps": 48.333333333333336,
+      "success_rate": 0.6666666666666666
+    },
+    "caa_full": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 16,
+      "mean_distance_m": 24.25,
+      "mean_paid": 11.875,
+      "mean_steps": 48.333333333333336,
+      "success_rate": 0.6666666666666666
+    },
+    "periodic4": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.8125,
+      "mean_paid": 12.166666666666666,
+      "mean_steps": 46.916666666666664,
+      "success_rate": 0.7083333333333334
+    },
+    "periodic5": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 18,
+      "mean_distance_m": 24.90625,
+      "mean_paid": 10.75,
+      "mean_steps": 50.666666666666664,
+      "success_rate": 0.75
+    },
+    "raa_defer": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.9375,
+      "mean_paid": 11.958333333333334,
+      "mean_steps": 48.125,
+      "success_rate": 0.7083333333333334
+    },
+    "rdao_v2": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 24.84375,
+      "mean_paid": 8.583333333333334,
+      "mean_steps": 46.625,
+      "success_rate": 0.7083333333333334
+    },
+    "rdao_v21": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 17,
+      "mean_distance_m": 23.0,
+      "mean_paid": 7.5,
+      "mean_steps": 46.5,
+      "success_rate": 0.7083333333333334
+    },
+    "uncertainty": {
+      "contacts": 0,
+      "episodes": 24,
+      "goals": 12,
+      "mean_distance_m": 26.53125,
+      "mean_paid": 10.416666666666666,
+      "mean_steps": 54.916666666666664,
+      "success_rate": 0.5
+    }
+  }
+}

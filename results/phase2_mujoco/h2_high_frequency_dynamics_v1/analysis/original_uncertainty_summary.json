@@ -1,0 +1,20 @@
+{
+  "arm": "uncertainty",
+  "condition": "saved original scheduled environment dynamics; same 36 maps and 2 schedules",
+  "episodes": 72,
+  "goal_completions": 53,
+  "mean_distance_m": 22.979166666666668,
+  "mean_paid_observations": 9.416666666666666,
+  "mean_steps": 44.94444444444444,
+  "paired_with_high_frequency_uncertainty": {
+    "contacts_dynamic": 0,
+    "contacts_original": 0,
+    "keys": 72,
+    "mean_distance_difference_dynamic_minus_original_m": 0.020833333333333332,
+    "mean_paid_difference_dynamic_minus_original": 0.05555555555555555,
+    "mean_steps_difference_dynamic_minus_original": 0.8333333333333334,
+    "success_improvement": 1,
+    "success_regression": 2,
+    "success_same": 69
+  }
+}
