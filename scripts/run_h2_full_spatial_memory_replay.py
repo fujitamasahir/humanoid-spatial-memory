@@ -222,7 +222,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
     import h2_final_common as frozen
     from spatial_memory import evaluation as ev
     ctx={'steps':{},'observations':{},'initial':None,'agent':None}
-    old_eval=ev.run_episode;old_replay=engine._original_replay
+    old_eval=ev.run_episode;old_run_original=engine.run_original_case
     def monitored_eval(scenario,config,method,**kwargs):
         original_factory=kwargs.get('_controller_factory')
         if original_factory is None: raise RuntimeError('Missing frozen controller factory')
@@ -294,7 +294,10 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
             if not frame['executed_action_applied']: frame['executed_action']=None
             frame['spatial_memory_end_of_step_packed_2bit_base64']=frame.get('spatial_memory_ternary_packed_2bit_base64')
         return trace
-    engine._original_replay=lambda p,s,a,r,t: enrich(p,s,a,r,old_replay(p,s,a,r,t))
+    def monitored_original(p,s,a):
+        row,replay,diagnostics=old_run_original(p,s,a)
+        return row,enrich(p,s,a,row,replay),diagnostics
+    engine.run_original_case=monitored_original
     ev.run_episode=monitored_eval
     engine._extend_frozen_arms()
     try:
@@ -303,7 +306,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
         else:
             result=engine.run_original_case(payload,schedule,arm)
     finally:
-        ev.run_episode=old_eval;engine._original_replay=old_replay
+        ev.run_episode=old_eval;engine.run_original_case=old_run_original
     row,replay,diagnostics=result
     if len(replay['steps'])!=int(row['elapsed_steps'])+1:raise RuntimeError('Replay step count mismatch')
     if any(not s.get('spatial_memory_end_of_step_packed_2bit_base64') for s in replay['steps']):raise RuntimeError('Missing end-of-step memory')
