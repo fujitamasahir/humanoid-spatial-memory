@@ -1,0 +1,13 @@
+{
+  "bytes": 19885,
+  "episode_key": [
+    "h2-final-generalization-v1-20261114:R:910000001",
+    0,
+    "periodic4",
+    42
+  ],
+  "parent_binding_sha256": "e86986e3afa1dfe8fabdfd71e92303f8a595c04fc94c12f76736986aad6192ea",
+  "reason": "Initial runner patched an unused replay-construction helper; before/after memory enrichment was absent. This file is retained as diagnostic evidence and is excluded from the active run index.",
+  "sha256": "21cc124d5ad43f363e5a174170af134dde0e675c1968a074e67d1e6e421c8c8e",
+  "status": "REJECTED_SMOKE_ATTEMPT"
+}

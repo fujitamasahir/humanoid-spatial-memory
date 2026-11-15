@@ -1,0 +1,21 @@
+{
+  "b_age_actual_trace_and_metric_mismatches": 72,
+  "bage_historical_commit": "3d66e54fd19c0f5ccc6261ec08eb9dd91efd8fdb",
+  "first_divergence_step_counts": {
+    "2": 2,
+    "3": 2,
+    "4": 66,
+    "9": 2
+  },
+  "interpretation": "RDAO v1 now compares against the exact identity-matched primary records. B+Age remains non-identical and is reported as such; this recovery used the active H2 binding, not a silent historical-code substitution.",
+  "rdao_source": "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_records.jsonl",
+  "rdao_source_file_sha256": "7599574227587f233a2a792cf80bbd944c1c5fd7952b3f634b511ad844e24314",
+  "rdao_v1_identity_matched_exact_records": 72,
+  "status": "RECONCILED_WITH_MISMATCHES",
+  "task_b_episodes": 3888,
+  "task_b_parity": {
+    "FIRST_TIME_FIT72_EVALUATION": 1296,
+    "MISMATCH": 72,
+    "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2520
+  }
+}

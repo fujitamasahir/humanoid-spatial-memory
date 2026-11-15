@@ -1,0 +1,660 @@
+{
+  "active_binding": {
+    "path": "binding_amendment_3.json",
+    "sha256": "3940d8dcbc3721914efca54368bf81c6006e01ce0ae492c78d301e6a72226bb3"
+  },
+  "binding_epochs": {
+    "corrected_b_age": {
+      "path": "binding_amendment_5.json",
+      "sha256": "7a8a1a1975991f541008069e425e85ee80a28f3dd9acf6f4ea36bb35cdced8ac"
+    },
+    "task_a": {
+      "path": "binding_amendment_2.json",
+      "sha256": "48cf7a06e258d5208b1138486eb5831cb4845db3ed5d8f0c13037d983875652e"
+    },
+    "task_b_initial": {
+      "path": "binding_amendment_3.json",
+      "sha256": "3940d8dcbc3721914efca54368bf81c6006e01ce0ae492c78d301e6a72226bb3"
+    }
+  },
+  "excluded_blocked_models": [
+    "c_route3",
+    "c_routek",
+    "c_topology3c"
+  ],
+  "existing_complete_before_after_spatial_memory_replays": 0,
+  "historical_h2_manifests_verified": 8206,
+  "parity_reconciliation": "parity_reconciliation.csv supersedes initial indexer labels for FIT72 records",
+  "preservation_gate": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "status": "COMPLETE",
+  "task_a": {
+    "episodes": 864,
+    "models": {
+      "age4": {
+        "contacts": 0,
+        "distance": 1548.75,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 808,
+        "steps": 2852
+      },
+      "age5": {
+        "contacts": 0,
+        "distance": 1586.25,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 763,
+        "steps": 3032
+      },
+      "age6": {
+        "contacts": 0,
+        "distance": 1689.0,
+        "episodes": 72,
+        "goal_rate": 0.7777777777777778,
+        "goals": 56,
+        "observations": 693,
+        "steps": 3295
+      },
+      "age_route_clock": {
+        "contacts": 0,
+        "distance": 1468.5,
+        "episodes": 72,
+        "goal_rate": 0.8055555555555556,
+        "goals": 58,
+        "observations": 880,
+        "steps": 2885
+      },
+      "age_route_rescue": {
+        "contacts": 0,
+        "distance": 1550.25,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 796,
+        "steps": 2852
+      },
+      "caa_fast": {
+        "contacts": 0,
+        "distance": 1585.5,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 762,
+        "steps": 3032
+      },
+      "caa_full": {
+        "contacts": 0,
+        "distance": 1585.5,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 760,
+        "steps": 3032
+      },
+      "periodic4": {
+        "contacts": 0,
+        "distance": 1629.75,
+        "episodes": 72,
+        "goal_rate": 0.7638888888888888,
+        "goals": 55,
+        "observations": 811,
+        "steps": 3098
+      },
+      "periodic5": {
+        "contacts": 0,
+        "distance": 1546.5,
+        "episodes": 72,
+        "goal_rate": 0.8333333333333334,
+        "goals": 60,
+        "observations": 661,
+        "steps": 3064
+      },
+      "raa_defer": {
+        "contacts": 0,
+        "distance": 1586.25,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 763,
+        "steps": 3032
+      },
+      "rdao_v2": {
+        "contacts": 0,
+        "distance": 1592.25,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 628,
+        "steps": 3004
+      },
+      "rdao_v21": {
+        "contacts": 0,
+        "distance": 1515.75,
+        "episodes": 72,
+        "goal_rate": 0.7777777777777778,
+        "goals": 56,
+        "observations": 550,
+        "steps": 2984
+      }
+    },
+    "parity": {
+      "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 864
+    }
+  },
+  "task_b": {
+    "episodes": 3888,
+    "exact_reproduction_status": "ALL_COMPARABLE_HISTORICAL_CASES_EXACT",
+    "initial_indexer_parity": {
+      "FIRST_TIME_FIT72_EVALUATION": 1296,
+      "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2592
+    },
+    "models": {
+      "age4": {
+        "contacts": 0,
+        "distance": 1612.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 850,
+        "steps": 2915
+      },
+      "age5": {
+        "contacts": 0,
+        "distance": 1666.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 770,
+        "steps": 3044
+      },
+      "age6": {
+        "contacts": 0,
+        "distance": 1755.0,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 707,
+        "steps": 3482
+      },
+      "age_event": {
+        "contacts": 0,
+        "distance": 1612.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 850,
+        "steps": 2915
+      },
+      "age_gap4": {
+        "contacts": 0,
+        "distance": 1659.0,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 800,
+        "steps": 3039
+      },
+      "age_motion": {
+        "contacts": 0,
+        "distance": 1631.25,
+        "episodes": 72,
+        "goal_rate": 0.8888888888888888,
+        "goals": 64,
+        "observations": 786,
+        "steps": 2990
+      },
+      "age_route_clock": {
+        "contacts": 0,
+        "distance": 1621.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 932,
+        "steps": 2901
+      },
+      "age_route_rescue": {
+        "contacts": 0,
+        "distance": 1615.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 848,
+        "steps": 2927
+      },
+      "age_view_clock": {
+        "contacts": 0,
+        "distance": 1605.0,
+        "episodes": 72,
+        "goal_rate": 0.8472222222222222,
+        "goals": 61,
+        "observations": 776,
+        "steps": 3186
+      },
+      "age_view_veto": {
+        "contacts": 0,
+        "distance": 1626.75,
+        "episodes": 72,
+        "goal_rate": 0.875,
+        "goals": 63,
+        "observations": 771,
+        "steps": 3187
+      },
+      "b_age": {
+        "contacts": 0,
+        "distance": 1530.75,
+        "episodes": 72,
+        "goal_rate": 0.6388888888888888,
+        "goals": 46,
+        "observations": 262,
+        "steps": 3866
+      },
+      "bc": {
+        "contacts": 0,
+        "distance": 1530.75,
+        "episodes": 72,
+        "goal_rate": 0.6388888888888888,
+        "goals": 46,
+        "observations": 262,
+        "steps": 3866
+      },
+      "c0_audit": {
+        "contacts": 0,
+        "distance": 1515.0,
+        "episodes": 72,
+        "goal_rate": 0.6388888888888888,
+        "goals": 46,
+        "observations": 387,
+        "steps": 3838
+      },
+      "c_k": {
+        "contacts": 0,
+        "distance": 1527.75,
+        "episodes": 72,
+        "goal_rate": 0.75,
+        "goals": 54,
+        "observations": 453,
+        "steps": 3682
+      },
+      "c_ternary": {
+        "contacts": 0,
+        "distance": 1515.0,
+        "episodes": 72,
+        "goal_rate": 0.6388888888888888,
+        "goals": 46,
+        "observations": 387,
+        "steps": 3838
+      },
+      "c_topology3d": {
+        "contacts": 0,
+        "distance": 1613.25,
+        "episodes": 72,
+        "goal_rate": 0.7222222222222222,
+        "goals": 52,
+        "observations": 606,
+        "steps": 3577
+      },
+      "caa_fast": {
+        "contacts": 0,
+        "distance": 1668.0,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 768,
+        "steps": 3044
+      },
+      "caa_full": {
+        "contacts": 0,
+        "distance": 1668.0,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 768,
+        "steps": 3044
+      },
+      "caa_slow": {
+        "contacts": 0,
+        "distance": 1666.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 770,
+        "steps": 3044
+      },
+      "dao_combined": {
+        "contacts": 0,
+        "distance": 1550.25,
+        "episodes": 72,
+        "goal_rate": 0.7083333333333334,
+        "goals": 51,
+        "observations": 824,
+        "steps": 3372
+      },
+      "dao_route": {
+        "contacts": 0,
+        "distance": 1611.0,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 944,
+        "steps": 3101
+      },
+      "dao_trigger": {
+        "contacts": 0,
+        "distance": 1608.0,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 956,
+        "steps": 3092
+      },
+      "dao_veto": {
+        "contacts": 0,
+        "distance": 1554.0,
+        "episodes": 72,
+        "goal_rate": 0.7083333333333334,
+        "goals": 51,
+        "observations": 795,
+        "steps": 3445
+      },
+      "dao_veto_deadline": {
+        "contacts": 0,
+        "distance": 1599.0,
+        "episodes": 72,
+        "goal_rate": 0.7222222222222222,
+        "goals": 52,
+        "observations": 577,
+        "steps": 3558
+      },
+      "dao_veto_joint": {
+        "contacts": 0,
+        "distance": 1599.0,
+        "episodes": 72,
+        "goal_rate": 0.7222222222222222,
+        "goals": 52,
+        "observations": 577,
+        "steps": 3558
+      },
+      "dao_veto_optimistic": {
+        "contacts": 0,
+        "distance": 1625.25,
+        "episodes": 72,
+        "goal_rate": 0.8055555555555556,
+        "goals": 58,
+        "observations": 922,
+        "steps": 3136
+      },
+      "dao_veto_q50": {
+        "contacts": 0,
+        "distance": 1632.0,
+        "episodes": 72,
+        "goal_rate": 0.8055555555555556,
+        "goals": 58,
+        "observations": 922,
+        "steps": 3136
+      },
+      "dao_veto_q80": {
+        "contacts": 0,
+        "distance": 1625.25,
+        "episodes": 72,
+        "goal_rate": 0.8055555555555556,
+        "goals": 58,
+        "observations": 922,
+        "steps": 3136
+      },
+      "dao_veto_route_gate": {
+        "contacts": 0,
+        "distance": 1554.0,
+        "episodes": 72,
+        "goal_rate": 0.7083333333333334,
+        "goals": 51,
+        "observations": 795,
+        "steps": 3445
+      },
+      "deadline_stable": {
+        "contacts": 0,
+        "distance": 1625.25,
+        "episodes": 72,
+        "goal_rate": 0.7083333333333334,
+        "goals": 51,
+        "observations": 571,
+        "steps": 3574
+      },
+      "deadline_stable_quiet": {
+        "contacts": 0,
+        "distance": 1618.5,
+        "episodes": 72,
+        "goal_rate": 0.7083333333333334,
+        "goals": 51,
+        "observations": 571,
+        "steps": 3574
+      },
+      "h1_k": {
+        "contacts": 0,
+        "distance": 1548.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1131,
+        "steps": 3254
+      },
+      "h1_topology": {
+        "contacts": 0,
+        "distance": 1533.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1137,
+        "steps": 3192
+      },
+      "h3_k": {
+        "contacts": 0,
+        "distance": 1548.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1131,
+        "steps": 3254
+      },
+      "h3_topology": {
+        "contacts": 0,
+        "distance": 1533.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1137,
+        "steps": 3192
+      },
+      "ms_k": {
+        "contacts": 0,
+        "distance": 1548.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1131,
+        "steps": 3254
+      },
+      "ms_k_visibility": {
+        "contacts": 0,
+        "distance": 1545.0,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1136,
+        "steps": 3251
+      },
+      "ms_topology": {
+        "contacts": 0,
+        "distance": 1533.75,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1137,
+        "steps": 3192
+      },
+      "ms_topology_visibility": {
+        "contacts": 0,
+        "distance": 1536.0,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 1137,
+        "steps": 3192
+      },
+      "periodic4": {
+        "contacts": 0,
+        "distance": 1659.0,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 800,
+        "steps": 3039
+      },
+      "periodic5": {
+        "contacts": 0,
+        "distance": 1640.25,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 670,
+        "steps": 3108
+      },
+      "periodic_event": {
+        "contacts": 0,
+        "distance": 1659.0,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 800,
+        "steps": 3039
+      },
+      "raa_advance": {
+        "contacts": 0,
+        "distance": 1684.5,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 800,
+        "steps": 3058
+      },
+      "raa_defer": {
+        "contacts": 0,
+        "distance": 1666.5,
+        "episodes": 72,
+        "goal_rate": 0.9166666666666666,
+        "goals": 66,
+        "observations": 768,
+        "steps": 3044
+      },
+      "raa_joint": {
+        "contacts": 0,
+        "distance": 1684.5,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 800,
+        "steps": 3058
+      },
+      "rdao_v1": {
+        "contacts": 0,
+        "distance": 1763.25,
+        "episodes": 72,
+        "goal_rate": 0.7916666666666666,
+        "goals": 57,
+        "observations": 656,
+        "steps": 3221
+      },
+      "rdao_v1_footprint": {
+        "contacts": 0,
+        "distance": 1805.25,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 715,
+        "steps": 3227
+      },
+      "rdao_v1_gate_every": {
+        "contacts": 0,
+        "distance": 1775.25,
+        "episodes": 72,
+        "goal_rate": 0.8055555555555556,
+        "goals": 58,
+        "observations": 618,
+        "steps": 3215
+      },
+      "rdao_v1_gate_first": {
+        "contacts": 0,
+        "distance": 1761.0,
+        "episodes": 72,
+        "goal_rate": 0.8472222222222222,
+        "goals": 61,
+        "observations": 635,
+        "steps": 3187
+      },
+      "rdao_v2": {
+        "contacts": 0,
+        "distance": 1753.5,
+        "episodes": 72,
+        "goal_rate": 0.8472222222222222,
+        "goals": 61,
+        "observations": 688,
+        "steps": 3190
+      },
+      "rdao_v21": {
+        "contacts": 0,
+        "distance": 1728.0,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 617,
+        "steps": 3299
+      },
+      "rdao_v22": {
+        "contacts": 0,
+        "distance": 1762.5,
+        "episodes": 72,
+        "goal_rate": 0.8194444444444444,
+        "goals": 59,
+        "observations": 690,
+        "steps": 3207
+      },
+      "static": {
+        "contacts": 0,
+        "distance": 1545.0,
+        "episodes": 72,
+        "goal_rate": 0.5138888888888888,
+        "goals": 37,
+        "observations": 72,
+        "steps": 4454
+      },
+      "uncertainty": {
+        "contacts": 0,
+        "distance": 1690.5,
+        "episodes": 72,
+        "goal_rate": 0.7777777777777778,
+        "goals": 56,
+        "observations": 599,
+        "steps": 3323
+      }
+    },
+    "parity": {
+      "FIRST_TIME_FIT72_EVALUATION": 1296,
+      "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2592
+    }
+  },
+  "task_b_case_classification": "Per-episode prior-result paths and exact comparison statuses are in replay_index.csv; FIRST_TIME_FIT72_EVALUATION is not described as reproduction."
+}

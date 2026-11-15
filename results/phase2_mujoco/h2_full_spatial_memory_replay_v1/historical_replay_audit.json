@@ -1,0 +1,20 @@
+{
+  "branch": "phase2/mujoco-proxy-pilot",
+  "csv": "results/phase2_mujoco/h2_full_spatial_memory_replay_v1/historical_replay_audit.csv",
+  "excluded_blocked_models": [
+    "c_route3",
+    "c_routek",
+    "c_topology3c"
+  ],
+  "generated_utc": "2026-11-15T14:08:42.759177+00:00",
+  "known_h2_comprehensive_maps": "unseen H2 maps; not a FIT72 identity match",
+  "known_h2_comprehensive_original_replays": 2952,
+  "note": "Audit is conservative; a model-name match alone is not treated as a replay match.",
+  "parent_commit": "e2d244583c8c832d6af137c2d93c848e6bf3136a",
+  "status": "AUDIT_ONLY",
+  "task_a_expected_episodes": 864,
+  "task_a_saved_maps": 36,
+  "task_b_admitted_fit_maps": 36,
+  "task_b_expected_episodes": 3888,
+  "task_b_expected_models": 54
+}
