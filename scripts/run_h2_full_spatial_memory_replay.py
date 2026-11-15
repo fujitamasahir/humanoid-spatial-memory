@@ -164,11 +164,7 @@ def audit():
     print(json.dumps(report,indent=2));return report
 
 def load_binding():
-    pointer=OUT/'active_binding.json'
-    if pointer.is_file():
-        active=json.loads(pointer.read_text());p=OUT/active['path']
-        if sha(p)!=active['sha256']:raise RuntimeError('Active binding pointer hash mismatch')
-    else:p=OUT/'binding.json'
+    p=active_binding_path()
     if not p.is_file(): raise FileNotFoundError('Prepare a binding after source/map audit first')
     b=json.loads(p.read_text())
     if b['status'] not in ('READY','RUNNING','PARTIAL'): raise RuntimeError('Binding not runnable')
@@ -176,17 +172,27 @@ def load_binding():
         if sha(ROOT/rel)!=digest: raise RuntimeError(f'Source commitment changed: {rel}')
     return b
 
+def active_binding_path():
+    pointer=OUT/'active_binding.json'
+    if not pointer.is_file():return OUT/'binding.json'
+    active=json.loads(pointer.read_text());p=OUT/active['path']
+    if sha(p)!=active['sha256']:raise RuntimeError('Active binding pointer hash mismatch')
+    return p
+
 def amend_binding():
-    parent=OUT/'binding.json';target=OUT/'binding_amendment_1.json';pointer=OUT/'active_binding.json'
-    if not parent.is_file() or target.exists() or pointer.exists():
-        raise FileExistsError('Parent binding is missing or amendment already exists')
+    pointer=OUT/'active_binding.json';parent=active_binding_path()
+    if not (OUT/'binding.json').is_file():raise FileNotFoundError('Initial binding missing')
+    amendments=sorted(OUT.glob('binding_amendment_*.json'),key=lambda p:int(p.stem.rsplit('_',1)[1]))
+    version=int(amendments[-1].stem.rsplit('_',1)[1])+1 if amendments else 1
+    target=OUT/f'binding_amendment_{version}.json'
+    if target.exists():raise FileExistsError(target)
     old=json.loads(parent.read_text())
     src=set(old['source_sha256'])
     head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     if subprocess.run(['git','merge-base','--is-ancestor',old['bound_at_commit'],head],cwd=ROOT).returncode:
         raise RuntimeError('Current source commit does not descend from binding commit')
     updated=dict(old);updated['parent_binding_sha256']=sha(parent);updated['bound_at_commit']=head
-    updated['status']='PARTIAL';updated['amendment_reason']='Corrected source-trace capture and before/after pose/action semantics after first bounded smoke exposed a replay-enrichment hook defect.'
+    updated['status']='PARTIAL';updated['amendment_reason']='Append-only source/hash amendment for corrected full replay capture semantics.'
     updated['source_sha256']={name:sha(ROOT/name) for name in sorted(src)}
     updated['amended_utc']=datetime.now(timezone.utc).isoformat()
     jwrite(target,updated);jwrite(pointer,{'path':target.name,'sha256':sha(target),'parent_binding_sha256':sha(parent)})
@@ -348,7 +354,7 @@ def recover_case(payload,schedule,arm,dataset,condition='original'):
     if len(replay['steps'])!=int(row['elapsed_steps'])+1:raise RuntimeError('Replay step count mismatch')
     if any(not s.get('spatial_memory_end_of_step_packed_2bit_base64') for s in replay['steps']):raise RuntimeError('Missing end-of-step memory')
     replay['dataset']=dataset;replay['condition']=condition;replay['map_identity']=payload['identity']
-    replay['replay_recovery']={'source_binding_sha256':sha(OUT/'binding.json'),
+    replay['replay_recovery']={'source_binding_sha256':sha(active_binding_path()),
         'memory_capture':'live controller snapshots, evaluator-side and not passed to policy',
         'classification':'replay_recovery'}
     return row,replay,diagnostics,ctx.get('source_trace')
