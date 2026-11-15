@@ -215,3 +215,26 @@ are not established. The first family meets the immediate target, so no
 failure-only second revision was run. See [executed report](raa_research_report.md).
 No reserved/sealed access, production generation or safety change occurred.
 Existing independent admission/custody/statistical and safety blockers persist.
+
+
+## H2 final36-map evaluation — completed and closed
+
+Owner approval authorized this named final comparison on36 new R/BP/M maps,
+two schedules and12 frozen models. It supersedes proposal-only restrictions
+solely for this evaluation; the earlier DAO pilot/80/200-lineage populations,
+reserved access and safety revisions remain unapproved and unexecuted.
+
+All864 primary episodes completed with0 unwanted contacts. All864 original
+FIT replays and864 timing repeats match saved/primary semantics;163 tests pass.
+Periodic5 leads observed completion at60/72 with661 paid readings. RDAO v2
+reaches59 with628 but adds substantial compute. CAA-Full reaches57/760 versus
+Age5's57/763; all three savings occur in two failed episodes. RAA-Defer exactly
+matches Age5's72 observable step traces and57/763 total. No robust practical
+adaptive superiority or statistical equivalence is established.
+
+H2 observation-scheduling development ends without new models or tuning.
+See [final H2 research report](h2_final_research_report.md),
+[frozen protocol](h2_final_evaluation_protocol_v1.md) and
+[pre-draw backend restoration](h2_backend_recovery_v1_1.md).
+The36-map conditional-admission/same-investigator study does not resolve the
+earlier independent custody/distribution/safety/statistical readiness blockers.

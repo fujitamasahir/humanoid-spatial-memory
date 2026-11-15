@@ -1,0 +1,52 @@
+[
+  {
+    "bytes": 15749,
+    "path": "contrast_01_periodic5_vs_age5.pdf",
+    "sha256": "42b444ae2be17efe0cdb37eb87b0a5657384a5844bf328aee307a36f14d60a6c"
+  },
+  {
+    "bytes": 51178,
+    "path": "contrast_01_periodic5_vs_age5.png",
+    "sha256": "b4b409254eb3b21e277dd3852f1e1df78b381454bca0a517e4a09051a699067b"
+  },
+  {
+    "bytes": 15861,
+    "path": "contrast_01_rdao_v21_vs_periodic5.pdf",
+    "sha256": "8877b36a0a456255dfefe4f2d31280838922419b93dc17abd4d972e7940ac22d"
+  },
+  {
+    "bytes": 47891,
+    "path": "contrast_01_rdao_v21_vs_periodic5.png",
+    "sha256": "b9eeac4b8604afeb8778f68d4c64179f6abeb7c699291f25d475b8107ce2b427"
+  },
+  {
+    "bytes": 15858,
+    "path": "contrast_01_rdao_v2_vs_periodic5.pdf",
+    "sha256": "7528da327cac090b9a753c9475196fcd9304805ea99af998730c694311a364d1"
+  },
+  {
+    "bytes": 47675,
+    "path": "contrast_01_rdao_v2_vs_periodic5.png",
+    "sha256": "e93c053f28cad3d25c9bd47edb8e940c6822dc4ba69db95a85e987d8e7f1308f"
+  },
+  {
+    "bytes": 31651,
+    "path": "final_research_report.md",
+    "sha256": "84e3cf3ac350d8b99d6e5481dd88cf08d8d3003092d079a209c03c43d134add1"
+  },
+  {
+    "bytes": 692,
+    "path": "illustrative_examples.json",
+    "sha256": "6ffd195834ed2aecfec17f52eace0ff1ffd4d441ec75d258dab28d90fa6aea9f"
+  },
+  {
+    "bytes": 2299,
+    "path": "measured_observation_cost_contrasts.json",
+    "sha256": "d698f92121da35821f8c02afdaf1df0643f514740a0bea37bc2cf48fdb45eeee"
+  },
+  {
+    "bytes": 2843,
+    "path": "scan_difference_audit.json",
+    "sha256": "2d5007100a5c151df6d20b3deb747526decad5fa89967ccf6b0b97b19d15569f"
+  }
+]

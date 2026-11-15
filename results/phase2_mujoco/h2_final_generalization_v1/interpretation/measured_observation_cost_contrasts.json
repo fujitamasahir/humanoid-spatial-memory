@@ -1,0 +1,58 @@
+[
+  {
+    "candidate": "caa_full",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 281.306779,
+    "primary_wall_seconds_delta": -0.5499651639999996,
+    "reference": "periodic4"
+  },
+  {
+    "candidate": "caa_full",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 158.76277200000004,
+    "primary_wall_seconds_delta": 0.1564291640000004,
+    "reference": "periodic5"
+  },
+  {
+    "candidate": "caa_full",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 195.58315300000004,
+    "primary_wall_seconds_delta": 0.6032071720000012,
+    "reference": "age4"
+  },
+  {
+    "candidate": "caa_full",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 63.80665399999998,
+    "primary_wall_seconds_delta": 0.03258441300000037,
+    "reference": "age5"
+  },
+  {
+    "candidate": "raa_defer",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 2009.7149540000003,
+    "primary_wall_seconds_delta": 1.1398947560000003,
+    "reference": "periodic4"
+  },
+  {
+    "candidate": "raa_defer",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 1887.1709470000003,
+    "primary_wall_seconds_delta": 1.8462890840000004,
+    "reference": "periodic5"
+  },
+  {
+    "candidate": "raa_defer",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 1923.9913280000003,
+    "primary_wall_seconds_delta": 2.293067092000001,
+    "reference": "age4"
+  },
+  {
+    "candidate": "raa_defer",
+    "interpretation": "Measured simulation only; no energy or causal isolated scan-cost claim",
+    "measured_primary_observation_related_ms_delta": 1792.2148290000002,
+    "primary_wall_seconds_delta": 1.7224443330000003,
+    "reference": "age5"
+  }
+]

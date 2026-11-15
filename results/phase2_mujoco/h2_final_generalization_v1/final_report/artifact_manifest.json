@@ -1,0 +1,12 @@
+[
+  {
+    "bytes": 31990,
+    "path": "research_report.md",
+    "sha256": "3b516e87bc38439f88a153ff167c2fdf6e09a167037dcc09d300d9cc02ababb8"
+  },
+  {
+    "bytes": 171,
+    "path": "rounding_corrections.json",
+    "sha256": "963c385ff4b634bbe1baca48d19377c997299fbe65d5e14174108a5e10cc7fc1"
+  }
+]

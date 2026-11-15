@@ -1,0 +1,10 @@
+{
+  "completed": 864,
+  "source_freeze_commit": "f60de27d6def6111481852e14261be0ad5428fe8",
+  "stage": "primary",
+  "status": "COMPLETE",
+  "timing_repeat_not_independent": false,
+  "unwanted_contacts": 0,
+  "wall_seconds": 241.42696212499868,
+  "warmup_public_fit_episodes": 12
+}

@@ -1,0 +1,8 @@
+{
+  "keys_checked": 51,
+  "original_backend_missing": true,
+  "original_native_hash_not_claimed": true,
+  "pin_sha256": "61fe0b9cd3fa4bfa893607b0460f6a0db818b131e791a64f860f1bc9cd89be76",
+  "scope": "Public authorized FIT checkpoints only; no new map drawn during restoration",
+  "status": "PASS_EXACT_ARCHIVED_GRAPH_KEYS"
+}

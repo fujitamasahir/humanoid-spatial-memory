@@ -1,0 +1,42 @@
+[
+  {
+    "bytes": 325,
+    "path": "compatibility.json",
+    "sha256": "714c2a43f7e28aab9c95022c56509017d11131b4f86915e6d146b7ffc0eed56a"
+  },
+  {
+    "bytes": 1716,
+    "path": "pin.json",
+    "sha256": "61fe0b9cd3fa4bfa893607b0460f6a0db818b131e791a64f860f1bc9cd89be76"
+  },
+  {
+    "bytes": 1732,
+    "path": "pynauty/__init__.py",
+    "sha256": "08380aedc8c9047ecfba08d23c4e7d9cc3c290d719770bc0a9587c5e653529fd"
+  },
+  {
+    "bytes": 376,
+    "path": "pynauty/__main__.py",
+    "sha256": "a2d43e9ce4519e0d5a2a415aa5af3c758e3e0a3b5556d2e78d53a51b59a9ef6a"
+  },
+  {
+    "bytes": 1964,
+    "path": "pynauty/__pycache__/__init__.cpython-312.pyc",
+    "sha256": "3d6bbef1ebf7174d60438f2b3731fc5720cd57ae49924642e9275643c198c5a7"
+  },
+  {
+    "bytes": 11708,
+    "path": "pynauty/__pycache__/graph.cpython-312.pyc",
+    "sha256": "c8c6c5d503cce065c775d4ea66823d989fed9a616a6e32ce048b80a1079c64f8"
+  },
+  {
+    "bytes": 8517,
+    "path": "pynauty/graph.py",
+    "sha256": "c3de5f96eec1cf01324ebeec087d259975d45e80a6e8b84d41d91cbecf6eb186"
+  },
+  {
+    "bytes": 108208,
+    "path": "pynauty/nautywrap.cpython-312-darwin.so",
+    "sha256": "0d31fda6a274640ebe356cc757365e98d0a4590de510f8be972e59108d656454"
+  }
+]
