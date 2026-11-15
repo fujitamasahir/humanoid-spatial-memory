@@ -1,0 +1,70 @@
+{
+  "phase15_integrity": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "prior_h2_fit_replay_count": 864,
+  "prior_h2_manifests": [
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/analysis/artifact_manifest.json",
+      "sha256": "985ccef7ea0926de5edc17b0209b14480e8f8f89d372e934fa09e16752a536e9"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/artifact_manifest.json",
+      "sha256": "ef1cb995b06bf821c347093cc50c9f6b17986264f8fec13964f11b978a9614f9"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/backend/artifact_manifest.json",
+      "sha256": "767ed06768fab06256eed5ffca6d9a2b9b06f94bb10caee57d2e45f5091be8e3"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/final_report/artifact_manifest.json",
+      "sha256": "5166f37945b4406149826eb4fd8e05ca2fdbca7b41ad738b0b0efeb2a32f4d26"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/fit_replay/artifact_manifest.json",
+      "sha256": "def7ae86d8f82817091204946dfac95524eb9e6e1164d41c8751c788e35334a8"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/generation_setup_failure_v1/artifact_manifest.json",
+      "sha256": "697b30cdd20591a9cf956457147346ac454bb155b9e97bfbde850ba16dcf0e9e"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/interpretation/artifact_manifest.json",
+      "sha256": "8081d338a2fff89a70c581aeba639200cf86936feff3b243c3ffe25a29726b24"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/maps/artifact_manifest.json",
+      "sha256": "ab53978d0209a616f62242c06c61c9297c88acf78fe4e7a9a67bc9ecf6b25643"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/primary/artifact_manifest.json",
+      "sha256": "f2bc75dd3c1039327e6f5ce92f92b9ff1d53c22e70ae9bfda2aa61aba236399d"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/smoke/artifact_manifest.json",
+      "sha256": "fb6ffd884e2aa55749320c662b825156120fa70edd8daa7e97d303c6cebc5900"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/timing_repeat/artifact_manifest.json",
+      "sha256": "efd755926b39efdd115e12c1dd32e28fb10eeb183126169330ab37185f64bc7a"
+    },
+    {
+      "path": "results/phase2_mujoco/h2_final_generalization_v1/verification/artifact_manifest.json",
+      "sha256": "3f6362ef159835797cc16ffef8081e2f36baf958a016b6734a9132c86054bdc5"
+    }
+  ],
+  "prior_h2_map_count": 36,
+  "prior_h2_primary_count": 864,
+  "status": "PASS"
+}
