@@ -1,0 +1,19 @@
+{
+  "completed_stages": {
+    "original_uncertainty": {
+      "binding": "binding_amendment_2.json",
+      "binding_sha256": "c1c4433e7a169cdd27b4b1c715acaf27fe03f4448820cdd8fdd5037a6aedce93",
+      "episodes": 72,
+      "source_commit": "5c7c0124b21a9fbf3837ecdaf38f7db74ef0fa5e",
+      "summary_sha256": "bc4551e37587c41bd4d7be31cd39533948325ca89fd4e10578fb74fbbeca33c2"
+    },
+    "smoke_amendment1": {
+      "binding": "binding_amendment_2.json",
+      "binding_sha256": "c1c4433e7a169cdd27b4b1c715acaf27fe03f4448820cdd8fdd5037a6aedce93",
+      "episodes": 52,
+      "source_commit": "5c7c0124b21a9fbf3837ecdaf38f7db74ef0fa5e",
+      "summary_sha256": "1bb40b200dc31903075de799c06cf9704eb705263995b7f49b9648cb7248626e"
+    }
+  },
+  "primary_stage_binding": "binding_amendment_3.json"
+}

@@ -1,0 +1,14 @@
+{
+  "binding": "binding_amendment_2.json",
+  "binding_sha256": "c1c4433e7a169cdd27b4b1c715acaf27fe03f4448820cdd8fdd5037a6aedce93",
+  "completed_stages": [
+    "smoke_amendment1",
+    "original_uncertainty"
+  ],
+  "original_uncertainty_summary_sha256": "bc4551e37587c41bd4d7be31cd39533948325ca89fd4e10578fb74fbbeca33c2",
+  "primary_binding": "binding_amendment_3.json",
+  "primary_runs_under_binding": 0,
+  "reason": "A direct twin-run transition equality test was added to strengthen the CRN validation before the primary matrix.",
+  "smoke_summary_sha256": "1bb40b200dc31903075de799c06cf9704eb705263995b7f49b9648cb7248626e",
+  "status": "VALID_FOR_AMENDED_SMOKE_AND_ORIGINAL_UNCERTAINTY_ONLY"
+}

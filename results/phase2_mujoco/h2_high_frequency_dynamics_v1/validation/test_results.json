@@ -1,0 +1,8 @@
+{
+  "focused_dynamic_integration_passed": 8,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "status": "PASS",
+  "test_suite": "tests/test_h2_high_frequency_dynamics.py + tests/test_h2_final_benchmark.py",
+  "unit_and_frozen_regression_passed": 22
+}
