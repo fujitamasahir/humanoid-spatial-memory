@@ -195,7 +195,12 @@ def amend_binding():
     updated['status']='PARTIAL';updated['amendment_reason']='Append-only source/hash amendment for corrected full replay capture semantics.'
     updated['source_sha256']={name:sha(ROOT/name) for name in sorted(src)}
     updated['amended_utc']=datetime.now(timezone.utc).isoformat()
-    jwrite(target,updated);jwrite(pointer,{'path':target.name,'sha256':sha(target),'parent_binding_sha256':sha(parent)})
+    jwrite(target,updated)
+    tmp=pointer.with_suffix('.json.tmp')
+    with tmp.open('x',encoding='utf-8') as f:
+        json.dump({'path':target.name,'sha256':sha(target),'parent_binding_sha256':sha(parent)},f,sort_keys=True,indent=2)
+        f.write('\n');f.flush();os.fsync(f.fileno())
+    os.replace(tmp,pointer)
     print('Created append-only binding amendment; parent binding preserved.')
 
 def bind():
@@ -367,6 +372,74 @@ def _atomic_episode(path,value):
     if path.exists():tmp.unlink();raise FileExistsError(path)
     os.replace(tmp,path);return len(packed),sha_bytes(packed)
 
+def _norm_arm(value):
+    return ''.join(ch.lower() for ch in str(value) if ch.isalnum())
+
+def historical_fit_index(expected,fit_identities):
+    """Index saved known-map results by identity/schedule/model; no name-only matches."""
+    registry=json.loads((ROOT/'results/phase2_mujoco/h2_comprehensive_benchmark_v1/protocol/model_registry.json').read_text())
+    aliases={_norm_arm(x['model_id']):x['model_id'] for x in registry}
+    aliases.update({_norm_arm(x['display_name']):x['model_id'] for x in registry})
+    special={'periodic':'periodic4','age':'age4'}
+    index={};hits=0;complete=0
+    candidates=[]
+    for p in (ROOT/'results/phase2_mujoco').rglob('*.json.gz'):
+        if OUT in p.parents:continue
+        candidates.append(p)
+    for p in (ROOT/'results/phase2_mujoco').rglob('*.jsonl.gz'):
+        if OUT in p.parents:continue
+        try:
+            with gzip.open(p,'rt',encoding='utf-8') as fh:
+                for line in fh:
+                    try:d=json.loads(line)
+                    except Exception:continue
+                    _index_historical_record(index,d,p,aliases,special,expected,fit_identities)
+        except Exception:continue
+    for p in candidates:
+        try:
+            with gzip.open(p,'rt',encoding='utf-8') as fh:d=json.load(fh)
+            _index_historical_record(index,d,p,aliases,special,expected,fit_identities)
+        except Exception:continue
+    for records in index.values():
+        hits+=len(records)
+        for item in records:
+            steps=item['steps']
+            if steps and all(('spatial_memory_before_observation_update_packed_2bit_base64' in s and
+                              'spatial_memory_after_observation_update_packed_2bit_base64' in s)
+                             for s in steps):complete+=1
+    return index,{'keyed_historical_records':hits,'complete_before_after_memory_records':complete,
+                  'indexed_episode_keys':len(index)}
+
+def _index_historical_record(index,d,path,aliases,special,expected,fit_identities):
+    row=d.get('row',{}) if isinstance(d,dict) else {}
+    trace=d.get('trace',{}) if isinstance(d,dict) else {}
+    replay=d.get('replay',{}) if isinstance(d,dict) else {}
+    key=trace.get('key') or replay.get('episode_key') or []
+    identity=d.get('map_identity') or replay.get('map') or (key[0] if len(key)>0 else None)
+    schedule=d.get('schedule',replay.get('schedule',key[1] if len(key)>1 else None))
+    if identity not in fit_identities or schedule not in (0,1):return
+    basename=path.name.removeprefix('episode_').split('_',1)[-1].removesuffix('.json.gz').removesuffix('.jsonl.gz')
+    # Explicit file/record model identifiers take precedence over legacy
+    # generic method labels such as "age" and "periodic".
+    vals=[d.get('arm'),replay.get('arm'),row.get('comprehensive_arm'),basename,
+          key[2] if len(key)>2 else None,row.get('method')]
+    model=None
+    for val in vals:
+        if val is None:continue
+        name=_norm_arm(val)
+        if name in aliases:model=aliases[name];break
+        if name in special and ('age_cadence_v1' in str(path) or 'h2_final_generalization_v1/fit_replay' in str(path)):
+            model=special[name];break
+    if model not in expected:return
+    # Only accept records explicitly marked Original, or legacy single-condition
+    # results in an Original/FIT72 result path. High-frequency records are excluded.
+    path_lower=str(path).lower()
+    if d.get('condition') not in (None,'original') or 'high_frequency' in path_lower:return
+    steps=replay.get('steps',trace.get('steps',[]))
+    item={'path':path.relative_to(ROOT).as_posix(),'row':row or replay.get('metrics') or d.get('metrics'),
+          'trace':trace if trace else None,'steps':steps,'sha256':sha(path)}
+    index.setdefault((model,identity,int(schedule)),[]).append(item)
+
 def run(task,resume=False,limit=None):
     binding=load_binding();import h2_high_frequency_dynamics as engine
     import h2_comprehensive_adapters as adapters
@@ -380,6 +453,13 @@ def run(task,resume=False,limit=None):
         maps=nav.admitted_worlds(); arms=[x['model_id'] for x in json.loads((ROOT/'results/phase2_mujoco/h2_comprehensive_benchmark_v1/protocol/model_registry.json').read_text()) if x['authorization_status'] in ('historical','eligible') and x['model_id'] not in BLOCKED]
         if len(arms)!=54:raise RuntimeError('Expected exactly 54 non-blocked registry arms')
         dataset='fit72_known';target=OUT/'task_b'
+    fit_ids={p['identity'] for p in maps} if task=='b' else set()
+    hist_index,hist_stats=historical_fit_index(set(arms),fit_ids) if task=='b' else ({},{})
+    if task=='b':
+        histpath=OUT/'task_b_historical_index_summary.json'
+        if histpath.exists():
+            if json.loads(histpath.read_text())!=hist_stats:raise RuntimeError('Historical index differs on resume')
+        else:jwrite(histpath,hist_stats)
     expected=len(maps)*2*len(arms);journal=target/'journal.jsonl'
     target.mkdir(parents=True,exist_ok=True)
     committed={}
@@ -410,6 +490,7 @@ def run(task,resume=False,limit=None):
         row,replay,diag,source_trace=recover_case(payload,schedule,arm,dataset)
         parity_status='NO_COMPATIBLE_HISTORICAL_RESULT'
         parity_detail=None
+        historical_records=[]
         case_number=(mi-1)*2+schedule+1
         try:
             from run_h2_final import compare_saved
@@ -418,22 +499,35 @@ def run(task,resume=False,limit=None):
                 old=ROOT/f'results/phase2_mujoco/h2_final_generalization_v1/primary/episode_{case_number:03d}_{arm}.json.gz'
                 if old.is_file():
                     with gzip.open(old,'rt',encoding='utf-8') as f:saved=json.load(f)
-            elif arm in frozen.SAVED or arm in ('rdao_v2','rdao_v21'):
-                saved=frozen.saved_episode(case_number,arm)
             if saved is not None and source_trace is not None:
                 compare_saved(saved,row,source_trace);parity_status='PASS_EXACT_TRACE_AND_METRIC_SIGNATURE'
+                historical_records=[{'source':('h2_final_generalization_v1/primary' if task=='a' else 'h2_final_generalization_v1/fit_replay'),
+                                     'sha256':sha(old) if task=='a' else None}]
+            if task=='b':
+                candidates=hist_index.get((arm,payload['identity'],schedule),[])
+                historical_records=[{'source':x['path'],'sha256':x['sha256']} for x in candidates]
+                if not candidates:
+                    parity_status='FIRST_TIME_FIT72_EVALUATION'
+                elif all(x.get('trace') and x.get('row') for x in candidates):
+                    results=[]
+                    for candidate in candidates:
+                        try:compare_saved(candidate,row,source_trace);results.append(True)
+                        except Exception as exc:results.append(False);parity_detail=f'{type(exc).__name__}: {exc}'
+                    parity_status='PASS_EXACT_TRACE_AND_METRIC_SIGNATURE' if all(results) else 'MISMATCH'
+                else:parity_status='HISTORICAL_RESULT_WITHOUT_COMPARABLE_TRACE'
         except Exception as exc:
             parity_status='MISMATCH';parity_detail=f'{type(exc).__name__}: {exc}'
         replay['replay_recovery']['parity_status']=parity_status
         record={'dataset':dataset,'condition':'original','arm':arm,'map_identity':payload['identity'],
             'map_index':mi,'schedule':schedule,'seed':42,'schema':'h2_full_spatial_memory_replay_v1',
             'row':row,'replay':replay,'diagnostics':diag,'source_trace_for_exact_parity':source_trace,
-            'parity':{'status':parity_status,'detail':parity_detail}}
+            'parity':{'status':parity_status,'detail':parity_detail,'historical_records':historical_records}}
         size,digest=_atomic_episode(path,record)
         event={'event':'episode_committed','path':rel,'bytes':size,'sha256':digest,
             'dataset':dataset,'model_id':arm,'map_identity':payload['identity'],'schedule':schedule,
             'frames':len(replay['steps']),'observations':int(row.get('observation_count',-1)),
-            'success':bool(row.get('success')),'parity_status':parity_status,'parity_detail':parity_detail}
+            'success':bool(row.get('success')),'parity_status':parity_status,'parity_detail':parity_detail,
+            'historical_records':historical_records}
         with journal.open('a',encoding='utf-8') as f:f.write(json.dumps(event,sort_keys=True)+'\n');f.flush();os.fsync(f.fileno())
         done+=1
         now=time.monotonic()
