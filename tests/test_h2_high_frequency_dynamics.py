@@ -4,7 +4,7 @@ import numpy as np
 
 from scripts.h2_high_frequency_dynamics import (
     ENGINE_NAMESPACE, HighFrequencyEngine, _critical_cut_cells, pack_2bit_grid,
-    rng_for,
+    rng_for, run_dynamic_case, source_maps, unpack_2bit_grid,
 )
 
 
@@ -91,6 +91,15 @@ def test_no_op_is_explicit_when_no_transition_is_feasible():
     assert engine.no_ops == 1
 
 
+def test_goal_termination_stops_navigation_environment_transitions():
+    scenario = _scenario(start=(0, 0), goal=(6, 6))
+    engine = HighFrequencyEngine(scenario, 'terminal', 0, 42, ())
+    assert engine.episode_active()
+    engine.robot_cell = scenario.goal
+    assert not engine.episode_active()
+    assert engine.events == []
+
+
 def test_full_object_count_disables_additions():
     scenario = _scenario()
     initial = [(2, 2), (2, 3), (3, 2), (3, 3)]
@@ -112,4 +121,20 @@ def test_memory_grid_packing_preserves_ternary_values():
     for byte in raw:
         decoded.extend([int((byte >> (2*i)) & 3)-1 for i in range(4)])
     assert decoded[:grid.size] == grid.reshape(-1).tolist()
+
+
+def test_saved_map_dynamic_episode_captures_complete_fail_closed_replay():
+    payload, _ = source_maps()[0]
+    row, replay, diagnostics = run_dynamic_case(payload, 0, 'periodic4')
+    assert row['dynamic_steps'] == row['elapsed_steps']
+    assert row['environment_change_rate'] == 1.0
+    assert row['observation_count'] <= 20
+    assert row['g1_shield_query_count_valid']
+    assert row['g1_unselected_action_shield_queries'] == 0
+    assert len(replay['steps']) == row['elapsed_steps'] + 1
+    assert len(diagnostics['dynamic_transition_ns']) == row['elapsed_steps']
+    assert all(len(step['objects_after']) <= 4 for step in replay['steps'])
+    assert all(unpack_2bit_grid(step['spatial_memory_ternary_packed_2bit_base64']).shape == (25,25)
+               for step in replay['steps'])
+    assert all(step['event']['connectivity_preserved'] for step in replay['steps'][1:])
 

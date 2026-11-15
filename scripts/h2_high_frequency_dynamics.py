@@ -117,6 +117,21 @@ def pack_bool_grid(grid) -> str:
     return base64.b64encode(np.packbits(bits, bitorder='little').tobytes()).decode('ascii')
 
 
+def unpack_2bit_grid(value, shape=(25,25)):
+    packed=np.frombuffer(base64.b64decode(value),dtype=np.uint8)
+    decoded=np.empty(packed.size*4,dtype=np.int8)
+    for index in range(4): decoded[index::4]=((packed>>(2*index))&3).astype(np.int8)-1
+    decoded=decoded[:shape[0]*shape[1]]
+    if np.any(decoded < -1) or np.any(decoded > 1):
+        raise ValueError('Invalid packed ternary grid')
+    return decoded.reshape(shape)
+
+
+def unpack_bool_grid(value, shape=(25,25)):
+    packed=np.frombuffer(base64.b64decode(value),dtype=np.uint8)
+    return np.unpackbits(packed,bitorder='little')[:shape[0]*shape[1]].reshape(shape).astype(bool)
+
+
 def _neighbors(cell, width, height):
     x, y = cell
     for q in ((x - 1, y), (x, y - 1), (x, y + 1), (x + 1, y)):
@@ -187,6 +202,10 @@ class HighFrequencyEngine:
         self.no_ops = 0
         self.event_counts = Counter()
         self.changed_cell_distances = []
+
+    def episode_active(self):
+        """Post-terminal evaluator accounting is not a navigation transition."""
+        return tuple(self.robot_cell) != self.goal
 
     def _geometry_overlap(self, cell):
         """Conservative AABB separation from the actual G1 collision-geom bounds."""
@@ -447,7 +466,9 @@ def run_dynamic_case(payload, schedule, arm):
 
         def advance(self):
             self.step += 1
-            context['engine'].transition(self)
+            engine = context['engine']
+            if engine.episode_active():
+                engine.transition(self)
 
     def dynamic_evaluator(scenario, config, method, **kwargs):
         provider = kwargs.get('_observation_provider')
@@ -714,6 +735,59 @@ def make_binding():
     })
 
 
+def make_amendment_binding():
+    """Freeze a prospective runner correction without rewriting v1 binding."""
+    old_binding_path = OUT/'binding.json'
+    if not old_binding_path.is_file():
+        raise FileNotFoundError('Original committed H2 extension binding is missing')
+    old_binding = json.loads(old_binding_path.read_text())
+    old_script_sha = old_binding['sources']['scripts/h2_high_frequency_dynamics.py']
+    smoke_files = sorted((OUT/'replays/smoke').glob('episode_*.json.gz'))
+    mismatches = []
+    for path in smoke_files:
+        item = _load_gz(path)
+        row = item['row']
+        if int(row['dynamic_steps']) != int(row['elapsed_steps']):
+            mismatches.append({'file':path.relative_to(OUT).as_posix(),
+                'elapsed_navigation_steps':int(row['elapsed_steps']),
+                'recorded_dynamic_steps':int(row['dynamic_steps'])})
+    if len(smoke_files) != 52 or not mismatches:
+        raise RuntimeError('Expected the preserved 52-episode initial smoke issue')
+    validation = OUT/'validation'
+    validation.mkdir(exist_ok=True)
+    issue_path = validation/'initial_smoke_issue.json'
+    if not issue_path.exists():
+        write_exclusive(issue_path, {
+            'status':'INVALIDATED_FOR_DYNAMIC_EVENT_ACCOUNTING',
+            'stage':'smoke', 'episode_files':len(smoke_files),
+            'episodes_with_post_terminal_event_accounting':len(mismatches),
+            'cause':'Frozen evaluator common-horizon metric loop calls World.advance after goal termination; the first runner version continued mutating and counting the environment during this evaluator-only tail.',
+            'correction':'Keep pedestrian/truth accounting intact but suppress high-frequency environment transitions once the navigation episode has reached the goal. No controller, route, sensor, or shield behavior changes.',
+            'original_binding_sha256':sha(old_binding_path),
+            'original_runner_sha256':old_script_sha,
+            'mismatches':mismatches,
+        })
+    sources=[PROTOCOL,SCHEMA,Path(__file__),ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_1.md',
+        ROOT/'tests/test_h2_high_frequency_dynamics.py',ROOT/'scripts/h2_final_common.py',
+        ROOT/'scripts/run_h2_final.py',ROOT/'scripts/evaluate_phase2_61ray_emergency_safety_full_288.py',
+        ROOT/'src/spatial_memory/evaluation.py',ROOT/'src/spatial_memory/simulation.py',
+        ROOT/'src/spatial_memory/scheduling.py',ROOT/'src/spatial_memory/mujoco_navigation.py',
+        ROOT/'src/spatial_memory/mujoco_perception.py',ROOT/'src/spatial_memory/emergency_safety.py',
+        ROOT/'src/spatial_memory/navigation.py']
+    write_exclusive(OUT/'binding_amendment_1.json',{
+        'protocol':'h2_high_frequency_dynamics_v1_amendment_1',
+        'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        'required_h2_base_commit':SOURCE_COMMIT,
+        'original_binding_sha256':sha(old_binding_path),
+        'original_smoke_issue_sha256':sha(issue_path),
+        'sources':{p.relative_to(ROOT).as_posix():sha(p) for p in sources},
+        'maps':old_binding['maps'],'arms':list(ARM_IDS),'seed':SEED,
+        'max_steps':MAX_STEPS,'object_count_limits':[0,MAX_OBJECTS],
+        'preserved_prior_results':'binding.json and smoke/ remain immutable; valid reruns use smoke_amendment1 and primary.',
+        'runtime':old_binding['runtime'],
+    })
+
+
 def _case_order(maps):
     return [(idx, payload, schedule) for idx,(payload,_) in enumerate(maps, 1)
             for schedule in (0,1)]
@@ -744,6 +818,14 @@ def _save_episode(stage, case_index, arm, row, replay, diagnostics):
                             'path': path.relative_to(OUT).as_posix(),
                             'sha256': digest}, sort_keys=True) + '\n')
         f.flush(); os.fsync(f.fileno())
+    event_dir=OUT/'environment_events';event_dir.mkdir(exist_ok=True)
+    event_path=event_dir/f'{stage}.jsonl'
+    with event_path.open('a',encoding='utf-8') as f:
+        f.write(json.dumps({'case':case_index,'arm':arm,
+            'episode_key':replay['episode_key'],'replay_path':path.relative_to(OUT).as_posix(),
+            'replay_sha256':digest,'event_records_in_replay':len(replay['steps'])-1},
+            sort_keys=True)+'\n')
+        f.flush();os.fsync(f.fileno())
 
 
 def _run_stage(stage, cases, arms, dynamic):
@@ -778,12 +860,7 @@ def _run_stage(stage, cases, arms, dynamic):
                 if dynamic:
                     row, replay, diagnostics = run_dynamic_case(payload, schedule, arm)
                 else:
-                    row, trace, diagnostics = frozen.run_case(payload, schedule, arm)
-                    row['controller_mode'] = row.get('method')
-                    row['method'] = arm
-                    # Original-condition replay retains the saved schedules and all
-                    # navigation traces, with current-format geometry/memory grids.
-                    replay = _original_replay(payload, schedule, arm, row, trace)
+                    row, replay, diagnostics = run_original_case(payload, schedule, arm)
                 _save_episode(stage, case_index, arm, row, replay, diagnostics)
                 completed[key] = OUT/'replays'/stage/f'episode_{case_index:03d}_{arm}.json.gz'
             n = len(completed)
@@ -872,6 +949,149 @@ def _original_replay(payload, schedule, arm, row, trace):
         'engine_specification':{'namespace':'saved_original_H2_schedule'}}
 
 
+def run_original_case(payload, schedule, arm):
+    """Instrument an original saved schedule without changing its transitions."""
+    context={'frames':[],'observations':{},'states':[],'scene_ns':[],'log_ns':[]}
+    old_scenario=evaluator.scenario_from_bprime
+    old_scene=evaluator.MujocoNavigationScene
+    old_run=evaluator.run_episode
+    old_original=evaluation_module.run_episode
+
+    def scenario_adapter(p,s):
+        scenario=old_scenario(dict(p,partition='fit'),s)
+        context['scenario']=scenario
+        return scenario
+
+    def scene_factory(scenario,**kwargs):
+        scene=old_scene(scenario,**kwargs);context['scene']=scene;return scene
+
+    def measured_episode(scenario,config,method,**kwargs):
+        provider=kwargs.get('_observation_provider')
+        if provider:
+            def measured_observation(world,position,yaw):
+                grid=provider(world,position,yaw)
+                context['observations'][int(world.step)]=np.asarray(grid).copy()
+                return grid
+            kwargs['_observation_provider']=measured_observation
+        callback=kwargs.get('_frame_callback')
+        if callback is None: raise RuntimeError('Missing existing scene callback')
+        def record(world,frame):
+            t=time.perf_counter_ns();extra=callback(world,frame)
+            context['scene_ns'].append(time.perf_counter_ns()-t)
+            context['frames'].append(frame)
+            context['states'].append({'objects':sorted(world.objects),
+                'people':sorted(world.people()),'geometry':world.geometry().copy(),
+                'pose':context['scene'].data.qpos[
+                    context['scene'].robot_qpos_adr:context['scene'].robot_qpos_adr+3].tolist()})
+            return extra
+        kwargs['_frame_callback']=record
+        return old_original(scenario,config,method,**kwargs)
+
+    evaluator.scenario_from_bprime=scenario_adapter
+    evaluator.MujocoNavigationScene=scene_factory
+    evaluator.run_episode=measured_episode
+    try:
+        row,trace,diagnostics=frozen.run_case(payload,schedule,arm)
+    finally:
+        evaluator.scenario_from_bprime=old_scenario
+        evaluator.MujocoNavigationScene=old_scene
+        evaluator.run_episode=old_run
+        evaluation_module.run_episode=old_original
+    row['controller_mode']=row.get('method');row['method']=arm
+    scenario=context['scenario'];frames=context['frames'];states=context['states']
+    if len(frames)!=int(row['elapsed_steps'])+1:
+        raise RuntimeError('Original replay frame count differs from episode steps')
+    ids={cell:f'obj_{i:04d}' for i,cell in enumerate(sorted(scenario.obstacles),1)}
+    next_id=len(ids)+1;by_step={}
+    for scheduled in scenario.changes:by_step.setdefault(int(scheduled['step']),[]).append(scheduled)
+    replay_steps=[]
+    for frame,state in zip(frames,states):
+        replay_started=time.perf_counter_ns()
+        step=int(frame['step']);before=[{'object_id':ids[c],'cell':list(c)} for c in sorted(ids)]
+        scheduled_events=by_step.get(step,[])
+        if scheduled_events:
+            changes=[]
+            for event in scheduled_events:
+                action=event['action'];source=tuple(event['cell'])
+                if action=='remove': oid=ids.pop(source);target=None
+                elif action=='add':
+                    oid=f'obj_{next_id:04d}';next_id+=1;ids[source]=oid;target=source
+                elif action=='relocate':
+                    oid=ids.pop(source);target=tuple(event['to']);ids[target]=oid
+                else:raise ValueError(f'Unknown saved schedule event: {event}')
+                changes.append({'event_type':action,'object_id':oid,
+                    'from_cell':None if action=='add' else list(source),
+                    'to_cell':None if target is None else list(target)})
+            event_record={'step':step,'event_type':'saved_schedule_changes','changes':changes,
+                'objects_before':before}
+        else:
+            event_record={'step':step,'event_type':'no_change_in_saved_schedule',
+                'object_id':None,'from_cell':None,'to_cell':None,'objects_before':before}
+        after=[{'object_id':ids[c],'cell':list(c)} for c in sorted(ids)]
+        if {tuple(x['cell']) for x in after}!=set(state['objects']):
+            raise RuntimeError(f'Saved schedule object-ID replay mismatch at step {step}')
+        event_record['objects_after']=after
+        event_record['object_count_before']=len(before);event_record['object_count_after']=len(after)
+        event_record['connectivity_preserved']=None
+        event_record['exclusion_zone_validated']=None
+        event_record['geometry_clearance_validated']=None
+        observation=context['observations'].get(step)
+        observed=[] if observation is None else [[int(x),int(y),int(observation[y,x])]
+            for y,x in np.argwhere(observation>=0)]
+        people=[{'pedestrian_id':f'ped_{i:02d}',
+                 'cell':list(path[step%len(path)])} for i,path in enumerate(scenario.pedestrians)]
+        truth=np.asarray(state['geometry'],dtype=bool)
+        for p in people:x,y=p['cell'];truth[y,x]=True
+        replay_steps.append({'step':step,'event':event_record,'objects_before':before,
+            'objects_after':after,'pedestrians_xy':people,
+            'robot_position_before_action_xy':list(frame['position']),
+            'robot_position_after_action_xy':list(frame['position']),
+            'robot_world_position_after_action_m':state['pose'],
+            'robot_heading_before_action_rad':frame.get('heading_yaw',0),
+            'robot_heading_after_action_rad':frame.get('heading_yaw',0),
+            'executed_action':frame.get('navigation_action'),
+            'planned_path_xy':frame.get('planned',[]),
+            'observation_requested':bool(frame.get('observation_requested',step==0)),
+            'observation_granted':bool(frame.get('observation_granted',step==0)),
+            'paid_observation_count':int(frame.get('observation_count',1)),
+            'spatial_memory_ternary_packed_2bit_base64':pack_2bit_grid(frame['memory']),
+            'observed_cells_xy_value':observed,
+            'observed_grid_ternary_packed_2bit_base64':None if observation is None else pack_2bit_grid(observation),
+            'ground_truth_occupancy_packed_bits_base64':pack_bool_grid(truth),
+            'ground_truth_static_and_object_occupancy_packed_bits_base64':pack_bool_grid(state['geometry']),
+            'emergency_safety_scan':frame.get('emergency_safety_scan'),
+            'emergency_safety_intervention':frame.get('emergency_safety_intervention'),
+            'selected_action_shield_rejection':{'rejected':bool(frame.get('footprint_blocked',False)),
+                'reason':frame.get('blocked_reason')},
+            'unwanted_contacts':{k:int(frame.get(k,0)) for k in (
+                'g1_pedestrian_contact_pairs','g1_wall_contact_pairs',
+                'g1_persistent_obstacle_contact_pairs','g1_unwanted_floor_contact_pairs',
+                'g1_self_contact_pairs')},
+            'goal_reached':tuple(frame['position'])==tuple(scenario.goal),
+            'failure_or_termination_reason':row.get('failure_reason')})
+        context['log_ns'].append(time.perf_counter_ns()-replay_started)
+    replay={'schema_version':'1.0.0','episode_key':[payload['identity'],schedule,arm,SEED],
+        'arm':arm,'map':payload['identity'],'map_family':payload['mechanism'],'schedule':schedule,
+        'seed':SEED,'grid':{'width':25,'height':25,'cell_size_m':.75},
+        'coordinate_convention':'x east,y north,lower-left origin,yaw radians CCW from G1 local +X',
+        'static_walls_xy':[list(c) for c in sorted(scenario.walls)],
+        'start_xy':list(scenario.start),'goal_xy':list(scenario.goal),
+        'initial_robot':{'position_xy':list(scenario.start),'heading_rad':0},
+        'initial_objects':[{'object_id':f'obj_{i:04d}','cell':list(c)}
+            for i,c in enumerate(sorted(scenario.obstacles),1)],
+        'initial_pedestrians':replay_steps[0]['pedestrians_xy'],'steps':replay_steps,
+        'outcome':{'success':bool(row['success']),'goal_step':row.get('goal_step'),
+            'failure_reason':row.get('failure_reason')},'metrics':row,
+        'engine_specification':{'namespace':'saved_original_H2_schedule'}}
+    row['scene_frame_update_ns']=context['scene_ns']
+    row['scene_frame_update_total_ms']=sum(context['scene_ns'])/1e6
+    row['replay_logging_ns']=context['log_ns']
+    row['replay_logging_total_ms']=sum(context['log_ns'])/1e6
+    diagnostics['scene_frame_update_ns']=context['scene_ns']
+    diagnostics['replay_logging_ns']=context['log_ns']
+    return row,replay,diagnostics
+
+
 def _analysis(rows, out_dir):
     """Fixed paired whole-maze bootstrap and descriptive plots/tables."""
     import matplotlib
@@ -882,16 +1102,41 @@ def _analysis(rows, out_dir):
     summary = {}
     for arm, group in by_arm.items():
         n=max(1,len(group))
+        successful=[r for r in group if bool(r['success'])]
+        timing=lambda r,key: sum(r.get('timing_ns',{}).get(key,[]))/1e6
+        call_values=[x/1e6 for r in group for x in r.get('timing_ns',{}).get('decision',[])]
+        rejection_counts=Counter();object_counts=Counter()
+        for r in group:
+            rejection_counts.update(r.get('candidate_rejections_by_reason',{}))
+            object_counts.update(r.get('object_count_step_distribution',{}))
         summary[arm] = {
             'episodes':len(group),'goal_completions':sum(bool(r['success']) for r in group),
             'goal_completion_rate':sum(bool(r['success']) for r in group)/n,
             'contact_free_goal_completions':sum(bool(r.get('g1_contact_free_success')) for r in group),
             'episodes_with_unwanted_contact':sum(int(r.get('g1_unwanted_contact_pairs',0))>0 for r in group),
             'mean_paid_observations':statistics.mean(float(r['observation_count']) for r in group),
+            'total_paid_observations':sum(int(r['observation_count']) for r in group),
+            'mean_success_only_steps':statistics.mean(float(r['elapsed_steps']) for r in successful) if successful else None,
+            'mean_success_only_distance_m':statistics.mean(float(r.get('travel_distance_m',0)) for r in successful) if successful else None,
             'mean_steps':statistics.mean(float(r['elapsed_steps']) for r in group),
             'mean_distance_m':statistics.mean(float(r.get('travel_distance_m',0)) for r in group),
-            'mean_decision_ms':statistics.mean(sum(r.get('timing_ns',{}).get('decision',[]))/1e6 for r in group),
+            'mean_decision_ms':statistics.mean(timing(r,'decision') for r in group),
+            'mean_update_ms':statistics.mean(timing(r,'update') for r in group),
+            'mean_initialization_ms':statistics.mean(timing(r,'initialization') for r in group),
+            'mean_memory_sensor_ms':statistics.mean(timing(r,'memory_sensor') for r in group),
+            'mean_emergency_sensor_ms':statistics.mean(timing(r,'emergency_sensor') for r in group),
+            'mean_navigation_planning_ms':statistics.mean(timing(r,'navigation_planning') for r in group),
+            'mean_point_planning_ms':statistics.mean(timing(r,'point_planning') for r in group),
+            'mean_safety_decision_ms':statistics.mean(timing(r,'safety_decision') for r in group),
             'mean_episode_wall_s':statistics.mean(float(r.get('episode_wall_time_seconds',0)) for r in group),
+            'total_spatial_memory_rays':sum(int(r.get('spatial_memory_rays',0)) for r in group),
+            'total_emergency_raycasts':sum(int(r.get('emergency_safety_raycasts',0)) for r in group),
+            'total_emergency_interventions':sum(int(r.get('emergency_safety_interventions',0)) for r in group),
+            'total_blocked_actions':sum(int(r.get('g1_footprint_blocked_attempts',0)) for r in group),
+            'total_stale_map_errors':sum(int(r.get('stale_map_errors',0)) for r in group),
+            'total_missed_persistent_changes':sum(int(r.get('missed_persistent_changes',0)) for r in group),
+            'total_false_persistent_occupancy_updates':sum(int(r.get('false_persistent_occupancy_updates',0)) for r in group),
+            'total_newly_discovered_cells':sum(int(r.get('newly_discovered_cells',0)) for r in group),
             'mean_dynamic_changes':statistics.mean(float(r.get('environment_changes',0)) for r in group),
             'mean_change_rate':statistics.mean(float(r.get('environment_change_rate',0)) for r in group),
             'mean_additions':statistics.mean(float(r.get('addition_count',0)) for r in group),
@@ -902,13 +1147,18 @@ def _analysis(rows, out_dir):
             'mean_transition_ms':statistics.mean(float(r.get('transition_generation_total_ms',0)) for r in group),
             'mean_scene_update_ms':statistics.mean(float(r.get('scene_frame_update_total_ms',0)) for r in group),
             'mean_replay_logging_ms':statistics.mean(float(r.get('replay_logging_total_ms',0)) for r in group),
+            'decision_call_ms_quantiles':{
+                'median':float(np.quantile(call_values,.50)) if call_values else 0,
+                'p95':float(np.quantile(call_values,.95)) if call_values else 0,
+                'p99':float(np.quantile(call_values,.99)) if call_values else 0,
+                'max':float(max(call_values)) if call_values else 0},
+            'candidate_rejections_by_reason':dict(sorted(rejection_counts.items())),
+            'object_count_step_distribution':dict(sorted(object_counts.items())),
+            'connectivity_violations':sum(int(r.get('connectivity_violations',0)) for r in group),
+            'exclusion_zone_violations':sum(int(r.get('exclusion_zone_violations',0)) for r in group),
+            'environment_no_ops':sum(int(r.get('environment_no_ops',0)) for r in group),
         }
     (out_dir/'analysis').mkdir(exist_ok=True)
-    write_exclusive(out_dir/'analysis/summary.json', {
-        'episodes':len(rows),'arms':summary,
-        'bootstrap':{'clusters':'map; both schedules retained','draws':5000,
-                     'seed':2026111401,'interval':'percentile 95% exploratory'},
-        'limitations':'Unadjusted exploratory comparisons; not independent confirmation.'})
     # Paired map-cluster bootstrap for success, observations, distance, decision and wall.
     contrasts=[]
     key_metrics={'success':lambda r:float(bool(r['success'])),'paid':lambda r:float(r['observation_count']),
@@ -939,6 +1189,54 @@ def _analysis(rows, out_dir):
             contrasts.append(row)
     with (out_dir/'analysis/paired_whole_maze_bootstrap.csv').open('x',newline='',encoding='utf-8') as f:
         fields=sorted({k for r in contrasts for k in r});w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader();w.writerows(contrasts)
+    # Complete paired outcome matrix keyed by fixed map and schedule.
+    outcome={(r['world_identity'],int(r['schedule']),r['method']):int(bool(r['success'])) for r in rows}
+    keys=sorted({(r['world_identity'],int(r['schedule'])) for r in rows})
+    with (out_dir/'analysis/outcome_matrix.csv').open('x',newline='',encoding='utf-8') as f:
+        fields=['map_identity','schedule']+list(ARM_IDS);w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader()
+        for key in keys:w.writerow({'map_identity':key[0],'schedule':key[1],**{a:outcome.get((key[0],key[1],a)) for a in ARM_IDS}})
+    failures=[{'map_identity':r['world_identity'],'schedule':r['schedule'],'arm':r['method'],
+        'failure_reason':r.get('failure_reason'),'steps':r['elapsed_steps'],
+        'final_position':r.get('final_position'),'goal':r.get('goal'),
+        'unwanted_contact_pairs':r.get('g1_unwanted_contact_pairs',0)}
+        for r in rows if not bool(r['success'])]
+    with (out_dir/'analysis/failures.csv').open('x',newline='',encoding='utf-8') as f:
+        fields=['map_identity','schedule','arm','failure_reason','steps','final_position','goal','unwanted_contact_pairs']
+        w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader();w.writerows(failures)
+    # Mark weakly Pareto-efficient arms on zero-contact success/observation/wall axes.
+    zero_contact=[a for a in ARM_IDS if summary[a]['episodes_with_unwanted_contact']==0]
+    pareto={}
+    for arm in zero_contact:
+        s=summary[arm]
+        dominated=any(other!=arm and summary[other]['goal_completions']>=s['goal_completions']
+            and summary[other]['mean_paid_observations']<=s['mean_paid_observations']
+            and summary[other]['mean_episode_wall_s']<=s['mean_episode_wall_s']
+            and (summary[other]['goal_completions']>s['goal_completions']
+                 or summary[other]['mean_paid_observations']<s['mean_paid_observations']
+                 or summary[other]['mean_episode_wall_s']<s['mean_episode_wall_s'])
+            for other in zero_contact)
+        pareto[arm]=not dominated
+    for arm in ARM_IDS: summary[arm]['pareto_success_paid_wall_zero_contact']=bool(pareto.get(arm,False))
+    write_exclusive(out_dir/'analysis/historical_h2_final_12arm_reference.json',
+        json.loads((frozen.OUT/'analysis/summary.json').read_text()))
+    # Pair the sole original-condition Uncertainty rerun with its dynamic case.
+    baseline_by_key={(r['world_identity'],int(r['schedule'])):r for r in
+        [_load_gz(p)['row'] for p in sorted((OUT/'replays/original_uncertainty').glob('episode_*.json.gz'))]}
+    dynamic_uncertainty={(r['world_identity'],int(r['schedule'])):r for r in by_arm['uncertainty']}
+    with (out_dir/'analysis/uncertainty_original_vs_dynamic.csv').open('x',newline='',encoding='utf-8') as f:
+        fields=['map_identity','schedule','original_success','dynamic_success','original_paid','dynamic_paid',
+                'original_steps','dynamic_steps','original_distance_m','dynamic_distance_m',
+                'dynamic_changes','dynamic_change_rate','original_contacts','dynamic_contacts']
+        w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader()
+        for key in sorted(baseline_by_key):
+            b=baseline_by_key[key];d=dynamic_uncertainty[key]
+            w.writerow({'map_identity':key[0],'schedule':key[1],
+                'original_success':b['success'],'dynamic_success':d['success'],
+                'original_paid':b['observation_count'],'dynamic_paid':d['observation_count'],
+                'original_steps':b['elapsed_steps'],'dynamic_steps':d['elapsed_steps'],
+                'original_distance_m':b.get('travel_distance_m',0),'dynamic_distance_m':d.get('travel_distance_m',0),
+                'dynamic_changes':d.get('environment_changes',0),'dynamic_change_rate':d.get('environment_change_rate',0),
+                'original_contacts':b.get('g1_unwanted_contact_pairs',0),'dynamic_contacts':d.get('g1_unwanted_contact_pairs',0)})
     # Metric table with family strata.
     for family in ('R','BP','M'):
         family_rows=[r for r in rows if r.get('mechanism')==family]
@@ -962,7 +1260,107 @@ def _analysis(rows, out_dir):
     for arm in ARM_IDS:
         ax.scatter(summary[arm]['mean_paid_observations'],summary[arm]['goal_completion_rate'],label=arm)
     ax.set_xlabel('Mean paid observations');ax.set_ylabel('Goal completion rate');ax.set_ylim(0,1);ax.legend(fontsize=7,ncol=2);ax.set_title('Success versus observation cost');fig.tight_layout();fig.savefig(out_dir/'analysis/success_vs_paid.png',dpi=150);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(14,6));ax.imshow([[outcome.get((m,s,a),0) for a in ARM_IDS]
+        for m,s in keys],aspect='auto',cmap='Blues',vmin=0,vmax=1)
+    ax.set_xticks(range(len(ARM_IDS)),ARM_IDS,rotation=45,ha='right');ax.set_ylabel('Map × schedule case')
+    ax.set_title('Goal-completion matrix (1 = reached)');fig.tight_layout();fig.savefig(out_dir/'analysis/outcome_heatmap.png',dpi=150);plt.close(fig)
+    event_totals={name:sum(int(r.get(name+'_count',0)) for r in rows)
+        for name in ('addition','removal','relocation')}
+    fig,ax=plt.subplots(figsize=(7,4));ax.bar(list(event_totals),list(event_totals.values()),color=['#57a773','#7387a6','#d49b42'])
+    ax.set_ylabel('Recorded transitions');ax.set_title('High-frequency event distribution');fig.tight_layout();fig.savefig(out_dir/'analysis/environment_event_distribution.png',dpi=150);plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(13,5))
+    axes[0].bar(names,[summary[a]['mean_steps'] for a in ARM_IDS],color='#7286a6');axes[0].set_title('Mean navigation steps (failures included)');axes[0].set_ylabel('Steps')
+    axes[1].bar(names,[summary[a]['mean_distance_m'] for a in ARM_IDS],color='#b68458');axes[1].set_title('Mean travel distance (failures included)');axes[1].set_ylabel('Meters')
+    fig.tight_layout();fig.savefig(out_dir/'analysis/steps_and_distance.png',dpi=150);plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(13,5))
+    axes[0].bar(names,[summary[a]['mean_decision_ms'] for a in ARM_IDS],color='#8876ac');axes[0].set_title('Policy decision time');axes[0].set_ylabel('ms/episode')
+    axes[1].bar(names,[summary[a]['mean_episode_wall_s'] for a in ARM_IDS],color='#5d9b78');axes[1].set_title('End-to-end episode wall time');axes[1].set_ylabel('s/episode')
+    fig.tight_layout();fig.savefig(out_dir/'analysis/computational_cost.png',dpi=150);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(8,6))
+    for arm in ARM_IDS:ax.scatter(summary[arm]['mean_episode_wall_s'],summary[arm]['goal_completion_rate'],label=arm)
+    ax.set_xlabel('Mean episode wall time (s)');ax.set_ylabel('Goal completion rate');ax.set_ylim(0,1);ax.legend(fontsize=7,ncol=2);ax.set_title('Success versus computational cost');fig.tight_layout();fig.savefig(out_dir/'analysis/success_vs_compute.png',dpi=150);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(8,6))
+    for arm in ARM_IDS:
+        if summary[arm]['episodes_with_unwanted_contact']==0:
+            ax.scatter(summary[arm]['mean_paid_observations'],summary[arm]['goal_completion_rate'],
+                s=35+summary[arm]['mean_episode_wall_s']*25,
+                marker='*' if summary[arm].get('pareto_success_paid_wall_zero_contact') else 'o',label=arm)
+    ax.set_xlabel('Mean paid observations');ax.set_ylabel('Goal completion rate');ax.set_ylim(0,1);ax.legend(fontsize=7,ncol=2);ax.set_title('Contact-free descriptive Pareto view (marker size = wall time)');fig.tight_layout();fig.savefig(out_dir/'analysis/pareto_frontier.png',dpi=150);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(8,5))
+    for family in ('R','BP','M'):
+        vals=[]
+        for arm in ARM_IDS:
+            group=[r for r in rows if r.get('mechanism')==family and r['method']==arm]
+            vals.append(sum(bool(r['success']) for r in group)/max(1,len(group)))
+        ax.plot(range(len(ARM_IDS)),vals,marker='o',label=family)
+    ax.set_xticks(range(len(ARM_IDS)),ARM_IDS,rotation=55,ha='right');ax.set_ylim(0,1);ax.set_ylabel('Goal completion rate');ax.set_title('Maze family');ax.legend();fig.tight_layout();fig.savefig(out_dir/'analysis/maze_family_success.png',dpi=150);plt.close(fig)
+    # Event position/count and object count trajectories from every primary replay.
+    event_count_by_step=Counter();object_count_by_step=Counter();distance_by_step=Counter();count_by_step=Counter()
+    for replay_path in sorted((OUT/'replays/primary').glob('episode_*.json.gz')):
+        replay=_load_gz(replay_path)['replay']
+        for step in replay['steps'][1:]:
+            i=step['step'];event=step['event'];event_count_by_step[i]+=event['event_type']!='no_op'
+            object_count_by_step[i]+=int(event['object_count_after']);count_by_step[i]+=1
+            distance_by_step[i]+=sum(event.get('changed_cell_distance_from_robot',[]))
+    x=sorted(count_by_step)
+    fig,axes=plt.subplots(1,2,figsize=(12,4))
+    axes[0].plot(x,[event_count_by_step[i]/count_by_step[i] for i in x]);axes[0].set_title('Change occurrence by navigation step');axes[0].set_xlabel('Step');axes[0].set_ylabel('Fraction changed')
+    axes[1].plot(x,[object_count_by_step[i]/count_by_step[i] for i in x]);axes[1].set_title('Mean object count by navigation step');axes[1].set_xlabel('Step');axes[1].set_ylabel('Objects')
+    fig.tight_layout();fig.savefig(out_dir/'analysis/dynamics_over_time.png',dpi=150);plt.close(fig)
+    _make_representative_gif(out_dir/'analysis')
+    write_exclusive(out_dir/'analysis/summary.json', {
+        'episodes':len(rows),'arms':summary,'zero_contact_pareto':pareto,
+        'bootstrap':{'clusters':'map; both schedules retained','draws':5000,
+                     'seed':2026111401,'interval':'percentile 95% exploratory'},
+        'limitations':'Unadjusted exploratory comparisons; not independent confirmation.'})
     return summary
+
+
+def _make_representative_gif(directory):
+    """Five-policy 2D replay from saved step records; no simulator re-execution."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.animation import FuncAnimation, PillowWriter
+    from matplotlib.colors import ListedColormap
+    arms=('periodic5','age4','uncertainty','caa_full','rdao_v2')
+    episodes=[]
+    for arm in arms:
+        path=OUT/'replays/primary'/f'episode_001_{arm}.json.gz'
+        episodes.append(_load_gz(path)['replay'])
+    wall=episodes[0]['static_walls_xy']; start=episodes[0]['start_xy'];goal=episodes[0]['goal_xy']
+    cmap=ListedColormap(['#e8edf1','#cae8ee','#eea15c'])
+    fig,axes=plt.subplots(1,5,figsize=(16,4.2),constrained_layout=True)
+    max_frames=max(len(x['steps']) for x in episodes)
+    def draw(index):
+        for ax,replay in zip(axes,episodes):
+            frames=replay['steps'];frame=frames[min(index,len(frames)-1)]
+            ax.clear();mem=unpack_2bit_grid(frame['spatial_memory_ternary_packed_2bit_base64'])
+            ax.imshow(mem,origin='lower',cmap=cmap,vmin=-1,vmax=1,interpolation='nearest')
+            if wall:
+                wx,wy=zip(*wall);ax.scatter(wx,wy,s=9,c='#202b36',marker='s')
+            for obj in frame['objects_after']:
+                x,y=obj['cell'];ax.scatter([x],[y],s=48,c='#9b6237',marker='s',edgecolors='white',linewidths=.3)
+            for person in frame['pedestrians_xy']:
+                x,y=person['cell'];ax.scatter([x],[y],s=38,c='#e84d44',marker='o',edgecolors='white',linewidths=.5)
+            route=frame.get('planned_path_xy') or []
+            if len(route)>1:
+                ax.plot([p[0] for p in route],[p[1] for p in route],color='#7658d7',lw=1.2,alpha=.9)
+            ax.scatter([start[0]],[start[1]],s=70,c='#16b9d3',marker='*',edgecolors='white',linewidths=.4)
+            ax.scatter([goal[0]],[goal[1]],s=70,c='#e2ad27',marker='*',edgecolors='white',linewidths=.4)
+            rx,ry=frame['robot_position_after_action_xy'];yaw=float(frame['robot_heading_after_action_rad'])
+            ax.scatter([rx],[ry],s=64,c='#214e96',marker='o',edgecolors='white',linewidths=.8,zorder=5)
+            ax.arrow(rx,ry,.55*math.cos(yaw),.55*math.sin(yaw),color='#17355f',width=.035,head_width=.2,length_includes_head=True,zorder=6)
+            event=frame['event']['event_type']
+            ax.set_title(f"{replay['arm']}\nstep {frame['step']} · {event}\npaid obs {frame['paid_observation_count']}",fontsize=9)
+            ax.set_xlim(-.5,24.5);ax.set_ylim(-.5,24.5);ax.set_aspect('equal');ax.set_xticks([]);ax.set_yticks([])
+            ax.set_facecolor('#f5f7f8')
+        fig.suptitle('Saved H2 high-frequency replay · map 01 R · schedule 0',fontsize=12)
+        return []
+    animation=FuncAnimation(fig,draw,frames=max_frames,interval=150,blit=False,repeat=True)
+    animation.save(directory/'representative_comparison.gif',writer=PillowWriter(fps=6))
+    draw(max_frames-1);fig.savefig(directory/'representative_trajectory_final.png',dpi=150)
+    plt.close(fig)
 
 
 def run_all(stages=('smoke','original_uncertainty','primary','analysis')):
@@ -972,7 +1370,7 @@ def run_all(stages=('smoke','original_uncertainty','primary','analysis')):
     maps=source_maps()
     cases=_case_order(maps)
     for stage in stages:
-        if stage=='smoke':
+        if stage in ('smoke','smoke_amendment1'):
             _run_stage(stage,cases[:4],ARM_IDS,True)
         elif stage=='original_uncertainty':
             _run_stage(stage,cases,('uncertainty',),False)
@@ -988,30 +1386,58 @@ def run_all(stages=('smoke','original_uncertainty','primary','analysis')):
                 original.append(_load_gz(path)['row'])
             if len(original)!=72: raise RuntimeError('Analysis requires 72 original-condition episodes')
             summary=_analysis(primary,OUT)
-            original_summary=_analysis_original_uncertainty(original)
+            original_summary=_analysis_original_uncertainty(original,primary)
             write_exclusive(OUT/'analysis/original_uncertainty_summary.json',original_summary)
             report=_report(summary, original_summary, OUT)
             (OUT/'analysis/report.md').write_text(report,encoding='utf-8')
         else: raise ValueError(stage)
 
 
-def _analysis_original_uncertainty(rows):
+def _analysis_original_uncertainty(rows,dynamic_rows):
+    original={(r['world_identity'],int(r['schedule'])):r for r in rows}
+    dynamic={(r['world_identity'],int(r['schedule'])):r for r in dynamic_rows if r['method']=='uncertainty'}
+    keys=sorted(original)
+    paired={'keys':len(keys),'success_same':0,'success_regression':0,'success_improvement':0,
+        'mean_paid_difference_dynamic_minus_original':0.,'mean_steps_difference_dynamic_minus_original':0.,
+        'mean_distance_difference_dynamic_minus_original_m':0.,'contacts_original':0,'contacts_dynamic':0}
+    paid=[];steps=[];distance=[]
+    for key in keys:
+        a,b=original[key],dynamic[key]
+        paired['success_same']+=bool(a['success'])==bool(b['success'])
+        paired['success_regression']+=bool(a['success']) and not bool(b['success'])
+        paired['success_improvement']+=not bool(a['success']) and bool(b['success'])
+        paid.append(float(b['observation_count'])-float(a['observation_count']))
+        steps.append(float(b['elapsed_steps'])-float(a['elapsed_steps']))
+        distance.append(float(b.get('travel_distance_m',0))-float(a.get('travel_distance_m',0)))
+    paired['mean_paid_difference_dynamic_minus_original']=statistics.mean(paid)
+    paired['mean_steps_difference_dynamic_minus_original']=statistics.mean(steps)
+    paired['mean_distance_difference_dynamic_minus_original_m']=statistics.mean(distance)
+    paired['contacts_original']=sum(int(r.get('g1_unwanted_contact_pairs',0))>0 for r in rows)
+    paired['contacts_dynamic']=sum(int(r.get('g1_unwanted_contact_pairs',0))>0 for r in dynamic.values())
     return {'episodes':len(rows),'arm':'uncertainty','goal_completions':sum(bool(r['success']) for r in rows),
         'mean_paid_observations':statistics.mean(r['observation_count'] for r in rows),
         'mean_steps':statistics.mean(r['elapsed_steps'] for r in rows),
         'mean_distance_m':statistics.mean(r.get('travel_distance_m',0) for r in rows),
-        'condition':'saved original scheduled environment dynamics; same 36 maps and 2 schedules'}
+        'condition':'saved original scheduled environment dynamics; same 36 maps and 2 schedules',
+        'paired_with_high_frequency_uncertainty':paired}
 
 
 def _report(summary, original, out):
+    historical=json.loads((frozen.OUT/'analysis/summary.json').read_text())['summary']
     lines=['# H2 High-Frequency Dynamic Environment Evaluation', '',
         'Descriptive robustness extension on the same admitted H2 maps. This is not independent validation.', '',
         '## High-frequency results', '',
-        '| Arm | Goals / 72 | Rate | Contact episodes | Mean paid obs. | Mean steps | Mean distance (m) | Mean dynamic changes | Mean decision (ms) | Mean wall (s) |',
-        '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+        '| Arm | Goals / 72 | Rate | Contact episodes | Paid obs. mean (total) | Steps mean | Distance mean (m) | Dynamic changes mean | Change rate | Total rays | Emergency interventions | Blocked actions | Mean decision (ms) | Mean wall (s) |',
+        '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for arm in ARM_IDS:
         s=summary[arm]
-        lines.append(f"| {arm} | {s['goal_completions']}/72 | {s['goal_completion_rate']:.3f} | {s['episodes_with_unwanted_contact']} | {s['mean_paid_observations']:.2f} | {s['mean_steps']:.2f} | {s['mean_distance_m']:.2f} | {s['mean_dynamic_changes']:.2f} | {s['mean_decision_ms']:.3f} | {s['mean_episode_wall_s']:.3f} |")
+        lines.append(f"| {arm} | {s['goal_completions']}/72 | {s['goal_completion_rate']:.3f} | {s['episodes_with_unwanted_contact']} | {s['mean_paid_observations']:.2f} ({s['total_paid_observations']}) | {s['mean_steps']:.2f} | {s['mean_distance_m']:.2f} | {s['mean_dynamic_changes']:.2f} | {s['mean_change_rate']:.3f} | {s['total_spatial_memory_rays']+s['total_emergency_raycasts']} | {s['total_emergency_interventions']} | {s['total_blocked_actions']} | {s['mean_decision_ms']:.3f} | {s['mean_episode_wall_s']:.3f} |")
+    lines+=['','## Historical H2 final 12-arm reference','',
+        'These results use the same saved maps but the former scheduled object-change mechanism. They are historical context; the transition mechanism differs, so the comparison does not isolate change frequency.', '',
+        '| Arm | Prior goals / 72 | Prior paid mean | Prior steps mean | Prior distance mean (m) | Prior contacts |',
+        '|---|---:|---:|---:|---:|---:|']
+    for arm,s in historical.items():
+        lines.append(f"| {arm} | {s['goals']}/72 | {s['paid_mean']:.2f} | {s['steps_mean']:.2f} | {s['distance_m_mean']:.2f} | {s['contacts_total']} |")
     lines += ['', '## Original-condition Uncertainty comparison', '',
         f"Uncertainty completed {original['goal_completions']}/{original['episodes']} goals; mean paid observations {original['mean_paid_observations']:.2f}, mean steps {original['mean_steps']:.2f}, mean distance {original['mean_distance_m']:.2f} m.", '',
         '## Interpretation and limits', '',
@@ -1039,7 +1465,7 @@ def manifest(directory):
 
 
 def verify_replays():
-    expected={'smoke':52,'original_uncertainty':72,'primary':936}
+    expected={'smoke_amendment1':52,'original_uncertainty':72,'primary':936}
     report={}
     for stage,count in expected.items():
         directory=OUT/'replays'/stage
@@ -1049,19 +1475,48 @@ def verify_replays():
         for path in files:
             item=_load_gz(path);steps=item['replay']['steps']
             if len(steps)!=item['row']['elapsed_steps']+1:raise ValueError(f'Frame count mismatch: {path}')
+            dynamic_stage=stage in {'primary','smoke_amendment1'}
+            if dynamic_stage and item['row']['dynamic_steps']!=item['row']['elapsed_steps']:
+                raise ValueError(f'Dynamic transition count differs from active episode: {path}')
+            current={x['object_id']:tuple(x['cell']) for x in item['replay']['initial_objects']}
+            local_events=0;local_changes=0
             for i,step in enumerate(steps):
                 if step['step']!=i:raise ValueError(f'Step-order mismatch: {path}')
                 if i and step['event'].get('step')!=i:raise ValueError(f'Event-step mismatch: {path}')
                 if i:
-                    events+=1;changes+=step['event']['event_type']!='no_op'
-                    if not step['event']['connectivity_preserved']:raise ValueError('Connectivity failure recorded')
-                    if not step['event']['exclusion_zone_validated']:raise ValueError('Exclusion violation recorded')
-            # Apply explicit object_after states and validate stable IDs/counts.
-            current={x['object_id']:tuple(x['cell']) for x in item['replay']['initial_objects']}
-            for step in steps[1:]:
-                current={x['object_id']:tuple(x['cell']) for x in step['objects_after']}
-                if not 0<=len(current)<=MAX_OBJECTS:raise ValueError('Object-count replay violation')
+                    if dynamic_stage:
+                        local_events+=1;local_changes+=step['event']['event_type']!='no_op'
+                        if not step['event']['connectivity_preserved']:raise ValueError('Connectivity failure recorded')
+                        if not step['event']['exclusion_zone_validated']:raise ValueError('Exclusion violation recorded')
+                before={x['object_id']:tuple(x['cell']) for x in step['objects_before']}
+                after={x['object_id']:tuple(x['cell']) for x in step['objects_after']}
+                if before!=current:raise ValueError(f'Event before-state does not replay: {path}:{i}')
+                event=step['event']['event_type']
+                if i and event=='addition':
+                    if len(after)!=len(current)+1 or len(set(current)&set(after))!=len(current):raise ValueError('Invalid addition ID transition')
+                elif i and event=='removal':
+                    if len(after)!=len(current)-1 or len(set(after)&set(current))!=len(after):raise ValueError('Invalid removal ID transition')
+                elif i and event=='relocation':
+                    if set(after)!=set(current) or step['event']['from_cell']==step['event']['to_cell']:raise ValueError('Relocation was not atomic or kept its ID')
+                elif i and event=='no_op' and after!=current:raise ValueError('No-op changed the object set')
+                current=after
+                if dynamic_stage and not 0<=len(current)<=MAX_OBJECTS:raise ValueError('Object-count replay violation')
                 if len({tuple(v) for v in current.values()})!=len(current):raise ValueError('Duplicate object cell')
+                memory_key='spatial_memory_ternary_packed_2bit_base64'
+                memory=unpack_2bit_grid(step[memory_key])
+                if memory.shape!=(25,25):raise ValueError('Invalid spatial memory grid')
+                truth=unpack_bool_grid(step['ground_truth_occupancy_packed_bits_base64'])
+                expected=set(map(tuple,item['replay']['static_walls_xy']))|set(current.values())
+                expected.update(tuple(p['cell']) for p in step['pedestrians_xy'])
+                for y in range(25):
+                    for x in range(25):
+                        if bool(truth[y,x]) != ((x,y) in expected):
+                            raise ValueError(f'Ground-truth replay occupancy mismatch: {path}:{i}')
+            if dynamic_stage:
+                events+=local_events;changes+=local_changes
+                row=item['row']
+                if row['dynamic_steps']!=row['elapsed_steps'] or row['environment_change_rate'] != local_changes/max(1,local_events):
+                    raise ValueError(f'Event-rate mismatch: {path}')
         report[stage]={'episodes':count,'environment_steps':events,'changes':int(changes),
                        'change_rate':changes/max(1,events)}
     return report
@@ -1069,14 +1524,18 @@ def verify_replays():
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('stage',choices=('prepare','smoke','original_uncertainty','primary','analysis','verify','all'))
+    parser.add_argument('stage',choices=('prepare','prepare-amendment','smoke','smoke_amendment1','original_uncertainty','primary','analysis','verify','all'))
     args=parser.parse_args()
     if args.stage=='prepare':
         _extend_frozen_arms();make_binding();print(f'Prepared immutable binding at {OUT}',flush=True)
         return
-    if not (OUT/'binding.json').is_file():
+    if args.stage=='prepare-amendment':
+        _extend_frozen_arms();make_amendment_binding();print('Prepared amendment 1 binding; commit it before rerunning validation.',flush=True)
+        return
+    binding_path=OUT/'binding_amendment_1.json' if (OUT/'binding_amendment_1.json').exists() else OUT/'binding.json'
+    if not binding_path.is_file():
         raise SystemExit('Missing prepared binding. Run the `prepare` stage, commit its source binding, then continue.')
-    binding=json.loads((OUT/'binding.json').read_text())
+    binding=json.loads(binding_path.read_text())
     if binding['required_h2_base_commit']!=SOURCE_COMMIT:
         raise SystemExit('Frozen source commit binding mismatch')
     for relative, digest in binding['sources'].items():
@@ -1084,8 +1543,8 @@ def main():
             raise SystemExit(f'Source commitment changed after preparation: {relative}')
     _extend_frozen_arms()
     if args.stage=='all':
-        for stage in ('smoke','original_uncertainty','primary','analysis'):
-            if stage=='smoke' and (OUT/'smoke/summary.json').exists():continue
+        for stage in ('smoke_amendment1','original_uncertainty','primary','analysis'):
+            if stage=='smoke_amendment1' and (OUT/'smoke_amendment1/summary.json').exists():continue
             if stage=='original_uncertainty' and (OUT/'original_uncertainty/summary.json').exists():continue
             if stage=='primary' and (OUT/'primary/summary.json').exists():continue
             if stage=='analysis' and (OUT/'analysis/summary.json').exists():continue
