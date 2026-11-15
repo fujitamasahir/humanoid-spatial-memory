@@ -93,7 +93,7 @@ function syncPauseControls(){
 }
 function drawPauseEditor(){if(!paused())return;const s=liveState;drawMap($('truthCanvas'),current(),{northUp:true,objects:pausedDraft.objects,peds:pausedDraft.pedestrians,robot:{position:s.position,heading_yaw:s.heading_yaw||0},trajectory:s.trajectory||[],editor:true,cursorCell:pauseCursor});syncPauseControls()}
 function movePauseCursor(dx,dy){if(!paused()||pauseBusy)return;const m=current();pauseCursor=[Math.max(0,Math.min(m.width-1,pauseCursor[0]+dx)),Math.max(0,Math.min(m.height-1,pauseCursor[1]-dy))];drawPauseEditor()}
-function editPaused(cell,kind=pauseTool,removeOnly=false){
+async function editPaused(cell,kind=pauseTool,removeOnly=false){
  if(!paused()||pauseBusy)return;
  const m=current(),[x,y]=cell,rule=difficultyRules[liveState.difficulty],items=kind==='object'?pausedDraft.objects:pausedDraft.pedestrians,other=kind==='object'?pausedDraft.pedestrians:pausedDraft.objects,cap=kind==='object'?rule.max_static_objects:rule.max_pedestrians;
  const index=items.findIndex(p=>sameCell(p,cell));
@@ -102,7 +102,16 @@ function editPaused(cell,kind=pauseTool,removeOnly=false){
  if(x<0||y<0||x>=m.width||y>=m.height||m.wall_rows[y][x]!=='0'||sameCell(cell,m.start)||sameCell(cell,m.goal)||sameCell(cell,liveState.position)){toast('Choose an open cell away from Start, Goal and the humanoid.');return}
  if(other.some(p=>sameCell(p,cell))){toast('Remove the other hazard first.');return}
  if(items.length>=cap){toast('Placement limit reached. Remove an existing '+(kind==='object'?'object':'pedestrian')+' first.');return}
- items.push([...cell]);drawPauseEditor();
+ const draft=pausedDraft;
+ const candidate={step:draft.step,objects:draft.objects.map(p=>[...p]),pedestrians:draft.pedestrians.map(p=>[...p])};
+ (kind==='object'?candidate.objects:candidate.pedestrians).push([...cell]);
+ pauseBusy=true;syncPauseControls();
+ try{
+  const verdict=await api('/api/validate-paused',{method:'POST',body:JSON.stringify(candidate)});
+  if(!paused()||pausedDraft!==draft)return;
+  if(!verdict.valid){toast(verdict.errors.join(' '));return}
+  pausedDraft=candidate;drawPauseEditor();
+ }catch(error){toast(error.message)}finally{pauseBusy=false;syncPauseControls()}
 }
 async function togglePause(){
  if(pauseBusy||skipping||!$('liveScreen').classList.contains('active')||!['running','paused'].includes(liveState?.status))return;

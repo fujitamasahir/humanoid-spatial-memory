@@ -244,3 +244,65 @@ def test_absolute_step_pedestrian_paths_after_live_edit():
     assert scenario.pedestrians[0][step]==tuple(starts[0])
     assert all(abs(a[0]-b[0])+abs(a[1]-b[1])<=1 for a,b in
                zip(scenario.pedestrians[0],scenario.pedestrians[0][1:]+scenario.pedestrians[0][:1]))
+
+
+def test_paused_placement_rejects_only_passage_for_either_hazard_type():
+    eng=_paused_test_engine()
+    thread,result=_enter_pause(eng)
+    before=eng.snapshot()
+    try:
+        for objects, pedestrians in [([[3,3]],[]), ([],[[3,3]])]:
+            verdict=eng.validate_paused(12,objects,pedestrians)
+            assert not verdict['valid'] and 'every footprint-safe route' in verdict['errors'][0]
+            assert not eng.resume(12,objects,pedestrians)['ok']
+        assert eng.snapshot()==before
+        assert eng.validate_paused(12,[[4,4]],[[5,4]])['valid']
+        assert eng.snapshot()==before
+        assert eng.resume(12,[],[])['ok']
+        thread.join(2)
+        assert result==[None]
+    finally:
+        if thread.is_alive():
+            with eng.condition:
+                eng.pause_requested=False
+                eng.condition.notify_all()
+            thread.join(2)
+
+
+def test_paused_validation_checks_combined_objects_and_pedestrians():
+    eng=_paused_test_engine()
+    # Two wall openings: either hazard alone is fine, but both together block Goal.
+    eng.mazes['test-maze']['wall_rows'][1]='1000001'
+    thread,result=_enter_pause(eng)
+    try:
+        assert eng.validate_paused(12,[[3,1]],[])['valid']
+        assert eng.validate_paused(12,[],[[3,3]])['valid']
+        assert not eng.validate_paused(12,[[3,1]],[[3,3]])['valid']
+        assert eng.resume(12,[],[])['ok']
+        thread.join(2)
+        assert result==[None]
+    finally:
+        if thread.is_alive():
+            with eng.condition:
+                eng.pause_requested=False
+                eng.condition.notify_all()
+            thread.join(2)
+
+
+def test_paused_validation_allows_removing_existing_blockage():
+    eng=_paused_test_engine()
+    eng.state['objects']=[[4,4]]
+    eng.state['people']=[[3,3]]
+    thread,result=_enter_pause(eng)
+    try:
+        # A pedestrian may already have walked into the only passage.
+        assert eng.validate_paused(12,[],[[3,3]])['valid']
+        assert eng.resume(12,[],[[3,3]])['ok']
+        thread.join(2)
+        assert result==[([],[[3,3]])]
+    finally:
+        if thread.is_alive():
+            with eng.condition:
+                eng.pause_requested=False
+                eng.condition.notify_all()
+            thread.join(2)

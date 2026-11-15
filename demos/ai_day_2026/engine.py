@@ -617,10 +617,11 @@ class GameEngine:
             self.condition.notify_all()
             return {'ok': True}
 
-    def resume(self, step, objects, pedestrians):
+    def validate_paused(self, step, objects, pedestrians):
+        """Check a proposed edit without changing the paused episode."""
         with self.condition:
             if self.state.get('status') != 'paused' or not self.pause_requested or step != self.state.get('step'):
-                return {'ok': False, 'error': 'The paused step changed. Wait for the current frame.'}
+                return {'valid': False, 'errors': ['The paused step changed. Wait for the current frame.']}
             old_objects = {tuple(p) for p in self.state['objects']}
             old_people = {tuple(p) for p in self.state['people']}
             maze = self.mazes[self.state['maze_id']]
@@ -629,7 +630,7 @@ class GameEngine:
             pos = tuple(self.state['position'])
             yaw = self.state['heading_yaw']
             def fail(message):
-                return {'ok': False, 'error': message}
+                return {'valid': False, 'errors': [message]}
             if len(objects) > rules['max_static_objects'] or len(pedestrians) > rules['max_pedestrians']:
                 return fail('Placement limit exceeded. Remove an existing hazard first.')
             if any(not isinstance(c, (list, tuple)) or len(c) != 2 or any(type(v) is not int for v in c)
@@ -640,17 +641,28 @@ class GameEngine:
                 return fail('Hazards cannot overlap.')
             if not (o | q) <= free or (o | q) & {tuple(maze['start']), tuple(maze['goal'])}:
                 return fail('Use open cells outside Start and Goal.')
-            changed = o != old_objects or q != old_people
-            if changed:
-                added = (o-old_objects) | (q-old_people)
-                if pos in added or (added and not self.reachability._clear(pos, yaw, added, maze['width'], maze['height'])):
+            added = (o-old_objects) | (q-old_people)
+            if added:
+                if pos in added or not self.reachability._clear(pos, yaw, added, maze['width'], maze['height']):
                     return fail('Keep new hazards clear of the humanoid.')
-                # Pedestrians move again on resume. Do not let static edits
-                # permanently seal every footprint-safe route from this pose.
-                if o != old_objects:
-                    from_pose = dict(maze, start=list(pos))
-                    if not self.reachability.has_route(from_pose, sorted(o), start_heading=heading_index(yaw)):
-                        return fail('This layout blocks every footprint-safe route from the humanoid.')
+                # Exactly the initial editor's footprint-safe route check,
+                # including both kinds of hazards, but from the paused pose.
+                from_pose = dict(maze, start=list(pos))
+                if not self.reachability.has_route(from_pose, sorted(o | q), start_heading=heading_index(yaw)):
+                    return fail('This layout blocks every footprint-safe route to Goal.')
+            # A no-edit resume or pure removal must remain possible even if
+            # moving pedestrians have already temporarily blocked a passage.
+            return {'valid': True, 'errors': []}
+
+    def resume(self, step, objects, pedestrians):
+        with self.condition:
+            validation = self.validate_paused(step, objects, pedestrians)
+            if not validation['valid']:
+                return {'ok': False, 'error': ' '.join(validation['errors'])}
+            old_objects = {tuple(p) for p in self.state['objects']}
+            old_people = {tuple(p) for p in self.state['people']}
+            o, q = set(map(tuple, objects)), set(map(tuple, pedestrians))
+            if o != old_objects or q != old_people:
                 self.resume_layout = ([list(c) for c in sorted(o)], [list(c) for c in sorted(q)])
                 self.state['edit_events'] = self.state['edit_events'] + [{
                     'paused_step': step, 'effective_step': step+1,

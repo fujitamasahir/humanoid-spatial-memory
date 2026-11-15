@@ -61,6 +61,10 @@ def pause():
     result=engine.pause()
     return JSONResponse(result,status_code=200 if result['ok'] else 409)
 
+@app.post('/api/validate-paused')
+def validate_paused(request: ResumeRequest):
+    return engine.validate_paused(request.step,request.objects,request.pedestrians)
+
 @app.post('/api/resume')
 def resume(request: ResumeRequest):
     result=engine.resume(request.step,request.objects,request.pedestrians)
