@@ -308,7 +308,9 @@ class HighFrequencyEngine:
             candidate_rejections=dict(sorted(rejected.items())),
             feasible_event_types=types,
             random_stream_id=stream_id(self.map_identity, self.schedule, step,
-                                       'operation-type'))
+                                       'operation-type'),
+            random_stream_ids={'type':stream_id(self.map_identity,self.schedule,step,'operation-type'),
+                'candidate':stream_id(self.map_identity,self.schedule,step,'operation-candidate')})
         if types:
             kind = types[int(rng_type.integers(len(types)))]
             record['event_type'] = kind
@@ -735,7 +737,7 @@ def make_binding():
     })
 
 
-def make_amendment_binding():
+def make_amendment_binding(version=2):
     """Freeze a prospective runner correction without rewriting v1 binding."""
     old_binding_path = OUT/'binding.json'
     if not old_binding_path.is_file():
@@ -767,19 +769,28 @@ def make_amendment_binding():
             'original_runner_sha256':old_script_sha,
             'mismatches':mismatches,
         })
+    status1=validation/'binding_amendment_1_status.json'
+    if version >= 2 and not status1.exists():
+        write_exclusive(status1,{'binding':'binding_amendment_1.json',
+            'status':'SUPERSEDED_BEFORE_EVALUATION',
+            'reason':'Additional original-condition full replay and final analysis code was added after this binding was drafted; its script source hash no longer matched.',
+            'navigation_runs_under_binding':0,
+            'preserved_original_smoke_binding':'binding.json'})
     sources=[PROTOCOL,SCHEMA,Path(__file__),ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_1.md',
+        ROOT/'docs/h2_high_frequency_dynamics_protocol_v1_amendment_2.md',
         ROOT/'tests/test_h2_high_frequency_dynamics.py',ROOT/'scripts/h2_final_common.py',
         ROOT/'scripts/run_h2_final.py',ROOT/'scripts/evaluate_phase2_61ray_emergency_safety_full_288.py',
         ROOT/'src/spatial_memory/evaluation.py',ROOT/'src/spatial_memory/simulation.py',
         ROOT/'src/spatial_memory/scheduling.py',ROOT/'src/spatial_memory/mujoco_navigation.py',
         ROOT/'src/spatial_memory/mujoco_perception.py',ROOT/'src/spatial_memory/emergency_safety.py',
         ROOT/'src/spatial_memory/navigation.py']
-    write_exclusive(OUT/'binding_amendment_1.json',{
-        'protocol':'h2_high_frequency_dynamics_v1_amendment_1',
+    write_exclusive(OUT/f'binding_amendment_{version}.json',{
+        'protocol':f'h2_high_frequency_dynamics_v1_amendment_{version}',
         'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'required_h2_base_commit':SOURCE_COMMIT,
         'original_binding_sha256':sha(old_binding_path),
         'original_smoke_issue_sha256':sha(issue_path),
+        'superseded_binding_1_status_sha256':sha(status1),
         'sources':{p.relative_to(ROOT).as_posix():sha(p) for p in sources},
         'maps':old_binding['maps'],'arms':list(ARM_IDS),'seed':SEED,
         'max_steps':MAX_STEPS,'object_count_limits':[0,MAX_OBJECTS],
@@ -1524,15 +1535,18 @@ def verify_replays():
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('stage',choices=('prepare','prepare-amendment','smoke','smoke_amendment1','original_uncertainty','primary','analysis','verify','all'))
+    parser.add_argument('stage',choices=('prepare','prepare-amendment','prepare-amendment2','smoke','smoke_amendment1','original_uncertainty','primary','analysis','verify','all'))
     args=parser.parse_args()
     if args.stage=='prepare':
         _extend_frozen_arms();make_binding();print(f'Prepared immutable binding at {OUT}',flush=True)
         return
-    if args.stage=='prepare-amendment':
-        _extend_frozen_arms();make_amendment_binding();print('Prepared amendment 1 binding; commit it before rerunning validation.',flush=True)
+    if args.stage in ('prepare-amendment','prepare-amendment2'):
+        version=1 if args.stage=='prepare-amendment' else 2
+        _extend_frozen_arms();make_amendment_binding(version);print(f'Prepared amendment {version} binding; commit it before rerunning validation.',flush=True)
         return
-    binding_path=OUT/'binding_amendment_1.json' if (OUT/'binding_amendment_1.json').exists() else OUT/'binding.json'
+    binding_path=(OUT/'binding_amendment_2.json' if (OUT/'binding_amendment_2.json').exists()
+        else OUT/'binding_amendment_1.json' if (OUT/'binding_amendment_1.json').exists()
+        else OUT/'binding.json')
     if not binding_path.is_file():
         raise SystemExit('Missing prepared binding. Run the `prepare` stage, commit its source binding, then continue.')
     binding=json.loads(binding_path.read_text())
