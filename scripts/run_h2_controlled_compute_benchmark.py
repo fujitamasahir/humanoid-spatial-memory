@@ -38,7 +38,7 @@ from verify_dao_integrity import verify as verify_preservation
 OUT = ROOT / 'results/phase2_mujoco/h2_controlled_compute_benchmark_v1'
 PRIOR_COMPREHENSIVE = COMPREHENSIVE_HISTORICAL[0]
 PRIOR_HF = engine.OUT
-PRIOR_INDEX = COMPREHENSIVE_HISTORICAL[0] / 'combined_dataset/replay_index.json'
+PRIOR_INDEX = ROOT / 'results/phase2_mujoco/h2_comprehensive_benchmark_v1/combined_dataset/replay_index.json'
 PROTOCOL = ROOT / 'docs/h2_controlled_compute_benchmark_protocol_v1.md'
 SCRIPT = Path(__file__)
 REPETITIONS = 5
