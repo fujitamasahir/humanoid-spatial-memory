@@ -10,11 +10,13 @@ SPEC.loader.exec_module(MODULE)
 
 def test_semantic_digest_ignores_timing_but_preserves_behavior():
     row = {'success': True, 'elapsed_steps': 4, 'decision_time_ms': 1.2,
-           'model_compute_ns': 100, 'observation_count': 2}
+           'model_compute_ns': 100, 'evaluation_loop_time_seconds': .01,
+           'observation_count': 2}
     replay = {'steps': [{'step': 1, 'position': [1, 2], 'action': 'forward',
                          'diagnostic_timing_ns': [3]}], 'metrics': row}
     original = MODULE.semantic_sha(row, replay)
-    changed_time = dict(row, decision_time_ms=99.0, model_compute_ns=900)
+    changed_time = dict(row, decision_time_ms=99.0, model_compute_ns=900,
+                        evaluation_loop_time_seconds=900)
     changed_replay = {'steps': [{'step': 1, 'position': [1, 2], 'action': 'forward',
                                   'diagnostic_timing_ns': [400]}], 'metrics': changed_time}
     assert MODULE.semantic_sha(changed_time, changed_replay) == original

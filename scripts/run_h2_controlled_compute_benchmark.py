@@ -265,7 +265,8 @@ def shutil_disk_free():
 
 
 def validate_binding():
-    binding = json.loads((OUT/'binding.json').read_text())
+    binding_path = active_binding_path()
+    binding = json.loads(binding_path.read_text())
     current = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     if binding['source_commit'] != current:
         raise RuntimeError('Committed source differs from benchmark binding')
@@ -281,9 +282,56 @@ def validate_binding():
     return binding
 
 
+def active_binding_path() -> Path:
+    pointer = OUT/'active_binding.json'
+    if not pointer.is_file():
+        return OUT/'binding.json'
+    item = json.loads(pointer.read_text())
+    target = OUT/item['path']
+    if not target.is_file() or sha(target) != item['sha256']:
+        raise RuntimeError('Active binding pointer hash mismatch')
+    return target
+
+
+def amend_binding_for_timing_scope():
+    """Append-only correction for the pre-run parity field filter."""
+    parent = OUT/'binding.json'
+    target = OUT/'binding_amendment_1.json'
+    pointer = OUT/'active_binding.json'
+    if not parent.is_file() or target.exists() or pointer.exists():
+        raise RuntimeError('Expected one unamended pre-run binding')
+    attempt = OUT/'warmup/journal.jsonl'
+    if not attempt.is_file():
+        raise RuntimeError('No initial smoke attempt is present to audit')
+    attempts = _load_journal(attempt, lambda r: r['model_id'])
+    if len(attempts) != 54:
+        raise RuntimeError(f'Expected 54 initial warm-up records, found {len(attempts)}')
+    mismatch_report = {'attempt': 'smoke_preflight_001',
+        'status': 'INVALIDATED_COMPARISON_CLASSIFIER_ONLY',
+        'models': len(attempts), 'behavioral_parity_decisions': 'not adjudicated by the first classifier',
+        'reason': 'semantic parity projection omitted timing keys ending in _seconds; it included evaluation-loop and scene-construction wall times. These are outside the frozen model timing scope.',
+        'correction': 'Exclude _seconds runtime fields in the recursive parity projection. The controller source, map/schedule inputs, model, and safety paths are unchanged.',
+        'preserved_warmup_journal_sha256': sha(attempt),
+        'warmup_records_preserved_in': 'warmup/journal.jsonl',
+        'primary_matrix_runs': 0,
+        'recorded_at_utc': datetime.now(timezone.utc).isoformat()}
+    write_exclusive(OUT/'validation/initial_smoke_attempt_001.json', mismatch_report)
+    updated = json.loads(parent.read_text())
+    updated['parent_binding_sha256'] = sha(parent)
+    updated['source_commit'] = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    updated['source_sha256']['scripts/run_h2_controlled_compute_benchmark.py'] = sha(SCRIPT)
+    updated['amendment'] = '1: correct semantic parity timing-field filter; no episode/model/policy change'
+    updated['amendment_reason_sha256'] = sha(OUT/'validation/initial_smoke_attempt_001.json')
+    updated['amended_at_utc'] = datetime.now(timezone.utc).isoformat()
+    write_exclusive(target, updated)
+    write_exclusive(pointer, {'path': target.name, 'sha256': sha(target),
+        'parent_binding_sha256': sha(parent)})
+    print('Appended binding amendment 1; the initial classifier failure is preserved.',flush=True)
+
+
 def semantic_projection(row: dict, replay: dict) -> dict:
     ignored_fragments = ('timing', '_ns', '_ms', 'wall', 'duration', 'computation',
-                         'runtime', 'elapsed_time', 'cpu_time')
+                         '_seconds', 'runtime', 'elapsed_time', 'cpu_time')
     def strip_timing(value):
         if isinstance(value, dict):
             return {k: strip_timing(v) for k, v in value.items()
@@ -411,7 +459,8 @@ def _smoke_cases(cases):
 
 
 def _warm_up(cases, models, prior):
-    path = OUT/'warmup/journal.jsonl'
+    stage = 'warmup_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'warmup'
+    path = OUT/stage/'journal.jsonl'
     completed = _load_journal(path, lambda r: r['model_id'])
     payload = cases[0][1]
     schedule = 0
@@ -439,7 +488,8 @@ def run_smoke():
     maps, all_cases = maps_and_cases()
     cases = _smoke_cases(all_cases)
     models = model_ids(); prior = historical_index()
-    root = OUT/'smoke'; root.mkdir(parents=True, exist_ok=True)
+    stage = 'smoke_amendment_1' if active_binding_path().name.endswith('amendment_1.json') else 'smoke'
+    root = OUT/stage; root.mkdir(parents=True, exist_ok=True)
     journal = root/'journal.jsonl'
     completed = _load_journal(journal,
         lambda r: (r['case_index'], r['model_id']))
@@ -1047,12 +1097,14 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest='command',required=True)
     sub.add_parser('prepare')
+    sub.add_parser('amend-binding-1')
     sub.add_parser('smoke')
     run=sub.add_parser('run');run.add_argument('--resume',action='store_true')
     sub.add_parser('analyze')
     sub.add_parser('verify')
     args=parser.parse_args()
     if args.command=='prepare': prepare()
+    elif args.command=='amend-binding-1': amend_binding_for_timing_scope()
     elif args.command=='smoke': run_smoke()
     elif args.command=='run': run_repetitions(args.resume)
     elif args.command=='analyze': analyze()
