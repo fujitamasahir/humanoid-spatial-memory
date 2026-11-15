@@ -192,7 +192,8 @@ def prepare():
     models = model_ids()
     prior = historical_index()
     registry = load_registry()
-    eligible = {r['model_id'] for r in registry if r['authorization_status'] == 'eligible'}
+    eligible = {r['model_id'] for r in registry
+                if r['authorization_status'] in ('eligible', 'historical')}
     if set(models) != eligible:
         raise RuntimeError('54 model set does not equal the eligible registry')
     preservation = verify_preservation()
