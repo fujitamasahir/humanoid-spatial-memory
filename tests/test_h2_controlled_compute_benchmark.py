@@ -38,9 +38,9 @@ def test_model_matrix_contains_54_admitted_unique_models():
     assert 'c_route3' not in ids and 'c_topology3c' not in ids
 
 
-def test_periodic5_computes_unused_age_score_before_periodic_branch():
-    source = (ROOT/'src/spatial_memory/cadence_age.py').read_text()
-    assert source.index('score=fraction(age)') < source.index("if mode=='periodic5'")
+def test_periodic5_returns_before_grid_scoring():
+    source = (ROOT/'src/spatial_memory/cadence_age_optimized_v1.py').read_text()
+    assert source.index("if mode=='periodic5'") < source.index('yy,xx=np.indices')
     assert "granted=step>0 and step%(age+1)==0" in source
 
 

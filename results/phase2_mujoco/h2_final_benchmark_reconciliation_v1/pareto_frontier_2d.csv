@@ -1,0 +1,8 @@
+model_id,goal_success_rate,mean_paid_observations,mean_total_model_computation_ms,evaluation_condition,objectives
+bc,0.6944444444444444,3.1944444444444446,124.3676622,unseen_high_frequency,"maximize success, minimize observations"
+c0_audit,0.7083333333333334,4.541666666666667,120.95597000277779,unseen_high_frequency,"maximize success, minimize observations"
+c_k,0.7777777777777778,6.347222222222222,113.06381235833334,unseen_high_frequency,"maximize success, minimize observations"
+c_ternary,0.7083333333333334,4.541666666666667,122.11661071666667,unseen_high_frequency,"maximize success, minimize observations"
+rdao_v1_footprint,0.8472222222222222,8.791666666666666,361.0746201666667,unseen_high_frequency,"maximize success, minimize observations"
+rdao_v1_gate_every,0.8333333333333334,8.152777777777779,308.39285316666667,unseen_high_frequency,"maximize success, minimize observations"
+static,0.6111111111111112,1.0,0.07704068333333333,unseen_high_frequency,"maximize success, minimize observations"

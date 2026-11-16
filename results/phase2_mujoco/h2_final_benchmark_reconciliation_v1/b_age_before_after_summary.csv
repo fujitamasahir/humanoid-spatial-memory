@@ -1,0 +1,7 @@
+evaluation_condition,version,episodes,goal_completions,success_rate,mean_paid_observations,mean_arrival_steps_success_only,mean_travel_distance_m,unwanted_contact_pairs
+known_low_frequency,correct B+Age,72,66,0.9166666666666666,11.805555555555555,36.89393939393939,22.395833333333332,0
+known_low_frequency,old mislabeled B+C,72,46,0.6388888888888888,3.638888888888889,38.82608695652174,21.260416666666668,0
+unseen_high_frequency,correct B+Age,72,57,0.7916666666666666,11.26388888888889,29.228070175438596,21.4375,0
+unseen_high_frequency,old mislabeled B+C,72,50,0.6944444444444444,3.1944444444444446,36.18,19.989583333333332,0
+unseen_low_frequency,correct B+Age,72,59,0.8194444444444444,11.222222222222221,30.71186440677966,21.46875,0
+unseen_low_frequency,old mislabeled B+C,72,50,0.6944444444444444,3.4583333333333335,38.02,20.791666666666668,0

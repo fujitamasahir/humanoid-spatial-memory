@@ -1,7 +1,8 @@
 """Cadence decision and authorized scan-clock checks on public fixtures."""
 import numpy as np
 import pytest
-from spatial_memory.cadence_age import ARMS,cadence_decision,CadenceController
+from spatial_memory.cadence_age import ARMS
+from spatial_memory.cadence_age_optimized_v1 import cadence_decision,CadenceController
 from spatial_memory.scheduling import AdaptiveParameters,AdaptiveObserver
 P=AdaptiveParameters(age_steps=4,stale_fraction=.5)
 GRID=np.zeros((7,7),dtype=np.int8)
@@ -15,6 +16,32 @@ def test_periodic_and_older_age_controls():
     assert [t for t in range(1,17) if decision('periodic5',t)['net_value']>0]==[5,10,15]
     assert decision('age5',4)['net_value']<0
     assert decision('age5',5)['net_value']>0
+    assert decision('periodic5',5)['age_score'] is None
+    assert decision('periodic5',5)['effective_age_score'] is None
+    assert decision('age5',5)['age_score'] is None
+    assert decision('age5',5)['age_request'] is None
+
+def test_periodic5_skips_grid_allocation(monkeypatch):
+    import spatial_memory.cadence_age_optimized_v1 as cadence
+    def fail(*args,**kwargs):
+        raise AssertionError('Periodic-5 must not create age-score arrays')
+    monkeypatch.setattr(cadence.np,'indices',fail)
+    out=decision('periodic5',5)
+    assert out['net_value']==1 and out['reason']=='fixed_longer_interval'
+    assert out['age_score'] is None and out['age_request'] is None
+
+def test_age5_computes_only_the_effective_age_fraction(monkeypatch):
+    import spatial_memory.cadence_age_optimized_v1 as cadence
+    calls=[]; original=np.mean
+    def counted(*args,**kwargs):
+        calls.append(1)
+        return original(*args,**kwargs)
+    monkeypatch.setattr(cadence.np,'mean',counted)
+    last=np.zeros(GRID.shape,dtype=np.int64)
+    out=decision('age5',5,last=last)
+    assert len(calls)==1
+    assert out['effective_age_score']==1.0
+    assert out['net_value']==1 and out['age_score'] is None
 
 def test_gap_and_motion_preserve_first_age_request():
     assert decision('age_gap4',4)['net_value']>0
@@ -41,8 +68,11 @@ def test_randomized_original_age_score_and_subset():
         old=history.score(10,POS)
         for mode in ARMS:
             d=decision(mode,10,last=last,scan=7,travel=3)
-            assert d['age_score']==old
-            if mode!='periodic5':
+            if mode in ('periodic5','age5'):
+                assert d['age_score'] is None and d['age_request'] is None
+            else:
+                assert d['age_score']==old
+            if mode not in ('periodic5','age5'):
                 assert d['net_value']<=0 or d['age_request']
 
 @pytest.mark.parametrize('mode',ARMS)

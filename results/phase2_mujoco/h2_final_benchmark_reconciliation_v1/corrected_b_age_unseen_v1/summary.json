@@ -1,0 +1,12 @@
+{
+  "binding_sha256": "eb1f902bf6f966a311779c3d558fc77f5ce4d628478fcf0bde0cfcbad63c10a8",
+  "by_condition": {
+    "unseen_high_frequency": 72,
+    "unseen_low_frequency": 72
+  },
+  "episodes": 144,
+  "journal_sha256": "7d1de3ef0ff12cedf4ab00adab4718fe7a39ca092ba536bb04f5d072a93af85a",
+  "status": "PASS",
+  "successes": 116,
+  "unwanted_contacts": 0
+}

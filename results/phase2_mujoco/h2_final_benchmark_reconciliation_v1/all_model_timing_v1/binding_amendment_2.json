@@ -1,0 +1,18 @@
+{
+  "amendment": 2,
+  "base_binding_sha256": "6955235a441935eabbc939f344ce48d7e957d78d0a8e656808ba60c6e9e77e37",
+  "created_at_utc": "2026-11-16T05:33:30.539160+00:00",
+  "current_runner_sha256": "1382c5b6fe5e4ba40ce8b82e81ede40e97a5ddcb5c44144231b955972e0a2c2c",
+  "execution_optimized_code_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5",
+  "execution_runner_sha256": "20f161658d27ccbf5b47b431b980ae21437c2302b789a9bc4fb76d518fb4e8c0",
+  "measurement_journal_sha256": "7a2f194c36676e5114c9bc3b476106cf77ec8928d502f4874727f966c0de3fe0",
+  "measurement_records_preserved": 19440,
+  "parent_binding_sha256": "4d7e7327b99a00b27fe1c6a9a9a7f6ff7ef512f586afb7ec7b51dacd304ca580",
+  "protocol": "h2-final-reconciliation-all-model-controlled-cost-v1",
+  "reason": "Restore frozen src/spatial_memory/cadence_age.py to its committed 840b0e2 bytes after the CAA source-binding gate exposed that shared-file mutation. The exact optimized 54137291 code bytes executed in this epoch are preserved at the versioned path below. The H2 runner measurement code at execution is pinned from amendment 1; no timing rows or measurements were changed.",
+  "restored_frozen_source": "src/spatial_memory/cadence_age.py",
+  "restored_frozen_source_sha256": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+  "status": "PROVENANCE_REBOUND_BYTE_IDENTICAL_OPTIMIZED_CODE",
+  "versioned_optimized_source": "src/spatial_memory/cadence_age_optimized_v1.py",
+  "versioned_optimized_source_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5"
+}
