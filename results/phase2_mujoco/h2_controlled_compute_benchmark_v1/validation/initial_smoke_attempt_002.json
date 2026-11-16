@@ -1,0 +1,15 @@
+{
+  "cause": "Smoke checkpoint uniqueness key used map index and model but omitted schedule index, so for each map/model only the first randomly ordered schedule was executed and its paired schedule was skipped.",
+  "completed_records": 162,
+  "expected_records": 324,
+  "missing_schedule_record_count": 162,
+  "partial_journal_sha256": "1389414db3e00c3dfe2411e6e23414fbf870ec389f402d52077735b3ac1f9c02",
+  "partial_records_preserved": true,
+  "primary_repetition_runs": 0,
+  "recorded_at_utc": "2026-11-15T20:57:48.947029+00:00",
+  "schedule_record_counts": {
+    "0": 75,
+    "1": 87
+  },
+  "status": "INCOMPLETE_SMOKE_SCHEDULE_KEY_COLLISION"
+}

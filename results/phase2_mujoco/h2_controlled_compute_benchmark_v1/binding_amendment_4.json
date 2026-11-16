@@ -1,0 +1,443 @@
+{
+  "amended_at_utc": "2026-11-15T20:53:40.186727+00:00",
+  "amendment": "1: correct semantic parity timing-field filter; no episode/model/policy change",
+  "amendment_2": {
+    "description": "declare known historical b_age implementation mismatch; run corrected registered B+Age arm; require exact parity for all other 53 models",
+    "evidence_sha256": "fbbca2bfc1743e383fea39e2ed1d1e1373f6960c64b24743d2da85223f430814",
+    "historical_outputs_preserved": true,
+    "known_nonparity_model": "b_age",
+    "protocol_sha256": "5dfc278101d84452d638fd550701536c0300c6935422de09a1c42549df3bd93d"
+  },
+  "amendment_3": {
+    "description": "append-only active-binding selection; latest immutable binding amendment takes precedence over prior pointer",
+    "no_model_or_experiment_change": true,
+    "parent_pointer_sha256": "e8afe0d7a487d003fd80e49e4ea1aacfca0f5efed902d22fb802eb03f9c227d7"
+  },
+  "amendment_4": {
+    "description": "select smoke/warmup storage epoch by latest amendment number rather than exact filename suffix",
+    "no_episode_or_model_change": true,
+    "preserved_prior_attempt": "warmup/journal.jsonl and warmup_amendment_1/journal.jsonl remain unchanged"
+  },
+  "amendment_reason_sha256": "7dc9466d5e9e06b5f37411c08639debc3b1cd25fd0d41477b0756c73459f567e",
+  "branch": "phase2/mujoco-proxy-pilot",
+  "comprehensive_binding_sha256": "994815b06362c67b6455b2d17e7d2121ddd261f69e9b8901914e6ef58bbbeb3e",
+  "created_at_utc": "2026-11-15T20:42:22.272837+00:00",
+  "disk_available_at_bind_bytes": 15970766848,
+  "historical_index_entries": 3888,
+  "historical_manifest_entries_verified": 8206,
+  "historical_timing_machine": {
+    "hostname": "Masahirononotobukkukonpyuta-1917.local",
+    "mujoco": "3.17.0",
+    "numpy": "2.2.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "interpretation": "Descriptive development timing benchmark; repeats are paired reruns, not new environments.",
+  "maps": [
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000001",
+      "sha256": "5366b253fafe631aa03367f258fe38d18366db434657fc749a0404824c177c47"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000004",
+      "sha256": "d261926e787403f4ad063d46ef2549456ebdae957495f324350eeb63874e94a5"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000006",
+      "sha256": "76b00241a6e429799c29d1460a3ee73597172ae97959932e6d2fee7304fd18c0"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000009",
+      "sha256": "d80451045f569541a50e71b145f82d9ba5c171591b1f0580bb5b1d8082a0f35a"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000011",
+      "sha256": "e769f63b79215be30bbb454788df1db7ac1469b9e8920711c88143b5a748fb3e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000014",
+      "sha256": "3602b2c8ac215467b45ad273416971627fb93763b784de109e700dac91118a5c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000017",
+      "sha256": "314eaff69fea2921790fc3c9b1a06058d22fb2803c56ff3c604f8750a844bdd4"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000018",
+      "sha256": "2ec62f0a90e2bf3d39c250f9202d4139fcb13d32d65e0b07470b938b887a5f32"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000020",
+      "sha256": "5808f4148844a86cc2b032a6a8c07bc84152e5e682225a075898c3e53ac1740f"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000023",
+      "sha256": "46d50a965c464d6e051a2a6d637ae481ad96833bb4024270fb7f33f79036ec87"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000026",
+      "sha256": "30de5da2ccb421e22a99b3986f60c0cf73a245e9e187184936f136b2d0bd40ac"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000030",
+      "sha256": "0e15cc3e1f18f5a35c7c4758f84cbbd7bb269f86722288b30501fa21de5a5f76"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010000",
+      "sha256": "a14ae7752ff2c29fe14fd2c7a87c9e6652fbe985df274be8d5ed66551ca1d652"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010001",
+      "sha256": "8d3c7b0ce16d96bc05e941c4aff415806956b9e6564a6ee6d146054ba86e2fec"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010002",
+      "sha256": "698ce3a03c0f386c957919381a4bac028cead8bd935d3927b3cd9dd2d958ec4d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010003",
+      "sha256": "16f1fe60f6468980f53cb862b2b2097ba9b25d063bed23cd678e981ada03cb83"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010004",
+      "sha256": "f3188aa4a889f765d7c0a48fb2eff26380fb5b820d7acc6bb49cac6c67873c6d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010005",
+      "sha256": "20ec2fbb83215f3fef5d777bf8a21ad5242524f3b99558ba9cd08375209f8714"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010006",
+      "sha256": "27c9b414f7cd59a7aafacc5d24dcc70d95dd6c705e200508470045757a70334e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010007",
+      "sha256": "fb0adf6a430539de1c4039bf76d04ccd332d3c08b6f13ba984ce27d128e978a4"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010008",
+      "sha256": "d1927bce730a78e620bcb2a2f44b40833cfb8367db0366bd728c3d900f0458e7"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010009",
+      "sha256": "a95cf3f614262a1aba4b08b8d8da18cadccf2b8115e01796aad012471195db89"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010011",
+      "sha256": "3f1d56c992187df850512fc7f7e8945eda2cb90651156905d546f8e83f2e4a5b"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010012",
+      "sha256": "24f6a9d0500b133a3d10b28a058eb6a6037ddec49daa0014e1b817d93b8f0905"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030000",
+      "sha256": "8ec13bbe55c33f48bd91adf385b0abfb3ca4ab3f621277d84fc3433a351a382c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030001",
+      "sha256": "f65bee2cd4015a615c9d97c7f05a72e80a53c74db1e64c8ef6abe85d9b251812"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030002",
+      "sha256": "ae5ed301fde065dba80628f61e6f7031c2fff45de75027a2796af0aee6031b88"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030003",
+      "sha256": "d2b17c278b0f81091a2bb73981cb097fb74c499def7b498dacabe2c3e14f8dc6"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030004",
+      "sha256": "623dd1522a2f887d6953bfb6c282c19ef995483402935a0b52f4e167cb7f1196"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030005",
+      "sha256": "bb1bb07a158379536033f32bd631196eb49130180221d64e2003878e17874c15"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030006",
+      "sha256": "173bda15024fc000f21ac50eebb3db7ea81f986068f1c37a7e0000ffbf782a64"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030007",
+      "sha256": "81bc75d99c07fa3c4e13db6569bb451ab25c0ed9b36e8e00387ecb41215d5d2e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030008",
+      "sha256": "7df29d5a8021bf389dc6b420496b013619709b9bdf97a07a07eb2872d571289c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030009",
+      "sha256": "9e7e782b99afe80a58995d0b1d59c3be0fe763382bc7ef1f39f4875a207b1c7d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030010",
+      "sha256": "6e0b197dcb35d3494dd150e0aef4d646acbbddeab2610cc42949bfc129f5d0ff"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030011",
+      "sha256": "848a4a49dc9d8d37eeb20a1ea2c49482c4915fdde3f67d486990a25091c898d5"
+    }
+  ],
+  "matrix": {
+    "cases_per_repetition": 3888,
+    "cell_size_m": 0.75,
+    "condition": "existing H2 high-frequency transition engine",
+    "maps": 36,
+    "max_steps": 80,
+    "measured_episodes": 19440,
+    "model_count": 54,
+    "models": [
+      "periodic4",
+      "periodic5",
+      "age4",
+      "age5",
+      "age6",
+      "age_route_rescue",
+      "age_route_clock",
+      "rdao_v2",
+      "rdao_v21",
+      "caa_fast",
+      "caa_full",
+      "raa_defer",
+      "uncertainty",
+      "static",
+      "age_gap4",
+      "age_motion",
+      "age_view_veto",
+      "age_view_clock",
+      "periodic_event",
+      "age_event",
+      "rdao_v1",
+      "rdao_v1_footprint",
+      "rdao_v1_gate_first",
+      "rdao_v1_gate_every",
+      "rdao_v22",
+      "b_age",
+      "c_ternary",
+      "bc",
+      "c0_audit",
+      "c_k",
+      "c_topology3d",
+      "ms_k",
+      "ms_k_visibility",
+      "ms_topology",
+      "ms_topology_visibility",
+      "h1_k",
+      "h3_k",
+      "h1_topology",
+      "h3_topology",
+      "caa_slow",
+      "dao_veto",
+      "dao_trigger",
+      "dao_route",
+      "dao_combined",
+      "dao_veto_q50",
+      "dao_veto_q80",
+      "dao_veto_optimistic",
+      "dao_veto_route_gate",
+      "dao_veto_deadline",
+      "dao_veto_joint",
+      "deadline_stable",
+      "deadline_stable_quiet",
+      "raa_advance",
+      "raa_joint"
+    ],
+    "observation_budget": 20,
+    "repetitions": 5,
+    "schedules": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "workers": 1
+  },
+  "microbenchmark_seed": 2026111502,
+  "model_timing_scope": "existing shared H2 wrapper: initialization + core.decide + core.refresh; total is their sum",
+  "original_h2_binding_sha256": "e64be6f48875ca688b7910a1d6c75c634c4ee9d64bdcd7bb9c75e911b782a110",
+  "parent_binding_sha256": "d59deca118a8c6576769473206f239c425f3815bf8123d9aa5e567f40f88a578",
+  "preservation_check": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "protocol": "h2_controlled_compute_benchmark_v1",
+  "protocol_sha256": "f4a8df9daed8d33870631f1c26e9cd4235ef6ed4d7c55ece2da95217c2822e61",
+  "randomized_order_seed": 2026111501,
+  "runtime": {
+    "cpu_thermal_pressure": "not directly measurable without privileged macOS tooling",
+    "hardware_summary": [
+      "Model Name: MacBook Air",
+      "Model Identifier: Mac15,12",
+      "Chip: Apple M3",
+      "Memory: 8 GB"
+    ],
+    "hostname": "Masahirononotobukkukonpyuta-1917.local",
+    "logical_cpu_count": 8,
+    "machine": "arm64",
+    "packages": {
+      "matplotlib": "3.10.3",
+      "mujoco": "3.17.0",
+      "numpy": "2.2.6",
+      "pynauty": "2.8.8.1",
+      "pytest": "8.3.5"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_executable": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+    "python_version": "3.12.10",
+    "resource_snapshot_start": {
+      "at_utc": "2026-11-15T20:42:22.214225+00:00",
+      "process_snapshot_error": "PermissionError(1, 'Operation not permitted')",
+      "top_processes": null,
+      "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     3992.\nPages active:                                  69166.\nPages inactive:                                62360.\nPages speculative:                              6346.\nPages throttled:                                   0.\nPages wired down:                             154945.\nPages purgeable:                                   2.\n\"Translation faults\":                     3943008005.\nPages copy-on-write:                        16554993.\nPages zero filled:                         740863889.\nPages reactivated:                        1484547509.\nPages purged:                              102726648.\nFile-backed pages:                             58744.\nAnonymous pages:                               79128.\nPages stored in compressor:                  1237308.\nPages occupied by compressor:                 190254.\nDecompressions:                           2122798399.\nCompressions:                             2252971936.\nPageins:                                   132747312.\nPageouts:                                    1451877.\nSwapins:                                    63034949.\nSwapouts:                                   65956026."
+    },
+    "sysctl_hw_memsize_access": "denied by local execution policy; system_profiler used"
+  },
+  "source_commit": "32a770ab841f8d5769c80bc1c8297f67d2eff42a",
+  "source_sha256": {
+    "docs/h2_controlled_compute_benchmark_protocol_v1.md": "f4a8df9daed8d33870631f1c26e9cd4235ef6ed4d7c55ece2da95217c2822e61",
+    "docs/h2_controlled_compute_benchmark_protocol_v1_amendment_1.md": "5dfc278101d84452d638fd550701536c0300c6935422de09a1c42549df3bd93d",
+    "results/phase2_mujoco/h2_comprehensive_benchmark_v1/combined_dataset/replay_index.json": "15f32e946e5b6af8aa931bffb83ba0a43df2e22122558d0004e58a51f6e678c9",
+    "results/phase2_mujoco/h2_comprehensive_benchmark_v1/protocol/model_registry.json": "3f761c66dc60fcce639820525ef7b6be9a7664b383cbed4b9ca4cbab3b0d83b6",
+    "results/phase2_mujoco/h2_full_spatial_memory_replay_v1/H2_RECOVERY_ADDENDUM.md": "112f1a4d202617c18fd747d9fbf14945afcf78c8431913dd67a907932959899d",
+    "results/phase2_mujoco/h2_full_spatial_memory_replay_v1/binding_amendment_5.json": "7a8a1a1975991f541008069e425e85ee80a28f3dd9acf6f4ea36bb35cdced8ac",
+    "results/phase2_mujoco/h2_full_spatial_memory_replay_v1/task_b_b_age_corrected_v2/journal.jsonl": "a0d21692d5f3ae291a0b315769db8614b8d12d510b5bb6b68455a3477ea02d66",
+    "scripts/evaluate_c_v21_fit72.py": "984e35a76b53de8475570ee938d6946ceae43fc73be85f511ecabf14f0b5f32a",
+    "scripts/evaluate_c_v2_candidate_coverage_fit72.py": "e04db3afce62158f88f92126d8e9648bead74c6f1f09d6f658278d6d3886f0e3",
+    "scripts/evaluate_c_v2d_topology_fit72.py": "d36b193860b4714eda830338d097c5ee12f6ba0a095099cc36818cb0a9447b7b",
+    "scripts/evaluate_event_observation_fit72.py": "8a5d4d1bf42cdc9b928a898f9c831a6a2dd09a642e6e9019b7508a965ce7b6cb",
+    "scripts/evaluate_persistence_evi_fit72.py": "0c014d008ae49bcff3e52c71ecf50e042cf11a163e7f078f6315460bd04611d4",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/evaluate_rdao_footprint_visibility_online.py": "1e64472eb8414f2479256c2d8d9a127884ec8b7b401a9d13d14d89f21b006f7d",
+    "scripts/evaluate_rdao_online_safe_gate_screen.py": "806554eb2b914577dcc9a6f3c4004c57c3df693bb20760807b519122bc6b09bc",
+    "scripts/evaluate_rdao_phase2.py": "d2aa701e6db059e156af53ce610c0f21d1b2e59804a50c1bcbdb3eac302111a8",
+    "scripts/evaluate_rdao_v22_decision_protected.py": "eb63354d8ae21ea88592a26a0f98c6d7698a5846edb9742821ec7794117e610b",
+    "scripts/h2_comprehensive_adapters.py": "2a956753fef77685b69fed582d0369391ec9daed74c605994e5d963942113e02",
+    "scripts/h2_final_common.py": "ff4ce19c6a1f19d9d3dbb5c4afb6f72243e88e64c14993a6ea24e6dc97a7e082",
+    "scripts/h2_high_frequency_dynamics.py": "af0b811aae9046dc093ad57553e6bfdb034c98fe8ddaa52b3f4658edcd73409d",
+    "scripts/run_age_cadence_fit72.py": "2fe52c6b29f226cafc5b2d3f3cfd795dd260423b335e4637a25cbb141329fff3",
+    "scripts/run_age_view_fit72.py": "8c89ff70d7a4e1305e923bf1258997ddc1c16b7af5bb7f2ca1b7ab4d09ca2a0f",
+    "scripts/run_attenuated_dao_veto_v1.py": "f3a64c6163cc0e027d8491bdc2781ad5970b79ebaec31ca39f93ae05a8a583c4",
+    "scripts/run_c_v21a_depth_ablation.py": "fcccd64bb26b37f54c3ffe6c9407db95a787d868a77f95f0ff7c56a13cfa97d8",
+    "scripts/run_dao_integration_v1_1.py": "861911b593d2403673708957b79982f8eaccb47da1caf45ac611a5e901311cbb",
+    "scripts/run_h2_comprehensive_benchmark.py": "e451d254cf68666b8c4e6d3687a371a9d74c443fba153c15a6c3d569a142b7c5",
+    "scripts/run_h2_controlled_compute_benchmark.py": "dee14ec93f40471b05496fc4a34968759e374d506a046932923aa6a645b94c99",
+    "scripts/run_history_gated_deadline_fit72_v1.py": "476f0d94ae23e6f7d226192db8aa7c8319d1bb996fbe986485892011b5d303ad",
+    "scripts/run_raa_fit72_v1.py": "3b75a502131b63fe0bc47f419b57fe782a52f0872761714a40d845953e137cfa",
+    "scripts/run_route_gated_dao_veto_v1.py": "8f3edb42a3f3315785d413d2e08fdac136cff3083b3ff4765117eaf9c038df6f",
+    "scripts/verify_dao_integrity.py": "a673a78368659c3000495452a1f129380e2d45fc1884ea2f87ca1a10afb24de8",
+    "src/spatial_memory/__init__.py": "01778fd012df595df34bda4e7a91daf5c791f76c5813820d5c9577b6f8f38d1b",
+    "src/spatial_memory/ablation_spec.py": "2631ebe82c6cf80e0267b4e6b38bf7e15348c02c7803b26e5815aa02344be5f4",
+    "src/spatial_memory/ablation_store.py": "5f18db1ed342e118505375d0aaf64e5b235aa2a93b7712d829e2145dda3754c3",
+    "src/spatial_memory/assessment_spec.py": "9be81402db1f81290c63243a520e886382a2084c6681b1916d9c4040f2aee1dc",
+    "src/spatial_memory/assessment_store.py": "cb938177251388dd2fb606d46948980081e0e1b1d628a39ced68fc3e0453f427",
+    "src/spatial_memory/attenuated_dao_veto_v1.py": "9ba5718c3f169b102d2a390ad90b7318b663603ffff27fcad8fcf0b148d4819a",
+    "src/spatial_memory/attenuated_discovery_v1.py": "f33d96d63f0ea3955d55fb3073fa161371b8bcb26cb5c049687c09de156527ec",
+    "src/spatial_memory/cadence_age.py": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+    "src/spatial_memory/candidate_coverage.py": "4e3da23fa49b348d3a8b6e320e63e170ba283131d09271a5dc9793f33cffe067",
+    "src/spatial_memory/change_aware_age.py": "33be6b42aa5b63a3bb974afa7ab241fbcdc91ab75d02af23e8ad8843ddd43666",
+    "src/spatial_memory/dao_admission_v1.py": "57ad28853a3d1efd538bcde4a83a4beece8e9bfa2645fc59118f54e29be019b4",
+    "src/spatial_memory/dao_generator_v1.py": "93fd6ad0d1021f2a3974faf3acd90ce54d4e3c1dc93dba130faeab200830e068",
+    "src/spatial_memory/dao_generator_v1_1.py": "12d59d862c660e950658f0c80797dded07c90f4c5312d606a3818b476be13fdd",
+    "src/spatial_memory/dao_navigation_compat_v1_1.py": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a",
+    "src/spatial_memory/dao_navigation_v1.py": "4f3fdcb23e691723ea5864c1aae2d40581e8177a73a4e1ab59cc2c667230990a",
+    "src/spatial_memory/dao_statistical_bounds_v1_1.py": "cc5290a6dfac692362099271c8da1eb1be38e0b947a560d2c83b62ff33a9fa60",
+    "src/spatial_memory/dao_statistics_v1.py": "cc6430091bf8eee89560827ac674ec03284e7183e6463633ecd56d6603e74d43",
+    "src/spatial_memory/deadline_single_omission_v1.py": "a189d9e6954120a167bfcd9fa59ff04c9fe034bc5101486c6dbfe6ab19d099f9",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/discovery_reference.py": "6eb91b892089c1a8c40862c36aeba7e34a1202bfa00588ced6f17189f245ca60",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/event_observation.py": "6abfcc9849c9c9096232608f3052ba2ef7fdd9dc8f427c1d1caa8a34df059fc0",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/history_gated_deadline_v1.py": "38ae958954f361686b2cd8b6e4b8cd608751e287b438637ba97ea0ca92d8e5f1",
+    "src/spatial_memory/manifests.py": "04efd2f4b2fa719ee68b6e56ed910f26a68517949fbb12e1184a900bbeeb8016",
+    "src/spatial_memory/memory.py": "2976b6c1db5b90798a361cff6993e5d3852254fbf2266d612b7876e1280407c9",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/multistep_depth_ablation.py": "2c493e99483c5aa66f91e4ae98651ead468227bc14bda2a9500b2db58d269675",
+    "src/spatial_memory/multistep_evi.py": "77b666ab80174b9eafbd21432b785f44146f6faf3bb3a2dd43adcfef76d6a69c",
+    "src/spatial_memory/multistep_reference.py": "f7d0549d4a99d60bea54ed92478dae0aacd5943dc8eb9f8e4de86b645f1c49a7",
+    "src/spatial_memory/multistep_review.py": "f09a61e7003c994613b0ab0e63022f0aa0fa5473504a4b3f8e8641abe868163e",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/observation.py": "987f35d3f85bdc4477c54ccea3ef98bad4a6dc59c4ae8675231e5d77e74d8d99",
+    "src/spatial_memory/omission_public_features_v1.py": "4949c9ec15643b823e0174cbdb89319a3de7ffde41ec87c59302d66d6c2ee601",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/persistence.py": "e6795f0b06c04452adae0ec5781b538fbfb3c5409228742ce22aa115ed168b20",
+    "src/spatial_memory/phase15_bprime.py": "c8f4c1661d36b5902222804c89262739db9f6daff77404c8b33fda20635c8d98",
+    "src/spatial_memory/phase15_bprime_access.py": "485fc4be96bde12c675a8dbcc1178f93ea4294dd7ad8a2e85c394a03328da610",
+    "src/spatial_memory/phase15_bprime_coordinator.py": "ed12cd2a657090f268371682a313379e77866bfe07cf1d2027749cdc038ced28",
+    "src/spatial_memory/phase15_bprime_development.py": "63f17cd247ebbba87e2e8f035810be725ecd0d855704e7f6353cd574c844d6e9",
+    "src/spatial_memory/phase15_bprime_epochs.py": "425b7154a864efcf6d1ab4ab068e83ac79068b5b97fc30c3ca51b5b397c97db5",
+    "src/spatial_memory/phase15_bprime_prefix.py": "7fb6bacd7fe6c7087af8dda49c6897dba0e081dabd17cad15aa1505619afb939",
+    "src/spatial_memory/phase15_bprime_protocol.py": "2af6c49d0045ff7684b0c34c2d7b4a3c156534826fa16360f17caff0485de6dc",
+    "src/spatial_memory/phase15_bprime_records.py": "1aa964c70e580787ea03c1737e28850e1214b96d4ab8cec07e953abd5a77215f",
+    "src/spatial_memory/phase15_bprime_store.py": "f500d6092684f107c65b251f9a8cd1f643530d9988cae0dc999d18096b04c613",
+    "src/spatial_memory/phase15_exact_bnb.py": "bf594c5edc93e530b725dffbc3cc9b98b0f3fd00e49e0db5ab332cf9c0cf0b88",
+    "src/spatial_memory/phase15_generators.py": "bbe224bfb211a32689f4f5af4af4f3031ea24cf7de9732dea96ce8c33fc27398",
+    "src/spatial_memory/phase15_macos_monitored.py": "13c3b4f65d02ebc9170c2d3ac5bda7e03d0c5bea57579366c0e23f5bbe785e7a",
+    "src/spatial_memory/phase15_macos_monitored_worker.py": "2ee4a1bb4d78c97bae6b4c52f72bb4f7062cc99c3b8dd7d8fb01f79c8789ed96",
+    "src/spatial_memory/phase15_nauty.py": "1bd22e08219bfd87ee66a6f4d325a150b48825e638c2e2b06f36c256800d9613",
+    "src/spatial_memory/phase15_nauty_macos.py": "c6cc88e056dda5d512ef9738fbffee174849ec2837b9f8593284f007a6a9b803",
+    "src/spatial_memory/phase15_nauty_macos_worker.py": "0875cce08259c534ed794aa2ba83760fbd6b57859f1e4760c960a9daeaea9b80",
+    "src/spatial_memory/phase15_nauty_worker.py": "1d696e282b601f41cf1742769ded64f31518abdc0d15ea2985600094a135584d",
+    "src/spatial_memory/phase15_topology.py": "1eaa0d5a673df7640485bdbc6a8729b5409c56901a4c6b4fd1a5943b6e89fcd5",
+    "src/spatial_memory/policy_planning.py": "1a2bf732925f0b1bbe1008378e4cd94c8c00299f71b775d5ac6bfa3f647e156c",
+    "src/spatial_memory/predictive_emergency_v1.py": "0faace747af5cd855a8a41465d71710aac9252a193df8f331850042aadd3f2a5",
+    "src/spatial_memory/protocol_evaluation.py": "9613ec653f3a0e783cf4be5df7ad0be5a82fadc102d1782abc6cab8d20181b5e",
+    "src/spatial_memory/provenance.py": "9e1153ca5bcf5557417042984aef9a77b7752212ec557e88b285ed32afde41b9",
+    "src/spatial_memory/rdao.py": "bcbb79c51cd4566f6f959ed7299e184e931609a17dc893388ea550422dc6e580",
+    "src/spatial_memory/rdao_v2.py": "a8fc0e218edec2094f4dbb115fac113851dafa900b59c77dbc4117d26fe6242a",
+    "src/spatial_memory/rdao_v21_quality.py": "23857d77bd251df91b82291da8179fd52dc815ced50ea4fcf5dabb505b918521",
+    "src/spatial_memory/rdao_v22_decision_protected.py": "52d51d2e110a85cda292cd74b489fc5750b5c436e8616e887ed30810a57ede74",
+    "src/spatial_memory/res_cycle_escape_v1.py": "fee611c8c06017ff328d5521c3cdf5b7a7b346650f371b2d26cc23d8c6d459c2",
+    "src/spatial_memory/res_phase_wait_v1.py": "ea2c8daf397e09bedfd14a0a231f29eb8c381cb0f65cdc69b189ccfa3a8a3ea4",
+    "src/spatial_memory/risk_ranked_emergency_v1.py": "9f317ad1f477f984b22cb4a9f113291ccc82258030145e15cbbb0443a1808082",
+    "src/spatial_memory/robustness.py": "ee07839a2353754711e054c84be3890d3dc259e9e0e75dd4ad748ef7b3416aac",
+    "src/spatial_memory/route_adaptive_age_v1.py": "07a581607c0cb25c55806e3bd8a7fd2f5399f9770dc77ce21fed346a2f8162a8",
+    "src/spatial_memory/route_age.py": "dc6335fbfe1793328895c55a6b18fd9296afb7f9a2c8b5b97296189cde378da3",
+    "src/spatial_memory/route_gated_dao_veto_v1.py": "d970be94f10efab66fbccd61508b5900d4336e6e92e474da27ba4cb13f162d7f",
+    "src/spatial_memory/scenarios.py": "9782a6edb7d2c1193766b39923d8e0276220574809beb405d3c770d95fc957d7",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/simulation.py": "a5f213d1a5febf2b4dd7a77ed192dcafcb094d7864de07a29c5be7448afa3d79",
+    "src/spatial_memory/task_policies.py": "7f313d02f91be43e2354609d9124e81873c816d507ba4d13464e85d86838401d",
+    "src/spatial_memory/topology_evi.py": "f0da5a7c0b31cebbdb1c077c88e30426e2464c7ef9733e9864cd609256e61414",
+    "src/spatial_memory/topology_evi_c.py": "2c44d90de038a1b0d8a5a7856911f585fd289e807947748aa9d01548e94799d1",
+    "src/spatial_memory/topology_evi_d.py": "849c6ac0d6fd207e9d6d662f437c806f8fe30c1006c325c3a88e023ac00f0f96",
+    "src/spatial_memory/topology_reference.py": "a12c4d63525a21d5373103754fc046609afaddd4ca93d24f410a1f6ae7075f74",
+    "src/spatial_memory/topology_review_d.py": "9652e2e75a726bebad8e645cfc44cd746fc524031c11dae2956307d7e19141e4",
+    "src/spatial_memory/tuning_selection.py": "399addfec72852f57a017d9eff4dc0128ea3f8fe39d756f700654288f6e3fcc1",
+    "src/spatial_memory/tuning_spec.py": "5a2d0f6b349240a243640937a9c048ccb34b685d05a5436b3a1c331bbe9588bb",
+    "src/spatial_memory/tuning_store.py": "4bbf8f1ac3b14fa473cf8d023c9533be6990d30b5a7609fa6326a0cbbdffed7c",
+    "src/spatial_memory/view_age.py": "b6cd1202f23a01c69f5838f9214f55245bb32f3ecf223968f432e858c5b37561",
+    "src/spatial_memory/visualization.py": "62b68291f26797a55517736ecd227676ae2b13f3849fee2f91fd4e2301bc8b17"
+  },
+  "status": "PREREGISTERED_READY_FOR_SMOKE",
+  "timer_probe": {
+    "amortized_loop_ns_per_pair": 90.40625,
+    "mean_pair_ns": 33.2139,
+    "median_pair_ns": 41.0,
+    "p95_pair_ns": 42.0,
+    "p99_pair_ns": 83.0,
+    "samples": 20000
+  },
+  "timing_exclusions": [
+    "sensor acquisition/raycasting",
+    "emergency safety",
+    "navigation planning outside the observation model",
+    "selected-action collision shield",
+    "dynamic transition generation",
+    "MuJoCo scene updates",
+    "replay capture and file I/O"
+  ]
+}

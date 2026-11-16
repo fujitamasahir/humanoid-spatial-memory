@@ -1,0 +1,25 @@
+{
+  "H2_recovery_evidence": {
+    "corrected_b_age_journal_sha256": "a0d21692d5f3ae291a0b315769db8614b8d12d510b5bb6b68455a3477ea02d66",
+    "corrected_binding_sha256": "7a8a1a1975991f541008069e425e85ee80a28f3dd9acf6f4ea36bb35cdced8ac",
+    "corrected_fit72_validation_sha256": "cee467a7b345fd5b834067ae54fda9058c6f6e24707cc227422543d20ea194e7",
+    "recovery_addendum_sha256": "112f1a4d202617c18fd747d9fbf14945afcf78c8431913dd67a907932959899d"
+  },
+  "authoritative_correction": "H2 full spatial-memory replay recovery Task B corrected B+Age epoch",
+  "corrected_b_age_semantic_sha256": "cdb27dd5dbc7a3e8fa969c3d08e8156da1e9c58021908f125b42e03ce9f910a0",
+  "historical_adapter_semantic_sha256": "47b0b143e389de083180d0a7a45ea4f3162bba6521f458dbca572c33f18769d9",
+  "historical_adapter_source_commit": "a767f3ee9de984e67d7d50529d0572d871a9a701",
+  "historical_b_age_semantic_sha256": "47b0b143e389de083180d0a7a45ea4f3162bba6521f458dbca572c33f18769d9",
+  "historical_records": "H2 Comprehensive High-Frequency b_age used Persistence + EVI",
+  "model_id": "b_age",
+  "old_adapter_reproduces_historical_semantics": true,
+  "preflight_models_matching": 53,
+  "preflight_models_not_matching": [
+    "b_age"
+  ],
+  "preflight_source_journal_sha256": "73612277e44969d6aa1a47986960c19b28a2e2803d422ac227c23ecc0821ce5c",
+  "preserved_historical_b_age_outputs_modified": false,
+  "recorded_at_utc": "2026-11-15T20:51:31.252201+00:00",
+  "registered_definition": "B + Age uses Persistence with EVI disabled",
+  "status": "EXPECTED_HISTORICAL_IMPLEMENTATION_NONPARITY"
+}

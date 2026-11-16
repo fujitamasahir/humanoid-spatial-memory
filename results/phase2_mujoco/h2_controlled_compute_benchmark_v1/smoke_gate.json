@@ -1,0 +1,23 @@
+{
+  "created_at_utc": "2026-11-15T21:02:24.625795+00:00",
+  "duplicate_replay_checks": 8,
+  "episodes": 324,
+  "estimated_disk_for_timing_outputs_bytes": 42768000,
+  "estimated_full_matrix_seconds": 15942.524099999573,
+  "exact_parity_models": 53,
+  "expected_b_age_historical_nonparity_cases": 6,
+  "model_count": 54,
+  "parity": "all semantic traces match historical",
+  "selected_map_schedules": 6,
+  "status": "PASS_SMOKE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY",
+  "timer_probe": {
+    "amortized_loop_ns_per_pair": 90.40625,
+    "mean_pair_ns": 33.2139,
+    "median_pair_ns": 41.0,
+    "p95_pair_ns": 42.0,
+    "p99_pair_ns": 83.0,
+    "samples": 20000
+  },
+  "unexpected_parity_failures": 0,
+  "wall_seconds": 265.7087347920169
+}

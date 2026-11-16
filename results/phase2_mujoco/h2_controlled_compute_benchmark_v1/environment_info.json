@@ -1,0 +1,30 @@
+{
+  "cpu_thermal_pressure": "not directly measurable without privileged macOS tooling",
+  "hardware_summary": [
+    "Model Name: MacBook Air",
+    "Model Identifier: Mac15,12",
+    "Chip: Apple M3",
+    "Memory: 8 GB"
+  ],
+  "hostname": "Masahirononotobukkukonpyuta-1917.local",
+  "logical_cpu_count": 8,
+  "machine": "arm64",
+  "packages": {
+    "matplotlib": "3.10.3",
+    "mujoco": "3.17.0",
+    "numpy": "2.2.6",
+    "pynauty": "2.8.8.1",
+    "pytest": "8.3.5"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+  "python_version": "3.12.10",
+  "resource_snapshot_start": {
+    "at_utc": "2026-11-15T20:42:22.214225+00:00",
+    "process_snapshot_error": "PermissionError(1, 'Operation not permitted')",
+    "top_processes": null,
+    "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     3992.\nPages active:                                  69166.\nPages inactive:                                62360.\nPages speculative:                              6346.\nPages throttled:                                   0.\nPages wired down:                             154945.\nPages purgeable:                                   2.\n\"Translation faults\":                     3943008005.\nPages copy-on-write:                        16554993.\nPages zero filled:                         740863889.\nPages reactivated:                        1484547509.\nPages purged:                              102726648.\nFile-backed pages:                             58744.\nAnonymous pages:                               79128.\nPages stored in compressor:                  1237308.\nPages occupied by compressor:                 190254.\nDecompressions:                           2122798399.\nCompressions:                             2252971936.\nPageins:                                   132747312.\nPageouts:                                    1451877.\nSwapins:                                    63034949.\nSwapouts:                                   65956026."
+  },
+  "sysctl_hw_memsize_access": "denied by local execution policy; system_profiler used"
+}
