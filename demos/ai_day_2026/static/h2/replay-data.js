@@ -86,8 +86,45 @@
   if(arms.reduce((s,m)=>s+m.goals.original,0)!==2968||arms.reduce((s,m)=>s+m.goals.high_frequency,0)!==2949)throw Error('Benchmark totals mismatch');
   return {maps,arms,byKey,failures}
  }
+ 
+ // Overlay only the 144 corrected unseen B+Age replays. Known B+Age is already
+ // reconciled by the original reader. The final model summary is independently
+ // checked for all 54 models and all three conditions.
+ const finalCommit='56ad4a4f474c6194783a02c2a949d6d61bb3ab71';
+ const finalFolder='results/phase2_mujoco/h2_final_benchmark_reconciliation_v1/';
+ const finalSource=offlineSource||'https://raw.githubusercontent.com/'+sourceRepo+'/'+finalCommit+'/';
+ function reconcileFinal(index,journal,summary){
+  const conditions={known_low_frequency:'known',unseen_low_frequency:'original',unseen_high_frequency:'high_frequency'};
+  const rows=journal.trim().split(/\r?\n/).map(line=>JSON.parse(line).record);
+  const replaced=new Set();
+  if(rows.length!==144)throw Error('Missing corrected unseen B+Age journal');
+  for(const r of rows){
+   const condition=conditions[r.condition],k=key(condition,'b_age',r.map_identity,r.schedule);
+   const old=index.byKey.get(k);
+   if(!old||condition==='known'||replaced.has(k)||r.event!=='episode_committed'||r.model_id!=='b_age'||r.seed!==42||typeof r.success!=='boolean'||!Number.isInteger(r.steps)||r.steps<0||r.steps>80||!Number.isInteger(r.observations)||r.observations<0||r.observations>20||!Number.isInteger(r.bytes)||r.bytes<=0||r.unwanted_contacts!==0||!(/^[0-9a-f]{64}$/).test(r.sha256)||!(/^corrected_b_age_unseen_v1\/episodes\/(unseen_low_frequency|unseen_high_frequency)\/[A-Za-z0-9_-]+\.json\.gz$/).test(r.path)||!r.path.startsWith('corrected_b_age_unseen_v1/episodes/'+r.condition+'/'))throw Error('Invalid B+Age correction: '+k);
+   const e={...old,condition,model_id:'b_age',world_identity:r.map_identity,schedule:r.schedule,seed:42,path:finalFolder+r.path,sha256:r.sha256,payload_type:'replay',recovered:true,success:r.success,steps:r.steps,paidScans:r.observations,contacts:r.unwanted_contacts,bytes:r.bytes,finalCorrection:true};
+   index.byKey.set(k,e);index.failures.delete(k);if(!r.success)index.failures.set(k,e);replaced.add(k);
+  }
+  if(replaced.size!==144||index.byKey.size!==11664||summary.length!==162)throw Error('Final dataset coverage mismatch');
+  const seen=new Set();
+  for(const r of summary){
+   const condition=conditions[r.evaluation_condition],model=index.arms.find(m=>m.id===r.model_id);
+   const summaryKey=condition+'|'+r.model_id;
+   if(!model||!condition||seen.has(summaryKey)||Number(r.episodes)!==72||Number(r.unwanted_contact_episodes)!==0)throw Error('Invalid final summary');
+   let goals=0;
+   for(const map of index.maps)for(const n of [0,1]){
+    const k=key(condition,model.id,condition==='known'?map.knownIdentity:map.identity,n);
+    if(!index.byKey.has(k))throw Error('Missing final episode: '+k);
+    if(!index.failures.has(k))goals++;
+   }
+   if(goals!==Number(r.goal_completions))throw Error('Final outcome mismatch: '+summaryKey);
+   model.goals[condition]=goals;seen.add(summaryKey);
+  }
+  return index;
+ }
+
  async function loadIndex(){
-  const [local,manifest,models,failures,recovery,known,corrections,descriptions]=await Promise.all([
+  const [local,manifest,models,failures,recovery,known,corrections,descriptions,journal,finalSummary]=await Promise.all([
    fetchChecked('./h2/index.json').then(r=>r.json()),
    fetchChecked(source+folder+'combined_dataset/replay_index.json').then(r=>r.json()),
    fetchChecked(source+folder+'analysis/model_summary.csv').then(r=>r.text()).then(csv),
@@ -95,9 +132,11 @@
    fetchChecked(source+recoveryFolder+'replay_index_reconciled.csv').then(r=>r.text()).then(csv),
    fetchChecked(source+recoveryFolder+'fit72_model_summary.csv').then(r=>r.text()).then(csv),
    fetchChecked(source+recoveryFolder+'fit72_b_age_correction_validation.csv').then(r=>r.text()).then(csv),
-   fetchChecked('./h2/model-descriptions.json?v=1').then(r=>r.json())
+   fetchChecked('./h2/model-descriptions.json?v=1').then(r=>r.json()),
+   fetchChecked(finalSource+finalFolder+'corrected_b_age_unseen_v1/journal.jsonl').then(r=>r.text()),
+   fetchChecked(finalSource+finalFolder+'final_model_summary.csv').then(r=>r.text()).then(csv)
   ]);
-  return buildIndex(local,manifest,models,failures,recovery,known,corrections,descriptions)
+  return reconcileFinal(buildIndex(local,manifest,models,failures,recovery,known,corrections,descriptions),journal,finalSummary)
  }
  function getEntry(index,mapNumber,scheduleIndex,arm){
   const row=index.maps.find(m=>m.number===Number(mapNumber)),model=index.arms.find(a=>a.id===arm),choice=schedules[scheduleIndex];
@@ -107,8 +146,8 @@
   if(!e)throw Error('Missing replay');
   return {...e,map,model,choice,schedule:choice.number,success:!index.failures.has(k),scanLimit:20,stepLimit:80}
  }
- const rawURL=entry=>source+entry.path;
- const originalURL=entry=>offlineSource?rawURL(entry):'https://github.com/'+sourceRepo+'/blob/'+sourceCommit+'/'+entry.path;
+ const rawURL=entry=>(entry.finalCorrection?finalSource:source)+entry.path;
+ const originalURL=entry=>offlineSource?rawURL(entry):'https://github.com/'+sourceRepo+'/blob/'+(entry.finalCorrection?finalCommit:sourceCommit)+'/'+entry.path;
  const mapCache=new Map();
  async function loadMap(entry,signal){
   const n=entry.map.number,p=hfFolder+'maps/map_'+String(n).padStart(2,'0')+'_'+entry.map.family+'.json';

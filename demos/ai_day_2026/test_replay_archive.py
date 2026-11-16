@@ -6,9 +6,10 @@ import replay_archive as archive
 
 class ArchiveTests(unittest.TestCase):
     def test_paths(self):
-        for path in archive.METADATA:
+        for path in archive.METADATA | archive.FINAL_METADATA:
             self.assertTrue(archive.allowed_path(path), path)
         samples = [
+            archive.FINAL + "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000001_s0_seed42.json.gz",
             archive.RECOVERY + "task_a/episodes/periodic4/h2-final-generalization-v1-20261114_R_910000001_s0_seed42.json.gz",
             archive.RECOVERY + "task_b_b_age_corrected_v2/episodes/b_age/phase1.5-v0.4-BPRIME-1_fit_BP_80010000_s1_seed42.json.gz",
             archive.HIGH_FREQ + "replays/primary/episode_001_periodic4.json.gz",
@@ -24,6 +25,10 @@ class ArchiveTests(unittest.TestCase):
         with patch.object(archive, "_git", return_value=b"\x1f\x8b\x00") as git:
             self.assertEqual(archive.read_archive(path), b"\x1f\x8b\x00")
             git.assert_called_once_with("cat-file", "blob", f"{archive.RESEARCH_COMMIT}:{path}")
+        for final_path in (archive.FINAL_JOURNAL, archive.FINAL + "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/case_s0_seed42.json.gz"):
+            with patch.object(archive, "_git", return_value=b"corrected") as git:
+                self.assertEqual(archive.read_archive(final_path), b"corrected")
+                git.assert_called_once_with("cat-file", "blob", f"{archive.FINAL_COMMIT}:{final_path}")
         with patch.object(archive, "_git") as git:
             with self.assertRaises(ValueError):
                 archive.read_archive("../secret")
