@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 35055,
+    "path": "paired_episode_deltas.csv",
+    "sha256": "9283da50c34d430c44c14aa2f8dd063c818669e1b653ba10d839c347aee0cbe5"
+  },
+  {
+    "bytes": 757,
+    "path": "research_report.md",
+    "sha256": "b46138dedc16a72af68d4249f5e76a67997ea30d2c5fc727d783d982788e5096"
+  },
+  {
+    "bytes": 6883,
+    "path": "summary.json",
+    "sha256": "fb3d100dde66cc8347ceaf41291cf8f75d587948e07527ea0ee5af72600ef32f"
+  }
+]

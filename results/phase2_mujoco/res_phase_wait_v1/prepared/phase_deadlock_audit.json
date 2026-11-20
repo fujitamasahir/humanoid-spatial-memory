@@ -1,0 +1,681 @@
+{
+  "caveat": "Archived same-state alternatives; no causal outcome or next-step safety guarantee.",
+  "eligible_steps": [
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 5
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 7
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 9
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 11
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 13
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 15
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 17
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 19
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 21
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 23
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 25
+    },
+    {
+      "base_action": [
+        "move",
+        [
+          6,
+          8
+        ]
+      ],
+      "certified_wait": [
+        {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        }
+      ],
+      "h1_action": [
+        "turn",
+        1
+      ],
+      "heading": 0,
+      "position": [
+        5,
+        8
+      ],
+      "step": 27
+    }
+  ],
+  "prior_action_counts": {
+    "move": 2,
+    "turn": 26
+  }
+}

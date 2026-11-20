@@ -1,0 +1,17 @@
+{
+  "baseline_cadence_source_sha256": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+  "baseline_commit": "840b0e2dbc7a8c302edcaef0e226ab88abcf6549",
+  "conditions": {
+    "known_low_frequency": 72,
+    "unseen_high_frequency": 72,
+    "unseen_low_frequency": 72
+  },
+  "maps_not_generated": true,
+  "optimization_models": [
+    "periodic5",
+    "age5"
+  ],
+  "optimized_cadence_source_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5",
+  "protocol": "h2-optimization-semantic-parity-v1",
+  "semantic_fields": "H2 row/replay/decision and model-owned state at initialization, each decision and each update; diagnostic-only cadence score fields excluded; runtime-only fields excluded"
+}

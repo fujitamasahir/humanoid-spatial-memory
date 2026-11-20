@@ -1,0 +1,60 @@
+{
+  "FIT_authorized": true,
+  "FIT_data_accessed": false,
+  "binding_sha256": "dbc7e6f4c86b5ccabf2bafb61b17d6d36ddfee8ca68509ddf9b8f8cbe3659fa1",
+  "checks": {
+    "accounting": true,
+    "annotation": true,
+    "artifact": true,
+    "numerical": true,
+    "prediction": true,
+    "schema": true,
+    "selection": true,
+    "source": true
+  },
+  "global_oracle_false_negatives": {
+    "ms_k": 0,
+    "ms_k_visibility": 0,
+    "ms_topology": 0,
+    "ms_topology_visibility": 0
+  },
+  "global_oracle_false_positives": {
+    "ms_k": 0,
+    "ms_k_visibility": 0,
+    "ms_topology": 0,
+    "ms_topology_visibility": 0
+  },
+  "max_absolute_scalar_error": 0.0,
+  "negative_control_authorizations": {
+    "ms_k": 0,
+    "ms_k_visibility": 0,
+    "ms_topology": 0,
+    "ms_topology_visibility": 0
+  },
+  "numeric_checks": {
+    "negative_controls_defer": true,
+    "no_false_positive_authorizations": true,
+    "opportunity_positives_k": true,
+    "opportunity_positives_topology": true
+  },
+  "opportunity_authorizations": {
+    "ms_k": 0,
+    "ms_k_visibility": 16,
+    "ms_topology": 0,
+    "ms_topology_visibility": 16
+  },
+  "result_sha256": "2d69bdcea02cd50d8811feff83bc523dc6c633ce658805c9834d5390cddeba16",
+  "review_process": "separate invocation; does not import new policy or runner",
+  "reviewer_imports_new_policy": false,
+  "status": "ACCEPTED_FOR_FIT",
+  "validity_errors": {
+    "accounting": [],
+    "annotation": [],
+    "artifact": [],
+    "numerical": [],
+    "prediction": [],
+    "schema": [],
+    "selection": [],
+    "source": []
+  }
+}

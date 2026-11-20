@@ -1,0 +1,61 @@
+{
+  "common_success_probability": {
+    "high": 1,
+    "independent_units": 80,
+    "low": 0.7294096345229237,
+    "mean": 0.88125,
+    "method": "finite_sample_Hoeffding",
+    "two_sided_error_bound": 0.05
+  },
+  "completion": {
+    "high": 0.3036807309541526,
+    "independent_units": 80,
+    "low": -0.3036807309541526,
+    "mean": 0.0,
+    "method": "finite_sample_Hoeffding",
+    "two_sided_error_bound": 0.05
+  },
+  "compute_and_population_assumptions_require_validation": true,
+  "costs": {
+    "combined": {
+      "high": 1827.0977875205213,
+      "independent_units": 80,
+      "low": -1657.3652875205212,
+      "mean": 84.86624999999995,
+      "method": "finite_sample_Hoeffding",
+      "proposed_benefit_supported": false,
+      "two_sided_error_bound": 0.05
+    },
+    "distance": {
+      "high": 16.957926664386697,
+      "independent_units": 80,
+      "low": -17.661676664386697,
+      "mean": -0.3518750000000003,
+      "method": "finite_sample_Hoeffding",
+      "proposed_benefit_supported": false,
+      "two_sided_error_bound": 0.05
+    },
+    "paid": {
+      "high": 4.5801871937224545,
+      "independent_units": 80,
+      "low": -6.382687193722455,
+      "mean": -0.9012500000000003,
+      "method": "finite_sample_Hoeffding",
+      "proposed_benefit_supported": false,
+      "two_sided_error_bound": 0.05
+    },
+    "steps": {
+      "high": 22.456610552515595,
+      "independent_units": 80,
+      "low": -23.7028605525156,
+      "mean": -0.6231250000000008,
+      "method": "finite_sample_Hoeffding",
+      "proposed_benefit_supported": false,
+      "two_sided_error_bound": 0.05
+    }
+  },
+  "full_joint_claim": false,
+  "margins_status": "PROPOSED_NOT_APPROVED",
+  "proposed_completion_NI_supported": false,
+  "warning": "Conservative marginal bounds; no multiplicity shortcut or joint-power guarantee."
+}

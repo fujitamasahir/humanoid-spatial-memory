@@ -1,0 +1,39 @@
+{
+  "arms": {
+    "ms_k": {
+      "contact_free_goals": 57,
+      "goals": 57,
+      "h80_steps": 3254,
+      "paid_scans": 1131,
+      "unwanted_contacts": 0
+    },
+    "ms_k_visibility": {
+      "contact_free_goals": 57,
+      "goals": 57,
+      "h80_steps": 3251,
+      "paid_scans": 1136,
+      "unwanted_contacts": 0
+    },
+    "ms_topology": {
+      "contact_free_goals": 57,
+      "goals": 57,
+      "h80_steps": 3192,
+      "paid_scans": 1137,
+      "unwanted_contacts": 0
+    },
+    "ms_topology_visibility": {
+      "contact_free_goals": 57,
+      "goals": 57,
+      "h80_steps": 3192,
+      "paid_scans": 1137,
+      "unwanted_contacts": 0
+    }
+  },
+  "episodes": 288,
+  "keys": 72,
+  "preserved_phase15": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "status": "COMPLETED_DESCRIPTIVE_FIT_NOT_VALIDATION"
+}

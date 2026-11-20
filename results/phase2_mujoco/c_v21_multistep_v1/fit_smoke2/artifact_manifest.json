@@ -1,0 +1,57 @@
+[
+  {
+    "bytes": 18342,
+    "path": "episode_001_ms_k.json.gz",
+    "sha256": "cf0487a6fe63883d05c53969a8a6d0859e13f4c6c8b24c2c37018a249f197bf2"
+  },
+  {
+    "bytes": 18715,
+    "path": "episode_001_ms_k_visibility.json.gz",
+    "sha256": "fc549cb3a744e0b36d20c3e3690ed7daaaafc20572a1379b3de689ee07c55189"
+  },
+  {
+    "bytes": 20442,
+    "path": "episode_001_ms_topology.json.gz",
+    "sha256": "5f21ff1882afcf434d40a9df01058df4d6b4d296ed49c267edef522396874933"
+  },
+  {
+    "bytes": 20570,
+    "path": "episode_001_ms_topology_visibility.json.gz",
+    "sha256": "57e60e0b523427aabd028d709f7b30febe714b694435fadfc18baf3f8125427c"
+  },
+  {
+    "bytes": 18334,
+    "path": "episode_002_ms_k.json.gz",
+    "sha256": "66fba6c8327af78dcaf896593f92fafce09b696c7cee20136b31d046a9048eef"
+  },
+  {
+    "bytes": 18719,
+    "path": "episode_002_ms_k_visibility.json.gz",
+    "sha256": "a5e01f9a2a10b82fab6637c6af0dfb32018c61db6e5f4badc86aa3236e1aa329"
+  },
+  {
+    "bytes": 20429,
+    "path": "episode_002_ms_topology.json.gz",
+    "sha256": "cd2175299e5f9b567724f804e30b8cef8addd0d87e0e4823d9d469ad79f011fc"
+  },
+  {
+    "bytes": 20557,
+    "path": "episode_002_ms_topology_visibility.json.gz",
+    "sha256": "99504a4667ab9c672739f4c87810b9c80d4fc9741ed140f1bbbeebc178455308"
+  },
+  {
+    "bytes": 3903,
+    "path": "episodes.csv",
+    "sha256": "c7c3bb2f38ea2bc34ac2da0509fa851b2f3a27ab7b7da99fb93c796256566d32"
+  },
+  {
+    "bytes": 1922,
+    "path": "provenance.json",
+    "sha256": "bc8c9bc09424f9a25c7f36c10c35405f799dce79bf1d6f085a2146d63e51b8ca"
+  },
+  {
+    "bytes": 841,
+    "path": "summary.json",
+    "sha256": "e6de41b543e52a2c2956a972b91f457f3ba7e80b19bbb13bdb6b07e43872e86c"
+  }
+]

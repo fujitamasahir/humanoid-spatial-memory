@@ -1,0 +1,27 @@
+{
+  "arms": [
+    "periodic4",
+    "periodic5",
+    "age4",
+    "age5",
+    "age6",
+    "age_route_rescue",
+    "age_route_clock",
+    "rdao_v2",
+    "rdao_v21",
+    "caa_fast",
+    "caa_full",
+    "raa_defer",
+    "uncertainty"
+  ],
+  "episodes": 936,
+  "replay_count": 936,
+  "source_binding": "binding_amendment_3.json",
+  "source_binding_sha256": "e64be6f48875ca688b7910a1d6c75c634c4ee9d64bdcd7bb9c75e911b782a110",
+  "source_commit": "287debe70a6835c3367260d7a2e8d347af5082e3",
+  "stage": "primary",
+  "status": "COMPLETE",
+  "total_goal_completions": 721,
+  "total_unwanted_contacts": 0,
+  "wall_seconds": 337.6495860829891
+}

@@ -1,0 +1,10 @@
+{
+  "completed": 864,
+  "source_freeze_commit": "4bb5486a267bd5d89401b5c5ff7385dff0245c54",
+  "stage": "fit_replay",
+  "status": "COMPLETE",
+  "timing_repeat_not_independent": false,
+  "unwanted_contacts": 0,
+  "wall_seconds": 263.69420908301254,
+  "warmup_public_fit_episodes": 12
+}

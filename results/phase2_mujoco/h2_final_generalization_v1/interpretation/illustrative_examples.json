@@ -1,0 +1,23 @@
+[
+  {
+    "candidate": "periodic5",
+    "episode": 1,
+    "figure": "contrast_01_periodic5_vs_age5.png",
+    "reference": "age5",
+    "selection": "Posthoc illustrative; first case in frozen order with discordant success"
+  },
+  {
+    "candidate": "rdao_v2",
+    "episode": 1,
+    "figure": "contrast_01_rdao_v2_vs_periodic5.png",
+    "reference": "periodic5",
+    "selection": "Posthoc illustrative; first case in frozen order with discordant success"
+  },
+  {
+    "candidate": "rdao_v21",
+    "episode": 1,
+    "figure": "contrast_01_rdao_v21_vs_periodic5.png",
+    "reference": "periodic5",
+    "selection": "Posthoc illustrative; first case in frozen order with discordant success"
+  }
+]

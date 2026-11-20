@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 28450,
+    "path": "public_features.csv",
+    "sha256": "f79cf7730232890415dd5a70a78c0f4722e38c38c9e781d35b39e64f05ff4d60"
+  },
+  {
+    "bytes": 179797,
+    "path": "public_features.json",
+    "sha256": "0053633d5cf424343cfc520914bc4d25d6a516c5f76840815a768cb05ce3dddb"
+  },
+  {
+    "bytes": 135,
+    "path": "summary.json",
+    "sha256": "c7f614644e7011c25630316832e610a1302047f56d0f28af83dfaee40901ceb6"
+  }
+]

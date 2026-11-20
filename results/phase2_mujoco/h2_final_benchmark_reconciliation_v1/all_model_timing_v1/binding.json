@@ -1,0 +1,260 @@
+{
+  "map_hashes": [
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000001",
+      "sha256": "5366b253fafe631aa03367f258fe38d18366db434657fc749a0404824c177c47"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000004",
+      "sha256": "d261926e787403f4ad063d46ef2549456ebdae957495f324350eeb63874e94a5"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000006",
+      "sha256": "76b00241a6e429799c29d1460a3ee73597172ae97959932e6d2fee7304fd18c0"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000009",
+      "sha256": "d80451045f569541a50e71b145f82d9ba5c171591b1f0580bb5b1d8082a0f35a"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000011",
+      "sha256": "e769f63b79215be30bbb454788df1db7ac1469b9e8920711c88143b5a748fb3e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000014",
+      "sha256": "3602b2c8ac215467b45ad273416971627fb93763b784de109e700dac91118a5c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000017",
+      "sha256": "314eaff69fea2921790fc3c9b1a06058d22fb2803c56ff3c604f8750a844bdd4"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000018",
+      "sha256": "2ec62f0a90e2bf3d39c250f9202d4139fcb13d32d65e0b07470b938b887a5f32"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000020",
+      "sha256": "5808f4148844a86cc2b032a6a8c07bc84152e5e682225a075898c3e53ac1740f"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000023",
+      "sha256": "46d50a965c464d6e051a2a6d637ae481ad96833bb4024270fb7f33f79036ec87"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000026",
+      "sha256": "30de5da2ccb421e22a99b3986f60c0cf73a245e9e187184936f136b2d0bd40ac"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:R:910000030",
+      "sha256": "0e15cc3e1f18f5a35c7c4758f84cbbd7bb269f86722288b30501fa21de5a5f76"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010000",
+      "sha256": "a14ae7752ff2c29fe14fd2c7a87c9e6652fbe985df274be8d5ed66551ca1d652"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010001",
+      "sha256": "8d3c7b0ce16d96bc05e941c4aff415806956b9e6564a6ee6d146054ba86e2fec"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010002",
+      "sha256": "698ce3a03c0f386c957919381a4bac028cead8bd935d3927b3cd9dd2d958ec4d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010003",
+      "sha256": "16f1fe60f6468980f53cb862b2b2097ba9b25d063bed23cd678e981ada03cb83"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010004",
+      "sha256": "f3188aa4a889f765d7c0a48fb2eff26380fb5b820d7acc6bb49cac6c67873c6d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010005",
+      "sha256": "20ec2fbb83215f3fef5d777bf8a21ad5242524f3b99558ba9cd08375209f8714"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010006",
+      "sha256": "27c9b414f7cd59a7aafacc5d24dcc70d95dd6c705e200508470045757a70334e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010007",
+      "sha256": "fb0adf6a430539de1c4039bf76d04ccd332d3c08b6f13ba984ce27d128e978a4"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010008",
+      "sha256": "d1927bce730a78e620bcb2a2f44b40833cfb8367db0366bd728c3d900f0458e7"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010009",
+      "sha256": "a95cf3f614262a1aba4b08b8d8da18cadccf2b8115e01796aad012471195db89"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010011",
+      "sha256": "3f1d56c992187df850512fc7f7e8945eda2cb90651156905d546f8e83f2e4a5b"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:BP:910010012",
+      "sha256": "24f6a9d0500b133a3d10b28a058eb6a6037ddec49daa0014e1b817d93b8f0905"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030000",
+      "sha256": "8ec13bbe55c33f48bd91adf385b0abfb3ca4ab3f621277d84fc3433a351a382c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030001",
+      "sha256": "f65bee2cd4015a615c9d97c7f05a72e80a53c74db1e64c8ef6abe85d9b251812"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030002",
+      "sha256": "ae5ed301fde065dba80628f61e6f7031c2fff45de75027a2796af0aee6031b88"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030003",
+      "sha256": "d2b17c278b0f81091a2bb73981cb097fb74c499def7b498dacabe2c3e14f8dc6"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030004",
+      "sha256": "623dd1522a2f887d6953bfb6c282c19ef995483402935a0b52f4e167cb7f1196"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030005",
+      "sha256": "bb1bb07a158379536033f32bd631196eb49130180221d64e2003878e17874c15"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030006",
+      "sha256": "173bda15024fc000f21ac50eebb3db7ea81f986068f1c37a7e0000ffbf782a64"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030007",
+      "sha256": "81bc75d99c07fa3c4e13db6569bb451ab25c0ed9b36e8e00387ecb41215d5d2e"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030008",
+      "sha256": "7df29d5a8021bf389dc6b420496b013619709b9bdf97a07a07eb2872d571289c"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030009",
+      "sha256": "9e7e782b99afe80a58995d0b1d59c3be0fe763382bc7ef1f39f4875a207b1c7d"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030010",
+      "sha256": "6e0b197dcb35d3494dd150e0aef4d646acbbddeab2610cc42949bfc129f5d0ff"
+    },
+    {
+      "identity": "h2-final-generalization-v1-20261114:M:910030011",
+      "sha256": "848a4a49dc9d8d37eeb20a1ea2c49482c4915fdde3f67d486990a25091c898d5"
+    }
+  ],
+  "matrix": {
+    "cases_per_repetition": 3888,
+    "cell_size_m": 0.75,
+    "episodes": 19440,
+    "maps": 36,
+    "max_steps": 80,
+    "model_count": 54,
+    "models": [
+      "periodic4",
+      "periodic5",
+      "age4",
+      "age5",
+      "age6",
+      "age_route_rescue",
+      "age_route_clock",
+      "rdao_v2",
+      "rdao_v21",
+      "caa_fast",
+      "caa_full",
+      "raa_defer",
+      "uncertainty",
+      "static",
+      "age_gap4",
+      "age_motion",
+      "age_view_veto",
+      "age_view_clock",
+      "periodic_event",
+      "age_event",
+      "rdao_v1",
+      "rdao_v1_footprint",
+      "rdao_v1_gate_first",
+      "rdao_v1_gate_every",
+      "rdao_v22",
+      "b_age",
+      "c_ternary",
+      "bc",
+      "c0_audit",
+      "c_k",
+      "c_topology3d",
+      "ms_k",
+      "ms_k_visibility",
+      "ms_topology",
+      "ms_topology_visibility",
+      "h1_k",
+      "h3_k",
+      "h1_topology",
+      "h3_topology",
+      "caa_slow",
+      "dao_veto",
+      "dao_trigger",
+      "dao_route",
+      "dao_combined",
+      "dao_veto_q50",
+      "dao_veto_q80",
+      "dao_veto_optimistic",
+      "dao_veto_route_gate",
+      "dao_veto_deadline",
+      "dao_veto_joint",
+      "deadline_stable",
+      "deadline_stable_quiet",
+      "raa_advance",
+      "raa_joint"
+    ],
+    "observation_budget": 20,
+    "repetitions": 5,
+    "schedules": [
+      0,
+      1
+    ],
+    "seed": 42,
+    "workers": 1
+  },
+  "old_historical_index_sha256": "15f32e946e5b6af8aa931bffb83ba0a43df2e22122558d0004e58a51f6e678c9",
+  "optimized_sources": {
+    "src/spatial_memory/cadence_age.py": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5"
+  },
+  "protocol": "h2-final-reconciliation-all-model-controlled-cost-v1",
+  "random_order_seed": 2026111501,
+  "reason_for_additional_matrix": "Same-session P4/A4 anchors differed from the immediately preceding 19,440-episode timing batch by >10%; a 54-model same-session authoritative cost matrix is needed before combining costs.",
+  "runtime": {
+    "logical_cpus": 8,
+    "machine": "arm64",
+    "packages": {
+      "mujoco": "3.17.0",
+      "numpy": "2.2.6",
+      "pynauty": "2.8.8.1",
+      "pytest": "8.3.5"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_executable": "/Users/masahiro/Desktop/^/31_humanoid/humanoid-spatial-memory/.venv/bin/python"
+  },
+  "source_hashes": {
+    "results/phase2_mujoco/h2_comprehensive_benchmark_v1/protocol/model_registry.json": "3f761c66dc60fcce639820525ef7b6be9a7664b383cbed4b9ca4cbab3b0d83b6",
+    "scripts/h2_comprehensive_adapters.py": "2a956753fef77685b69fed582d0369391ec9daed74c605994e5d963942113e02",
+    "scripts/h2_final_common.py": "ff4ce19c6a1f19d9d3dbb5c4afb6f72243e88e64c14993a6ea24e6dc97a7e082",
+    "scripts/h2_high_frequency_dynamics.py": "af0b811aae9046dc093ad57553e6bfdb034c98fe8ddaa52b3f4658edcd73409d",
+    "scripts/run_h2_controlled_compute_benchmark.py": "c5f8776c3677553007ceb8c7e5fba9233d0e8884c6772b75b782c228f6881ccd",
+    "scripts/run_h2_final_benchmark_reconciliation.py": "8c1021b8d8f72c4789dc85f3114dd4f78a6257f0352f21865f7190d7d3eae59a",
+    "src/spatial_memory/cadence_age.py": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5"
+  },
+  "timing_exclusions": [
+    "sensor acquisition",
+    "emergency sensing",
+    "navigation planning",
+    "selected-action collision shield",
+    "environment update",
+    "scene update",
+    "replay capture",
+    "file I/O"
+  ],
+  "timing_scope": "Initialization + observation decision + spatial-memory refresh only"
+}

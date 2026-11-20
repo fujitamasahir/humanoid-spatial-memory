@@ -1,0 +1,82 @@
+[
+  {
+    "bytes": 2766,
+    "path": "episode_001_age.json.gz",
+    "sha256": "0b31c5833f7e44f4fa8ec7efcf09a971986cfa57c4cc745c56d6d85644b3056c"
+  },
+  {
+    "bytes": 3892,
+    "path": "episode_001_age5.json.gz",
+    "sha256": "e14258fcae38a951ef3ace841bb2a6e256b824da72804e55000c518e0c89e24e"
+  },
+  {
+    "bytes": 4342,
+    "path": "episode_001_deadline.json.gz",
+    "sha256": "9e15cdbd178d48e44233b43c6eacdf3de5d1a8453b5da0810f16fdf04be08e60"
+  },
+  {
+    "bytes": 4799,
+    "path": "episode_001_deadline_stable.json.gz",
+    "sha256": "f08f83c311f151a2d59dceb3603fb5fcdd65f61d7f9ab04f3955011e84ae5dbb"
+  },
+  {
+    "bytes": 4810,
+    "path": "episode_001_deadline_stable_quiet.json.gz",
+    "sha256": "613b75113c48d48d18329223e0671986c38167f77b0735736e1fb95cabc1c8d4"
+  },
+  {
+    "bytes": 2616,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "1b9605116bc9874b9b684bcb208c197cd3e6d2e237eebe455d4c25b3508bbdc5"
+  },
+  {
+    "bytes": 2767,
+    "path": "episode_002_age.json.gz",
+    "sha256": "505d865b52d560d2c2959414414f16ffc0cbed0c8aebc793ab5ef78f73de133c"
+  },
+  {
+    "bytes": 3895,
+    "path": "episode_002_age5.json.gz",
+    "sha256": "5b79f61bd2c39d04126a1dd17b6e17d3cc1df737f717d44fb8f8c7b240a1b1d0"
+  },
+  {
+    "bytes": 4341,
+    "path": "episode_002_deadline.json.gz",
+    "sha256": "e024ac2e124ef560eefedde100d9c49ee12bdf6be4c504808466fdabb6671285"
+  },
+  {
+    "bytes": 4797,
+    "path": "episode_002_deadline_stable.json.gz",
+    "sha256": "08bcc461c29c020f5b75a305ad7d710f4c713b748f3e549a3f12ec28b54b15a7"
+  },
+  {
+    "bytes": 4807,
+    "path": "episode_002_deadline_stable_quiet.json.gz",
+    "sha256": "d296868ff4b390ed633041759846fa7a8434129e61d48976a54fe919da7ba97d"
+  },
+  {
+    "bytes": 2616,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "a68f983ba03c6a123b1ae673af19a1567b1e7a4a030de39053c2df2e62e826a6"
+  },
+  {
+    "bytes": 1774,
+    "path": "episodes.csv",
+    "sha256": "02a12b2c087e2c304356b32e7b0f9fa56243fa8536928cf6e57cbbea7e4d6a2d"
+  },
+  {
+    "bytes": 410,
+    "path": "integrity_after.json",
+    "sha256": "74ba92fa62abf50283b608fcda9e7dfc5b2eb448784f7f4e2ced809ff9934c04"
+  },
+  {
+    "bytes": 4347,
+    "path": "provenance.json",
+    "sha256": "975cf2d6053fbb5d99ace446dbfc909c620a9bae8dcc32a5842e8e03cf029487"
+  },
+  {
+    "bytes": 115,
+    "path": "summary.json",
+    "sha256": "fd3b9a1f199083476af34ab66781513e411a151ada0900706b93591343dcb33c"
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "integrity": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "results/phase2_mujoco/dao_integration_v1_unchanged_files": 201,
+    "results/phase2_mujoco/dao_v1_unchanged_files": 37,
+    "status": "PASS"
+  },
+  "production_populations_generated": false,
+  "remaining_blockers": [
+    "generator_width_bias_and_occlusion_coverage",
+    "production_admission_scaling",
+    "missing_opaque_signatures",
+    "independent_custody_not_established",
+    "approximate_statistics_undercoverage",
+    "margins_and_sample_size_not_approved"
+  ],
+  "reviewed": [
+    {
+      "path": "docs/research_plan.md",
+      "sha256": "43f5c9bf7464de3efe11b6f0e11a2a45dc090aff1fc503dd9c770eae352e064b"
+    },
+    {
+      "path": "docs/dao_research_report.md",
+      "sha256": "6c1e398c5ddf091a3733967eb3dd0f1656686a3742951319bbe1e50cfe2a419d"
+    },
+    {
+      "path": "docs/dao_integration_research_report.md",
+      "sha256": "8f97d4f0c91d234105077ca4659e4edf03a4048c629ccbbdd92d0561e9f07823"
+    },
+    {
+      "path": "docs/dao_independent_navigation_protocol.md",
+      "sha256": "1fd0be2a1534091785a70db33fde381a43c6c00a114bce4a685608c77096d1b0"
+    },
+    {
+      "path": "docs/dao_pilot_v1_protocol.md",
+      "sha256": "a9ab178079e0efb9c8a4fb612cec836c1cd0283c0ee30c602a8d5d7c8293d12b"
+    },
+    {
+      "path": "src/spatial_memory/emergency_safety.py",
+      "sha256": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f"
+    },
+    {
+      "path": "src/spatial_memory/pedestrian_tracking.py",
+      "sha256": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4"
+    },
+    {
+      "path": "src/spatial_memory/evaluation.py",
+      "sha256": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e"
+    },
+    {
+      "path": "src/spatial_memory/mujoco_navigation.py",
+      "sha256": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7"
+    },
+    {
+      "path": "src/spatial_memory/mujoco_perception.py",
+      "sha256": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f"
+    },
+    {
+      "path": "scripts/dao_engineering_scenes_v1.py",
+      "sha256": "554bc4558a07d7d73a9d011d3115ce36c0877658f9b3a7a442cba29cbcae8192"
+    },
+    {
+      "path": "src/spatial_memory/dao_navigation_v1.py",
+      "sha256": "4f3fdcb23e691723ea5864c1aae2d40581e8177a73a4e1ab59cc2c667230990a"
+    },
+    {
+      "path": "src/spatial_memory/dao_navigation_compat_v1_1.py",
+      "sha256": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a"
+    },
+    {
+      "path": "tests/test_phase2_emergency_safety.py",
+      "sha256": "daf9970c4ce25e4e3253f8703972998158abd1d6a0619aa2fb88438185aaa60a"
+    }
+  ]
+}

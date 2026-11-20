@@ -1,0 +1,37 @@
+[
+  {
+    "bytes": 218,
+    "path": "completion.json",
+    "sha256": "f35ffe7e19ef044eec27431f177ec330dc82443f4f556f335f523e1d1438278d"
+  },
+  {
+    "bytes": 51072,
+    "path": "future_opportunity_public_predictions.png",
+    "sha256": "98acb8cde8a48a71e7ac2c3d827e340e3232ba9c424003290e0a334bc1c00e3d"
+  },
+  {
+    "bytes": 646471,
+    "path": "navigation_analysis.json",
+    "sha256": "358c42232b9a445df861b556ab0b6777e727fef8ad6518c5731b0d91c5de8878"
+  },
+  {
+    "bytes": 142729,
+    "path": "navigation_outcomes.png",
+    "sha256": "fc2e608fcd569995f2332106c3a82a26fd657baf75dae6061f892fc88e6e25b3"
+  },
+  {
+    "bytes": 43741,
+    "path": "representative_actual_trajectory.png",
+    "sha256": "3de69ed7b4a3b46210fb7ed65c05fb6ba41de563430a539c8cae05447909a15c"
+  },
+  {
+    "bytes": 262519,
+    "path": "synthetic_analysis.json",
+    "sha256": "37a6c19c07c2562d52df3711fdf3208efb48f3228a2542e472b21954959e33c2"
+  },
+  {
+    "bytes": 76706,
+    "path": "synthetic_mechanism.png",
+    "sha256": "0bab0803fce83fc96903c387bbf89bc8a3746f19f5207afbd8b8c9e8a00ff3e4"
+  }
+]

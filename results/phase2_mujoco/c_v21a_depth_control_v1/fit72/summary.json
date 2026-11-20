@@ -1,0 +1,59 @@
+{
+  "arms": {
+    "h1_k": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.4305555555555554,
+      "mean_combined_rays": 3715.0694444444443,
+      "mean_elapsed_steps": 45.19444444444444,
+      "mean_emergency_safety_interventions": 0.3055555555555556,
+      "mean_episode_wall_time_seconds": 0.2656584207361111,
+      "mean_paid_memory_scans": 15.708333333333334,
+      "mean_scheduler_ms": 95.75767929166666,
+      "mean_travel_distance_m": 21.510416666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "h1_topology": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.125,
+      "mean_combined_rays": 3667.625,
+      "mean_elapsed_steps": 44.333333333333336,
+      "mean_emergency_safety_interventions": 0.2638888888888889,
+      "mean_episode_wall_time_seconds": 0.37169572916666666,
+      "mean_paid_memory_scans": 15.791666666666666,
+      "mean_scheduler_ms": 204.9157512361111,
+      "mean_travel_distance_m": 21.302083333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_k": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.4305555555555554,
+      "mean_combined_rays": 3715.0694444444443,
+      "mean_elapsed_steps": 45.19444444444444,
+      "mean_emergency_safety_interventions": 0.3055555555555556,
+      "mean_episode_wall_time_seconds": 0.2668822807361111,
+      "mean_paid_memory_scans": 15.708333333333334,
+      "mean_scheduler_ms": 98.75927244444445,
+      "mean_travel_distance_m": 21.510416666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "h3_topology": {
+      "episodes": 72,
+      "goals": 57,
+      "mean_blocked_attempts": 3.125,
+      "mean_combined_rays": 3667.625,
+      "mean_elapsed_steps": 44.333333333333336,
+      "mean_emergency_safety_interventions": 0.2638888888888889,
+      "mean_episode_wall_time_seconds": 0.3687328460138889,
+      "mean_paid_memory_scans": 15.791666666666666,
+      "mean_scheduler_ms": 202.43961243055554,
+      "mean_travel_distance_m": 21.302083333333332,
+      "mean_unwanted_contacts": 0
+    }
+  },
+  "episodes": 288,
+  "h3_replay_parity": true,
+  "status": "COMPLETED_DESCRIPTIVE_FIT_NOT_VALIDATION"
+}

@@ -1,0 +1,988 @@
+{
+  "count": 70,
+  "mechanism": "Original evaluator clears a rejected public action key only when an authorized reading changes its local memory signature. All observed exact-key retries have intervening authorized scans. This explains retry eligibility, not the unsaved geometric cause or goal counterfactual.",
+  "repeated_key_records": [
+    {
+      "arm": "deadline",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 3,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37
+      ],
+      "prior_rejection": 30,
+      "repeated_rejection": 42,
+      "same_pose_heading_action": "([21, 5], 3.141592653589793, ['move', [20, 5]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45
+      ],
+      "prior_rejection": 26,
+      "repeated_rejection": 50,
+      "same_pose_heading_action": "([21, 4], 3.141592653589793, ['move', [20, 4]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53
+      ],
+      "prior_rejection": 22,
+      "repeated_rejection": 58,
+      "same_pose_heading_action": "([21, 3], 3.141592653589793, ['move', [20, 3]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        37,
+        45,
+        53,
+        61
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 66,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 4,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:BP:80010001",
+      "intervening_authorized_paid_scan_steps": [
+        69
+      ],
+      "prior_rejection": 66,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([21, 2], 3.141592653589793, ['move', [20, 2]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 12
+    },
+    {
+      "arm": "deadline",
+      "episode": 33,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 33,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 33,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline",
+      "episode": 34,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 34,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 34,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030004",
+      "intervening_authorized_paid_scan_steps": [
+        28
+      ],
+      "prior_rejection": 23,
+      "repeated_rejection": 31,
+      "same_pose_heading_action": "([10, 10], 3.141592653589793, ['move', [9, 10]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 7
+    },
+    {
+      "arm": "deadline",
+      "episode": 39,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "intervening_authorized_paid_scan_steps": [
+        10
+      ],
+      "prior_rejection": 6,
+      "repeated_rejection": 12,
+      "same_pose_heading_action": "([20, 12], -1.5707963267948966, ['move', [20, 11]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 6
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 39,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "intervening_authorized_paid_scan_steps": [
+        10
+      ],
+      "prior_rejection": 6,
+      "repeated_rejection": 12,
+      "same_pose_heading_action": "([20, 12], -1.5707963267948966, ['move', [20, 11]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 6
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 39,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:M:80030007",
+      "intervening_authorized_paid_scan_steps": [
+        10
+      ],
+      "prior_rejection": 6,
+      "repeated_rejection": 12,
+      "same_pose_heading_action": "([20, 12], -1.5707963267948966, ['move', [20, 11]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 6
+    },
+    {
+      "arm": "deadline",
+      "episode": 49,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000000",
+      "intervening_authorized_paid_scan_steps": [
+        68
+      ],
+      "prior_rejection": 61,
+      "repeated_rejection": 73,
+      "same_pose_heading_action": "([19, 4], 3.141592653589793, ['move', [18, 4]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 5
+    },
+    {
+      "arm": "deadline",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 63,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 0,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25
+      ],
+      "prior_rejection": 18,
+      "repeated_rejection": 30,
+      "same_pose_heading_action": "([13, 16], 3.141592653589793, ['move', [12, 16]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 13,
+      "repeated_rejection": 37,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33
+      ],
+      "prior_rejection": 11,
+      "repeated_rejection": 39,
+      "same_pose_heading_action": "([13, 17], 3.141592653589793, ['move', [12, 17]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        42
+      ],
+      "prior_rejection": 37,
+      "repeated_rejection": 45,
+      "same_pose_heading_action": "([13, 17], 1.5707963267948966, ['move', [13, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    },
+    {
+      "arm": "deadline_stable_quiet",
+      "episode": 64,
+      "identity": "phase1.5-v0.4-BPRIME-1:fit:R:80000018",
+      "intervening_authorized_paid_scan_steps": [
+        25,
+        33,
+        42,
+        47,
+        48
+      ],
+      "prior_rejection": 8,
+      "repeated_rejection": 51,
+      "same_pose_heading_action": "([14, 17], 1.5707963267948966, ['move', [14, 18]])",
+      "schedule": 1,
+      "total_local_feedback_resets": 13
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "candidate": "caa_full",
+    "extra_fixed_ms": 315.018196,
+    "extra_fixed_without_initialization_ms": 311.389529,
+    "interpretation": "positive crossover: candidate cheaper only above it",
+    "positive_crossover_ms": 6.1768273725490195,
+    "positive_crossover_without_initialization_ms": 6.105677039215686,
+    "reference": "periodic4",
+    "saved_observations": 51
+  },
+  {
+    "candidate": "caa_full",
+    "extra_fixed_ms": 226.137754,
+    "extra_fixed_without_initialization_ms": 224.900589,
+    "interpretation": "positive crossover: candidate cheaper only above it",
+    "positive_crossover_ms": 4.711203208333333,
+    "positive_crossover_without_initialization_ms": 4.6854289375,
+    "reference": "age4",
+    "saved_observations": 48
+  },
+  {
+    "candidate": "caa_full",
+    "extra_fixed_ms": 67.992522,
+    "extra_fixed_without_initialization_ms": 68.075437,
+    "interpretation": "positive crossover: candidate cheaper only above it",
+    "positive_crossover_ms": 22.664174,
+    "positive_crossover_without_initialization_ms": 22.69181233333333,
+    "reference": "age5",
+    "saved_observations": 3
+  },
+  {
+    "candidate": "raa_defer",
+    "extra_fixed_ms": 2031.7610350000002,
+    "extra_fixed_without_initialization_ms": 2030.8375740000001,
+    "interpretation": "positive crossover: candidate cheaper only above it",
+    "positive_crossover_ms": 42.328354895833336,
+    "positive_crossover_without_initialization_ms": 42.309116125,
+    "reference": "periodic4",
+    "saved_observations": 48
+  },
+  {
+    "candidate": "raa_defer",
+    "extra_fixed_ms": 1942.8805929999999,
+    "extra_fixed_without_initialization_ms": 1944.348634,
+    "interpretation": "positive crossover: candidate cheaper only above it",
+    "positive_crossover_ms": 43.17512428888889,
+    "positive_crossover_without_initialization_ms": 43.20774742222222,
+    "reference": "age4",
+    "saved_observations": 45
+  },
+  {
+    "candidate": "raa_defer",
+    "extra_fixed_ms": 1784.735361,
+    "extra_fixed_without_initialization_ms": 1787.523482,
+    "interpretation": "candidate never cheaper for nonnegative observation cost",
+    "positive_crossover_ms": null,
+    "positive_crossover_without_initialization_ms": null,
+    "reference": "age5",
+    "saved_observations": 0
+  }
+]

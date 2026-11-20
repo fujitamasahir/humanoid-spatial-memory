@@ -1,0 +1,14 @@
+{
+  "caa_artifacts_unchanged": 928,
+  "caa_source_binding_unchanged": 25,
+  "checkpoint_receipt_pairs": 2907,
+  "g1_assets_unchanged": 58,
+  "missing_inputs": [],
+  "new_navigation_runs": 0,
+  "protected": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "reserved_or_new_navigation_populations_accessed": false,
+  "status": "PASS"
+}

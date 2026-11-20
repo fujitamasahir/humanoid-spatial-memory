@@ -1,0 +1,12 @@
+
+Fontconfig error: No writable cache directories
+	/opt/X11/var/cache/fontconfig
+	/Users/masahir0/.cache/fontconfig
+	/Users/masahir0/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/X11/var/cache/fontconfig
+	/Users/masahir0/.cache/fontconfig
+	/Users/masahir0/.fontconfig
+Matplotlib is building the font cache; this may take a moment.
+H2 report/tables/figures complete; frontier: ['periodic4', 'periodic5', 'age4', 'age5', 'age6', 'age_route_rescue', 'age_route_clock', 'rdao_v2', 'rdao_v21', 'caa_fast', 'caa_full']

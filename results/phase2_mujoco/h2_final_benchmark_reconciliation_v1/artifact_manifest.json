@@ -1,0 +1,969 @@
+{
+  "baseline_commit": "840b0e2dbc7a8c302edcaef0e226ab88abcf6549",
+  "file_count": 192,
+  "files": [
+    {
+      "path": "active_parity_binding.json",
+      "sha256": "a423673ede1b6124d5219892b88b7021ab6b47f2f89d445b047a20014ae02400",
+      "size_bytes": 223
+    },
+    {
+      "path": "active_timing_binding.json",
+      "sha256": "69885b12cf2474a91643a82f69d14a08009af4d5a1efbc3201b44c2a71e99585",
+      "size_bytes": 223
+    },
+    {
+      "path": "all_model_episode_timings.csv",
+      "sha256": "033fcb3b37d70ad99b89f044e2726f802bf48cb90932baadb1145e803a4139ed",
+      "size_bytes": 15929213
+    },
+    {
+      "path": "all_model_timing_smoke.json",
+      "sha256": "b40a2045b56758e044af1ba9b8e1d95f27895fab974770e07beb96fd1727c419",
+      "size_bytes": 21929
+    },
+    {
+      "path": "all_model_timing_v1/active_binding.json",
+      "sha256": "eaa3752fa1c1898fe447382ade02d2685700df487cf9a636312a78cc7d812ab3",
+      "size_bytes": 216
+    },
+    {
+      "path": "all_model_timing_v1/binding.json",
+      "sha256": "6955235a441935eabbc939f344ce48d7e957d78d0a8e656808ba60c6e9e77e37",
+      "size_bytes": 9607
+    },
+    {
+      "path": "all_model_timing_v1/binding_amendment_1.json",
+      "sha256": "4d7e7327b99a00b27fe1c6a9a9a7f6ff7ef512f586afb7ec7b51dacd304ca580",
+      "size_bytes": 742
+    },
+    {
+      "path": "all_model_timing_v1/binding_amendment_2.json",
+      "sha256": "5149e9a76122ebf0d1b0dc2f776e8ff3654c33c42d1dcefaa7f55128ac7e04af",
+      "size_bytes": 1582
+    },
+    {
+      "path": "all_model_timing_v1/journal.jsonl",
+      "sha256": "7a2f194c36676e5114c9bc3b476106cf77ec8928d502f4874727f966c0de3fe0",
+      "size_bytes": 31309691
+    },
+    {
+      "path": "all_model_timing_v1/runtime_observations.jsonl",
+      "sha256": "d2e0845d2fe75f7539136d90e8930d677c6a11e9104caf968ed16cd399555427",
+      "size_bytes": 20274
+    },
+    {
+      "path": "all_model_timing_v1/summary.json",
+      "sha256": "ca1097ffa184fb2064c0728eabaea3454fa3f723b956fd6ab33bcc16b027ee4c",
+      "size_bytes": 344
+    },
+    {
+      "path": "b_age_before_after_summary.csv",
+      "sha256": "a7bbfd7b255d579e104f94d78cc8d87bf41b3eac17ee78afc5f7d7683b20ff35",
+      "size_bytes": 853
+    },
+    {
+      "path": "b_age_correction_report.md",
+      "sha256": "a1b6ebf7168863a22c004ba85644fba5be006a6f83c1dd868891259f38f58f26",
+      "size_bytes": 968
+    },
+    {
+      "path": "bootstrap_intervals.csv",
+      "sha256": "c4b7329af0be3de6e93b580221e8942752ab58dcd3230a9f1f12e0b1fa710f4d",
+      "size_bytes": 6825
+    },
+    {
+      "path": "break_even_analysis.csv",
+      "sha256": "0fc1c4ecc99d4036f6c90f398508c4c8607c3d743eb31f4a057208582dfb719a",
+      "size_bytes": 8960
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/binding.json",
+      "sha256": "eb1f902bf6f966a311779c3d558fc77f5ce4d628478fcf0bde0cfcbad63c10a8",
+      "size_bytes": 7402
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010000_s0_seed42.json.gz",
+      "sha256": "2d8b9c4e1c2ce1477cc72f922840d4432232c97dbabbac6c8692fc41703c66d3",
+      "size_bytes": 16349
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010000_s1_seed42.json.gz",
+      "sha256": "ab4d3437dc0bb8766daab3c2491a840bf8d8baffaab34b332016d8ca95e92d92",
+      "size_bytes": 16488
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010001_s0_seed42.json.gz",
+      "sha256": "b616b62ac5d87060e2652b35e5496cffac6f76d79ee634a8f6e3adf6268ba33a",
+      "size_bytes": 10955
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010001_s1_seed42.json.gz",
+      "sha256": "5782e45cd6d742b7b1fd5e573c5f504396b86ab4108ef852b4c010dffb42dec0",
+      "size_bytes": 11182
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010002_s0_seed42.json.gz",
+      "sha256": "0d7075750ef7a92f62b1cf45492d072918c253c936b73817c9edd6ac263dd90c",
+      "size_bytes": 12157
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010002_s1_seed42.json.gz",
+      "sha256": "30d10dd804b981b60710e170d95dd42655892066ac02221d9a346978233d5845",
+      "size_bytes": 12024
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010003_s0_seed42.json.gz",
+      "sha256": "0d91e5a57b5104979308ad1191c90defd7e641348637fe98845e2251664e218b",
+      "size_bytes": 11133
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010003_s1_seed42.json.gz",
+      "sha256": "2611c720cf714466730e08828ffdc77489d6177bc4cef9fa949d3e8c27e947e1",
+      "size_bytes": 11236
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010004_s0_seed42.json.gz",
+      "sha256": "5ee87075f5b777efdb37b4f53fc52e9d17ba781484fb67ce6923b3554b61f638",
+      "size_bytes": 16180
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010004_s1_seed42.json.gz",
+      "sha256": "7991593cc9c16f5a455c912a0896dadf2ed00c10301a706bdd1a5234b75b1828",
+      "size_bytes": 15998
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010005_s0_seed42.json.gz",
+      "sha256": "058cebfd3af672102ecfa4dcc02b4a1585495df910344b94013a40ada5385f58",
+      "size_bytes": 12134
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010005_s1_seed42.json.gz",
+      "sha256": "27593d585a63f59f42778967d8e3688206b765e23ac827dcee102411cdb64ee2",
+      "size_bytes": 12117
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010006_s0_seed42.json.gz",
+      "sha256": "72e7f220a56ab7e8567cbd125f5bd3e769e07f78182a6dc2f67e319e73fa8f2c",
+      "size_bytes": 10921
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010006_s1_seed42.json.gz",
+      "sha256": "0dbf686375268f324d52d6e79f2b457d8e38c94bcf9c3a48d43696d0be8733b1",
+      "size_bytes": 10911
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010007_s0_seed42.json.gz",
+      "sha256": "38797c6a4741c2b0e8b0e0b0a55e60bbf11e96c82fab34cb8f9dfa14e7489f29",
+      "size_bytes": 11535
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010007_s1_seed42.json.gz",
+      "sha256": "afc20fd054932877f9963a3dbd85a973ebec868feb69128dbde37bba066be30f",
+      "size_bytes": 11482
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010008_s0_seed42.json.gz",
+      "sha256": "0da7dd70a35ea31b833fee7f00122045ea40fa2c4f646f33ae07d147d3bc168c",
+      "size_bytes": 15929
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010008_s1_seed42.json.gz",
+      "sha256": "cbc113a573cec0873d39c04b73c6897cb72cdb5119be7618460914d8eae3ab4b",
+      "size_bytes": 16592
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010009_s0_seed42.json.gz",
+      "sha256": "c3f9641c92561ad1617ad14fef4ff8ee5e67de428e3f10742b7d94b3d864b604",
+      "size_bytes": 16717
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010009_s1_seed42.json.gz",
+      "sha256": "65b0d4f871b59dab4778651eb1c47a88cf95382a03b97df0895232986f63faea",
+      "size_bytes": 15938
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010011_s0_seed42.json.gz",
+      "sha256": "c1117a0b1e8b7dda25a6e02635218b32848adffe7c2504d46e5468ff33eaf62d",
+      "size_bytes": 13131
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010011_s1_seed42.json.gz",
+      "sha256": "42291d40a969bda714b3236118dd6369f48cfb1adb849fc920c59af2d0e020d3",
+      "size_bytes": 11998
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010012_s0_seed42.json.gz",
+      "sha256": "12656be639673252a470c824bf21e79932b7609bc009e5cb6044d779c6c5956f",
+      "size_bytes": 24523
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_BP_910010012_s1_seed42.json.gz",
+      "sha256": "c167e57308739f4c5db411619be82b03562ad524a656f26b1bf9c94875fac417",
+      "size_bytes": 30764
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030000_s0_seed42.json.gz",
+      "sha256": "abbf4833cff5622dc13790b04cd3a4607bbbd0d1a2d64eeb27b3e4719893e669",
+      "size_bytes": 13268
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030000_s1_seed42.json.gz",
+      "sha256": "f347a92726c2fe9ee5ad741b066160d906bf56b75c755cecd188ca6d33febeca",
+      "size_bytes": 13317
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030001_s0_seed42.json.gz",
+      "sha256": "666fcce233ba8577d46803f708e81e53e735eea7ccb8d3eefed2c31ef5a9c692",
+      "size_bytes": 28366
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030001_s1_seed42.json.gz",
+      "sha256": "c670a6d0f18fe86f2f45a85081b7e5bf8d96fa359c92081da16d839597242f27",
+      "size_bytes": 28312
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030002_s0_seed42.json.gz",
+      "sha256": "102dd6aa2a7b48f44afed0d3ffb9c5f56341f9f3acd7b569015b653114fd12ba",
+      "size_bytes": 29246
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030002_s1_seed42.json.gz",
+      "sha256": "de9b66ba6dad1d89d7884370e38c08ade769366e05585f501907262f381e4b52",
+      "size_bytes": 28373
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030003_s0_seed42.json.gz",
+      "sha256": "0ffc9fd24a7a40bd4df2ce118191e7a5ed953ff99544b76213a964db208d5a2f",
+      "size_bytes": 28376
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030003_s1_seed42.json.gz",
+      "sha256": "fa8882c4abf543dc6874add03deb544a7434862ffa3a774187bb61964392252a",
+      "size_bytes": 28547
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030004_s0_seed42.json.gz",
+      "sha256": "fafa0d66fbcbfcd75856c3b1fc72f13a4e7d8157e4798b80334a9baf88b538a8",
+      "size_bytes": 11656
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030004_s1_seed42.json.gz",
+      "sha256": "e312e6d94516561c4128b40a57bacc6a38afc68f018e12461ad5ed40fe15e881",
+      "size_bytes": 11567
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030005_s0_seed42.json.gz",
+      "sha256": "e73b732624ae4bbf15773255ab74c5f6039953c5c929136b9defee8b95f9b794",
+      "size_bytes": 12875
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030005_s1_seed42.json.gz",
+      "sha256": "f38fc0b45155a48f82a5122bce4fd8999f890328b1f34dba3ccbd969c08e8a11",
+      "size_bytes": 13515
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030006_s0_seed42.json.gz",
+      "sha256": "95ce44c69e9752cb5f27118163ed47d3316e96cb0f79b41ca290f21a65f677f2",
+      "size_bytes": 28646
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030006_s1_seed42.json.gz",
+      "sha256": "4c2aa23e15946714916e7c766d9c7e80fa4f6597d1c90b48c5737dfd3bc50d90",
+      "size_bytes": 28696
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030007_s0_seed42.json.gz",
+      "sha256": "c88d2628caa4744a2c6abf40def89c3ae1c72fafd30ebe5817206b6f9cf73e65",
+      "size_bytes": 17475
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030007_s1_seed42.json.gz",
+      "sha256": "c6d9c6bb4b4b9a3f9090ca47d3e870860e82b78cfb7d77a1e1e5b2beb343f1fc",
+      "size_bytes": 18390
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030008_s0_seed42.json.gz",
+      "sha256": "2a1cefb8aeedeadf11eb0a13189aab912513b7f6f4a12a887bd5a2bcda232516",
+      "size_bytes": 14057
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030008_s1_seed42.json.gz",
+      "sha256": "eb1f708b6248c9ac10f26c80f81f6abaf8c178bd2b81697ea1cfad0c3be05d16",
+      "size_bytes": 14172
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030009_s0_seed42.json.gz",
+      "sha256": "4712073fb9b4869a4f55e3cb93a06711c7013a612604fc794cc7a5a230df5f46",
+      "size_bytes": 21023
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030009_s1_seed42.json.gz",
+      "sha256": "d361604a46676b4727d5719d2e002b7e961976bd70e96bc32d42f59a834cfe53",
+      "size_bytes": 15769
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030010_s0_seed42.json.gz",
+      "sha256": "e61bd39c685bc08ecdd2b2621e8cced3ae8fd919b42244980ae0cb4012b9493d",
+      "size_bytes": 12717
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030010_s1_seed42.json.gz",
+      "sha256": "89c14ee2aba941c99c45fe503bed68fcc6423bbaa4dc3b9acad4b5059b659e58",
+      "size_bytes": 12783
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030011_s0_seed42.json.gz",
+      "sha256": "4e3f9909190a7b7f258abef1e0c0990ec3981715cd424b90215134b6e4fde6cf",
+      "size_bytes": 16945
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_M_910030011_s1_seed42.json.gz",
+      "sha256": "e9e071e7fbe36c3ec9b81b6af0f81f27b5e2128f780b522d8a1093c5146e117c",
+      "size_bytes": 16756
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000001_s0_seed42.json.gz",
+      "sha256": "30ec0c21c7f407b4df48ed065ce0709e0e2dc750c9228f7cd82027236469add4",
+      "size_bytes": 30481
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000001_s1_seed42.json.gz",
+      "sha256": "2cb141df2cc33780481340d9381d4411854281fc955e747a618bee5037da930d",
+      "size_bytes": 30166
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000004_s0_seed42.json.gz",
+      "sha256": "cdc0effe4bdf6ac89a509846fed74b02a581bef0c95374e255ef3f1fc8bf3847",
+      "size_bytes": 26650
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000004_s1_seed42.json.gz",
+      "sha256": "e8916dd48409e5f7dce9b950a677aa0cbb6600fd09557960922c03485b275763",
+      "size_bytes": 26720
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000006_s0_seed42.json.gz",
+      "sha256": "f1085bf0f57370718c03b5e868e33c34afea3fa25eee654bd1faa6d1f5dd5152",
+      "size_bytes": 11000
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000006_s1_seed42.json.gz",
+      "sha256": "4be95400c0d666a08f75530ba30affe0868f0d8e034de469a96569d80451e602",
+      "size_bytes": 10959
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000009_s0_seed42.json.gz",
+      "sha256": "5af3dfdead57ec9e01641586c6e0f7272636d9bb1a0a9796b6ab69170333987e",
+      "size_bytes": 12487
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000009_s1_seed42.json.gz",
+      "sha256": "c2cd4344d932ae8a80ffb283e27a1574b6dfcfd790429ac03afdf65348a6ce60",
+      "size_bytes": 12653
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000011_s0_seed42.json.gz",
+      "sha256": "772e440237be8c9d7ffdaf4ebba8f719e6bd417e7ddfb86caf85493d3a5d7d13",
+      "size_bytes": 30264
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000011_s1_seed42.json.gz",
+      "sha256": "15c30e09b45793e42f6e3aa07e1fb98a60733abe1dc2710350f75c4b4fd830ab",
+      "size_bytes": 30702
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000014_s0_seed42.json.gz",
+      "sha256": "26294fa577fdd172c7849192dc99774c0dbd5eaf42aa96797f3b90b85010963b",
+      "size_bytes": 11920
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000014_s1_seed42.json.gz",
+      "sha256": "5ecb730f7cd670696226b687fa6d8f473d95a43470f7043b14e7c9e34ccc6c6f",
+      "size_bytes": 11734
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000017_s0_seed42.json.gz",
+      "sha256": "7bee1f6041b8386100d97fa85e9471be654bab68b08c976d162a97872e7b56ec",
+      "size_bytes": 20919
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000017_s1_seed42.json.gz",
+      "sha256": "f57d886a5f77d9c8f39724fe64bb3c0c1db27f5246f43dd41136c8114194d06e",
+      "size_bytes": 16935
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000018_s0_seed42.json.gz",
+      "sha256": "8033bf78c6941c8910247ed0d328169fb04978db310e777520acf55ab203b1df",
+      "size_bytes": 16714
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000018_s1_seed42.json.gz",
+      "sha256": "af78588a11c5e513ddb95a8afd2c2e2227a9b065b345e1fd7aaf390a4a2bffab",
+      "size_bytes": 16865
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000020_s0_seed42.json.gz",
+      "sha256": "ecf272bf0f1380d0b2f3d81a2a8238789d41c9eec6e09d08fee69515c17327cd",
+      "size_bytes": 13573
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000020_s1_seed42.json.gz",
+      "sha256": "de23ffc1cb43ae5ed554e8e1616dcdfc1a233ef77e34d0264603ecea2eb5eded",
+      "size_bytes": 13376
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000023_s0_seed42.json.gz",
+      "sha256": "4204415ed545ce17e24f82f270340e3f07d46134eff6abd37ab21ee3034df0b2",
+      "size_bytes": 20768
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000023_s1_seed42.json.gz",
+      "sha256": "41a3be2a611979f6da5e8d033c76dc5a6e6472f24be5373afc85d37c37e7fcdb",
+      "size_bytes": 16373
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000026_s0_seed42.json.gz",
+      "sha256": "3b06296ce7a27359434fb35d6a2d502e7632f8b7e13774279f136b356bcf03a4",
+      "size_bytes": 11071
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000026_s1_seed42.json.gz",
+      "sha256": "05e3d977a8e87162e4c14ab3411827466e8f67807cc7f90e9e06ab589dc0133f",
+      "size_bytes": 11101
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000030_s0_seed42.json.gz",
+      "sha256": "3029d9042dcebd717cf0e0d5128ee45315a7be29a3a005ff376af2bd8d011804",
+      "size_bytes": 29255
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_high_frequency/h2-final-generalization-v1-20261114_R_910000030_s1_seed42.json.gz",
+      "sha256": "de86fbbc8f9e60357558f68dd15348649a20b1ae5b9d838b1a93f2bac033037f",
+      "size_bytes": 29260
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010000_s0_seed42.json.gz",
+      "sha256": "03578715c4f448b78281102596c39b0d4a52fb062b4d31b13d4c5f942c6cc20e",
+      "size_bytes": 10371
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010000_s1_seed42.json.gz",
+      "sha256": "f09e4d5be75aef1b88bcf2bd8e2ba2aa1bdb6aa08551b68bd65b0f6a0dddd415",
+      "size_bytes": 10144
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010001_s0_seed42.json.gz",
+      "sha256": "c59aa259ef08a41d34cb66766c5f7da2f8bb3eb0b2be4209ce74c773a6170dd8",
+      "size_bytes": 7283
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010001_s1_seed42.json.gz",
+      "sha256": "1e1150eec7a859f8c9ee0e456eb451d94f8964df40873d046166d541a13b1733",
+      "size_bytes": 7634
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010002_s0_seed42.json.gz",
+      "sha256": "3adf0d163c628f2c34b292f0cde87cf9e67cb4f15b108c20a208920f284b24c2",
+      "size_bytes": 7796
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010002_s1_seed42.json.gz",
+      "sha256": "3f2f930ea40dc57006fd8d9864215040590821ef7f2f6a947cf90a10afa13624",
+      "size_bytes": 10587
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010003_s0_seed42.json.gz",
+      "sha256": "10f8f93e30eb3ba79275c51c11bc1cbbbc5357c7ccf2bb9bf37032bec0a90e7e",
+      "size_bytes": 7993
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010003_s1_seed42.json.gz",
+      "sha256": "0bad1e362d45418d80e01a48546a6866c1157f1856a241aa86d2f37c6601a4c3",
+      "size_bytes": 7531
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010004_s0_seed42.json.gz",
+      "sha256": "454be244b625615690f0876cff09f3c7e0a26ee41c8885f41654e465b041da1c",
+      "size_bytes": 9953
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010004_s1_seed42.json.gz",
+      "sha256": "0da0d2d26fea9d75f74c083716f3779762ea169df0fd644e1376d9be926310c7",
+      "size_bytes": 9862
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010005_s0_seed42.json.gz",
+      "sha256": "f2afafd82c7175a2bc3003c0b298954f7ac5f14b239fcf46dacd0412299851f8",
+      "size_bytes": 7950
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010005_s1_seed42.json.gz",
+      "sha256": "7b1bd44e09d61bf7748396f2a4dec63e06a7c5ad30cadbc56f00f2646053995a",
+      "size_bytes": 8129
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010006_s0_seed42.json.gz",
+      "sha256": "21c4516494ca274bb95ab5ea7f0badaf1eaddff75433040ed01ae1ae1d907439",
+      "size_bytes": 7388
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010006_s1_seed42.json.gz",
+      "sha256": "1e28ea3fd8bcf179117e1b78cc95a1902fb668321d3e5456b951675d1b7683f5",
+      "size_bytes": 7439
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010007_s0_seed42.json.gz",
+      "sha256": "58dab899bd4d1d1d34e0b472666d88c81d4d107f1e61b7ff85f9a782c443eb69",
+      "size_bytes": 7604
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010007_s1_seed42.json.gz",
+      "sha256": "69f2bdd18a53b88c9fb70a9ca9ac6aa4bcda7da16beb827b0e181b2ab2b39e46",
+      "size_bytes": 7719
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010008_s0_seed42.json.gz",
+      "sha256": "3944ef36b5100ace8ab0da3795932010965e136b4959be51ed9ca13a23014e87",
+      "size_bytes": 10260
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010008_s1_seed42.json.gz",
+      "sha256": "66250ed30441ec01b84328ffd8f5ae20aa29a85d8e52aca2393b0dc132b96c2d",
+      "size_bytes": 10138
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010009_s0_seed42.json.gz",
+      "sha256": "fdda30ddf9a003d15e7ae12607a53b8609d34eed523b74f96ea6ce77dbedd76c",
+      "size_bytes": 9968
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010009_s1_seed42.json.gz",
+      "sha256": "dfcd3498402d4414451df0a11c6d7c3d25477eeacecb501555e258a9c99da9f7",
+      "size_bytes": 9801
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010011_s0_seed42.json.gz",
+      "sha256": "1e91120ef9b7c378c72591de81e86eaa7585108fb8dcef02b4fd7a23b87bb103",
+      "size_bytes": 8473
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010011_s1_seed42.json.gz",
+      "sha256": "19c3291cc561b2f9edeac0257f3aa31e989e81ff20591f2b97cca89e36913ea6",
+      "size_bytes": 7938
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010012_s0_seed42.json.gz",
+      "sha256": "e5216deb2e4a45278147953b5d26c9fd6e85d1df10193044c0780905649ecbc3",
+      "size_bytes": 14023
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_BP_910010012_s1_seed42.json.gz",
+      "sha256": "540bfd97e1071280ddfb519a63744da7fc0baddbb0e087e3c06b9840b5f670a8",
+      "size_bytes": 16526
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030000_s0_seed42.json.gz",
+      "sha256": "477f24112685f9bc4465a949522910c95a32f1521e8adc61d394144d24a17931",
+      "size_bytes": 8402
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030000_s1_seed42.json.gz",
+      "sha256": "1b47bdd75c895da45003862bfb204a7f1087141c23f03b230fc16dc0cbad1d22",
+      "size_bytes": 8411
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030001_s0_seed42.json.gz",
+      "sha256": "bb76c1a1132eae4097f11c994684a7cf141f3574056771f22682719c49494541",
+      "size_bytes": 15156
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030001_s1_seed42.json.gz",
+      "sha256": "1a986090d841c4916940bb13637e12e980cbdc46a9a02fbaf06de48247f6b7d9",
+      "size_bytes": 14922
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030002_s0_seed42.json.gz",
+      "sha256": "95fc79a2add4ba578d6c246f9bdfefba86436537316177881ca55aa28f548e41",
+      "size_bytes": 15167
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030002_s1_seed42.json.gz",
+      "sha256": "fab25657d9abb817a3d9483b1a22e2a69c2fea431c7b3510ffa1b97edb68b822",
+      "size_bytes": 14529
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030003_s0_seed42.json.gz",
+      "sha256": "689a59702b2ebed6ab7659cf0c3a0df0e58248e232ff8bde4eb407a3d4b5d6b3",
+      "size_bytes": 15148
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030003_s1_seed42.json.gz",
+      "sha256": "439268e6eff78eaeb62e36d224712c3605fca42249bba12e15757cc5e19423e5",
+      "size_bytes": 14516
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030004_s0_seed42.json.gz",
+      "sha256": "d08c0dc4493217ad0ce1eb2f39714de07b45a94fd68df5524bf3950150e7febe",
+      "size_bytes": 7934
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030004_s1_seed42.json.gz",
+      "sha256": "cf489978edd45001c2a09840b9555f1ce69a4d7cbbfde64f61f158ed0ec1c866",
+      "size_bytes": 7643
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030005_s0_seed42.json.gz",
+      "sha256": "b7758ee14c06537ca7a1fea55ebdc155516a45da629d8262b53e5d362079602b",
+      "size_bytes": 8501
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030005_s1_seed42.json.gz",
+      "sha256": "71d59d2f18736961a496ff992019c35dfd21b4f8555c50ab29ae992afa1f0fce",
+      "size_bytes": 8365
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030006_s0_seed42.json.gz",
+      "sha256": "98d7ad9abceaed4205e34704a2745d1caf0c0ba2c38851b19215830251719c0d",
+      "size_bytes": 14904
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030006_s1_seed42.json.gz",
+      "sha256": "8bd200126d50f507bc4bf00ba5f437dd66333eff7b3d1dc4bfe7507a0ffff3ac",
+      "size_bytes": 15124
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030007_s0_seed42.json.gz",
+      "sha256": "a5f924ffef4bb38932b38045126720662de7c2d8a7964a980219978daefe6766",
+      "size_bytes": 10668
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030007_s1_seed42.json.gz",
+      "sha256": "6c59398b5b93fa29d0ae4ea73b5c6c2edbef3dc83edab292e0e622825793481b",
+      "size_bytes": 10627
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030008_s0_seed42.json.gz",
+      "sha256": "54d6435f03004529ce362777a7e7b8ffbbad9023449d2ed1c7d4ce3d4879035d",
+      "size_bytes": 8774
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030008_s1_seed42.json.gz",
+      "sha256": "307b163c6bf7b5935df3a8c1b425e419f893a064ac5e99377b0c1ef821d682b6",
+      "size_bytes": 8996
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030009_s0_seed42.json.gz",
+      "sha256": "6a2910ac088807f403a999d3bd7373b0d0c4872dde7e293e3cbe7cca84fed969",
+      "size_bytes": 11438
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030009_s1_seed42.json.gz",
+      "sha256": "a04ee93b177580224db8180b34da7b07c54fa4a2701be5e373123f3713bcf5db",
+      "size_bytes": 9530
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030010_s0_seed42.json.gz",
+      "sha256": "64ea858d0de58936e2be4209db719241a1907c93818b2b9c96b330c48543df39",
+      "size_bytes": 7976
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030010_s1_seed42.json.gz",
+      "sha256": "af859cfbaaedd70dd38ed23a2a700cc6e7b6d60112c498fd007a24e2a4f14ccc",
+      "size_bytes": 8303
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030011_s0_seed42.json.gz",
+      "sha256": "c489183c14b303db82030651e412168344e4bd38ae7c1a5ddd90bd177d441a5c",
+      "size_bytes": 10086
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_M_910030011_s1_seed42.json.gz",
+      "sha256": "6330a5f94ad7d39129e3bccd78fbdcf837c2f688b0fc7fa6f11d21dfa31328cd",
+      "size_bytes": 9875
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000001_s0_seed42.json.gz",
+      "sha256": "afbb22475851aadbd94203bf8115b0771733960d7a55e118b577ac31dc23034a",
+      "size_bytes": 16319
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000001_s1_seed42.json.gz",
+      "sha256": "3957f04817883ad44f52a595fdae8ce2b7cb40cd377a6b77736a9135d43c9b0d",
+      "size_bytes": 16453
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000004_s0_seed42.json.gz",
+      "sha256": "4031c50dd2cee59ff6e96ee775c044a115fbd219c9ae38473f4df7f2cca10953",
+      "size_bytes": 15248
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000004_s1_seed42.json.gz",
+      "sha256": "846b3b3f5596cf46c0ddea942b1ae2311aea70569bff6a5e080e18808bdfcbb5",
+      "size_bytes": 15296
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000006_s0_seed42.json.gz",
+      "sha256": "e8b81181bbdde660485fcdc75a651e85d7871b2c444e8f3687650d73b2235680",
+      "size_bytes": 7385
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000006_s1_seed42.json.gz",
+      "sha256": "ca776f95ef080e2935b69668a7f3ea9224bbbad451716f896481090b8aa2d798",
+      "size_bytes": 7328
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000009_s0_seed42.json.gz",
+      "sha256": "f5bf8162977d17b55a07cf94fca07f8f0aa3c6a06793d9f9da56d568dd9a04b4",
+      "size_bytes": 8303
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000009_s1_seed42.json.gz",
+      "sha256": "5e2424ce9cbcaad9f55e0b1d00cdcabea62e67bf45c510938b62c504c3e2d1f5",
+      "size_bytes": 8089
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000011_s0_seed42.json.gz",
+      "sha256": "7331bdba6e303099ce136a6fecd4f1bd6a63e84ef6f4fbabb0aa28047a3a88cd",
+      "size_bytes": 16858
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000011_s1_seed42.json.gz",
+      "sha256": "6972bf821916e462162567a5a915f06d30c4dbdad3ccadf9e152f0c69e9f2d32",
+      "size_bytes": 16621
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000014_s0_seed42.json.gz",
+      "sha256": "4cb48b471515991f469f26be6db8a9a8d9460c60f0596e17e9887cab4519a462",
+      "size_bytes": 7671
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000014_s1_seed42.json.gz",
+      "sha256": "8e7a84cd937e6a4f94556e91b04540b71bcc664f008feb5ec6827ef9e123eba4",
+      "size_bytes": 7897
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000017_s0_seed42.json.gz",
+      "sha256": "721525896bbaa25b2520e24ac2e967c4df72fa03a1e479b0c28d0d8198e67493",
+      "size_bytes": 11799
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000017_s1_seed42.json.gz",
+      "sha256": "1b79aca662648e540eb29f1d6e4007daf6b23d1f368645ec2817f7cb142ffef5",
+      "size_bytes": 10079
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000018_s0_seed42.json.gz",
+      "sha256": "0a7972f7c0c4ef2044d4d262d390c4af9ac94c4c1246165d483b7d912670b728",
+      "size_bytes": 9930
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000018_s1_seed42.json.gz",
+      "sha256": "c368674f07cade8b20cd27e14e390cfd10177e6067b477b3ef8c77c6ea807e3b",
+      "size_bytes": 9942
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000020_s0_seed42.json.gz",
+      "sha256": "c255f19c1a6352fcb7f90c7f441cfe2860613960ac2c30ba8fdf1ea41afdcac0",
+      "size_bytes": 8590
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000020_s1_seed42.json.gz",
+      "sha256": "097eb10c0ff8bfc3ca9fac6ef79789552a8aabd6df3b40d660ad50661a1f4632",
+      "size_bytes": 8539
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000023_s0_seed42.json.gz",
+      "sha256": "a9f4b9c40077fe4eb6bf527a7ffddd7b6f41a3a16c8caf7d3f9665d479acf87f",
+      "size_bytes": 10099
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000023_s1_seed42.json.gz",
+      "sha256": "c09c6ebfe8bbab038cdc2e5057ea6468ad49010edca5928edb1720ba5a4c3617",
+      "size_bytes": 10206
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000026_s0_seed42.json.gz",
+      "sha256": "92991b6d8fae0ce207a301dac821747cd4fc597b5c9b7cffb8f04a351a157e9f",
+      "size_bytes": 7296
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000026_s1_seed42.json.gz",
+      "sha256": "3d1c1887fde986b92f2de65a28ebec0db67a1534459d0b6e425ccc4c84498dd9",
+      "size_bytes": 7247
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000030_s0_seed42.json.gz",
+      "sha256": "6c585c957a989f9e2ed63cc5f636065c82784f486890fce0b0ad186bee845a89",
+      "size_bytes": 16154
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/episodes/unseen_low_frequency/h2-final-generalization-v1-20261114_R_910000030_s1_seed42.json.gz",
+      "sha256": "870b7bb2e65db5ef74b02c5e82b3690feb001729814729f9095ace25dcca0d72",
+      "size_bytes": 16347
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/journal.jsonl",
+      "sha256": "7d1de3ef0ff12cedf4ab00adab4718fe7a39ca092ba536bb04f5d072a93af85a",
+      "size_bytes": 99305
+    },
+    {
+      "path": "corrected_b_age_unseen_v1/summary.json",
+      "sha256": "ef8680d6bbd7325082a4f0bd38563b1f9f6b5a0ae2e4a318009e4cc2b9af50fb",
+      "size_bytes": 353
+    },
+    {
+      "path": "decision_microbenchmark.csv",
+      "sha256": "4545df21af15fd7a3dacebd225a0a45cfcd886db9b8fcc6b9735af37418f4501",
+      "size_bytes": 1295
+    },
+    {
+      "path": "episode_timings.csv",
+      "sha256": "70b0ad5049576cd6af471e9f10a718cc9886503a15cf7a398f0d9fc18f536e7e",
+      "size_bytes": 600276
+    },
+    {
+      "path": "episode_timings_journal.jsonl",
+      "sha256": "44096d7458581b39591cbadec7eac33260fb2c5e0bbb746e97d14e0c900b77b7",
+      "size_bytes": 1873078
+    },
+    {
+      "path": "figures/computational_cost.png",
+      "sha256": "73211917bb016b35d249815f5d513016ddf938ea10ec01f058fc2b8bd9a45e23",
+      "size_bytes": 63450
+    },
+    {
+      "path": "figures/computational_cost.svg",
+      "sha256": "3609462cdd6aab6ad83c289b593dac1bca9016ce7b97a951d3aceebf50545ca1",
+      "size_bytes": 41082
+    },
+    {
+      "path": "figures/goal_success_rate.png",
+      "sha256": "2d73d545fad3d01736f3ee2f76bf57870676cd0c8dd5f10aa3e8372907aa9ed1",
+      "size_bytes": 104443
+    },
+    {
+      "path": "figures/goal_success_rate.svg",
+      "sha256": "8e3ded9fa5ccb8dda489438ffec67fe46d4f5358a8fc29c7b7a5be7e22816046",
+      "size_bytes": 1829670
+    },
+    {
+      "path": "figures/observation_efficiency.png",
+      "sha256": "ea39865ee710adcf667daf744d11359ab785d7c71c3213706a752fb755443276",
+      "size_bytes": 160920
+    },
+    {
+      "path": "figures/observation_efficiency.svg",
+      "sha256": "96fbdb10c5abc760ab438075afed955627589967a339ec81c0976b513aa82ecf",
+      "size_bytes": 1757124
+    },
+    {
+      "path": "final_episode_metrics.csv",
+      "sha256": "f6b095d505f5414e5f3177958c3f93a78e3915eef28ae75165ef55687789339d",
+      "size_bytes": 5183155
+    },
+    {
+      "path": "final_model_summary.csv",
+      "sha256": "d0795b1bc9835d574b383e64a066f3fdeb562624d05767ff8671d75ceebbf318",
+      "size_bytes": 67896
+    },
+    {
+      "path": "final_replay_index.json",
+      "sha256": "c0bad3abbea022370bc078d92f1a9e92af3033781eca8f7b40818092c2652edc",
+      "size_bytes": 6844613
+    },
+    {
+      "path": "final_report.md",
+      "sha256": "ebef65cde6ef3bd314609ad8e3191bb8bb5922099a738cf78fcd425fcd12903a",
+      "size_bytes": 2605
+    },
+    {
+      "path": "historical_vs_optimized_comparison.csv",
+      "sha256": "b45cf5b63b4458834319f4e07ac9e1783a48ad9e9d6bfda0966a887932e91ed4",
+      "size_bytes": 8332
+    },
+    {
+      "path": "implementation_audit.csv",
+      "sha256": "abd6acfbc0d192aea5b28942100d7eb87e0ecc9632d107c3b3e6c8af5063c4c0",
+      "size_bytes": 35569
+    },
+    {
+      "path": "optimization_report.md",
+      "sha256": "1fbaa604568834b4a42e0eeddf876a1999779dbda1e11ceef70bb9d34962dbad",
+      "size_bytes": 2332
+    },
+    {
+      "path": "paired_comparisons.csv",
+      "sha256": "ad2e5d5d6a06d2c864b9932253e09f5966b38d38dee10c1e5b13454d9538551b",
+      "size_bytes": 6046
+    },
+    {
+      "path": "pareto_frontier_2d.csv",
+      "sha256": "e8fd7374b3ac455ee6b623ca7ca7740df5cf3539cbc54c0fc8e9fbff834450e5",
+      "size_bytes": 1012
+    },
+    {
+      "path": "pareto_frontier_3d.csv",
+      "sha256": "92557fca3696df24d727270bce9be171f4695eb0ce75775115f00c9666cb3c33",
+      "size_bytes": 2058
+    },
+    {
+      "path": "parity_binding.json",
+      "sha256": "0379691d168c96b1f028b788522ad44ad63447d994519e04f8024eeec8a0a65a",
+      "size_bytes": 732
+    },
+    {
+      "path": "parity_binding_amendment_1.json",
+      "sha256": "4962ace8f5cf1d1f7528f50b73b58b56b1da00d19c6b375aea4083e3dc6e0aa9",
+      "size_bytes": 959
+    },
+    {
+      "path": "poster_9_model_summary.csv",
+      "sha256": "327aa674bf9605edf7555340d3e615f877504563f5bb12ceb230f1baf8861234",
+      "size_bytes": 1816
+    },
+    {
+      "path": "poster_update_summary.md",
+      "sha256": "2a40fe81f032f46feff6712898543e42a0b59baf94448f318a6e3ce0aa1eda5c",
+      "size_bytes": 1131
+    },
+    {
+      "path": "semantic_parity_journal.jsonl",
+      "sha256": "b7ba5fb35c17aa76553c496e19cfef2077f54b470ca30721d85f2115247ac70f",
+      "size_bytes": 404034
+    },
+    {
+      "path": "semantic_parity_summary.json",
+      "sha256": "64d4614fd87d088b4480d8dafd439590f0273feb72e83f96b154f25b3e0d8a83",
+      "size_bytes": 139
+    },
+    {
+      "path": "semantic_parity_validation.csv",
+      "sha256": "7ebc7737318abbf05f88fbc60149fe130acd9d0abd053732beffd4e722ea48b3",
+      "size_bytes": 107786
+    },
+    {
+      "path": "timing_binding.json",
+      "sha256": "c7258e92be96f2e47044ba5b27eedcb1c42f1bee16d20b3e105208bc3a394d51",
+      "size_bytes": 1337
+    },
+    {
+      "path": "timing_binding_amendment_1.json",
+      "sha256": "54e0b03abf4612de4f3c2cd9834ea02dcb7995a2cfbd5261dd28762eb7cb8b44",
+      "size_bytes": 967
+    },
+    {
+      "path": "validation_report.md",
+      "sha256": "533f35c1018a19a50314f12d6301c46a41b10d5d4a7ac6b65f4ea91d0d355a12",
+      "size_bytes": 2153
+    },
+    {
+      "path": "validation_summary.json",
+      "sha256": "fffe64a4b5dd22fe55a3b56979f049ac6a1ac2b782fa834ec2858f3728fd571f",
+      "size_bytes": 876
+    }
+  ],
+  "manifest_excludes_itself": true,
+  "schema": "h2-final-benchmark-reconciliation-artifact-manifest-v1",
+  "total_bytes": 68557984
+}

@@ -1,0 +1,330 @@
+{
+  "arms": {
+    "dao_combined": {
+      "contact_pairs": 39.0,
+      "contact_states": 1.0,
+      "emergency_scans": 143.0,
+      "episodes": 12.0,
+      "goals": 10.0,
+      "paid_scans": 45.0,
+      "route_plan_calls": 0.0,
+      "route_plan_ms": 0.0,
+      "scheduler_ms": 379.79253400000005,
+      "selected_shield_calls": 93.0,
+      "vetoed_Age5_requests": 5.0,
+      "wall_seconds": 1.3787713719999999
+    },
+    "dao_route": {
+      "contact_pairs": 39.0,
+      "contact_states": 1.0,
+      "emergency_scans": 137.0,
+      "episodes": 12.0,
+      "goals": 10.0,
+      "paid_scans": 38.0,
+      "route_plan_calls": 137.0,
+      "route_plan_ms": 9.378336999999998,
+      "scheduler_ms": 376.048829,
+      "selected_shield_calls": 87.0,
+      "vetoed_Age5_requests": 0.0,
+      "wall_seconds": 1.3139064999999999
+    },
+    "dao_trigger": {
+      "contact_pairs": 39.0,
+      "contact_states": 1.0,
+      "emergency_scans": 143.0,
+      "episodes": 12.0,
+      "goals": 10.0,
+      "paid_scans": 47.0,
+      "route_plan_calls": 0.0,
+      "route_plan_ms": 0.0,
+      "scheduler_ms": 376.7674610000001,
+      "selected_shield_calls": 93.0,
+      "vetoed_Age5_requests": 0.0,
+      "wall_seconds": 1.4233926250000002
+    },
+    "dao_veto": {
+      "contact_pairs": 117.0,
+      "contact_states": 3.0,
+      "emergency_scans": 141.0,
+      "episodes": 12.0,
+      "goals": 10.0,
+      "paid_scans": 37.0,
+      "route_plan_calls": 0.0,
+      "route_plan_ms": 0.0,
+      "scheduler_ms": 360.403,
+      "selected_shield_calls": 87.0,
+      "vetoed_Age5_requests": 9.0,
+      "wall_seconds": 1.6131698349999999
+    }
+  },
+  "completed_navigation_episodes": 48,
+  "contact_cases": [
+    {
+      "emergency_interventions": 2,
+      "mode": "dao_combined",
+      "pairs": 39,
+      "pedestrian_pairs": 39,
+      "scene": "pedestrian",
+      "states": 1
+    },
+    {
+      "emergency_interventions": 2,
+      "mode": "dao_route",
+      "pairs": 39,
+      "pedestrian_pairs": 39,
+      "scene": "pedestrian",
+      "states": 1
+    },
+    {
+      "emergency_interventions": 2,
+      "mode": "dao_trigger",
+      "pairs": 39,
+      "pedestrian_pairs": 39,
+      "scene": "pedestrian",
+      "states": 1
+    },
+    {
+      "emergency_interventions": 4,
+      "mode": "dao_veto",
+      "pairs": 117,
+      "pedestrian_pairs": 117,
+      "scene": "pedestrian",
+      "states": 3
+    }
+  ],
+  "fallback_no_discovery_change_or_stale_verification": 3,
+  "fallback_no_discovery_or_change": 3,
+  "fallback_scans": [
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 0,
+      "scene": "removal",
+      "stale_verified": 0,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 18,
+      "scene": "removal",
+      "stale_verified": 34,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 5,
+      "scene": "unknown_obstacle",
+      "stale_verified": 21,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 24,
+      "scene": "unknown_obstacle",
+      "stale_verified": 37,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 5,
+      "scene": "unknown_obstacle",
+      "stale_verified": 21,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 24,
+      "scene": "unknown_obstacle",
+      "stale_verified": 37,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_combined",
+      "new": 0,
+      "scene": "low_discovery",
+      "stale_verified": 0,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_combined",
+      "new": 1,
+      "scene": "low_discovery",
+      "stale_verified": 9,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 2,
+      "scene": "low_discovery",
+      "stale_verified": 13,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_route",
+      "new": 2,
+      "scene": "low_discovery",
+      "stale_verified": 12,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_trigger",
+      "new": 0,
+      "scene": "low_discovery",
+      "stale_verified": 0,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_trigger",
+      "new": 1,
+      "scene": "low_discovery",
+      "stale_verified": 9,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 2,
+      "scene": "low_discovery",
+      "stale_verified": 13,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 2,
+      "scene": "low_discovery",
+      "stale_verified": 12,
+      "step": 11
+    },
+    {
+      "changed": 1,
+      "mode": "dao_combined",
+      "new": 4,
+      "scene": "pedestrian",
+      "stale_verified": 11,
+      "step": 10
+    },
+    {
+      "changed": 1,
+      "mode": "dao_combined",
+      "new": 0,
+      "scene": "pedestrian",
+      "stale_verified": 0,
+      "step": 11
+    },
+    {
+      "changed": 2,
+      "mode": "dao_combined",
+      "new": 11,
+      "scene": "pedestrian",
+      "stale_verified": 9,
+      "step": 12
+    },
+    {
+      "changed": 1,
+      "mode": "dao_trigger",
+      "new": 4,
+      "scene": "pedestrian",
+      "stale_verified": 11,
+      "step": 10
+    },
+    {
+      "changed": 1,
+      "mode": "dao_trigger",
+      "new": 0,
+      "scene": "pedestrian",
+      "stale_verified": 0,
+      "step": 11
+    },
+    {
+      "changed": 2,
+      "mode": "dao_trigger",
+      "new": 11,
+      "scene": "pedestrian",
+      "stale_verified": 9,
+      "step": 12
+    },
+    {
+      "changed": 2,
+      "mode": "dao_veto",
+      "new": 42,
+      "scene": "pedestrian",
+      "stale_verified": 47,
+      "step": 10
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 8,
+      "scene": "pedestrian",
+      "stale_verified": 0,
+      "step": 11
+    },
+    {
+      "changed": 0,
+      "mode": "dao_veto",
+      "new": 4,
+      "scene": "pedestrian",
+      "stale_verified": 0,
+      "step": 12
+    }
+  ],
+  "incomplete_formal_navigation_attempts": 1,
+  "prediction_statistics": {
+    "fixture": {
+      "frontier": {
+        "macro_precision": 1.0,
+        "macro_recall": 0.19204668138207157,
+        "mean_absolute_error": 12.058333333333334,
+        "mean_signed_error": -12.058333333333334,
+        "scans": 120,
+        "undefined_precision": 72,
+        "undefined_recall": 70
+      },
+      "optimistic": {
+        "macro_precision": 0.788015178485943,
+        "macro_recall": 0.9487023023804632,
+        "mean_absolute_error": 3.1416666666666666,
+        "mean_signed_error": 3.0083333333333333,
+        "scans": 120,
+        "undefined_precision": 72,
+        "undefined_recall": 70
+      }
+    },
+    "navigation": {
+      "frontier": {
+        "macro_precision": 0.7510889355742296,
+        "macro_recall": 0.3270632248345545,
+        "mean_absolute_error": 26.293413173652695,
+        "mean_signed_error": -24.976047904191617,
+        "scans": 167,
+        "undefined_precision": 7,
+        "undefined_recall": 39
+      },
+      "optimistic": {
+        "macro_precision": 0.6319524282752967,
+        "macro_recall": 0.9368658553711622,
+        "mean_absolute_error": 7.7844311377245505,
+        "mean_signed_error": 5.940119760479042,
+        "scans": 167,
+        "undefined_precision": 7,
+        "undefined_recall": 39
+      }
+    }
+  },
+  "reconstructed_actual_scans": 287,
+  "separate_fixture_scans": 120,
+  "source_preserved": true,
+  "status": "ENGINEERING_COMPLETE_WITH_CONTACT_FINDINGS"
+}

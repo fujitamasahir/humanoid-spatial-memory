@@ -1,0 +1,44 @@
+{
+  "status": "PASS_WITH_DECLARED_HISTORICAL_B_AGE_NONPARITY",
+  "episodes": 19440,
+  "models": 54,
+  "map_schedule_cases_per_model": 72,
+  "repetitions_per_case": 5,
+  "records_per_repetition": {
+    "1": 3888,
+    "2": 3888,
+    "3": 3888,
+    "4": 3888,
+    "5": 3888
+  },
+  "exact_semantic_parity_records": 19080,
+  "expected_historical_b_age_nonparity_records": 360,
+  "unexpected_semantic_parity_failures": 0,
+  "csv_record_counts": {
+    "episode_timings.csv": 19440,
+    "parity_validation.csv": 19440,
+    "decision_microbenchmark.csv": 162,
+    "model_summary.csv": 54,
+    "timing_breakdown.csv": 1080,
+    "historical_vs_new_comparison.csv": 54,
+    "pareto_frontier.csv": 54,
+    "break_even_analysis.csv": 54,
+    "poster_10_model_costs.csv": 10,
+    "case_repetition_variability.csv": 15552,
+    "repeatability_variance_summary.csv": 216
+  },
+  "protected_file_gate": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "preservation_status": "PASS",
+  "checkpoint_receipt_pairs": 2907,
+  "run_elapsed_seconds": 12902.306001666992,
+  "runtime_resource_snapshot_count": 2,
+  "external_resource_snapshot_count": 10,
+  "process_and_thermal_telemetry_limit": "macOS denied ps/top enumeration; temperature/thermal pressure not directly available; load averages and vm_stat snapshots are recorded",
+  "source_binding_sha256": "463310aa2ddac6f432242779f7c952499e1bd662599e5d36eb7ad2e6285dc746",
+  "binding_source_commit": "fbdd8898dc9b5be4b5c720c8888940b6efbd7ed0",
+  "audit_script_sha256": "31ed266d24228cabd9444d535a347099d6580f42f834dc9ca5e9f88ef64208ea",
+  "verified_at_utc": "2026-11-16T02:02:17.252107+00:00"
+}

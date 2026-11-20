@@ -1,0 +1,42 @@
+[
+  {
+    "bytes": 348536,
+    "path": "age4.json.gz",
+    "sha256": "b853dd343526e2f258de70cbaca80e013d46513e6b7a4df9f28f33c89b82c8ec"
+  },
+  {
+    "bytes": 51910,
+    "path": "age5.json.gz",
+    "sha256": "29edefbd0054e68d72fbe0501307997d1bba932b4689234f057ce677f86ccfa6"
+  },
+  {
+    "bytes": 424942,
+    "path": "dao_combined.json.gz",
+    "sha256": "5448a9828492a02851b14ebfa60848cb01955bb65bd29e303221c1fd41dea1b0"
+  },
+  {
+    "bytes": 51915,
+    "path": "dao_route.json.gz",
+    "sha256": "18c5aac79fd0e1d7ce268fe2fe2d8f223c5a42b22122c4a3666d32231eed5031"
+  },
+  {
+    "bytes": 424952,
+    "path": "dao_trigger.json.gz",
+    "sha256": "028dbb5c80a43da8a8dcd61c62ee77986edac2227b905f4ba84ca1c305f0b59c"
+  },
+  {
+    "bytes": 59007,
+    "path": "dao_veto.json.gz",
+    "sha256": "44618e4f7f1804a24ee53e19d4e5fe55c132dc94b3eedc76dda3332ddaa7209b"
+  },
+  {
+    "bytes": 348549,
+    "path": "periodic4.json.gz",
+    "sha256": "2a0bd563f5214293f951043c61e8db1b5b3e285e60945f46a5cac64c40e83ec2"
+  },
+  {
+    "bytes": 1791,
+    "path": "summary.json",
+    "sha256": "049a7d2b3f0bc3a269dfcf39444f8cfb3f42b268c6ef88f35bf26d72cd4f5586"
+  }
+]

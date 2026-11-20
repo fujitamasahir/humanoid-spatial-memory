@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 20629,
+    "path": "activations.json",
+    "sha256": "7fd95ac9519d8e3769cd0271fee7e794ac7c7cfe62dc538d78b9c3540ca5d70b"
+  },
+  {
+    "bytes": 345,
+    "path": "authorization.json",
+    "sha256": "9f983f8147a6c5a854b6cfa563db058fd1b80b88a3827738ceafd71efdac3706"
+  },
+  {
+    "bytes": 17105,
+    "path": "paired_h1.json",
+    "sha256": "7a3bd8545f2647e9aa8ff3bf4bcf7a5a6be840f467c6c23122c73c7365629911"
+  }
+]

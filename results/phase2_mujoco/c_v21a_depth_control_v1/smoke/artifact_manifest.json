@@ -1,0 +1,57 @@
+[
+  {
+    "bytes": 13156,
+    "path": "episode_001_h1_k.json.gz",
+    "sha256": "633a6868114fac065d9dc652f4534f705e3e5137003c0ab87e67842d3824c4b7"
+  },
+  {
+    "bytes": 15800,
+    "path": "episode_001_h1_topology.json.gz",
+    "sha256": "df7cecbe08710a00ceaf999ead5979c124ca6913da19e7da0ebbbe003d4f849f"
+  },
+  {
+    "bytes": 18346,
+    "path": "episode_001_h3_k.json.gz",
+    "sha256": "5841c19f94435011b276269d89dddd38e9f58c99238b6084115cfa978f1dd18e"
+  },
+  {
+    "bytes": 20436,
+    "path": "episode_001_h3_topology.json.gz",
+    "sha256": "8c920c6777317448b7e1d96a739f0dd28c2e4e0931beae6fa991a537efd65c68"
+  },
+  {
+    "bytes": 13148,
+    "path": "episode_002_h1_k.json.gz",
+    "sha256": "59bae7d65100d624f1f0c40265682ef8ea93b6602041aa68c664eb32a26a2d53"
+  },
+  {
+    "bytes": 15797,
+    "path": "episode_002_h1_topology.json.gz",
+    "sha256": "3a9fc370edba3c23e37bdc5905404a6fb4d6173f962041c0ad0a83e859e66caf"
+  },
+  {
+    "bytes": 18339,
+    "path": "episode_002_h3_k.json.gz",
+    "sha256": "2c24dc90cfc28ba0910a39c9049fb0784b1d1eb6631bc5868cefc274bd74e6c3"
+  },
+  {
+    "bytes": 20439,
+    "path": "episode_002_h3_topology.json.gz",
+    "sha256": "40ba01d81d24b35107074247bfd0925c8eb96b2eaf266b134077a2c710e86491"
+  },
+  {
+    "bytes": 2350,
+    "path": "episodes.csv",
+    "sha256": "00afeb24c7d19163dc5693a4864749e61dfa2a01e35d9518ba523f69a1e65621"
+  },
+  {
+    "bytes": 2646,
+    "path": "provenance.json",
+    "sha256": "65e12b4213ece1dbad59ad9b4726d6586322143e505f14b178a9d6a82dc766c9"
+  },
+  {
+    "bytes": 1750,
+    "path": "summary.json",
+    "sha256": "59aefde565cda9bcb438f1f825cc4edc822285fee93fc9f2d414719628f7c6b4"
+  }
+]

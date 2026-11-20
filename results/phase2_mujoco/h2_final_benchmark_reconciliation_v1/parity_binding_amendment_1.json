@@ -1,0 +1,13 @@
+{
+  "amendment": 1,
+  "baseline_source": "src/spatial_memory/cadence_age.py",
+  "baseline_source_sha256": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+  "created_at_utc": "2026-11-16T05:33:30.572181+00:00",
+  "evidence_records_preserved": true,
+  "optimized_source": "src/spatial_memory/cadence_age_optimized_v1.py",
+  "optimized_source_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5",
+  "parent_binding_sha256": "0379691d168c96b1f028b788522ad44ad63447d994519e04f8024eeec8a0a65a",
+  "prior_optimized_source_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5",
+  "protocol": "h2-optimization-semantic-parity-v1",
+  "reason": "The optimized cadence implementation is maintained as a separate versioned module to preserve the frozen cadence_age.py source commitment. The optimized source bytes are identical to the measured implementation; prior results and records remain unchanged."
+}

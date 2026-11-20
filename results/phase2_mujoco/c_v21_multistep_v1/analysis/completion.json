@@ -1,0 +1,7 @@
+{
+  "conformance_gate": "ACCEPTED_FOR_FIT",
+  "independent_cohort_generated_or_accessed": false,
+  "navigation_executed": true,
+  "numeric_gate": "PASS",
+  "source_commit": "c504a8c7486eb27136fed4ddba8585253a62eb87"
+}

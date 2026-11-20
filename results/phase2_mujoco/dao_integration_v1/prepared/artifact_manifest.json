@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 641,
+    "path": "gate.json",
+    "sha256": "29b15a228f740ad7d340e00a1e603ab49a6bef83341e6ab9e1f9218ff12e0df6"
+  },
+  {
+    "bytes": 39622,
+    "path": "scenes.json",
+    "sha256": "84a0c5c245e97849d8412d79a0089a6ce57289f9fd999351094d54baf8d33520"
+  },
+  {
+    "bytes": 392,
+    "path": "tests.log",
+    "sha256": "3e68ee5fa2241f359cb62bbd7bcccf4af6ce74d7df18f5fb78a243d6de6b8b28"
+  },
+  {
+    "bytes": 24319,
+    "path": "tests.xml",
+    "sha256": "f0832ba01a7a076ec42739acf1a026bbc841abb41010d6c92f558ad3ecd490c2"
+  }
+]

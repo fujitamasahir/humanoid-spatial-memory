@@ -1,0 +1,1118 @@
+[
+  {
+    "arm": "periodic4",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 9
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 13
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 17
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 21
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 25
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "age5",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 25
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "dao_veto",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            9
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                8
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                7
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "periodic4",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 9
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 13
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 17
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 21
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 25
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  },
+  {
+    "arm": "age5",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      },
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 25
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  },
+  {
+    "arm": "dao_veto",
+    "changes": [
+      {
+        "after": [
+          "sidestep",
+          [
+            5,
+            10
+          ]
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": [
+          {
+            "action": [
+              "move",
+              [
+                6,
+                9
+              ]
+            ],
+            "certified": false,
+            "goal_distance": 7
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                10
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "sidestep",
+              [
+                5,
+                8
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          },
+          {
+            "action": [
+              "retreat",
+              [
+                4,
+                9
+              ]
+            ],
+            "certified": true,
+            "goal_distance": 9
+          }
+        ],
+        "step": 5
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  }
+]

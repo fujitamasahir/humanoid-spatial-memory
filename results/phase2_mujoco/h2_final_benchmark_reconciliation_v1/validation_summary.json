@@ -1,0 +1,22 @@
+{
+  "all_model_timing_episodes": 19440,
+  "all_model_timing_status": "PASS",
+  "by_condition": {
+    "known_low_frequency": 3888,
+    "unseen_high_frequency": 3888,
+    "unseen_low_frequency": 3888
+  },
+  "episodes": 11664,
+  "known_manifest_integrity_findings": {
+    "h2_comprehensive_benchmark_v1_stale_manifest_entries": 1,
+    "h2_full_spatial_memory_replay_v1_stale_aggregate_manifest_entries": 27,
+    "handling": "Preserved all historical files unchanged. Individual episode files were revalidated against append-only stage journals; stale aggregate analysis/manifest entries were not accepted as episode source authority.",
+    "path": "protocol/model_registry.csv"
+  },
+  "models": 54,
+  "semantic_parity_pairs": 432,
+  "semantic_parity_status": "PASS",
+  "source_sha256_verified_for_every_episode": true,
+  "unique_cases": 11664,
+  "unwanted_contact_episodes": 0
+}

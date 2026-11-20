@@ -1,0 +1,32 @@
+{
+  "all_full_memory_grids_are_valid_25x25_ternary": true,
+  "episodes": 4752,
+  "every_episode_has_s0_and_terminal_frame": true,
+  "every_episode_sha_journal_verified": true,
+  "full_memory_frames": 217876,
+  "observation_budget_preserved": true,
+  "preservation_gate": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "task_a_exact_parity": {
+    "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 864
+  },
+  "task_b_parity": {
+    "FIRST_TIME_FIT72_EVALUATION": 1296,
+    "HISTORICAL_RESULT_WITHOUT_COMPARABLE_TRACE": 4,
+    "MISMATCH": 140,
+    "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2448
+  }
+}

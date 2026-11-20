@@ -1,0 +1,50 @@
+{
+  "analysis": {
+    "directory": "analysis_v4",
+    "navigation_reruns": 0,
+    "uses_saved_replay_diagnostics": true
+  },
+  "notes": [
+    "The initial smoke was preserved and invalidated after post-terminal transitions were found; corrected smoke and primary are separately sealed.",
+    "Results are descriptive development robustness evidence, not independent validation."
+  ],
+  "original_uncertainty": {
+    "environment_changes": 0,
+    "episodes": 72
+  },
+  "previous_fit_replay_parity": {
+    "entries_verified": 864,
+    "status": "PASS"
+  },
+  "primary": {
+    "active_navigation_steps": 39730,
+    "arms": 13,
+    "change_rate": 1.0,
+    "connectivity_violations": 0,
+    "environment_changes": 39730,
+    "episodes": 936,
+    "exclusion_violations": 0,
+    "no_op_events": 0,
+    "unwanted_contact_episodes": 0
+  },
+  "protected_integrity": {
+    "checkpoint_receipt_pairs": 2907,
+    "files_checked": 836,
+    "g1_assets_unchanged": 58,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1",
+    "status": "PASS"
+  },
+  "required_frozen_h2_commit": "12dc945c7da496e6cfc5dd79d6977b4c48d705c1",
+  "status": "PASS",
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_h2_high_frequency_dynamics.py tests/test_h2_final_benchmark.py",
+    "failed": 0,
+    "passed": 24
+  },
+  "valid_smoke": {
+    "active_navigation_steps": 3984,
+    "change_rate": 1.0,
+    "environment_changes": 3984,
+    "episodes": 52
+  }
+}

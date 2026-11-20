@@ -1,0 +1,61 @@
+{
+  "DAO_winner_selected": false,
+  "adapter_smoke_episodes": 2,
+  "candidate_decision": "REJECT",
+  "contacted_matrix_runs": 57,
+  "distinct_actual_contact_episode_timelines": 165,
+  "failed_audit_or_formal_runs": 0,
+  "final_tests_failed": 0,
+  "final_tests_passed": 216,
+  "forensic_audit_episodes": 7,
+  "formal_comparison_episodes": 416,
+  "formal_matrix_executions": 1,
+  "full_FIT72_screen": false,
+  "goal_harms": 32,
+  "missing_local_inputs": [],
+  "negative_control_untreated_candidate_trace_pairs": 16,
+  "new_contact_pairs_previously_contact_free": 16,
+  "no_certifiable_action_benchmark_steps": 272,
+  "original_algorithms_scenarios_timing_modified": false,
+  "pilot_ready": false,
+  "post_outcome_candidate_changes": false,
+  "postprocessing_sources": {
+    "scripts/export_safety_contact_cases_v1.py": "fff4edb2e2dba72b51aa2f62a4a4db9e592a02122dc6f356823bd7d3011495ef",
+    "scripts/report_predictive_safety_v1.py": "ec4915ddaa9bcc917180894782b787e308999d1612d66f3bcd44c39e9aa1ee86",
+    "scripts/verify_predictive_safety_v1.py": "e896c9ab69d179bfb963b0023922b744f0388cf309707cd07ed80c8b289eed6e"
+  },
+  "production_populations_generated": false,
+  "prospective_contact_states_original_candidate": [
+    25,
+    128
+  ],
+  "prospective_freeze": "6aab1e14ce7df42501c0b4e6bbba44816a529ffe",
+  "prospective_goals_original_candidate": [
+    104,
+    80
+  ],
+  "published_completed_engineering_episodes": 425,
+  "regression_contact_states_original_candidate": [
+    12,
+    0
+  ],
+  "regression_goals_original_candidate": [
+    80,
+    72
+  ],
+  "remaining_blockers": [
+    "candidate_safety_and_liveness_failure",
+    "generator_width_bias_occlusion_coverage",
+    "production_admission_scalability",
+    "missing_authorized_opaque_signatures",
+    "independent_custody_not_established",
+    "statistical_undercoverage",
+    "scientific_margins_and_power_justified_size_unapproved"
+  ],
+  "report_sha256": "a394e70b2f665d9b560926e79e48fc4a3c4aeadd2eaaa669af9ed8df911fe07f",
+  "reserved_access": false,
+  "starting_commit": "1671e26f9b1360a4f061c5a04934a1374c789f83",
+  "status": "COMPLETE_CANDIDATE_REJECTED",
+  "untreated_DAO_archive_parities": 48,
+  "verification_metadata_draft_note": "Initial read-only preservation helper counter new_navigation_runs=0 was inherited; corrected final verification explicitly records425 published episodes (416+7+2). Draft retained; no episode/sensing rerun."
+}

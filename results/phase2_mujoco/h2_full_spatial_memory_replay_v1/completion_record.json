@@ -1,0 +1,25 @@
+{
+  "binding_epochs": {
+    "corrected_b_age": {
+      "path": "binding_amendment_5.json",
+      "sha256": "7a8a1a1975991f541008069e425e85ee80a28f3dd9acf6f4ea36bb35cdced8ac"
+    },
+    "task_a": {
+      "path": "binding_amendment_2.json",
+      "sha256": "48cf7a06e258d5208b1138486eb5831cb4845db3ed5d8f0c13037d983875652e"
+    },
+    "task_b_initial": {
+      "path": "binding_amendment_3.json",
+      "sha256": "3940d8dcbc3721914efca54368bf81c6006e01ce0ae492c78d301e6a72226bb3"
+    }
+  },
+  "binding_sha256": "7a8a1a1975991f541008069e425e85ee80a28f3dd9acf6f4ea36bb35cdced8ac",
+  "exact_reproduction_status": "ALL_COMPARABLE_HISTORICAL_CASES_EXACT",
+  "reconciliation_sha256": "c62fdac0070917353701776f25089f536561ccbe79d3f1d7f72a6b83fd86c3f2",
+  "replay_index_sha256": "110936d3249deef6c04a9c9e6b93e975a6f75246fc94f7fe4a6200474f6f093d",
+  "status": "COMPLETE",
+  "summary_sha256": "5e327dfda52f7ce154af2c124397c08dfaf28e13e84a82fccee5a1377013c18e",
+  "task_a_episodes": 864,
+  "task_b_episodes": 3888,
+  "validated": true
+}

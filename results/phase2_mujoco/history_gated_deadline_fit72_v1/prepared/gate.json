@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_history_gated_deadline_v1.py",
+    "tests/test_omission_public_features_v1.py",
+    "tests/test_route_gated_dao_veto_v1.py",
+    "tests/test_discovery_observation.py",
+    "tests/test_dao_navigation_compat_v1_1.py",
+    "tests/test_cadence_age.py"
+  ],
+  "returncode": 0
+}

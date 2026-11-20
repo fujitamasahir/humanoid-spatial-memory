@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 934,
+    "path": "common_visibility_oracle.json",
+    "sha256": "df1cbeaddfc07b90e7350da391a5a296041bf43fba158cbc144f92a249092b72"
+  },
+  {
+    "bytes": 73228,
+    "path": "synthetic_common_reference.png",
+    "sha256": "49e921689721b7957e9d48c586620d9b444f7ab19a927678ca74207a07769fa5"
+  },
+  {
+    "bytes": 4110,
+    "path": "verification.json",
+    "sha256": "11207b65eb2a5cc5a693bbc6a32be730572f3199a4475b671a3aabbbd67628bf"
+  }
+]

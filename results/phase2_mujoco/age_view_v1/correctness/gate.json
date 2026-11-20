@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_view_age.py",
+    "tests/test_c_v21_navigation.py"
+  ],
+  "commit": "a7f7905457bbd92a6a976e61ade1f45e6bb977c6",
+  "source_sha256": {
+    "docs/age_view_protocol.md": "cda1257ca448e7694ee0243dbf7a630faf50aa22dfa75f412898c83f3d010913",
+    "scripts/run_age_view_fit72.py": "8c89ff70d7a4e1305e923bf1258997ddc1c16b7af5bb7f2ca1b7ab4d09ca2a0f",
+    "src/spatial_memory/view_age.py": "b6cd1202f23a01c69f5838f9214f55245bb32f3ecf223968f432e858c5b37561",
+    "tests/test_view_age.py": "e6cb642fda78eb4423f489d2e64fd4d58a8d94d74bbd41cea7ee41e5aeaeebc2"
+  },
+  "status": "PASS"
+}

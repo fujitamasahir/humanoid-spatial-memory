@@ -1,0 +1,10 @@
+{
+  "command": [
+    "scripts/evaluate_c_v21_fit72.py",
+    "--smoke"
+  ],
+  "elapsed_seconds": 6.343634290999034,
+  "peak_process_rss_bytes": 796934144,
+  "rss_unit": "bytes on macOS",
+  "status": "COMPLETED"
+}

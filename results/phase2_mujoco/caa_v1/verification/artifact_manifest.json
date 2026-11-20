@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 80663,
+    "path": "changed_key_040.png",
+    "sha256": "0c0d0a78515b683f6ff14e4db5b8ca70eded36d898016f13930a89618ca85b3c"
+  },
+  {
+    "bytes": 79656,
+    "path": "changed_key_068.png",
+    "sha256": "ef98753f66944ba9af42c00564593c3792866b1d4e73970130483104d8e0322a"
+  },
+  {
+    "bytes": 10790,
+    "path": "clock_changes.json",
+    "sha256": "878c3760bacda5e5fa2bc721ed2cddf1f6cb372d19ca2cef5b3e85255b6989c9"
+  },
+  {
+    "bytes": 1626,
+    "path": "integrity.json",
+    "sha256": "9d7625f8c0f6bbda3eaf282842081ee00fe2c203c5ad4d0005c3fbd1704b4609"
+  }
+]

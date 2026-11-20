@@ -1,0 +1,25 @@
+{
+  "episodes": 19440,
+  "exact_parity_failures_outside_b_age": 0,
+  "expected_b_age_historical_nonparity": 360,
+  "models": 54,
+  "post_run_preservation": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "repetitions": 5,
+  "semantic_parity_records": 19440,
+  "source_binding_sha256": "463310aa2ddac6f432242779f7c952499e1bd662599e5d36eb7ad2e6285dc746",
+  "status": "COMPLETE_WITH_DECLARED_B_AGE_HISTORICAL_NONPARITY",
+  "validated_at_utc": "2026-11-16T02:00:25.619179+00:00"
+}

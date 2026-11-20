@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_route_age.py",
+    "tests/test_view_age.py",
+    "tests/test_c_v21_navigation.py"
+  ],
+  "commit": "d3d13dbd4de53a5152ea344dc5f8befc9fe574bf",
+  "source_sha256": {
+    "docs/age_route_protocol.md": "7f646166f0eb8d489d5266e98f7e9dde31ff65523dfece60969ccb20493f944f",
+    "scripts/run_age_route_fit72.py": "037bb80fbee56feb7bdc773f10c4c027a6ae28add8a43d6bef5bdb9bb9417acf",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/route_age.py": "dc6335fbfe1793328895c55a6b18fd9296afb7f9a2c8b5b97296189cde378da3",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/view_age.py": "b6cd1202f23a01c69f5838f9214f55245bb32f3ecf223968f432e858c5b37561",
+    "tests/test_route_age.py": "4519270766c6ec826e5101dfd5e850e152069947990c7aba782100daf34f406d"
+  },
+  "status": "PASS"
+}

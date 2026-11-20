@@ -1,0 +1,10 @@
+# Validation report
+
+- **Final replay index:** 11,664 unique episodes, 3,888 per condition, 54 models with 72 map×schedule cases each. Every referenced gzip artifact was checked against its SHA-256 before inclusion.
+- **Semantic optimization parity:** 432 paired episodes passed (Periodic-5 and Age-5 × 72 cases × three conditions). Outcomes and model-owned controller state at initialization, every decision and every update matched. Diagnostic-only cadence score fields and runtime measurements were separately identified.
+- **Controlled timing:** 19,440 current-code timing episodes passed (54 models × 72 saved cases × five repetitions); 19,080 exact matches plus 360 expected mismatches against the historically mislabeled B+Age reference; zero unexpected mismatches. Same-session selected-model before/after timing contains 2,160 more measurements.
+- **Correct B+Age:** 72 Known FIT72 corrected cases and 144 unseen corrected cases have complete journals and per-file hashes; unseen correction has zero unwanted contacts. Old mislabeled B+Age files remain untouched and are excluded from the authoritative index.
+- **Protected integrity:** `verify_dao_integrity.verify()` PASS: 836 protected prefix files, 2,907 checkpoint/receipt pairs, 928 CAA artifacts, 25 CAA source bindings and 58 G1 assets; zero new navigation runs, no missing inputs. Original cadence source restored to pinned SHA `691e39c7…`.
+- **Historical manifest caveat:** one stale H2 comprehensive manifest entry (`protocol/model_registry.csv`) and 27 stale H2 full-replay aggregate entries remain unchanged. Episode source files were individually revalidated against stage journals; stale aggregate manifests were not treated as authority.
+- **Timing interruption:** the 54-model timing runner was safely interrupted after 1,259 fsynced rows to fix excessive progress output, then resumed from its checkpoint. Environment snapshots and append-only binding amendments preserve that history.
+- **Schema:** `final_replay_index.json` uses the existing `h2_comprehensive_replay_index_v1` fields and adds `evaluation_condition` and `source_dataset`; legacy fields remain intact.

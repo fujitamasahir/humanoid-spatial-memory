@@ -1,0 +1,25 @@
+{
+  "arms": [
+    "periodic4",
+    "periodic5",
+    "age4",
+    "age5",
+    "age6",
+    "age_route_rescue",
+    "age_route_clock",
+    "rdao_v2",
+    "rdao_v21",
+    "caa_fast",
+    "caa_full",
+    "raa_defer",
+    "uncertainty"
+  ],
+  "episodes": 52,
+  "replay_count": 52,
+  "source_commit": "12dc945c7da496e6cfc5dd79d6977b4c48d705c1",
+  "stage": "smoke_amendment1",
+  "status": "COMPLETE",
+  "total_goal_completions": 22,
+  "total_unwanted_contacts": 0,
+  "wall_seconds": 35.26936233401648
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 105759,
+    "path": "actual_prediction_contacts.png",
+    "sha256": "ae90aa856d51bb4c9eee841684dafdbf353995c6ba6477382bbdf928256cd3e4"
+  },
+  {
+    "bytes": 744,
+    "path": "integrity.json",
+    "sha256": "dddabbff6ff28116a4ceae3ecd5a23df0e3c174c96695d1f1c39cdacdbb3b62a"
+  },
+  {
+    "bytes": 97348,
+    "path": "power_sensitivity.png",
+    "sha256": "2d3b642d8fa2fa79abaf0330c0026b2a90fdf0b79e528d6f025867c9b6fa366c"
+  },
+  {
+    "bytes": 7516,
+    "path": "results.json",
+    "sha256": "9c3c7d102cc31eafd80b5bf75ebc226bb6464bda3b1964167697f0bbae84fd8e"
+  }
+]

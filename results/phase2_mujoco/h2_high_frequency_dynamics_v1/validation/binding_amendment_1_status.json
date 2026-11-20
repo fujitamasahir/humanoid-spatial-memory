@@ -1,0 +1,7 @@
+{
+  "binding": "binding_amendment_1.json",
+  "navigation_runs_under_binding": 0,
+  "preserved_original_smoke_binding": "binding.json",
+  "reason": "Additional original-condition full replay and final analysis code was added after this binding was drafted; its script source hash no longer matched.",
+  "status": "SUPERSEDED_BEFORE_EVALUATION"
+}

@@ -1,0 +1,58 @@
+{
+  "episode_checks": 878,
+  "folders": {
+    "fit72": {
+      "episodes": 504,
+      "manifest_files": 507
+    },
+    "periodic_replay": {
+      "episodes": 72,
+      "manifest_files": 73
+    },
+    "periodic_replay_prefreeze_v1": {
+      "episodes": 72,
+      "manifest_files": 73
+    },
+    "periodic_replay_prefreeze_v2": {
+      "episodes": 72,
+      "manifest_files": 73
+    },
+    "retrospective": {
+      "episodes": 144,
+      "manifest_files": 146
+    },
+    "smoke": {
+      "episodes": 14,
+      "manifest_files": 17
+    }
+  },
+  "formal_actual_sensor_instrumented_episodes": 518,
+  "frozen_source_files_unchanged": 25,
+  "g1_assets_unchanged": 58,
+  "original_pairs": 2907,
+  "postprocessing_source_sha256": "f80a0648164b5e6a607e9dc99888dedb08de07fb2dd2b73d7f834f7e817e60ef",
+  "previous_cadence_manifest_files": 507,
+  "protected_phase15": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "reserved_or_new_cohort_access": false,
+  "status": "PASS",
+  "stores": [
+    {
+      "inventory_sha256": "281f13f08218e977074b2d965c463d6f99a646e22031bfac838190a3b7fb6d2e",
+      "pairs": 313,
+      "path": "results/raw/phase15_macos_development/fit"
+    },
+    {
+      "inventory_sha256": "8679a89a59c42ffe17086791138481f347b1742172e387e0bc99e4214f122546",
+      "pairs": 105,
+      "path": "results/raw/phase15_bprime_fit_recovery_1/store"
+    },
+    {
+      "inventory_sha256": "19dbc693a40f13b6225d1cfacbcff6669fc514605c6f0406d6dab1a985472416",
+      "pairs": 2489,
+      "path": "results/raw/phase15_bprime_fit_recovery_2/store"
+    }
+  ]
+}

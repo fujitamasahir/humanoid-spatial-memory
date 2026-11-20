@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 3540,
+    "path": "mechanisms.json",
+    "sha256": "77ff923fedfb3463c02d2fbb781b212fa757a72491b92f2b2fa8ec49a240d2c2"
+  },
+  {
+    "bytes": 165307,
+    "path": "mechanisms.png",
+    "sha256": "1a22a888187e76228a82c6815c61c82bdc99f3aa2e77335f49ad4df64f2da035"
+  },
+  {
+    "bytes": 3099,
+    "path": "planning.json",
+    "sha256": "c921d2968f5dc0f659f5ccb5633a9062e6795329944a1890cf1e3b33d2d7aead"
+  },
+  {
+    "bytes": 70400,
+    "path": "sample_size.png",
+    "sha256": "a3699603f00028005ac36cd08adda7f822dc2b232b9de8881d543b576087e2d5"
+  }
+]

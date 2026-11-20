@@ -1,0 +1,474 @@
+{
+  "all_scan_records_including_initial": 3926,
+  "arms": {
+    "age4": {
+      "changed_known_per_scan": {
+        "max": 2.0,
+        "median": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "q75": 0.0
+      },
+      "completion_strata": [
+        {
+          "episodes": 66,
+          "mean_blocked": 0.30303030303030304,
+          "mean_h80": 36.89393939393939,
+          "mean_new_per_scan": 14.977867998561777,
+          "success": true
+        },
+        {
+          "episodes": 6,
+          "mean_blocked": 2.6666666666666665,
+          "mean_h80": 80.0,
+          "mean_new_per_scan": 7.438596491228069,
+          "success": false
+        }
+      ],
+      "episodes": 72,
+      "initial_scans": 72,
+      "new_cells_per_scan": {
+        "max": 80.0,
+        "median": 11.0,
+        "min": 0.0,
+        "q25": 4.0,
+        "q75": 19.0
+      },
+      "new_cells_total": 10175,
+      "noninitial_scans": 778,
+      "progress_bins": [
+        {
+          "mean_new": 14.214285714285714,
+          "new_total": 4975,
+          "scans": 350,
+          "steps": "0-19"
+        },
+        {
+          "mean_new": 13.46896551724138,
+          "new_total": 3906,
+          "scans": 290,
+          "steps": "20-39"
+        },
+        {
+          "mean_new": 8.491525423728813,
+          "new_total": 1002,
+          "scans": 118,
+          "steps": "40-59"
+        },
+        {
+          "mean_new": 14.6,
+          "new_total": 292,
+          "scans": 20,
+          "steps": "60-79"
+        }
+      ],
+      "saved_raster_route_audit": {
+        "new_near_route_total": 3105,
+        "nominal_first_move_changes": 118,
+        "nominal_route_changes": 319,
+        "scans": 778
+      },
+      "scan_content_strata": [
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": true,
+          "next_step_blocked": 0,
+          "scans": 694,
+          "temporal_action_changes": 694
+        },
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": false,
+          "next_step_blocked": 0,
+          "scans": 84,
+          "temporal_action_changes": 84
+        }
+      ],
+      "scan_intervals": {
+        "max": 4.0,
+        "median": 4.0,
+        "min": 1.0,
+        "q25": 4.0,
+        "q75": 4.0
+      },
+      "unchanged_only": 83,
+      "with_changed_known": 21,
+      "with_new": 694
+    },
+    "age5": {
+      "changed_known_per_scan": {
+        "max": 3.0,
+        "median": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "q75": 0.0
+      },
+      "completion_strata": [
+        {
+          "episodes": 66,
+          "mean_blocked": 0.7424242424242424,
+          "mean_h80": 38.84848484848485,
+          "mean_new_per_scan": 16.650246700584443,
+          "success": true
+        },
+        {
+          "episodes": 6,
+          "mean_blocked": 2.3333333333333335,
+          "mean_h80": 80.0,
+          "mean_new_per_scan": 8.84795321637427,
+          "success": false
+        }
+      ],
+      "episodes": 72,
+      "initial_scans": 72,
+      "new_cells_per_scan": {
+        "max": 69.0,
+        "median": 11.0,
+        "min": 0.0,
+        "q25": 4.0,
+        "q75": 20.0
+      },
+      "new_cells_total": 9672,
+      "noninitial_scans": 698,
+      "progress_bins": [
+        {
+          "mean_new": 15.76173285198556,
+          "new_total": 4366,
+          "scans": 277,
+          "steps": "0-19"
+        },
+        {
+          "mean_new": 14.3984375,
+          "new_total": 3686,
+          "scans": 256,
+          "steps": "20-39"
+        },
+        {
+          "mean_new": 9.747826086956522,
+          "new_total": 1121,
+          "scans": 115,
+          "steps": "40-59"
+        },
+        {
+          "mean_new": 9.98,
+          "new_total": 499,
+          "scans": 50,
+          "steps": "60-79"
+        }
+      ],
+      "saved_raster_route_audit": {
+        "new_near_route_total": 3060,
+        "nominal_first_move_changes": 146,
+        "nominal_route_changes": 298,
+        "scans": 698
+      },
+      "scan_content_strata": [
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": true,
+          "next_step_blocked": 0,
+          "scans": 630,
+          "temporal_action_changes": 629
+        },
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": false,
+          "next_step_blocked": 0,
+          "scans": 68,
+          "temporal_action_changes": 66
+        }
+      ],
+      "scan_intervals": {
+        "max": 5.0,
+        "median": 5.0,
+        "min": 1.0,
+        "q25": 4.0,
+        "q75": 5.0
+      },
+      "unchanged_only": 64,
+      "with_changed_known": 30,
+      "with_new": 630
+    },
+    "caa_fast": {
+      "changed_known_per_scan": {
+        "max": 3.0,
+        "median": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "q75": 0.0
+      },
+      "completion_strata": [
+        {
+          "episodes": 66,
+          "mean_blocked": 0.7424242424242424,
+          "mean_h80": 38.84848484848485,
+          "mean_new_per_scan": 16.707064882402626,
+          "success": true
+        },
+        {
+          "episodes": 6,
+          "mean_blocked": 2.3333333333333335,
+          "mean_h80": 80.0,
+          "mean_new_per_scan": 8.84795321637427,
+          "success": false
+        }
+      ],
+      "episodes": 72,
+      "initial_scans": 72,
+      "new_cells_per_scan": {
+        "max": 69.0,
+        "median": 11.0,
+        "min": 0.0,
+        "q25": 4.0,
+        "q75": 20.0
+      },
+      "new_cells_total": 9684,
+      "noninitial_scans": 696,
+      "progress_bins": [
+        {
+          "mean_new": 15.76173285198556,
+          "new_total": 4366,
+          "scans": 277,
+          "steps": "0-19"
+        },
+        {
+          "mean_new": 14.450592885375494,
+          "new_total": 3656,
+          "scans": 253,
+          "steps": "20-39"
+        },
+        {
+          "mean_new": 10.025862068965518,
+          "new_total": 1163,
+          "scans": 116,
+          "steps": "40-59"
+        },
+        {
+          "mean_new": 9.98,
+          "new_total": 499,
+          "scans": 50,
+          "steps": "60-79"
+        }
+      ],
+      "saved_raster_route_audit": null,
+      "scan_content_strata": [
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": true,
+          "next_step_blocked": 0,
+          "scans": 630,
+          "temporal_action_changes": 630
+        },
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": false,
+          "next_step_blocked": 0,
+          "scans": 66,
+          "temporal_action_changes": 63
+        }
+      ],
+      "scan_intervals": {
+        "max": 5.0,
+        "median": 5.0,
+        "min": 1.0,
+        "q25": 4.0,
+        "q75": 5.0
+      },
+      "unchanged_only": 62,
+      "with_changed_known": 30,
+      "with_new": 630
+    },
+    "caa_full": {
+      "changed_known_per_scan": {
+        "max": 3.0,
+        "median": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "q75": 0.0
+      },
+      "completion_strata": [
+        {
+          "episodes": 66,
+          "mean_blocked": 0.7424242424242424,
+          "mean_h80": 38.84848484848485,
+          "mean_new_per_scan": 16.707064882402626,
+          "success": true
+        },
+        {
+          "episodes": 6,
+          "mean_blocked": 2.3333333333333335,
+          "mean_h80": 80.0,
+          "mean_new_per_scan": 8.84795321637427,
+          "success": false
+        }
+      ],
+      "episodes": 72,
+      "initial_scans": 72,
+      "new_cells_per_scan": {
+        "max": 69.0,
+        "median": 11.0,
+        "min": 0.0,
+        "q25": 4.0,
+        "q75": 20.0
+      },
+      "new_cells_total": 9684,
+      "noninitial_scans": 696,
+      "progress_bins": [
+        {
+          "mean_new": 15.76173285198556,
+          "new_total": 4366,
+          "scans": 277,
+          "steps": "0-19"
+        },
+        {
+          "mean_new": 14.450592885375494,
+          "new_total": 3656,
+          "scans": 253,
+          "steps": "20-39"
+        },
+        {
+          "mean_new": 10.025862068965518,
+          "new_total": 1163,
+          "scans": 116,
+          "steps": "40-59"
+        },
+        {
+          "mean_new": 9.98,
+          "new_total": 499,
+          "scans": 50,
+          "steps": "60-79"
+        }
+      ],
+      "saved_raster_route_audit": null,
+      "scan_content_strata": [
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": true,
+          "next_step_blocked": 0,
+          "scans": 630,
+          "temporal_action_changes": 629
+        },
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": false,
+          "next_step_blocked": 0,
+          "scans": 66,
+          "temporal_action_changes": 64
+        }
+      ],
+      "scan_intervals": {
+        "max": 5.0,
+        "median": 5.0,
+        "min": 1.0,
+        "q25": 4.0,
+        "q75": 5.0
+      },
+      "unchanged_only": 62,
+      "with_changed_known": 30,
+      "with_new": 630
+    },
+    "caa_slow": {
+      "changed_known_per_scan": {
+        "max": 3.0,
+        "median": 0.0,
+        "min": 0.0,
+        "q25": 0.0,
+        "q75": 0.0
+      },
+      "completion_strata": [
+        {
+          "episodes": 66,
+          "mean_blocked": 0.7424242424242424,
+          "mean_h80": 38.84848484848485,
+          "mean_new_per_scan": 16.650246700584443,
+          "success": true
+        },
+        {
+          "episodes": 6,
+          "mean_blocked": 2.3333333333333335,
+          "mean_h80": 80.0,
+          "mean_new_per_scan": 8.84795321637427,
+          "success": false
+        }
+      ],
+      "episodes": 72,
+      "initial_scans": 72,
+      "new_cells_per_scan": {
+        "max": 69.0,
+        "median": 11.0,
+        "min": 0.0,
+        "q25": 4.0,
+        "q75": 20.0
+      },
+      "new_cells_total": 9672,
+      "noninitial_scans": 698,
+      "progress_bins": [
+        {
+          "mean_new": 15.76173285198556,
+          "new_total": 4366,
+          "scans": 277,
+          "steps": "0-19"
+        },
+        {
+          "mean_new": 14.3984375,
+          "new_total": 3686,
+          "scans": 256,
+          "steps": "20-39"
+        },
+        {
+          "mean_new": 9.747826086956522,
+          "new_total": 1121,
+          "scans": 115,
+          "steps": "40-59"
+        },
+        {
+          "mean_new": 9.98,
+          "new_total": 499,
+          "scans": 50,
+          "steps": "60-79"
+        }
+      ],
+      "saved_raster_route_audit": null,
+      "scan_content_strata": [
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": true,
+          "next_step_blocked": 0,
+          "scans": 630,
+          "temporal_action_changes": 629
+        },
+        {
+          "blocked_scan_step": 0,
+          "has_discovery": false,
+          "next_step_blocked": 0,
+          "scans": 68,
+          "temporal_action_changes": 66
+        }
+      ],
+      "scan_intervals": {
+        "max": 5.0,
+        "median": 5.0,
+        "min": 1.0,
+        "q25": 4.0,
+        "q75": 5.0
+      },
+      "unchanged_only": 64,
+      "with_changed_known": 30,
+      "with_new": 630
+    }
+  },
+  "caveats": [
+    "Discovery and changed-known categories overlap.",
+    "Pre-action pose/heading uses frame t-1, not post-action frame t.",
+    "CAA cell rasters/routes were not saved; spatial route analysis is missing, not inferred.",
+    "Offline point-grid nominal routes at identical pre-action pose are proxies, not the actual G1 action plan.",
+    "Unchanged-only readings verify knowledge; lack of immediate action change is not proof of uselessness.",
+    "Survival/exposure, policy-conditioned discovery and two correlated schedules preclude causal efficacy inference."
+  ],
+  "coverage": {
+    "noninitial_scans_without_saved_cell_rasters": 2090,
+    "rich_noninitial_scans": 1476
+  },
+  "episodes": 360,
+  "new_simulator_runs": 0
+}

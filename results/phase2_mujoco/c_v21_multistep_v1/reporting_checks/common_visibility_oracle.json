@@ -1,0 +1,43 @@
+{
+  "arms": {
+    "C-K": {
+      "false_negative": 36,
+      "false_positive": 0,
+      "scan": 8
+    },
+    "C-Topology3-d": {
+      "false_negative": 36,
+      "false_positive": 0,
+      "scan": 8
+    },
+    "C0": {
+      "false_negative": 36,
+      "false_positive": 0,
+      "scan": 8
+    },
+    "ms_k": {
+      "false_negative": 36,
+      "false_positive": 0,
+      "scan": 8
+    },
+    "ms_k_visibility": {
+      "false_negative": 0,
+      "false_positive": 0,
+      "scan": 44
+    },
+    "ms_topology": {
+      "false_negative": 36,
+      "false_positive": 0,
+      "scan": 8
+    },
+    "ms_topology_visibility": {
+      "false_negative": 0,
+      "false_positive": 0,
+      "scan": 44
+    }
+  },
+  "future_visibility_reference": true,
+  "same_reference_assumption_for_all_arms": true,
+  "scan_price": "Each arm actual declared price",
+  "scope": "Post-run descriptive common-reference comparison; not a revised formal gate"
+}

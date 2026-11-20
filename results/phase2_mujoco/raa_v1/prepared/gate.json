@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_route_adaptive_age_v1.py",
+    "tests/test_history_gated_deadline_v1.py",
+    "tests/test_omission_public_features_v1.py",
+    "tests/test_route_age.py",
+    "tests/test_view_age.py",
+    "tests/test_cadence_age.py",
+    "tests/test_caa_integration.py",
+    "tests/test_change_aware_age.py",
+    "tests/test_phase2_mujoco.py",
+    "tests/test_phase2_emergency_safety.py",
+    "--junitxml=/Users/masahir0/Desktop/humanoid-spatial-memory/results/phase2_mujoco/raa_v1/prepared/tests.xml"
+  ],
+  "returncode": 0
+}

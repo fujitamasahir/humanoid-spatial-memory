@@ -1,0 +1,10 @@
+{
+  "command": [
+    "scripts/run_caa_fit72.py",
+    "full"
+  ],
+  "elapsed_seconds": 88.80055395900854,
+  "peak_process_rss_bytes": 856555520,
+  "rss_unit": "bytes on macOS",
+  "status": "COMPLETED"
+}

@@ -1,0 +1,43 @@
+{
+  "CAA_Full": "57 goals,760 paid;3-scan saving over Age5 only in2 failed episodes",
+  "RAA_Defer": "57 goals,763 paid; all72 observable traces identical to Age5; no saving",
+  "additional_algorithm_development": false,
+  "analysis_sources": {
+    "scripts/finalize_h2_report.py": "22686764674ea2a2d3b50a545bf6d54984d925cc634444e29a2b77ce5683155c",
+    "scripts/interpret_h2_final.py": "75a695d4685b08e8af99f6f2906085360d4f8aebfff4a59b8b9b33dc25caf6c6",
+    "scripts/report_h2_final.py": "d737730a02b0a8feb0a4f3071771eeb17155b475a4211ead19ed35229e9ffe60",
+    "scripts/verify_h2_final.py": "0018076d64a356f8795d047e781144be0300fe7a27cc4472cb3e1ea4f25142a4"
+  },
+  "canonical_report_sha256": "3b516e87bc38439f88a153ff167c2fdf6e09a167037dcc09d300d9cc02ababb8",
+  "correlated_cases_per_model": 72,
+  "earlier_DAO_production_population_generated": false,
+  "evidence_complete_at_UTC": "2026-11-15T01:04:27.406535+00:00",
+  "execution_deadline_UTC": "2026-11-15T02:30:00Z",
+  "families": {
+    "BP": 12,
+    "M": 12,
+    "R": 12
+  },
+  "final_report": "final_report/research_report.md",
+  "freeze_commit": "4bb5486a267bd5d89401b5c5ff7385dff0245c54",
+  "maps": 36,
+  "models": 12,
+  "original_report": "analysis/research_report.md",
+  "portfolio_changed": false,
+  "pre_draw_backend_recovery_commit": "f60de27d6def6111481852e14261be0ad5428fe8",
+  "primary_unwanted_contacts_all_models": 0,
+  "prior_archival_issue_entries_unchanged": 20,
+  "published_policy_runs": {
+    "fit_reproduction": 864,
+    "primary": 864,
+    "smoke": 48,
+    "timing_repeat": 864
+  },
+  "remote_publication_verified_separately_after_result_commit": true,
+  "reported_practical_leader": "Periodic-5:60 goals,661 paid; no universal superiority claim",
+  "reserved_or_sealed_evaluation_used": false,
+  "status": "H2_CLOSED_COMPLETE",
+  "tests_passed": 163,
+  "timing_repeats_are_not_independent_samples": true,
+  "warmup_public_fit_runs": 48
+}

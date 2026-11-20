@@ -1,0 +1,82 @@
+[
+  {
+    "bytes": 4074,
+    "path": "low_discovery_dao_combined.json.gz",
+    "sha256": "0e9cba8b3f7f206166fe1db8490471af3c7301430c47ac8bc71936705c86cfd3"
+  },
+  {
+    "bytes": 3980,
+    "path": "low_discovery_dao_route.json.gz",
+    "sha256": "a2f5d8f49c4a06962d10ef2035beb60d19b3ea082c4a7b0094e10afa3edc59ff"
+  },
+  {
+    "bytes": 4081,
+    "path": "low_discovery_dao_trigger.json.gz",
+    "sha256": "f3f5c3a46c122873fba053953cdd2bbdb83758a33e30532be10042f3e248113e"
+  },
+  {
+    "bytes": 3966,
+    "path": "low_discovery_dao_veto.json.gz",
+    "sha256": "d816ec9a5ea721880a710d08ad0961207663e39266e99a5ae57b7fc285386ed5"
+  },
+  {
+    "bytes": 100085,
+    "path": "low_discovery_fixture.json",
+    "sha256": "ef18e31669a0d60aad97c0e4e1d4fa9fa81b87c41740391a3d5446be199f0667"
+  },
+  {
+    "bytes": 2784,
+    "path": "off_route_dao_combined.json.gz",
+    "sha256": "e4a2e52a67b31c6ef81ab9b006f2e8c8a587c0d046d1e31dd5c4bf278a65126a"
+  },
+  {
+    "bytes": 3135,
+    "path": "off_route_dao_route.json.gz",
+    "sha256": "07ca184e61d5d04c1f40bc306203aca09303272dfdd3799b056dc499f37843cf"
+  },
+  {
+    "bytes": 3125,
+    "path": "off_route_dao_trigger.json.gz",
+    "sha256": "f4b52835732c9c7cbb21a2b634ce974dad7c1a26a377ddd9d27c0e77180a82d4"
+  },
+  {
+    "bytes": 2787,
+    "path": "off_route_dao_veto.json.gz",
+    "sha256": "bb5bf809b287c5276a26ea232b21beac3c50e4251e1b4e5e844fe21b6995b5d3"
+  },
+  {
+    "bytes": 176733,
+    "path": "off_route_fixture.json",
+    "sha256": "2da6d0199d58e9e207c9587ed716191ac6543aa902705703195fd3a22e035e1d"
+  },
+  {
+    "bytes": 6060,
+    "path": "pedestrian_dao_combined.json.gz",
+    "sha256": "026b66bcc4599ef5bcb4897fbb827ec2df270f16ce9d9566423961812ea6c351"
+  },
+  {
+    "bytes": 4159,
+    "path": "pedestrian_dao_route.json.gz",
+    "sha256": "d2d21d19169236364e0a8a0eb7940c897f78f288c41a72adf15a8cfcf5a424a2"
+  },
+  {
+    "bytes": 6067,
+    "path": "pedestrian_dao_trigger.json.gz",
+    "sha256": "f36b335fd4a1f470d16debae09297491c1dc0b69475aea5f52b1af55c14430d5"
+  },
+  {
+    "bytes": 4813,
+    "path": "pedestrian_dao_veto.json.gz",
+    "sha256": "b895d86a5ed60b140d2567ab5b1ba7b14104849cf1043dff051fce4f0dc90219"
+  },
+  {
+    "bytes": 172769,
+    "path": "pedestrian_fixture.json",
+    "sha256": "535a0de92a53edcd34a138184796b64916501c3703db9f1e644abc239728f685"
+  },
+  {
+    "bytes": 6315,
+    "path": "summary.json",
+    "sha256": "88b5520cbab69ab2f1364b1ddb5be3aa82cd04388da44af625aa6d3780619006"
+  }
+]

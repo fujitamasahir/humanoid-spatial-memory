@@ -1,0 +1,927 @@
+{
+  "cases_per_model": 1,
+  "expected_b_age_mismatch": true,
+  "models": 54,
+  "results": [
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "periodic4",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 77,
+      "expected_historical_nonparity": false,
+      "model_id": "periodic5",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age4",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age5",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 75,
+      "expected_historical_nonparity": false,
+      "model_id": "age6",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_route_rescue",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_route_clock",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v2",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v21",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "caa_fast",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "caa_full",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "raa_defer",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "uncertainty",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "static",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_gap4",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 77,
+      "expected_historical_nonparity": false,
+      "model_id": "age_motion",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_view_veto",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_view_clock",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "periodic_event",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "age_event",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v1",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v1_footprint",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v1_gate_first",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v1_gate_every",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "rdao_v22",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": true,
+      "model_id": "b_age",
+      "semantic_match": false,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "c_ternary",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "bc",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "c0_audit",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "c_k",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "c_topology3d",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "ms_k",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "ms_k_visibility",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "ms_topology",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "ms_topology_visibility",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "h1_k",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "h3_k",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "h1_topology",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "h3_topology",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "caa_slow",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_trigger",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_route",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_combined",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_q50",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_q80",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_optimistic",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 80,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_route_gate",
+      "semantic_match": true,
+      "success": false,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_deadline",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "dao_veto_joint",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "deadline_stable",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 73,
+      "expected_historical_nonparity": false,
+      "model_id": "deadline_stable_quiet",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 79,
+      "expected_historical_nonparity": false,
+      "model_id": "raa_advance",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    },
+    {
+      "elapsed_steps": 79,
+      "expected_historical_nonparity": false,
+      "model_id": "raa_joint",
+      "semantic_match": true,
+      "success": true,
+      "timing_keys": [
+        "decision",
+        "emergency_sensor",
+        "initialization",
+        "memory_sensor",
+        "navigation_planning",
+        "point_planning",
+        "safety_decision",
+        "update"
+      ]
+    }
+  ],
+  "status": "PASS",
+  "unexpected_mismatches": 0
+}

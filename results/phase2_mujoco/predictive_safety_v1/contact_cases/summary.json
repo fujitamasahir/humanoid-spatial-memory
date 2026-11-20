@@ -1,0 +1,9 @@
+{
+  "all_onsets_have_stage_evidence_and_figure": true,
+  "contacted_matrix_runs": 57,
+  "distinct_actual_contact_episodes": 165,
+  "onset_mechanisms": {
+    "environment_motion_at_sensor_synchronization": 165
+  },
+  "proven_first_transition_unavoidable": 16
+}

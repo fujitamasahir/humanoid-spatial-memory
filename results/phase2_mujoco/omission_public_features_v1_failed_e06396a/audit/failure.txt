@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/run_omission_public_features_v1.py", line 78, in audit
+    write(t/'public_features.json',rows);csv_write(t/'public_features.csv',rows)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/scripts/c_v21_common.py", line 13, in write
+    with path.open('x') as f:f.write(json.dumps(value,indent=2,sort_keys=True,allow_nan=False)+'\n')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Users/masahir0/Desktop/humanoid-spatial-memory/.python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

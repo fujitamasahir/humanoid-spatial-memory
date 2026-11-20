@@ -1,0 +1,55 @@
+{
+  "conflicting_signatures": [
+    {
+      "rows": [
+        {
+          "harm_goal_or_contact": false,
+          "safety": "original",
+          "saving_no_worse": true,
+          "scene": "crossing",
+          "step": 5
+        },
+        {
+          "harm_goal_or_contact": false,
+          "safety": "original",
+          "saving_no_worse": true,
+          "scene": "head_on",
+          "step": 5
+        },
+        {
+          "harm_goal_or_contact": true,
+          "safety": "original",
+          "saving_no_worse": false,
+          "scene": "sudden_stop",
+          "step": 5
+        },
+        {
+          "harm_goal_or_contact": false,
+          "safety": "original",
+          "saving_no_worse": true,
+          "scene": "no_pedestrian",
+          "step": 5
+        }
+      ],
+      "signature": [
+        "original",
+        1,
+        5,
+        13,
+        36,
+        0,
+        1,
+        4,
+        0,
+        0
+      ]
+    }
+  ],
+  "goal_contact_harms": 6,
+  "navigation_runs": 0,
+  "new_sensor_calls": 0,
+  "no_worse_savings": 49,
+  "rows": 149,
+  "rules": 11,
+  "selection_authorized": false
+}

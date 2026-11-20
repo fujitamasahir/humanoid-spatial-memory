@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 33629,
+    "path": "episodes.csv",
+    "sha256": "5fde4e73610b0a2357d646ee415d84082fe1bf5298ecd709a771b9c0e30fec07"
+  },
+  {
+    "bytes": 9112,
+    "path": "journal.jsonl",
+    "sha256": "f4584cb000e553db7b48ef41c315a23a2770d1841abb75a2a6c4d7a82bfbdfa8"
+  },
+  {
+    "bytes": 494,
+    "path": "summary.json",
+    "sha256": "1bb40b200dc31903075de799c06cf9704eb705263995b7f49b9648cb7248626e"
+  }
+]

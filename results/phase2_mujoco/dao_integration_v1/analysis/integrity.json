@@ -1,0 +1,22 @@
+{
+  "actual_failed_formal_attempts": 1,
+  "both_source_bindings_unchanged": true,
+  "caa_artifacts_unchanged": 928,
+  "caa_source_binding_unchanged": 25,
+  "checkpoint_receipt_pairs": 2907,
+  "engineering_only_not_cohort": true,
+  "g1_assets_unchanged": 58,
+  "independently_reconstructed_scans": 287,
+  "missing_inputs": [],
+  "new_navigation_runs": 48,
+  "physical_safety_acceptance": false,
+  "previous_DAO_artifacts_unchanged": 37,
+  "protected": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "protected_or_production_cohort_access": false,
+  "reserved_or_new_navigation_populations_accessed": false,
+  "scene_definitions_unchanged": true,
+  "status": "PASS"
+}

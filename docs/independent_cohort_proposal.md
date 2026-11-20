@@ -129,3 +129,128 @@ and duplicate-admission rules; (5) the primary benefit, safety/non-inferiority
 margins, and multiplicity plan; (6) the independent custodian/access mechanism;
 and (7) the frozen policy/source commit and exact evaluation matrix. This
 proposal itself performs none of these actions.
+
+## Multi-step sensing extension (C v2.1; proposal only)
+
+The same unapproved 24-lineage pilot and 80/200-lineage partitions could also
+measure whether a sensing opportunity disappears before a later navigation
+choice. This addition grants no generation, admission or access permission.
+Predeclare coverage of shared route prefixes, delayed branch decisions,
+revisitable versus one-time viewpoints, turns/FOV loss, long/short sight lines,
+persistent occluders and pedestrian-induced temporary occlusion. Cross these
+mechanisms with unchanged controls and persistent additions/removals/relocations;
+keep layout, persistent-change and pedestrian RNG streams lineage-separated.
+A future generator must sample these conditions independently of FIT examples,
+not copy the hand-built C v2.1 public-memory fixtures.
+
+The candidate matrix should freeze selector (C-K versus Topology3-d), one-step
+versus bounded multi-step value and explicit future visibility separately.
+Track predicted and realized later observability only from authorized actual
+scans, along with missed opportunities, computation, total ray workload and
+common-success navigation cost. Missing subsequent observations are missing
+evidence, not confirmed visibility predictions. A custodian may retain hidden
+labels for retrospective evaluation, never online inputs. Update pilot sample
+allocation and runtime budget before approval to account for the additional
+arms and future-footprint computation; historical Mac timings must not be used
+as same-machine benchmarks. All existing lineage, sealing, duplicate and
+owner-approval requirements above remain in effect.
+
+## Fixed-age and CAA scheduling extension (proposal only)
+
+Age-5 is an additional mandatory frozen strong baseline, alongside unchanged
+Periodic and Age-4. Include fixed Age-6 and CAA-Fast/Slow/Full to distinguish
+history-dependent acceleration, stable-region delay, their combination and a
+uniformly longer deadline. The CAA hypothesis concerns scheduling only; keep
+ternary last-write memory and the original G1/sensing/safety pipeline fixed.
+No EVI/topology/visibility or persistence inference is required for this test.
+
+Before any new cohort generation, predeclare distributions with independently
+varying stable/dynamic region exposure, authorized revisit frequency, long
+unobserved gaps, transient occlusion and persistent additions/removals. Changes
+must be exogenous to policy decisions. Include no-change and sparse-revisit
+controls: a method cannot infer stability merely because a cell was not seen.
+Sample new lineages rather than copying FIT examples or the six retrospective
+Age/Age-5 flips. Keep both schedules paired and analyze by maze cluster.
+
+Choose primary independent criteria and the comparison with Age-5 before
+opening outcomes; do not transfer an absolute66/72 FIT goal threshold to a
+differently sized cohort. A gain over Age-4 alone is insufficient if it does
+not improve on Age-5. Report paired safety/completion, paid and total sensing,
+common-success navigation cost and computation together. Freeze exact CAA
+source/history semantics before sealed evaluation; no FIT-derived tuning.
+The24-lineage pilot and80/200-lineage cohorts remain unapproved, ungenerated
+and unopened; all owner/custodian/admission requirements above remain.
+
+## Concrete DAO prospective design (proposal only)
+
+The detailed [DAO navigation protocol](dao_independent_navigation_protocol.md)
+now specifies layout/event distributions, partitioned streams, exact/near-
+duplicate admission, custodian access, candidate selection/confirmation,
+strong Periodic/Age/CAA controls and proposed joint endpoints. For DAO it
+supersedes the older four-arm pilot suggestion and informal200-lineage power
+rationale above.200 independent lineages do NOT automatically justify a
+3-percentage-point completion noninferiority margin: with paired-lineage
+SD0.50 the stated approximation needs2181, not200. Size, margins and analysis
+validation require explicit prospective approval. The24 pilot and80 development
+lineages and provisional200 sealed lineages are all ungenerated, unadmitted
+and unopened. No reserve access is authorized by this update.
+
+## DAO integration follow-up and exact pilot proposal (still NOT approved)
+
+The [exact pilot plan](dao_pilot_v1_protocol.md) specifies24 lineages (six/family),
+two schedules and12 Periodic/fixed-age/CAA/DAO controls:576 proposed episodes.
+The [integration report](dao_integration_research_report.md) records actual
+pedestrian contacts, generator connectivity correction and approximate-CI
+undercoverage. These are production-readiness blockers, not independent
+validation. New generator/admission/statistical infrastructure is TEST/SYNTHETIC
+only; no independent custody or complete prior-signature admission exists.
+The80 development and sealed evaluation populations remain ungenerated;
+sealed n is undecided. Approve distributions, safety engineering, admission/
+custody, analysis coverage/margins and scope before ANY production payload.
+
+## Safety readiness update after prospective common-safety benchmark
+
+The common predictive safety v1 candidate is rejected after416 hand-defined
+engineering episodes: it removes archived regression contacts but loses goals
+and introduces new contacts elsewhere. See
+[`predictive_safety_pilot_readiness.md`](predictive_safety_pilot_readiness.md).
+This does not approve the24-lineage pilot or any production generation. All
+previous distribution/admission/opaque-signature/custodian/statistical/margin/
+sample-size approvals remain pending. No DAO winner or new population was created.
+
+
+## Route-Adaptive Age v1 — completed on reused FIT72
+
+The separately frozen Age5-parent Advance/Defer/Joint family was implemented
+and evaluated locally:137 passing tests,12 smoke and432 full episodes. Defer
+meets the immediate target with66 goals,768 paid scans and0 contacts, compared
+with Age5's66/770. Its two savings are terminal scans from one maze lineage;
+all72 navigation traces match Age5. Advance and Joint fall to59 goals and are
+rejected. Joint sensing/movement improvement and independent generalization
+are not established. The first family meets the immediate target, so no
+failure-only second revision was run. See [executed report](raa_research_report.md).
+No reserved/sealed access, production generation or safety change occurred.
+Existing independent admission/custody/statistical and safety blockers persist.
+
+
+## H2 final36-map evaluation — completed and closed
+
+Owner approval authorized this named final comparison on36 new R/BP/M maps,
+two schedules and12 frozen models. It supersedes proposal-only restrictions
+solely for this evaluation; the earlier DAO pilot/80/200-lineage populations,
+reserved access and safety revisions remain unapproved and unexecuted.
+
+All864 primary episodes completed with0 unwanted contacts. All864 original
+FIT replays and864 timing repeats match saved/primary semantics;163 tests pass.
+Periodic5 leads observed completion at60/72 with661 paid readings. RDAO v2
+reaches59 with628 but adds substantial compute. CAA-Full reaches57/760 versus
+Age5's57/763; all three savings occur in two failed episodes. RAA-Defer exactly
+matches Age5's72 observable step traces and57/763 total. No robust practical
+adaptive superiority or statistical equivalence is established.
+
+H2 observation-scheduling development ends without new models or tuning.
+See [final H2 research report](h2_final_research_report.md),
+[frozen protocol](h2_final_evaluation_protocol_v1.md) and
+[pre-draw backend restoration](h2_backend_recovery_v1_1.md).
+The36-map conditional-admission/same-investigator study does not resolve the
+earlier independent custody/distribution/safety/statistical readiness blockers.

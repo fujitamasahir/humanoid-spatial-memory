@@ -1,0 +1,39 @@
+{
+  "anchors": [
+    "periodic4",
+    "age4"
+  ],
+  "baseline_cadence_source_sha256": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+  "baseline_commit": "840b0e2dbc7a8c302edcaef0e226ab88abcf6549",
+  "bound_at_utc": "2026-11-16T02:36:59Z",
+  "case_count_per_model_repetition": 72,
+  "excluded": [
+    "sensor acquisition",
+    "emergency sensing",
+    "navigation planning",
+    "collision shield",
+    "environment update",
+    "replay logging",
+    "I/O"
+  ],
+  "machine": "arm64",
+  "map_source": "saved H2 high-frequency maps",
+  "optimized_cadence_source_sha256": "541372919de6140eae494f875094a441bf8fde36c1c813e07cd53d286194c3e5",
+  "optimized_models": [
+    "periodic5",
+    "age5"
+  ],
+  "packages": {
+    "mujoco": "3.17.0",
+    "numpy": "2.2.6",
+    "pynauty": "2.8.8.1",
+    "pytest": "8.3.5"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "protocol": "h2-final-reconciliation-controlled-cost-v1",
+  "python": "3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "/Users/masahiro/Desktop/^/31_humanoid/humanoid-spatial-memory/.venv/bin/python",
+  "randomized_order_seed": 2026111501,
+  "repetitions": 5,
+  "timing_scope": "initialization + observation decision + spatial memory update; using the existing H2 perf_counter_ns wrappers"
+}

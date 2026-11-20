@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_c_v21_multistep.py",
+    "tests/test_c_v21_review.py",
+    "tests/test_c_v21_navigation.py",
+    "tests/test_persistence_evi.py",
+    "tests/test_candidate_coverage.py",
+    "tests/test_persistence_evi_evaluation.py",
+    "tests/test_phase2_mujoco.py",
+    "tests/test_phase2_emergency_safety.py",
+    "tests/test_c_v2d_fit72_trace_keying.py",
+    "tests/test_topology_evi_d_equivalence.py",
+    "tests/test_topology_evi_d_v2c_regression.py",
+    "tests/test_topology_review_d.py",
+    "-q",
+    "--junitxml=/Users/masahir0/Desktop/humanoid-spatial-memory/results/phase2_mujoco/c_v21_multistep_v1/correctness/tests.xml"
+  ],
+  "base_commit_before_freeze": "b6cb1fa233fbcd30b7ea26e88b865a69db96b91e",
+  "formal_fixture_generator_used": false,
+  "returncode": 0
+}

@@ -1,0 +1,52 @@
+{
+  "FIT_is_descriptive_not_independent": true,
+  "base": "63e2debae7376b88ef0d391a0ab3bf93438aec16",
+  "commit": "20f6e9ed9b980ff0979ca8f3a40eb21231c0e424",
+  "config": {
+    "common_horizon_metrics": true,
+    "g1_navigation": {
+      "footprint_source": "pinned G1 collision geometry",
+      "forward_translation_default": true,
+      "local_half_extents_m": [
+        0.218954831277208,
+        0.3279970912029507
+      ],
+      "motion": "cardinal kinematic translation with separate in-place turns",
+      "observed_occupancy_only": true,
+      "pedestrian_prediction": "motion inferred only from observed first-hit cells; no simulator schedule or future positions",
+      "rejected_action_history": true,
+      "retreat_eligibility": "recent single-cluster pedestrian detections in two observations indicate imminent approach; entire backward sweep observed free, otherwise wait",
+      "sidestep_eligibility": "around a measured persistent obstacle, or one lateral escape from a close observed pedestrian threat; complete swept clearance observed free and only the selected action is shield-checked",
+      "turn_clearance": "deferred_to_selected_action_mujoco_shield; no AABB prefilter; one selected turn checked, rejection returned as planner feedback"
+    },
+    "max_observations": 20,
+    "max_steps": 80,
+    "mujoco_cell_size_m": 0.75,
+    "mujoco_ray_sensor": {
+      "horizontal_fov_deg": 120.0,
+      "range_m": 6.0,
+      "ray_count": 61,
+      "sample_spacing_m": 0.075
+    },
+    "mujoco_timestep_seconds": 0.02,
+    "observation_cost": 1,
+    "sensor": {
+      "noise": 0.0,
+      "occlusion": true,
+      "radius": 3
+    },
+    "sensor_backend": "mujoco3d",
+    "unknown": "optimistic",
+    "update_interval": 4
+  },
+  "h3_manifest_sha256": "a75e871c2728c11d2c0c2a9c40f87c615c808e2df9dc78ce8075067f661a33b2",
+  "reference_manifest_sha256": "8f2e8cd2113c68131ba6b8e572d6f3950fdc8427c7da5eebaddbd68b152882ca",
+  "source_sha256": {
+    "docs/c_v21a_depth_control_protocol.md": "c8926dcda6818e5d044dfa6d8979015dcfd1e595ec2aca779a3199c19c6b039e",
+    "scripts/run_c_v21a_depth_ablation.py": "fcccd64bb26b37f54c3ffe6c9407db95a787d868a77f95f0ff7c56a13cfa97d8",
+    "src/spatial_memory/multistep_depth_ablation.py": "2c493e99483c5aa66f91e4ae98651ead468227bc14bda2a9500b2db58d269675",
+    "src/spatial_memory/multistep_evi.py": "77b666ab80174b9eafbd21432b785f44146f6faf3bb3a2dd43adcfef76d6a69c",
+    "src/spatial_memory/multistep_reference.py": "f7d0549d4a99d60bea54ed92478dae0aacd5943dc8eb9f8e4de86b645f1c49a7",
+    "tests/test_multistep_depth_ablation.py": "2297708eacd3f30f20e91237a6c15b1d4642b359c18a3f4460e1592887ec91ee"
+  }
+}

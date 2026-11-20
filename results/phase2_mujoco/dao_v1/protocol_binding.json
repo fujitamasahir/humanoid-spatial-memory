@@ -1,0 +1,34 @@
+{
+  "fixtures_sha256": "8ae54dee1e4d3a1f65bb08e06f031fbce6640cc351890f850b7256f805ee4e2f",
+  "formal_public_states": 48,
+  "formal_same_state_decisions": 432,
+  "matrix": [
+    "dao_veto",
+    "dao_trigger",
+    "dao_route",
+    "dao_combined",
+    "periodic4",
+    "periodic5",
+    "age4",
+    "age5",
+    "age6"
+  ],
+  "navigation_runs_authorized": false,
+  "prepared_manifest_sha256": "82e2ca4ab59e79a3c58712d712f07a99a223c97d29b85e366b4c25503a099104",
+  "source_sha256": {
+    "docs/dao_independent_navigation_protocol.md": "1fd0be2a1534091785a70db33fde381a43c6c00a114bce4a685608c77096d1b0",
+    "docs/dao_protocol.md": "9445731f13f6f1104fd3108753b1d5277c4637196fe5c1a4a8c7bb6718dc4019",
+    "scripts/dao_fixtures.py": "921a65b794834cc2d81f26e033b1a7d7c05c90383a7bcfcbafb7c2a82ab97a56",
+    "scripts/run_dao_synthetic.py": "b5a29f70c775108b78cf715f356da8e8eaf5b39c61ec15ba92af155a6757d70e",
+    "src/spatial_memory/cadence_age.py": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+    "src/spatial_memory/change_aware_age.py": "33be6b42aa5b63a3bb974afa7ab241fbcdc91ab75d02af23e8ad8843ddd43666",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/discovery_reference.py": "6eb91b892089c1a8c40862c36aeba7e34a1202bfa00588ced6f17189f245ca60",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/memory.py": "2976b6c1db5b90798a361cff6993e5d3852254fbf2266d612b7876e1280407c9",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "tests/test_dao_artifacts.py": "54cc9a18087c021c50da8d6ba032d5737fac02bfd13c82ca0c871ebc56788dc8",
+    "tests/test_discovery_observation.py": "fc5439dd9182f04838a824c33c1d98e52c520a5a3c2d06a8c8f1de738c312d60"
+  },
+  "starting_commit": "5cb40fce42e8791b1406245684be5d0df0964b93"
+}

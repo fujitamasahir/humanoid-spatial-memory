@@ -1,0 +1,12 @@
+[
+  {
+    "bytes": 112117,
+    "path": "harm_divergences.json",
+    "sha256": "16340613d95c6294b0e3e2df770eb34856595c7a212773f80009b73eb8b5d05c"
+  },
+  {
+    "bytes": 723,
+    "path": "summary.json",
+    "sha256": "4b44eec0d961bcf11e60726e855c555f8f830451e6ea725d5aacd78cef61ab05"
+  }
+]

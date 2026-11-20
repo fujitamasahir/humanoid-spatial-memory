@@ -1,0 +1,206 @@
+{
+  "all36_draws_reconstructed": true,
+  "backend_recovery_commit": "f60de27",
+  "episode_counts": {
+    "fit_replay": {
+      "age4": 72,
+      "age5": 72,
+      "age6": 72,
+      "age_route_clock": 72,
+      "age_route_rescue": 72,
+      "caa_fast": 72,
+      "caa_full": 72,
+      "periodic4": 72,
+      "periodic5": 72,
+      "raa_defer": 72,
+      "rdao_v2": 72,
+      "rdao_v21": 72
+    },
+    "primary": {
+      "age4": 72,
+      "age5": 72,
+      "age6": 72,
+      "age_route_clock": 72,
+      "age_route_rescue": 72,
+      "caa_fast": 72,
+      "caa_full": 72,
+      "periodic4": 72,
+      "periodic5": 72,
+      "raa_defer": 72,
+      "rdao_v2": 72,
+      "rdao_v21": 72
+    },
+    "smoke": {
+      "age4": 4,
+      "age5": 4,
+      "age6": 4,
+      "age_route_clock": 4,
+      "age_route_rescue": 4,
+      "caa_fast": 4,
+      "caa_full": 4,
+      "periodic4": 4,
+      "periodic5": 4,
+      "raa_defer": 4,
+      "rdao_v2": 4,
+      "rdao_v21": 4
+    },
+    "timing_repeat": {
+      "age4": 72,
+      "age5": 72,
+      "age6": 72,
+      "age_route_clock": 72,
+      "age_route_rescue": 72,
+      "caa_fast": 72,
+      "caa_full": 72,
+      "periodic4": 72,
+      "periodic5": 72,
+      "raa_defer": 72,
+      "rdao_v2": 72,
+      "rdao_v21": 72
+    }
+  },
+  "exact_FIT_reproductions": 864,
+  "journal_entries": {
+    "fit_replay": 864,
+    "primary": 864,
+    "smoke": 48,
+    "timing_repeat": 864
+  },
+  "old_archival_issues_unchanged": [
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/artifact_manifest.json",
+      "path": "case_A/portfolio_export/portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/artifact_manifest.json",
+      "path": "case_B/portfolio_export/portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/artifact_manifest.json",
+      "path": "case_C/portfolio_export/portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_A/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_A/split_screen_export/artifact_manifest.json",
+      "path": "g1_split_screen.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_B/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_B/split_screen_export/artifact_manifest.json",
+      "path": "g1_split_screen.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_C/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_horizon800_residual_replays_v1/case_C/split_screen_export/artifact_manifest.json",
+      "path": "g1_split_screen.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_M80030007_periodic_s1_v6/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_M80030007_periodic_s1_v7/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v6/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v7/portfolio_export/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v8/artifact_manifest.json",
+      "path": "portfolio_export/portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v8/portfolio_export/artifact_manifest.json",
+      "path": "metadata.json"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/g1_pedestrian_capsule_replay_R80000001_static_s1_v8/portfolio_export/artifact_manifest.json",
+      "path": "presentation_note.md"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/artifact_manifest.json",
+      "path": "paired_cluster_comparisons.csv"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/persistence_evi_fit72_analysis_restored_local_v2/artifact_manifest.json",
+      "path": "policy_summary.csv"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/portfolio_export_g1_bright_thumbnail_v1/artifact_manifest.json",
+      "path": "portfolio_demo.mp4"
+    },
+    {
+      "error": "preexisting_manifest_mismatch_or_missing",
+      "manifest": "results/phase2_mujoco/portfolio_split_screen_v1/artifact_manifest.json",
+      "path": "g1_split_screen.mp4"
+    }
+  ],
+  "old_manifest_entries_unchanged": 9833,
+  "original_freeze_commit": "4bb5486",
+  "original_integrity": {
+    "caa_artifacts_unchanged": 928,
+    "caa_source_binding_unchanged": 25,
+    "checkpoint_receipt_pairs": 2907,
+    "g1_assets_unchanged": 58,
+    "missing_inputs": [],
+    "new_navigation_runs": 0,
+    "protected": {
+      "files_checked": 836,
+      "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+    },
+    "reserved_or_new_navigation_populations_accessed": false,
+    "status": "PASS"
+  },
+  "original_integrity_scope": "Read-only historical helper; new_navigation_runs=0 inside that helper describes verifier activity only, not the H2 execution.",
+  "portfolio_unchanged": true,
+  "primary_correlated_cases": 72,
+  "primary_independent_map_lineages": 36,
+  "primary_policy_episodes": 864,
+  "prior_RAA_recursive_entries_unchanged": 473,
+  "report_sha256": "3b516e87bc38439f88a153ff167c2fdf6e09a167037dcc09d300d9cc02ababb8",
+  "reserved_or_sealed_data_used": false,
+  "smoke_primary_parities": 48,
+  "stages": {
+    "fit_replay": 866,
+    "primary": 866,
+    "smoke": 50,
+    "timing_repeat": 866
+  },
+  "status": "PASS_WITH_UNCHANGED_20_PREEXISTING_ARCHIVAL_ISSUE_ENTRIES",
+  "tests_passed": 163,
+  "timing_repeat_parities": 864,
+  "timing_repeats_not_independent": 864
+}

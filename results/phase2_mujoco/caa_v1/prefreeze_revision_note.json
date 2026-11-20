@@ -1,0 +1,8 @@
+{
+  "status": "SUPERSEDED_BEFORE_SOURCE_FREEZE",
+  "reason": "Code review found a constructor-local radius referenced from the diagnostic adapter decide method; stored radius on the wrapper and added executed-wrapper regression coverage. Core CAA equations/parameters unchanged.",
+  "previous_tests_passed": 103,
+  "new_wrapper_regression_tests": 3,
+  "CAA_navigation_outcomes_before_fix": 0,
+  "old_artifacts_retained": true
+}

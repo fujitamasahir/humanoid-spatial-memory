@@ -1,0 +1,41 @@
+{
+  "arms": [
+    "periodic4",
+    "age4",
+    "age5",
+    "caa_full",
+    "dao_veto",
+    "dao_trigger",
+    "dao_route",
+    "dao_combined"
+  ],
+  "formal_episodes": 416,
+  "prepared_manifest_sha256": "c20f41f7222030ba49cb35427bf0f9a5092ee02eb46ab2902a95b20babeb4a90",
+  "safety_versions": [
+    "original",
+    "predictive_v1"
+  ],
+  "scenes_sha256": "9167463b10e2b71b6e779e88e8cecfe3157e8b1847beb43dcde92103f1a2e49c",
+  "sources": {
+    "docs/predictive_safety_contact_audit.md": "3a1a429d7de18907076b0d337c40c40a61c899e0aa801feceff4904e8e23abd0",
+    "docs/predictive_safety_v1_protocol.md": "da0ae1ce6fda7a9fcb6c3bda899ac41cf00536b61615a78983193b8800073a4e",
+    "scripts/dao_engineering_scenes_v1.py": "554bc4558a07d7d73a9d011d3115ce36c0877658f9b3a7a442cba29cbcae8192",
+    "scripts/evaluate_phase2_61ray_emergency_safety_full_288.py": "bf5a9f765460dd00eb00dd376188c2669d4e7353b68c25cd3a44cb6c7d76aec1",
+    "scripts/predictive_safety_benchmark_v1.py": "2ad295d270da135fa17d8354798aeb0ceab2d5a19d4d76cf20f764907f1f54d9",
+    "scripts/run_predictive_safety_v1.py": "8e004558df70d7a37e13007a067c564cc889b78b3a2fd95dcc08da599591a3ca",
+    "scripts/safety_forensics_v1.py": "e2dcca0120a613881090b6f724dbedda843410a311a3bb38f096c51b09de0c82",
+    "src/spatial_memory/cadence_age.py": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+    "src/spatial_memory/change_aware_age.py": "33be6b42aa5b63a3bb974afa7ab241fbcdc91ab75d02af23e8ad8843ddd43666",
+    "src/spatial_memory/dao_navigation_compat_v1_1.py": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/emergency_safety.py": "d0166b8766efba1b8fa7bd234244808e96884f749b8b4d757ec176bf8432133f",
+    "src/spatial_memory/evaluation.py": "3e1b00a5b6d4bd79fba5f31f8e2adf0e5a56c2bd6a987d5251b06226a2fcd84e",
+    "src/spatial_memory/mujoco_navigation.py": "d21ffd75d60bf59a5d9d10fba2920a33a2b7581859370e84c12526a078eaf5b7",
+    "src/spatial_memory/mujoco_perception.py": "b5c6c98edc757d983036cba755b5f3106757514b926aca70fff439ad45f0a09f",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/pedestrian_tracking.py": "267650dbc9c5a6f7ea7d66e1b9f2226ac9591dbae2c6353f8a8a555ad4394cf4",
+    "src/spatial_memory/predictive_emergency_v1.py": "0faace747af5cd855a8a41465d71710aac9252a193df8f331850042aadd3f2a5",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "tests/test_predictive_emergency_v1.py": "d569375e7f064d289a1541ae4b25e4230d92842536edb04d29d09571efab14b6"
+  }
+}

@@ -1,0 +1,13 @@
+actual_memory_raycasts,arm,blocked_attempts,combined_rays,elapsed_steps,emergency_safety_interventions,emergency_safety_raycasts,emergency_safety_scans,episode,episode_wall_time_seconds,false_persistent_occupancy_updates,history_vetoes,identity,missed_persistent_changes,paid_memory_scans,schedule,scheduler_ms,success,travel_distance_m,unwanted_contacts
+427,periodic,0,2074,27,0,1647,27,1,0.252523833,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,7,0,,True,15.75,0
+488,age,0,2135,27,0,1647,27,1,0.113679708,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,36,8,0,,True,15.75,0
+427,age5,1,2135,28,0,1708,28,1,0.118316083,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,38,7,0,13.220917,True,15.75,0
+427,deadline,2,2562,35,0,2135,35,1,0.204802041,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,52,7,0,75.148751,True,18.75,0
+366,deadline_stable,2,2501,35,0,2135,35,1,0.209488333,0,3,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,52,6,0,85.605422,True,18.75,0
+366,deadline_stable_quiet,2,2501,35,0,2135,35,1,0.207773,0,3,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,52,6,0,85.219131,True,18.75,0
+427,periodic,0,2074,27,0,1647,27,2,0.100675708,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,7,1,,True,15.75,0
+488,age,0,2135,27,0,1647,27,2,0.101961958,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,44,8,1,,True,15.75,0
+427,age5,1,2135,28,0,1708,28,2,0.101052375,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,46,7,1,1.541543,True,15.75,0
+427,deadline,2,2562,35,0,2135,35,2,0.191535125,0,0,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,60,7,1,71.819375,True,18.75,0
+366,deadline_stable,2,2501,35,0,2135,35,2,0.20434925,0,3,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,60,6,1,84.378629,True,18.75,0
+366,deadline_stable_quiet,2,2501,35,0,2135,35,2,0.2075625,0,3,phase1.5-v0.4-BPRIME-1:fit:BP:80010000,60,6,1,85.457005,True,18.75,0

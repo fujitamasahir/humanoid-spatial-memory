@@ -1,0 +1,13 @@
+{
+  "active": true,
+  "amended_at_utc": "2026-11-16T03:02:28.120221+00:00",
+  "amendment": 1,
+  "checkpoint_records_preserved": 1259,
+  "parent_binding_sha256": "6955235a441935eabbc939f344ce48d7e957d78d0a8e656808ba60c6e9e77e37",
+  "protocol": "h2-final-reconciliation-all-model-controlled-cost-v1",
+  "reason": "Corrected progress logging to emit at most once every five minutes instead of once per case after the five-minute mark. Measurement scope, maps, model definitions, seed, order seed and workload are unchanged.",
+  "script_path": "scripts/run_h2_final_benchmark_reconciliation.py",
+  "source_hashes": {
+    "scripts/run_h2_final_benchmark_reconciliation.py": "20f161658d27ccbf5b47b431b980ae21437c2302b789a9bc4fb76d518fb4e8c0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "replacements": {
+    "11.754s": "11.749s",
+    "43.909s": "43.906s"
+  },
+  "scope": "Two prose-only wall-time rounding corrections; no data/model/protocol changes"
+}

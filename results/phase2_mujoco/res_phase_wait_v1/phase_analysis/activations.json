@@ -1,0 +1,314 @@
+[
+  {
+    "arm": "periodic4",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "age5",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "dao_veto",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            8
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              8
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "alternating"
+  },
+  {
+    "arm": "periodic4",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            9
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              9
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  },
+  {
+    "arm": "age5",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            9
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              9
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  },
+  {
+    "arm": "dao_veto",
+    "changes": [
+      {
+        "after": [
+          "wait",
+          "predictive_wait"
+        ],
+        "before": [
+          "turn",
+          1
+        ],
+        "candidates": {
+          "action": [
+            "wait",
+            "predictive_wait"
+          ],
+          "certified": true,
+          "current_sweep_risk": false,
+          "end": [
+            5,
+            9
+          ],
+          "exits_existing_measured_overlap": false,
+          "fallback_admissible": true,
+          "future_endpoint_risk": false,
+          "measured_sweep_risk": false,
+          "one_transition_margin_cells": 0.45472689163038954,
+          "one_transition_risk": false,
+          "risk_key": [
+            0,
+            0,
+            -0.45472689163038954,
+            1,
+            0.5452731083696105
+          ],
+          "rotation_circumradius_bound": false,
+          "static_measured_clear": true,
+          "swept_cells": [
+            [
+              5,
+              9
+            ]
+          ],
+          "two_transition_margin_cells": -0.5452731083696105,
+          "two_transition_risk": true
+        },
+        "step": 5
+      }
+    ],
+    "scene": "cycle_shifted_alternating"
+  }
+]

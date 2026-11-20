@@ -1,0 +1,34 @@
+{
+  "baseline_replays": 52,
+  "caveat": "One omission from a fresh identical prefix; effects are not additive, and no deployable oracle rule follows.",
+  "interventions": 149,
+  "policy_selection_authorized": false,
+  "totals": [
+    {
+      "goal_harms": 0,
+      "goal_rescues": 0,
+      "increased_nonfirst_onsets": 5,
+      "interventions": 73,
+      "net_paid_decrease_cases": 23,
+      "net_paid_increase_cases": 11,
+      "net_paid_unchanged_cases": 39,
+      "one_scan_saving_no_worse_common_success": 23,
+      "outcomes_preserved": 68,
+      "safety": "original",
+      "unchanged_action_pose_sequence": 57
+    },
+    {
+      "goal_harms": 1,
+      "goal_rescues": 0,
+      "increased_nonfirst_onsets": 0,
+      "interventions": 76,
+      "net_paid_decrease_cases": 26,
+      "net_paid_increase_cases": 8,
+      "net_paid_unchanged_cases": 42,
+      "one_scan_saving_no_worse_common_success": 26,
+      "outcomes_preserved": 75,
+      "safety": "res_h1_phase_wait",
+      "unchanged_action_pose_sequence": 70
+    }
+  ]
+}

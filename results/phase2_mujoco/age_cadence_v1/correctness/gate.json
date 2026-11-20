@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/Users/masahir0/Desktop/humanoid-spatial-memory/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_cadence_age.py",
+    "tests/test_route_age.py",
+    "tests/test_view_age.py",
+    "tests/test_c_v21_navigation.py"
+  ],
+  "commit": "c7169120f5ea6f878afecd1838027d9361754af3",
+  "source_sha256": {
+    "docs/age_cadence_protocol.md": "6ba5e8f0e07ad3c898543de68a43721966f8efd30babfacaf687e8cbf1c06d2c",
+    "scripts/run_age_cadence_fit72.py": "2fe52c6b29f226cafc5b2d3f3cfd795dd260423b335e4637a25cbb141329fff3",
+    "src/spatial_memory/cadence_age.py": "691e39c743f01e1ef8e992a3d29dd79851f976de3db70594cd379e615fc61c20",
+    "src/spatial_memory/evi.py": "4565bed62bb41a654d5bf91792bdeee4671092e278219086f4d9707b08cfda58",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/route_age.py": "dc6335fbfe1793328895c55a6b18fd9296afb7f9a2c8b5b97296189cde378da3",
+    "src/spatial_memory/scheduling.py": "e6699415c32e2c462f1df14be1ca51ab0d273f20107b539a4fcf798761bf0062",
+    "src/spatial_memory/view_age.py": "b6cd1202f23a01c69f5838f9214f55245bb32f3ecf223968f432e858c5b37561",
+    "tests/test_cadence_age.py": "3a56a74a0caf6cff75972a56abbc02c56c31fe4d81ffb71ceb754b58bf4a4c8e"
+  },
+  "status": "PASS"
+}

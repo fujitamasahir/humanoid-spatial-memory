@@ -1,0 +1,8 @@
+{
+  "episodes": 864,
+  "exact_semantic_and_core_metric_reproductions": 864,
+  "frozen_reference": "results/phase2_mujoco/h2_final_generalization_v1",
+  "stage": "prior_h2_final_generalization_v1/fit_replay",
+  "status": "PASS",
+  "verifier": "run_h2_final.compare_saved + verify_episode"
+}

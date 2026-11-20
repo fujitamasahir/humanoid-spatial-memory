@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 888,
+    "path": "command.json",
+    "sha256": "1bb057b2e48374a0035f00d27cd8052f7190e75dbc0afc1d5aaefd6301fa73f5"
+  },
+  {
+    "bytes": 395,
+    "path": "tests.log",
+    "sha256": "20319fe4e8a07e57009f5ecbcb12fe4122fdbb8a92cc582484116532fb634597"
+  },
+  {
+    "bytes": 19898,
+    "path": "tests.xml",
+    "sha256": "e415886b8f2c665b56fcaef08f4567a76d7dfd285bdd89f3acd7338e64f21896"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "bound_sources": 13,
+  "caa_artifacts_unchanged": 928,
+  "caa_source_binding_unchanged": 25,
+  "cap20_checks": [
+    {
+      "denied_requests": 52,
+      "initial_inclusive_used": 20,
+      "mode": "dao_veto",
+      "noninitial_grants": 19,
+      "unchanged_last_write_memory": true
+    },
+    {
+      "denied_requests": 57,
+      "initial_inclusive_used": 20,
+      "mode": "dao_trigger",
+      "noninitial_grants": 19,
+      "unchanged_last_write_memory": true
+    },
+    {
+      "denied_requests": 57,
+      "initial_inclusive_used": 20,
+      "mode": "dao_route",
+      "noninitial_grants": 19,
+      "unchanged_last_write_memory": true
+    },
+    {
+      "denied_requests": 52,
+      "initial_inclusive_used": 20,
+      "mode": "dao_combined",
+      "noninitial_grants": 19,
+      "unchanged_last_write_memory": true
+    }
+  ],
+  "checkpoint_receipt_pairs": 2907,
+  "completed_formal_suites": 1,
+  "formal_process_invocations": 2,
+  "formal_rows_independently_rechecked": 432,
+  "g1_assets_unchanged": 58,
+  "incomplete_serialization_invocations": 1,
+  "missing_inputs": [],
+  "new_navigation_runs": 0,
+  "original_policy_geometry_fixtures_unchanged": true,
+  "postprocessing_source_sha256": "1e79ab87f052d1cae6331fee970f9dc8ef646d75b6e2ead2f50916111318ebe7",
+  "protected": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "reserved_or_new_navigation_populations_accessed": false,
+  "serialization_repair_changed_only_harness": true,
+  "stage_manifest_files_checked": 24,
+  "status": "PASS"
+}

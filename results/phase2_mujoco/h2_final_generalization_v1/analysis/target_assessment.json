@@ -1,0 +1,56 @@
+[
+  {
+    "candidate": "caa_full",
+    "descriptively_maintains_success_and_saves_scans": true,
+    "goal_delta": 2,
+    "not_noninferiority_proof": true,
+    "paid_delta": -51,
+    "reference": "periodic4",
+    "zero_contacts": true
+  },
+  {
+    "candidate": "caa_full",
+    "descriptively_maintains_success_and_saves_scans": false,
+    "goal_delta": -2,
+    "not_noninferiority_proof": true,
+    "paid_delta": -48,
+    "reference": "age4",
+    "zero_contacts": true
+  },
+  {
+    "candidate": "caa_full",
+    "descriptively_maintains_success_and_saves_scans": true,
+    "goal_delta": 0,
+    "not_noninferiority_proof": true,
+    "paid_delta": -3,
+    "reference": "age5",
+    "zero_contacts": true
+  },
+  {
+    "candidate": "raa_defer",
+    "descriptively_maintains_success_and_saves_scans": true,
+    "goal_delta": 2,
+    "not_noninferiority_proof": true,
+    "paid_delta": -48,
+    "reference": "periodic4",
+    "zero_contacts": true
+  },
+  {
+    "candidate": "raa_defer",
+    "descriptively_maintains_success_and_saves_scans": false,
+    "goal_delta": -2,
+    "not_noninferiority_proof": true,
+    "paid_delta": -45,
+    "reference": "age4",
+    "zero_contacts": true
+  },
+  {
+    "candidate": "raa_defer",
+    "descriptively_maintains_success_and_saves_scans": false,
+    "goal_delta": 0,
+    "not_noninferiority_proof": true,
+    "paid_delta": 0,
+    "reference": "age5",
+    "zero_contacts": true
+  }
+]

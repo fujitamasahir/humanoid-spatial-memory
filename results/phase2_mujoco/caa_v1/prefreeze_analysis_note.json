@@ -1,0 +1,7 @@
+{
+  "status": "PROSPECTIVE_REBIND_BEFORE_ANY_CAA_NAVIGATION",
+  "changes": "Predeclare paired CAA versus Age-6 and Full versus Fast/Slow analysis; add explicit priority and deterministic replay unit tests.",
+  "core_parameters_changed": false,
+  "CAA_navigation_outcomes_so_far": 0,
+  "previous_setup_artifacts_preserved": true
+}

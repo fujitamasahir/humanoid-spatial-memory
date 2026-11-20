@@ -1,0 +1,15 @@
+{
+  "b_age_corrected_exact_records": 72,
+  "bage_historical_commit": "3d66e54fd19c0f5ccc6261ec08eb9dd91efd8fdb",
+  "interpretation": "Every comparable historical FIT72 record matches after correction. The 1,296 cases with no prior keyed result remain first-time descriptive evaluations.",
+  "rdao_source": "results/phase2_mujoco/rdao_v1_phase2_evaluation/primary_records.jsonl",
+  "rdao_source_file_sha256": "7599574227587f233a2a792cf80bbd944c1c5fd7952b3f634b511ad844e24314",
+  "rdao_v1_identity_matched_exact_records": 72,
+  "status": "COMPLETE_WITH_FIRST_TIME_FIT72_CASES",
+  "superseded_misconfigured_b_age_records": 72,
+  "task_b_episodes": 3888,
+  "task_b_parity": {
+    "FIRST_TIME_FIT72_EVALUATION": 1296,
+    "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE": 2592
+  }
+}

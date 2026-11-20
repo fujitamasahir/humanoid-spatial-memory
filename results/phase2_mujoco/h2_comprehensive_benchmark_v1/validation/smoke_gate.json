@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    "original",
+    "high_frequency"
+  ],
+  "episodes": 328,
+  "maps": [
+    "h2-final-generalization-v1-20261114:M:910030000",
+    "h2-final-generalization-v1-20261114:R:910000001"
+  ],
+  "models": 41,
+  "observation_cap_and_selected_shield": "PASS",
+  "replay_frame_count": "PASS",
+  "schedules": [
+    0,
+    1
+  ],
+  "source_binding_sha256": "fbcd5a1d40b8dc8c59f3ffb7750e892730f51897c59868b69420d31e9a8efbb2",
+  "status": "PASS_SMOKE"
+}

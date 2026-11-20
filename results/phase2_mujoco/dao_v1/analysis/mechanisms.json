@@ -1,0 +1,153 @@
+{
+  "counts": {
+    "age4": {
+      "earlier_than_anchor": 0,
+      "fallback_requests": 10,
+      "requests": 30,
+      "vetoed_anchor": 0
+    },
+    "age5": {
+      "earlier_than_anchor": 0,
+      "fallback_requests": 10,
+      "requests": 30,
+      "vetoed_anchor": 0
+    },
+    "age6": {
+      "earlier_than_anchor": 0,
+      "fallback_requests": 10,
+      "requests": 20,
+      "vetoed_anchor": 10
+    },
+    "dao_combined": {
+      "earlier_than_anchor": 6,
+      "fallback_requests": 12,
+      "requests": 36,
+      "vetoed_anchor": 0
+    },
+    "dao_route": {
+      "earlier_than_anchor": 5,
+      "fallback_requests": 12,
+      "requests": 35,
+      "vetoed_anchor": 0
+    },
+    "dao_trigger": {
+      "earlier_than_anchor": 6,
+      "fallback_requests": 12,
+      "requests": 36,
+      "vetoed_anchor": 0
+    },
+    "dao_veto": {
+      "earlier_than_anchor": 2,
+      "fallback_requests": 12,
+      "requests": 32,
+      "vetoed_anchor": 0
+    },
+    "periodic4": {
+      "earlier_than_anchor": 0,
+      "fallback_requests": 0,
+      "requests": 0,
+      "vetoed_anchor": 30
+    },
+    "periodic5": {
+      "earlier_than_anchor": 4,
+      "fallback_requests": 12,
+      "requests": 24,
+      "vetoed_anchor": 10
+    }
+  },
+  "formal_status": "PASS",
+  "geometry_at_t3": [
+    {
+      "family": "explored",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4941
+    },
+    {
+      "family": "corridor",
+      "frontier_new": 1,
+      "frontier_route_new": 1,
+      "optimistic_new": 7,
+      "samples": 1216
+    },
+    {
+      "family": "new_room",
+      "frontier_new": 9,
+      "frontier_route_new": 3,
+      "optimistic_new": 70,
+      "samples": 4941
+    },
+    {
+      "family": "turn",
+      "frontier_new": 8,
+      "frontier_route_new": 3,
+      "optimistic_new": 49,
+      "samples": 4434
+    },
+    {
+      "family": "repeat_view",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4941
+    },
+    {
+      "family": "unknown_occluder",
+      "frontier_new": 9,
+      "frontier_route_new": 3,
+      "optimistic_new": 70,
+      "samples": 4941
+    },
+    {
+      "family": "irrelevant_discovery",
+      "frontier_new": 9,
+      "frontier_route_new": 0,
+      "optimistic_new": 70,
+      "samples": 4941
+    },
+    {
+      "family": "stale_important",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4941
+    },
+    {
+      "family": "persistent_addition",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4941
+    },
+    {
+      "family": "persistent_removal",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4346
+    },
+    {
+      "family": "temporary_occlusion",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 4346
+    },
+    {
+      "family": "no_route_no_benefit",
+      "frontier_new": 0,
+      "frontier_route_new": 0,
+      "optimistic_new": 0,
+      "samples": 450
+    }
+  ],
+  "negative_findings": [
+    "No navigation efficacy measured.",
+    "Counts are not calibrated expected information gain.",
+    "Conservative first-unknown stopping can miss deep corridor discovery.",
+    "Fallback can request repeatedly for invisible stale cells until cap.",
+    "Route relevance is a point-route proxy, not actual navigation value."
+  ],
+  "source_freeze_commit": "cb72198bde78d6050a99f810cbfdd51b2add5335"
+}

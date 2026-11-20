@@ -1,0 +1,40 @@
+{
+  "additional_cap20_checks": 4,
+  "completed_formal_suites": 1,
+  "executed_commands": [
+    "MPLCONFIGDIR=/private/tmp/dao-matplotlib .venv/bin/python scripts/analyze_dao_discovery.py",
+    ".venv/bin/python scripts/run_dao_synthetic.py prepare",
+    "MPLCONFIGDIR=/private/tmp/dao-matplotlib .venv/bin/python scripts/run_dao_synthetic.py formal",
+    "MPLCONFIGDIR=/private/tmp/dao-matplotlib .venv/bin/python scripts/report_dao.py",
+    ".venv/bin/python scripts/verify_dao_integrity.py",
+    ".venv/bin/python scripts/check_dao_artifacts.py"
+  ],
+  "execution_notes": "Retrospective label draft and initial serialization failure retained. Prepare/formal repeated solely for documented harness serialization recovery, with unchanged policy/reference/fixtures. No outcome-dependent numerical tuning.",
+  "final_tests_passed": 138,
+  "formal_controller_contracts": 432,
+  "formal_process_invocations": 2,
+  "formal_public_states": 48,
+  "incomplete_serialization_invocations": 1,
+  "independent_stored_row_checks": 432,
+  "initial_source_freeze": "11e6568a85ea837696923e3ec98ee541d3b016e4",
+  "missing_inputs": [],
+  "navigation_efficacy_established": false,
+  "new_dao_test_cases": 30,
+  "new_navigation_cohorts_generated_admitted_or_accessed": false,
+  "new_navigation_episodes": 0,
+  "next_experiment_requires_owner_approval": true,
+  "policy_or_fixture_changes_after_initial_freeze": false,
+  "postprocessing_sources": {
+    "scripts/check_dao_artifacts.py": "1e79ab87f052d1cae6331fee970f9dc8ef646d75b6e2ead2f50916111318ebe7",
+    "scripts/report_dao.py": "a2f408f56cb9c35155a7c272023789e8ca5fc8c39887121954b8e3d5428f8676",
+    "scripts/verify_dao_integrity.py": "a673a78368659c3000495452a1f129380e2d45fc1884ea2f87ca1a10afb24de8"
+  },
+  "report_sha256": "6c1e398c5ddf091a3733967eb3dd0f1656686a3742951319bbe1e50cfe2a419d",
+  "reserved_access": false,
+  "retrospective_unique_episodes": 360,
+  "same_state_rule_decisions": 432,
+  "serialization_recovery_source_freeze": "cb72198bde78d6050a99f810cbfdd51b2add5335",
+  "starting_commit": "5cb40fce42e8791b1406245684be5d0df0964b93",
+  "status": "COMPLETE_ENGINEERING_ONLY",
+  "unresolved_engineering_blockers": []
+}

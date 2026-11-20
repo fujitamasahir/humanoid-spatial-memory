@@ -1,0 +1,12 @@
+{
+  "attempt": "smoke_preflight_001",
+  "behavioral_parity_decisions": "not adjudicated by the first classifier",
+  "correction": "Exclude _seconds runtime fields in the recursive parity projection. The controller source, map/schedule inputs, model, and safety paths are unchanged.",
+  "models": 54,
+  "preserved_warmup_journal_sha256": "3a979a72731fe5771665540215ab828f2a23719955b7d2ad1bbc6f3e7501ffd2",
+  "primary_matrix_runs": 0,
+  "reason": "semantic parity projection omitted timing keys ending in _seconds; it included evaluation-loop and scene-construction wall times. These are outside the frozen model timing scope.",
+  "recorded_at_utc": "2026-11-15T20:44:34.965102+00:00",
+  "status": "INVALIDATED_COMPARISON_CLASSIFIER_ONLY",
+  "warmup_records_preserved_in": "warmup/journal.jsonl"
+}

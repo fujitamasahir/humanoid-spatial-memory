@@ -1,0 +1,117 @@
+[
+  {
+    "bytes": 1113,
+    "path": "README.md",
+    "sha256": "6fc18749f5b179a4f1f605f9e5dc2da9907157a5a3e82fb3afff1bfa31e62fd3"
+  },
+  {
+    "bytes": 675,
+    "path": "binding.json",
+    "sha256": "a643c8ba3647fec3be63ad7041a8b3501731a0ffb0a248c49e7faf7e419831a1"
+  },
+  {
+    "bytes": 50829,
+    "path": "decision_and_update_time.png",
+    "sha256": "66cea6de2ee520e19235fbfe226b06c01d5947b8df0237a66bea6bb3528d55a0"
+  },
+  {
+    "bytes": 848,
+    "path": "decision_time_quantiles.csv",
+    "sha256": "a8567eeb88c8ac702c5cb7c6344281b4116ab5547902478ef8be76e90f7c33cd"
+  },
+  {
+    "bytes": 33402,
+    "path": "distance_by_model.png",
+    "sha256": "b225c5aa6c390d591dd6dc5fbd71b6015466387b78a0c2e736e7b3fc8745cf6f"
+  },
+  {
+    "bytes": 40840,
+    "path": "environment_event_dynamics.png",
+    "sha256": "04f7a1eefa9f849e81f55c9e2ba6e72b5dbb3f79bfbd5b0089cf5552b9a5b416"
+  },
+  {
+    "bytes": 666362,
+    "path": "episodes.csv",
+    "sha256": "a8de35d2d535f6de959960100a8b664f273da53dd60127cb0d6d21ca516a09d6"
+  },
+  {
+    "bytes": 18938,
+    "path": "failures.csv",
+    "sha256": "fdffb3ba8aaf0e0ad6c11db5852f5ec762aabe31bc91dd78c9917ce1918b06f6"
+  },
+  {
+    "bytes": 8918,
+    "path": "family_summary.json",
+    "sha256": "1a1ed50a6570bdc2783b7c668091055f5ae311bbc79e746534e4fe8bae193cdd"
+  },
+  {
+    "bytes": 166432,
+    "path": "historical_h2_final_reference.json",
+    "sha256": "86fafa05cd3d35fd5e84de12970325e9d6eb0539ff086b8b0a958d8e96b51a93"
+  },
+  {
+    "bytes": 77792,
+    "path": "maze_family_comparison.png",
+    "sha256": "76c3450d790f8e7588b49b9614e13bdb17afa7c741e1d1e3f3928d13e94c4805"
+  },
+  {
+    "bytes": 59020,
+    "path": "outcome_heatmap.png",
+    "sha256": "37e9f8e14720aa211a053cd0d2cb85deb713424a6b881d33c30060a7d5c9535a"
+  },
+  {
+    "bytes": 38708,
+    "path": "paid_observations_by_model.png",
+    "sha256": "d3ebe5dca7756e1eaf7a2daca1d6397a2a438f7660b3a7ca4d5a4740a17fb9dc"
+  },
+  {
+    "bytes": 12902,
+    "path": "paired_whole_maze_bootstrap.csv",
+    "sha256": "083193c58a19262242f37ff1c4699f4e4da4f19a3f428bc5466b9118d7262893"
+  },
+  {
+    "bytes": 55120,
+    "path": "pareto_frontier.png",
+    "sha256": "3a876613e5b725299d7bbc9b0b499fd5ecdbf4a69eb0f899332979b1cfeca686"
+  },
+  {
+    "bytes": 4397,
+    "path": "report.md",
+    "sha256": "23afda84581f25a3e0c050c95f648cca6f56eb8ef15a686fbde226b9eaf51493"
+  },
+  {
+    "bytes": 761176,
+    "path": "representative_comparison.gif",
+    "sha256": "da4754ff0696befd914573b8475fc7c44fe32fb7917c58d4ccab0c70cb528bfe"
+  },
+  {
+    "bytes": 34747,
+    "path": "steps_by_model.png",
+    "sha256": "f1da878fe5f6e5c97805ed404aa9a64ed5aae3f90f7d96d2ac88fe2b06e34b39"
+  },
+  {
+    "bytes": 35316,
+    "path": "success_by_model.png",
+    "sha256": "e5ba27b676c9ff60c9d74a5f2c33a6e95a6ff9623e251cb63c82ece9988490bc"
+  },
+  {
+    "bytes": 52427,
+    "path": "success_cost_tradeoffs.png",
+    "sha256": "2bdcee52fe084708e430c1e0a951908a5d481caf5bf031498485fe4e2fc08040"
+  },
+  {
+    "bytes": 26979,
+    "path": "summary.json",
+    "sha256": "dc3cf4543968950765f2cfb16a70fa5fb66acfed5f5299be305ec65c189f4092"
+  },
+  {
+    "bytes": 6984,
+    "path": "uncertainty_original_vs_dynamic.csv",
+    "sha256": "1b593fd9c583ae2bb6a6a68dd4a9e6c6c5af89cb935f02230f2f5ea8d3b8bfab"
+  },
+  {
+    "bytes": 39763,
+    "path": "wall_time_by_model.png",
+    "sha256": "b69acd095f94f41de128a589854bf08261cda83acb21f6849a841ec985321c6f"
+  }
+]

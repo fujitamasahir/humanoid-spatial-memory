@@ -1,0 +1,7 @@
+{
+  "failed_DAO_wrapper_unit_invocations": 1,
+  "horizon": 2,
+  "cause": "Legacy evaluator required payload mechanism/identity at row packaging after underlying2-step episode. Dedicated engineering-only metadata supplied in compatibility harness; original evaluator and frozen DAO unchanged.",
+  "lost_trace_not_inferred": true,
+  "before_formal_freeze": true
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "bytes": 212624,
+    "path": "joined.json",
+    "sha256": "77810b674bd402500172278a3b6f6523050c5c38074bb854891cb78370505cff"
+  },
+  {
+    "bytes": 1616,
+    "path": "research_report.md",
+    "sha256": "9bbb7ce44f049c5f53c89226e34e4d30fbd429b3148783baf6ca866721fae64e"
+  },
+  {
+    "bytes": 5106,
+    "path": "rule_metrics.csv",
+    "sha256": "afbe91bbd1718e1df619495b70571700cf541f26a444e884fce162ca2ef70355"
+  },
+  {
+    "bytes": 1115,
+    "path": "summary.json",
+    "sha256": "ede21184c198e479b619abf9908b9a6e2b81df24bd3de5abdedf2d7afc43953e"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "bytes": 62010,
+    "path": "comparison.png",
+    "sha256": "82842969a0d8634abf8225d08791df79076491411388ee2da42e15d70d01a146"
+  },
+  {
+    "bytes": 307174,
+    "path": "episode_metrics.json",
+    "sha256": "51ef2cee97da14c90fa2ad92578121b250d1965947584ddc6a44bea8b7011b24"
+  },
+  {
+    "bytes": 623753,
+    "path": "paired.json",
+    "sha256": "cbc81c3f99338033636dfdaeacdf1ddef347658625c3dcd0a7f6646c5ef80bff"
+  },
+  {
+    "bytes": 1666,
+    "path": "research_report.md",
+    "sha256": "a3515208d1dba53c42fe9c831bbaf24292386a95ddd09b109942653fe6f94c75"
+  },
+  {
+    "bytes": 12201,
+    "path": "summary.json",
+    "sha256": "b89576ffa315eede1aa206b82969235f9e529f4f1bf83b817bd72b45208c0d57"
+  }
+]

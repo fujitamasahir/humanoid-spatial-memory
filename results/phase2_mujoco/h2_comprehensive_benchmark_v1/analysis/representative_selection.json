@@ -1,0 +1,29 @@
+{
+  "gif": "results/phase2_mujoco/h2_comprehensive_benchmark_v1/analysis/representative_hf_comparison.gif",
+  "models": {
+    "age4": {
+      "replay_path": "results/phase2_mujoco/h2_high_frequency_dynamics_v1/replays/primary/episode_013_age4.json.gz",
+      "success": true
+    },
+    "caa_full": {
+      "replay_path": "results/phase2_mujoco/h2_high_frequency_dynamics_v1/replays/primary/episode_013_caa_full.json.gz",
+      "success": false
+    },
+    "periodic5": {
+      "replay_path": "results/phase2_mujoco/h2_high_frequency_dynamics_v1/replays/primary/episode_013_periodic5.json.gz",
+      "success": false
+    },
+    "rdao_v2": {
+      "replay_path": "results/phase2_mujoco/h2_high_frequency_dynamics_v1/replays/primary/episode_013_rdao_v2.json.gz",
+      "success": false
+    },
+    "uncertainty": {
+      "replay_path": "results/phase2_mujoco/h2_high_frequency_dynamics_v1/replays/primary/episode_013_uncertainty.json.gz",
+      "success": false
+    }
+  },
+  "selected_schedule": 0,
+  "selected_world_identity": "h2-final-generalization-v1-20261114:R:910000017",
+  "selection_rule": "Maximize distinct outcome labels among Periodic-5, Age-4, Uncertainty, CAA-Full, RDAO v2; then maximize pairwise paid-observation-count spread; lexicographic map/schedule tie-break.",
+  "sha256": "98a03116fcdb3d8bde6b4229ee9d1b64e6eb4c0c6d1a09025a992f880e610b08"
+}

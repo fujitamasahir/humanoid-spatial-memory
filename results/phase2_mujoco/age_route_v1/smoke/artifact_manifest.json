@@ -1,0 +1,67 @@
+[
+  {
+    "bytes": 2771,
+    "path": "episode_001_age.json.gz",
+    "sha256": "291e4b75ace76bf1af75ef390e661b8cc57e694e3df705874ae0797ed9d1fe72"
+  },
+  {
+    "bytes": 4163,
+    "path": "episode_001_age_route_clock.json.gz",
+    "sha256": "135e83b677651391927593a5453c2f4cfa578a2972c2848bfa5c8fb05d6bf2d1"
+  },
+  {
+    "bytes": 4492,
+    "path": "episode_001_age_route_rescue.json.gz",
+    "sha256": "3f8bf52fb1874b0dfff97b1fe35c9a1511863d09614454ae13012f70f7ae7a04"
+  },
+  {
+    "bytes": 3602,
+    "path": "episode_001_age_view_veto.json.gz",
+    "sha256": "bfab6dd00147aac0958a9302aac065f97d27cdc3200ea35f95b95d90216fe46b"
+  },
+  {
+    "bytes": 2617,
+    "path": "episode_001_periodic.json.gz",
+    "sha256": "0d9e9b4eadf13a2a796b1d7a943d98b67422e1b6a127005863d197dcd6608701"
+  },
+  {
+    "bytes": 2769,
+    "path": "episode_002_age.json.gz",
+    "sha256": "125e8f94025238f5f0b81e06fbe22df91b4161fef39cdb89edebdcc861adc6a7"
+  },
+  {
+    "bytes": 4172,
+    "path": "episode_002_age_route_clock.json.gz",
+    "sha256": "a8c913522a17d4f361d2a7df5e9194c2fe5ebb6fbabb07e87ac3c4b1ccbd78c9"
+  },
+  {
+    "bytes": 4492,
+    "path": "episode_002_age_route_rescue.json.gz",
+    "sha256": "202930e39e5485133a642a36d8356f17c07314c9a4c6d94dcdf9071a091fec08"
+  },
+  {
+    "bytes": 3608,
+    "path": "episode_002_age_view_veto.json.gz",
+    "sha256": "10edbd5affdf2cfdf6aebf481da222caefb6930cf276acbe7a2cb1679374c1b4"
+  },
+  {
+    "bytes": 2620,
+    "path": "episode_002_periodic.json.gz",
+    "sha256": "be0ac7a8ce45b4671c64df6a6b0f3320d22e9955ad70f86e97f55f24964cd5c1"
+  },
+  {
+    "bytes": 1811,
+    "path": "episodes.csv",
+    "sha256": "29f651250a5d978e7c774234a6f3406bf41736a7d4bc0788f3369982e7fc4af8"
+  },
+  {
+    "bytes": 2695,
+    "path": "provenance.json",
+    "sha256": "6fa72aa0985cf9f947a8ecfdbd57978fe28fba868bc4235d0eced5991701ba77"
+  },
+  {
+    "bytes": 3308,
+    "path": "summary.json",
+    "sha256": "9d436ab9a48e29752fdd82bc9512409ea85c22e20e30eb1715a162b12dbff399"
+  }
+]

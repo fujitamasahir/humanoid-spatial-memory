@@ -1,0 +1,13 @@
+{
+  "arms": [
+    "uncertainty"
+  ],
+  "episodes": 72,
+  "replay_count": 72,
+  "source_commit": "12dc945c7da496e6cfc5dd79d6977b4c48d705c1",
+  "stage": "original_uncertainty",
+  "status": "COMPLETE",
+  "total_goal_completions": 53,
+  "total_unwanted_contacts": 0,
+  "wall_seconds": 13.016374750004616
+}

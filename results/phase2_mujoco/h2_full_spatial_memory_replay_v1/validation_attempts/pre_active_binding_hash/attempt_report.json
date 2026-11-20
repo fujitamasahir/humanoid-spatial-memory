@@ -1,0 +1,16 @@
+{
+  "bytes": 22522,
+  "episode_key": [
+    "h2-final-generalization-v1-20261114:R:910000001",
+    0,
+    "periodic4",
+    42
+  ],
+  "observed_parity": {
+    "detail": null,
+    "status": "PASS_EXACT_TRACE_AND_METRIC_SIGNATURE"
+  },
+  "reason": "Replay and parity passed, but its source_binding_sha256 named the parent binding rather than the active amendment. Kept byte-for-byte as a validation sample; active run will use the corrected active-binding reference.",
+  "sha256": "87a96a16c69f5ab6e468aa4307063cc4cab8b93f5ad63b30e2ae842355f9a5f5",
+  "status": "PRESERVED_VALIDATION_SAMPLE_EXCLUDED_FROM_ACTIVE_RUN"
+}

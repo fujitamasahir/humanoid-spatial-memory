@@ -1,0 +1,38 @@
+{
+  "additional_incomplete_formal_attempts": 1,
+  "approximate_inference_coverage_validated": false,
+  "both_integration_bindings_unchanged": true,
+  "caa_artifacts_unchanged": 928,
+  "caa_source_binding_unchanged": 25,
+  "checkpoint_receipt_pairs": 2907,
+  "correction_binding_unchanged": true,
+  "g1_assets_unchanged": 58,
+  "hand_scene_JSON_unchanged": true,
+  "independent_custody_established": false,
+  "missing_inputs": [],
+  "new_completed_engineering_navigation_episodes": 48,
+  "new_navigation_runs": 0,
+  "new_production_navigation_payloads": 0,
+  "new_reserved_access": false,
+  "original_tracked_results_and_algorithms_modified": false,
+  "physical_safety_acceptance": false,
+  "previous_DAO_artifacts_unchanged": 37,
+  "prior_authorized_opaque_signatures_available": false,
+  "production_admission_complete": false,
+  "protected": {
+    "files_checked": 836,
+    "manifest_sha256": "73f4ef7da1fc238748cb0e23840bf1c2e6357df64aef839a86b80549e95177f1"
+  },
+  "reserved_or_new_navigation_populations_accessed": false,
+  "separate_fixture_scans": 120,
+  "stage_manifest_files": {
+    "analysis": 4,
+    "corrections_v1_1": 52,
+    "engineering": 46,
+    "engineering_recovery_v1_1": 16,
+    "infrastructure": 54,
+    "prepared": 4,
+    "prepared_v1_1": 4
+  },
+  "status": "PASS"
+}

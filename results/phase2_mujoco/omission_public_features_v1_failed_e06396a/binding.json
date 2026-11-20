@@ -1,0 +1,19 @@
+{
+  "base": "1813cb3c94ff79e12500c01f99991ecf9a539310",
+  "old_manifests": {
+    "analysis": "1e0ed45c07b38381b8d644f6b91542594390522510f6c4c3d8a80ae6c87a719d",
+    "matrix": "a3168b1c7df30f77850dd2e0a6e90e424f7930aed5376fff6dbd0ffeab185fc8",
+    "prepared": "ff4f65e13950cae599b8c0754df64c30a2ff66cf46dcc59230b6512e0c0a0246"
+  },
+  "prepared_manifest_sha256": "3717b2153a40eec87a2d33821eaf3bea9cb84fb77a4f1c480c872db4dbdb69a5",
+  "source_commit": "e06396a282bbfa130d31557c8c59e18673e02e7b",
+  "sources": {
+    "docs/omission_public_features_v1_protocol.md": "8afe9e237b2b94b0f34cbfd257708f7a5aaee218f7a3e6127cb964433c7dfe30",
+    "scripts/run_omission_public_features_v1.py": "449343e583cb377a92865b9e4da920349aa9af3229831bdf58a32df3b504be04",
+    "src/spatial_memory/dao_navigation_compat_v1_1.py": "43c991afa1c9416efa2bb78e661056d19a3e018ec9aff6406560a4674fa9ae4a",
+    "src/spatial_memory/discovery_observation.py": "b551de27debe0d7c05ea6b49de8999df6fc4483dbccd767fb5d8d82dc5b49805",
+    "src/spatial_memory/navigation.py": "61096f675a59286539ff53b77d4b4989d2ec3ccd167b99b4e4d63c3f7ccf1d1c",
+    "src/spatial_memory/omission_public_features_v1.py": "41f20ddee16b3653cfbf38d020ff9fe0ce956d73cf37109416699587cd1e1e94",
+    "tests/test_omission_public_features_v1.py": "8459f2d8042b5f84a5889e684b91eb7acea67474a342f376edb0518e4e94f891"
+  }
+}

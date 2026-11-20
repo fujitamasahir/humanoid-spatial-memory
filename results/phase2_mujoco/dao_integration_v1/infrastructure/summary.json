@@ -1,0 +1,7 @@
+{
+  "simulation_conditions": 24,
+  "statistical_table_lineages": 80,
+  "status": "COMPLETE_TEST_AND_SYNTHETIC_ONLY",
+  "test_generator_payloads": 12,
+  "wall_seconds": 1.771910540992394
+}

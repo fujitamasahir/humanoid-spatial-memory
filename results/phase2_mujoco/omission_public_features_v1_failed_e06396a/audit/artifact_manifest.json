@@ -1,0 +1,17 @@
+[
+  {
+    "bytes": 2024,
+    "path": "failure.txt",
+    "sha256": "419465a7175c8391b058056b971c2d39871d54b9099e6f6d8a7100c0022f633d"
+  },
+  {
+    "bytes": 28,
+    "path": "partial.json",
+    "sha256": "7e32622a75622bea9377a1a487ef44d81b45cada651766c87eb9f5fa042be679"
+  },
+  {
+    "bytes": 0,
+    "path": "public_features.json",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

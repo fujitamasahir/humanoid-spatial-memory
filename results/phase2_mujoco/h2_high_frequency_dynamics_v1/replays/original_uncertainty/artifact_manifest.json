@@ -1,0 +1,362 @@
+[
+  {
+    "bytes": 14334,
+    "path": "episode_001_uncertainty.json.gz",
+    "sha256": "156ea411730bfdb97b72867576792656902b0c47ca65e2fc327ea9a5f2464c21"
+  },
+  {
+    "bytes": 14695,
+    "path": "episode_002_uncertainty.json.gz",
+    "sha256": "13683b28ba66593e6352a5b5acc33b1a7d3408b056882504c43934c83f3d398f"
+  },
+  {
+    "bytes": 15658,
+    "path": "episode_003_uncertainty.json.gz",
+    "sha256": "bcdda88fa4b8bcdfce6e965ccd7aac9415e50ff955f033a9800e007715d04619"
+  },
+  {
+    "bytes": 15686,
+    "path": "episode_004_uncertainty.json.gz",
+    "sha256": "d1ebecf4d2cfd2fe5e58ca1ff3793bc19b4bcb8261501c8a720936ad5f92f99a"
+  },
+  {
+    "bytes": 7045,
+    "path": "episode_005_uncertainty.json.gz",
+    "sha256": "3fcc31379dd84ada7a182e6b456358da2b9c69d250ec6e4124de591871e5c0f0"
+  },
+  {
+    "bytes": 6996,
+    "path": "episode_006_uncertainty.json.gz",
+    "sha256": "eb05aee1ea36779e5747b5f2320641914be87fcde032e45e8de8207f7d012864"
+  },
+  {
+    "bytes": 7748,
+    "path": "episode_007_uncertainty.json.gz",
+    "sha256": "a25bce1bf70160f2fed6083ccbc501b5ae3f590c826021bbfe79baf8a868d95a"
+  },
+  {
+    "bytes": 7516,
+    "path": "episode_008_uncertainty.json.gz",
+    "sha256": "08b1845fb049f4dcdf1ec22aa7e061cf40d6251208529af8c528ec70700a0542"
+  },
+  {
+    "bytes": 15870,
+    "path": "episode_009_uncertainty.json.gz",
+    "sha256": "7904855d6335c16c17f7be5d4d3ea2ccc9f398e1dcf2ad4603e73ef0358b6648"
+  },
+  {
+    "bytes": 15555,
+    "path": "episode_010_uncertainty.json.gz",
+    "sha256": "1342726212ca4b752f3dc1a59742971adfd368674c4b78ffc65aa5843cf5910f"
+  },
+  {
+    "bytes": 10043,
+    "path": "episode_011_uncertainty.json.gz",
+    "sha256": "810eddd5794cadd686f0cf6daa4e57e19125cd8e2314c6d289c574166ef74360"
+  },
+  {
+    "bytes": 9137,
+    "path": "episode_012_uncertainty.json.gz",
+    "sha256": "e7be1073bb34ba8a1ec7b1f872226d282bded6cb63dddb310ce52448734eb3c0"
+  },
+  {
+    "bytes": 11399,
+    "path": "episode_013_uncertainty.json.gz",
+    "sha256": "3cc610ad840f03c5dc93d7705319aad928ac1ab5973a0dd06718384714c34c92"
+  },
+  {
+    "bytes": 9104,
+    "path": "episode_014_uncertainty.json.gz",
+    "sha256": "dd828baa85be5c36ec691945c849ea3cc8d75563725e5b892ec85c82701fdd80"
+  },
+  {
+    "bytes": 15279,
+    "path": "episode_015_uncertainty.json.gz",
+    "sha256": "07f2b1d1751f79f927e6cc6625721cdbe89e348ed59fafbdf903f0844953db80"
+  },
+  {
+    "bytes": 15241,
+    "path": "episode_016_uncertainty.json.gz",
+    "sha256": "0471b1663fc344e3b3e6854edca50267975d2888e7367bcf9865f561d5c3b353"
+  },
+  {
+    "bytes": 10041,
+    "path": "episode_017_uncertainty.json.gz",
+    "sha256": "fb6f0688048fe21e479476b6c861b588a308381320badae36957098c5b11d53d"
+  },
+  {
+    "bytes": 10072,
+    "path": "episode_018_uncertainty.json.gz",
+    "sha256": "340cc7794341f82828cb0a022f6dce0e6903fc37f2b5f7d5834f17be49b0bec3"
+  },
+  {
+    "bytes": 11086,
+    "path": "episode_019_uncertainty.json.gz",
+    "sha256": "70a084c5d3a0c0a7fa9f21b01f777f22f500d08e1acb2a0f8e8ab0a8d5b2a2e5"
+  },
+  {
+    "bytes": 11251,
+    "path": "episode_020_uncertainty.json.gz",
+    "sha256": "ca76da5319bba2a5d062663e4fed59d924f23df58d1c0b175b8890bbd1deef44"
+  },
+  {
+    "bytes": 7108,
+    "path": "episode_021_uncertainty.json.gz",
+    "sha256": "5f86da416b1b59a3d85c8233fc43598ee996e564038c9303c6d21b6a87c8fbc9"
+  },
+  {
+    "bytes": 7009,
+    "path": "episode_022_uncertainty.json.gz",
+    "sha256": "6a4f7a85b081d519702a7f226166b473b96098839c5e8866a1f24d023bae8d79"
+  },
+  {
+    "bytes": 16001,
+    "path": "episode_023_uncertainty.json.gz",
+    "sha256": "bc8e919ced415ecf529d233a8d612a6ba2b22023e6d5e786d8d930e9fc989c76"
+  },
+  {
+    "bytes": 15878,
+    "path": "episode_024_uncertainty.json.gz",
+    "sha256": "0fe165260ba302fc10db6316fc988f9abfc1cd7d5c2ee018833101aff7fab723"
+  },
+  {
+    "bytes": 9945,
+    "path": "episode_025_uncertainty.json.gz",
+    "sha256": "89da9fa83258f69768081829f3b842a3776f6f9118848dd3cc69f5969ac2c2a0"
+  },
+  {
+    "bytes": 9701,
+    "path": "episode_026_uncertainty.json.gz",
+    "sha256": "77e6d7319841b469b1a7704c32b76e4514eec5c346cda6040215a1ed8a20616e"
+  },
+  {
+    "bytes": 6947,
+    "path": "episode_027_uncertainty.json.gz",
+    "sha256": "e3f1d0b149a0db2d204cfd55e83edf30e3e1ab2ebf99f9f8bc3855bb1869ca74"
+  },
+  {
+    "bytes": 7254,
+    "path": "episode_028_uncertainty.json.gz",
+    "sha256": "b7db1ea2c5a0822e0c5d2b75d80f263ddc15860606286a7b68f556bd57c8d727"
+  },
+  {
+    "bytes": 7954,
+    "path": "episode_029_uncertainty.json.gz",
+    "sha256": "3345c5cf358955b775dcf8a7da80b5d43c4348bae13d5528f88fdc55c10a93fe"
+  },
+  {
+    "bytes": 10235,
+    "path": "episode_030_uncertainty.json.gz",
+    "sha256": "2dea628e9425a0eb32cac604e57ed499b551a22d8bdec4a1c3a2841550dce3e8"
+  },
+  {
+    "bytes": 8352,
+    "path": "episode_031_uncertainty.json.gz",
+    "sha256": "cd1350d753e73bb019b8183321940357b02dfa1784925e5fb52d9661ec804470"
+  },
+  {
+    "bytes": 7046,
+    "path": "episode_032_uncertainty.json.gz",
+    "sha256": "60ac280befb924215e1c0258cd6f414b6487595a9c8965c68f854d83218771d2"
+  },
+  {
+    "bytes": 10657,
+    "path": "episode_033_uncertainty.json.gz",
+    "sha256": "a583eb068a1d095734a698c06b87bceb09a956246b0c75edcc3f9c5c3bd31ba0"
+  },
+  {
+    "bytes": 10429,
+    "path": "episode_034_uncertainty.json.gz",
+    "sha256": "5c1c8e98ea8bf153a674acb98a90c59e75cccf43a1d14b2b256bb56ba3d11655"
+  },
+  {
+    "bytes": 8304,
+    "path": "episode_035_uncertainty.json.gz",
+    "sha256": "6197b8919a8b6dd98bb1aa97448395039f25efb8210378f9c743eed9f0dd1d0f"
+  },
+  {
+    "bytes": 8498,
+    "path": "episode_036_uncertainty.json.gz",
+    "sha256": "2367b51e400a89be4cd0056802b821156baf9f5f8a6dd59eed2430fc25eea53c"
+  },
+  {
+    "bytes": 7039,
+    "path": "episode_037_uncertainty.json.gz",
+    "sha256": "29571812f4f574fe14ce88e53cb7a2a78ed22661db812599985a9eea9e947c66"
+  },
+  {
+    "bytes": 7151,
+    "path": "episode_038_uncertainty.json.gz",
+    "sha256": "690660e45cea20f1742ab6665b74d88b7345b7d00c223f92f81b319b91ae26ff"
+  },
+  {
+    "bytes": 7270,
+    "path": "episode_039_uncertainty.json.gz",
+    "sha256": "ba0efbdb61265d2e82ec83a95132b3e3621f4f2257de3ae16aa69f69087c90da"
+  },
+  {
+    "bytes": 7372,
+    "path": "episode_040_uncertainty.json.gz",
+    "sha256": "c3082c2eb5ac6e43a2c0d31171de73f8c00250c0955b95c1ce68a0140a13c2bb"
+  },
+  {
+    "bytes": 9684,
+    "path": "episode_041_uncertainty.json.gz",
+    "sha256": "370a6b7cd7173975a79c9efadec4a8b25059e77c816e408dbea12dc54002cf76"
+  },
+  {
+    "bytes": 9561,
+    "path": "episode_042_uncertainty.json.gz",
+    "sha256": "778b71d1046aae444abf5e8d611596500eaea803ebe4db4a1393dea4900dc4e5"
+  },
+  {
+    "bytes": 9653,
+    "path": "episode_043_uncertainty.json.gz",
+    "sha256": "0e7a93a31b2c771f11b4ee8d4e51b9ccc89edb5d6089574d47ec082782bca595"
+  },
+  {
+    "bytes": 9538,
+    "path": "episode_044_uncertainty.json.gz",
+    "sha256": "f101a2f94e5eaefb6f9248312358eebcfde65fb45624418dd7f7fad07390730e"
+  },
+  {
+    "bytes": 7794,
+    "path": "episode_045_uncertainty.json.gz",
+    "sha256": "915d733161c41551c05593c424353a0a29c9e3db3f6f9467a481be40ffd32f38"
+  },
+  {
+    "bytes": 7430,
+    "path": "episode_046_uncertainty.json.gz",
+    "sha256": "734b401b26c68054c06876776e74816fbf6a1466e65a2107c63465027f35d17f"
+  },
+  {
+    "bytes": 13328,
+    "path": "episode_047_uncertainty.json.gz",
+    "sha256": "45b1a2562b2545e56da991ab9b3b8eb405ee7a88e2031c9c1432def7dd5d896a"
+  },
+  {
+    "bytes": 15569,
+    "path": "episode_048_uncertainty.json.gz",
+    "sha256": "e9ec5310ea46ca42a0d53e741aedca237a0b4fc9864e8d89255b85836048712b"
+  },
+  {
+    "bytes": 8915,
+    "path": "episode_049_uncertainty.json.gz",
+    "sha256": "4d9aea6d6a1212934821315de2a8b666431d28a0d8e0ad7ab1be998e3f5d7da7"
+  },
+  {
+    "bytes": 8924,
+    "path": "episode_050_uncertainty.json.gz",
+    "sha256": "d5d508d4ec4fce8c9d8f4e8ea95c298d59f82a11725dd312e9eac975c56006da"
+  },
+  {
+    "bytes": 14691,
+    "path": "episode_051_uncertainty.json.gz",
+    "sha256": "f3c949ab56c6f6ec2491d7678ebcf00c1832659015680ec33dbe7ae864aa8d2c"
+  },
+  {
+    "bytes": 15170,
+    "path": "episode_052_uncertainty.json.gz",
+    "sha256": "d253be2bbfce1b8693b0854556569f1c17fb92b4a05369146e840793daa36e36"
+  },
+  {
+    "bytes": 14917,
+    "path": "episode_053_uncertainty.json.gz",
+    "sha256": "49dc1395ba3b74036371fcd94526749e13bc36c5b6b665890e51c6e2cb3acaa6"
+  },
+  {
+    "bytes": 14194,
+    "path": "episode_054_uncertainty.json.gz",
+    "sha256": "3576e445ab67e0cca1aa9fa96d3371f96337ea920a48cebab5fbf88cdbfa098b"
+  },
+  {
+    "bytes": 14590,
+    "path": "episode_055_uncertainty.json.gz",
+    "sha256": "1875023c60e2c9f65ecff28b3e13771e33b58f8198f2bba6b57cee005d5e4c7d"
+  },
+  {
+    "bytes": 13947,
+    "path": "episode_056_uncertainty.json.gz",
+    "sha256": "caa2a354fb5f01be9b695d8d72378efe328a294e9b6b5b0cac672aafc0024cd6"
+  },
+  {
+    "bytes": 8241,
+    "path": "episode_057_uncertainty.json.gz",
+    "sha256": "0e3eb25f3890934ab8905a6e730387086d68c25abc898092f83a742c8a88fa57"
+  },
+  {
+    "bytes": 7943,
+    "path": "episode_058_uncertainty.json.gz",
+    "sha256": "44cd881f91e08ad5574e0f400d00568710ddc29afa1ee6410073a906aa59643c"
+  },
+  {
+    "bytes": 8042,
+    "path": "episode_059_uncertainty.json.gz",
+    "sha256": "29301ee081f21e8fb91ab2a1550ebe541c3842ee71ee5833acfff908c742ae6a"
+  },
+  {
+    "bytes": 7892,
+    "path": "episode_060_uncertainty.json.gz",
+    "sha256": "62cd628f3fe768befb5d5bcab84f14175027e853c20931856702e95aee955f91"
+  },
+  {
+    "bytes": 9926,
+    "path": "episode_061_uncertainty.json.gz",
+    "sha256": "d284d5b59859c9b452382e081363f5dff473d81a18f582425a5f730283f396d1"
+  },
+  {
+    "bytes": 10119,
+    "path": "episode_062_uncertainty.json.gz",
+    "sha256": "cbd589e17ee643c2af79c1978b42a286646a63034a8e26f0127ab9a75ea23369"
+  },
+  {
+    "bytes": 10875,
+    "path": "episode_063_uncertainty.json.gz",
+    "sha256": "23003b2790f50cfe55895d00997d636ffe96c98f333fbf173cea15ed9d784cf3"
+  },
+  {
+    "bytes": 15177,
+    "path": "episode_064_uncertainty.json.gz",
+    "sha256": "48a4be0d7134d0f35edcd407ab74c6bcd6570098fffef89f3e35364e40ee1af3"
+  },
+  {
+    "bytes": 11179,
+    "path": "episode_065_uncertainty.json.gz",
+    "sha256": "0c81d01824839841154f5c8e3aac3a3a21888fecb034db6fcd2708e3e3b4b092"
+  },
+  {
+    "bytes": 11441,
+    "path": "episode_066_uncertainty.json.gz",
+    "sha256": "d281bfaeae95f283ed64beea33916db18018116d42681dc890148b45ade4dfff"
+  },
+  {
+    "bytes": 14973,
+    "path": "episode_067_uncertainty.json.gz",
+    "sha256": "b5609a77dfc77eb94f058eb757bea1e4e5e6e9c7a56c627d42ca75fe76008f93"
+  },
+  {
+    "bytes": 15413,
+    "path": "episode_068_uncertainty.json.gz",
+    "sha256": "b1b528c00b037bf712c6bf46a1831d2954c1762406f114c26d10eebef175894d"
+  },
+  {
+    "bytes": 7896,
+    "path": "episode_069_uncertainty.json.gz",
+    "sha256": "f8d2af00f671429db0a496dff3cb32adc97de110e23c149b9bc6894d2bf611e9"
+  },
+  {
+    "bytes": 8183,
+    "path": "episode_070_uncertainty.json.gz",
+    "sha256": "93dc05a82230404b00113963753ed1be4d347715ea7d071d2239fdc910b3a6b7"
+  },
+  {
+    "bytes": 8950,
+    "path": "episode_071_uncertainty.json.gz",
+    "sha256": "36dde1fb1cc086c7e60add21f8abe7f955bf28fc7fb475ab045d64e04b79ed1c"
+  },
+  {
+    "bytes": 8723,
+    "path": "episode_072_uncertainty.json.gz",
+    "sha256": "83e40ffb52d514b23073005ed1eb6c3e8df825cd76e5e8cf500897de9f47cf1e"
+  }
+]

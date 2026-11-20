@@ -1,0 +1,12 @@
+[
+  {
+    "bytes": 1555,
+    "path": "failure.txt",
+    "sha256": "00d45fabde6610d21dcd6992266ed82355ac8c698412fc30373af70703cf10f0"
+  },
+  {
+    "bytes": 2548,
+    "path": "prior_inventory.json",
+    "sha256": "ec411a3175f86ad17de36cc0059cc36006587131958e3bc52799b0dc37ea4324"
+  }
+]

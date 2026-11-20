@@ -1,0 +1,2367 @@
+[
+  {
+    "bytes": 153,
+    "path": "additional_checks/artifact_manifest.json",
+    "sha256": "6eebaef5488e694306eff4d5169c9f4301d070378b7bd1b7dfde3f00476c45e1"
+  },
+  {
+    "bytes": 29397,
+    "path": "additional_checks/blocked_retry_audit.json",
+    "sha256": "d388bfb2d5ebf0d6e55fd71fe6fc08e4d8629d323b9c7765484753f31e06c856"
+  },
+  {
+    "bytes": 709,
+    "path": "analysis/artifact_manifest.json",
+    "sha256": "d30f4becbe2e1a17e66a00911e455453be38c0a11e97ff1d6cf7d9effdc7156b"
+  },
+  {
+    "bytes": 62010,
+    "path": "analysis/comparison.png",
+    "sha256": "82842969a0d8634abf8225d08791df79076491411388ee2da42e15d70d01a146"
+  },
+  {
+    "bytes": 307174,
+    "path": "analysis/episode_metrics.json",
+    "sha256": "51ef2cee97da14c90fa2ad92578121b250d1965947584ddc6a44bea8b7011b24"
+  },
+  {
+    "bytes": 623753,
+    "path": "analysis/paired.json",
+    "sha256": "cbc81c3f99338033636dfdaeacdf1ddef347658625c3dcd0a7f6646c5ef80bff"
+  },
+  {
+    "bytes": 1666,
+    "path": "analysis/research_report.md",
+    "sha256": "a3515208d1dba53c42fe9c831bbaf24292386a95ddd09b109942653fe6f94c75"
+  },
+  {
+    "bytes": 12201,
+    "path": "analysis/summary.json",
+    "sha256": "b89576ffa315eede1aa206b82969235f9e529f4f1bf83b817bd72b45208c0d57"
+  },
+  {
+    "bytes": 2264,
+    "path": "binding.json",
+    "sha256": "2fa5688fe61519b2c9aeed1a354882d29a2c1cd8afee122f0e8d58fc63129448"
+  },
+  {
+    "bytes": 1022,
+    "path": "completion.json",
+    "sha256": "94f4538aa3caa5def884db1e1e4bd647aacf6cb9265385d2e2fccea792911684"
+  },
+  {
+    "bytes": 66087,
+    "path": "fit72/artifact_manifest.json",
+    "sha256": "9e0fe20d81aa080e92cde419258903c6f3aeb9d2af84a1208700d53bd1eec7c4"
+  },
+  {
+    "bytes": 2942,
+    "path": "fit72/episode_001_age.json.gz",
+    "sha256": "f64890696247bad44bfa28487fc9360c96fdc29a73f6097aa61387b67d52a621"
+  },
+  {
+    "bytes": 3431,
+    "path": "fit72/episode_001_age5.json.gz",
+    "sha256": "b49576eeede3bab60b0ad347060e3ad6ef44f51ec2c0c0c11df5c1a7740a8210"
+  },
+  {
+    "bytes": 2891,
+    "path": "fit72/episode_001_periodic.json.gz",
+    "sha256": "cdf1645839cf5b6dfc45b6cae3418867e052e1d4b56d13891882b52086656611"
+  },
+  {
+    "bytes": 4123,
+    "path": "fit72/episode_001_raa_advance.json.gz",
+    "sha256": "f17e429b336c8813f84152edd52e10620afd76ef428ce056e70d6e7aa8aba30f"
+  },
+  {
+    "bytes": 3893,
+    "path": "fit72/episode_001_raa_defer.json.gz",
+    "sha256": "d86aae55d9f81e1110e173ec5598dab3790379f505e91351c5e7819dc48836a9"
+  },
+  {
+    "bytes": 4122,
+    "path": "fit72/episode_001_raa_joint.json.gz",
+    "sha256": "716c8ea5910d0618e925171f34847d158680c9f7639b1e869f06fb69e266ffbf"
+  },
+  {
+    "bytes": 2940,
+    "path": "fit72/episode_002_age.json.gz",
+    "sha256": "684c9acf74adf77479a81937e5de8b7b6b76ae1f454d71d86e86ca228e4da076"
+  },
+  {
+    "bytes": 3432,
+    "path": "fit72/episode_002_age5.json.gz",
+    "sha256": "97916929f1456be74b4e68d3cf65746d20cfbaeae1c7e65d0cf563fda5621eed"
+  },
+  {
+    "bytes": 2886,
+    "path": "fit72/episode_002_periodic.json.gz",
+    "sha256": "d4e9f0b7387e0035b45000b6ccf8444b1bccefb0b8a15b00b0294f322c9ae4f9"
+  },
+  {
+    "bytes": 4127,
+    "path": "fit72/episode_002_raa_advance.json.gz",
+    "sha256": "5331f3d1941a8304f61273e24aa59acd598d8b543a2aa99e23a38f6415e4c643"
+  },
+  {
+    "bytes": 3883,
+    "path": "fit72/episode_002_raa_defer.json.gz",
+    "sha256": "c3d803ae47e2b281de9f4cc3bea81ab01ca1fd6932777a28994777801f1c141e"
+  },
+  {
+    "bytes": 4120,
+    "path": "fit72/episode_002_raa_joint.json.gz",
+    "sha256": "4b4c30627fe4d08983f20cd7c607541b54d7817a91f0fd889d7dcedecda290bb"
+  },
+  {
+    "bytes": 4615,
+    "path": "fit72/episode_003_age.json.gz",
+    "sha256": "2b5e34e07d53cc99bd5a2af0498ec8174befa438b786f5d519d70340c5c030bb"
+  },
+  {
+    "bytes": 5599,
+    "path": "fit72/episode_003_age5.json.gz",
+    "sha256": "b617f450fe492e6f052df57a31d1416ebf628c03b0ec85458bda3a1f4768ca0f"
+  },
+  {
+    "bytes": 4890,
+    "path": "fit72/episode_003_periodic.json.gz",
+    "sha256": "0f414e4e3cc3d7d30015a4e62124e33f7cf59c71cfa2d5fd72c07619f132d28c"
+  },
+  {
+    "bytes": 6138,
+    "path": "fit72/episode_003_raa_advance.json.gz",
+    "sha256": "133bcf7f2972df535f096e3819282b0e54d3fca503f834dd8806d7429c707738"
+  },
+  {
+    "bytes": 6963,
+    "path": "fit72/episode_003_raa_defer.json.gz",
+    "sha256": "42960d952b23305e0e0431cbdc24ce5d42748db060d2a3f82e4d37f05bcf9142"
+  },
+  {
+    "bytes": 6135,
+    "path": "fit72/episode_003_raa_joint.json.gz",
+    "sha256": "f2b253d18cfaee3b1afe6e5e709737a519fb203d7492ed66b700b1c455ff9bb8"
+  },
+  {
+    "bytes": 4608,
+    "path": "fit72/episode_004_age.json.gz",
+    "sha256": "e94c4178e00020532d1de1ceb1ea50ac466a910556a2d15795ac5b6475052d9f"
+  },
+  {
+    "bytes": 5588,
+    "path": "fit72/episode_004_age5.json.gz",
+    "sha256": "9001fe598fe7ea12113f0a4778a97b2b0e1acf1637a375ba5193ccea41484291"
+  },
+  {
+    "bytes": 4898,
+    "path": "fit72/episode_004_periodic.json.gz",
+    "sha256": "8b98525e3609728d1c719589e39a951e5c436db1e6057a7269a808e822818ca0"
+  },
+  {
+    "bytes": 6125,
+    "path": "fit72/episode_004_raa_advance.json.gz",
+    "sha256": "47c84dd1b79767f5e64aba48a06dc24379419bd5afe748e40923d2e21151e13c"
+  },
+  {
+    "bytes": 6955,
+    "path": "fit72/episode_004_raa_defer.json.gz",
+    "sha256": "f348175a9d2401e912b9f7057b3125f23c9b1c3847373bb18012a97c8f264b9b"
+  },
+  {
+    "bytes": 6124,
+    "path": "fit72/episode_004_raa_joint.json.gz",
+    "sha256": "b360057f64265b568682509aa0446c56b0125dc2b75f1b6d230ac3248b8b8293"
+  },
+  {
+    "bytes": 3484,
+    "path": "fit72/episode_005_age.json.gz",
+    "sha256": "a8bda2185c95fec3358ac7b688f21ed9bfba0138ddf51c26e426d7276d1c8a11"
+  },
+  {
+    "bytes": 3995,
+    "path": "fit72/episode_005_age5.json.gz",
+    "sha256": "dcfe6b55cdcc4f9ad083c55a61ec15c45a4d240824c9f9959f3a00af988116dc"
+  },
+  {
+    "bytes": 3446,
+    "path": "fit72/episode_005_periodic.json.gz",
+    "sha256": "04e43dc2d1223427341d00d631807ca9e106122978d064f3b91f45217a49b62f"
+  },
+  {
+    "bytes": 4701,
+    "path": "fit72/episode_005_raa_advance.json.gz",
+    "sha256": "fe1e3bfda708751b2de4b1fe265afc25d5a0ecbbe1e10e02c98accecbb0478f1"
+  },
+  {
+    "bytes": 4773,
+    "path": "fit72/episode_005_raa_defer.json.gz",
+    "sha256": "a92f30b27ea2c358c1f056b5769a437030fe3b49a6e8c0b390585bf621013884"
+  },
+  {
+    "bytes": 4698,
+    "path": "fit72/episode_005_raa_joint.json.gz",
+    "sha256": "60971860bec0a1df99357dfa076ad015270321cc0078e8887637285c0ac744d6"
+  },
+  {
+    "bytes": 3489,
+    "path": "fit72/episode_006_age.json.gz",
+    "sha256": "638fbbd33643a8c361c9258119bae742b44c618eebf242141652cb129cf79463"
+  },
+  {
+    "bytes": 3993,
+    "path": "fit72/episode_006_age5.json.gz",
+    "sha256": "3c46e679bb8f5159df744756800042704b1fc9d124433c792a046e5b9f736dc7"
+  },
+  {
+    "bytes": 3451,
+    "path": "fit72/episode_006_periodic.json.gz",
+    "sha256": "80ee134594a347ddc87f8fb15e861ff10ed78e1d2a9d46b81c99c2e719423a6a"
+  },
+  {
+    "bytes": 4709,
+    "path": "fit72/episode_006_raa_advance.json.gz",
+    "sha256": "54860febca1c3751c16d58a4506ef2e0a50beec0316c0c92287c7d5284474694"
+  },
+  {
+    "bytes": 4785,
+    "path": "fit72/episode_006_raa_defer.json.gz",
+    "sha256": "364842dab76bda1cf03ff690dac53a611d79867e2dda26a74881f41a3d8dafe8"
+  },
+  {
+    "bytes": 4705,
+    "path": "fit72/episode_006_raa_joint.json.gz",
+    "sha256": "0b921f1a0e4f426507e631fce62d57a012e2d642bfc9b1c9914783e160a66b59"
+  },
+  {
+    "bytes": 2890,
+    "path": "fit72/episode_007_age.json.gz",
+    "sha256": "83c554dadef5df14a4b3b1daf1943e6448fb8c2e6f783a8d391b0e999fdc16e4"
+  },
+  {
+    "bytes": 3660,
+    "path": "fit72/episode_007_age5.json.gz",
+    "sha256": "e55dcffa43632c01d0585323c2cd670bcf73c254521a4148cd7d78630ebd4036"
+  },
+  {
+    "bytes": 3313,
+    "path": "fit72/episode_007_periodic.json.gz",
+    "sha256": "d2346bec2bd1f0c5a4d493567b77d637554a5cb0a4a46de99a4370354388eef3"
+  },
+  {
+    "bytes": 3697,
+    "path": "fit72/episode_007_raa_advance.json.gz",
+    "sha256": "e1c0f52f1743ef58befa9bb1212a5660a84bd754a655f979b7c3951b04c22149"
+  },
+  {
+    "bytes": 4313,
+    "path": "fit72/episode_007_raa_defer.json.gz",
+    "sha256": "d4a708a324f0fc8c6ff05d53b45cdd31b1fae968dfe100f8d3cb4a93f7e1d09d"
+  },
+  {
+    "bytes": 3694,
+    "path": "fit72/episode_007_raa_joint.json.gz",
+    "sha256": "1b45e7fb89da129ab61e1b36ff94bfc039baf3655fd4208681d5fe6eb6065a99"
+  },
+  {
+    "bytes": 2877,
+    "path": "fit72/episode_008_age.json.gz",
+    "sha256": "741eb74bed8880fb6a910a3baa7d4181b8307d2095e3fc42d14c8577e908df32"
+  },
+  {
+    "bytes": 3663,
+    "path": "fit72/episode_008_age5.json.gz",
+    "sha256": "af63cc23edd53d7f9c9f6f8d06ce816474f92e98afb70f572c3bd047cab9ff97"
+  },
+  {
+    "bytes": 3315,
+    "path": "fit72/episode_008_periodic.json.gz",
+    "sha256": "25ecaa1d52f45c76ca0af6f9a0304a0bac6fec75aecb92b41875e7ff8bd36a8a"
+  },
+  {
+    "bytes": 3692,
+    "path": "fit72/episode_008_raa_advance.json.gz",
+    "sha256": "03c614e8543a857614d45fae0f54d11a6a76a939746f40ea58df17dff7ba81db"
+  },
+  {
+    "bytes": 4320,
+    "path": "fit72/episode_008_raa_defer.json.gz",
+    "sha256": "edd2487bebb302b5a51629a624f773625636824b3f978970ea3d8642ea54eab8"
+  },
+  {
+    "bytes": 3698,
+    "path": "fit72/episode_008_raa_joint.json.gz",
+    "sha256": "43a69b74ff0e7d7f03a59bd75aedb6ae848f2d2c7f5f0d4dae7859a25944c222"
+  },
+  {
+    "bytes": 2924,
+    "path": "fit72/episode_009_age.json.gz",
+    "sha256": "c0b15a9914d350d0da3ad371db3ff9598e8adf2a022de42ff0ca72039ccf78a2"
+  },
+  {
+    "bytes": 3229,
+    "path": "fit72/episode_009_age5.json.gz",
+    "sha256": "d4d8c21c247df1608ddb9da6fba5cc0104f6379572545448ef554921a5a196a0"
+  },
+  {
+    "bytes": 2874,
+    "path": "fit72/episode_009_periodic.json.gz",
+    "sha256": "e098d0b45c00ecdf20c68447d8fdab58c34b40ff1969f006fc4a4304407eaffd"
+  },
+  {
+    "bytes": 3707,
+    "path": "fit72/episode_009_raa_advance.json.gz",
+    "sha256": "decb1e1be6cb669161a0b3a5212e74755ccd059dc5623eb18bff20782a479c11"
+  },
+  {
+    "bytes": 3715,
+    "path": "fit72/episode_009_raa_defer.json.gz",
+    "sha256": "6cdfb128d68b16d594a828510764fbb584af63a3978fc831c29d8d8aaa39d61f"
+  },
+  {
+    "bytes": 3701,
+    "path": "fit72/episode_009_raa_joint.json.gz",
+    "sha256": "2c7ca0352e61be8a1d3a3d235aa873e593fbf1df7ab74b626e7e2e16c722a5cc"
+  },
+  {
+    "bytes": 2953,
+    "path": "fit72/episode_010_age.json.gz",
+    "sha256": "751ea7850e7406fed48fe43b7048b059b7cb77ac8d5e6af8801d47653e75acc4"
+  },
+  {
+    "bytes": 3244,
+    "path": "fit72/episode_010_age5.json.gz",
+    "sha256": "c825f445c3368b38f496fabf601bc35a8bc49cbc098a76491e06d21d18f15eef"
+  },
+  {
+    "bytes": 2900,
+    "path": "fit72/episode_010_periodic.json.gz",
+    "sha256": "6d6aeb69655e81be50078ccafce2460c521c1b8951d8b2fdbeac7d4399697c50"
+  },
+  {
+    "bytes": 3722,
+    "path": "fit72/episode_010_raa_advance.json.gz",
+    "sha256": "94e1ded4aa747d3dbe18324acc4b85607366143b5359a69c6b710c8d2d4278f4"
+  },
+  {
+    "bytes": 3720,
+    "path": "fit72/episode_010_raa_defer.json.gz",
+    "sha256": "cfe2b5c18cf5cad6a2dabe3bcce5048680b6916937b618dd732d15875ec7a89a"
+  },
+  {
+    "bytes": 3722,
+    "path": "fit72/episode_010_raa_joint.json.gz",
+    "sha256": "8727b997fc0a3e3e9cac5c6c61e43196a4e0f67bfabcf8c3c238af92d8a35f57"
+  },
+  {
+    "bytes": 3023,
+    "path": "fit72/episode_011_age.json.gz",
+    "sha256": "77753ab94e9e5382459aa6bd6718fb6c95c25869c7711d0b1c72e76917b03e82"
+  },
+  {
+    "bytes": 3416,
+    "path": "fit72/episode_011_age5.json.gz",
+    "sha256": "ba8da034b0f2ed0a54cba574db1634e7a2fd460398a1668d727310f6c70e632d"
+  },
+  {
+    "bytes": 2965,
+    "path": "fit72/episode_011_periodic.json.gz",
+    "sha256": "6d1304e1d2015efb9d73bb3f6973b4a4f50b11bd099374793741b63a826ff1e5"
+  },
+  {
+    "bytes": 3935,
+    "path": "fit72/episode_011_raa_advance.json.gz",
+    "sha256": "3c38ca18ec382bd1ca2cc49ac5141b255c96dac25e45236ac4a17ddddf285e08"
+  },
+  {
+    "bytes": 3932,
+    "path": "fit72/episode_011_raa_defer.json.gz",
+    "sha256": "8c06548caa803f6267d56b9b0e864834657b823b921060b6fbee0b4e125d3c25"
+  },
+  {
+    "bytes": 3931,
+    "path": "fit72/episode_011_raa_joint.json.gz",
+    "sha256": "615d44019c59d53afb44f18ed1de84053d5798e9be43e87bada73f18b6c91ccc"
+  },
+  {
+    "bytes": 3011,
+    "path": "fit72/episode_012_age.json.gz",
+    "sha256": "355859a8f755f53a34fd7802ac5a030302954010ec54fc1c176b22756b4cef2e"
+  },
+  {
+    "bytes": 3401,
+    "path": "fit72/episode_012_age5.json.gz",
+    "sha256": "1cbac9478fe037988c0e29aba9feb7f38a98bf856652af0372fa54d2506c6484"
+  },
+  {
+    "bytes": 2963,
+    "path": "fit72/episode_012_periodic.json.gz",
+    "sha256": "76eb0b6b91ec8035808e4db2d488a5b500f5fa157fc95accb287c255a35586e9"
+  },
+  {
+    "bytes": 3920,
+    "path": "fit72/episode_012_raa_advance.json.gz",
+    "sha256": "b52b922b19c1dbf792de7476dfa23b7c1ffc6df003c42080177ceb21138409d3"
+  },
+  {
+    "bytes": 3924,
+    "path": "fit72/episode_012_raa_defer.json.gz",
+    "sha256": "38d4f3db26da0cfa3a6fa22c08494837010ed0f6c4e35782e6f1c6a81649a2d5"
+  },
+  {
+    "bytes": 3922,
+    "path": "fit72/episode_012_raa_joint.json.gz",
+    "sha256": "b142cdfd46f1395f46fcb1df8a62f381c390253c773811849d1faf4965c83755"
+  },
+  {
+    "bytes": 3338,
+    "path": "fit72/episode_013_age.json.gz",
+    "sha256": "27085cfa22b4ba56f3c5414fcaa9606d212ee89fe0e83724b1b7f4a0f671dae4"
+  },
+  {
+    "bytes": 3856,
+    "path": "fit72/episode_013_age5.json.gz",
+    "sha256": "26b44023bc55faa9e162d5a4e2745f8f787c6b7fb875b46560610756f2ab0d9d"
+  },
+  {
+    "bytes": 3119,
+    "path": "fit72/episode_013_periodic.json.gz",
+    "sha256": "148d0f9800c2da316f816b098c5cbc78121d723d7a689ea64b73c44b0e539511"
+  },
+  {
+    "bytes": 4162,
+    "path": "fit72/episode_013_raa_advance.json.gz",
+    "sha256": "11ca22dc9c437d0c4b736d0c6669e3a6757b6ef948ef5b06931a6b0a8458c46b"
+  },
+  {
+    "bytes": 4478,
+    "path": "fit72/episode_013_raa_defer.json.gz",
+    "sha256": "c5e38936671315d7857ff5f37f52eb837fd8aaef0f929d2932f255e711c04b5c"
+  },
+  {
+    "bytes": 4160,
+    "path": "fit72/episode_013_raa_joint.json.gz",
+    "sha256": "f01fe6d93795a4553998eede0547c2925be73e9047c68ea5889b927d5628c1a0"
+  },
+  {
+    "bytes": 3346,
+    "path": "fit72/episode_014_age.json.gz",
+    "sha256": "2750c1574dd91b7b0e6bedc36a2b5b296b902fe2cce35b7f3a79f78fcbca27c0"
+  },
+  {
+    "bytes": 3865,
+    "path": "fit72/episode_014_age5.json.gz",
+    "sha256": "0e4c09a784f1b6913d155e6f13f2e19e15b697486682442c0ba630d5a70f9c1b"
+  },
+  {
+    "bytes": 3129,
+    "path": "fit72/episode_014_periodic.json.gz",
+    "sha256": "935e8a110abb374597099a42ef4da754403e2fddaa5af6df469602e617ea1d69"
+  },
+  {
+    "bytes": 4168,
+    "path": "fit72/episode_014_raa_advance.json.gz",
+    "sha256": "4a1bdab94f82dba29fb4da6d49fd87419cfe28fde499b9137f312357b648b1a7"
+  },
+  {
+    "bytes": 4481,
+    "path": "fit72/episode_014_raa_defer.json.gz",
+    "sha256": "37d98c9b7c8dd4e2a1c6f79f5c3a575aa3bba0d16dae026cbcf1a973a5ca606e"
+  },
+  {
+    "bytes": 4162,
+    "path": "fit72/episode_014_raa_joint.json.gz",
+    "sha256": "db2a46ab5b44251a6cab2467fd53424fb06ad38445e89941fe142713c350c7ce"
+  },
+  {
+    "bytes": 3056,
+    "path": "fit72/episode_015_age.json.gz",
+    "sha256": "f048a6f62a504a8cd56f2d0c45fa920f072d4f5b9770236c50ca0d0d575927d8"
+  },
+  {
+    "bytes": 3383,
+    "path": "fit72/episode_015_age5.json.gz",
+    "sha256": "b0146374541dea5c2d7a05c4286f6cc0db86c32c3323cab7f1806ff8f463552a"
+  },
+  {
+    "bytes": 3139,
+    "path": "fit72/episode_015_periodic.json.gz",
+    "sha256": "dff785af831bae646eb1b378c4893ef37aba1c324ed90806a6fff7afec6828b6"
+  },
+  {
+    "bytes": 3873,
+    "path": "fit72/episode_015_raa_advance.json.gz",
+    "sha256": "72e76b7f3bd4dc2d46d0ce99eca0b5300aa9e65029102272584ba298dd0bd7be"
+  },
+  {
+    "bytes": 3898,
+    "path": "fit72/episode_015_raa_defer.json.gz",
+    "sha256": "904914b9cce0f642e0ad392beefeb82a429d394eaea9c8b10f0f293e3fe20086"
+  },
+  {
+    "bytes": 3878,
+    "path": "fit72/episode_015_raa_joint.json.gz",
+    "sha256": "a2a8c34f7a039d164dfca8d4853154a61355c28d6906c0784bda1972f497f501"
+  },
+  {
+    "bytes": 3025,
+    "path": "fit72/episode_016_age.json.gz",
+    "sha256": "a34b744195fcfe8f39a76b266ebd0d04e07bb17f57cbc8e0f3ef4e1cf7cab626"
+  },
+  {
+    "bytes": 3345,
+    "path": "fit72/episode_016_age5.json.gz",
+    "sha256": "c7ac05859742a79a6d37eff94c00c8a4ecece8de5320fc4d6eecc5383e24b2c4"
+  },
+  {
+    "bytes": 3102,
+    "path": "fit72/episode_016_periodic.json.gz",
+    "sha256": "9bb56d761678a6041b989ffe77eddf3d5fc2919887053cfd3c806f4dbea219ce"
+  },
+  {
+    "bytes": 3847,
+    "path": "fit72/episode_016_raa_advance.json.gz",
+    "sha256": "83a473b493ffa34cf7fd6b134b60806161508e43036880239dc03ed5d0f9d482"
+  },
+  {
+    "bytes": 3870,
+    "path": "fit72/episode_016_raa_defer.json.gz",
+    "sha256": "b8d6da86af4bdeb9c018457edcaa05469a984cad83d3b82244082c9c82e97181"
+  },
+  {
+    "bytes": 3848,
+    "path": "fit72/episode_016_raa_joint.json.gz",
+    "sha256": "1a48801885f82b11522903c4c926e864bcaf1c4d8644a6e96aabdb091d2cf881"
+  },
+  {
+    "bytes": 2756,
+    "path": "fit72/episode_017_age.json.gz",
+    "sha256": "15b444e2e232156b9775f20342ce15efc765401af372b632afb07846205317e2"
+  },
+  {
+    "bytes": 3106,
+    "path": "fit72/episode_017_age5.json.gz",
+    "sha256": "27858347373b170f3533129aae2b807ad48a658a50cd3d96bf379424f78528b7"
+  },
+  {
+    "bytes": 2735,
+    "path": "fit72/episode_017_periodic.json.gz",
+    "sha256": "6eaf9cd6a3b5c46d82d9698a93d3a53da153713e9063d7924ea09471bb6e88a4"
+  },
+  {
+    "bytes": 3447,
+    "path": "fit72/episode_017_raa_advance.json.gz",
+    "sha256": "7214298cc5ac419b3c8fc605ac0ed236f33180ebbb52109e48ca51e35e8bfeb0"
+  },
+  {
+    "bytes": 3465,
+    "path": "fit72/episode_017_raa_defer.json.gz",
+    "sha256": "3e4c92c18673c98f0540108eaac625720725e855f78f33ccbfaa21c7b6e2dacb"
+  },
+  {
+    "bytes": 3441,
+    "path": "fit72/episode_017_raa_joint.json.gz",
+    "sha256": "78d08fc64a6e5b5c57164bf2ade73aa6258655db00ef6767ece3feea34bc10c8"
+  },
+  {
+    "bytes": 2680,
+    "path": "fit72/episode_018_age.json.gz",
+    "sha256": "1026afe8e3ffaa8c07fbea2eb15d77915c2a85bc908863cc68cc281997bc636a"
+  },
+  {
+    "bytes": 3005,
+    "path": "fit72/episode_018_age5.json.gz",
+    "sha256": "887ce05c9f57f1595d5ca3edee8b1586f975296b039f7b995168d0f547812e82"
+  },
+  {
+    "bytes": 2665,
+    "path": "fit72/episode_018_periodic.json.gz",
+    "sha256": "95b5d575e061ea24c3e9d462b45ee48f2c5c4232c4eda86a57b86dfe68259543"
+  },
+  {
+    "bytes": 3349,
+    "path": "fit72/episode_018_raa_advance.json.gz",
+    "sha256": "5a9bec90c34a09f91edcbbfdc26930f289e03b11aa50e24e1a49ed85f40f6737"
+  },
+  {
+    "bytes": 3372,
+    "path": "fit72/episode_018_raa_defer.json.gz",
+    "sha256": "2da3e367e56c0134d9c16dd9798fffa75781bfac654687a1177b6db6702c4698"
+  },
+  {
+    "bytes": 3338,
+    "path": "fit72/episode_018_raa_joint.json.gz",
+    "sha256": "d246a7fda194951d183a955ca14e205059c6258fd7e8ef45e7429c17e972e208"
+  },
+  {
+    "bytes": 2245,
+    "path": "fit72/episode_019_age.json.gz",
+    "sha256": "4c41be88ea6a4f3cf5666d50d3b80c1cb119f97d53c3cfb5219caf880e2a2998"
+  },
+  {
+    "bytes": 2414,
+    "path": "fit72/episode_019_age5.json.gz",
+    "sha256": "8403eeace84dbc8165c25da4a77b0dd427f485af984b7c2ef9763f238de5ca04"
+  },
+  {
+    "bytes": 2208,
+    "path": "fit72/episode_019_periodic.json.gz",
+    "sha256": "33efe25a58d97c03052b0fbcdd095f640bbb38d960288b6f824aa3b45c72aca8"
+  },
+  {
+    "bytes": 2605,
+    "path": "fit72/episode_019_raa_advance.json.gz",
+    "sha256": "61a27b38e4e439f346fc1fa358400002304683748d38bb1458d7d92865f79398"
+  },
+  {
+    "bytes": 2595,
+    "path": "fit72/episode_019_raa_defer.json.gz",
+    "sha256": "73f19fa0b7c9076711121abea634dee5ff5a8c3e752c677e14e41139f5f92c59"
+  },
+  {
+    "bytes": 2598,
+    "path": "fit72/episode_019_raa_joint.json.gz",
+    "sha256": "891b55cdb08d05699bcdca88266e88e26dcc2d8d3602ce85302faf03c90de931"
+  },
+  {
+    "bytes": 2747,
+    "path": "fit72/episode_020_age.json.gz",
+    "sha256": "2e004975ca5995edabd93b34d9235df8d013ea62a5537853789eef52acd29268"
+  },
+  {
+    "bytes": 3008,
+    "path": "fit72/episode_020_age5.json.gz",
+    "sha256": "62679dfb38f47609de0b68866dee5e42d8c7b5efc4f4bb89ead4b7f275f52efa"
+  },
+  {
+    "bytes": 2675,
+    "path": "fit72/episode_020_periodic.json.gz",
+    "sha256": "7284b121530a9f8d6d993e57d566993fe9b8e64a0abaf84abc60dee8ae7c0ffa"
+  },
+  {
+    "bytes": 3418,
+    "path": "fit72/episode_020_raa_advance.json.gz",
+    "sha256": "56d30931306c2ae3f39502d525b22b9dc19d54320a5888d9131a7a8516241089"
+  },
+  {
+    "bytes": 3421,
+    "path": "fit72/episode_020_raa_defer.json.gz",
+    "sha256": "ae3b0665063afaa867194fa68ef58e640394f631fa8905b15a81a43367da506c"
+  },
+  {
+    "bytes": 3420,
+    "path": "fit72/episode_020_raa_joint.json.gz",
+    "sha256": "136835cda464b6246649440534a49fb5bdef500fce32dba0914ed338fc465665"
+  },
+  {
+    "bytes": 4620,
+    "path": "fit72/episode_021_age.json.gz",
+    "sha256": "21512f0262ea49590252ab7f85a97b9e3ad56fa9380c82d61c38142608453167"
+  },
+  {
+    "bytes": 5793,
+    "path": "fit72/episode_021_age5.json.gz",
+    "sha256": "25038fba7fb2c8150106b37af1406e6647fa1243278dd542b37ee59523ee2640"
+  },
+  {
+    "bytes": 4267,
+    "path": "fit72/episode_021_periodic.json.gz",
+    "sha256": "1fc91468613e730b8ad49a26f99cd2a0c4562e2a2922630fd00e27bef8673031"
+  },
+  {
+    "bytes": 7101,
+    "path": "fit72/episode_021_raa_advance.json.gz",
+    "sha256": "7477b93806a07fff6113ea3f5296391465d35d1da4e52f1522e0b2f15800a03b"
+  },
+  {
+    "bytes": 7107,
+    "path": "fit72/episode_021_raa_defer.json.gz",
+    "sha256": "0a745c9827af0da6bdeb742f1354cb52ab96117ca773e34a2482a50252615eba"
+  },
+  {
+    "bytes": 7100,
+    "path": "fit72/episode_021_raa_joint.json.gz",
+    "sha256": "42df22ad8e53ed1e52958fb9d39b4bbcf552b6792b25289c2c1fccc8459aa9ea"
+  },
+  {
+    "bytes": 4630,
+    "path": "fit72/episode_022_age.json.gz",
+    "sha256": "a369aca545b1a1200ed1764039b43de78563d7d96ca4ea4465357ab293a97565"
+  },
+  {
+    "bytes": 5803,
+    "path": "fit72/episode_022_age5.json.gz",
+    "sha256": "ff67c46d90a4e3e7fb181ed9e33d64351e7c8ccc1586c650d1ca48e0b77cda6b"
+  },
+  {
+    "bytes": 4278,
+    "path": "fit72/episode_022_periodic.json.gz",
+    "sha256": "e4fd78fbb0cb2a0ec75a7f710b4ddd880765bb69061a37b6dd0446b59dc653bd"
+  },
+  {
+    "bytes": 7103,
+    "path": "fit72/episode_022_raa_advance.json.gz",
+    "sha256": "010a226611c0ea22816745dd7ade38cc2d356d2f21f216d418b19be2d425d8ed"
+  },
+  {
+    "bytes": 7115,
+    "path": "fit72/episode_022_raa_defer.json.gz",
+    "sha256": "0616628a68b9441a7c7a4e62df4a61109ed8df857ff6da29518a28bac01e3c78"
+  },
+  {
+    "bytes": 7091,
+    "path": "fit72/episode_022_raa_joint.json.gz",
+    "sha256": "3bfa95e85dcc858df05e202fe2fd133d5385971f7abb8d3ff7ff90835451e951"
+  },
+  {
+    "bytes": 2655,
+    "path": "fit72/episode_023_age.json.gz",
+    "sha256": "beeca2b048fb83f74fde0220f4951feeb979454329fb03f24517260f80614608"
+  },
+  {
+    "bytes": 3235,
+    "path": "fit72/episode_023_age5.json.gz",
+    "sha256": "c0124903b27efe47158e5c869990cadc65293eaa6d86ef400869ea70fdc563b7"
+  },
+  {
+    "bytes": 2636,
+    "path": "fit72/episode_023_periodic.json.gz",
+    "sha256": "7e98e906af5f2e48139ed08634e0a23919c2be2ffabf9e00882cb451d24faacd"
+  },
+  {
+    "bytes": 3279,
+    "path": "fit72/episode_023_raa_advance.json.gz",
+    "sha256": "24c88a8e1b2ef3c729074067383cd0f08d6942ed2ea4c0c2a8d8257fa4d9d316"
+  },
+  {
+    "bytes": 3672,
+    "path": "fit72/episode_023_raa_defer.json.gz",
+    "sha256": "1d0ff8a9e762e80e2f2433173ac7b4f4825cf9d4f429b510bc8d99483f21c5e1"
+  },
+  {
+    "bytes": 3291,
+    "path": "fit72/episode_023_raa_joint.json.gz",
+    "sha256": "9d595b6104ad0c716ac8911626abcc8be8dfd656e4b325c27db74eceaee906d9"
+  },
+  {
+    "bytes": 2701,
+    "path": "fit72/episode_024_age.json.gz",
+    "sha256": "b82a6bcac6dd2d8c846027c7a19098db1dec0b45f20e75464e524df790abfb3e"
+  },
+  {
+    "bytes": 3287,
+    "path": "fit72/episode_024_age5.json.gz",
+    "sha256": "2ff9a4f9448ae24aaeb37ef76c4e7e5be71c28c3129e2af89d8dd23c898463f6"
+  },
+  {
+    "bytes": 2680,
+    "path": "fit72/episode_024_periodic.json.gz",
+    "sha256": "2219c264e230bcb1a11785af598a285a00c821363769f1eb7b44bf9d76511a9d"
+  },
+  {
+    "bytes": 3332,
+    "path": "fit72/episode_024_raa_advance.json.gz",
+    "sha256": "cd4992720a1ddd1206d4355fa86cea237861b6084f439ffb50cff99526d58ee0"
+  },
+  {
+    "bytes": 3709,
+    "path": "fit72/episode_024_raa_defer.json.gz",
+    "sha256": "c18be67e3bdbbd24cbe951a9128603059283841145becbfed355fbc92a63828f"
+  },
+  {
+    "bytes": 3327,
+    "path": "fit72/episode_024_raa_joint.json.gz",
+    "sha256": "fcf931835c928301397cdc757e4d7bb9a00374a13a6e2de8578394bbead2f0d7"
+  },
+  {
+    "bytes": 4875,
+    "path": "fit72/episode_025_age.json.gz",
+    "sha256": "3f678b01ebecb85d24d45cd221d3c7a9bed2d3426872f86433d4146cad336212"
+  },
+  {
+    "bytes": 5866,
+    "path": "fit72/episode_025_age5.json.gz",
+    "sha256": "7c5ac604d277dda1bd0e28405126e505fab29af24c5d33a49fceb063f7f518d9"
+  },
+  {
+    "bytes": 4843,
+    "path": "fit72/episode_025_periodic.json.gz",
+    "sha256": "10b51dc4c68c4836bc57c3de17dd31873b9bffd7a67de6ebf3c46d74ebefe1d5"
+  },
+  {
+    "bytes": 7003,
+    "path": "fit72/episode_025_raa_advance.json.gz",
+    "sha256": "6f10cbdc03b900ef515efcd80446ac897d6eb02cc408be6a32a9c4a9b7f8365b"
+  },
+  {
+    "bytes": 7436,
+    "path": "fit72/episode_025_raa_defer.json.gz",
+    "sha256": "040c045891a4d160541f10865ded2163886114e9176ec813d2692c9f867f40bc"
+  },
+  {
+    "bytes": 7016,
+    "path": "fit72/episode_025_raa_joint.json.gz",
+    "sha256": "2a0c5cd2c4499683c4723a064cb0372170d0ac0ae0a4274969f06aa2b708321d"
+  },
+  {
+    "bytes": 4579,
+    "path": "fit72/episode_026_age.json.gz",
+    "sha256": "e32bf5e11a4c6e0a1b2340307e629b84852c63febd1d14cd437ee3d1371674dd"
+  },
+  {
+    "bytes": 5709,
+    "path": "fit72/episode_026_age5.json.gz",
+    "sha256": "e26d374d1e632e6a2d3e135829f39a233e87663d6f94a553ad05f7135a4fde23"
+  },
+  {
+    "bytes": 4700,
+    "path": "fit72/episode_026_periodic.json.gz",
+    "sha256": "9fec894cfd17d3381aca224c0653ef76bced4d06a9e1998effc55d2bf8112cb3"
+  },
+  {
+    "bytes": 6991,
+    "path": "fit72/episode_026_raa_advance.json.gz",
+    "sha256": "8c8528d26e37688943b6e220f9bc02897aa7887d08fac8a8615095d441f528a9"
+  },
+  {
+    "bytes": 7212,
+    "path": "fit72/episode_026_raa_defer.json.gz",
+    "sha256": "181c5dc394624881580c3e1500707445ea594a42af9c30e89d1595ff0aeb7ccd"
+  },
+  {
+    "bytes": 6975,
+    "path": "fit72/episode_026_raa_joint.json.gz",
+    "sha256": "370da96b6cdc6298070454a76a44f3604bd084fb9643dfd8e8b96c612c6df051"
+  },
+  {
+    "bytes": 2692,
+    "path": "fit72/episode_027_age.json.gz",
+    "sha256": "ab55bb957be0712822722917ae1f6c3a0b5c27538db35f7047791d3252c2ec05"
+  },
+  {
+    "bytes": 3012,
+    "path": "fit72/episode_027_age5.json.gz",
+    "sha256": "b6fd48037859c8824f01a9a4daca7bc99475235564a1a9f73323510a94f59bfd"
+  },
+  {
+    "bytes": 2646,
+    "path": "fit72/episode_027_periodic.json.gz",
+    "sha256": "b84098f3480b0b92dcaf9936dfb4d12d772c093fe72825a4c20417cd26e369d0"
+  },
+  {
+    "bytes": 3416,
+    "path": "fit72/episode_027_raa_advance.json.gz",
+    "sha256": "bf858d02d71984ec87dc0614518e182387b85d91d9bca4d79dd3b2e70af0baad"
+  },
+  {
+    "bytes": 3419,
+    "path": "fit72/episode_027_raa_defer.json.gz",
+    "sha256": "22b90391f2e4ba304df4eb6123334b48febe89cc3e9aaa7d233f23df76d6a9ed"
+  },
+  {
+    "bytes": 3420,
+    "path": "fit72/episode_027_raa_joint.json.gz",
+    "sha256": "ef3642231cc9b8dd946eeb7aa3a8902d7e695edbc14f4c578264c32b5f2cc6f8"
+  },
+  {
+    "bytes": 2683,
+    "path": "fit72/episode_028_age.json.gz",
+    "sha256": "d8c66c39bdc870769bfc898285503b3d2055518c4b15bacacc8eca0995b4e250"
+  },
+  {
+    "bytes": 3001,
+    "path": "fit72/episode_028_age5.json.gz",
+    "sha256": "491bbc83d19c7d988aade68d95bc3ef90f087ad7d78ffce1720b804b8fbaba28"
+  },
+  {
+    "bytes": 2638,
+    "path": "fit72/episode_028_periodic.json.gz",
+    "sha256": "3f3d5cc8daa845d09c14f68c3f0e3207461c6170eede971e2f9972139df6e20e"
+  },
+  {
+    "bytes": 3423,
+    "path": "fit72/episode_028_raa_advance.json.gz",
+    "sha256": "370d15bfc853f777e6b3e62f6e6af6669c6029f6625fae38bff1a43a49841e2b"
+  },
+  {
+    "bytes": 3416,
+    "path": "fit72/episode_028_raa_defer.json.gz",
+    "sha256": "5583e10ad3b268a9f894cf845600c4a99bc84eea9a877f165e603b48de1efa28"
+  },
+  {
+    "bytes": 3409,
+    "path": "fit72/episode_028_raa_joint.json.gz",
+    "sha256": "a0087e7d3bd43cc587774f3c8a6e46e2004419e026ea26f58eebb78191cc6412"
+  },
+  {
+    "bytes": 3701,
+    "path": "fit72/episode_029_age.json.gz",
+    "sha256": "073a61837dd700665094b1bc68fc9c25c4a818aea9a238230fd3c5a9f9ab3519"
+  },
+  {
+    "bytes": 4409,
+    "path": "fit72/episode_029_age5.json.gz",
+    "sha256": "dff3ac9c95842353ac559f9ac6b5a6d16d4cc773b49117d73a4952a5a19075b3"
+  },
+  {
+    "bytes": 3626,
+    "path": "fit72/episode_029_periodic.json.gz",
+    "sha256": "01aea98be9134708139edf61c5982155abe29dd71c2a7d5d0656559aa26a3f8d"
+  },
+  {
+    "bytes": 5363,
+    "path": "fit72/episode_029_raa_advance.json.gz",
+    "sha256": "716f55c14deded7a87714b35948aeedc17d6b6294186b0d29a7ed0a22879eced"
+  },
+  {
+    "bytes": 5395,
+    "path": "fit72/episode_029_raa_defer.json.gz",
+    "sha256": "c190169fe7638f684d49c8234ce624f2f7ece5fb5c09d4a8d296cb7189c8b350"
+  },
+  {
+    "bytes": 5344,
+    "path": "fit72/episode_029_raa_joint.json.gz",
+    "sha256": "58e9ac8a86e96aef4b6273ccf1260f2d70dcbe272e755be47e45a5174cfd1ab0"
+  },
+  {
+    "bytes": 3712,
+    "path": "fit72/episode_030_age.json.gz",
+    "sha256": "c6c2960532551b71ed06f60834fe40568acff64bcaec4bebd139ea6df51bfaa5"
+  },
+  {
+    "bytes": 4413,
+    "path": "fit72/episode_030_age5.json.gz",
+    "sha256": "5d2e874d30cdc43396978064cb94a95a2607a894e01d058006f7dcc66abf6d4e"
+  },
+  {
+    "bytes": 3641,
+    "path": "fit72/episode_030_periodic.json.gz",
+    "sha256": "918b7265cbefc11963e3940da120428309659ba7fed07d528ed5abf8b24b7ea3"
+  },
+  {
+    "bytes": 5357,
+    "path": "fit72/episode_030_raa_advance.json.gz",
+    "sha256": "fec4f1ce236d41b62d27b773ce1ac580b01896bd363c89d87190cbecedaf0247"
+  },
+  {
+    "bytes": 5408,
+    "path": "fit72/episode_030_raa_defer.json.gz",
+    "sha256": "49ad2aee81eeecef8079e02b3bfb535a6747fae3dbe67325a51c08cbe2620d20"
+  },
+  {
+    "bytes": 5358,
+    "path": "fit72/episode_030_raa_joint.json.gz",
+    "sha256": "72238131c1dc0e79b77445bbe4f0613a921ea2a6b88ba7604219d8a24de25dd4"
+  },
+  {
+    "bytes": 3392,
+    "path": "fit72/episode_031_age.json.gz",
+    "sha256": "5b0eeaeedef9e6b8b57c6e475d5b111b86b0ca963645a49e5c9153c5db52f9c6"
+  },
+  {
+    "bytes": 3847,
+    "path": "fit72/episode_031_age5.json.gz",
+    "sha256": "6890672274c79ab9c55ea5929e9d2aa86cd0474656cec3d9046b9407557b4967"
+  },
+  {
+    "bytes": 3639,
+    "path": "fit72/episode_031_periodic.json.gz",
+    "sha256": "4399cb7b7850d98d8c2e49c34f4b33dae2bbcbf4704b68d6d2b9e7a8cd5e493c"
+  },
+  {
+    "bytes": 4577,
+    "path": "fit72/episode_031_raa_advance.json.gz",
+    "sha256": "c820ac300f27df1f25382dbd37c06a178192e9c747bd9508e5f630b13356eb23"
+  },
+  {
+    "bytes": 4668,
+    "path": "fit72/episode_031_raa_defer.json.gz",
+    "sha256": "7f8b754686148156595df1489c4031bc60a7cd7a9bd08b99c01831a1fe821beb"
+  },
+  {
+    "bytes": 4553,
+    "path": "fit72/episode_031_raa_joint.json.gz",
+    "sha256": "22810ef55fde21bed2fe2b1e1218011ac825a35b90cf03a469d6f9cbdaed4d9e"
+  },
+  {
+    "bytes": 3448,
+    "path": "fit72/episode_032_age.json.gz",
+    "sha256": "7ad85967a4e1badb8cf7ef17037f4a3c3ff7f842bbaf12582a15d6dfd969555e"
+  },
+  {
+    "bytes": 3905,
+    "path": "fit72/episode_032_age5.json.gz",
+    "sha256": "02e7452e588f52e62afc47f7e378fa14ffd5269b85f0626e1cab67304f82f629"
+  },
+  {
+    "bytes": 3747,
+    "path": "fit72/episode_032_periodic.json.gz",
+    "sha256": "c115621bcb4614a6df5e06c233c712727bc150ffb80ca0241df1931c871011de"
+  },
+  {
+    "bytes": 4621,
+    "path": "fit72/episode_032_raa_advance.json.gz",
+    "sha256": "83e02c72a2c4030a2e956597acb3cba95f7d3c8e00b641e73597219f657d6d4e"
+  },
+  {
+    "bytes": 4722,
+    "path": "fit72/episode_032_raa_defer.json.gz",
+    "sha256": "8c450a95c9d5fe723d484609d1908d0a9e3742935af57b680cdfee5de4e4b6bb"
+  },
+  {
+    "bytes": 4618,
+    "path": "fit72/episode_032_raa_joint.json.gz",
+    "sha256": "45e0303d09999d37cdae8948771442301facdea3dc16f2d631e551cf7780f98c"
+  },
+  {
+    "bytes": 4070,
+    "path": "fit72/episode_033_age.json.gz",
+    "sha256": "ecec42ddb07e7e2463be3046518aab70681d82c72b0a80591d3567d1e313bb7e"
+  },
+  {
+    "bytes": 4925,
+    "path": "fit72/episode_033_age5.json.gz",
+    "sha256": "ac962ac5ed3b847d5e7210cbea907c0c8e02047769e438a3a712860bfbaf3b9a"
+  },
+  {
+    "bytes": 3992,
+    "path": "fit72/episode_033_periodic.json.gz",
+    "sha256": "861be42185be462712925aa1b485b7446299db4507ae0342872cf19938754552"
+  },
+  {
+    "bytes": 5908,
+    "path": "fit72/episode_033_raa_advance.json.gz",
+    "sha256": "06c2a872605ad47583414ae3d933b750629b0b227a8364d9aae20824344a88d1"
+  },
+  {
+    "bytes": 6051,
+    "path": "fit72/episode_033_raa_defer.json.gz",
+    "sha256": "29346361e6b603d9b4d25c85fe2bb4e5d65b717e5c0dcf3719ce87ee2b53d876"
+  },
+  {
+    "bytes": 5912,
+    "path": "fit72/episode_033_raa_joint.json.gz",
+    "sha256": "7bf0f3703299fd2eed9c658ac0ed52f55f2cde4b21f9f09820da657cfddc4e73"
+  },
+  {
+    "bytes": 3945,
+    "path": "fit72/episode_034_age.json.gz",
+    "sha256": "312299b9acf0b5f7fe08d97259794751b46ec93828e0bbb2f7b1ffd057a73278"
+  },
+  {
+    "bytes": 4921,
+    "path": "fit72/episode_034_age5.json.gz",
+    "sha256": "b75198bdba51365cbe5f6da39e031c6a9d0b311ca817fdb4102c55eb010ac646"
+  },
+  {
+    "bytes": 3951,
+    "path": "fit72/episode_034_periodic.json.gz",
+    "sha256": "cc8177b7e29b7394ee46a882360781c705e2488d074cf9ab1e4f8b67e39f9191"
+  },
+  {
+    "bytes": 5862,
+    "path": "fit72/episode_034_raa_advance.json.gz",
+    "sha256": "c88dd7a77cd35444962f99317bd9ee3efad493a98a0b6deee3cd316d58655bba"
+  },
+  {
+    "bytes": 6078,
+    "path": "fit72/episode_034_raa_defer.json.gz",
+    "sha256": "4667a4b5cb82295f63e2f07488d66b64b2c6a3b2d2c5784c8375644c6b784a2a"
+  },
+  {
+    "bytes": 5869,
+    "path": "fit72/episode_034_raa_joint.json.gz",
+    "sha256": "b47181798a2fa7fb9b8e89f0f67d1bfd958b24c003d08a39f974451c7b929c70"
+  },
+  {
+    "bytes": 3498,
+    "path": "fit72/episode_035_age.json.gz",
+    "sha256": "ba78076827c11a5f1bf1ac3dde2df9a2374cddc2a3bcb5009bf07235bbd5fbaa"
+  },
+  {
+    "bytes": 3818,
+    "path": "fit72/episode_035_age5.json.gz",
+    "sha256": "c65aa57cdfa9d241da586a8d9b7f3e4f668425f9259c3248450335e0b57c6769"
+  },
+  {
+    "bytes": 3457,
+    "path": "fit72/episode_035_periodic.json.gz",
+    "sha256": "5a6baabd720471bdff282a5920ad7ee158cb680408deaaf7b520261ea4324bb1"
+  },
+  {
+    "bytes": 4506,
+    "path": "fit72/episode_035_raa_advance.json.gz",
+    "sha256": "96571f5fd42aab1731021307504d9ea69606b91a0784d9c1c614b2d51180bc6e"
+  },
+  {
+    "bytes": 4542,
+    "path": "fit72/episode_035_raa_defer.json.gz",
+    "sha256": "cd07d0826a277be76542a5570ffda6c2ad525cbbf9ee9580d2f66c54742d200a"
+  },
+  {
+    "bytes": 4503,
+    "path": "fit72/episode_035_raa_joint.json.gz",
+    "sha256": "f18b46a54ee942be413877e39a7f8744b37609e531fa893a867abe65c09ff898"
+  },
+  {
+    "bytes": 3498,
+    "path": "fit72/episode_036_age.json.gz",
+    "sha256": "d00766cef83d11892dc37f6bcadf03684a6b681cea074df10b203dbcd501ec93"
+  },
+  {
+    "bytes": 3821,
+    "path": "fit72/episode_036_age5.json.gz",
+    "sha256": "f80900c9b4f1f2304928d953b9d5b223b3fade9e0e85f2e5df1ba009df7243a3"
+  },
+  {
+    "bytes": 3478,
+    "path": "fit72/episode_036_periodic.json.gz",
+    "sha256": "d3cafb22b2d8c18ad181c34c70567e11a9a2fcd0235ff438cb13442e550f8a04"
+  },
+  {
+    "bytes": 4514,
+    "path": "fit72/episode_036_raa_advance.json.gz",
+    "sha256": "61a374b95bdfb772ab527a3e9972bccdbbb06de16c59206f937f60cd4bdba721"
+  },
+  {
+    "bytes": 4550,
+    "path": "fit72/episode_036_raa_defer.json.gz",
+    "sha256": "79d6b55a93af2e0747845f5fe7165ee1f6f189e5afd28ed11801be74c8a0b588"
+  },
+  {
+    "bytes": 4504,
+    "path": "fit72/episode_036_raa_joint.json.gz",
+    "sha256": "cc6f55903c435f624ea09b3a9aae00bc5efac69b13fb488025a2cbf9182fbc88"
+  },
+  {
+    "bytes": 2937,
+    "path": "fit72/episode_037_age.json.gz",
+    "sha256": "3c5055b15b70c0786092ccf12a7d01867b388e4ab9cd7ea14a2747358d063fbf"
+  },
+  {
+    "bytes": 3479,
+    "path": "fit72/episode_037_age5.json.gz",
+    "sha256": "624168d9115f2f6e0522404ad24ed5c62f28bdd604873c78df7a820b4c37c961"
+  },
+  {
+    "bytes": 3000,
+    "path": "fit72/episode_037_periodic.json.gz",
+    "sha256": "3fef3e71433fb82160098b7085a228d8e345d54ebbfcb997e144f0a6d412630d"
+  },
+  {
+    "bytes": 3940,
+    "path": "fit72/episode_037_raa_advance.json.gz",
+    "sha256": "d1e07c8dcefb25fedc79ca83675c5e5ff86fc7dab7fba13d4e64d821f2a58e5d"
+  },
+  {
+    "bytes": 4038,
+    "path": "fit72/episode_037_raa_defer.json.gz",
+    "sha256": "827ca3e4dfbd94478b099ee6f975978ec9688fc8252c17c5ecadbeaa579c2c1e"
+  },
+  {
+    "bytes": 3943,
+    "path": "fit72/episode_037_raa_joint.json.gz",
+    "sha256": "5ec6baeb9659cefdffc7b4dbeb0ac9c8235dbedc02224c5a00d10dd136b09360"
+  },
+  {
+    "bytes": 2941,
+    "path": "fit72/episode_038_age.json.gz",
+    "sha256": "ff848531088eda66be8727cf9691ff37d006b6c26cc925ad743ff4254880db20"
+  },
+  {
+    "bytes": 3478,
+    "path": "fit72/episode_038_age5.json.gz",
+    "sha256": "e8d8aadf348656ca079e8ebb44e327d034dab4cacd73667bba54b52af7036fa0"
+  },
+  {
+    "bytes": 3006,
+    "path": "fit72/episode_038_periodic.json.gz",
+    "sha256": "f22c3565a0d03a9b77b698a001a72a19a1e41351c78c07f08f1bdd63f9dfe678"
+  },
+  {
+    "bytes": 3935,
+    "path": "fit72/episode_038_raa_advance.json.gz",
+    "sha256": "061d02c9ae8b5def125913eb13e310dc3399ffaf7ea201a7c93cc46ecb828823"
+  },
+  {
+    "bytes": 4029,
+    "path": "fit72/episode_038_raa_defer.json.gz",
+    "sha256": "7221e7cf0cfa7d2f9299d20cbed6b95027aafb6fe8a1c0755de320264d73e223"
+  },
+  {
+    "bytes": 3935,
+    "path": "fit72/episode_038_raa_joint.json.gz",
+    "sha256": "18779f3f22c48a64edf9027fe4c9af508f2e11e3ead755117b265f6274fb5ff6"
+  },
+  {
+    "bytes": 3657,
+    "path": "fit72/episode_039_age.json.gz",
+    "sha256": "d76d6f280fa609880ee7e939f7d57fa941d947f67e21f43919d92b7b7343bff6"
+  },
+  {
+    "bytes": 4485,
+    "path": "fit72/episode_039_age5.json.gz",
+    "sha256": "9ecb7ba502b88b84f73a4ee654471ea80263f18ad5739fd175616ec01e4afcec"
+  },
+  {
+    "bytes": 3650,
+    "path": "fit72/episode_039_periodic.json.gz",
+    "sha256": "8d716cfaff4c804f22ac216b3efce85c74db9854f171f73a240924d5bf0688ea"
+  },
+  {
+    "bytes": 5328,
+    "path": "fit72/episode_039_raa_advance.json.gz",
+    "sha256": "ab0597f5a79964aedb9a0deba77efc6b070ef2d05899db86001beb82aa754022"
+  },
+  {
+    "bytes": 5482,
+    "path": "fit72/episode_039_raa_defer.json.gz",
+    "sha256": "464bc30153dca26f49ce63feafb70aa0fc9494ccb7a2c76539a7c625906d9d54"
+  },
+  {
+    "bytes": 5331,
+    "path": "fit72/episode_039_raa_joint.json.gz",
+    "sha256": "5ca454e7e3a08986663bf5b5a8dd8e5d42d8c6e2244d035747fde9da7e5cf383"
+  },
+  {
+    "bytes": 5194,
+    "path": "fit72/episode_040_age.json.gz",
+    "sha256": "2ac82273a498d51d4867421054b2a6d92d15023b524316715de09e8661c6fa5d"
+  },
+  {
+    "bytes": 6627,
+    "path": "fit72/episode_040_age5.json.gz",
+    "sha256": "183b2aa085a2ae03da35157a4d0ea413db1153b8fe93b4a79453458fba7ff4ca"
+  },
+  {
+    "bytes": 5195,
+    "path": "fit72/episode_040_periodic.json.gz",
+    "sha256": "ff7d140c5fea361656ea1851b1f94945cfcf39ac55af6e8cd8a2cb2b9ca45769"
+  },
+  {
+    "bytes": 7827,
+    "path": "fit72/episode_040_raa_advance.json.gz",
+    "sha256": "a164c309dc9904a0ada421e1a08447643fdc6f18782e7acca23b01d393c7ab36"
+  },
+  {
+    "bytes": 7968,
+    "path": "fit72/episode_040_raa_defer.json.gz",
+    "sha256": "71bc07094d54654398e02e57a34684bf4aeba4b4dbef8641861e18dd40f14afe"
+  },
+  {
+    "bytes": 7823,
+    "path": "fit72/episode_040_raa_joint.json.gz",
+    "sha256": "701322215979532444091089b648c5828fa771ac4517a28ec922d6119e1d0649"
+  },
+  {
+    "bytes": 3747,
+    "path": "fit72/episode_041_age.json.gz",
+    "sha256": "2ab40100b3a4b5d70ec3cfa2312a453a083d76122bdbc409fa48a936e72e9bb2"
+  },
+  {
+    "bytes": 4399,
+    "path": "fit72/episode_041_age5.json.gz",
+    "sha256": "1dccf4e028ba5b5d7ec42820aa8db08125b4824342beea29d96006d98467cd4a"
+  },
+  {
+    "bytes": 3950,
+    "path": "fit72/episode_041_periodic.json.gz",
+    "sha256": "cb25265dd9c231c7e9ee3b78c85a3094096e072fab940dcc8e07ce71489c1a80"
+  },
+  {
+    "bytes": 6870,
+    "path": "fit72/episode_041_raa_advance.json.gz",
+    "sha256": "62d8c0fad81474eb026d51fa197c2a71d8009d1fba89887a74aff16ee8097d6b"
+  },
+  {
+    "bytes": 5372,
+    "path": "fit72/episode_041_raa_defer.json.gz",
+    "sha256": "7f98e6b397c12cd721a0ae1e48e995ffa9b661ae7015e74e3031920659031279"
+  },
+  {
+    "bytes": 6873,
+    "path": "fit72/episode_041_raa_joint.json.gz",
+    "sha256": "9c7d9515950fc89a1c46bf010209d7c22a1c696a5c118ad435b6d0e7fb758ac9"
+  },
+  {
+    "bytes": 4755,
+    "path": "fit72/episode_042_age.json.gz",
+    "sha256": "81771f0dc34199defaed5c1cd7e86966e0d316c299363b95d5ccd8c2b7942130"
+  },
+  {
+    "bytes": 5709,
+    "path": "fit72/episode_042_age5.json.gz",
+    "sha256": "aec49bd2e672c17c106af843b67f1f0b98c4cb973a1a1f415a06bebd11022734"
+  },
+  {
+    "bytes": 4753,
+    "path": "fit72/episode_042_periodic.json.gz",
+    "sha256": "44fcd8da250e6204e2537a63b1f38b94ee1ef2a82c6a7651ab099d0cb4962388"
+  },
+  {
+    "bytes": 6877,
+    "path": "fit72/episode_042_raa_advance.json.gz",
+    "sha256": "36511fc4363ffeb89acde327cfc02dbd2afc04da4d1f08a828e1597a6ab6928f"
+  },
+  {
+    "bytes": 7142,
+    "path": "fit72/episode_042_raa_defer.json.gz",
+    "sha256": "d6272baf5c27a0e256af9df69fa436f9cc35710579f62d2606a23606b3eb162d"
+  },
+  {
+    "bytes": 6888,
+    "path": "fit72/episode_042_raa_joint.json.gz",
+    "sha256": "00c4a49f9ab19ca5c0048ff8769867912492f6b15d7437a1a6f3d147c18e2416"
+  },
+  {
+    "bytes": 4806,
+    "path": "fit72/episode_043_age.json.gz",
+    "sha256": "6752b49090f6471d9e75cb7a9ba65bb346ab44243ce49aba590fdc49a3e6433b"
+  },
+  {
+    "bytes": 5631,
+    "path": "fit72/episode_043_age5.json.gz",
+    "sha256": "fe4c4fee65495fcd52422cf73cfda50ef90b57ab89339ec8c4dc5dd165c7594d"
+  },
+  {
+    "bytes": 4604,
+    "path": "fit72/episode_043_periodic.json.gz",
+    "sha256": "58310fa0d9552476a46eb78d4271c1bd0cef4539787318258e9c4282bbfc1819"
+  },
+  {
+    "bytes": 6908,
+    "path": "fit72/episode_043_raa_advance.json.gz",
+    "sha256": "85cede76ecbe8a6b4579af68497c686cfbd9aa3b9c2e850540264816c2cf04e3"
+  },
+  {
+    "bytes": 7050,
+    "path": "fit72/episode_043_raa_defer.json.gz",
+    "sha256": "4eecda82dff9d17a7043fe1c20fa93e103d16d4e53a77502809345eb7bdcc6c2"
+  },
+  {
+    "bytes": 6924,
+    "path": "fit72/episode_043_raa_joint.json.gz",
+    "sha256": "bd9304aa6405b2bb93b167e795548336eafb9a53d56dd959d0ac02d1c8aacaff"
+  },
+  {
+    "bytes": 4799,
+    "path": "fit72/episode_044_age.json.gz",
+    "sha256": "582635510f36f713f3e6483c31fb8fbe2f7312b1c17e2c3bdcda46da25ac5ac2"
+  },
+  {
+    "bytes": 5633,
+    "path": "fit72/episode_044_age5.json.gz",
+    "sha256": "472a345724282f455914c696f416e710443842981f046f9d7b1de23b9ee7780f"
+  },
+  {
+    "bytes": 4612,
+    "path": "fit72/episode_044_periodic.json.gz",
+    "sha256": "79d17799c1ceb480feefe425b6b2e89c6fc1ce4c2ca45acbec47073dbe61b41a"
+  },
+  {
+    "bytes": 6912,
+    "path": "fit72/episode_044_raa_advance.json.gz",
+    "sha256": "b3c1c15c9a977cd8cf1e03a2b4355e75c9fbdb5b992ac2f3a9fe0950bf841a35"
+  },
+  {
+    "bytes": 7054,
+    "path": "fit72/episode_044_raa_defer.json.gz",
+    "sha256": "a3d533775ceac998cfaa81c07884417d14288da5bacfba2a3960143f0b8a1857"
+  },
+  {
+    "bytes": 6898,
+    "path": "fit72/episode_044_raa_joint.json.gz",
+    "sha256": "d732e10b4cb9a89cf32f3d7b6e231f548a1a62fef98a24fcd7fcea4040b1927b"
+  },
+  {
+    "bytes": 2906,
+    "path": "fit72/episode_045_age.json.gz",
+    "sha256": "5c569a6987174efa394444e0dc4c5344eee9e21c8da812a7a53b52e5dc91504f"
+  },
+  {
+    "bytes": 3434,
+    "path": "fit72/episode_045_age5.json.gz",
+    "sha256": "7cb395f5a1b4a6d4ffda35b376bcc1a6dcbb9bee6e33368862c03493d45ee77b"
+  },
+  {
+    "bytes": 2842,
+    "path": "fit72/episode_045_periodic.json.gz",
+    "sha256": "2866492ec44c6ca2eca8f309f07f1493e9ada76cf91e63ac338ceb67986aef6d"
+  },
+  {
+    "bytes": 3991,
+    "path": "fit72/episode_045_raa_advance.json.gz",
+    "sha256": "678728fed1a77869084476a1bed54148e39720a7059e3e0364222f4d47ba84fb"
+  },
+  {
+    "bytes": 4043,
+    "path": "fit72/episode_045_raa_defer.json.gz",
+    "sha256": "978275c3fa1517f3b900973df75382c90e16b546c99fc706a2e625ff881791f0"
+  },
+  {
+    "bytes": 3999,
+    "path": "fit72/episode_045_raa_joint.json.gz",
+    "sha256": "b3b955e224db4b799df692e178c7e18669d3e83ab9c295e39411e0c6a5305a10"
+  },
+  {
+    "bytes": 2892,
+    "path": "fit72/episode_046_age.json.gz",
+    "sha256": "3004b8c05390759ad6312a2304218362ba54db0d06fd3cc6a428353e60a21d7b"
+  },
+  {
+    "bytes": 3423,
+    "path": "fit72/episode_046_age5.json.gz",
+    "sha256": "195e0194b2ef6f575651418028895f4c2dc7773fee5d18a2fd88f47a449016dc"
+  },
+  {
+    "bytes": 2834,
+    "path": "fit72/episode_046_periodic.json.gz",
+    "sha256": "5c0bd16689243b936b31d738cf9d87574f5942a51d6e3762af9ff8dd6a5771b1"
+  },
+  {
+    "bytes": 3974,
+    "path": "fit72/episode_046_raa_advance.json.gz",
+    "sha256": "b219fd617beb03cdf2956aa4c6cab3a351c9b2fd181575c70b99de032bcf69ae"
+  },
+  {
+    "bytes": 4038,
+    "path": "fit72/episode_046_raa_defer.json.gz",
+    "sha256": "4d35a59e9e87842c69b57d44001ae21cf14493f781495d1bd294d47b4d58ee66"
+  },
+  {
+    "bytes": 3990,
+    "path": "fit72/episode_046_raa_joint.json.gz",
+    "sha256": "e15c5e5295f9e48b07597c8ce9c0d959bcac78b3c47dcaf0837ef8514e63021b"
+  },
+  {
+    "bytes": 2488,
+    "path": "fit72/episode_047_age.json.gz",
+    "sha256": "08b18f92042638ad77dcaea49b1950b0093f7923cd75db2e076c4467922a64e5"
+  },
+  {
+    "bytes": 2831,
+    "path": "fit72/episode_047_age5.json.gz",
+    "sha256": "22eb3b89c75c3c358c183f93370d70a13831b40f869ba2f94598b8ace3f67c8b"
+  },
+  {
+    "bytes": 2478,
+    "path": "fit72/episode_047_periodic.json.gz",
+    "sha256": "ff1e2c48bb76f2b1db65dc1a13302b8226ca1fca2d4a7aef0c0e4cc85af14fe4"
+  },
+  {
+    "bytes": 3253,
+    "path": "fit72/episode_047_raa_advance.json.gz",
+    "sha256": "8b626db231ea52698266e1c1606883345d1ee12a6e7e11900980671f439918c8"
+  },
+  {
+    "bytes": 3253,
+    "path": "fit72/episode_047_raa_defer.json.gz",
+    "sha256": "bcc3bec4676267e7043f3931144fe82c4af72791de874c6eba3366734265dd6e"
+  },
+  {
+    "bytes": 3244,
+    "path": "fit72/episode_047_raa_joint.json.gz",
+    "sha256": "2c1341bd84723ece06e93f7d7fe438627af9f4a43c459b3f2278199a9645465f"
+  },
+  {
+    "bytes": 2484,
+    "path": "fit72/episode_048_age.json.gz",
+    "sha256": "a1439df147e7a7248713d0992981d8c09cf43adbf3721998d1736ab8cd56f0e0"
+  },
+  {
+    "bytes": 2842,
+    "path": "fit72/episode_048_age5.json.gz",
+    "sha256": "1137f12d6e288837c63c4296b3b4433c8d1743ef92227ce7c52aa3f3aa602bda"
+  },
+  {
+    "bytes": 2473,
+    "path": "fit72/episode_048_periodic.json.gz",
+    "sha256": "37155c466ea699d89c26eb98b26fd8e7a73a12956e6d98da73367472ed47e627"
+  },
+  {
+    "bytes": 3258,
+    "path": "fit72/episode_048_raa_advance.json.gz",
+    "sha256": "e9469cf22aa589b16b1331485797a0ecc8894e75053297c5bf0899a527ac8aa1"
+  },
+  {
+    "bytes": 3251,
+    "path": "fit72/episode_048_raa_defer.json.gz",
+    "sha256": "7bb6b3e050cd19cce5909adc9d9fd26af5e31423652f776f47de4529e1a6aed2"
+  },
+  {
+    "bytes": 3246,
+    "path": "fit72/episode_048_raa_joint.json.gz",
+    "sha256": "b64bfdd353fd2c935eb05409c24338df24d40d991c50a020ca5f10bcd75f88ad"
+  },
+  {
+    "bytes": 5051,
+    "path": "fit72/episode_049_age.json.gz",
+    "sha256": "d6cf8c3cabaff1a15cbccbc7d4c275684a31b85c343b80c5ecbda513e3de4302"
+  },
+  {
+    "bytes": 4895,
+    "path": "fit72/episode_049_age5.json.gz",
+    "sha256": "dfe636bfdf90cf172936568d4db0431e07a7651244c261b4626f44b29aee4560"
+  },
+  {
+    "bytes": 4893,
+    "path": "fit72/episode_049_periodic.json.gz",
+    "sha256": "ca4f74eeb058b509edcafaf9e9b4fbe36c2537fca8c8e634ef3f269b3841745b"
+  },
+  {
+    "bytes": 7431,
+    "path": "fit72/episode_049_raa_advance.json.gz",
+    "sha256": "ba2b03576e56854de1ea4c91204ba18fc0b79390225d5e55399905cb39fd925a"
+  },
+  {
+    "bytes": 6045,
+    "path": "fit72/episode_049_raa_defer.json.gz",
+    "sha256": "af07009dc19035a082d6a2c2b6900e4eb8fac5d8c8a9a6e6c69402814f8962a8"
+  },
+  {
+    "bytes": 7427,
+    "path": "fit72/episode_049_raa_joint.json.gz",
+    "sha256": "dd629467a74298fba508e10c11c1f97926e1fecff98a47890dc0c4ca186ed270"
+  },
+  {
+    "bytes": 4061,
+    "path": "fit72/episode_050_age.json.gz",
+    "sha256": "41b9ad5e8b229f266559416bc09c40dc84d2cccda87b910d6ee5031cb0538ab5"
+  },
+  {
+    "bytes": 4873,
+    "path": "fit72/episode_050_age5.json.gz",
+    "sha256": "1d7991e35a7f2badce49818c8eae8f6760a3f1ea02a1c486806f4ed6b323f33b"
+  },
+  {
+    "bytes": 4794,
+    "path": "fit72/episode_050_periodic.json.gz",
+    "sha256": "6d43c8bb91c2dc40a483ce4aad4d7141a62ff3c7edaef8b496eaf9ee624b054b"
+  },
+  {
+    "bytes": 7407,
+    "path": "fit72/episode_050_raa_advance.json.gz",
+    "sha256": "55a2499c804211ab065b6b59bcb97c2c109610691362c383ddcd70d5f003b051"
+  },
+  {
+    "bytes": 6019,
+    "path": "fit72/episode_050_raa_defer.json.gz",
+    "sha256": "ec2390b8ce4a2813d988eafa0c8a2246c15df13580a749a3c73f496dd4bfcfed"
+  },
+  {
+    "bytes": 7409,
+    "path": "fit72/episode_050_raa_joint.json.gz",
+    "sha256": "85e467a1873dbeb78128857e02e7c8b86fbfce7dd54ab5719633e58e521e63b4"
+  },
+  {
+    "bytes": 2936,
+    "path": "fit72/episode_051_age.json.gz",
+    "sha256": "647a995cff7a4d84c97a03e4c225de2d6985afc392330802dc511c505c02fd52"
+  },
+  {
+    "bytes": 3713,
+    "path": "fit72/episode_051_age5.json.gz",
+    "sha256": "3f3499a265bfb2da4dc41318781a344a858d7d11619b39aa8342e673f355618f"
+  },
+  {
+    "bytes": 3216,
+    "path": "fit72/episode_051_periodic.json.gz",
+    "sha256": "35c85bffaa6ce17cee566fff095b450015b51b9df9d1beef7700864df89ee2bb"
+  },
+  {
+    "bytes": 3974,
+    "path": "fit72/episode_051_raa_advance.json.gz",
+    "sha256": "5c6ff2f2147b0438cb1edea8f59171441083a06d7a29b508abd83647102e7028"
+  },
+  {
+    "bytes": 4428,
+    "path": "fit72/episode_051_raa_defer.json.gz",
+    "sha256": "dc2ca1a0d62455984fc92b5e2539ebfbffd78f7f2b1398849578703365613ce8"
+  },
+  {
+    "bytes": 3973,
+    "path": "fit72/episode_051_raa_joint.json.gz",
+    "sha256": "275abebc7f237d138133c172b7eafe6d3b9c687cb820e335fb06e8834a333206"
+  },
+  {
+    "bytes": 2987,
+    "path": "fit72/episode_052_age.json.gz",
+    "sha256": "6221d10e84081d314d71bf151f3409f1a511f4891f735bed57b8b558fc3f3398"
+  },
+  {
+    "bytes": 3758,
+    "path": "fit72/episode_052_age5.json.gz",
+    "sha256": "e14acf0de456d97f5b55e9be15c041a5e4f842761075862e119cd568c22509da"
+  },
+  {
+    "bytes": 3266,
+    "path": "fit72/episode_052_periodic.json.gz",
+    "sha256": "4b97dc9c16a5767f57fe3b888e9c1e8fa16906390551864ba696d048181675de"
+  },
+  {
+    "bytes": 4008,
+    "path": "fit72/episode_052_raa_advance.json.gz",
+    "sha256": "bc926198fed3c5438427d807205e4e29bb20399c58a1415db51c4f60ba8acdbd"
+  },
+  {
+    "bytes": 4456,
+    "path": "fit72/episode_052_raa_defer.json.gz",
+    "sha256": "eeddb883693c08ed01b903c93a2259f67c3cba19693e1229ab116c7c93f16395"
+  },
+  {
+    "bytes": 4011,
+    "path": "fit72/episode_052_raa_joint.json.gz",
+    "sha256": "0d4348cf66056bff97c23c14950a9dd05c31304dbafd202591de62d7a81ed74b"
+  },
+  {
+    "bytes": 2661,
+    "path": "fit72/episode_053_age.json.gz",
+    "sha256": "ffc4fa8f606dce0e64a4e3880ebd556740b6fd1c7bfd75d9bc203c2ebb51a891"
+  },
+  {
+    "bytes": 2965,
+    "path": "fit72/episode_053_age5.json.gz",
+    "sha256": "54aaad4e27fb24b6dc74b8a46fec1b30369766f7ff7375ef70bda9482b1c8f02"
+  },
+  {
+    "bytes": 2655,
+    "path": "fit72/episode_053_periodic.json.gz",
+    "sha256": "0d6336aabdd383f0c6d1681d903928037d9ad3f7d9ae9c0267bcee837333733b"
+  },
+  {
+    "bytes": 3384,
+    "path": "fit72/episode_053_raa_advance.json.gz",
+    "sha256": "6f452849a4766dfc952f2c2fb91abc2a224956110ef1a44c8001a2fab6945234"
+  },
+  {
+    "bytes": 3350,
+    "path": "fit72/episode_053_raa_defer.json.gz",
+    "sha256": "e8373956d6d1d6eb1e83bab0d6836793a704aef577a7ab79fe37a9182269144a"
+  },
+  {
+    "bytes": 3378,
+    "path": "fit72/episode_053_raa_joint.json.gz",
+    "sha256": "72eb5b6b1bd3a17ed2f7fcf91ee3eb18fd24c1b7e8da979753ed82baf2638c29"
+  },
+  {
+    "bytes": 4706,
+    "path": "fit72/episode_054_age.json.gz",
+    "sha256": "812d845348818de88b3a593e431e25bfd6302dedaa04bba6becbbd2035158c5c"
+  },
+  {
+    "bytes": 5536,
+    "path": "fit72/episode_054_age5.json.gz",
+    "sha256": "048f70dd077942a6f23758031b02ce85a4e274e9379f5c7a6043e80a4d3bb8bb"
+  },
+  {
+    "bytes": 4703,
+    "path": "fit72/episode_054_periodic.json.gz",
+    "sha256": "da3cf8103eeb2746503b386d1fdbc98572c954fd61be25757dcff6b19a2e6e81"
+  },
+  {
+    "bytes": 6714,
+    "path": "fit72/episode_054_raa_advance.json.gz",
+    "sha256": "95eaa4b5f1e46ba366537a25be1b68139b79d4671784d927c192559647e1bd00"
+  },
+  {
+    "bytes": 6964,
+    "path": "fit72/episode_054_raa_defer.json.gz",
+    "sha256": "3e3ea8b87982c1ec6cbd42e23715dcb15e55f9467fc4ae8e2a4086a7c88a47d4"
+  },
+  {
+    "bytes": 6711,
+    "path": "fit72/episode_054_raa_joint.json.gz",
+    "sha256": "f581f621a55faddcca94774840adb02a57746218b5a3ef99dfbbcf902dbec925"
+  },
+  {
+    "bytes": 4482,
+    "path": "fit72/episode_055_age.json.gz",
+    "sha256": "7e7ca3520f90ceb0ea71b629330c6c1700cd1b3e53986fa6cb7949b46c4b808b"
+  },
+  {
+    "bytes": 3546,
+    "path": "fit72/episode_055_age5.json.gz",
+    "sha256": "14de5691fec807b83cb4b5687a2ba0355afb9c978774a2221f3cb64bdec04b45"
+  },
+  {
+    "bytes": 4506,
+    "path": "fit72/episode_055_periodic.json.gz",
+    "sha256": "ba55005d2cd51d5b0d1f59829feeff211704505d0b2dae0cc4735b6516d5c225"
+  },
+  {
+    "bytes": 5679,
+    "path": "fit72/episode_055_raa_advance.json.gz",
+    "sha256": "6f901abf14a4bed74d8da9e34136e92675c816d1ea0fb047c8e6f66b673b11a1"
+  },
+  {
+    "bytes": 4202,
+    "path": "fit72/episode_055_raa_defer.json.gz",
+    "sha256": "d33b944010bd980fa40bd277df6fcda022ebdb01c16ef080d79bd3c64b37ab61"
+  },
+  {
+    "bytes": 5681,
+    "path": "fit72/episode_055_raa_joint.json.gz",
+    "sha256": "85d2f6b87339efff39a9341089056d051d7acdb11f6fbcb3306c2404500d68ce"
+  },
+  {
+    "bytes": 4473,
+    "path": "fit72/episode_056_age.json.gz",
+    "sha256": "4cba3684be9c36b617317939a82cd2f10c977d41d6c92ce7f9479e30c60436f8"
+  },
+  {
+    "bytes": 3557,
+    "path": "fit72/episode_056_age5.json.gz",
+    "sha256": "cce9b8fa1dca765fc90a8e384d00484062f52f265df27ed697bef804ebda44c3"
+  },
+  {
+    "bytes": 4520,
+    "path": "fit72/episode_056_periodic.json.gz",
+    "sha256": "64f1458e9c0808eacfa71bee3010fd41b130d0fa615d3ac1a65c341a16969cd6"
+  },
+  {
+    "bytes": 5686,
+    "path": "fit72/episode_056_raa_advance.json.gz",
+    "sha256": "e630a3bde560e4cbcfe06e24464b0c1b6d739d019fe60228162e9464537af770"
+  },
+  {
+    "bytes": 4192,
+    "path": "fit72/episode_056_raa_defer.json.gz",
+    "sha256": "832ea82e9f7f1ee8ab7cdeef9990944bb221f04f3505c7156fa67d47b558e8ee"
+  },
+  {
+    "bytes": 5662,
+    "path": "fit72/episode_056_raa_joint.json.gz",
+    "sha256": "f2495217a9283ffb642ca52e36c20c1040d33502f200a2e1dd1ace55049781cb"
+  },
+  {
+    "bytes": 3327,
+    "path": "fit72/episode_057_age.json.gz",
+    "sha256": "39ca79007f3180dd718b88121417381c984d9813669d74c4ac012a4ef44279be"
+  },
+  {
+    "bytes": 4212,
+    "path": "fit72/episode_057_age5.json.gz",
+    "sha256": "5ca63efae026eae11f5f1b28d51f32431e563a597135b1976800ee6760c75b2e"
+  },
+  {
+    "bytes": 3270,
+    "path": "fit72/episode_057_periodic.json.gz",
+    "sha256": "96a4c3bed55467401ceb1201643d0ff4bc739bd71f98990d74b38655dab66d2d"
+  },
+  {
+    "bytes": 4959,
+    "path": "fit72/episode_057_raa_advance.json.gz",
+    "sha256": "4111d689d6b8e00f81016c3501d2a38680cf35999e5fce2e1b91ed4ecabbcf9e"
+  },
+  {
+    "bytes": 5072,
+    "path": "fit72/episode_057_raa_defer.json.gz",
+    "sha256": "2d3eb8daf5b1f82ef75713730c83dd297a8b411436c432162a90269e73b0a218"
+  },
+  {
+    "bytes": 4968,
+    "path": "fit72/episode_057_raa_joint.json.gz",
+    "sha256": "2e9c09473b72e455e618c40aafffd1ffa395e0022c62e45484bf6c77c255a843"
+  },
+  {
+    "bytes": 3340,
+    "path": "fit72/episode_058_age.json.gz",
+    "sha256": "9acbcef601a041d2db512a23b00fa607f236fdc03a84ca984ff6e72fa63bd6d2"
+  },
+  {
+    "bytes": 4217,
+    "path": "fit72/episode_058_age5.json.gz",
+    "sha256": "add1cb5c540c1e32bd9d0a33f55a7bddf249bfea12bc0c48707ff4193d0335a0"
+  },
+  {
+    "bytes": 3278,
+    "path": "fit72/episode_058_periodic.json.gz",
+    "sha256": "06ba6b128edf3ec8e1bfaddd29ef37b75d4f45e70d5e8eb656c322ab5cdef2a7"
+  },
+  {
+    "bytes": 4992,
+    "path": "fit72/episode_058_raa_advance.json.gz",
+    "sha256": "885ee180b65ed7210ef5bcd108c59814a71a173cbf64bca8a617fbd8ff70c0e6"
+  },
+  {
+    "bytes": 5075,
+    "path": "fit72/episode_058_raa_defer.json.gz",
+    "sha256": "9afb8f4e7b76eae3392860759076b088a33d2d3e627c6e5c45f3b36b7196b5fb"
+  },
+  {
+    "bytes": 4982,
+    "path": "fit72/episode_058_raa_joint.json.gz",
+    "sha256": "6f911b629a93b01014ecf84c223bbb5d3b6b0226e1f83316711b6d659292ed2c"
+  },
+  {
+    "bytes": 2677,
+    "path": "fit72/episode_059_age.json.gz",
+    "sha256": "1ce6f4468fde410e4d44a45d6a265374f585e8ce4596ff0bc186ab8963f8f28e"
+  },
+  {
+    "bytes": 2955,
+    "path": "fit72/episode_059_age5.json.gz",
+    "sha256": "70c181225e6b1e94df77267458a99302fc6bcd5912dcfc134bb0eed2e1399349"
+  },
+  {
+    "bytes": 2620,
+    "path": "fit72/episode_059_periodic.json.gz",
+    "sha256": "2092c8e0e21155ef28a6fad09685720af84efea5d89e3453fdaa07213b9c62b2"
+  },
+  {
+    "bytes": 3344,
+    "path": "fit72/episode_059_raa_advance.json.gz",
+    "sha256": "08a9a87042ea52da00ad28a70a17e79ff07d10b613b445daedc2572c4fe20c07"
+  },
+  {
+    "bytes": 3407,
+    "path": "fit72/episode_059_raa_defer.json.gz",
+    "sha256": "eff4f64adc47ad5ff03f69a0d5014222b773078126127fd203fd85624ba78207"
+  },
+  {
+    "bytes": 3349,
+    "path": "fit72/episode_059_raa_joint.json.gz",
+    "sha256": "1bb1738104192331fa7331be8c4ce4db6c26e8718895385e41e73446a6a5c792"
+  },
+  {
+    "bytes": 2704,
+    "path": "fit72/episode_060_age.json.gz",
+    "sha256": "26af6cc8a787a255038042218b2743d52e47686f10894a078169dc6d9545f26d"
+  },
+  {
+    "bytes": 2978,
+    "path": "fit72/episode_060_age5.json.gz",
+    "sha256": "2c12b417c2aa95e2eec806566ec61df5cfd7d43891e5523aff38e39fd904b1b9"
+  },
+  {
+    "bytes": 2664,
+    "path": "fit72/episode_060_periodic.json.gz",
+    "sha256": "cc253dcf478a77e7f0aa816350b65e10cf4f66ea756a15a0d2fdd5954b35773c"
+  },
+  {
+    "bytes": 3386,
+    "path": "fit72/episode_060_raa_advance.json.gz",
+    "sha256": "330c789b0c0791e7e259f7d99fca63f972f91f5f71ddb5b326233d82f66d1513"
+  },
+  {
+    "bytes": 3445,
+    "path": "fit72/episode_060_raa_defer.json.gz",
+    "sha256": "7175bbda1dde56ab0c669b9e3bb46843ad159bb739c699587e99616e729acd50"
+  },
+  {
+    "bytes": 3379,
+    "path": "fit72/episode_060_raa_joint.json.gz",
+    "sha256": "ed3d45b5eb9e71d5206236bb53d8efb21214a9f215cfb8c0f144d8e803dd6a85"
+  },
+  {
+    "bytes": 3332,
+    "path": "fit72/episode_061_age.json.gz",
+    "sha256": "fe71c9a42b73f1c197a7440da614d10201c5442008e0d38d786e43cdce49b7f5"
+  },
+  {
+    "bytes": 5520,
+    "path": "fit72/episode_061_age5.json.gz",
+    "sha256": "d0821a0683e2a8ed5f842a8b82bdd716952f85d25152838e70c153a84f6c2116"
+  },
+  {
+    "bytes": 3260,
+    "path": "fit72/episode_061_periodic.json.gz",
+    "sha256": "9030771f6110ceabf54a5e9fd0e8bd4b0213b07da242f24d72761724cc86b4bb"
+  },
+  {
+    "bytes": 7311,
+    "path": "fit72/episode_061_raa_advance.json.gz",
+    "sha256": "0b58d6d9d142e89b32af468b677331350a90672784a09c85d1f7a9b9bddfa203"
+  },
+  {
+    "bytes": 6818,
+    "path": "fit72/episode_061_raa_defer.json.gz",
+    "sha256": "8dbc304090fa076ee5fc79fb1498f3d72b07e49fc4033c00591407e818ab9843"
+  },
+  {
+    "bytes": 7306,
+    "path": "fit72/episode_061_raa_joint.json.gz",
+    "sha256": "ba054688cbc1cd070064f4c2dccb1348e31b8686c3f2a57a7b756ff21f376713"
+  },
+  {
+    "bytes": 3319,
+    "path": "fit72/episode_062_age.json.gz",
+    "sha256": "9d8b850ed5bf448a27115ac35e084efa6362ae2f1e3cae230d1b4b81bdc2aa9d"
+  },
+  {
+    "bytes": 5639,
+    "path": "fit72/episode_062_age5.json.gz",
+    "sha256": "a24d5a1be1954d376b713df7eb80ab7873af43bd5500766d05911d6ae23dd1ba"
+  },
+  {
+    "bytes": 3247,
+    "path": "fit72/episode_062_periodic.json.gz",
+    "sha256": "2fd95ce1635a9380a0e4f9305c2b21e67b794769b77003ea96b5211e8c49646d"
+  },
+  {
+    "bytes": 7186,
+    "path": "fit72/episode_062_raa_advance.json.gz",
+    "sha256": "3326c82c574141ee409312e3db6c1ce61beb7b3f4fb794b1be25bee6c459414d"
+  },
+  {
+    "bytes": 6940,
+    "path": "fit72/episode_062_raa_defer.json.gz",
+    "sha256": "6d153bff88849b18760d93d86b88912405e52ba9b7c9180a9307616666f6eea6"
+  },
+  {
+    "bytes": 7190,
+    "path": "fit72/episode_062_raa_joint.json.gz",
+    "sha256": "e93e926c2ca9237fdaf92456c87cc355993dfb81d44ad5422b82f39605fdc168"
+  },
+  {
+    "bytes": 3575,
+    "path": "fit72/episode_063_age.json.gz",
+    "sha256": "653d032b3f9c1d6a64ac7bde8b8f4cd82c27f09d7b8cd328f99fea4fcf39cdea"
+  },
+  {
+    "bytes": 5740,
+    "path": "fit72/episode_063_age5.json.gz",
+    "sha256": "a9862a7672c23a942b25080b79e63d423a703927fd25c407ec7e5ffad4cfd01b"
+  },
+  {
+    "bytes": 3506,
+    "path": "fit72/episode_063_periodic.json.gz",
+    "sha256": "2875cbc3d17b8584107a5830c8d8877c174b1f3ea53792a0a15815b5c4ac946a"
+  },
+  {
+    "bytes": 5124,
+    "path": "fit72/episode_063_raa_advance.json.gz",
+    "sha256": "d494ad7800168e9d9bedb219cfe0c469a349b95467270e14b4f79ea9ef8bfeef"
+  },
+  {
+    "bytes": 7247,
+    "path": "fit72/episode_063_raa_defer.json.gz",
+    "sha256": "89034443fa9d3137e5acf605b4f594ea003c0da0c26673105539aac8e189d940"
+  },
+  {
+    "bytes": 5116,
+    "path": "fit72/episode_063_raa_joint.json.gz",
+    "sha256": "4528874f54b89dc581d0de6a05d645619a9c020a519963d1234cb8ecbb1bcc04"
+  },
+  {
+    "bytes": 3581,
+    "path": "fit72/episode_064_age.json.gz",
+    "sha256": "cbd594236645c2b6ff1b868d0fdd2ff6393a96ed4db018e8e0deb60b8b1c288f"
+  },
+  {
+    "bytes": 5743,
+    "path": "fit72/episode_064_age5.json.gz",
+    "sha256": "c9f8c103783998494b10eaffb6c4e975068a22ee353a05d466a25b5a66acb83e"
+  },
+  {
+    "bytes": 3522,
+    "path": "fit72/episode_064_periodic.json.gz",
+    "sha256": "c1e7d8db0b8fc32b732ffc4b75ab4125270d8a6d57c697008619b1a2b56c6822"
+  },
+  {
+    "bytes": 5127,
+    "path": "fit72/episode_064_raa_advance.json.gz",
+    "sha256": "a446a433acff815f1b3d9db8eaba57f2e528ff01bf93716bdf222dffe711c3a2"
+  },
+  {
+    "bytes": 7248,
+    "path": "fit72/episode_064_raa_defer.json.gz",
+    "sha256": "628985c6db12791b9c18c0fafe8e2a73195ecfab4120ae3af695a0e5dc0b4fa3"
+  },
+  {
+    "bytes": 5115,
+    "path": "fit72/episode_064_raa_joint.json.gz",
+    "sha256": "b4fa0215ea87253e48ce9b453d99a43d3578e23e2dc4784a96b2bf0fe0c4efd7"
+  },
+  {
+    "bytes": 2753,
+    "path": "fit72/episode_065_age.json.gz",
+    "sha256": "a068807fb6458311a1f0491fae919ee2c12a62927ace7b875fc324fcc14fda36"
+  },
+  {
+    "bytes": 3186,
+    "path": "fit72/episode_065_age5.json.gz",
+    "sha256": "d1dfb22a6a783edf235a5e18ff68951dfce0cccadcfdf0897f6d715f3367c155"
+  },
+  {
+    "bytes": 2753,
+    "path": "fit72/episode_065_periodic.json.gz",
+    "sha256": "002dec0f5e3fa911df72fb34bffe68acc81b813a5fe865dc385ee3f788c9212a"
+  },
+  {
+    "bytes": 3639,
+    "path": "fit72/episode_065_raa_advance.json.gz",
+    "sha256": "dc9084ebb4286e8a989773ed9f96f9dea87c05129d133abfadfb39a465617b08"
+  },
+  {
+    "bytes": 3649,
+    "path": "fit72/episode_065_raa_defer.json.gz",
+    "sha256": "9471aa27ee7003a5f8a13c061957f7990eb7df5c84e5a5b38a4e9c5e5a66a562"
+  },
+  {
+    "bytes": 3633,
+    "path": "fit72/episode_065_raa_joint.json.gz",
+    "sha256": "9cbc7d5e58ddf5b8860bf462d8a4cc46f73f2fb4e09969ebca5ef8228bd12291"
+  },
+  {
+    "bytes": 2771,
+    "path": "fit72/episode_066_age.json.gz",
+    "sha256": "03dfe8da6f48bfd427f1eca36873ba8d40e48ce817402062232cb00b7a1ce4f2"
+  },
+  {
+    "bytes": 3193,
+    "path": "fit72/episode_066_age5.json.gz",
+    "sha256": "c9f42179228135228a4b65c314fd2fa5351420d77aaa562c059f6ebc0daa6324"
+  },
+  {
+    "bytes": 2750,
+    "path": "fit72/episode_066_periodic.json.gz",
+    "sha256": "a542da9d2148b1dff6f3e4c01ec5f6702d4ab7a96f988521a19e1f37d151de21"
+  },
+  {
+    "bytes": 3645,
+    "path": "fit72/episode_066_raa_advance.json.gz",
+    "sha256": "00cc77c45065270861d3a657627a5481bec513232014fac3ee137fe62944b66c"
+  },
+  {
+    "bytes": 3646,
+    "path": "fit72/episode_066_raa_defer.json.gz",
+    "sha256": "0334c1b7ffc8970575ea7b467365f5bcac8f65c592853438b2d4bf09b41ec468"
+  },
+  {
+    "bytes": 3644,
+    "path": "fit72/episode_066_raa_joint.json.gz",
+    "sha256": "a98aa4f5aa94a61f61c1c581182fe378b173819363f5a0f2ddaf2ef707703d1f"
+  },
+  {
+    "bytes": 3293,
+    "path": "fit72/episode_067_age.json.gz",
+    "sha256": "c7fac4cdcd11618fd881773c9e8f181ea383d18479b7d808b523f06e7b59a54e"
+  },
+  {
+    "bytes": 3733,
+    "path": "fit72/episode_067_age5.json.gz",
+    "sha256": "8cbe15ab61de4fc31e2abde66518a1801c73a61d35747bfe67bfea6ed6cfd042"
+  },
+  {
+    "bytes": 3197,
+    "path": "fit72/episode_067_periodic.json.gz",
+    "sha256": "f808caf9ae030f00f93809165eaee1988692ccf41f06b18ce88c70845254dc66"
+  },
+  {
+    "bytes": 4398,
+    "path": "fit72/episode_067_raa_advance.json.gz",
+    "sha256": "bdb3072006de87f99ba939d15427e61de6f86e1ceb0162e85e18589280e28aa2"
+  },
+  {
+    "bytes": 4531,
+    "path": "fit72/episode_067_raa_defer.json.gz",
+    "sha256": "0a42d03d7eaaea2f542cfe21405234131a6fe7c7d1e20d6646fd2e3ec8b4760c"
+  },
+  {
+    "bytes": 4403,
+    "path": "fit72/episode_067_raa_joint.json.gz",
+    "sha256": "ebe7a23da7f062960cf7f99176bdca7edfc13107ba3324c0d81dabdd54e3dcca"
+  },
+  {
+    "bytes": 3618,
+    "path": "fit72/episode_068_age.json.gz",
+    "sha256": "90d99b6d452ed59c7b9551b29a8a1b38a914fbc7d7ea77d88bcd1a1136a8ae34"
+  },
+  {
+    "bytes": 5002,
+    "path": "fit72/episode_068_age5.json.gz",
+    "sha256": "00dd0a3b7ae829165ce60c004cecb1f387773be9e6411fb8f20eb1feeeda888d"
+  },
+  {
+    "bytes": 3613,
+    "path": "fit72/episode_068_periodic.json.gz",
+    "sha256": "5a30318fd83562925c373c5c36ec8c8f6d25708b4ca0a982a24d1fbd1046f4d7"
+  },
+  {
+    "bytes": 5771,
+    "path": "fit72/episode_068_raa_advance.json.gz",
+    "sha256": "7c48dffea1688ebf99254963ab94755ae96edf528aa9aef373300b80cf5a2cc4"
+  },
+  {
+    "bytes": 5864,
+    "path": "fit72/episode_068_raa_defer.json.gz",
+    "sha256": "e711a3c3b792e90d14adb6026cf68c3474668d729d1c25c6ad7d2887cd2a231e"
+  },
+  {
+    "bytes": 5778,
+    "path": "fit72/episode_068_raa_joint.json.gz",
+    "sha256": "596dddeccd95b457bc8f0755995ff82f02584564f5fbb74e3e1c9e1867c99b35"
+  },
+  {
+    "bytes": 3675,
+    "path": "fit72/episode_069_age.json.gz",
+    "sha256": "ecd5a86cc8256188d76042059d3bcc303ef20a5c6d91dc9766cf5f87c7e97bac"
+  },
+  {
+    "bytes": 4013,
+    "path": "fit72/episode_069_age5.json.gz",
+    "sha256": "a3105c8969de6cb72736e9981dcd44b82144ba2b75ed7f06d883c726a5253ab9"
+  },
+  {
+    "bytes": 3630,
+    "path": "fit72/episode_069_periodic.json.gz",
+    "sha256": "2653225be8decc00ecab1ed05155b8efcad0d6287c73770b9eb77745e53ecd57"
+  },
+  {
+    "bytes": 4975,
+    "path": "fit72/episode_069_raa_advance.json.gz",
+    "sha256": "27bbc25a5ebc9a2f43c313a1bce048723fc6837937994dae0000824e958ddc92"
+  },
+  {
+    "bytes": 4809,
+    "path": "fit72/episode_069_raa_defer.json.gz",
+    "sha256": "b67639e8cecc0e1137c234752ffb9a62b302b79812e52eae3bb2e990dddc7835"
+  },
+  {
+    "bytes": 4969,
+    "path": "fit72/episode_069_raa_joint.json.gz",
+    "sha256": "cf4563967b5cf1d9a837da6b88300d389ec163f4bd3c43c3d763c9c69a957d02"
+  },
+  {
+    "bytes": 3608,
+    "path": "fit72/episode_070_age.json.gz",
+    "sha256": "4a9b1ca0cc7e0ce3d103d8276f178e3395680477faf58a092c042b5512cbfe3e"
+  },
+  {
+    "bytes": 3944,
+    "path": "fit72/episode_070_age5.json.gz",
+    "sha256": "972746f1030d98998f2e904949ebf51db0c218254aab36c85969a6b59403ba70"
+  },
+  {
+    "bytes": 3550,
+    "path": "fit72/episode_070_periodic.json.gz",
+    "sha256": "f9e42c8bc660b143711ceea61d7bc7744f7c8507482f16c3db0ccbee5ed03ea3"
+  },
+  {
+    "bytes": 4902,
+    "path": "fit72/episode_070_raa_advance.json.gz",
+    "sha256": "d6d33664a582afd1a50104b71411003dd8a9de5ca256ea62e7be05ca2bc725e1"
+  },
+  {
+    "bytes": 4737,
+    "path": "fit72/episode_070_raa_defer.json.gz",
+    "sha256": "01a22af391a96001953962d8a4915e2f9fb787ed2d0b3786c9b5e480cbf2ef00"
+  },
+  {
+    "bytes": 4896,
+    "path": "fit72/episode_070_raa_joint.json.gz",
+    "sha256": "f682b4efafb61ae9305d7169cab510a613bbbd3384987e7983d009968e479f6a"
+  },
+  {
+    "bytes": 2596,
+    "path": "fit72/episode_071_age.json.gz",
+    "sha256": "591380b6cd942d26543f30fabfbbd96dee6aee33f91e2b87e74630ccb39e36cf"
+  },
+  {
+    "bytes": 2868,
+    "path": "fit72/episode_071_age5.json.gz",
+    "sha256": "1b4d80c2a3653c6a13eb805d6b7ac561a7daf2d612945d823143b5fefd304062"
+  },
+  {
+    "bytes": 2518,
+    "path": "fit72/episode_071_periodic.json.gz",
+    "sha256": "cc4e2e05efa8d83fd0dced04ef2f8f7fdd26ee4968ef67322219078dd6b04dae"
+  },
+  {
+    "bytes": 3204,
+    "path": "fit72/episode_071_raa_advance.json.gz",
+    "sha256": "e50acdfc41414dd08a8fab48531f2ae4cee31639f9e4121dbcfd0a196cbcc1ed"
+  },
+  {
+    "bytes": 3220,
+    "path": "fit72/episode_071_raa_defer.json.gz",
+    "sha256": "8c3f9b6066e0406d44f03972605086454b05bf7ec8a4e2bab490ffbfaeb6de1f"
+  },
+  {
+    "bytes": 3209,
+    "path": "fit72/episode_071_raa_joint.json.gz",
+    "sha256": "2e3292182778be3dde06862c696254dbd971266065e39f8e3bf1bc6315901b4a"
+  },
+  {
+    "bytes": 2866,
+    "path": "fit72/episode_072_age.json.gz",
+    "sha256": "7d3a194c674159391ce3ad50d5cef7d13ec5378d22280ca1bb2845df878076f9"
+  },
+  {
+    "bytes": 3258,
+    "path": "fit72/episode_072_age5.json.gz",
+    "sha256": "b87506dc240e740345e7a8a8b0fc1f0d060471133db8dc29a66d4e6d8c6f8f48"
+  },
+  {
+    "bytes": 2775,
+    "path": "fit72/episode_072_periodic.json.gz",
+    "sha256": "f9d5b5d9007f3b2caa6d807aaa6ef1ba1d2dcf52bbe6d98f5352bbb70601d6e8"
+  },
+  {
+    "bytes": 3620,
+    "path": "fit72/episode_072_raa_advance.json.gz",
+    "sha256": "59c677a8691967ba5c4eea996c09e8c0014c6e4d77f478c80696d3f97b82e0f2"
+  },
+  {
+    "bytes": 3728,
+    "path": "fit72/episode_072_raa_defer.json.gz",
+    "sha256": "90e6049700df70921422c9a0d00cbdc74ed87edf5ce6b4bc083371bc4b675a4e"
+  },
+  {
+    "bytes": 3625,
+    "path": "fit72/episode_072_raa_joint.json.gz",
+    "sha256": "4cb3ae0d0ffdbbf7a337e2fd46f54fa8e66836867688673d0e30e63e123ee982"
+  },
+  {
+    "bytes": 3714,
+    "path": "fit72/provenance.json",
+    "sha256": "b1c9cd1b1df7642293d3eda06aff38e2f36c83cc366a98c060e6e955ee210237"
+  },
+  {
+    "bytes": 144,
+    "path": "fit72/summary.json",
+    "sha256": "2b68d5398f7d049c8bd25443ad77adaaedc8c84e8f60720c46a4eeeca76e22e6"
+  },
+  {
+    "bytes": 141,
+    "path": "mechanisms/artifact_manifest.json",
+    "sha256": "9d8d55f6ed86301bbdb09c20fee68d195dc64158cad80219072e50f9e0b13819"
+  },
+  {
+    "bytes": 74240,
+    "path": "mechanisms/summary.json",
+    "sha256": "9b8c711d21908e4b7cd829551f1694716d2a5c64556c6f053b7346fb36551b6b"
+  },
+  {
+    "bytes": 404,
+    "path": "prepared/artifact_manifest.json",
+    "sha256": "6d542691b898c8c660250aeb582cc6ccc0293d813399a73671394210c4326f3d"
+  },
+  {
+    "bytes": 649,
+    "path": "prepared/gate.json",
+    "sha256": "4142417b205b673980129323453c1c607d3bfab63a0b72afe4cfa2684a43226e"
+  },
+  {
+    "bytes": 300,
+    "path": "prepared/tests.log",
+    "sha256": "0f66192b3f738d8cee6ba656c7a8cab5c1a690f281d2e24dfa38b5a8d374cdbb"
+  },
+  {
+    "bytes": 18567,
+    "path": "prepared/tests.xml",
+    "sha256": "03dd37f3bef64139b2de25c71c9da728e340112a859546bd91621c7ca163d7b9"
+  },
+  {
+    "bytes": 287,
+    "path": "prior_audit/artifact_manifest.json",
+    "sha256": "eeb74d2e682853fcfe9aff9c591eb0d75d261e9002edf3b6369de732938c1fd9"
+  },
+  {
+    "bytes": 112117,
+    "path": "prior_audit/harm_divergences.json",
+    "sha256": "16340613d95c6294b0e3e2df770eb34856595c7a212773f80009b73eb8b5d05c"
+  },
+  {
+    "bytes": 723,
+    "path": "prior_audit/summary.json",
+    "sha256": "4b44eec0d961bcf11e60726e855c555f8f830451e6ea725d5aacd78cef61ab05"
+  },
+  {
+    "bytes": 5218,
+    "path": "prior_preservation.json",
+    "sha256": "f29051ce127c4aa88662f6403dfc2a97bc2c0e51485b2552ec66834aaab3564c"
+  },
+  {
+    "bytes": 2107,
+    "path": "smoke/artifact_manifest.json",
+    "sha256": "1d738ca1abff357637d0cee48df95c7566eacf1448114adbc9336ca01f4f46bc"
+  },
+  {
+    "bytes": 2934,
+    "path": "smoke/episode_001_age.json.gz",
+    "sha256": "92c31d46b0343e03f832282f44797113ec6b15d0a5b847c7797af2620425fab3"
+  },
+  {
+    "bytes": 3437,
+    "path": "smoke/episode_001_age5.json.gz",
+    "sha256": "e8c4012085002960370745c7a1da030911a80185c757eb55f45c3892a7c591d3"
+  },
+  {
+    "bytes": 2882,
+    "path": "smoke/episode_001_periodic.json.gz",
+    "sha256": "60fb19c0b523c44a7787102bbd35095708dc5d98c7e86cba3fbb859a6cd0fc98"
+  },
+  {
+    "bytes": 4127,
+    "path": "smoke/episode_001_raa_advance.json.gz",
+    "sha256": "20b5a5906f7612315358b0ce2bb812953c63647441c07eed7f6da37038a5c2c1"
+  },
+  {
+    "bytes": 3893,
+    "path": "smoke/episode_001_raa_defer.json.gz",
+    "sha256": "256f37db5f3ec3d7c0b469e6f8b5e3bb72ab89efd0159d3776ca1a252bcb8eef"
+  },
+  {
+    "bytes": 4117,
+    "path": "smoke/episode_001_raa_joint.json.gz",
+    "sha256": "d275e0743dd0fa158af5ba51e7b264611d7c39b3f73b5f076aeefc26ce444b9e"
+  },
+  {
+    "bytes": 2950,
+    "path": "smoke/episode_002_age.json.gz",
+    "sha256": "08eb2bb5b711df285e91a2a2d951b7898020239fb9a38de0f00057902104f752"
+  },
+  {
+    "bytes": 3430,
+    "path": "smoke/episode_002_age5.json.gz",
+    "sha256": "f08a40044b237f8237a27a3a99cb797a6dc20beaf9549d01a2053bb5859943be"
+  },
+  {
+    "bytes": 2889,
+    "path": "smoke/episode_002_periodic.json.gz",
+    "sha256": "9381f3c36ae12518d83cae85bf68baced273662a86f6ae8f7f6ec5bb1895defe"
+  },
+  {
+    "bytes": 4132,
+    "path": "smoke/episode_002_raa_advance.json.gz",
+    "sha256": "fef907a6369cfc29145cd02ff3469c39570a33c4e089e2223ab23d9cfee4fc82"
+  },
+  {
+    "bytes": 3888,
+    "path": "smoke/episode_002_raa_defer.json.gz",
+    "sha256": "598ccb38d3009e3418da95c7d4b5a35142973a5d96dfb0b00def9114b0f0eb9b"
+  },
+  {
+    "bytes": 4129,
+    "path": "smoke/episode_002_raa_joint.json.gz",
+    "sha256": "b202703e6a3b409610f2475ee33a8ff1ef6182b89983b7e1add2cd9a6cab6e74"
+  },
+  {
+    "bytes": 3714,
+    "path": "smoke/provenance.json",
+    "sha256": "b1c9cd1b1df7642293d3eda06aff38e2f36c83cc366a98c060e6e955ee210237"
+  },
+  {
+    "bytes": 144,
+    "path": "smoke/summary.json",
+    "sha256": "50a7ea454f39252c86d4d7fcbe9bc9c8f0668b631bf13617ebd643f4cb14106b"
+  },
+  {
+    "bytes": 295,
+    "path": "verification/artifact_manifest.json",
+    "sha256": "dfac10b66debb229b37ec5faefe6d802a96d19f029503b4b68018c9f335d7fa3"
+  },
+  {
+    "bytes": 36145,
+    "path": "verification/prior_preservation_after.json",
+    "sha256": "f12c3c79ae8c25a3ebea1861b269b2ff7422fdb694872bdfe7b6284b6074e832"
+  },
+  {
+    "bytes": 1127,
+    "path": "verification/summary.json",
+    "sha256": "1a9e7d7a40bd15802094576d69c355b17efd80009214f0011b3533ed517242ce"
+  }
+]

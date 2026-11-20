@@ -1,0 +1,1262 @@
+{
+  "arms": {
+    "age4": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 720.1388888888889,
+      "mean_blocked_attempts": 0.5,
+      "mean_combined_rays": 3189.7916666666665,
+      "mean_decide_ms": 0.025137684454498894,
+      "mean_elapsed_steps": 40.486111111111114,
+      "mean_emergency_safety_interventions": 0.06944444444444445,
+      "mean_emergency_safety_raycasts": 2469.652777777778,
+      "mean_emergency_safety_scans": 40.486111111111114,
+      "mean_episode_wall_time_seconds": 0.15789626968055556,
+      "mean_false_persistent_occupancy_updates": 0.8611111111111112,
+      "mean_missed_persistent_changes": 77.93055555555556,
+      "mean_observation_update_ms": 0.04871890488785601,
+      "mean_paid_memory_scans": 11.805555555555555,
+      "mean_scheduler_ms": 1.0190786388888888,
+      "mean_travel_distance_m": 22.395833333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "age5": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 652.3611111111111,
+      "mean_blocked_attempts": 0.875,
+      "mean_combined_rays": 3231.3055555555557,
+      "mean_decide_ms": 0.059260221746444824,
+      "mean_elapsed_steps": 42.27777777777778,
+      "mean_emergency_safety_interventions": 0.2916666666666667,
+      "mean_emergency_safety_raycasts": 2578.9444444444443,
+      "mean_emergency_safety_scans": 42.27777777777778,
+      "mean_episode_wall_time_seconds": 0.16315370661111112,
+      "mean_false_persistent_occupancy_updates": 0.9722222222222222,
+      "mean_missed_persistent_changes": 77.61111111111111,
+      "mean_observation_update_ms": 0.0948260514653079,
+      "mean_paid_memory_scans": 10.694444444444445,
+      "mean_scheduler_ms": 2.513599888888889,
+      "mean_travel_distance_m": 23.145833333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "age6": {
+      "contact_free_goals": 59,
+      "goals": 59,
+      "mean_actual_memory_raycasts": 598.9861111111111,
+      "mean_blocked_attempts": 1.9861111111111112,
+      "mean_combined_rays": 3549.0138888888887,
+      "mean_decide_ms": 0.02662849195855166,
+      "mean_elapsed_steps": 48.361111111111114,
+      "mean_emergency_safety_interventions": 0.4861111111111111,
+      "mean_emergency_safety_raycasts": 2950.027777777778,
+      "mean_emergency_safety_scans": 48.361111111111114,
+      "mean_episode_wall_time_seconds": 0.1844070087222222,
+      "mean_false_persistent_occupancy_updates": 1.125,
+      "mean_missed_persistent_changes": 95.45833333333333,
+      "mean_observation_update_ms": 0.04840108458662499,
+      "mean_paid_memory_scans": 9.819444444444445,
+      "mean_scheduler_ms": 1.3485084861111112,
+      "mean_travel_distance_m": 24.375,
+      "mean_unwanted_contacts": 0
+    },
+    "caa_fast": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 650.6666666666666,
+      "mean_blocked_attempts": 0.875,
+      "mean_combined_rays": 3229.6111111111113,
+      "mean_decide_ms": 0.09554018865723815,
+      "mean_elapsed_steps": 42.27777777777778,
+      "mean_emergency_safety_interventions": 0.2777777777777778,
+      "mean_emergency_safety_raycasts": 2578.9444444444443,
+      "mean_emergency_safety_scans": 42.27777777777778,
+      "mean_episode_wall_time_seconds": 0.16357687090277778,
+      "mean_false_persistent_occupancy_updates": 0.6388888888888888,
+      "mean_missed_persistent_changes": 77.61111111111111,
+      "mean_observation_update_ms": 0.055944890682038145,
+      "mean_paid_memory_scans": 10.666666666666666,
+      "mean_scheduler_ms": 4.036249847222222,
+      "mean_travel_distance_m": 23.166666666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "caa_full": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 650.6666666666666,
+      "mean_blocked_attempts": 0.875,
+      "mean_combined_rays": 3229.6111111111113,
+      "mean_decide_ms": 0.09659642153927561,
+      "mean_elapsed_steps": 42.27777777777778,
+      "mean_emergency_safety_interventions": 0.2777777777777778,
+      "mean_emergency_safety_raycasts": 2578.9444444444443,
+      "mean_emergency_safety_scans": 42.27777777777778,
+      "mean_episode_wall_time_seconds": 0.16507054977777777,
+      "mean_false_persistent_occupancy_updates": 0.6388888888888888,
+      "mean_missed_persistent_changes": 77.61111111111111,
+      "mean_observation_update_ms": 0.05663702126180505,
+      "mean_paid_memory_scans": 10.666666666666666,
+      "mean_scheduler_ms": 4.086315930555555,
+      "mean_travel_distance_m": 23.166666666666668,
+      "mean_unwanted_contacts": 0
+    },
+    "caa_slow": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 652.3611111111111,
+      "mean_blocked_attempts": 0.875,
+      "mean_combined_rays": 3231.3055555555557,
+      "mean_decide_ms": 0.10157230960736807,
+      "mean_elapsed_steps": 42.27777777777778,
+      "mean_emergency_safety_interventions": 0.2916666666666667,
+      "mean_emergency_safety_raycasts": 2578.9444444444443,
+      "mean_emergency_safety_scans": 42.27777777777778,
+      "mean_episode_wall_time_seconds": 0.1639842129722222,
+      "mean_false_persistent_occupancy_updates": 0.9722222222222222,
+      "mean_missed_persistent_changes": 77.61111111111111,
+      "mean_observation_update_ms": 0.05625774019596364,
+      "mean_paid_memory_scans": 10.694444444444445,
+      "mean_scheduler_ms": 4.196240027777778,
+      "mean_travel_distance_m": 23.145833333333332,
+      "mean_unwanted_contacts": 0
+    },
+    "periodic": {
+      "contact_free_goals": 66,
+      "goals": 66,
+      "mean_actual_memory_raycasts": 677.7777777777778,
+      "mean_blocked_attempts": 0.6527777777777778,
+      "mean_combined_rays": 3252.4861111111113,
+      "mean_decide_ms": 0.0013353342360133806,
+      "mean_elapsed_steps": 42.208333333333336,
+      "mean_emergency_safety_interventions": 0.09722222222222222,
+      "mean_emergency_safety_raycasts": 2574.7083333333335,
+      "mean_emergency_safety_scans": 42.208333333333336,
+      "mean_episode_wall_time_seconds": 0.16403468644444444,
+      "mean_false_persistent_occupancy_updates": 0.8888888888888888,
+      "mean_missed_persistent_changes": 81.25,
+      "mean_observation_update_ms": 0.02210994363827923,
+      "mean_paid_memory_scans": 11.11111111111111,
+      "mean_scheduler_ms": 0.05671413888888889,
+      "mean_travel_distance_m": 23.041666666666668,
+      "mean_unwanted_contacts": 0
+    }
+  },
+  "bootstrap": "2000 maze-cluster resamples; seed2026111403; exploratory, reused FIT and unadjusted contrasts",
+  "diagnostics": {
+    "age4": {
+      "advanced_paid_scans": 0,
+      "advanced_requests": 0,
+      "authorized_update_ms": 37.938991,
+      "budget_exhausted_decisions": 172,
+      "decisions": 2915,
+      "deferred_requests": 0,
+      "diagnostic_ms": 312.415601,
+      "effective_deadline_cell_times": {
+        "4": 277299,
+        "5": 0,
+        "6": 0
+      },
+      "global_class_cell_times": {
+        "changing": 227,
+        "intermediate": 276335,
+        "stable": 737,
+        "unknown": 1544576
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 83,
+      "scans_with_changed_known": 21,
+      "scans_with_new_cells": 694,
+      "scheduler_ms": 73.373662,
+      "scheduler_plan_calls": 0
+    },
+    "age5": {
+      "advanced_paid_scans": 0,
+      "advanced_requests": 0,
+      "authorized_update_ms": 70.988293,
+      "budget_exhausted_decisions": 84,
+      "decisions": 3044,
+      "deferred_requests": 0,
+      "diagnostic_ms": 316.744025,
+      "effective_deadline_cell_times": {
+        "4": 0,
+        "5": 281121,
+        "6": 0
+      },
+      "global_class_cell_times": {
+        "changing": 334,
+        "intermediate": 280619,
+        "stable": 168,
+        "unknown": 1621379
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 64,
+      "scans_with_changed_known": 30,
+      "scans_with_new_cells": 630,
+      "scheduler_ms": 180.979192,
+      "scheduler_plan_calls": 0
+    },
+    "age6": {
+      "advanced_paid_scans": 0,
+      "advanced_requests": 0,
+      "authorized_update_ms": 30.544559,
+      "budget_exhausted_decisions": 13,
+      "decisions": 3482,
+      "deferred_requests": 0,
+      "diagnostic_ms": 342.051216,
+      "effective_deadline_cell_times": {
+        "4": 0,
+        "5": 0,
+        "6": 285777
+      },
+      "global_class_cell_times": {
+        "changing": 321,
+        "intermediate": 285348,
+        "stable": 108,
+        "unknown": 1890473
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 50,
+      "scans_with_changed_known": 28,
+      "scans_with_new_cells": 581,
+      "scheduler_ms": 97.092611,
+      "scheduler_plan_calls": 0
+    },
+    "caa_fast": {
+      "advanced_paid_scans": 3,
+      "advanced_requests": 3,
+      "authorized_update_ms": 38.727676,
+      "budget_exhausted_decisions": 86,
+      "decisions": 3044,
+      "deferred_requests": 0,
+      "diagnostic_ms": 333.868227,
+      "effective_deadline_cell_times": {
+        "4": 333,
+        "5": 280756,
+        "6": 0
+      },
+      "global_class_cell_times": {
+        "changing": 333,
+        "intermediate": 280590,
+        "stable": 166,
+        "unknown": 1621411
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 62,
+      "scans_with_changed_known": 30,
+      "scans_with_new_cells": 630,
+      "scheduler_ms": 290.609989,
+      "scheduler_plan_calls": 0
+    },
+    "caa_full": {
+      "advanced_paid_scans": 2,
+      "advanced_requests": 2,
+      "authorized_update_ms": 39.293754,
+      "budget_exhausted_decisions": 84,
+      "decisions": 3044,
+      "deferred_requests": 0,
+      "diagnostic_ms": 338.700526,
+      "effective_deadline_cell_times": {
+        "4": 333,
+        "5": 280586,
+        "6": 166
+      },
+      "global_class_cell_times": {
+        "changing": 333,
+        "intermediate": 280586,
+        "stable": 166,
+        "unknown": 1621415
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 62,
+      "scans_with_changed_known": 30,
+      "scans_with_new_cells": 630,
+      "scheduler_ms": 294.214747,
+      "scheduler_plan_calls": 0
+    },
+    "caa_slow": {
+      "advanced_paid_scans": 0,
+      "advanced_requests": 0,
+      "authorized_update_ms": 39.162514,
+      "budget_exhausted_decisions": 84,
+      "decisions": 3044,
+      "deferred_requests": 0,
+      "diagnostic_ms": 334.858883,
+      "effective_deadline_cell_times": {
+        "4": 0,
+        "5": 280953,
+        "6": 168
+      },
+      "global_class_cell_times": {
+        "changing": 334,
+        "intermediate": 280619,
+        "stable": 168,
+        "unknown": 1621379
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 64,
+      "scans_with_changed_known": 30,
+      "scans_with_new_cells": 630,
+      "scheduler_ms": 302.129282,
+      "scheduler_plan_calls": 0
+    },
+    "periodic": {
+      "advanced_paid_scans": 0,
+      "advanced_requests": 0,
+      "authorized_update_ms": 16.09575,
+      "budget_exhausted_decisions": 30,
+      "decisions": 3039,
+      "deferred_requests": 0,
+      "diagnostic_ms": 318.190485,
+      "effective_deadline_cell_times": {
+        "4": 0,
+        "5": 0,
+        "6": 0
+      },
+      "global_class_cell_times": {
+        "changing": 295,
+        "intermediate": 279852,
+        "stable": 390,
+        "unknown": 1618838
+      },
+      "predicted_raycasts": 0,
+      "scans_only_unchanged_known": 55,
+      "scans_with_changed_known": 29,
+      "scans_with_new_cells": 673,
+      "scheduler_ms": 4.083418,
+      "scheduler_plan_calls": 0
+    }
+  },
+  "paired": [
+    {
+      "candidate": "age6",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -4.236111111111111,
+          617.625
+        ],
+        "elapsed_steps": [
+          1.832986111111111,
+          10.681249999999997
+        ],
+        "paid_memory_scans": [
+          -2.25,
+          -0.2777777777777778
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -0.1697413793103448,
+          8.250099206349207
+        ],
+        "travel_distance_m": [
+          -1.0447767857142858,
+          2.089307669789227
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 137.5084745762712,
+        "elapsed_steps": 3.694915254237288,
+        "paid_memory_scans": -1.4406779661016949,
+        "travel_distance_m": 0.4830508474576271
+      },
+      "common_successes": 59,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 7,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "periodic",
+      "rescues": 0
+    },
+    {
+      "candidate": "age6",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          86.39548611111111,
+          667.6534722222219
+        ],
+        "elapsed_steps": [
+          3.94375,
+          12.23611111111111
+        ],
+        "paid_memory_scans": [
+          -2.9444444444444446,
+          -1.0135416666666686
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          1.839066283292978,
+          9.65638569604086
+        ],
+        "travel_distance_m": [
+          -0.11366683217477654,
+          2.544997373949578
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 187.28070175438597,
+        "elapsed_steps": 5.350877192982456,
+        "paid_memory_scans": -2.280701754385965,
+        "travel_distance_m": 1.105263157894737
+      },
+      "common_successes": 57,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 9,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age4",
+      "rescues": 2
+    },
+    {
+      "candidate": "age6",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          97.409375,
+          570.201736111111
+        ],
+        "elapsed_steps": [
+          2.999652777777778,
+          9.62604166666666
+        ],
+        "paid_memory_scans": [
+          -1.8055555555555556,
+          0.06944444444444445
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          1.6722701149425288,
+          9.580155172413793
+        ],
+        "travel_distance_m": [
+          0.0,
+          2.853011877828054
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 290.0175438596491,
+        "elapsed_steps": 5.2631578947368425,
+        "paid_memory_scans": -0.5087719298245614,
+        "travel_distance_m": 1.2894736842105263
+      },
+      "common_successes": 57,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 9,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age5",
+      "rescues": 2
+    },
+    {
+      "candidate": "caa_fast",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -326.2017361111111,
+          282.125
+        ],
+        "elapsed_steps": [
+          -3.8895833333333334,
+          4.01527777777777
+        ],
+        "paid_memory_scans": [
+          -1.4583333333333333,
+          0.5836805555555536
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -3.915419756355932,
+          4.590178571428567
+        ],
+        "travel_distance_m": [
+          -1.8363539445628998,
+          2.5080018028846145
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -0.953125,
+        "elapsed_steps": 0.390625,
+        "paid_memory_scans": -0.40625,
+        "travel_distance_m": 0.328125
+      },
+      "common_successes": 64,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "candidate": "caa_fast",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -231.33402777777778,
+          310.95173611111096
+        ],
+        "elapsed_steps": [
+          -1.7222222222222223,
+          5.333333333333333
+        ],
+        "paid_memory_scans": [
+          -2.138888888888889,
+          -0.16631944444444632
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -1.8533697632058288,
+          6.073998868778277
+        ],
+        "travel_distance_m": [
+          -1.016321044546851,
+          3.0242137096774195
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 64.87301587301587,
+        "elapsed_steps": 2.253968253968254,
+        "paid_memory_scans": -1.1904761904761905,
+        "travel_distance_m": 1.0238095238095237
+      },
+      "common_successes": 63,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 3,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age4",
+      "rescues": 3
+    },
+    {
+      "candidate": "caa_fast",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -5.083333333333333,
+          0.0
+        ],
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "paid_memory_scans": [
+          -0.08333333333333333,
+          0.0
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "travel_distance_m": [
+          0.0,
+          0.0703125
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -1.8484848484848484,
+        "elapsed_steps": 0,
+        "paid_memory_scans": -0.030303030303030304,
+        "travel_distance_m": 0.022727272727272728
+      },
+      "common_successes": 66,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 0,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age5",
+      "rescues": 0
+    },
+    {
+      "candidate": "caa_slow",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -325.35451388888885,
+          283.81944444444446
+        ],
+        "elapsed_steps": [
+          -3.8895833333333334,
+          4.01527777777777
+        ],
+        "paid_memory_scans": [
+          -1.4309027777777779,
+          0.625
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -3.915419756355932,
+          4.590178571428567
+        ],
+        "travel_distance_m": [
+          -1.875,
+          2.491737288135592
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 0.953125,
+        "elapsed_steps": 0.390625,
+        "paid_memory_scans": -0.375,
+        "travel_distance_m": 0.3046875
+      },
+      "common_successes": 64,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "candidate": "caa_slow",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -231.33402777777778,
+          314.3406249999999
+        ],
+        "elapsed_steps": [
+          -1.7222222222222223,
+          5.333333333333333
+        ],
+        "paid_memory_scans": [
+          -2.111458333333333,
+          -0.15243055555555746
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -1.8533697632058288,
+          6.073998868778277
+        ],
+        "travel_distance_m": [
+          -1.017234427141268,
+          3.0005952380952348
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 66.80952380952381,
+        "elapsed_steps": 2.253968253968254,
+        "paid_memory_scans": -1.1587301587301588,
+        "travel_distance_m": 1.0
+      },
+      "common_successes": 63,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 3,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age4",
+      "rescues": 3
+    },
+    {
+      "candidate": "caa_slow",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          0.0,
+          0.0
+        ],
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "paid_memory_scans": [
+          0.0,
+          0.0
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "travel_distance_m": [
+          0.0,
+          0.0
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "paid_memory_scans": 0,
+        "travel_distance_m": 0.0
+      },
+      "common_successes": 66,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 0,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age5",
+      "rescues": 0
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -326.2017361111111,
+          282.125
+        ],
+        "elapsed_steps": [
+          -3.8895833333333334,
+          4.01527777777777
+        ],
+        "paid_memory_scans": [
+          -1.4583333333333333,
+          0.5836805555555536
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -3.915419756355932,
+          4.590178571428567
+        ],
+        "travel_distance_m": [
+          -1.8363539445628998,
+          2.5080018028846145
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -0.953125,
+        "elapsed_steps": 0.390625,
+        "paid_memory_scans": -0.40625,
+        "travel_distance_m": 0.328125
+      },
+      "common_successes": 64,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "periodic",
+      "rescues": 2
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -231.33402777777778,
+          310.95173611111096
+        ],
+        "elapsed_steps": [
+          -1.7222222222222223,
+          5.333333333333333
+        ],
+        "paid_memory_scans": [
+          -2.138888888888889,
+          -0.16631944444444632
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -1.8533697632058288,
+          6.073998868778277
+        ],
+        "travel_distance_m": [
+          -1.016321044546851,
+          3.0242137096774195
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 64.87301587301587,
+        "elapsed_steps": 2.253968253968254,
+        "paid_memory_scans": -1.1904761904761905,
+        "travel_distance_m": 1.0238095238095237
+      },
+      "common_successes": 63,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 3,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age4",
+      "rescues": 3
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -5.083333333333333,
+          0.0
+        ],
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "paid_memory_scans": [
+          -0.08333333333333333,
+          0.0
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "travel_distance_m": [
+          0.0,
+          0.0703125
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -1.8484848484848484,
+        "elapsed_steps": 0,
+        "paid_memory_scans": -0.030303030303030304,
+        "travel_distance_m": 0.022727272727272728
+      },
+      "common_successes": 66,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 0,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age5",
+      "rescues": 0
+    },
+    {
+      "candidate": "caa_fast",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -574.4378472222222,
+          -98.25659722222233
+        ],
+        "elapsed_steps": [
+          -9.626041666666666,
+          -2.9996527777777797
+        ],
+        "paid_memory_scans": [
+          -0.09722222222222222,
+          1.778124999999998
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -9.580155172413793,
+          -1.6722701149425294
+        ],
+        "travel_distance_m": [
+          -2.8236142533936652,
+          0.0012096774193482375
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -292.1578947368421,
+        "elapsed_steps": -5.2631578947368425,
+        "paid_memory_scans": 0.47368421052631576,
+        "travel_distance_m": -1.263157894736842
+      },
+      "common_successes": 57,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age6",
+      "rescues": 9
+    },
+    {
+      "candidate": "caa_slow",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -570.2017361111111,
+          -97.40937500000011
+        ],
+        "elapsed_steps": [
+          -9.626041666666666,
+          -2.9996527777777797
+        ],
+        "paid_memory_scans": [
+          -0.06944444444444445,
+          1.8055555555555556
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -9.580155172413793,
+          -1.6722701149425294
+        ],
+        "travel_distance_m": [
+          -2.853011877828054,
+          0.0
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -290.0175438596491,
+        "elapsed_steps": -5.2631578947368425,
+        "paid_memory_scans": 0.5087719298245614,
+        "travel_distance_m": -1.2894736842105263
+      },
+      "common_successes": 57,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age6",
+      "rescues": 9
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -574.4378472222222,
+          -98.25659722222233
+        ],
+        "elapsed_steps": [
+          -9.626041666666666,
+          -2.9996527777777797
+        ],
+        "paid_memory_scans": [
+          -0.09722222222222222,
+          1.778124999999998
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          -9.580155172413793,
+          -1.6722701149425294
+        ],
+        "travel_distance_m": [
+          -2.8236142533936652,
+          0.0012096774193482375
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -292.1578947368421,
+        "elapsed_steps": -5.2631578947368425,
+        "paid_memory_scans": 0.47368421052631576,
+        "travel_distance_m": -1.263157894736842
+      },
+      "common_successes": 57,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 2,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "age6",
+      "rescues": 9
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          0.0,
+          0.0
+        ],
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "paid_memory_scans": [
+          0.0,
+          0.0
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "travel_distance_m": [
+          0.0,
+          0.0
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": 0,
+        "elapsed_steps": 0,
+        "paid_memory_scans": 0,
+        "travel_distance_m": 0.0
+      },
+      "common_successes": 66,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 0,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "caa_fast",
+      "rescues": 0
+    },
+    {
+      "candidate": "caa_full",
+      "clustered_95_intervals": {
+        "combined_rays": [
+          -5.083333333333333,
+          0.0
+        ],
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "paid_memory_scans": [
+          -0.08333333333333333,
+          0.0
+        ]
+      },
+      "common_success_cluster_95_intervals": {
+        "elapsed_steps": [
+          0.0,
+          0.0
+        ],
+        "travel_distance_m": [
+          0.0,
+          0.0703125
+        ]
+      },
+      "common_success_delta": {
+        "combined_rays": -1.8484848484848484,
+        "elapsed_steps": 0,
+        "paid_memory_scans": -0.030303030303030304,
+        "travel_distance_m": 0.022727272727272728
+      },
+      "common_successes": 66,
+      "correlated_schedule_rule": "Two schedules sampled together within each maze",
+      "harms": 0,
+      "joint_paid_and_navigation_improvement": false,
+      "maze_clusters": 36,
+      "reference": "caa_slow",
+      "rescues": 0
+    }
+  ],
+  "paired_common_success_means": [
+    {
+      "candidate": "age6",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 41.389830508474574,
+          "travel_distance_m": 21.36864406779661
+        },
+        "reference": {
+          "elapsed_steps": 37.69491525423729,
+          "travel_distance_m": 20.885593220338983
+        }
+      },
+      "reference": "periodic"
+    },
+    {
+      "candidate": "age6",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 40.03508771929825,
+          "travel_distance_m": 20.67105263157895
+        },
+        "reference": {
+          "elapsed_steps": 34.68421052631579,
+          "travel_distance_m": 19.56578947368421
+        }
+      },
+      "reference": "age4"
+    },
+    {
+      "candidate": "age6",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 40.07017543859649,
+          "travel_distance_m": 20.539473684210527
+        },
+        "reference": {
+          "elapsed_steps": 34.80701754385965,
+          "travel_distance_m": 19.25
+        }
+      },
+      "reference": "age5"
+    },
+    {
+      "candidate": "caa_fast",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.28125,
+          "travel_distance_m": 21.1171875
+        },
+        "reference": {
+          "elapsed_steps": 37.890625,
+          "travel_distance_m": 20.7890625
+        }
+      },
+      "reference": "periodic"
+    },
+    {
+      "candidate": "caa_fast",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 37.38095238095238,
+          "travel_distance_m": 20.726190476190474
+        },
+        "reference": {
+          "elapsed_steps": 35.12698412698413,
+          "travel_distance_m": 19.702380952380953
+        }
+      },
+      "reference": "age4"
+    },
+    {
+      "candidate": "caa_fast",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.5
+        },
+        "reference": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.477272727272727
+        }
+      },
+      "reference": "age5"
+    },
+    {
+      "candidate": "caa_slow",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.28125,
+          "travel_distance_m": 21.09375
+        },
+        "reference": {
+          "elapsed_steps": 37.890625,
+          "travel_distance_m": 20.7890625
+        }
+      },
+      "reference": "periodic"
+    },
+    {
+      "candidate": "caa_slow",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 37.38095238095238,
+          "travel_distance_m": 20.702380952380953
+        },
+        "reference": {
+          "elapsed_steps": 35.12698412698413,
+          "travel_distance_m": 19.702380952380953
+        }
+      },
+      "reference": "age4"
+    },
+    {
+      "candidate": "caa_slow",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.477272727272727
+        },
+        "reference": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.477272727272727
+        }
+      },
+      "reference": "age5"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.28125,
+          "travel_distance_m": 21.1171875
+        },
+        "reference": {
+          "elapsed_steps": 37.890625,
+          "travel_distance_m": 20.7890625
+        }
+      },
+      "reference": "periodic"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 37.38095238095238,
+          "travel_distance_m": 20.726190476190474
+        },
+        "reference": {
+          "elapsed_steps": 35.12698412698413,
+          "travel_distance_m": 19.702380952380953
+        }
+      },
+      "reference": "age4"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.5
+        },
+        "reference": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.477272727272727
+        }
+      },
+      "reference": "age5"
+    },
+    {
+      "candidate": "caa_fast",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 34.80701754385965,
+          "travel_distance_m": 19.276315789473685
+        },
+        "reference": {
+          "elapsed_steps": 40.07017543859649,
+          "travel_distance_m": 20.539473684210527
+        }
+      },
+      "reference": "age6"
+    },
+    {
+      "candidate": "caa_slow",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 34.80701754385965,
+          "travel_distance_m": 19.25
+        },
+        "reference": {
+          "elapsed_steps": 40.07017543859649,
+          "travel_distance_m": 20.539473684210527
+        }
+      },
+      "reference": "age6"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 34.80701754385965,
+          "travel_distance_m": 19.276315789473685
+        },
+        "reference": {
+          "elapsed_steps": 40.07017543859649,
+          "travel_distance_m": 20.539473684210527
+        }
+      },
+      "reference": "age6"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.5
+        },
+        "reference": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.5
+        }
+      },
+      "reference": "caa_fast"
+    },
+    {
+      "candidate": "caa_full",
+      "means": {
+        "candidate": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.5
+        },
+        "reference": {
+          "elapsed_steps": 38.84848484848485,
+          "travel_distance_m": 21.477272727272727
+        }
+      },
+      "reference": "caa_slow"
+    }
+  ],
+  "primary_descriptive_target": {
+    "age4": false,
+    "age5": false,
+    "age6": false,
+    "caa_fast": true,
+    "caa_full": true,
+    "caa_slow": false,
+    "periodic": false
+  },
+  "source_commit": "6dea670c4794be2c4d5e67e50115f5f463e24f25",
+  "status": "COMPLETED_DESCRIPTIVE_NOT_VALIDATION"
+}
